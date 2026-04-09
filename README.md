@@ -1,73 +1,73 @@
-# React + TypeScript + Vite
+# ImmoAnalyse
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+KI-gestützte Immobilienanalyse für den deutschen Markt. Nutzer geben einen Immobilien-Link ein, bezahlen via Stripe und erhalten eine umfassende Analyse mit Standortbewertung, Marktdaten, Risikohinweisen, Verhandlungstipps und einem Makleranschreiben.
 
-Currently, two official plugins are available:
+## Lokale Entwicklung
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Die App läuft standardmäßig im **Mock-Modus** (`VITE_USE_MOCKS=true`). Alle API-Calls werden simuliert und es werden realistische Beispieldaten angezeigt.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Tech Stack
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- **Frontend:** React 19 + TypeScript + Tailwind CSS v4 + Vite
+- **Backend:** Supabase Edge Functions (Deno)
+- **Payments:** Stripe Checkout
+- **KI:** Claude Opus (Anthropic API mit Web Search)
+- **E-Mail:** Resend
+
+## Deployment
+
+### 1. Supabase einrichten
+- Neues Supabase-Projekt erstellen
+- SQL-Migration ausführen: `supabase/migrations/001_initial_schema.sql`
+- Edge Functions deployen: `supabase functions deploy`
+
+### 2. Stripe einrichten
+- Drei Produkte/Preise erstellen: 19€ (Single), 29€ (Double), 34€ (Triple)
+- Webhook erstellen auf `https://<supabase-url>/functions/v1/stripe-webhook`
+- Event: `checkout.session.completed`
+
+### 3. Resend einrichten
+- Domain verifizieren
+- API-Key erstellen
+
+### 4. Umgebungsvariablen
+
+Frontend (`.env`):
 ```
+VITE_SUPABASE_URL=https://xxx.supabase.co
+VITE_SUPABASE_ANON_KEY=eyJ...
+VITE_APP_URL=https://immoanalyse.de
+VITE_USE_MOCKS=false
+```
+
+Supabase Edge Functions (Dashboard > Settings > Edge Functions):
+```
+ANTHROPIC_API_KEY=sk-ant-...
+STRIPE_SECRET_KEY=sk_live_...
+STRIPE_WEBHOOK_SECRET=whsec_...
+STRIPE_PRICE_SINGLE=price_...
+STRIPE_PRICE_DOUBLE=price_...
+STRIPE_PRICE_TRIPLE=price_...
+RESEND_API_KEY=re_...
+EMAIL_FROM=noreply@immoanalyse.de
+APP_URL=https://immoanalyse.de
+```
+
+### 5. Frontend deployen
+```bash
+npm run build
+# Deploy dist/ auf Vercel, Netlify, oder Cloudflare Pages
+```
+
+## Preise
+
+| Paket | Preis | Analysen | Pro Stück |
+|-------|-------|----------|-----------|
+| Single | 19,00 € | 1 | 19,00 € |
+| Double | 29,00 € | 2 | 14,50 € |
+| Triple | 34,00 € | 3 | 11,33 € |
