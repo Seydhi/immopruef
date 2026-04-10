@@ -587,13 +587,21 @@ Suche im Web nach dieser Immobilie und erstelle die Analyse. NUR verifizierte Da
         const linkRows = completed
           .map((a: { token: string; url: string }, i: number) => {
             const exposeNr = a.url.match(/expose\/(\d+)/)?.[1] || ''
+            const cleanUrl = a.url.split('#')[0].split('?')[0]
             return `
               <tr>
-                <td style="padding:12px 16px;border-bottom:1px solid #f0f0f0;">
-                  <div style="font-size:13px;color:#666;margin-bottom:4px;">Immobilie ${i + 1}${exposeNr ? ` · Exposé ${exposeNr}` : ''}</div>
-                  <a href="${appUrl}?result=${a.token}" style="color:#1a6b3c;font-weight:600;font-size:15px;text-decoration:none;">
-                    Analyse ansehen →
-                  </a>
+                <td style="padding:14px 16px;border-bottom:1px solid #f0f0f0;">
+                  <div style="font-size:13px;color:#666;margin-bottom:6px;">Immobilie ${i + 1}${exposeNr ? ` · Exposé ${exposeNr}` : ''}</div>
+                  <div style="margin-bottom:8px;">
+                    <a href="${appUrl}?result=${a.token}" style="display:inline-block;background:#1a6b3c;color:#fff;font-weight:600;font-size:14px;text-decoration:none;padding:8px 18px;border-radius:6px;">
+                      Analyse ansehen →
+                    </a>
+                  </div>
+                  <div style="font-size:12px;">
+                    <a href="${cleanUrl}" style="color:#888;text-decoration:none;">
+                      📎 Originalinserat: ${cleanUrl}
+                    </a>
+                  </div>
                 </td>
               </tr>`
           }).join('')

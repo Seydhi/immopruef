@@ -57,7 +57,25 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
       )}
 
       {/* URL */}
-      <p className="text-[11px] text-ink-light mb-3 truncate">Analyse für: {url}</p>
+      <div className="flex items-center gap-2 mb-3 text-[11px] text-ink-light">
+        <span className="shrink-0">Analyse für:</span>
+        <a
+          href={url.split('#')[0].split('?')[0]}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-green hover:text-green-mid underline underline-offset-2 truncate"
+        >
+          {url.split('#')[0].split('?')[0]}
+        </a>
+        <a
+          href={url.split('#')[0].split('?')[0]}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="shrink-0 text-[10px] bg-green/10 text-green px-2 py-0.5 rounded font-medium hover:bg-green/20 transition-colors"
+        >
+          Exposé öffnen ↗
+        </a>
+      </div>
 
       {/* Zusammenfassung */}
       {result.zusammenfassung && (
