@@ -81,11 +81,21 @@ export default function LoadingView({ error, onRetry, timedOut, progress }: Load
         </div>
         {progress && progress.total > 1 ? (
           <div className="text-center">
-            <p className="text-ink-mid text-sm font-medium">Immobilie {progress.completed + 1} von {progress.total}</p>
+            <p className="text-ink-mid text-sm font-medium">
+              {progress.completed === 0
+                ? `Immobilie 1 von ${progress.total} wird analysiert`
+                : progress.completed >= progress.total
+                  ? `Alle ${progress.total} Immobilien analysiert`
+                  : `Immobilie ${progress.completed + 1} von ${progress.total} wird analysiert`
+              }
+            </p>
             <div className="w-48 h-1.5 bg-ink/10 rounded-full mt-2 mx-auto overflow-hidden">
-              <div className="h-full bg-green rounded-full transition-all duration-500" style={{ width: `${(progress.completed / progress.total) * 100}%` }} />
+              <div className="h-full bg-green rounded-full transition-all duration-500" style={{ width: `${Math.max((progress.completed / progress.total) * 100, 5)}%` }} />
             </div>
-            <p className="text-ink-light text-xs mt-2">Ca. 1–2 Minuten pro Immobilie</p>
+            {progress.completed > 0 && (
+              <p className="text-green text-xs mt-2 font-medium">✓ {progress.completed} von {progress.total} fertig</p>
+            )}
+            <p className="text-ink-light text-xs mt-1">Ca. 1–2 Minuten pro Immobilie</p>
           </div>
         ) : (
           <p className="text-ink-light text-xs">Die Analyse dauert ca. 1–2 Minuten. Bitte haben Sie einen Moment Geduld.</p>
