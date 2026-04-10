@@ -383,36 +383,21 @@ serve(async (req) => {
       return jsonResponse({ error: 'Order not found' }, 404)
     }
 
-    // If already completed, return existing results
-    if (order.status === 'completed') {
-      const { data: analyses } = await supabase
-        .from('analyses')
-        .select('*')
-        .eq('order_id', order.id)
-      return jsonResponse({ order_status: 'completed', analyses })
-    }
-
     // If still pending payment
     if (order.status === 'pending') {
       return jsonResponse({ error: 'pending', message: 'Zahlung wird noch verarbeitet' }, 402)
     }
 
-    // Atomic lock: set to processing (only if currently 'paid')
-    const { data: locked, error: lockErr } = await supabase
-      .from('orders')
-      .update({ status: 'processing' })
-      .eq('id', order.id)
-      .eq('status', 'paid')
-      .select()
-
-    if (lockErr || !locked?.length) {
-      // Already processing or completed by another request
-      const { data: analyses } = await supabase
-        .from('analyses')
-        .select('*')
-        .eq('order_id', order.id)
-      return jsonResponse({ order_status: order.status, analyses })
+    // Set order to processing if it's paid (first time)
+    if (order.status === 'paid') {
+      await supabase
+        .from('orders')
+        .update({ status: 'processing' })
+        .eq('id', order.id)
     }
+
+    // For completed orders: check if there are still pending analyses to process
+    // (can happen if order was marked completed prematurely)
 
     // Fetch all analyses for this order
     const { data: allAnalyses } = await supabase
@@ -422,6 +407,15 @@ serve(async (req) => {
 
     if (!allAnalyses?.length) {
       return jsonResponse({ error: 'No analyses found' }, 500)
+    }
+
+    // Reset stuck "processing" analyses (from previous timed-out calls) back to pending
+    for (const a of allAnalyses) {
+      if (a.status === 'processing') {
+        console.log(`Resetting stuck analysis ${a.id} from processing → pending`)
+        await supabase.from('analyses').update({ status: 'pending' }).eq('id', a.id)
+        a.status = 'pending'
+      }
     }
 
     // Check if all are already done
