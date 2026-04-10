@@ -31,11 +31,14 @@ const SYSTEM_PROMPT_STANDARD = `Du bist ein erfahrener Immobilienanalyst und Ber
 WICHTIGE REGELN:
 1. Rufe ZUERST die URL auf und lies ALLE Details des Exposés (Preis, Fläche, Zimmer, Baujahr, Energieausweis, Lage etc.).
 2. Suche DANACH nach: "[Stadtteil] Bodenrichtwert", "[Stadt] Immobilienpreise pro qm", "[Stadt] Mietpreisspiegel".
-3. JEDES Feld muss einen konkreten Wert haben. NIEMALS "nicht verfügbar", "n/a" oder "nicht berechenbar" schreiben.
-4. Wenn ein Wert nicht direkt im Exposé steht, SCHÄTZE ihn realistisch basierend auf Baujahr, Lage und Objekttyp.
-5. Berechne IMMER alle Finanzierungsszenarien, auch wenn du den Preis schätzen musst.
-6. Scores müssen IMMER Zahlen zwischen 1-10 sein, niemals 0.
-7. Antworte AUSSCHLIESSLICH mit validem JSON — kein Markdown, keine Prosa.
+3. GENAUIGKEIT IST OBERSTE PFLICHT. Alle Zahlen müssen korrekt sein oder aus verifizierbaren Quellen stammen.
+4. Daten aus dem Exposé: EXAKT übernehmen (Kaufpreis, Fläche, Zimmer, Baujahr, Adresse etc.).
+5. Daten aus öffentlichen Quellen: Bodenrichtwerte, Grunderwerbsteuer, Mietpreisspiegel — per Web-Suche recherchieren.
+6. Berechnungen: Kaufnebenkosten, Finanzierungsszenarien, monatliche Raten — IMMER korrekt durchrechnen basierend auf den echten Zahlen aus dem Exposé.
+7. Wenn ein Wert NICHT im Exposé steht und NICHT recherchierbar ist: Schreibe "Im Exposé nicht angegeben — beim Verkäufer anfordern". NIEMALS Werte erfinden.
+8. Scores müssen IMMER Zahlen zwischen 1-10 sein, niemals 0.
+9. Antworte AUSSCHLIESSLICH mit validem JSON — kein Markdown, keine Prosa.
+10. ERFINDE NIEMALS Daten. Jede Zahl muss entweder aus dem Exposé, aus einer Web-Recherche oder aus einer nachvollziehbaren Berechnung stammen.
 
 JSON-Schema (alle Felder sind Pflicht):
 
@@ -118,18 +121,19 @@ JSON-Schema (alle Felder sind Pflicht):
 }
 
 PFLICHT-HINWEISE:
-- objektdaten: Adresse, Typ, Kaufpreis, Wohnfläche, Grundstück, Zimmer, Baujahr, Zustand, Heizung, Energieeffizienz, Stellplatz, Keller, Hausgeld, Provision. Falls Wert nicht im Exposé: "ca. [Schätzwert]" schreiben.
-- standortanalyse.kategorien: ÖPNV, Schulen/Kitas, Einkauf, Ärzte, Freizeit, Lärm, Sicherheit, Entwicklungsperspektive. JEDE Kategorie braucht Score 1-10.
-- finanzierung.szenarien: IMMER 3 Szenarien berechnen (Konservativ 30% EK, Standard 20% EK, Minimal 10% EK). Aktuelle Bauzinsen ca. 3,5-4,0%. IMMER konkrete Euro-Beträge.
-- stresstest: IMMER 3 Szenarien (Zinserhöhung auf 5,5%, Sonderumlage 15.000€, Einkommensverlust 30%).
-- kaufenVsMieten: IMMER berechnen. Vergleichsmiete aus Mietpreisspiegel der Stadt verwenden. NIEMALS "nicht berechenbar".
-- modernisierung.items: IMMER mindestens 6 Bauteile (Heizung, Fenster, Elektrik, Bad, Dach, Fassade). Alter aus Baujahr ableiten.
-- gesamtkosten: Grunderwerbsteuer KORREKT je Bundesland berechnen! Grunderwerbsteuer-Sätze: Bayern 3,5%, Sachsen 3,5%, BaWü 5,0%, NRW 6,5%, Berlin 6,0%, Hamburg 5,5%, Hessen 6,0%, Niedersachsen 5,0%, Brandenburg 6,5%, SH 6,5%.
-- laufendeKosten: IMMER mit konkreten Beträgen: Hausgeld, Grundsteuer, Gebäudeversicherung, Rücklagen, Heizkosten, Strom, Wasser/Abwasser.
-- energieanalyse: Wenn Energieausweis fehlt, SCHÄTZE basierend auf Baujahr (vor 1980: Klasse F-H, 1980-2000: D-E, 2000-2015: B-C, nach 2015: A-B).
-- scores: ALLE Scores müssen Zahlen 1-10 sein. KEIN Score darf 0 sein.
+- objektdaten: Adresse, Typ, Kaufpreis, Wohnfläche, Grundstück, Zimmer, Baujahr, Zustand, Heizung, Energieeffizienz, Stellplatz, Keller, Hausgeld, Provision. NUR Werte aus dem Exposé. Wenn ein Wert fehlt: "Im Exposé nicht angegeben".
+- standortanalyse.kategorien: ÖPNV, Schulen/Kitas, Einkauf, Ärzte, Freizeit, Lärm, Sicherheit, Entwicklungsperspektive. JEDE Kategorie braucht Score 1-10 basierend auf Web-Recherche.
+- finanzierung.szenarien: IMMER 3 Szenarien berechnen (Konservativ 30% EK, Standard 20% EK, Minimal 10% EK). Recherchiere aktuelle Bauzinsen per Web-Suche. IMMER konkrete Euro-Beträge korrekt durchrechnen.
+- stresstest: IMMER 3 Szenarien (Zinserhöhung auf 5,5%, Sonderumlage 15.000€, Einkommensverlust 30%). Korrekt berechnen.
+- kaufenVsMieten: IMMER berechnen. Vergleichsmiete per Web-Suche aus dem Mietpreisspiegel der Stadt recherchieren.
+- modernisierung.items: IMMER mindestens 6 Bauteile (Heizung, Fenster, Elektrik, Bad, Dach, Fassade). Alter NUR ableiten wenn Baujahr im Exposé steht.
+- gesamtkosten: Grunderwerbsteuer KORREKT je Bundesland: Bayern 3,5%, Sachsen 3,5%, BaWü 5,0%, NRW 6,5%, Berlin 6,0%, Hamburg 5,5%, Hessen 6,0%, Niedersachsen 5,0%, Brandenburg 6,5%, SH 6,5%, Bremen 5,0%, RLP 5,0%, Saarland 6,5%, Sachsen-Anhalt 5,0%, MV 6,0%, Thüringen 5,0%.
+- laufendeKosten: Hausgeld (aus Exposé), Grundsteuer (recherchieren), Gebäudeversicherung (recherchieren), Rücklagen, Heizkosten (aus Energieausweis berechnen), Strom, Wasser/Abwasser.
+- energieanalyse: NUR Daten aus dem Exposé verwenden. Wenn Energieausweis fehlt: "Nicht im Exposé angegeben — muss beim Verkäufer angefordert werden (gesetzliche Pflicht bei Verkauf)".
+- scores: ALLE Scores müssen Zahlen 1-10 sein. KEIN Score darf 0 sein. Scores basieren auf den recherchierten Fakten, nicht auf Vermutungen.
 - Optionale Felder (nur wenn vom Nutzer gewünscht): verhandlungstipps, makleranschreiben. Wenn nicht gewünscht: leere Arrays/Strings.
-- WICHTIG: Nutze Web-Suche um das Exposé abzurufen. Suche nach der Exposé-Nummer auf ImmoScout24.`
+- WICHTIG: Nutze Web-Suche um das Exposé abzurufen UND Marktdaten zu recherchieren. Suche nach der Exposé-Nummer auf ImmoScout24.
+- ABSOLUTE REGEL: Erfinde KEINE Zahlen. Jeder Wert muss aus dem Exposé, aus einer Web-Recherche oder aus einer nachvollziehbaren Berechnung stammen.`
 
 const SYSTEM_PROMPT_PREMIUM_ADDITION = `
 
@@ -339,7 +343,7 @@ Optionen:
 - Risikohinweise: ${opts.risiken ? 'ja' : 'nein'}
 ${isPremium ? '- Premium-Report: ja (inkl. Wertermittlung, Standort-Dossier, Vermögensvergleich, Checkliste)' : ''}
 
-WICHTIG: Jedes Feld muss einen konkreten Wert haben. Keine leeren Felder, kein "n/a", kein "nicht verfügbar". Wenn ein Wert fehlt, schätze realistisch. Antworte ausschließlich mit JSON.`
+WICHTIG: Alle Daten müssen korrekt sein. Exposé-Daten exakt übernehmen. Marktdaten recherchieren. Berechnungen korrekt durchführen. Wenn ein Wert nicht findbar ist: "Im Exposé nicht angegeben — beim Verkäufer anfordern". NIEMALS Zahlen erfinden. Antworte ausschließlich mit JSON.`
 
         const response = await fetch('https://api.anthropic.com/v1/messages', {
           method: 'POST',
@@ -447,8 +451,8 @@ URL: ${analysis.url.split('#')[0].split('?')[0]}
 ${analysis.url.match(/expose\/(\d+)/) ? `Exposé-Nr: ${analysis.url.match(/expose\/(\d+)/)![1]}` : ''}
 
 Suche im Web nach dieser Immobilie (Exposé-Nummer auf ImmoScout24) und erstelle die vollständige Analyse.
-Falls du keine Details findest, suche nach vergleichbaren Immobilien in der Region und erstelle eine realistische Schätzanalyse.
-JEDES Feld muss ausgefüllt sein. KEIN "n/a" oder "nicht verfügbar". Antworte ausschließlich mit JSON.`
+Alle Daten müssen korrekt sein — NUR Fakten aus dem Exposé und recherchierte Marktdaten verwenden. NIEMALS Zahlen erfinden.
+Wenn ein Wert nicht findbar ist: "Im Exposé nicht angegeben — beim Verkäufer anfordern". Antworte ausschließlich mit JSON.`
 
             const retryResponse = await fetch('https://api.anthropic.com/v1/messages', {
               method: 'POST',
