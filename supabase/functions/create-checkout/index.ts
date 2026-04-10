@@ -3,7 +3,7 @@
 
 import { serve } from 'https://deno.land/std@0.177.0/http/server.ts'
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
-import Stripe from 'https://esm.sh/stripe@13?target=deno'
+import Stripe from 'https://esm.sh/stripe@17?target=deno'
 
 // ═══════════════════════════════════════════════════════════════
 // CORS
@@ -97,7 +97,7 @@ serve(async (req) => {
     }
 
     // Stripe
-    const stripe = new Stripe(Deno.env.get('STRIPE_SECRET_KEY')!, { apiVersion: '2023-10-16' })
+    const stripe = new Stripe(Deno.env.get('STRIPE_SECRET_KEY')!)
     const priceId = Deno.env.get(PRICE_ENV[pkg])!
     const appUrl = Deno.env.get('APP_URL') || 'https://immopruef.de'
 

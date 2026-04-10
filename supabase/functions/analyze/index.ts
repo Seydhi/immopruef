@@ -3,7 +3,7 @@
 
 import { serve } from 'https://deno.land/std@0.177.0/http/server.ts'
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
-import Stripe from 'https://esm.sh/stripe@13?target=deno'
+import Stripe from 'https://esm.sh/stripe@17?target=deno'
 
 // ═══════════════════════════════════════════════════════════════
 // CORS
@@ -331,7 +331,13 @@ Nutze Web-Suche für aktuelle Marktpreise, Bodenrichtwerte und Standortdaten. An
             model: 'claude-sonnet-4-20250514',
             max_tokens: maxTokens,
             system: systemPrompt,
-            tools: [{ type: 'web_search_20250305', name: 'web_search' }],
+            tools: [
+              {
+                type: 'web_search_20250305',
+                name: 'web_search',
+                max_uses: 15,
+              },
+            ],
             messages: [{ role: 'user', content: userMessage }],
           }),
         })
@@ -350,7 +356,7 @@ Nutze Web-Suche für aktuelle Marktpreise, Bodenrichtwerte und Standortdaten. An
           { role: 'user', content: userMessage },
         ]
 
-        while (finalData.stop_reason === 'tool_use' && turns < 10) {
+        while (finalData.stop_reason === 'tool_use' && turns < 15) {
           turns++
           // Add assistant response
           messages.push({ role: 'assistant', content: finalData.content })
@@ -378,7 +384,13 @@ Nutze Web-Suche für aktuelle Marktpreise, Bodenrichtwerte und Standortdaten. An
               model: 'claude-sonnet-4-20250514',
               max_tokens: maxTokens,
               system: systemPrompt,
-              tools: [{ type: 'web_search_20250305', name: 'web_search' }],
+              tools: [
+                {
+                  type: 'web_search_20250305',
+                  name: 'web_search',
+                  max_uses: 15,
+                },
+              ],
               messages,
             }),
           })
@@ -410,7 +422,7 @@ Nutze Web-Suche für aktuelle Marktpreise, Bodenrichtwerte und Standortdaten. An
     let email = order.email
     if (!email) {
       try {
-        const stripe = new Stripe(Deno.env.get('STRIPE_SECRET_KEY')!, { apiVersion: '2023-10-16' })
+        const stripe = new Stripe(Deno.env.get('STRIPE_SECRET_KEY')!)
         const session = await stripe.checkout.sessions.retrieve(session_id)
         email = session.customer_details?.email || ''
         if (email) {
