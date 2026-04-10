@@ -3,6 +3,14 @@ import * as mockApi from './mock-api'
 import { supabase, getSupabaseFunctionUrl } from './supabase'
 
 const USE_MOCKS = import.meta.env.VITE_USE_MOCKS === 'true'
+const ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY || ''
+
+function getHeaders(): Record<string, string> {
+  return {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${ANON_KEY}`,
+  }
+}
 
 // ─── Start Checkout ───
 // Creates a Stripe Checkout session via Edge Function, returns redirect URL
@@ -16,7 +24,7 @@ export async function startCheckout(
 
   const res = await fetch(getSupabaseFunctionUrl('create-checkout'), {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: getHeaders(),
     body: JSON.stringify({ urls, options, package: pkg, email }),
   })
 
@@ -36,7 +44,7 @@ export async function pollAnalysis(sessionId: string): Promise<OrderResult> {
 
   const res = await fetch(getSupabaseFunctionUrl('analyze'), {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: getHeaders(),
     body: JSON.stringify({ session_id: sessionId }),
   })
 
@@ -59,7 +67,7 @@ export async function retryAnalysis(analysisId: string): Promise<Analysis | null
 
   const res = await fetch(getSupabaseFunctionUrl('retry-analysis'), {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: getHeaders(),
     body: JSON.stringify({ analysis_id: analysisId }),
   })
 
