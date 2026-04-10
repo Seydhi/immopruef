@@ -52,6 +52,21 @@ export async function pollAnalysis(sessionId: string): Promise<OrderResult> {
   return await res.json()
 }
 
+// ─── Retry Failed Analysis ───
+// Resets a failed analysis to pending and re-triggers processing (no extra payment)
+export async function retryAnalysis(analysisId: string): Promise<Analysis | null> {
+  if (USE_MOCKS) return null
+
+  const res = await fetch(getSupabaseFunctionUrl('retry-analysis'), {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ analysis_id: analysisId }),
+  })
+
+  if (!res.ok) return null
+  return await res.json()
+}
+
 // ─── Get Analysis by Token ───
 // Direct Supabase query for permalink access (RLS allows public read)
 export async function getAnalysisByToken(token: string): Promise<Analysis | null> {

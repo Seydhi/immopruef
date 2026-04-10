@@ -433,8 +433,84 @@ WICHTIG: Jedes Feld muss einen konkreten Wert haben. Keine leeren Felder, kein "
           .update({ result, status: 'completed' })
           .eq('id', analysis.id)
       } catch (err) {
-        console.error(`Analysis failed for ${analysis.url}:`, err)
-        await supabase.from('analyses').update({ status: 'failed' }).eq('id', analysis.id)
+        console.error(`Analysis attempt failed for ${analysis.url}:`, err)
+
+        // Auto-retry up to 2 more times
+        let retrySuccess = false
+        for (let retry = 1; retry <= 2; retry++) {
+          console.log(`Retry ${retry}/2 for ${analysis.url}...`)
+          try {
+            // Simplified retry without web search (faster, more reliable)
+            const retryMessage = `Analysiere diese Immobilie. Die URL konnte möglicherweise nicht direkt abgerufen werden.
+
+URL: ${analysis.url.split('#')[0].split('?')[0]}
+${analysis.url.match(/expose\/(\d+)/) ? `Exposé-Nr: ${analysis.url.match(/expose\/(\d+)/)![1]}` : ''}
+
+Suche im Web nach dieser Immobilie (Exposé-Nummer auf ImmoScout24) und erstelle die vollständige Analyse.
+Falls du keine Details findest, suche nach vergleichbaren Immobilien in der Region und erstelle eine realistische Schätzanalyse.
+JEDES Feld muss ausgefüllt sein. KEIN "n/a" oder "nicht verfügbar". Antworte ausschließlich mit JSON.`
+
+            const retryResponse = await fetch('https://api.anthropic.com/v1/messages', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'x-api-key': anthropicKey,
+                'anthropic-version': '2023-06-01',
+              },
+              body: JSON.stringify({
+                model: 'claude-sonnet-4-20250514',
+                max_tokens: maxTokens,
+                system: systemPrompt,
+                tools: [{ type: 'web_search_20250305', name: 'web_search', max_uses: 3 }],
+                messages: [{ role: 'user', content: retryMessage }],
+              }),
+            })
+
+            if (!retryResponse.ok) throw new Error(`Retry API error: ${retryResponse.status}`)
+
+            let retryData = await retryResponse.json()
+
+            // Handle one round of tool use
+            if (retryData.stop_reason === 'tool_use') {
+              const retryMessages: Array<{ role: string; content: unknown }> = [
+                { role: 'user', content: retryMessage },
+                { role: 'assistant', content: retryData.content },
+              ]
+              const toolBlocks = retryData.content.filter((b: { type: string }) => b.type === 'tool_use')
+              retryMessages.push({
+                role: 'user',
+                content: toolBlocks.map((t: { id: string }) => ({
+                  type: 'tool_result', tool_use_id: t.id,
+                  content: 'Ergebnis verarbeitet. Antworte jetzt mit dem vollständigen JSON.',
+                })),
+              })
+
+              const cont = await fetch('https://api.anthropic.com/v1/messages', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'x-api-key': anthropicKey, 'anthropic-version': '2023-06-01' },
+                body: JSON.stringify({
+                  model: 'claude-sonnet-4-20250514', max_tokens: maxTokens, system: systemPrompt,
+                  tools: [{ type: 'web_search_20250305', name: 'web_search', max_uses: 3 }],
+                  messages: retryMessages,
+                }),
+              })
+              if (cont.ok) retryData = await cont.json()
+            }
+
+            const retryResult = extractClaudeJson(retryData)
+            await supabase.from('analyses').update({ result: retryResult, status: 'completed' }).eq('id', analysis.id)
+            retrySuccess = true
+            console.log(`Retry ${retry} succeeded for ${analysis.url}`)
+            break
+          } catch (retryErr) {
+            console.error(`Retry ${retry} failed:`, retryErr)
+          }
+        }
+
+        if (!retrySuccess) {
+          console.error(`All retries failed for ${analysis.url}`)
+          await supabase.from('analyses').update({ status: 'failed' }).eq('id', analysis.id)
+        }
       }
     }
 
