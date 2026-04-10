@@ -579,18 +579,32 @@ Suche im Web nach dieser Immobilie und erstelle die Analyse. NUR verifizierte Da
           .select('*')
           .eq('order_id', order.id)
 
-        const links = (completedAnalyses || [])
-          .filter((a: { status: string }) => a.status === 'completed')
-          .map((a: { token: string; url: string }) => `<p><a href="${appUrl}?result=${a.token}" style="color:#16a34a;">Analyse ansehen: ${a.url}</a></p>`)
-          .join('')
+        const completed = (completedAnalyses || []).filter((a: { status: string }) => a.status === 'completed')
+        const analysisCount = completed.length
+
+        const linkRows = completed
+          .map((a: { token: string; url: string }, i: number) => {
+            const exposeNr = a.url.match(/expose\/(\d+)/)?.[1] || ''
+            return `
+              <tr>
+                <td style="padding:12px 16px;border-bottom:1px solid #f0f0f0;">
+                  <div style="font-size:13px;color:#666;margin-bottom:4px;">Immobilie ${i + 1}${exposeNr ? ` · Exposé ${exposeNr}` : ''}</div>
+                  <a href="${appUrl}?result=${a.token}" style="color:#1a6b3c;font-weight:600;font-size:15px;text-decoration:none;">
+                    Analyse ansehen →
+                  </a>
+                </td>
+              </tr>`
+          }).join('')
 
         const subject = isPremium
-          ? 'Ihr Premium Kaufentscheidungs-Report ist fertig — ImmoPrüf'
-          : analyses.length === 1
-            ? 'Ihre Immobilienanalyse ist fertig — ImmoPrüf'
-            : `Ihre ${analyses.length} Immobilienanalysen sind fertig — ImmoPrüf`
+          ? 'Ihr Kaufentscheidungs-Report ist fertig'
+          : analysisCount === 1
+            ? 'Ihre Immobilienanalyse ist fertig'
+            : `Ihre ${analysisCount} Immobilienanalysen sind fertig`
 
-        const emailFrom = Deno.env.get('EMAIL_FROM') || 'noreply@immopruef.de'
+        const greeting = isPremium ? 'Ihr umfassender Kaufentscheidungs-Report' : analysisCount === 1 ? 'Ihre Immobilienanalyse' : `Ihre ${analysisCount} Immobilienanalysen`
+
+        const emailFrom = Deno.env.get('EMAIL_FROM') || 'ImmoPrüf <info@immopruef.de>'
         console.log(`Sending email from=${emailFrom} to=${email} subject="${subject}"`)
 
         const emailRes = await fetch('https://api.resend.com/emails', {
@@ -604,13 +618,52 @@ Suche im Web nach dieser Immobilie und erstelle die Analyse. NUR verifizierte Da
             to: email,
             subject,
             html: `
-              <div style="font-family:system-ui,sans-serif;max-width:600px;margin:0 auto;">
-                <h2 style="color:#111;">ImmoPrüf</h2>
-                <p>${isPremium ? 'Ihr Premium Kaufentscheidungs-Report' : 'Ihre Immobilienanalyse'} ist fertig.</p>
-                ${links}
-                <hr style="border:none;border-top:1px solid #eee;margin:24px 0;" />
-                <p style="color:#888;font-size:12px;">KI-Analyse auf Basis öffentlich verfügbarer Daten. Keine Gewähr für Vollständigkeit oder Richtigkeit.</p>
-              </div>
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#f7f5f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+  <div style="max-width:560px;margin:0 auto;padding:32px 16px;">
+
+    <!-- Header -->
+    <div style="background:#1a3c2a;border-radius:12px 12px 0 0;padding:28px 24px;text-align:center;">
+      <h1 style="margin:0;color:#f7f5f0;font-size:22px;font-weight:600;letter-spacing:0.5px;">
+        Immo<span style="color:#c9a84c;">Prüf</span>
+      </h1>
+    </div>
+
+    <!-- Body -->
+    <div style="background:#ffffff;padding:28px 24px;border-left:1px solid #e8e4dc;border-right:1px solid #e8e4dc;">
+      <p style="margin:0 0 6px;font-size:18px;font-weight:600;color:#1a1a1a;">
+        ${greeting} ${analysisCount === 1 ? 'ist' : 'sind'} fertig ✓
+      </p>
+      <p style="margin:0 0 24px;font-size:14px;color:#666;line-height:1.5;">
+        Klicken Sie auf den Link um Ihre vollständige Analyse aufzurufen. Der Link ist dauerhaft gültig — Sie können jederzeit darauf zugreifen.
+      </p>
+
+      <!-- Analysis Links -->
+      <table width="100%" cellpadding="0" cellspacing="0" style="background:#f9f8f5;border-radius:8px;overflow:hidden;">
+        ${linkRows}
+      </table>
+
+      ${isPremium ? `
+      <div style="margin-top:20px;padding:14px 16px;background:#fef9ee;border:1px solid #e8d9a8;border-radius:8px;">
+        <div style="font-size:13px;color:#8a6d1b;font-weight:600;margin-bottom:4px;">★ Premium Kaufentscheidungs-Report</div>
+        <div style="font-size:12px;color:#a68b2e;line-height:1.4;">Inkl. Wertermittlung, Standort-Dossier, 30-Jahres-Vermögensvergleich und Vor-Kauf-Checkliste.</div>
+      </div>
+      ` : ''}
+    </div>
+
+    <!-- Footer -->
+    <div style="background:#f9f8f5;border-radius:0 0 12px 12px;padding:20px 24px;border:1px solid #e8e4dc;border-top:none;">
+      <p style="margin:0 0 8px;font-size:11px;color:#999;line-height:1.4;">
+        KI-Analyse auf Basis öffentlich verfügbarer Daten. Keine Gewähr für Vollständigkeit oder Richtigkeit. Ersetzt keine professionelle Beratung.
+      </p>
+      <p style="margin:0;font-size:11px;color:#bbb;">
+        <a href="${appUrl}" style="color:#1a6b3c;text-decoration:none;">immopruef.de</a> · Professionelle Immobilienanalyse
+      </p>
+    </div>
+
+  </div>
+</body></html>
             `,
           }),
         })
