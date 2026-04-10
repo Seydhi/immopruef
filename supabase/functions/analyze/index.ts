@@ -214,9 +214,10 @@ async function callOpenAI(systemPrompt: string, userMessage: string, maxTokens: 
       'Authorization': `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
-      model: 'gpt-4o-mini',
+      model: 'gpt-4o',
       max_tokens: maxTokens,
       response_format: { type: 'json_object' },
+      web_search_options: { search_context_size: 'medium' },
       messages: [
         { role: 'system', content: systemPrompt },
         { role: 'user', content: userMessage },
@@ -535,7 +536,10 @@ Suche im Web nach dieser Immobilie und erstelle die Analyse. NUR verifizierte Da
       return jsonResponse({ order_status: 'processing', analyses })
     }
 
-    // Get email from Stripe
+    // Send email only when ALL analyses are done
+    console.log('All analyses done — sending email...')
+
+    // Get email from order or Stripe
     let email = order.email
     if (!email) {
       try {
@@ -549,6 +553,8 @@ Suche im Web nach dieser Immobilie und erstelle die Analyse. NUR verifizierte Da
         console.error('Failed to retrieve email from Stripe')
       }
     }
+
+    console.log(`Email recipient: ${email || 'NONE'}`)
 
     // Send email via Resend
     if (email) {
@@ -569,14 +575,17 @@ Suche im Web nach dieser Immobilie und erstelle die Analyse. NUR verifizierte Da
             ? 'Ihre Immobilienanalyse ist fertig — ImmoPrüf'
             : `Ihre ${analyses.length} Immobilienanalysen sind fertig — ImmoPrüf`
 
-        await fetch('https://api.resend.com/emails', {
+        const emailFrom = Deno.env.get('EMAIL_FROM') || 'noreply@immopruef.de'
+        console.log(`Sending email from=${emailFrom} to=${email} subject="${subject}"`)
+
+        const emailRes = await fetch('https://api.resend.com/emails', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${Deno.env.get('RESEND_API_KEY')}`,
           },
           body: JSON.stringify({
-            from: Deno.env.get('EMAIL_FROM') || 'noreply@immopruef.de',
+            from: emailFrom,
             to: email,
             subject,
             html: `
@@ -590,6 +599,9 @@ Suche im Web nach dieser Immobilie und erstelle die Analyse. NUR verifizierte Da
             `,
           }),
         })
+
+        const emailResult = await emailRes.json()
+        console.log(`Resend response: ${emailRes.status}`, JSON.stringify(emailResult))
       } catch (err) {
         console.error('Failed to send email:', err)
       }
