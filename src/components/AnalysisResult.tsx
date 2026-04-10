@@ -57,13 +57,14 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
             ['energie', 'Energie'],
             ['finanzierung', 'Finanz.'],
           ] as const).map(([key, label]) => {
-            const val = result.scores[key]
-            const color = val >= 7 ? 'text-emerald-600' : val >= 5 ? 'text-amber-600' : 'text-red-500'
+            const rawVal = result.scores[key]
+            const val = typeof rawVal === 'number' && rawVal >= 1 && rawVal <= 10 ? rawVal : null
+            const color = val === null ? 'text-ink-light' : val >= 7 ? 'text-emerald-600' : val >= 5 ? 'text-amber-600' : 'text-red-500'
             return (
               <div key={key} className="bg-white border border-ink/10 rounded-xl p-3 text-center">
                 <div className="text-[10px] text-ink-light font-medium tracking-wider uppercase mb-0.5">{label}</div>
                 <div className={`font-display text-xl font-medium ${color}`}>
-                  {val}
+                  {val !== null ? val : '–'}
                   <span className="text-xs text-ink-light">/10</span>
                 </div>
               </div>
