@@ -7,6 +7,9 @@ import LoadingView from './components/LoadingView'
 import ResultsView from './components/ResultsView'
 import AnalysisResultView from './components/AnalysisResult'
 import Toast from './components/Toast'
+import Impressum from './components/legal/Impressum'
+import Datenschutz from './components/legal/Datenschutz'
+import AGB from './components/legal/AGB'
 
 type AppView =
   | { type: 'landing' }
@@ -14,6 +17,9 @@ type AppView =
   | { type: 'results'; order: OrderResult }
   | { type: 'permalink'; analysis: Analysis }
   | { type: 'error'; message: string }
+  | { type: 'impressum' }
+  | { type: 'datenschutz' }
+  | { type: 'agb' }
 
 export default function App() {
   const [view, setView] = useState<AppView>({ type: 'landing' })
@@ -55,10 +61,16 @@ export default function App() {
   }, [])
 
   useEffect(() => {
+    const path = window.location.pathname
     const params = new URLSearchParams(window.location.search)
     const sessionId = params.get('session_id')
     const resultToken = params.get('result')
     const paymentCancelled = params.get('payment')
+
+    // Legal pages routing
+    if (path === '/impressum') { setView({ type: 'impressum' }); return }
+    if (path === '/datenschutz') { setView({ type: 'datenschutz' }); return }
+    if (path === '/agb') { setView({ type: 'agb' }); return }
 
     // Clean URL
     if (sessionId || resultToken || paymentCancelled) {
@@ -144,10 +156,31 @@ export default function App() {
             </div>
           </div>
         )}
+
+        {(view.type === 'impressum' || view.type === 'datenschutz' || view.type === 'agb') && (
+          <div>
+            <button
+              onClick={() => { window.history.pushState({}, '', '/'); setView({ type: 'landing' }) }}
+              className="text-green text-sm font-medium hover:text-green-mid transition-colors mb-6 flex items-center gap-1"
+            >
+              ← Zurück zur Startseite
+            </button>
+            {view.type === 'impressum' && <Impressum />}
+            {view.type === 'datenschutz' && <Datenschutz />}
+            {view.type === 'agb' && <AGB />}
+          </div>
+        )}
       </main>
 
       <footer className="text-center text-[11px] text-ink-light py-6 border-t border-ink/10 mt-10 mx-6">
-        KI-Analyse auf Basis öffentlich verfügbarer Daten · Keine Gewähr für Vollständigkeit oder Richtigkeit
+        <p className="mb-2">KI-Analyse auf Basis öffentlich verfügbarer Daten · Keine Gewähr für Vollständigkeit oder Richtigkeit</p>
+        <div className="flex items-center justify-center gap-3">
+          <a href="/impressum" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/impressum'); setView({ type: 'impressum' }); window.scrollTo(0, 0) }} className="hover:text-green transition-colors">Impressum</a>
+          <span className="text-ink/20">·</span>
+          <a href="/datenschutz" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/datenschutz'); setView({ type: 'datenschutz' }); window.scrollTo(0, 0) }} className="hover:text-green transition-colors">Datenschutz</a>
+          <span className="text-ink/20">·</span>
+          <a href="/agb" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/agb'); setView({ type: 'agb' }); window.scrollTo(0, 0) }} className="hover:text-green transition-colors">AGB</a>
+        </div>
       </footer>
     </div>
   )
