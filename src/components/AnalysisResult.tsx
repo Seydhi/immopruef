@@ -1,6 +1,26 @@
-import { useState } from 'react'
+import { useState, type ReactNode } from 'react'
 import type { AnalysisResult as AnalysisResultType, AnalysisOptions } from '../lib/types'
 import PremiumReport from './PremiumReport'
+
+// Helper: detect regional average values and render with warning badge
+const REGION_HINT = 'Durchschnitt der Region'
+function ValueCell({ children }: { children: ReactNode }) {
+  if (typeof children !== 'string') return <>{children}</>
+  if (!children.includes(REGION_HINT)) return <>{children}</>
+
+  // Split the value from the warning text
+  const idx = children.indexOf('(')
+  const value = idx > 0 ? children.slice(0, idx).trim() : children
+  return (
+    <span>
+      {value}
+      <span className="inline-flex items-center gap-1 ml-1.5 px-1.5 py-0.5 bg-red-50 border border-red-200 rounded text-[10px] text-red-600 font-medium whitespace-nowrap">
+        <svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor" className="shrink-0"><path fillRule="evenodd" d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.168 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495zM10 6a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0v-3.5A.75.75 0 0110 6zm0 9a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd"/></svg>
+        Regionsdurchschnitt
+      </span>
+    </span>
+  )
+}
 
 interface AnalysisResultProps {
   result: AnalysisResultType
@@ -86,7 +106,7 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
                     <tr key={i} className={`border-b border-ink/8 last:border-b-0 ${i % 2 === 1 ? 'bg-cream/50' : ''}`}>
                       <td className="px-3.5 py-2 text-ink-light text-xs font-medium tracking-wide w-[38%] whitespace-nowrap">{row.merkmal}</td>
                       <td className="px-3.5 py-2">
-                        {isPrice ? <span className="font-display text-lg text-green font-medium">{row.wert}</span> : row.wert}
+                        {isPrice ? <span className="font-display text-lg text-green font-medium">{row.wert}</span> : <ValueCell>{row.wert}</ValueCell>}
                       </td>
                     </tr>
                   )
@@ -175,8 +195,8 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
                   {result.gesamtkosten.laufendeKosten.map((lk, i) => (
                     <tr key={i} className={`border-b border-ink/8 last:border-b-0 ${i % 2 === 1 ? 'bg-cream/50' : ''}`}>
                       <td className="px-3.5 py-2 text-ink-light text-xs font-medium tracking-wide w-[45%]">{lk.position}</td>
-                      <td className="px-3.5 py-2 text-right w-[25%]">{lk.betragMonat}</td>
-                      <td className="px-3.5 py-2 text-right text-ink-light text-xs">{lk.betragJahr}/J.</td>
+                      <td className="px-3.5 py-2 text-right w-[25%]"><ValueCell>{lk.betragMonat}</ValueCell></td>
+                      <td className="px-3.5 py-2 text-right text-ink-light text-xs"><ValueCell>{lk.betragJahr}</ValueCell>/J.</td>
                     </tr>
                   ))}
                   <tr className="bg-green/5 font-medium">
@@ -558,7 +578,9 @@ function KVRow({ label, value, i, highlight }: { label: string; value: string; i
   return (
     <tr className={`border-b border-ink/8 last:border-b-0 ${i % 2 === 1 ? 'bg-cream/50' : ''}`}>
       <td className="px-3.5 py-2 text-ink-light text-xs font-medium tracking-wide w-[40%]">{label}</td>
-      <td className={`px-3.5 py-2 text-[13.5px] ${highlight ? 'font-medium text-green' : ''}`}>{value}</td>
+      <td className={`px-3.5 py-2 text-[13.5px] ${highlight ? 'font-medium text-green' : ''}`}>
+        <ValueCell>{value}</ValueCell>
+      </td>
     </tr>
   )
 }
