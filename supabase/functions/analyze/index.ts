@@ -414,13 +414,27 @@ serve(async (req) => {
     }
 
     // Fetch all analyses for this order
-    const { data: analyses } = await supabase
+    const { data: allAnalyses } = await supabase
       .from('analyses')
       .select('*')
       .eq('order_id', order.id)
 
-    if (!analyses?.length) {
+    if (!allAnalyses?.length) {
       return jsonResponse({ error: 'No analyses found' }, 500)
+    }
+
+    // Check if all are already done
+    const allDone = allAnalyses.every((a: { status: string }) => a.status === 'completed' || a.status === 'failed')
+    if (allDone) {
+      await supabase.from('orders').update({ status: 'completed' }).eq('id', order.id)
+      return jsonResponse({ order_status: 'completed', analyses: allAnalyses })
+    }
+
+    // Find the NEXT pending analysis (process ONE at a time to avoid timeout)
+    const nextPending = allAnalyses.find((a: { status: string }) => a.status === 'pending')
+    if (!nextPending) {
+      // Some still processing from a previous call — return current state
+      return jsonResponse({ order_status: 'processing', analyses: allAnalyses })
     }
 
     // Determine if premium
@@ -430,11 +444,12 @@ serve(async (req) => {
       : SYSTEM_PROMPT_STANDARD
     const maxTokens = isPremium ? 24000 : 16000
 
-    // Run Claude analysis for each URL
+    // Process ONE analysis per function call (avoids 150s timeout)
     const anthropicKey = Deno.env.get('ANTHROPIC_API_KEY')!
     const appUrl = Deno.env.get('APP_URL') || 'https://immopruef.de'
 
-    for (const analysis of analyses) {
+    const analysis = nextPending
+    {
       try {
         await supabase.from('analyses').update({ status: 'processing' }).eq('id', analysis.id)
 
@@ -504,8 +519,21 @@ Suche im Web nach dieser Immobilie und erstelle die Analyse. NUR verifizierte Da
       }
     }
 
-    // Mark order complete
-    await supabase.from('orders').update({ status: 'completed' }).eq('id', order.id)
+    // Re-fetch all analyses to check if ALL are now done
+    const { data: updatedAnalyses } = await supabase
+      .from('analyses')
+      .select('*')
+      .eq('order_id', order.id)
+
+    const analyses = updatedAnalyses || allAnalyses
+    const nowAllDone = analyses.every((a: { status: string }) => a.status === 'completed' || a.status === 'failed')
+
+    if (nowAllDone) {
+      await supabase.from('orders').update({ status: 'completed' }).eq('id', order.id)
+    } else {
+      // Still more analyses pending — frontend will poll again and trigger next one
+      return jsonResponse({ order_status: 'processing', analyses })
+    }
 
     // Get email from Stripe
     let email = order.email
