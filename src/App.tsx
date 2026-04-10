@@ -26,7 +26,7 @@ export default function App() {
     setLoadingError(null)
     setTimedOut(false)
 
-    const maxAttempts = 20
+    const maxAttempts = 60
     for (let attempt = 0; attempt < maxAttempts; attempt++) {
       try {
         const result = await pollAnalysis(sessionId)
@@ -35,15 +35,15 @@ export default function App() {
           return
         }
         if (result.order_status === 'pending') {
-          // Payment not confirmed yet, wait and retry
-          await new Promise((r) => setTimeout(r, 3000))
+          // Payment not confirmed yet — webhook may be delayed
+          await new Promise((r) => setTimeout(r, 5000))
           continue
         }
-        // processing — wait a bit
-        await new Promise((r) => setTimeout(r, 3000))
+        // processing — Claude is analyzing, wait longer
+        await new Promise((r) => setTimeout(r, 5000))
       } catch {
         // Network error, retry
-        await new Promise((r) => setTimeout(r, 3000))
+        await new Promise((r) => setTimeout(r, 5000))
       }
     }
     // Timed out
