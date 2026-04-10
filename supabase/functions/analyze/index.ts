@@ -335,7 +335,7 @@ Nutze Web-Suche für aktuelle Marktpreise, Bodenrichtwerte und Standortdaten. An
               {
                 type: 'web_search_20250305',
                 name: 'web_search',
-                max_uses: 15,
+                max_uses: 5,
               },
             ],
             messages: [{ role: 'user', content: userMessage }],
@@ -348,6 +348,7 @@ Nutze Web-Suche für aktuelle Marktpreise, Bodenrichtwerte und Standortdaten. An
         }
 
         const data = await response.json()
+        console.log(`Claude initial response: stop_reason=${data.stop_reason}, content_blocks=${data.content?.length}`)
 
         // Handle multi-turn: if Claude stopped to use a tool, we may need to continue
         let finalData = data
@@ -356,8 +357,9 @@ Nutze Web-Suche für aktuelle Marktpreise, Bodenrichtwerte und Standortdaten. An
           { role: 'user', content: userMessage },
         ]
 
-        while (finalData.stop_reason === 'tool_use' && turns < 15) {
+        while (finalData.stop_reason === 'tool_use' && turns < 5) {
           turns++
+          console.log(`Web search turn ${turns}...`)
           // Add assistant response
           messages.push({ role: 'assistant', content: finalData.content })
 
@@ -388,7 +390,7 @@ Nutze Web-Suche für aktuelle Marktpreise, Bodenrichtwerte und Standortdaten. An
                 {
                   type: 'web_search_20250305',
                   name: 'web_search',
-                  max_uses: 15,
+                  max_uses: 5,
                 },
               ],
               messages,
