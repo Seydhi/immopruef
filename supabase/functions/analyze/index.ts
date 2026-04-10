@@ -490,7 +490,70 @@ serve(async (req) => {
         const exposeMatch = analysis.url.match(/expose\/(\d+)/)
         const exposeId = exposeMatch ? exposeMatch[1] : ''
 
-        const userMessage = `Analysiere diese Kaufimmobilie vollständig.
+        // ═══════════════════════════════════════════════════════════
+        // SCRAPER: Extract listing data via Playwright before Claude
+        // ═══════════════════════════════════════════════════════════
+        const scraperUrl = Deno.env.get('SCRAPER_URL')
+        const scraperKey = Deno.env.get('SCRAPER_API_KEY')
+        let scrapedData: Record<string, unknown> | null = null
+
+        if (scraperUrl && scraperKey) {
+          try {
+            console.log(`Calling scraper for ${cleanUrl}...`)
+            const scrapeRes = await fetch(`${scraperUrl}/scrape`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'X-API-Key': scraperKey,
+              },
+              body: JSON.stringify({ url: analysis.url }),
+            })
+            if (scrapeRes.ok) {
+              scrapedData = await scrapeRes.json()
+              console.log(`Scraper returned data for ${cleanUrl} — fields: ${Object.keys(scrapedData || {}).filter(k => (scrapedData as any)[k] !== null).length}`)
+            } else {
+              const err = await scrapeRes.json().catch(() => ({}))
+              console.warn(`Scraper failed (${scrapeRes.status}): ${(err as any).code || 'unknown'}`)
+            }
+          } catch (e) {
+            console.warn('Scraper call failed:', e)
+          }
+        }
+
+        // Build user message — with or without scraped data
+        let userMessage: string
+
+        if (scrapedData && (scrapedData.price || scrapedData.title)) {
+          // SCRAPER SUCCESS: Claude gets structured data, only needs to search market data
+          userMessage = `Analysiere diese Kaufimmobilie vollständig.
+
+URL: ${cleanUrl}
+${exposeId ? `Exposé-Nr: ${exposeId}` : ''}
+
+EXPOSÉ-DATEN (bereits aus dem Inserat extrahiert — NICHT erneut per Web-Suche abrufen):
+${JSON.stringify(scrapedData, null, 2)}
+
+SCHRITT 1: Verwende die obigen Exposé-Daten als Grundlage. Diese Daten sind korrekt und direkt aus dem Inserat extrahiert.
+SCHRITT 2: Suche NUR nach MARKTDATEN für die Region: Bodenrichtwert, Vergleichspreise pro m², Mietpreisspiegel, Grundsteuer-Hebesatz.
+SCHRITT 3: Erstelle die vollständige Analyse mit ALLEN Berechnungen.
+
+Optionen:
+- Makleranschreiben: ${opts.makleranschreiben ? 'ja' : 'nein'}
+- Verhandlungstipps: ${opts.verhandlungstipps ? 'ja' : 'nein'}
+- Risikohinweise: ${opts.risiken ? 'ja' : 'nein'}
+${isPremium ? '- Premium-Report: ja (inkl. Wertermittlung, Standort-Dossier, Vermögensvergleich, Checkliste)' : ''}
+
+WICHTIG:
+- Die Exposé-Daten oben sind bereits extrahiert — übernimm sie exakt. NICHT erneut die URL aufrufen.
+- Suche NUR nach regionalen Marktdaten (Bodenrichtwert, Vergleichspreise, Mietpreise).
+- Laufende Kosten (Grundsteuer, Versicherung, Heizkosten, Rücklagen etc.) sind IMMER zu berechnen.
+- Wenn ein Wert in den Exposé-Daten null ist: Regionsdurchschnitt recherchieren und mit "(⚠️ Nicht im Exposé — Regionsdurchschnitt)" kennzeichnen.
+- NIEMALS nur "Im Exposé nicht angegeben" ohne Wert schreiben. JEDES Feld braucht eine Zahl.
+- Antworte ausschließlich mit JSON.`
+        } else {
+          // SCRAPER FAILED: Fallback to web search (old behavior)
+          console.log('Scraper unavailable — falling back to web search')
+          userMessage = `Analysiere diese Kaufimmobilie vollständig.
 
 URL: ${cleanUrl}
 ${exposeId ? `Exposé-Nr: ${exposeId}` : ''}
@@ -512,6 +575,7 @@ WICHTIG:
 - NIEMALS nur "Im Exposé nicht angegeben" ohne Wert schreiben. JEDES Feld braucht eine Zahl.
 - NIEMALS Zahlen erfinden — aber Durchschnittswerte recherchieren ist PFLICHT.
 - Antworte ausschließlich mit JSON.`
+        }
 
         // Call AI provider based on TEST_MODE
         const { result } = TEST_MODE
