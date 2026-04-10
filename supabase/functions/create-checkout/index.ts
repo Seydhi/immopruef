@@ -75,7 +75,7 @@ serve(async (req) => {
   }
 
   try {
-    const { urls, options, package: pkg } = await req.json()
+    const { urls, options, package: pkg, email } = await req.json()
 
     // Validate package
     const expectedCount = PACKAGE_URL_COUNT[pkg]
@@ -104,6 +104,7 @@ serve(async (req) => {
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
       line_items: [{ price: priceId, quantity: 1 }],
+      customer_email: email || undefined,
       metadata: {
         urls: JSON.stringify(urls),
         options: JSON.stringify(options),
@@ -121,7 +122,7 @@ serve(async (req) => {
 
     const { data: order, error: orderErr } = await supabase
       .from('orders')
-      .insert({ stripe_session_id: session.id, package: pkg })
+      .insert({ stripe_session_id: session.id, package: pkg, email: email || '' })
       .select('id')
       .single()
 

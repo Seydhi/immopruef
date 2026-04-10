@@ -15,6 +15,8 @@ export default function Landing() {
     verhandlungstipps: true,
     risiken: true,
   })
+  const [email, setEmail] = useState('')
+  const [emailError, setEmailError] = useState('')
   const [loading, setLoading] = useState(false)
   const [globalError, setGlobalError] = useState('')
 
@@ -36,9 +38,27 @@ export default function Landing() {
     setOptions((prev) => ({ ...prev, [key]: !prev[key] }))
   }
 
+  const validateEmail = (value: string): boolean => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+  }
+
   const validate = (): boolean => {
     const newErrors: string[] = []
     let valid = true
+
+    // Validate email
+    const trimmedEmail = email.trim()
+    if (!trimmedEmail) {
+      setEmailError('Bitte eine E-Mail-Adresse eingeben.')
+      valid = false
+    } else if (!validateEmail(trimmedEmail)) {
+      setEmailError('Bitte eine gültige E-Mail-Adresse eingeben.')
+      valid = false
+    } else {
+      setEmailError('')
+    }
+
+    // Validate URLs
     for (let i = 0; i < urlCount; i++) {
       const url = urls[i]?.trim() || ''
       if (!url) {
@@ -61,7 +81,7 @@ export default function Landing() {
 
     setLoading(true)
     try {
-      const checkoutUrl = await startCheckout(urls.slice(0, urlCount), options, pkg)
+      const checkoutUrl = await startCheckout(urls.slice(0, urlCount), options, pkg, email.trim())
       window.location.href = checkoutUrl
     } catch {
       setGlobalError('Verbindungsfehler. Bitte erneut versuchen.')
@@ -69,7 +89,7 @@ export default function Landing() {
     }
   }
 
-  const allFilled = urls.slice(0, urlCount).every((u) => u.trim().length > 0)
+  const allFilled = urls.slice(0, urlCount).every((u) => u.trim().length > 0) && email.trim().length > 0
 
   const ctaLabel =
     pkg === 'premium'
@@ -91,6 +111,24 @@ export default function Landing() {
 
       <div className="bg-white border border-ink/20 rounded-xl p-6 shadow-sm">
         <PricingToggle selected={pkg} onChange={handlePackageChange} />
+
+        <div className="mb-4">
+          <label className="block text-[13px] font-medium text-ink-mid mb-1.5">
+            E-Mail-Adresse <span className="text-ink-light font-normal">— Ihre Analyse wird an diese Adresse gesendet</span>
+          </label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => { setEmail(e.target.value); setEmailError('') }}
+            placeholder="ihre@email.de"
+            className={`w-full border rounded-lg px-3.5 py-2.5 text-sm bg-cream placeholder:text-ink-light/50 focus:outline-none focus:ring-2 focus:ring-green/30 focus:border-green transition-colors ${
+              emailError ? 'border-red-400 bg-red-50/50' : 'border-ink/20'
+            }`}
+          />
+          {emailError && (
+            <p className="text-red-600 text-[11px] mt-1">{emailError}</p>
+          )}
+        </div>
 
         <UrlInputGroup
           urls={urls}

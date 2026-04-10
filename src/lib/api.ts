@@ -9,14 +9,15 @@ const USE_MOCKS = import.meta.env.VITE_USE_MOCKS === 'true'
 export async function startCheckout(
   urls: string[],
   options: AnalysisOptions,
-  pkg: Package
+  pkg: Package,
+  email?: string
 ): Promise<string> {
   if (USE_MOCKS) return mockApi.startCheckout(urls, options, pkg)
 
   const res = await fetch(getSupabaseFunctionUrl('create-checkout'), {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ urls, options, package: pkg }),
+    body: JSON.stringify({ urls, options, package: pkg, email }),
   })
 
   if (!res.ok) {
