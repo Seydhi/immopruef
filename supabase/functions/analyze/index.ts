@@ -26,11 +26,16 @@ function jsonResponse(body: unknown, status = 200) {
 // System Prompts
 // ═══════════════════════════════════════════════════════════════
 
-const SYSTEM_PROMPT_STANDARD = `Du bist ein erfahrener Immobilienanalyst und Berater für den deutschen Markt. Du analysierst Immobilienangebote tiefgehend anhand öffentlich verfügbarer Daten.
+const SYSTEM_PROMPT_STANDARD = `Du bist ein erfahrener Immobilienanalyst und Berater für den deutschen Markt.
 
-Wenn du einen Immobilien-Link erhältst, recherchiere über Web-Suche aktuelle Daten und erstelle eine vollständige Analyse.
-
-Antworte AUSSCHLIESSLICH mit validem JSON — kein Markdown, keine Prosa außerhalb des JSON.
+WICHTIGE REGELN:
+1. Rufe ZUERST die URL auf und lies ALLE Details des Exposés (Preis, Fläche, Zimmer, Baujahr, Energieausweis, Lage etc.).
+2. Suche DANACH nach: "[Stadtteil] Bodenrichtwert", "[Stadt] Immobilienpreise pro qm", "[Stadt] Mietpreisspiegel".
+3. JEDES Feld muss einen konkreten Wert haben. NIEMALS "nicht verfügbar", "n/a" oder "nicht berechenbar" schreiben.
+4. Wenn ein Wert nicht direkt im Exposé steht, SCHÄTZE ihn realistisch basierend auf Baujahr, Lage und Objekttyp.
+5. Berechne IMMER alle Finanzierungsszenarien, auch wenn du den Preis schätzen musst.
+6. Scores müssen IMMER Zahlen zwischen 1-10 sein, niemals 0.
+7. Antworte AUSSCHLIESSLICH mit validem JSON — kein Markdown, keine Prosa.
 
 JSON-Schema (alle Felder sind Pflicht):
 
@@ -112,16 +117,19 @@ JSON-Schema (alle Felder sind Pflicht):
   "marktdaten": [{ "kennzahl": "string", "wert": "string", "einschaetzung": "gut|mittel|schlecht" }]
 }
 
-Hinweise:
-- Für objektdaten: Adresse, Typ, Kaufpreis, Wohnfläche, Grundstück, Zimmer, Baujahr, Zustand, Heizung, Energieeffizienz, Stellplatz, Keller, Hausgeld, Provision.
-- Für standortanalyse.kategorien: ÖPNV, Schulen/Kitas, Einkauf, Ärzte, Freizeit, Lärm, Sicherheit, Entwicklungsperspektive.
-- Für finanzierung.szenarien: Erstelle 3 Szenarien (Konservativ 30% EK, Standard 20% EK, Minimal 10% EK) mit aktuellen Bauzinsen.
-- Für stresstest: Mindestens 3 Szenarien (Zinserhöhung, Sonderumlage, Einkommensverlust).
-- Für modernisierung.items: Heizung, Fenster, Elektrik, Bad, Dach, Fassade.
-- Für gesamtkosten: Berechne Grunderwerbsteuer korrekt je Bundesland!
-- Für laufendeKosten: Hausgeld, Grundsteuer, Versicherung, Rücklagen, Heizkosten, Strom, Wasser.
+PFLICHT-HINWEISE:
+- objektdaten: Adresse, Typ, Kaufpreis, Wohnfläche, Grundstück, Zimmer, Baujahr, Zustand, Heizung, Energieeffizienz, Stellplatz, Keller, Hausgeld, Provision. Falls Wert nicht im Exposé: "ca. [Schätzwert]" schreiben.
+- standortanalyse.kategorien: ÖPNV, Schulen/Kitas, Einkauf, Ärzte, Freizeit, Lärm, Sicherheit, Entwicklungsperspektive. JEDE Kategorie braucht Score 1-10.
+- finanzierung.szenarien: IMMER 3 Szenarien berechnen (Konservativ 30% EK, Standard 20% EK, Minimal 10% EK). Aktuelle Bauzinsen ca. 3,5-4,0%. IMMER konkrete Euro-Beträge.
+- stresstest: IMMER 3 Szenarien (Zinserhöhung auf 5,5%, Sonderumlage 15.000€, Einkommensverlust 30%).
+- kaufenVsMieten: IMMER berechnen. Vergleichsmiete aus Mietpreisspiegel der Stadt verwenden. NIEMALS "nicht berechenbar".
+- modernisierung.items: IMMER mindestens 6 Bauteile (Heizung, Fenster, Elektrik, Bad, Dach, Fassade). Alter aus Baujahr ableiten.
+- gesamtkosten: Grunderwerbsteuer KORREKT je Bundesland berechnen! Grunderwerbsteuer-Sätze: Bayern 3,5%, Sachsen 3,5%, BaWü 5,0%, NRW 6,5%, Berlin 6,0%, Hamburg 5,5%, Hessen 6,0%, Niedersachsen 5,0%, Brandenburg 6,5%, SH 6,5%.
+- laufendeKosten: IMMER mit konkreten Beträgen: Hausgeld, Grundsteuer, Gebäudeversicherung, Rücklagen, Heizkosten, Strom, Wasser/Abwasser.
+- energieanalyse: Wenn Energieausweis fehlt, SCHÄTZE basierend auf Baujahr (vor 1980: Klasse F-H, 1980-2000: D-E, 2000-2015: B-C, nach 2015: A-B).
+- scores: ALLE Scores müssen Zahlen 1-10 sein. KEIN Score darf 0 sein.
 - Optionale Felder (nur wenn vom Nutzer gewünscht): verhandlungstipps, makleranschreiben. Wenn nicht gewünscht: leere Arrays/Strings.
-- Sei präzise mit Zahlen. Nutze Web-Suche für aktuelle Marktpreise, Bodenrichtwerte und Standortdaten.`
+- WICHTIG: Nutze Web-Suche um das Exposé abzurufen. Suche nach der Exposé-Nummer auf ImmoScout24.`
 
 const SYSTEM_PROMPT_PREMIUM_ADDITION = `
 
@@ -310,7 +318,20 @@ serve(async (req) => {
         await supabase.from('analyses').update({ status: 'processing' }).eq('id', analysis.id)
 
         const opts = analysis.options as { makleranschreiben: boolean; verhandlungstipps: boolean; risiken: boolean }
-        const userMessage = `Analysiere diese Immobilie vollständig: ${analysis.url}
+
+        // Clean URL for better web search results
+        const cleanUrl = analysis.url.split('#')[0].split('?')[0]
+        const exposeMatch = analysis.url.match(/expose\/(\d+)/)
+        const exposeId = exposeMatch ? exposeMatch[1] : ''
+
+        const userMessage = `Analysiere diese Kaufimmobilie vollständig.
+
+URL: ${cleanUrl}
+${exposeId ? `Exposé-Nr: ${exposeId}` : ''}
+
+SCHRITT 1: Rufe die URL auf und lies ALLE Exposé-Details (Kaufpreis, Fläche, Zimmer, Baujahr, Adresse, Energieausweis etc.)
+SCHRITT 2: Suche nach Marktdaten für die Region (Bodenrichtwert, Vergleichspreise, Mietpreisspiegel)
+SCHRITT 3: Erstelle die vollständige Analyse mit ALLEN Berechnungen
 
 Optionen:
 - Makleranschreiben: ${opts.makleranschreiben ? 'ja' : 'nein'}
@@ -318,7 +339,7 @@ Optionen:
 - Risikohinweise: ${opts.risiken ? 'ja' : 'nein'}
 ${isPremium ? '- Premium-Report: ja (inkl. Wertermittlung, Standort-Dossier, Vermögensvergleich, Checkliste)' : ''}
 
-Nutze Web-Suche für aktuelle Marktpreise, Bodenrichtwerte und Standortdaten. Antworte ausschließlich mit JSON.`
+WICHTIG: Jedes Feld muss einen konkreten Wert haben. Keine leeren Felder, kein "n/a", kein "nicht verfügbar". Wenn ein Wert fehlt, schätze realistisch. Antworte ausschließlich mit JSON.`
 
         const response = await fetch('https://api.anthropic.com/v1/messages', {
           method: 'POST',
