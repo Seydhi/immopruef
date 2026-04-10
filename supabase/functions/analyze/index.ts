@@ -35,12 +35,14 @@ WICHTIGE REGELN:
 4. Daten aus dem Exposé: EXAKT übernehmen (Kaufpreis, Fläche, Zimmer, Baujahr, Adresse etc.).
 5. Daten aus öffentlichen Quellen: Bodenrichtwerte, Grunderwerbsteuer, Mietpreisspiegel — per Web-Suche recherchieren.
 6. Berechnungen: Kaufnebenkosten, Finanzierungsszenarien, monatliche Raten — IMMER korrekt durchrechnen basierend auf den echten Zahlen aus dem Exposé.
-7. FEHLENDE DATEN: Wenn ein Wert nicht im Exposé steht, recherchiere den REGIONALEN DURCHSCHNITT und kennzeichne ihn als "Ø [Stadt/Region]: [Wert]". Beispiele:
-   - Energieausweis fehlt → Recherchiere durchschnittlichen Energieverbrauch für Baujahr + Gebäudetyp, z.B. "Ø für Altbau Bj. 1960: ca. 180 kWh/m²a (Klasse F)"
-   - Heizkosten fehlen → Berechne aus Fläche × Energieverbrauch × Energiepreis
-   - Grundsteuer fehlt → Recherchiere Hebesatz der Stadt und berechne
-   - Hausgeld fehlt → Recherchiere "Ø Hausgeld pro qm [Stadt]"
-   NUR wenn auch kein Durchschnitt findbar ist: "Beim Verkäufer anfordern"
+7. FEHLENDE DATEN — WICHTIGSTE REGEL: Wenn ein Wert nicht im Exposé steht, MUSS ein regionaler Durchschnitt recherchiert und eingesetzt werden. IMMER mit dem Hinweis: "(Durchschnitt der Region — im Exposé nicht angegeben)" am Ende des Wertes. Beispiele:
+   - Energieausweis fehlt → "ca. 180 kWh/m²a, Klasse F (Durchschnitt der Region — im Exposé nicht angegeben)"
+   - Heizkosten fehlen → "ca. 1.800 €/Jahr (Durchschnitt der Region — im Exposé nicht angegeben)"
+   - Grundsteuer fehlt → "ca. 85 €/Monat (Durchschnitt der Region — im Exposé nicht angegeben)"
+   - Hausgeld fehlt → "ca. 280 €/Monat (Durchschnitt der Region — im Exposé nicht angegeben)"
+   - Baujahr fehlt → Aus Fotos/Beschreibung schätzen, z.B. "ca. 1965 (Durchschnitt der Region — im Exposé nicht angegeben)"
+   SCHREIBE NIEMALS nur "Im Exposé nicht angegeben". Es MUSS IMMER ein Durchschnittswert recherchiert werden.
+   NUR wenn absolut kein Durchschnitt findbar ist: "Beim Verkäufer anfordern (Durchschnitt nicht ermittelbar)"
 8. Scores müssen IMMER Zahlen zwischen 1 und 10 sein. NIEMALS 0. Auch bei fehlenden Daten mindestens 3 vergeben.
 9. Antworte AUSSCHLIESSLICH mit validem JSON — kein Markdown, kein Text vor oder nach dem JSON.
 10. ERFINDE NIEMALS konkrete Objektdaten. Regionale Durchschnittswerte als solche kennzeichnen ist erlaubt und erwünscht.
@@ -126,7 +128,7 @@ JSON-Schema (alle Felder sind Pflicht):
 }
 
 PFLICHT-HINWEISE:
-- objektdaten: Adresse, Typ, Kaufpreis, Wohnfläche, Grundstück, Zimmer, Baujahr, Zustand, Heizung, Energieeffizienz, Stellplatz, Keller, Hausgeld, Provision. Werte aus dem Exposé. Wenn ein Wert fehlt: regionalen Durchschnitt recherchieren und als "Ø [Region]: [Wert]" kennzeichnen.
+- objektdaten: Adresse, Typ, Kaufpreis, Wohnfläche, Grundstück, Zimmer, Baujahr, Zustand, Heizung, Energieeffizienz, Stellplatz, Keller, Hausgeld, Provision. Werte aus dem Exposé. Wenn ein Wert fehlt: regionalen Durchschnitt recherchieren und mit "(Durchschnitt der Region — im Exposé nicht angegeben)" kennzeichnen.
 - standortanalyse.kategorien: ÖPNV, Schulen/Kitas, Einkauf, Ärzte, Freizeit, Lärm, Sicherheit, Entwicklungsperspektive. JEDE Kategorie braucht Score 1-10 basierend auf Web-Recherche.
 - finanzierung.szenarien: IMMER 3 Szenarien berechnen (Konservativ 30% EK, Standard 20% EK, Minimal 10% EK). Recherchiere aktuelle Bauzinsen per Web-Suche. IMMER konkrete Euro-Beträge korrekt durchrechnen.
 - stresstest: IMMER 3 Szenarien (Zinserhöhung auf 5,5%, Sonderumlage 15.000€, Einkommensverlust 30%). Korrekt berechnen.
@@ -134,13 +136,13 @@ PFLICHT-HINWEISE:
 - modernisierung.items: IMMER mindestens 6 Bauteile (Heizung, Fenster, Elektrik, Bad, Dach, Fassade). Alter NUR ableiten wenn Baujahr im Exposé steht.
 - gesamtkosten: Grunderwerbsteuer KORREKT je Bundesland: Bayern 3,5%, Sachsen 3,5%, BaWü 5,0%, NRW 6,5%, Berlin 6,0%, Hamburg 5,5%, Hessen 6,0%, Niedersachsen 5,0%, Brandenburg 6,5%, SH 6,5%, Bremen 5,0%, RLP 5,0%, Saarland 6,5%, Sachsen-Anhalt 5,0%, MV 6,0%, Thüringen 5,0%.
 - laufendeKosten: Hausgeld (aus Exposé), Grundsteuer (recherchieren), Gebäudeversicherung (recherchieren), Rücklagen, Heizkosten (aus Energieausweis berechnen), Strom, Wasser/Abwasser.
-- energieanalyse: Daten aus Exposé bevorzugen. Wenn Energieausweis fehlt: Recherchiere typischen Verbrauch für Baujahr+Gebäudetyp und kennzeichne als "Ø für [Typ] Bj. [Jahr]: [Wert]". Weise darauf hin dass Energieausweis beim Verkäufer angefordert werden muss (gesetzliche Pflicht).
+- energieanalyse: Daten aus Exposé bevorzugen. Wenn Energieausweis fehlt: Recherchiere typischen Verbrauch für Baujahr+Gebäudetyp und kennzeichne mit "(Durchschnitt der Region — im Exposé nicht angegeben)". Heizkosten IMMER berechnen: Fläche × kWh/m² × Energiepreis.
 - scores: ALLE Scores müssen Zahlen zwischen 1 und 10 sein. KEIN Score darf 0 sein. Minimum ist 1. Bei fehlenden Daten mindestens 3-5 vergeben basierend auf Regionsdurchschnitt. gesamtbewertung ist der gewichtete Durchschnitt aller Einzelscores.
 - verhandlungstipps: MINDESTENS 6 Tipps. Jeder Tipp MUSS sich auf konkrete Daten aus der Analyse beziehen (z.B. "Heizung aus 1995 → 25.000€ Erneuerung → 7% Preisnachlass fordern"). Kategorien: Sanierungsstau, Energieklasse, Marktvergleich, fehlende Dokumente, Zeitdruck/Verhandlungsposition, versteckte Kosten.
 - makleranschreiben: MUSS persönlich und objektspezifisch sein. Adresse und Exposé-Nr nennen. Mindestens 8 gezielte Fragen stellen die im Exposé fehlen. KEINE generischen Floskeln. Der Käufer soll damit direkt den Makler anschreiben können.
 - Optionale Felder (nur wenn vom Nutzer gewünscht): verhandlungstipps, makleranschreiben. Wenn nicht gewünscht: leere Arrays/Strings.
 - WICHTIG: Nutze Web-Suche um das Exposé abzurufen UND Marktdaten zu recherchieren. Suche nach der Exposé-Nummer auf ImmoScout24.
-- ABSOLUTE REGEL: Erfinde KEINE konkreten Objektdaten. Regionale Durchschnittswerte sind erlaubt wenn als solche gekennzeichnet ("Ø [Region]"). JEDES Feld muss ausgefüllt sein — lieber ein gekennzeichneter Durchschnitt als ein leeres Feld.`
+- ABSOLUTE REGEL: Erfinde KEINE konkreten Objektdaten. Regionale Durchschnittswerte MÜSSEN recherchiert und mit "(Durchschnitt der Region — im Exposé nicht angegeben)" gekennzeichnet werden. JEDES Feld muss einen Wert haben. NIEMALS nur "Im Exposé nicht angegeben" schreiben — IMMER einen recherchierten Durchschnitt liefern.`
 
 const SYSTEM_PROMPT_PREMIUM_ADDITION = `
 
