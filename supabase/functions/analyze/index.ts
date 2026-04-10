@@ -636,7 +636,7 @@ Suche im Web nach dieser Immobilie und erstelle die Analyse. NUR verifizierte Da
         ${greeting} ${analysisCount === 1 ? 'ist' : 'sind'} fertig ✓
       </p>
       <p style="margin:0 0 24px;font-size:14px;color:#666;line-height:1.5;">
-        Klicken Sie auf den Link um Ihre vollständige Analyse aufzurufen. Der Link ist dauerhaft gültig — Sie können jederzeit darauf zugreifen.
+        Klicken Sie auf den Link um Ihre vollständige Analyse aufzurufen. Der Link ist 180 Tage gültig.
       </p>
 
       <!-- Analysis Links -->
