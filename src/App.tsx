@@ -20,13 +20,15 @@ export default function App() {
   const [toast, setToast] = useState<{ message: string; variant: 'success' | 'error' | 'neutral' } | null>(null)
   const [loadingError, setLoadingError] = useState<string | null>(null)
   const [timedOut, setTimedOut] = useState(false)
+  const [progress, setProgress] = useState<{ completed: number; total: number } | null>(null)
 
   const startPolling = useCallback(async (sessionId: string) => {
     setView({ type: 'loading', sessionId })
     setLoadingError(null)
     setTimedOut(false)
+    setProgress(null)
 
-    const maxAttempts = 60
+    const maxAttempts = 120 // 10 minutes (120 × 5s)
     for (let attempt = 0; attempt < maxAttempts; attempt++) {
       try {
         const result = await pollAnalysis(sessionId)
@@ -34,19 +36,21 @@ export default function App() {
           setView({ type: 'results', order: result })
           return
         }
+        // Track progress for multi-URL orders
+        if (result.analyses?.length > 0) {
+          const done = result.analyses.filter((a: { status: string }) => a.status === 'completed' || a.status === 'failed').length
+          setProgress({ completed: done, total: result.analyses.length })
+        }
         if (result.order_status === 'pending') {
-          // Payment not confirmed yet — webhook may be delayed
           await new Promise((r) => setTimeout(r, 5000))
           continue
         }
-        // processing — Claude is analyzing, wait longer
+        // processing
         await new Promise((r) => setTimeout(r, 5000))
       } catch {
-        // Network error, retry
         await new Promise((r) => setTimeout(r, 5000))
       }
     }
-    // Timed out
     setTimedOut(true)
   }, [])
 
@@ -110,6 +114,7 @@ export default function App() {
             error={loadingError}
             onRetry={handleRetry}
             timedOut={timedOut}
+            progress={progress}
           />
         )}
 

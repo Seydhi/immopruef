@@ -17,9 +17,10 @@ interface LoadingViewProps {
   error?: string | null
   onRetry?: () => void
   timedOut?: boolean
+  progress?: { completed: number; total: number } | null
 }
 
-export default function LoadingView({ error, onRetry, timedOut }: LoadingViewProps) {
+export default function LoadingView({ error, onRetry, timedOut, progress }: LoadingViewProps) {
   const [msgIndex, setMsgIndex] = useState(0)
 
   useEffect(() => {
@@ -78,7 +79,17 @@ export default function LoadingView({ error, onRetry, timedOut }: LoadingViewPro
           <div className="w-4 h-4 border-2 border-green/25 border-t-green rounded-full animate-spin shrink-0" />
           <div className="text-sm text-green font-medium">{STATUS_MESSAGES[msgIndex]}</div>
         </div>
-        <p className="text-ink-light text-xs">Die Analyse dauert ca. 1–2 Minuten pro Immobilie. Bitte haben Sie einen Moment Geduld.</p>
+        {progress && progress.total > 1 ? (
+          <div className="text-center">
+            <p className="text-ink-mid text-sm font-medium">Immobilie {progress.completed + 1} von {progress.total}</p>
+            <div className="w-48 h-1.5 bg-ink/10 rounded-full mt-2 mx-auto overflow-hidden">
+              <div className="h-full bg-green rounded-full transition-all duration-500" style={{ width: `${(progress.completed / progress.total) * 100}%` }} />
+            </div>
+            <p className="text-ink-light text-xs mt-2">Ca. 1–2 Minuten pro Immobilie</p>
+          </div>
+        ) : (
+          <p className="text-ink-light text-xs">Die Analyse dauert ca. 1–2 Minuten. Bitte haben Sie einen Moment Geduld.</p>
+        )}
       </div>
     </div>
   )
