@@ -205,9 +205,10 @@ interface AIResponse {
 
 async function callOpenAI(systemPrompt: string, userMessage: string, maxTokens: number): Promise<AIResponse> {
   const apiKey = Deno.env.get('OPENAI_API_KEY')!
-  console.log('Using OpenAI GPT-4o-mini (test mode)')
+  console.log('Using OpenAI GPT-4o with web search (test mode)')
 
-  const response = await fetch('https://api.openai.com/v1/chat/completions', {
+  // Use OpenAI Responses API with web search tool
+  const response = await fetch('https://api.openai.com/v1/responses', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -215,23 +216,38 @@ async function callOpenAI(systemPrompt: string, userMessage: string, maxTokens: 
     },
     body: JSON.stringify({
       model: 'gpt-4o',
-      max_tokens: maxTokens,
-      response_format: { type: 'json_object' },
-      web_search_options: { search_context_size: 'medium' },
-      messages: [
-        { role: 'system', content: systemPrompt },
-        { role: 'user', content: userMessage },
-      ],
+      instructions: systemPrompt,
+      input: userMessage,
+      tools: [{ type: 'web_search_preview' }],
+      text: { format: { type: 'json_object' } },
+      max_output_tokens: maxTokens,
     }),
   })
 
   if (!response.ok) {
     const errBody = await response.text()
+    console.error(`OpenAI API error body: ${errBody}`)
     throw new Error(`OpenAI API error: ${response.status} — ${errBody}`)
   }
 
   const data = await response.json()
-  const text = data.choices?.[0]?.message?.content || ''
+
+  // Extract text from output items
+  const textItems = data.output?.filter((item: { type: string }) => item.type === 'message') || []
+  let text = ''
+  for (const item of textItems) {
+    for (const content of item.content || []) {
+      if (content.type === 'output_text') {
+        text = content.text
+      }
+    }
+  }
+
+  if (!text) {
+    console.error('OpenAI response structure:', JSON.stringify(data).slice(0, 500))
+    throw new Error('No text output from OpenAI')
+  }
+
   console.log(`OpenAI response: ${text.length} chars`)
   return { result: parseJson(text) }
 }
