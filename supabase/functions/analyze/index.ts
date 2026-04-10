@@ -192,17 +192,134 @@ Für Checkliste: 4 Kategorien (Dokumente vom Verkäufer, Selbst recherchieren, B
 Für Steuern: Eigennutzung, Vermietung-AfA, Werbungskosten, Spekulationssteuer, Grunderwerbsteuer.`
 
 // ═══════════════════════════════════════════════════════════════
+// AI Provider Switch
+// ═══════════════════════════════════════════════════════════════
+
+const TEST_MODE = Deno.env.get('TEST_MODE') === 'true'
+
+interface AIResponse {
+  result: unknown
+}
+
+async function callOpenAI(systemPrompt: string, userMessage: string, maxTokens: number): Promise<AIResponse> {
+  const apiKey = Deno.env.get('OPENAI_API_KEY')!
+  console.log('Using OpenAI GPT-4o-mini (test mode)')
+
+  const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify({
+      model: 'gpt-4o-mini',
+      max_tokens: maxTokens,
+      response_format: { type: 'json_object' },
+      messages: [
+        { role: 'system', content: systemPrompt },
+        { role: 'user', content: userMessage },
+      ],
+    }),
+  })
+
+  if (!response.ok) {
+    const errBody = await response.text()
+    throw new Error(`OpenAI API error: ${response.status} — ${errBody}`)
+  }
+
+  const data = await response.json()
+  const text = data.choices?.[0]?.message?.content || ''
+  console.log(`OpenAI response: ${text.length} chars`)
+  return { result: parseJson(text) }
+}
+
+async function callClaude(
+  systemPrompt: string,
+  userMessage: string,
+  maxTokens: number,
+  anthropicKey: string
+): Promise<AIResponse> {
+  console.log('Using Claude Sonnet 4 (production mode)')
+
+  const response = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': anthropicKey,
+      'anthropic-version': '2023-06-01',
+    },
+    body: JSON.stringify({
+      model: 'claude-sonnet-4-20250514',
+      max_tokens: maxTokens,
+      system: systemPrompt,
+      tools: [{ type: 'web_search_20250305', name: 'web_search', max_uses: 5 }],
+      messages: [{ role: 'user', content: userMessage }],
+    }),
+  })
+
+  if (!response.ok) {
+    const errBody = await response.text()
+    throw new Error(`Anthropic API error: ${response.status} — ${errBody}`)
+  }
+
+  const data = await response.json()
+  console.log(`Claude initial response: stop_reason=${data.stop_reason}, content_blocks=${data.content?.length}`)
+
+  // Handle multi-turn web search
+  let finalData = data
+  let turns = 0
+  const messages: Array<{ role: string; content: unknown }> = [
+    { role: 'user', content: userMessage },
+  ]
+
+  while (finalData.stop_reason === 'tool_use' && turns < 5) {
+    turns++
+    console.log(`Web search turn ${turns}...`)
+    messages.push({ role: 'assistant', content: finalData.content })
+
+    const toolUseBlocks = finalData.content.filter((b: { type: string }) => b.type === 'tool_use')
+    const toolResults = toolUseBlocks.map((t: { id: string }) => ({
+      type: 'tool_result',
+      tool_use_id: t.id,
+      content: 'Ergebnis verarbeitet. Bitte fahre mit der Analyse fort und antworte mit dem vollständigen JSON.',
+    }))
+    messages.push({ role: 'user', content: toolResults })
+
+    const continueResponse = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': anthropicKey,
+        'anthropic-version': '2023-06-01',
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: maxTokens,
+        system: systemPrompt,
+        tools: [{ type: 'web_search_20250305', name: 'web_search', max_uses: 5 }],
+        messages,
+      }),
+    })
+
+    if (!continueResponse.ok) {
+      const errBody = await continueResponse.text()
+      throw new Error(`Anthropic API continue error: ${continueResponse.status} — ${errBody}`)
+    }
+
+    finalData = await continueResponse.json()
+  }
+
+  return { result: extractClaudeJson(finalData) }
+}
+
+// ═══════════════════════════════════════════════════════════════
 // Helpers
 // ═══════════════════════════════════════════════════════════════
 
 /**
  * Extract JSON from Claude's response, handling web_search tool use blocks.
- * When Claude uses web_search, the response contains multiple content blocks:
- * tool_use, tool_result, and finally text with the JSON.
- * We need to find the LAST text block which contains the final answer.
  */
 function extractClaudeJson(data: { content: Array<{ type: string; text?: string }> }): unknown {
-  // Collect all text blocks — the last one has the final JSON answer
   const textBlocks = data.content.filter(
     (b: { type: string }) => b.type === 'text'
   )
@@ -210,8 +327,6 @@ function extractClaudeJson(data: { content: Array<{ type: string; text?: string 
   if (textBlocks.length === 0) {
     throw new Error('No text response from Claude')
   }
-
-  // Use the last text block (after all web searches are done)
   const text = textBlocks[textBlocks.length - 1].text!
   return parseJson(text)
 }
@@ -345,92 +460,10 @@ ${isPremium ? '- Premium-Report: ja (inkl. Wertermittlung, Standort-Dossier, Ver
 
 WICHTIG: Alle Daten müssen korrekt sein. Exposé-Daten exakt übernehmen. Marktdaten recherchieren. Berechnungen korrekt durchführen. Wenn ein Wert nicht findbar ist: "Im Exposé nicht angegeben — beim Verkäufer anfordern". NIEMALS Zahlen erfinden. Antworte ausschließlich mit JSON.`
 
-        const response = await fetch('https://api.anthropic.com/v1/messages', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'x-api-key': anthropicKey,
-            'anthropic-version': '2023-06-01',
-          },
-          body: JSON.stringify({
-            model: 'claude-sonnet-4-20250514',
-            max_tokens: maxTokens,
-            system: systemPrompt,
-            tools: [
-              {
-                type: 'web_search_20250305',
-                name: 'web_search',
-                max_uses: 5,
-              },
-            ],
-            messages: [{ role: 'user', content: userMessage }],
-          }),
-        })
-
-        if (!response.ok) {
-          const errBody = await response.text()
-          throw new Error(`Anthropic API error: ${response.status} — ${errBody}`)
-        }
-
-        const data = await response.json()
-        console.log(`Claude initial response: stop_reason=${data.stop_reason}, content_blocks=${data.content?.length}`)
-
-        // Handle multi-turn: if Claude stopped to use a tool, we may need to continue
-        let finalData = data
-        let turns = 0
-        const messages: Array<{ role: string; content: unknown }> = [
-          { role: 'user', content: userMessage },
-        ]
-
-        while (finalData.stop_reason === 'tool_use' && turns < 5) {
-          turns++
-          console.log(`Web search turn ${turns}...`)
-          // Add assistant response
-          messages.push({ role: 'assistant', content: finalData.content })
-
-          // Extract tool results and add them
-          const toolUseBlocks = finalData.content.filter(
-            (b: { type: string }) => b.type === 'tool_use'
-          )
-          const toolResults = toolUseBlocks.map((t: { id: string }) => ({
-            type: 'tool_result',
-            tool_use_id: t.id,
-            content: 'Ergebnis verarbeitet. Bitte fahre mit der Analyse fort und antworte mit dem vollständigen JSON.',
-          }))
-
-          messages.push({ role: 'user', content: toolResults })
-
-          const continueResponse = await fetch('https://api.anthropic.com/v1/messages', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'x-api-key': anthropicKey,
-              'anthropic-version': '2023-06-01',
-            },
-            body: JSON.stringify({
-              model: 'claude-sonnet-4-20250514',
-              max_tokens: maxTokens,
-              system: systemPrompt,
-              tools: [
-                {
-                  type: 'web_search_20250305',
-                  name: 'web_search',
-                  max_uses: 5,
-                },
-              ],
-              messages,
-            }),
-          })
-
-          if (!continueResponse.ok) {
-            const errBody = await continueResponse.text()
-            throw new Error(`Anthropic API continue error: ${continueResponse.status} — ${errBody}`)
-          }
-
-          finalData = await continueResponse.json()
-        }
-
-        const result = extractClaudeJson(finalData)
+        // Call AI provider based on TEST_MODE
+        const { result } = TEST_MODE
+          ? await callOpenAI(systemPrompt, userMessage, maxTokens)
+          : await callClaude(systemPrompt, userMessage, maxTokens, anthropicKey)
 
         await supabase
           .from('analyses')
@@ -439,72 +472,23 @@ WICHTIG: Alle Daten müssen korrekt sein. Exposé-Daten exakt übernehmen. Markt
       } catch (err) {
         console.error(`Analysis attempt failed for ${analysis.url}:`, err)
 
-        // Auto-retry up to 2 more times
+        // Auto-retry up to 2 more times with simplified prompt
         let retrySuccess = false
         for (let retry = 1; retry <= 2; retry++) {
           console.log(`Retry ${retry}/2 for ${analysis.url}...`)
           try {
-            // Simplified retry without web search (faster, more reliable)
-            const retryMessage = `Analysiere diese Immobilie. Die URL konnte möglicherweise nicht direkt abgerufen werden.
-
-URL: ${analysis.url.split('#')[0].split('?')[0]}
+            const retryMessage = `Analysiere diese Immobilie. Exposé-URL: ${analysis.url.split('#')[0].split('?')[0]}
 ${analysis.url.match(/expose\/(\d+)/) ? `Exposé-Nr: ${analysis.url.match(/expose\/(\d+)/)![1]}` : ''}
 
-Suche im Web nach dieser Immobilie (Exposé-Nummer auf ImmoScout24) und erstelle die vollständige Analyse.
-Alle Daten müssen korrekt sein — NUR Fakten aus dem Exposé und recherchierte Marktdaten verwenden. NIEMALS Zahlen erfinden.
-Wenn ein Wert nicht findbar ist: "Im Exposé nicht angegeben — beim Verkäufer anfordern". Antworte ausschließlich mit JSON.`
+Suche im Web nach dieser Immobilie und erstelle die Analyse. NUR verifizierte Daten verwenden. Antworte mit JSON.`
 
-            const retryResponse = await fetch('https://api.anthropic.com/v1/messages', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-                'x-api-key': anthropicKey,
-                'anthropic-version': '2023-06-01',
-              },
-              body: JSON.stringify({
-                model: 'claude-sonnet-4-20250514',
-                max_tokens: maxTokens,
-                system: systemPrompt,
-                tools: [{ type: 'web_search_20250305', name: 'web_search', max_uses: 3 }],
-                messages: [{ role: 'user', content: retryMessage }],
-              }),
-            })
+            const { result: retryResult } = TEST_MODE
+              ? await callOpenAI(systemPrompt, retryMessage, maxTokens)
+              : await callClaude(systemPrompt, retryMessage, maxTokens, anthropicKey)
 
-            if (!retryResponse.ok) throw new Error(`Retry API error: ${retryResponse.status}`)
-
-            let retryData = await retryResponse.json()
-
-            // Handle one round of tool use
-            if (retryData.stop_reason === 'tool_use') {
-              const retryMessages: Array<{ role: string; content: unknown }> = [
-                { role: 'user', content: retryMessage },
-                { role: 'assistant', content: retryData.content },
-              ]
-              const toolBlocks = retryData.content.filter((b: { type: string }) => b.type === 'tool_use')
-              retryMessages.push({
-                role: 'user',
-                content: toolBlocks.map((t: { id: string }) => ({
-                  type: 'tool_result', tool_use_id: t.id,
-                  content: 'Ergebnis verarbeitet. Antworte jetzt mit dem vollständigen JSON.',
-                })),
-              })
-
-              const cont = await fetch('https://api.anthropic.com/v1/messages', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'x-api-key': anthropicKey, 'anthropic-version': '2023-06-01' },
-                body: JSON.stringify({
-                  model: 'claude-sonnet-4-20250514', max_tokens: maxTokens, system: systemPrompt,
-                  tools: [{ type: 'web_search_20250305', name: 'web_search', max_uses: 3 }],
-                  messages: retryMessages,
-                }),
-              })
-              if (cont.ok) retryData = await cont.json()
-            }
-
-            const retryResult = extractClaudeJson(retryData)
             await supabase.from('analyses').update({ result: retryResult, status: 'completed' }).eq('id', analysis.id)
             retrySuccess = true
-            console.log(`Retry ${retry} succeeded for ${analysis.url}`)
+            console.log(`Retry ${retry} succeeded`)
             break
           } catch (retryErr) {
             console.error(`Retry ${retry} failed:`, retryErr)
