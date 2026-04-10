@@ -41,8 +41,9 @@ WICHTIGE REGELN:
    - Grundsteuer fehlt → "ca. 85 €/Monat (Durchschnitt der Region — im Exposé nicht angegeben)"
    - Hausgeld fehlt → "ca. 280 €/Monat (Durchschnitt der Region — im Exposé nicht angegeben)"
    - Baujahr fehlt → Aus Fotos/Beschreibung schätzen, z.B. "ca. 1965 (Durchschnitt der Region — im Exposé nicht angegeben)"
-   SCHREIBE NIEMALS nur "Im Exposé nicht angegeben". Es MUSS IMMER ein Durchschnittswert recherchiert werden.
-   NUR wenn absolut kein Durchschnitt findbar ist: "Beim Verkäufer anfordern (Durchschnitt nicht ermittelbar)"
+   SCHREIBE NIEMALS nur "Im Exposé nicht angegeben" OHNE einen Wert. Es MUSS IMMER ein konkreter Zahlenwert stehen.
+   Format bei fehlenden Werten: "ca. 85 €/Monat (⚠️ Nicht im Exposé — Regionsdurchschnitt)"
+   NUR wenn absolut kein Durchschnitt findbar ist: "Beim Verkäufer anfordern (⚠️ Nicht im Exposé — kein Durchschnitt ermittelbar)"
 8. Scores müssen IMMER Zahlen zwischen 1 und 10 sein. NIEMALS 0. Auch bei fehlenden Daten mindestens 3 vergeben.
 9. Antworte AUSSCHLIESSLICH mit validem JSON — kein Markdown, kein Text vor oder nach dem JSON.
 10. ERFINDE NIEMALS konkrete Objektdaten. Regionale Durchschnittswerte als solche kennzeichnen ist erlaubt und erwünscht.
@@ -135,7 +136,16 @@ PFLICHT-HINWEISE:
 - kaufenVsMieten: IMMER berechnen. Vergleichsmiete per Web-Suche aus dem Mietpreisspiegel der Stadt recherchieren.
 - modernisierung.items: IMMER mindestens 6 Bauteile (Heizung, Fenster, Elektrik, Bad, Dach, Fassade). Alter NUR ableiten wenn Baujahr im Exposé steht.
 - gesamtkosten: Grunderwerbsteuer KORREKT je Bundesland: Bayern 3,5%, Sachsen 3,5%, BaWü 5,0%, NRW 6,5%, Berlin 6,0%, Hamburg 5,5%, Hessen 6,0%, Niedersachsen 5,0%, Brandenburg 6,5%, SH 6,5%, Bremen 5,0%, RLP 5,0%, Saarland 6,5%, Sachsen-Anhalt 5,0%, MV 6,0%, Thüringen 5,0%.
-- laufendeKosten: Hausgeld (aus Exposé), Grundsteuer (recherchieren), Gebäudeversicherung (recherchieren), Rücklagen, Heizkosten (aus Energieausweis berechnen), Strom, Wasser/Abwasser.
+- laufendeKosten: Diese Werte stehen FAST NIE im Exposé — sie müssen IMMER berechnet/recherchiert werden:
+  * Hausgeld: Aus Exposé wenn vorhanden, sonst ca. 3-4 €/m²/Monat als Durchschnitt
+  * Grundsteuer: IMMER recherchieren (Hebesatz der Gemeinde × Grundsteuerwert). Wenn nicht findbar: ca. 50-120 €/Monat je nach Stadt
+  * Gebäudeversicherung: ca. 200-600 €/Jahr für EFH, ca. 100-300 €/Jahr für ETW
+  * Instandhaltungsrücklage: 1-1,5 €/m²/Monat (Neubau) bis 2-3 €/m²/Monat (Altbau)
+  * Heizkosten: Fläche × Energiekennwert × Energiepreis berechnen. Gas: 0,10 €/kWh, Öl: 0,09 €/kWh, Wärmepumpe: 0,30 €/kWh (÷ COP 3,5)
+  * Strom: ca. 35-45 €/Person/Monat
+  * Wasser/Abwasser: ca. 3-4 €/m³, ca. 150-300 €/Person/Jahr
+  JEDE laufende Kostenposition MUSS einen konkreten Euro-Betrag haben. NIEMALS "Im Exposé nicht angegeben" bei laufenden Kosten — diese werden IMMER berechnet.
+  Wenn ein Wert nicht direkt aus dem Exposé kommt, hänge an den Wert an: "(⚠️ Nicht im Exposé — Regionsdurchschnitt)"
 - Maklergebühr: Wenn im Exposé eine Provision genannt wird → exakt übernehmen. Wenn "provisionsfrei"/"käuferprovisionsfrei" → 0%. Wenn KEINE Angabe zur Provision im Exposé → "3,57% (Durchschnitt der Region — im Exposé nicht angegeben)" als Standard ansetzen. So wird der Wert korrekt als Regionsdurchschnitt gekennzeichnet.
 - energieanalyse: Daten aus Exposé bevorzugen. Wenn Energieausweis fehlt: Recherchiere typischen Verbrauch für Baujahr+Gebäudetyp und kennzeichne mit "(Durchschnitt der Region — im Exposé nicht angegeben)". Heizkosten IMMER berechnen: Fläche × kWh/m² × Energiepreis.
 - scores: ALLE Scores müssen Zahlen zwischen 1 und 10 sein. KEIN Score darf 0 sein. Minimum ist 1. Bei fehlenden Daten mindestens 3-5 vergeben basierend auf Regionsdurchschnitt. gesamtbewertung ist der gewichtete Durchschnitt aller Einzelscores.
@@ -143,7 +153,8 @@ PFLICHT-HINWEISE:
 - makleranschreiben: MUSS persönlich und objektspezifisch sein. Adresse und Exposé-Nr nennen. Mindestens 8 gezielte Fragen stellen die im Exposé fehlen. KEINE generischen Floskeln. Der Käufer soll damit direkt den Makler anschreiben können.
 - Optionale Felder (nur wenn vom Nutzer gewünscht): verhandlungstipps, makleranschreiben. Wenn nicht gewünscht: leere Arrays/Strings.
 - WICHTIG: Nutze Web-Suche um das Exposé abzurufen UND Marktdaten zu recherchieren. Suche nach der Exposé-Nummer auf ImmoScout24.
-- ABSOLUTE REGEL: Erfinde KEINE konkreten Objektdaten. Regionale Durchschnittswerte MÜSSEN recherchiert und mit "(Durchschnitt der Region — im Exposé nicht angegeben)" gekennzeichnet werden. JEDES Feld muss einen Wert haben. NIEMALS nur "Im Exposé nicht angegeben" schreiben — IMMER einen recherchierten Durchschnitt liefern.`
+- ABSOLUTE REGEL: Erfinde KEINE konkreten Objektdaten. Regionale Durchschnittswerte MÜSSEN recherchiert und mit "(⚠️ Nicht im Exposé — Regionsdurchschnitt)" gekennzeichnet werden. JEDES Feld muss einen konkreten Zahlenwert haben. NIEMALS nur "Im Exposé nicht angegeben" oder "Nicht verfügbar" ohne Zahl schreiben. Wenn das Wort "nicht angegeben" in deiner Antwort vorkommt, MUSS davor ein konkreter Zahlenwert stehen.
+- LAUFENDE KOSTEN REGEL: Grundsteuer, Versicherung, Heizkosten, Instandhaltung, Strom, Wasser — diese werden IMMER berechnet. Sie stehen NIE im Exposé. Recherchiere den Hebesatz der Gemeinde, berechne Heizkosten aus Fläche × Energiekennwert × Preis. Kein Feld darf leer sein.`
 
 const SYSTEM_PROMPT_PREMIUM_ADDITION = `
 
@@ -494,7 +505,13 @@ Optionen:
 - Risikohinweise: ${opts.risiken ? 'ja' : 'nein'}
 ${isPremium ? '- Premium-Report: ja (inkl. Wertermittlung, Standort-Dossier, Vermögensvergleich, Checkliste)' : ''}
 
-WICHTIG: Alle Daten müssen korrekt sein. Exposé-Daten exakt übernehmen. Marktdaten recherchieren. Berechnungen korrekt durchführen. Wenn ein Wert nicht findbar ist: "Im Exposé nicht angegeben — beim Verkäufer anfordern". NIEMALS Zahlen erfinden. Antworte ausschließlich mit JSON.`
+WICHTIG:
+- Exposé-Daten exakt übernehmen. Marktdaten recherchieren. Berechnungen korrekt durchführen.
+- Laufende Kosten (Grundsteuer, Versicherung, Heizkosten, Rücklagen etc.) sind IMMER zu berechnen — diese stehen nie im Exposé.
+- Wenn ein Exposé-spezifischer Wert fehlt (z.B. Energieausweis, Baujahr): Regionsdurchschnitt recherchieren und mit "(⚠️ Nicht im Exposé — Regionsdurchschnitt)" kennzeichnen.
+- NIEMALS nur "Im Exposé nicht angegeben" ohne Wert schreiben. JEDES Feld braucht eine Zahl.
+- NIEMALS Zahlen erfinden — aber Durchschnittswerte recherchieren ist PFLICHT.
+- Antworte ausschließlich mit JSON.`
 
         // Call AI provider based on TEST_MODE
         const { result } = TEST_MODE

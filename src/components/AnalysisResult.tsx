@@ -3,12 +3,12 @@ import type { AnalysisResult as AnalysisResultType, AnalysisOptions } from '../l
 import PremiumReport from './PremiumReport'
 
 // Helper: detect regional average values and render with warning badge
-const REGION_HINT = 'Durchschnitt der Region'
+const REGION_HINTS = ['Durchschnitt der Region', 'Nicht im Exposé', 'Regionsdurchschnitt', 'nicht angegeben']
 function ValueCell({ children }: { children: ReactNode }) {
   if (typeof children !== 'string') return <>{children}</>
-  if (!children.includes(REGION_HINT)) return <>{children}</>
+  if (!REGION_HINTS.some(hint => children.includes(hint))) return <>{children}</>
 
-  // Split the value from the warning text
+  // Split the value from the warning text — find the first "(" that starts the hint
   const idx = children.indexOf('(')
   const value = idx > 0 ? children.slice(0, idx).trim() : children
   return (
