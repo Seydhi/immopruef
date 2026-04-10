@@ -72,14 +72,56 @@ export default function LoadingView({ error, onRetry, timedOut, progress }: Load
     )
   }
 
+  // Elapsed time tracker
+  const [elapsed, setElapsed] = useState(0)
+  useEffect(() => {
+    if (error || timedOut) return
+    const t = setInterval(() => setElapsed(e => e + 1), 1000)
+    return () => clearInterval(t)
+  }, [error, timedOut])
+
+  const formatTime = (s: number) => {
+    const m = Math.floor(s / 60)
+    const sec = s % 60
+    return m > 0 ? `${m}:${sec.toString().padStart(2, '0')}` : `0:${sec.toString().padStart(2, '0')}`
+  }
+
+  // Simulated progress (0-95%) based on elapsed time, completes at ~180s
+  const totalEstimate = progress && progress.total > 1 ? progress.total * 150 : 150
+  const simulatedPct = Math.min(95, Math.round((elapsed / totalEstimate) * 100))
+
+  // Real progress from API (if multi-URL)
+  const realPct = progress && progress.total > 0
+    ? Math.round((progress.completed / progress.total) * 100)
+    : null
+
+  const displayPct = realPct !== null ? Math.max(realPct, simulatedPct) : simulatedPct
+
   return (
     <div className="text-center py-16">
-      <div className="flex flex-col items-center gap-4">
-        <div className="flex items-center justify-center gap-3 bg-green-light border border-green/20 rounded-lg px-5 py-4 inline-flex">
+      <div className="flex flex-col items-center gap-5 max-w-sm mx-auto">
+        {/* Status message */}
+        <div className="flex items-center justify-center gap-3 bg-green-light border border-green/20 rounded-lg px-5 py-4 w-full">
           <div className="w-4 h-4 border-2 border-green/25 border-t-green rounded-full animate-spin shrink-0" />
           <div className="text-sm text-green font-medium">{STATUS_MESSAGES[msgIndex]}</div>
         </div>
-        {progress && progress.total > 1 ? (
+
+        {/* Progress bar */}
+        <div className="w-full">
+          <div className="flex justify-between text-xs text-ink-mid mb-1.5">
+            <span>{formatTime(elapsed)}</span>
+            <span>{displayPct}%</span>
+          </div>
+          <div className="w-full h-2 bg-ink/10 rounded-full overflow-hidden">
+            <div
+              className="h-full bg-green rounded-full transition-all duration-1000 ease-out"
+              style={{ width: `${Math.max(displayPct, 3)}%` }}
+            />
+          </div>
+        </div>
+
+        {/* Multi-URL progress */}
+        {progress && progress.total > 1 && (
           <div className="text-center">
             <p className="text-ink-mid text-sm font-medium">
               {progress.completed === 0
@@ -89,17 +131,16 @@ export default function LoadingView({ error, onRetry, timedOut, progress }: Load
                   : `Immobilie ${progress.completed + 1} von ${progress.total} wird analysiert`
               }
             </p>
-            <div className="w-48 h-1.5 bg-ink/10 rounded-full mt-2 mx-auto overflow-hidden">
-              <div className="h-full bg-green rounded-full transition-all duration-500" style={{ width: `${Math.max((progress.completed / progress.total) * 100, 5)}%` }} />
-            </div>
             {progress.completed > 0 && (
-              <p className="text-green text-xs mt-2 font-medium">✓ {progress.completed} von {progress.total} fertig</p>
+              <p className="text-green text-xs mt-1 font-medium">✓ {progress.completed} von {progress.total} fertig</p>
             )}
-            <p className="text-ink-light text-xs mt-1">Ca. 1–2 Minuten pro Immobilie</p>
           </div>
-        ) : (
-          <p className="text-ink-light text-xs">Die Analyse dauert ca. 1–2 Minuten. Bitte haben Sie einen Moment Geduld.</p>
         )}
+
+        {/* Info text */}
+        <p className="text-ink-light text-xs">
+          Die Analyse dauert ca. 2–3 Minuten pro Immobilie. Bitte haben Sie einen Moment Geduld.
+        </p>
       </div>
     </div>
   )

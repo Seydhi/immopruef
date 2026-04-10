@@ -577,10 +577,22 @@ WICHTIG:
 - Antworte ausschließlich mit JSON.`
         }
 
-        // Call AI provider based on TEST_MODE
-        const { result } = TEST_MODE
-          ? await callOpenAI(systemPrompt, userMessage, maxTokens)
-          : await callClaude(systemPrompt, userMessage, maxTokens, anthropicKey)
+        // Call Claude Sonnet (primary) with GPT-4o fallback
+        let result: unknown
+        try {
+          console.log('Calling Claude Sonnet 4 (primary)...')
+          const claudeResult = await callClaude(systemPrompt, userMessage, maxTokens, anthropicKey)
+          result = claudeResult.result
+        } catch (claudeErr) {
+          console.warn('Claude failed, falling back to GPT-4o:', claudeErr)
+          try {
+            const gptResult = await callOpenAI(systemPrompt, userMessage, maxTokens)
+            result = gptResult.result
+          } catch (gptErr) {
+            console.error('GPT-4o fallback also failed:', gptErr)
+            throw gptErr // Will be caught by outer catch
+          }
+        }
 
         await supabase
           .from('analyses')
@@ -599,9 +611,14 @@ ${analysis.url.match(/expose\/(\d+)/) ? `Exposé-Nr: ${analysis.url.match(/expos
 
 Suche im Web nach dieser Immobilie und erstelle die Analyse. NUR verifizierte Daten verwenden. Antworte mit JSON.`
 
-            const { result: retryResult } = TEST_MODE
-              ? await callOpenAI(systemPrompt, retryMessage, maxTokens)
-              : await callClaude(systemPrompt, retryMessage, maxTokens, anthropicKey)
+            // Retry: try Claude first, then GPT-4o
+            let retryResult: unknown
+            try {
+              retryResult = (await callClaude(systemPrompt, retryMessage, maxTokens, anthropicKey)).result
+            } catch {
+              console.warn(`Retry ${retry}: Claude failed, trying GPT-4o...`)
+              retryResult = (await callOpenAI(systemPrompt, retryMessage, maxTokens)).result
+            }
 
             await supabase.from('analyses').update({ result: retryResult, status: 'completed' }).eq('id', analysis.id)
             retrySuccess = true
