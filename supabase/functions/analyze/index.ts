@@ -207,7 +207,7 @@ async function callOpenAI(systemPrompt: string, userMessage: string, maxTokens: 
   const apiKey = Deno.env.get('OPENAI_API_KEY')!
   console.log('Using OpenAI GPT-4o with web search (test mode)')
 
-  // Use OpenAI Responses API with web search tool
+  // Web Search + JSON mode can't be combined — use web search, extract JSON manually
   const response = await fetch('https://api.openai.com/v1/responses', {
     method: 'POST',
     headers: {
@@ -216,35 +216,35 @@ async function callOpenAI(systemPrompt: string, userMessage: string, maxTokens: 
     },
     body: JSON.stringify({
       model: 'gpt-4o',
-      instructions: systemPrompt,
+      instructions: systemPrompt + '\n\nAntworte AUSSCHLIESSLICH mit validem JSON. Kein Text vor oder nach dem JSON.',
       input: userMessage,
       tools: [{ type: 'web_search_preview' }],
-      text: { format: { type: 'json_object' } },
       max_output_tokens: maxTokens,
     }),
   })
 
   if (!response.ok) {
     const errBody = await response.text()
-    console.error(`OpenAI API error body: ${errBody}`)
+    console.error(`OpenAI API error: ${errBody}`)
     throw new Error(`OpenAI API error: ${response.status} — ${errBody}`)
   }
 
   const data = await response.json()
 
   // Extract text from output items
-  const textItems = data.output?.filter((item: { type: string }) => item.type === 'message') || []
   let text = ''
-  for (const item of textItems) {
-    for (const content of item.content || []) {
-      if (content.type === 'output_text') {
-        text = content.text
+  for (const item of (data.output || [])) {
+    if (item.type === 'message') {
+      for (const content of (item.content || [])) {
+        if (content.type === 'output_text') {
+          text = content.text
+        }
       }
     }
   }
 
   if (!text) {
-    console.error('OpenAI response structure:', JSON.stringify(data).slice(0, 500))
+    console.error('OpenAI response:', JSON.stringify(data).slice(0, 1000))
     throw new Error('No text output from OpenAI')
   }
 
