@@ -5,6 +5,27 @@ import { serve } from 'https://deno.land/std@0.177.0/http/server.ts'
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 import Stripe from 'https://esm.sh/stripe@13?target=deno'
 
+// ═══════════════════════════════════════════════════════════════
+// CORS
+// ═══════════════════════════════════════════════════════════════
+
+const CORS_HEADERS = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization, x-client-info, apikey',
+}
+
+function jsonResponse(body: unknown, status = 200) {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
+  })
+}
+
+// ═══════════════════════════════════════════════════════════════
+// Config
+// ═══════════════════════════════════════════════════════════════
+
 const SUPPORTED_DOMAINS = [
   'immobilienscout24.de',
   'immowelt.de',
@@ -31,16 +52,26 @@ function nanoid(size = 12): string {
   return id
 }
 
-const PACKAGE_URL_COUNT: Record<string, number> = { single: 1, double: 2, triple: 3 }
+const PACKAGE_URL_COUNT: Record<string, number> = { single: 1, double: 2, triple: 3, premium: 1 }
 const PRICE_ENV: Record<string, string> = {
   single: 'STRIPE_PRICE_SINGLE',
   double: 'STRIPE_PRICE_DOUBLE',
   triple: 'STRIPE_PRICE_TRIPLE',
+  premium: 'STRIPE_PRICE_PREMIUM',
 }
 
+// ═══════════════════════════════════════════════════════════════
+// Main Handler
+// ═══════════════════════════════════════════════════════════════
+
 serve(async (req) => {
+  // Handle CORS preflight
+  if (req.method === 'OPTIONS') {
+    return new Response(null, { status: 204, headers: CORS_HEADERS })
+  }
+
   if (req.method !== 'POST') {
-    return new Response(JSON.stringify({ error: 'Method not allowed' }), { status: 405 })
+    return jsonResponse({ error: 'Method not allowed' }, 405)
   }
 
   try {
@@ -49,12 +80,12 @@ serve(async (req) => {
     // Validate package
     const expectedCount = PACKAGE_URL_COUNT[pkg]
     if (!expectedCount) {
-      return new Response(JSON.stringify({ error: 'Ungültiges Paket' }), { status: 400 })
+      return jsonResponse({ error: 'Ungültiges Paket' }, 400)
     }
 
     // Validate URLs
     if (!Array.isArray(urls) || urls.length !== expectedCount) {
-      return new Response(JSON.stringify({ error: `${expectedCount} URL(s) erforderlich` }), { status: 400 })
+      return jsonResponse({ error: `${expectedCount} URL(s) erforderlich` }, 400)
     }
 
     const invalidUrls: number[] = []
@@ -62,13 +93,13 @@ serve(async (req) => {
       if (!isValidUrl(urls[i])) invalidUrls.push(i)
     }
     if (invalidUrls.length > 0) {
-      return new Response(JSON.stringify({ error: 'Ungültige URL(s)', invalidUrls }), { status: 400 })
+      return jsonResponse({ error: 'Ungültige URL(s)', invalidUrls }, 400)
     }
 
     // Stripe
     const stripe = new Stripe(Deno.env.get('STRIPE_SECRET_KEY')!, { apiVersion: '2023-10-16' })
     const priceId = Deno.env.get(PRICE_ENV[pkg])!
-    const appUrl = Deno.env.get('APP_URL') || 'http://localhost:5173'
+    const appUrl = Deno.env.get('APP_URL') || 'https://immopruef.de'
 
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
@@ -106,11 +137,9 @@ serve(async (req) => {
     const { error: analysisErr } = await supabase.from('analyses').insert(analysisRows)
     if (analysisErr) throw analysisErr
 
-    return new Response(JSON.stringify({ url: session.url }), {
-      headers: { 'Content-Type': 'application/json' },
-    })
+    return jsonResponse({ url: session.url })
   } catch (err) {
     console.error('create-checkout error:', err)
-    return new Response(JSON.stringify({ error: 'Interner Fehler' }), { status: 500 })
+    return jsonResponse({ error: 'Interner Fehler' }, 500)
   }
 })

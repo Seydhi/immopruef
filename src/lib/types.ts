@@ -1,44 +1,272 @@
+// ─── Objektdaten ───
 export interface Objektdaten {
   merkmal: string
   wert: string
 }
 
-export interface Standortanalyse {
+// ─── 1. Preisbewertung ───
+export interface Preisbewertung {
+  preisProQm: string
+  regionalerDurchschnitt: string
+  abweichung: string
+  ampel: 'guenstig' | 'fair' | 'teuer'
+  kaufpreismieteVerhaeltnis: string
+  kaufpreismieteEinschaetzung: string
+  bodenrichtwert: string
+  preisentwicklung5Jahre: string
+  preisprognose5Jahre: string
+}
+
+// ─── 2. Gesamtkosten ───
+export interface Kaufnebenkosten {
+  grunderwerbsteuer: { satz: string; betrag: string }
+  notar: { satz: string; betrag: string }
+  grundbuch: { satz: string; betrag: string }
+  makler: { satz: string; betrag: string }
+  gesamt: string
+}
+
+export interface LaufendeKosten {
+  position: string
+  betragMonat: string
+  betragJahr: string
+}
+
+export interface Gesamtkosten {
+  kaufpreis: string
+  kaufnebenkosten: Kaufnebenkosten
+  geschaetzteSanierung: string
+  gesamtinvestition: string
+  laufendeKosten: LaufendeKosten[]
+  laufendeKostenGesamt: { monat: string; jahr: string }
+}
+
+// ─── 3. Energieanalyse ───
+export interface Energieanalyse {
+  effizienzklasse: string
+  endenergiebedarf: string
+  heizkostenJahr: string
+  heizungstyp: string
+  heizungsalter: string
+  gegPflicht: { besteht: boolean; details: string }
+  sanierungsoptionen: {
+    massnahme: string
+    kosten: string
+    ersparnis: string
+    foerderung: string
+  }[]
+  foerdermittelGesamt: string
+}
+
+// ─── 4. Modernisierungs-Check ───
+export interface ModernisierungsItem {
+  bauteil: string
+  geschaetztesAlter: string
+  lebensdauer: string
+  zustand: 'gut' | 'mittel' | 'kritisch'
+  geschaetzteKosten: string
+  faelligIn: string
+}
+
+export interface Modernisierung {
+  sanierungsstauGesamt: string
+  items: ModernisierungsItem[]
+  timeline: { zeitraum: string; massnahmen: string; kosten: string }[]
+}
+
+// ─── 5. Standortanalyse (erweitert) ───
+export interface StandortKategorie {
   kategorie: string
   bewertung: string
+  score: number
   details: string
+  icon?: string
 }
 
-export interface Marktdaten {
-  kennzahl: string
-  wert: string
-  einschaetzung: 'gut' | 'mittel' | 'schlecht'
+export interface StandortDemografie {
+  bevoelkerungsentwicklung: string
+  trend: 'wachsend' | 'stabil' | 'schrumpfend'
+  altersstruktur: string
+  kaufkraftindex: string
 }
 
+export interface StandortWirtschaft {
+  arbeitslosenquote: string
+  topArbeitgeber: string[]
+  branchenstruktur: string
+}
+
+export interface StandortInfrastruktur {
+  breitband: string
+  breitbandTyp: string
+  mobilfunk: string
+}
+
+export interface StandortanalyseErweitert {
+  kategorien: StandortKategorie[]
+  demografie: StandortDemografie
+  wirtschaft: StandortWirtschaft
+  infrastruktur: StandortInfrastruktur
+  gesamtScore: number
+}
+
+// ─── 6. Risikobewertung ───
+export interface RisikoItem {
+  kategorie: string
+  risiko: 'niedrig' | 'mittel' | 'hoch'
+  details: string
+  handlungsempfehlung: string
+}
+
+export interface Risikobewertung {
+  gesamtrisiko: 'niedrig' | 'mittel' | 'hoch'
+  items: RisikoItem[]
+  redFlags: string[]
+}
+
+// ─── 7. Finanzierung ───
+export interface FinanzierungsSzenario {
+  name: string
+  eigenkapital: string
+  darlehenssumme: string
+  zinssatz: string
+  tilgung: string
+  monatlicheRate: string
+  restschuld10Jahre: string
+  gesamtlaufzeit: string
+}
+
+export interface KaufenVsMieten {
+  mpiMieteMonat: string
+  kostenMiete20Jahre: string
+  kostenKauf20Jahre: string
+  vorteil: 'kaufen' | 'mieten'
+  differenz: string
+}
+
+export interface Finanzierung {
+  szenarien: FinanzierungsSzenario[]
+  empfohleneEigenkapitalquote: string
+  kaufenVsMieten: KaufenVsMieten
+  stresstest: {
+    szenario: string
+    monatlicheRate: string
+    bewertung: 'tragbar' | 'grenzwertig' | 'kritisch'
+  }[]
+}
+
+// ─── Scores ───
 export interface Scores {
   gesamtbewertung: number
   lage: number
   preis_leistung: number
   zustand: number
+  energie: number
+  finanzierung: number
 }
 
+// ─── Options ───
 export interface AnalysisOptions {
   makleranschreiben: boolean
   verhandlungstipps: boolean
   risiken: boolean
 }
 
-export interface AnalysisResult {
-  objektdaten: Objektdaten[]
-  standortanalyse: Standortanalyse[]
-  marktdaten: Marktdaten[]
-  scores: Scores
-  risiken: string[]
-  verhandlungstipps: string[]
-  makleranschreiben: string
-  zusammenfassung: string
+// ─── Marktdaten (legacy compat) ───
+export interface Marktdaten {
+  kennzahl: string
+  wert: string
+  einschaetzung: 'gut' | 'mittel' | 'schlecht'
 }
 
+// ─── Standortanalyse (legacy compat) ───
+export interface Standortanalyse {
+  kategorie: string
+  bewertung: string
+  details: string
+}
+
+// ─── Full Analysis Result ───
+export interface AnalysisResult {
+  // Core
+  objektdaten: Objektdaten[]
+  scores: Scores
+  zusammenfassung: string
+
+  // 1. Preisbewertung
+  preisbewertung: Preisbewertung
+
+  // 2. Gesamtkosten
+  gesamtkosten: Gesamtkosten
+
+  // 3. Energie
+  energieanalyse: Energieanalyse
+
+  // 4. Modernisierung
+  modernisierung: Modernisierung
+
+  // 5. Standort (erweitert)
+  standortanalyse: StandortanalyseErweitert
+
+  // 6. Risiko
+  risikobewertung: Risikobewertung
+
+  // 7. Finanzierung
+  finanzierung: Finanzierung
+
+  // 8. Dokumente
+  verhandlungstipps: string[]
+  makleranschreiben: string
+
+  // Premium-only
+  premiumReport?: PremiumReport
+
+  // Legacy compat
+  marktdaten: Marktdaten[]
+  risiken: string[]
+}
+
+// ─── Premium Report ───
+export interface Wertermittlung {
+  vergleichswert: { wert: string; methode: string; vergleichsobjekte: { adresse: string; preis: string; qm: string; abweichung: string }[] }
+  sachwert: { bodenwert: string; gebaeudewert: string; alterswertminderung: string; sachwert: string }
+  ertragswert: { jahresrohertrag: string; bewirtschaftungskosten: string; reinertrag: string; liegenschaftszins: string; ertragswert: string }
+  fazit: { marktwertSpanne: string; empfohlenerKaufpreis: string; einschaetzung: string }
+}
+
+export interface StandortDossier {
+  entfernungen: { ziel: string; entfernung: string; fahrzeit: string }[]
+  hochwasserrisiko: { zone: string; details: string; risiko: 'niedrig' | 'mittel' | 'hoch' }
+  laermbelastung: { tags: string; nachts: string; quelle: string; bewertung: string }
+  radon: { wert: string; risiko: 'niedrig' | 'mittel' | 'hoch' }
+  bebauungsplan: { nutzung: string; gfz: string; grz: string; besonderheiten: string }
+  sozialstruktur: { beschreibung: string; milieuschutz: boolean; vorkaufsrecht: boolean }
+}
+
+export interface Vermoegensvergleich {
+  jahre: number[]
+  vermoegenKauf: string[]
+  vermoegenMieteEtf: string[]
+  breakEvenJahr: number
+}
+
+export interface VorKaufCheckliste {
+  kategorie: string
+  items: { text: string; wichtigkeit: 'muss' | 'soll' | 'kann'; erledigt: boolean }[]
+}
+
+export interface PremiumReport {
+  reportDatum: string
+  reportNummer: string
+  wertermittlung: Wertermittlung
+  standortDossier: StandortDossier
+  vermoegensvergleich: Vermoegensvergleich
+  vorKaufCheckliste: VorKaufCheckliste[]
+  steuerlicheAspekte: { aspekt: string; details: string; vorteil: string }[]
+  gutachterEmpfehlung: { empfohlen: boolean; grund: string; geschaetzteKosten: string }
+}
+
+// ─── Analysis & Order ───
 export interface Analysis {
   id: string
   token: string
@@ -54,10 +282,22 @@ export interface OrderResult {
   analyses: Analysis[]
 }
 
-export type Package = 'single' | 'double' | 'triple'
+export type Package = 'single' | 'double' | 'triple' | 'premium'
 
-export const PACKAGE_CONFIG: Record<Package, { urls: number; price: string; priceNum: number; perUnit: string; saving: string | null }> = {
-  single: { urls: 1, price: '19,00 \u20ac', priceNum: 19, perUnit: '19,00 \u20ac', saving: null },
-  double: { urls: 2, price: '29,00 \u20ac', priceNum: 29, perUnit: '14,50 \u20ac', saving: '24%' },
-  triple: { urls: 3, price: '34,00 \u20ac', priceNum: 34, perUnit: '11,33 \u20ac', saving: '40%' },
+export interface PackageConfig {
+  urls: number
+  price: string
+  priceNum: number
+  perUnit: string
+  saving: string | null
+  label: string
+  description: string
+  isPremium?: boolean
+}
+
+export const PACKAGE_CONFIG: Record<Package, PackageConfig> = {
+  single: { urls: 1, price: '19,00 \u20ac', priceNum: 19, perUnit: '19,00 \u20ac', saving: null, label: '1 Analyse', description: 'Quick-Check' },
+  double: { urls: 2, price: '29,00 \u20ac', priceNum: 29, perUnit: '14,50 \u20ac', saving: '24%', label: '2 Analysen', description: 'Vergleich' },
+  triple: { urls: 3, price: '34,00 \u20ac', priceNum: 34, perUnit: '11,33 \u20ac', saving: '40%', label: '3 Analysen', description: 'Bestpreis' },
+  premium: { urls: 1, price: '79,00 \u20ac', priceNum: 79, perUnit: '79,00 \u20ac', saving: null, label: 'Premium-Report', description: 'Umfassender Report', isPremium: true },
 }

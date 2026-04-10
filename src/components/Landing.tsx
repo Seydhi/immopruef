@@ -72,7 +72,9 @@ export default function Landing() {
   const allFilled = urls.slice(0, urlCount).every((u) => u.trim().length > 0)
 
   const ctaLabel =
-    pkg === 'single'
+    pkg === 'premium'
+      ? `Premium-Report erstellen (${config.price})`
+      : pkg === 'single'
       ? `Analysieren (${config.price})`
       : `${config.urls} Analysen starten (${config.price})`
 

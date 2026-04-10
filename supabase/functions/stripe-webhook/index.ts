@@ -6,6 +6,7 @@ import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 import Stripe from 'https://esm.sh/stripe@13?target=deno'
 
 serve(async (req) => {
+  // Webhooks only come as POST from Stripe — no CORS needed
   if (req.method !== 'POST') {
     return new Response('Method not allowed', { status: 405 })
   }

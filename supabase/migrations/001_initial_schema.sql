@@ -5,7 +5,7 @@ create table orders (
   id uuid primary key default gen_random_uuid(),
   stripe_session_id text unique not null,
   email text default '',
-  package text not null check (package in ('single', 'double', 'triple')),
+  package text not null check (package in ('single', 'double', 'triple', 'premium')),
   status text not null default 'pending' check (status in ('pending', 'paid', 'processing', 'completed', 'failed')),
   created_at timestamptz default now()
 );
