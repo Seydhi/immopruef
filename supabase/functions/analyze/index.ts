@@ -113,8 +113,8 @@ JSON-Schema (alle Felder sind Pflicht):
   "scores": { "gesamtbewertung": "number", "lage": "number", "preis_leistung": "number", "zustand": "number", "energie": "number", "finanzierung": "number" },
 
   "risiken": ["string (kurze Zusammenfassung der wichtigsten Risiken)"],
-  "verhandlungstipps": ["string"],
-  "makleranschreiben": "string (professionell, mit konkreten Fragen)",
+  "verhandlungstipps": ["string — MINDESTENS 6 konkrete, auf das Objekt zugeschnittene Tipps. Jeder Tipp muss einen konkreten Geldbetrag oder Prozentsatz enthalten, z.B. 'Sanierungsstau Heizung (Baujahr 1995, Lebensdauer überschritten): Argumentieren Sie mit 15.000–25.000 € Erneuerungskosten für eine Preisreduktion von 5–8%'. Kategorien: Sanierungsstau, Energetische Mängel, Marktvergleich (falls überteuert), Verhandlungszeitpunkt, Nebenkosten als Druckmittel, fehlende Unterlagen"],
+  "makleranschreiben": "string — Professionelles, persönliches Anschreiben an den Makler/Verkäufer. MUSS enthalten: (1) Höfliche Einleitung mit Bezug auf das konkrete Objekt (Adresse, Exposé-Nr), (2) Kurze Vorstellung als seriöser Kaufinteressent, (3) Mindestens 8 konkrete Fragen zum Objekt die im Exposé NICHT beantwortet werden (z.B. Grund des Verkaufs, Alter der Heizung, letzte Renovierungen, Baulasten, Erschließungsbeiträge, Energieausweis-Details, Hausgeldentwicklung, anstehende Sanierungen der WEG, Rücklagenhöhe, Nachbarschaft), (4) Frage nach Besichtigungstermin, (5) Professioneller Abschluss. Ton: seriös aber nicht unterwürfig. Länge: ca. 200-300 Wörter. Mit Absätzen formatiert (\\n\\n für Absätze).",
   "zusammenfassung": "string (3-4 Sätze Fazit mit Gesamtinvestition und Empfehlung)",
 
   "marktdaten": [{ "kennzahl": "string", "wert": "string", "einschaetzung": "gut|mittel|schlecht" }]
@@ -131,6 +131,8 @@ PFLICHT-HINWEISE:
 - laufendeKosten: Hausgeld (aus Exposé), Grundsteuer (recherchieren), Gebäudeversicherung (recherchieren), Rücklagen, Heizkosten (aus Energieausweis berechnen), Strom, Wasser/Abwasser.
 - energieanalyse: NUR Daten aus dem Exposé verwenden. Wenn Energieausweis fehlt: "Nicht im Exposé angegeben — muss beim Verkäufer angefordert werden (gesetzliche Pflicht bei Verkauf)".
 - scores: ALLE Scores müssen Zahlen 1-10 sein. KEIN Score darf 0 sein. Scores basieren auf den recherchierten Fakten, nicht auf Vermutungen.
+- verhandlungstipps: MINDESTENS 6 Tipps. Jeder Tipp MUSS sich auf konkrete Daten aus der Analyse beziehen (z.B. "Heizung aus 1995 → 25.000€ Erneuerung → 7% Preisnachlass fordern"). Kategorien: Sanierungsstau, Energieklasse, Marktvergleich, fehlende Dokumente, Zeitdruck/Verhandlungsposition, versteckte Kosten.
+- makleranschreiben: MUSS persönlich und objektspezifisch sein. Adresse und Exposé-Nr nennen. Mindestens 8 gezielte Fragen stellen die im Exposé fehlen. KEINE generischen Floskeln. Der Käufer soll damit direkt den Makler anschreiben können.
 - Optionale Felder (nur wenn vom Nutzer gewünscht): verhandlungstipps, makleranschreiben. Wenn nicht gewünscht: leere Arrays/Strings.
 - WICHTIG: Nutze Web-Suche um das Exposé abzurufen UND Marktdaten zu recherchieren. Suche nach der Exposé-Nummer auf ImmoScout24.
 - ABSOLUTE REGEL: Erfinde KEINE Zahlen. Jeder Wert muss aus dem Exposé, aus einer Web-Recherche oder aus einer nachvollziehbaren Berechnung stammen.`
