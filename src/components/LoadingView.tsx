@@ -78,7 +78,7 @@ export default function LoadingView({ error, onRetry, timedOut }: LoadingViewPro
           <div className="w-4 h-4 border-2 border-green/25 border-t-green rounded-full animate-spin shrink-0" />
           <div className="text-sm text-green font-medium">{STATUS_MESSAGES[msgIndex]}</div>
         </div>
-        <p className="text-ink-light text-xs">Die Analyse dauert ca. 1–2 Minuten. Bitte haben Sie einen Moment Geduld.</p>
+        <p className="text-ink-light text-xs">Die Analyse dauert ca. 1–2 Minuten pro Immobilie. Bitte haben Sie einen Moment Geduld.</p>
       </div>
     </div>
   )
