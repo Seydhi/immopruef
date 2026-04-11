@@ -4,6 +4,14 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'immobilien-realistischer-einordnen',
+    title: 'Immobilien realistischer einordnen: Warum einzelne Kennzahlen oft täuschen',
+    description: '5 Kennzahlen die isoliert irreführen, 3 gefährliche Denkfehler und wie Sie aus Einzelwerten eine belastbare Gesamteinschätzung ableiten.',
+    date: '11. April 2026',
+    readTime: '12 Min',
+    tags: ['Kaufratgeber'],
+  },
+  {
     slug: 'expose-verstehen',
     title: 'Exposé verstehen: So lesen Käufer Immobilienangaben richtig',
     description: 'Pflichtangaben vs. Werbung, Wohnfläche-Fallen, Maklersprache decoded — wie Sie jedes Exposé in 5 Minuten richtig einordnen.',
@@ -244,4 +252,5 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.Com
   'zustand-folgekosten': lazy(() => import('./zustand-folgekosten')),
   'besichtigung-vorbereitung': lazy(() => import('./besichtigung-vorbereitung')),
   'expose-verstehen': lazy(() => import('./expose-verstehen')),
+  'immobilien-realistischer-einordnen': lazy(() => import('./immobilien-realistischer-einordnen')),
 }
