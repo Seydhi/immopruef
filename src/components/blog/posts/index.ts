@@ -4,6 +4,14 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'einfamilienhaus-kaufen-expose',
+    title: 'Einfamilienhaus kaufen: Worauf Käufer bei der Analyse achten sollten',
+    description: 'Dach, Heizung, Keller, Grundstück, Erschließung — die EFH-spezifischen Prüfpunkte die über Traumhaus oder Kostenfalle entscheiden.',
+    date: '11. April 2026',
+    readTime: '14 Min',
+    tags: ['Kaufratgeber'],
+  },
+  {
     slug: 'eigentumswohnung-kaufen-expose',
     title: 'Eigentumswohnung kaufen: Welche Exposé-Angaben besonders wichtig sind',
     description: 'Hausgeld, Rücklage, WEG-Protokolle, Teilungserklärung — die ETW-spezifischen Daten die über Kauf oder Fehlkauf entscheiden.',
@@ -271,4 +279,5 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.Com
   'immobilien-realistischer-einordnen': lazy(() => import('./immobilien-realistischer-einordnen')),
   'daten-statt-bauchgefuehl': lazy(() => import('./daten-statt-bauchgefuehl')),
   'eigentumswohnung-kaufen-expose': lazy(() => import('./eigentumswohnung-kaufen-expose')),
+  'einfamilienhaus-kaufen-expose': lazy(() => import('./einfamilienhaus-kaufen-expose')),
 }
