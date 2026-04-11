@@ -35,14 +35,14 @@ WICHTIGE REGELN:
 4. Daten aus dem Exposé: EXAKT übernehmen (Kaufpreis, Fläche, Zimmer, Baujahr, Adresse etc.).
 5. Daten aus öffentlichen Quellen: Bodenrichtwerte, Grunderwerbsteuer, Mietpreisspiegel — per Web-Suche recherchieren.
 6. Berechnungen: Kaufnebenkosten, Finanzierungsszenarien, monatliche Raten — IMMER korrekt durchrechnen basierend auf den echten Zahlen aus dem Exposé.
-7. FEHLENDE DATEN — WICHTIGSTE REGEL: Wenn ein Wert nicht im Exposé steht, MUSS ein regionaler Durchschnitt recherchiert und eingesetzt werden. IMMER mit dem Hinweis: "(Durchschnitt der Region — im Exposé nicht angegeben)" am Ende des Wertes. Beispiele:
-   - Energieausweis fehlt → "ca. 180 kWh/m²a, Klasse F (Durchschnitt der Region — im Exposé nicht angegeben)"
-   - Heizkosten fehlen → "ca. 1.800 €/Jahr (Durchschnitt der Region — im Exposé nicht angegeben)"
-   - Grundsteuer fehlt → "ca. 85 €/Monat (Durchschnitt der Region — im Exposé nicht angegeben)"
-   - Hausgeld fehlt → "ca. 280 €/Monat (Durchschnitt der Region — im Exposé nicht angegeben)"
-   - Baujahr fehlt → Aus Fotos/Beschreibung schätzen, z.B. "ca. 1965 (Durchschnitt der Region — im Exposé nicht angegeben)"
+7. FEHLENDE DATEN — WICHTIGSTE REGEL: Wenn ein Wert nicht im Exposé steht, MUSS ein regionaler Durchschnitt recherchiert und eingesetzt werden. IMMER mit dem Hinweis: "(⚠️ Regionsdurchschnitt — nicht im Exposé)" am Ende des Wertes. Beispiele:
+   - Energieausweis fehlt → "ca. 180 kWh/m²a, Klasse F (⚠️ Regionsdurchschnitt — nicht im Exposé)"
+   - Heizkosten fehlen → "ca. 1.800 €/Jahr (⚠️ Regionsdurchschnitt — nicht im Exposé)"
+   - Grundsteuer fehlt → "ca. 85 €/Monat (⚠️ Regionsdurchschnitt — nicht im Exposé)"
+   - Hausgeld fehlt → "ca. 280 €/Monat (⚠️ Regionsdurchschnitt — nicht im Exposé)"
+   - Baujahr fehlt → Aus Fotos/Beschreibung schätzen, z.B. "ca. 1965 (⚠️ Regionsdurchschnitt — nicht im Exposé)"
    SCHREIBE NIEMALS nur "Im Exposé nicht angegeben" OHNE einen Wert. Es MUSS IMMER ein konkreter Zahlenwert stehen.
-   Format bei fehlenden Werten: "ca. 85 €/Monat (⚠️ Nicht im Exposé — Regionsdurchschnitt)"
+   Format bei fehlenden Werten: "ca. 85 €/Monat (⚠️ Regionsdurchschnitt — nicht im Exposé)"
    NUR wenn absolut kein Durchschnitt findbar ist: "Beim Verkäufer anfordern (⚠️ Nicht im Exposé — kein Durchschnitt ermittelbar)"
 8. Scores müssen IMMER Zahlen zwischen 1 und 10 sein. NIEMALS 0. Auch bei fehlenden Daten mindestens 3 vergeben.
 9. Antworte AUSSCHLIESSLICH mit validem JSON — kein Markdown, kein Text vor oder nach dem JSON.
@@ -129,7 +129,7 @@ JSON-Schema (alle Felder sind Pflicht):
 }
 
 PFLICHT-HINWEISE:
-- objektdaten: Adresse, Typ, Kaufpreis, Wohnfläche, Grundstück, Zimmer, Baujahr, Zustand, Heizung, Energieeffizienz, Stellplatz, Keller, Hausgeld, Provision. Werte aus dem Exposé. Wenn ein Wert fehlt: regionalen Durchschnitt recherchieren und mit "(Durchschnitt der Region — im Exposé nicht angegeben)" kennzeichnen.
+- objektdaten: Adresse, Typ, Kaufpreis, Wohnfläche, Grundstück, Zimmer, Baujahr, Zustand, Heizung, Energieeffizienz, Stellplatz, Keller, Hausgeld, Provision. Werte aus dem Exposé. Wenn ein Wert fehlt: regionalen Durchschnitt recherchieren und mit "(⚠️ Regionsdurchschnitt — nicht im Exposé)" kennzeichnen.
 - standortanalyse.kategorien: ÖPNV, Schulen/Kitas, Einkauf, Ärzte, Freizeit, Lärm, Sicherheit, Entwicklungsperspektive. JEDE Kategorie braucht Score 1-10 basierend auf Web-Recherche.
 - finanzierung.szenarien: IMMER 3 Szenarien berechnen (Konservativ 30% EK, Standard 20% EK, Minimal 10% EK). Recherchiere aktuelle Bauzinsen per Web-Suche. IMMER konkrete Euro-Beträge korrekt durchrechnen.
 - stresstest: IMMER 3 Szenarien (Zinserhöhung auf 5,5%, Sonderumlage 15.000€, Einkommensverlust 30%). Korrekt berechnen.
@@ -145,15 +145,15 @@ PFLICHT-HINWEISE:
   * Strom: ca. 35-45 €/Person/Monat
   * Wasser/Abwasser: ca. 3-4 €/m³, ca. 150-300 €/Person/Jahr
   JEDE laufende Kostenposition MUSS einen konkreten Euro-Betrag haben. NIEMALS "Im Exposé nicht angegeben" bei laufenden Kosten — diese werden IMMER berechnet.
-  Wenn ein Wert nicht direkt aus dem Exposé kommt, hänge an den Wert an: "(⚠️ Nicht im Exposé — Regionsdurchschnitt)"
-- Maklergebühr: WICHTIG — Suche auf der Exposé-Seite EXPLIZIT nach den Wörtern "Provision", "Käuferprovision", "Maklerprovision", "Courtage", "provisionsfrei", "provisionspflichtig". Diese Information steht oft im Kleingedruckten, in einem separaten Abschnitt "Kosten" oder "Preise", oder ganz unten auf der Seite. Bei ImmoScout24 steht sie typischerweise im Bereich "Preise" oder als Fußnote z.B. "Käufer zahlt 3,57% inkl. MwSt." Regeln: (1) Wenn Provision gefunden → exakt übernehmen (z.B. "3,57%"). (2) Wenn "provisionsfrei"/"käuferprovisionsfrei" → "0%". (3) NUR wenn trotz gründlicher Suche NICHTS zur Provision steht → "3,57% (⚠️ Nicht im Exposé — Regionsdurchschnitt)". NIEMALS 0% annehmen wenn die Information einfach nicht gefunden wurde — der Standard in Deutschland ist 3,57% Käuferanteil.
-- energieanalyse: Daten aus Exposé bevorzugen. Wenn Energieausweis fehlt: Recherchiere typischen Verbrauch für Baujahr+Gebäudetyp und kennzeichne mit "(Durchschnitt der Region — im Exposé nicht angegeben)". Heizkosten IMMER berechnen: Fläche × kWh/m² × Energiepreis.
-- scores: ALLE Scores müssen Zahlen zwischen 1 und 10 sein. KEIN Score darf 0 sein. Minimum ist 1. Bei fehlenden Daten mindestens 3-5 vergeben basierend auf Regionsdurchschnitt. gesamtbewertung ist der gewichtete Durchschnitt aller Einzelscores.
+  Wenn ein Wert nicht direkt aus dem Exposé kommt, hänge an den Wert an: "(⚠️ Regionsdurchschnitt — nicht im Exposé)"
+- Maklergebühr: WICHTIG — Suche auf der Exposé-Seite EXPLIZIT nach den Wörtern "Provision", "Käuferprovision", "Maklerprovision", "Courtage", "provisionsfrei", "provisionspflichtig". Diese Information steht oft im Kleingedruckten, in einem separaten Abschnitt "Kosten" oder "Preise", oder ganz unten auf der Seite. Bei ImmoScout24 steht sie typischerweise im Bereich "Preise" oder als Fußnote z.B. "Käufer zahlt 3,57% inkl. MwSt." Regeln: (1) Wenn Provision gefunden → exakt übernehmen (z.B. "3,57%"). (2) Wenn "provisionsfrei"/"käuferprovisionsfrei" → "0%". (3) NUR wenn trotz gründlicher Suche NICHTS zur Provision steht → "3,57% (⚠️ Regionsdurchschnitt — nicht im Exposé)". NIEMALS 0% annehmen wenn die Information einfach nicht gefunden wurde — der Standard in Deutschland ist 3,57% Käuferanteil.
+- energieanalyse: Daten aus Exposé bevorzugen. Wenn Energieausweis fehlt: Recherchiere typischen Verbrauch für Baujahr+Gebäudetyp und kennzeichne mit "(⚠️ Regionsdurchschnitt — nicht im Exposé)". Heizkosten IMMER berechnen: Fläche × kWh/m² × Energiepreis.
+- scores: ALLE Scores müssen Zahlen zwischen 1 und 10 sein (ganzzahlig). KEIN Score darf 0 sein. Minimum ist 1. Bei fehlenden Daten mindestens 3-5 vergeben basierend auf Regionsdurchschnitt. gesamtbewertung = (lage × 0.25) + (preis_leistung × 0.25) + (zustand × 0.20) + (energie × 0.15) + (finanzierung × 0.15). Auf 1 Dezimalstelle runden.
 - verhandlungstipps: MINDESTENS 6 Tipps. Jeder Tipp MUSS sich auf konkrete Daten aus der Analyse beziehen (z.B. "Heizung aus 1995 → 25.000€ Erneuerung → 7% Preisnachlass fordern"). Kategorien: Sanierungsstau, Energieklasse, Marktvergleich, fehlende Dokumente, Zeitdruck/Verhandlungsposition, versteckte Kosten.
 - makleranschreiben: MUSS persönlich und objektspezifisch sein. Adresse und Exposé-Nr nennen. Mindestens 8 gezielte Fragen stellen die im Exposé fehlen. KEINE generischen Floskeln. Der Käufer soll damit direkt den Makler anschreiben können.
-- Optionale Felder (nur wenn vom Nutzer gewünscht): verhandlungstipps, makleranschreiben. Wenn nicht gewünscht: leere Arrays/Strings.
+- Alle Felder sind Pflicht AUSSER verhandlungstipps und makleranschreiben (nur wenn vom Nutzer gewünscht). Wenn nicht gewünscht: leere Arrays/Strings.
 - WICHTIG: Nutze Web-Suche um das Exposé abzurufen UND Marktdaten zu recherchieren. Suche nach der Exposé-Nummer auf ImmoScout24.
-- ABSOLUTE REGEL: Erfinde KEINE konkreten Objektdaten. Regionale Durchschnittswerte MÜSSEN recherchiert und mit "(⚠️ Nicht im Exposé — Regionsdurchschnitt)" gekennzeichnet werden. JEDES Feld muss einen konkreten Zahlenwert haben. NIEMALS nur "Im Exposé nicht angegeben" oder "Nicht verfügbar" ohne Zahl schreiben. Wenn das Wort "nicht angegeben" in deiner Antwort vorkommt, MUSS davor ein konkreter Zahlenwert stehen.
+- ABSOLUTE REGEL: Erfinde KEINE konkreten Objektdaten (Kaufpreis, Adresse, Zimmeranzahl etc.). Regionale Durchschnittswerte für fehlende Daten (Energieverbrauch, Grundsteuer, Heizkosten etc.) MÜSSEN recherchiert und eingesetzt werden — das ist KEIN Erfinden, sondern PFLICHT. Kennzeichne sie mit "(⚠️ Regionsdurchschnitt — nicht im Exposé)". JEDES Feld muss einen konkreten Zahlenwert haben. NIEMALS nur "Im Exposé nicht angegeben" oder "Nicht verfügbar" ohne Zahl schreiben.
 - LAUFENDE KOSTEN REGEL: Grundsteuer, Versicherung, Heizkosten, Instandhaltung, Strom, Wasser — diese werden IMMER berechnet. Sie stehen NIE im Exposé. Recherchiere den Hebesatz der Gemeinde, berechne Heizkosten aus Fläche × Energiekennwert × Preis. Kein Feld darf leer sein.`
 
 const SYSTEM_PROMPT_PREMIUM_ADDITION = `
@@ -275,9 +275,13 @@ async function callClaude(
   systemPrompt: string,
   userMessage: string,
   maxTokens: number,
-  anthropicKey: string
+  anthropicKey: string,
+  isPremium: boolean = false
 ): Promise<AIResponse> {
   console.log('Using Claude Sonnet 4 (production mode)')
+
+  // Premium gets more web searches for deeper research
+  const webSearchMaxUses = isPremium ? 15 : 10
 
   const response = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
@@ -290,7 +294,9 @@ async function callClaude(
       model: 'claude-sonnet-4-20250514',
       max_tokens: maxTokens,
       system: systemPrompt,
-      tools: [{ type: 'web_search_20250305', name: 'web_search', max_uses: 5 }],
+      // Web search is a SERVER-MANAGED tool — the API handles search results automatically.
+      // We do NOT need to manually handle tool_use/tool_result for web_search.
+      tools: [{ type: 'web_search_20250305', name: 'web_search', max_uses: webSearchMaxUses }],
       messages: [{ role: 'user', content: userMessage }],
     }),
   })
@@ -301,53 +307,17 @@ async function callClaude(
   }
 
   const data = await response.json()
-  console.log(`Claude initial response: stop_reason=${data.stop_reason}, content_blocks=${data.content?.length}`)
+  console.log(`Claude response: stop_reason=${data.stop_reason}, content_blocks=${data.content?.length}`)
 
-  // Handle multi-turn web search
-  let finalData = data
-  let turns = 0
-  const messages: Array<{ role: string; content: unknown }> = [
-    { role: 'user', content: userMessage },
-  ]
+  // Web search (server_tool_use) is handled automatically by the API.
+  // The response comes back with stop_reason="end_turn" when done,
+  // including all web search results already processed.
+  // We only need to extract the final JSON from text blocks.
+  //
+  // If stop_reason is still "tool_use" it means a CLIENT tool was requested
+  // (which we don't have), so we just extract whatever text we got.
 
-  while (finalData.stop_reason === 'tool_use' && turns < 5) {
-    turns++
-    console.log(`Web search turn ${turns}...`)
-    messages.push({ role: 'assistant', content: finalData.content })
-
-    const toolUseBlocks = finalData.content.filter((b: { type: string }) => b.type === 'tool_use')
-    const toolResults = toolUseBlocks.map((t: { id: string }) => ({
-      type: 'tool_result',
-      tool_use_id: t.id,
-      content: 'Ergebnis verarbeitet. Bitte fahre mit der Analyse fort und antworte mit dem vollständigen JSON.',
-    }))
-    messages.push({ role: 'user', content: toolResults })
-
-    const continueResponse = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': anthropicKey,
-        'anthropic-version': '2023-06-01',
-      },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: maxTokens,
-        system: systemPrompt,
-        tools: [{ type: 'web_search_20250305', name: 'web_search', max_uses: 5 }],
-        messages,
-      }),
-    })
-
-    if (!continueResponse.ok) {
-      const errBody = await continueResponse.text()
-      throw new Error(`Anthropic API continue error: ${continueResponse.status} — ${errBody}`)
-    }
-
-    finalData = await continueResponse.json()
-  }
-
-  return { result: extractClaudeJson(finalData) }
+  return { result: extractClaudeJson(data) }
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -547,7 +517,7 @@ WICHTIG:
 - Die Exposé-Daten oben sind bereits extrahiert — übernimm sie exakt. NICHT erneut die URL aufrufen.
 - Suche NUR nach regionalen Marktdaten (Bodenrichtwert, Vergleichspreise, Mietpreise).
 - Laufende Kosten (Grundsteuer, Versicherung, Heizkosten, Rücklagen etc.) sind IMMER zu berechnen.
-- Wenn ein Wert in den Exposé-Daten null ist: Regionsdurchschnitt recherchieren und mit "(⚠️ Nicht im Exposé — Regionsdurchschnitt)" kennzeichnen.
+- Wenn ein Wert in den Exposé-Daten null ist: Regionsdurchschnitt recherchieren und mit "(⚠️ Regionsdurchschnitt — nicht im Exposé)" kennzeichnen.
 - NIEMALS nur "Im Exposé nicht angegeben" ohne Wert schreiben. JEDES Feld braucht eine Zahl.
 - Antworte ausschließlich mit JSON.`
         } else {
@@ -571,7 +541,7 @@ ${isPremium ? '- Premium-Report: ja (inkl. Wertermittlung, Standort-Dossier, Ver
 WICHTIG:
 - Exposé-Daten exakt übernehmen. Marktdaten recherchieren. Berechnungen korrekt durchführen.
 - Laufende Kosten (Grundsteuer, Versicherung, Heizkosten, Rücklagen etc.) sind IMMER zu berechnen — diese stehen nie im Exposé.
-- Wenn ein Exposé-spezifischer Wert fehlt (z.B. Energieausweis, Baujahr): Regionsdurchschnitt recherchieren und mit "(⚠️ Nicht im Exposé — Regionsdurchschnitt)" kennzeichnen.
+- Wenn ein Exposé-spezifischer Wert fehlt (z.B. Energieausweis, Baujahr): Regionsdurchschnitt recherchieren und mit "(⚠️ Regionsdurchschnitt — nicht im Exposé)" kennzeichnen.
 - NIEMALS nur "Im Exposé nicht angegeben" ohne Wert schreiben. JEDES Feld braucht eine Zahl.
 - NIEMALS Zahlen erfinden — aber Durchschnittswerte recherchieren ist PFLICHT.
 - Antworte ausschließlich mit JSON.`
@@ -581,7 +551,7 @@ WICHTIG:
         let result: unknown
         try {
           console.log('Calling Claude Sonnet 4 (primary)...')
-          const claudeResult = await callClaude(systemPrompt, userMessage, maxTokens, anthropicKey)
+          const claudeResult = await callClaude(systemPrompt, userMessage, maxTokens, anthropicKey, isPremium)
           result = claudeResult.result
         } catch (claudeErr) {
           console.warn('Claude failed, falling back to GPT-4o:', claudeErr)
@@ -590,7 +560,7 @@ WICHTIG:
             result = gptResult.result
           } catch (gptErr) {
             console.error('GPT-4o fallback also failed:', gptErr)
-            throw gptErr // Will be caught by outer catch
+            throw gptErr
           }
         }
 
@@ -601,20 +571,32 @@ WICHTIG:
       } catch (err) {
         console.error(`Analysis attempt failed for ${analysis.url}:`, err)
 
-        // Auto-retry up to 2 more times with simplified prompt
+        // Auto-retry up to 2 more times — use FULL prompt with all context
         let retrySuccess = false
         for (let retry = 1; retry <= 2; retry++) {
           console.log(`Retry ${retry}/2 for ${analysis.url}...`)
           try {
-            const retryMessage = `Analysiere diese Immobilie. Exposé-URL: ${analysis.url.split('#')[0].split('?')[0]}
-${analysis.url.match(/expose\/(\d+)/) ? `Exposé-Nr: ${analysis.url.match(/expose\/(\d+)/)![1]}` : ''}
+            const retryMessage = `Analysiere diese Kaufimmobilie vollständig.
 
-Suche im Web nach dieser Immobilie und erstelle die Analyse. NUR verifizierte Daten verwenden. Antworte mit JSON.`
+URL: ${analysis.url.split('#')[0].split('?')[0]}
+${analysis.url.match(/expose\/(\d+)/) ? `Exposé-Nr: ${analysis.url.match(/expose\/(\d+)/)![1]}` : ''}
+${scrapedData ? `\n--- EXPOSÉ-DATEN (vom Scraper) ---\n${JSON.stringify(scrapedData, null, 2)}\n--- ENDE EXPOSÉ-DATEN ---\n` : ''}
+SCHRITT 1: Rufe die URL auf und lies ALLE Exposé-Details
+SCHRITT 2: Suche nach Marktdaten für die Region
+SCHRITT 3: Erstelle die vollständige Analyse
+
+Optionen:
+- Makleranschreiben: ${opts.makleranschreiben ? 'ja' : 'nein'}
+- Verhandlungstipps: ${opts.verhandlungstipps ? 'ja' : 'nein'}
+- Risikohinweise: ${opts.risiken ? 'ja' : 'nein'}
+${isPremium ? '- Premium-Report: ja' : ''}
+
+WICHTIG: Verwende Exposé-Daten und recherchierte Regionsdurchschnitte. JEDES Feld braucht einen Wert. Antworte mit JSON.`
 
             // Retry: try Claude first, then GPT-4o
             let retryResult: unknown
             try {
-              retryResult = (await callClaude(systemPrompt, retryMessage, maxTokens, anthropicKey)).result
+              retryResult = (await callClaude(systemPrompt, retryMessage, maxTokens, anthropicKey, isPremium)).result
             } catch {
               console.warn(`Retry ${retry}: Claude failed, trying GPT-4o...`)
               retryResult = (await callOpenAI(systemPrompt, retryMessage, maxTokens)).result

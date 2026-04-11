@@ -3,14 +3,25 @@ import type { AnalysisResult as AnalysisResultType, AnalysisOptions } from '../l
 import PremiumReport from './PremiumReport'
 
 // Helper: detect regional average values and render with warning badge
-const REGION_HINTS = ['Durchschnitt der Region', 'Nicht im Exposé', 'Regionsdurchschnitt', 'nicht angegeben']
+const REGION_HINTS = ['Regionsdurchschnitt', 'nicht im Exposé', 'Nicht im Exposé', 'nicht angegeben', 'Durchschnitt der Region']
 function ValueCell({ children }: { children: ReactNode }) {
   if (typeof children !== 'string') return <>{children}</>
-  if (!REGION_HINTS.some(hint => children.includes(hint))) return <>{children}</>
+  // Empty string fallback
+  if (children.trim() === '') return <span className="text-ink-light">—</span>
+  if (!REGION_HINTS.some(hint => children.toLowerCase().includes(hint.toLowerCase()))) return <>{children}</>
 
   // Split the value from the warning text — find the first "(" that starts the hint
   const idx = children.indexOf('(')
   const value = idx > 0 ? children.slice(0, idx).trim() : children
+  // If there's no value before the hint, show the full text
+  if (!value || value === children) {
+    return (
+      <span className="inline-flex items-center gap-1 px-1.5 py-0.5 bg-red-50 border border-red-200 rounded text-[10px] text-red-600 font-medium">
+        <svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor" className="shrink-0"><path fillRule="evenodd" d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.168 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495zM10 6a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0v-3.5A.75.75 0 0110 6zm0 9a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd"/></svg>
+        Nicht im Exposé
+      </span>
+    )
+  }
   return (
     <span>
       {value}
@@ -182,14 +193,32 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
               </div>
               <table className="w-full text-[13.5px]">
                 <tbody>
-                  <KVRow label={`Grunderwerbsteuer (${result.gesamtkosten.kaufnebenkosten.grunderwerbsteuer.satz})`} value={result.gesamtkosten.kaufnebenkosten.grunderwerbsteuer.betrag} i={0} />
-                  <KVRow label={`Notar (${result.gesamtkosten.kaufnebenkosten.notar.satz})`} value={result.gesamtkosten.kaufnebenkosten.notar.betrag} i={1} />
-                  <KVRow label={`Grundbuch (${result.gesamtkosten.kaufnebenkosten.grundbuch.satz})`} value={result.gesamtkosten.kaufnebenkosten.grundbuch.betrag} i={2} />
-                  <KVRow label={`Makler (${result.gesamtkosten.kaufnebenkosten.makler.satz})`} value={result.gesamtkosten.kaufnebenkosten.makler.betrag} i={3} />
+                  <KVRow label={`Grunderwerbsteuer (${result.gesamtkosten.kaufnebenkosten?.grunderwerbsteuer?.satz || '—'})`} value={result.gesamtkosten.kaufnebenkosten?.grunderwerbsteuer?.betrag || '—'} i={0} />
+                  <KVRow label={`Notar (${result.gesamtkosten.kaufnebenkosten?.notar?.satz || '—'})`} value={result.gesamtkosten.kaufnebenkosten?.notar?.betrag || '—'} i={1} />
+                  <KVRow label={`Grundbuch (${result.gesamtkosten.kaufnebenkosten?.grundbuch?.satz || '—'})`} value={result.gesamtkosten.kaufnebenkosten?.grundbuch?.betrag || '—'} i={2} />
+                  <KVRow label={`Makler (${result.gesamtkosten.kaufnebenkosten?.makler?.satz || '—'})`} value={result.gesamtkosten.kaufnebenkosten?.makler?.betrag || '—'} i={3} />
                   <tr className="bg-green/5 font-medium">
                     <td className="px-3.5 py-2.5 text-green text-xs tracking-wide">Nebenkosten Gesamt</td>
                     <td className="px-3.5 py-2.5 text-green font-display text-base">{result.gesamtkosten.kaufnebenkosten.gesamt}</td>
                   </tr>
+                </tbody>
+              </table>
+            </div>
+
+            {/* Aufschlüsselung Gesamtinvestition */}
+            <div className="bg-white border border-ink/10 rounded-xl overflow-hidden">
+              <div className="bg-green/5 px-4 py-2.5 text-xs font-medium text-green tracking-wider uppercase border-b border-ink/8">
+                Investitionsübersicht
+              </div>
+              <table className="w-full text-[13.5px]">
+                <tbody>
+                  {result.gesamtkosten.kaufpreis && (
+                    <KVRow label="Kaufpreis" value={result.gesamtkosten.kaufpreis} i={0} />
+                  )}
+                  <KVRow label="Kaufnebenkosten" value={result.gesamtkosten.kaufnebenkosten?.gesamt || '—'} i={1} />
+                  {result.gesamtkosten.geschaetzteSanierung && (
+                    <KVRow label="Geschätzte Sanierung" value={result.gesamtkosten.geschaetzteSanierung} i={2} />
+                  )}
                 </tbody>
               </table>
             </div>
@@ -200,7 +229,7 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
                 <div className="text-cream/70 text-[10px] tracking-wider uppercase mb-0.5">Gesamtinvestition</div>
                 <div className="text-xs text-cream/60">Kaufpreis + Nebenkosten + Sanierung</div>
               </div>
-              <div className="font-display text-2xl font-medium">{result.gesamtkosten.gesamtinvestition}</div>
+              <div className="font-display text-2xl font-medium">{result.gesamtkosten?.gesamtinvestition || '—'}</div>
             </div>
 
             {/* Laufende Kosten */}
@@ -471,6 +500,13 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
         <>
           <SectionHeader icon={<BankIcon />} title="Finanzierungs-Check" />
           <div className="space-y-3 mb-5">
+            {/* Empfohlene Eigenkapitalquote */}
+            {result.finanzierung.empfohleneEigenkapitalquote && (
+              <div className="bg-blue-50 border border-blue-200 rounded-xl px-4 py-3 flex items-center justify-between">
+                <div className="text-sm text-blue-800">Empfohlene Eigenkapitalquote</div>
+                <div className="font-display text-lg font-medium text-blue-900">{result.finanzierung.empfohleneEigenkapitalquote}</div>
+              </div>
+            )}
             {/* Szenarien */}
             <div className="grid gap-2">
               {result.finanzierung.szenarien.map((sz, i) => (
