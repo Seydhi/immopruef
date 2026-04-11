@@ -4,6 +4,14 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'hauskauf-vorbereiten',
+    title: 'Hauskauf vorbereiten: Welche Daten Sie vor der Besichtigung prüfen sollten',
+    description: 'Exposé auswerten, Lage recherchieren, Finanzen durchrechnen — die 60-Minuten-Vorprüfung die Ihnen teure Fehlbesichtigungen erspart.',
+    date: '11. April 2026',
+    readTime: '11 Min',
+    tags: ['Checkliste', 'Kaufratgeber'],
+  },
+  {
     slug: 'immobilien-vergleichen',
     title: 'Immobilien vergleichen: Welche Kennzahlen wirklich aussagekräftig sind',
     description: 'Kaufpreis, Quadratmeterpreis, Energieklasse — welche 8 Kennzahlen einen echten Vergleich ermöglichen und welche Fehler Sie vermeiden sollten.',
@@ -127,4 +135,5 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.Com
   'lagebewertung-hauskauf': lazy(() => import('./lagebewertung-hauskauf')),
   'sanierungsbedarf-erkennen': lazy(() => import('./sanierungsbedarf-erkennen')),
   'immobilien-vergleichen': lazy(() => import('./immobilien-vergleichen')),
+  'hauskauf-vorbereiten': lazy(() => import('./hauskauf-vorbereiten')),
 }
