@@ -1,7 +1,16 @@
+import { lazy } from 'react'
 import type { BlogMeta } from '../BlogLayout'
 
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
+  {
+    slug: 'expose-pruefen',
+    title: 'Immobilien-Exposé prüfen: Worauf Käufer wirklich achten sollten',
+    description: 'Systematisch Exposés auswerten: Kennzahlen, Maklersprache, Red Flags und die Fragen, die Sie vor der Besichtigung stellen müssen.',
+    date: '11. April 2026',
+    readTime: '10 Min',
+    tags: ['Kaufratgeber'],
+  },
   {
     slug: 'hauskauf-checkliste-2026',
     title: 'Hauskauf-Checkliste 2026: Was Sie vor dem Kauf prüfen müssen',
@@ -54,5 +63,5 @@ export const BLOG_POSTS: BlogMeta[] = [
 
 // Map slug → lazy component (filled as posts are written)
 export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.ComponentType>> = {
-  // 'hauskauf-checkliste-2026': lazy(() => import('./hauskauf-checkliste-2026')),
+  'expose-pruefen': lazy(() => import('./expose-pruefen')),
 }
