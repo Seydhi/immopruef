@@ -1,12 +1,18 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import type { Package, AnalysisOptions } from '../lib/types'
 import { PACKAGE_CONFIG } from '../lib/types'
 import { isValidPropertyUrl } from '../lib/validation'
 import { startCheckout } from '../lib/api'
 import PricingToggle from './PricingToggle'
 import UrlInputGroup from './UrlInputGroup'
+import HeroSection from './landing/HeroSection'
+import FeatureGrid from './landing/FeatureGrid'
+import AnalysisPreview from './landing/AnalysisPreview'
+import FAQ from './landing/FAQ'
 
 export default function Landing() {
+  const formRef = useRef<HTMLDivElement>(null)
+  const scrollToForm = () => formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
   const [pkg, setPkg] = useState<Package>('single')
   const [urls, setUrls] = useState<string[]>([''])
   const [errors, setErrors] = useState<string[]>([])
@@ -100,16 +106,23 @@ export default function Landing() {
 
   return (
     <>
-      <div className="text-center mb-8">
-        <h1 className="font-display text-3xl font-medium text-green leading-tight mb-2">
-          Professionelle Immobilienanalyse
-        </h1>
-        <p className="text-ink-mid text-sm font-light">
-          Standortbewertung, Marktdaten & Makleranschreiben – in Sekunden
-        </p>
-      </div>
+      <HeroSection onCta={scrollToForm} />
 
-      <div className="bg-white border border-ink/20 rounded-xl p-6 shadow-sm">
+      <FeatureGrid />
+
+      <AnalysisPreview />
+
+      {/* Pricing + Form */}
+      <section className="py-10">
+        <h2 className="font-display text-2xl font-medium text-green text-center mb-2">
+          Analyse starten
+        </h2>
+        <p className="text-ink-light text-sm text-center mb-6">
+          Günstiger als ein Gutachter (500–2.500 €)
+        </p>
+      </section>
+
+      <div ref={formRef} className="bg-white border border-ink/20 rounded-xl p-6 shadow-sm">
         <PricingToggle selected={pkg} onChange={handlePackageChange} />
 
         <div className="mb-4">
@@ -177,6 +190,8 @@ export default function Landing() {
           )}
         </button>
       </div>
+
+      <FAQ />
     </>
   )
 }
