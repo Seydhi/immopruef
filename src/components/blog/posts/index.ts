@@ -4,6 +4,14 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'energieausweis-expose',
+    title: 'Energieausweis im Exposé: Was die Werte über eine Immobilie verraten',
+    description: 'Verbrauchsausweis vs. Bedarfsausweis, Effizienzklassen A+ bis H, Heizkosten berechnen und typische Missverständnisse — so bewerten Sie Energiekennwerte richtig.',
+    date: '11. April 2026',
+    readTime: '11 Min',
+    tags: ['Energie', 'Kaufratgeber'],
+  },
+  {
     slug: 'warnsignale-expose',
     title: 'Warnsignale im Immobilien-Exposé: Diese Punkte sollten Sie ernst nehmen',
     description: 'Fehlende Daten, Maklerfloskeln, unrealistische Preise — welche Warnsignale sofort misstrauisch machen und welche erst im Zusammenspiel kritisch werden.',
@@ -82,4 +90,5 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.Com
   'expose-pruefen': lazy(() => import('./expose-pruefen')),
   'quadratmeterpreis-bewerten': lazy(() => import('./quadratmeterpreis-bewerten')),
   'warnsignale-expose': lazy(() => import('./warnsignale-expose')),
+  'energieausweis-expose': lazy(() => import('./energieausweis-expose')),
 }
