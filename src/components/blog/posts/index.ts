@@ -4,6 +4,14 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'fehler-immobilienkauf',
+    title: 'Fehler beim Immobilienkauf: Diese teuren Irrtümer passieren besonders häufig',
+    description: '10 häufige Fehler beim Hauskauf — von unterschätzten Nebenkosten bis zum ignorierten Energieausweis. Mit konkreten Folgekosten und Vermeidungsstrategien.',
+    date: '11. April 2026',
+    readTime: '13 Min',
+    tags: ['Kaufratgeber'],
+  },
+  {
     slug: 'hauskauf-mit-system',
     title: 'Hauskauf mit System: So treffen Käufer fundiertere Entscheidungen',
     description: 'Der 5-Phasen-Kaufprozess: Anforderungen, Exposé-Vorprüfung, Besichtigung mit Checkliste, Bewertung, Verhandlung — Schritt für Schritt erklärt.',
@@ -190,4 +198,5 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.Com
   'angebotspreis-fair': lazy(() => import('./angebotspreis-fair')),
   'immobilienbewertung-kaeufer': lazy(() => import('./immobilienbewertung-kaeufer')),
   'hauskauf-mit-system': lazy(() => import('./hauskauf-mit-system')),
+  'fehler-immobilienkauf': lazy(() => import('./fehler-immobilienkauf')),
 }
