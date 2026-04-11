@@ -1,6 +1,56 @@
 import { useState, type ReactNode } from 'react'
-import type { AnalysisResult as AnalysisResultType, AnalysisOptions } from '../lib/types'
+import type { AnalysisResult as AnalysisResultType, AnalysisOptions, Scores } from '../lib/types'
 import PremiumReport from './PremiumReport'
+
+// ════ Score Cards with tooltip ════
+const SCORE_CONFIG: { key: keyof Scores; label: string; weight: string; desc: string }[] = [
+  { key: 'gesamtbewertung', label: 'Gesamt', weight: 'Gewichteter Durchschnitt', desc: 'Lage 25% + Preis 25% + Zustand 20% + Energie 15% + Finanzierung 15%' },
+  { key: 'lage', label: 'Lage', weight: '25%', desc: 'ÖPNV, Schulen, Einkauf, Ärzte, Lärm, Sicherheit, Entwicklung' },
+  { key: 'preis_leistung', label: 'Preis', weight: '25%', desc: 'Preis/m² vs. Region, Bodenrichtwert, Kaufpreis-Miete-Verhältnis' },
+  { key: 'zustand', label: 'Zustand', weight: '20%', desc: 'Baujahr, Sanierungsstau, Modernisierungsbedarf, Bausubstanz' },
+  { key: 'energie', label: 'Energie', weight: '15%', desc: 'Effizienzklasse, Heizkosten, GEG-Pflichten, Sanierungsoptionen' },
+  { key: 'finanzierung', label: 'Finanz.', weight: '15%', desc: 'Tragbarkeit, Eigenkapitalquote, Stresstest-Ergebnis' },
+]
+
+function ScoreCards({ scores }: { scores: Scores }) {
+  const [activeTooltip, setActiveTooltip] = useState<string | null>(null)
+
+  return (
+    <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 mb-6">
+      {SCORE_CONFIG.map(({ key, label, weight, desc }) => {
+        const rawVal = scores[key]
+        const val = typeof rawVal === 'number' && rawVal >= 1 && rawVal <= 10 ? rawVal : null
+        const color = val === null ? 'text-ink-light' : val >= 7 ? 'text-emerald-600' : val >= 5 ? 'text-amber-600' : 'text-red-500'
+        const isOpen = activeTooltip === key
+
+        return (
+          <div
+            key={key}
+            className="relative bg-white border border-ink/10 rounded-xl p-3 text-center cursor-pointer hover:border-green/30 transition-colors"
+            onMouseEnter={() => setActiveTooltip(key)}
+            onMouseLeave={() => setActiveTooltip(null)}
+            onClick={() => setActiveTooltip(isOpen ? null : key)}
+          >
+            <div className="text-[10px] text-ink-light font-medium tracking-wider uppercase mb-0.5">{label}</div>
+            <div className={`font-display text-xl font-medium ${color}`}>
+              {val !== null ? val : '–'}
+              <span className="text-xs text-ink-light">/10</span>
+            </div>
+
+            {/* Tooltip */}
+            {isOpen && (
+              <div className="absolute z-20 left-1/2 -translate-x-1/2 top-full mt-2 w-56 bg-ink text-cream rounded-lg px-3.5 py-3 text-left shadow-lg">
+                <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-ink rotate-45 rounded-sm" />
+                <div className="text-[11px] font-semibold mb-1">{label} — Gewichtung: {weight}</div>
+                <div className="text-[10px] text-cream/70 leading-relaxed">{desc}</div>
+              </div>
+            )}
+          </div>
+        )
+      })}
+    </div>
+  )
+}
 
 // Helper: detect regional average values and render with warning badge
 const REGION_HINTS = ['Regionsdurchschnitt', 'nicht im Exposé', 'Nicht im Exposé', 'nicht angegeben', 'Durchschnitt der Region']
@@ -97,29 +147,7 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
 
       {/* ════ Scores ════ */}
       {result.scores && (
-        <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 mb-6">
-          {([
-            ['gesamtbewertung', 'Gesamt'],
-            ['lage', 'Lage'],
-            ['preis_leistung', 'Preis'],
-            ['zustand', 'Zustand'],
-            ['energie', 'Energie'],
-            ['finanzierung', 'Finanz.'],
-          ] as const).map(([key, label]) => {
-            const rawVal = result.scores[key]
-            const val = typeof rawVal === 'number' && rawVal >= 1 && rawVal <= 10 ? rawVal : null
-            const color = val === null ? 'text-ink-light' : val >= 7 ? 'text-emerald-600' : val >= 5 ? 'text-amber-600' : 'text-red-500'
-            return (
-              <div key={key} className="bg-white border border-ink/10 rounded-xl p-3 text-center">
-                <div className="text-[10px] text-ink-light font-medium tracking-wider uppercase mb-0.5">{label}</div>
-                <div className={`font-display text-xl font-medium ${color}`}>
-                  {val !== null ? val : '–'}
-                  <span className="text-xs text-ink-light">/10</span>
-                </div>
-              </div>
-            )
-          })}
-        </div>
+        <ScoreCards scores={result.scores} />
       )}
 
       {/* ════ 1. Objektdaten ════ */}
