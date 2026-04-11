@@ -4,6 +4,14 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'wohnflaeche-richtig-einordnen',
+    title: 'Wohnfläche richtig einordnen: Warum Quadratmeter allein nicht reichen',
+    description: 'WoFlV vs. DIN 277, Dachschrägen-Illusion, Verkehrsflächen, Balkon-Anrechnung — warum 90 m² nicht gleich 90 m² sind.',
+    date: '11. April 2026',
+    readTime: '13 Min',
+    tags: ['Kaufratgeber'],
+  },
+  {
     slug: 'grundriss-richtig-lesen',
     title: 'Grundriss im Exposé richtig lesen: Worauf Käufer achten sollten',
     description: 'Verkehrsflächen, Durchgangszimmer, Möblierbarkeit, Raumproportionen — 8 Prüfpunkte für jeden Grundriss plus Checkliste.',
@@ -316,4 +324,5 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.Com
   'zustand-richtig-einschaetzen': lazy(() => import('./zustand-richtig-einschaetzen')),
   'baujahr-und-modernisierung': lazy(() => import('./baujahr-und-modernisierung')),
   'grundriss-richtig-lesen': lazy(() => import('./grundriss-richtig-lesen')),
+  'wohnflaeche-richtig-einordnen': lazy(() => import('./wohnflaeche-richtig-einordnen')),
 }
