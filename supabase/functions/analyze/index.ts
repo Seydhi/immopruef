@@ -44,9 +44,25 @@ WICHTIGE REGELN:
    SCHREIBE NIEMALS nur "Im Exposé nicht angegeben" OHNE einen Wert. Es MUSS IMMER ein konkreter Zahlenwert stehen.
    Format bei fehlenden Werten: "ca. 85 €/Monat (⚠️ Regionsdurchschnitt — nicht im Exposé)"
    NUR wenn absolut kein Durchschnitt findbar ist: "Beim Verkäufer anfordern (⚠️ Nicht im Exposé — kein Durchschnitt ermittelbar)"
-8. Scores müssen IMMER Zahlen zwischen 1 und 10 sein. NIEMALS 0. Auch bei fehlenden Daten mindestens 3 vergeben.
-9. Antworte AUSSCHLIESSLICH mit validem JSON — kein Markdown, kein Text vor oder nach dem JSON.
-10. ERFINDE NIEMALS konkrete Objektdaten. Regionale Durchschnittswerte als solche kennzeichnen ist erlaubt und erwünscht.
+8. LEERE ARRAYS SIND VERBOTEN. Jedes Array im JSON muss die Mindestanzahl erfüllen:
+   - objektdaten: MINDESTENS 10 Einträge (Adresse, Typ, Preis, Fläche, Grundstück, Zimmer, Baujahr, Zustand, Heizung, Energieeffizienz)
+   - laufendeKosten: MINDESTENS 6 Positionen (Hausgeld, Grundsteuer, Versicherung, Heizkosten, Strom, Wasser)
+   - sanierungsoptionen: MINDESTENS 3 Optionen
+   - modernisierung.items: MINDESTENS 6 Bauteile (Heizung, Fenster, Elektrik, Bad, Dach, Fassade)
+   - modernisierung.timeline: MINDESTENS 3 Zeiträume (0-5 Jahre, 5-10 Jahre, 10-20 Jahre)
+   - standortanalyse.kategorien: MINDESTENS 8 Kategorien (ÖPNV, Schulen, Einkauf, Ärzte, Freizeit, Lärm, Sicherheit, Entwicklung)
+   - risikobewertung.items: MINDESTENS 4 Risiken
+   - risikobewertung.redFlags: MINDESTENS 2 Einträge (oder ["Keine kritischen Red Flags identifiziert"] wenn wirklich keine)
+   - finanzierung.szenarien: GENAU 3 Szenarien (Konservativ, Standard, Minimal)
+   - finanzierung.stresstest: MINDESTENS 3 Szenarien
+   - verhandlungstipps: MINDESTENS 6 Tipps (wenn gewünscht)
+   - marktdaten: MINDESTENS 5 Kennzahlen
+   - risiken: MINDESTENS 3 Einträge
+   Wenn du nicht genug echte Daten findest, verwende recherchierte Regionaldurchschnitte mit "(⚠️ Regionsdurchschnitt — nicht im Exposé)".
+   Ein leeres Array [] ist ein FEHLER. Der Kunde bezahlt für vollständige Daten.
+9. Scores müssen IMMER Zahlen zwischen 1 und 10 sein. NIEMALS 0. Auch bei fehlenden Daten mindestens 3 vergeben.
+10. Antworte AUSSCHLIESSLICH mit validem JSON — kein Markdown, kein Text vor oder nach dem JSON.
+11. ERFINDE NIEMALS konkrete Objektdaten (Kaufpreis, Adresse, Zimmeranzahl). Regionale Durchschnittswerte für fehlende Nebenkosten, Energiedaten etc. als solche kennzeichnen ist erlaubt und PFLICHT.
 
 JSON-Schema (alle Felder sind Pflicht):
 
@@ -361,6 +377,45 @@ function parseJson(text: string): unknown {
   }
 }
 
+// Post-parse validation: ensure no critical arrays are empty
+function validateResult(result: Record<string, unknown>): string[] {
+  const warnings: string[] = []
+  const checkArray = (path: string, obj: unknown, minLen: number) => {
+    if (!Array.isArray(obj) || obj.length < minLen) {
+      warnings.push(`${path}: got ${Array.isArray(obj) ? obj.length : 'missing'}, need ${minLen}`)
+    }
+  }
+  checkArray('objektdaten', result.objektdaten, 5)
+  checkArray('marktdaten', result.marktdaten, 3)
+  checkArray('risiken', result.risiken, 2)
+
+  const gk = result.gesamtkosten as Record<string, unknown> | undefined
+  if (gk) checkArray('laufendeKosten', gk.laufendeKosten, 4)
+
+  const ea = result.energieanalyse as Record<string, unknown> | undefined
+  if (ea) checkArray('sanierungsoptionen', ea.sanierungsoptionen, 2)
+
+  const mod = result.modernisierung as Record<string, unknown> | undefined
+  if (mod) {
+    checkArray('modernisierung.items', mod.items, 4)
+    checkArray('modernisierung.timeline', mod.timeline, 2)
+  }
+
+  const sa = result.standortanalyse as Record<string, unknown> | undefined
+  if (sa) checkArray('standortanalyse.kategorien', sa.kategorien, 5)
+
+  const rb = result.risikobewertung as Record<string, unknown> | undefined
+  if (rb) checkArray('risikobewertung.items', rb.items, 3)
+
+  const fin = result.finanzierung as Record<string, unknown> | undefined
+  if (fin) {
+    checkArray('finanzierung.szenarien', fin.szenarien, 2)
+    checkArray('finanzierung.stresstest', fin.stresstest, 2)
+  }
+
+  return warnings
+}
+
 // ═══════════════════════════════════════════════════════════════
 // Main Handler
 // ═══════════════════════════════════════════════════════════════
@@ -562,6 +617,12 @@ WICHTIG:
           console.log('Calling Claude Sonnet 4 (primary)...')
           const claudeResult = await callClaude(systemPrompt, userMessage, maxTokens, anthropicKey, isPremium)
           result = claudeResult.result
+
+          // Validate result completeness
+          const warnings = validateResult(result as Record<string, unknown>)
+          if (warnings.length > 0) {
+            console.warn(`Validation warnings (${warnings.length}):`, warnings.join('; '))
+          }
         } catch (claudeErr) {
           console.warn('Claude failed, falling back to GPT-4o:', claudeErr)
           try {
