@@ -4,6 +4,14 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'immobilien-check-vor-kauf',
+    title: 'Immobilien-Check vor dem Kauf: So erkennen Käufer Risiken frühzeitig',
+    description: '7 Prüfbereiche, 30-Minuten Schnell-Check und Ampelsystem — wie Sie Risiken erkennen bevor sie zu Kosten werden.',
+    date: '11. April 2026',
+    readTime: '12 Min',
+    tags: ['Checkliste', 'Kaufratgeber'],
+  },
+  {
     slug: 'fehler-immobilienkauf',
     title: 'Fehler beim Immobilienkauf: Diese teuren Irrtümer passieren besonders häufig',
     description: '10 häufige Fehler beim Hauskauf — von unterschätzten Nebenkosten bis zum ignorierten Energieausweis. Mit konkreten Folgekosten und Vermeidungsstrategien.',
@@ -199,4 +207,5 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.Com
   'immobilienbewertung-kaeufer': lazy(() => import('./immobilienbewertung-kaeufer')),
   'hauskauf-mit-system': lazy(() => import('./hauskauf-mit-system')),
   'fehler-immobilienkauf': lazy(() => import('./fehler-immobilienkauf')),
+  'immobilien-check-vor-kauf': lazy(() => import('./immobilien-check-vor-kauf')),
 }
