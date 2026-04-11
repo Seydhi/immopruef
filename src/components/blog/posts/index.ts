@@ -4,6 +4,14 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'angebotspreis-fair',
+    title: 'Angebotspreis fair? So prüfen Käufer, ob der Immobilienpreis plausibel ist',
+    description: '3 Methoden zur Preiseinordnung, 8 Faktoren die den fairen Preis bestimmen und ein Praxisbeispiel mit konkreter Berechnung.',
+    date: '11. April 2026',
+    readTime: '12 Min',
+    tags: ['Kaufratgeber'],
+  },
+  {
     slug: 'expose-analyse-vor-besichtigung',
     title: 'Exposé-Analyse vor der Besichtigung: So filtern Käufer Angebote effizienter',
     description: 'Das 3-Stufen-Filtersystem: Grundcheck, Kennzahlen, Kontext-Recherche — so sparen Sie dutzende Stunden Fehlbesichtigungen.',
@@ -163,4 +171,5 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.Com
   'exposes-richtig-lesen': lazy(() => import('./exposes-richtig-lesen')),
   'was-im-expose-fehlt': lazy(() => import('./was-im-expose-fehlt')),
   'expose-analyse-vor-besichtigung': lazy(() => import('./expose-analyse-vor-besichtigung')),
+  'angebotspreis-fair': lazy(() => import('./angebotspreis-fair')),
 }
