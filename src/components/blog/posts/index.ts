@@ -4,6 +4,14 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'immobilienbewertung-kaeufer',
+    title: 'Immobilienbewertung für Käufer: Welche Faktoren wirklich über den Wert entscheiden',
+    description: 'Lage, Zustand, Energie, Baujahr, Grundriss — die 10 Faktoren die den Immobilienwert bestimmen und wie Profis bewerten.',
+    date: '11. April 2026',
+    readTime: '13 Min',
+    tags: ['Kaufratgeber'],
+  },
+  {
     slug: 'angebotspreis-fair',
     title: 'Angebotspreis fair? So prüfen Käufer, ob der Immobilienpreis plausibel ist',
     description: '3 Methoden zur Preiseinordnung, 8 Faktoren die den fairen Preis bestimmen und ein Praxisbeispiel mit konkreter Berechnung.',
@@ -172,4 +180,5 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.Com
   'was-im-expose-fehlt': lazy(() => import('./was-im-expose-fehlt')),
   'expose-analyse-vor-besichtigung': lazy(() => import('./expose-analyse-vor-besichtigung')),
   'angebotspreis-fair': lazy(() => import('./angebotspreis-fair')),
+  'immobilienbewertung-kaeufer': lazy(() => import('./immobilienbewertung-kaeufer')),
 }
