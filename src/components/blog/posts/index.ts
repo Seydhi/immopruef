@@ -4,6 +4,14 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'kaufnebenkosten-immobilienkauf',
+    title: 'Kaufnebenkosten beim Immobilienkauf: Was Käufer oft unterschätzen',
+    description: 'Grunderwerbsteuer, Notar, Makler — und dann noch Sanierung, Umzug und Sonderumlagen. So berechnen Sie die wahren Kosten eines Immobilienkaufs.',
+    date: '11. April 2026',
+    readTime: '10 Min',
+    tags: ['Finanzierung', 'Kaufratgeber'],
+  },
+  {
     slug: 'energieausweis-expose',
     title: 'Energieausweis im Exposé: Was die Werte über eine Immobilie verraten',
     description: 'Verbrauchsausweis vs. Bedarfsausweis, Effizienzklassen A+ bis H, Heizkosten berechnen und typische Missverständnisse — so bewerten Sie Energiekennwerte richtig.',
@@ -91,4 +99,5 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.Com
   'quadratmeterpreis-bewerten': lazy(() => import('./quadratmeterpreis-bewerten')),
   'warnsignale-expose': lazy(() => import('./warnsignale-expose')),
   'energieausweis-expose': lazy(() => import('./energieausweis-expose')),
+  'kaufnebenkosten-immobilienkauf': lazy(() => import('./kaufnebenkosten-immobilienkauf')),
 }
