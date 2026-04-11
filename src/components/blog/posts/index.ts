@@ -4,6 +4,14 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'warnsignale-expose',
+    title: 'Warnsignale im Immobilien-Exposé: Diese Punkte sollten Sie ernst nehmen',
+    description: 'Fehlende Daten, Maklerfloskeln, unrealistische Preise — welche Warnsignale sofort misstrauisch machen und welche erst im Zusammenspiel kritisch werden.',
+    date: '11. April 2026',
+    readTime: '10 Min',
+    tags: ['Kaufratgeber'],
+  },
+  {
     slug: 'quadratmeterpreis-bewerten',
     title: 'Quadratmeterpreis bewerten: Wann eine Immobilie zu teuer ist',
     description: 'Warum Vergleichswerte allein irreführend sind und welche 7 Faktoren den fairen Quadratmeterpreis bestimmen.',
@@ -73,4 +81,5 @@ export const BLOG_POSTS: BlogMeta[] = [
 export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.ComponentType>> = {
   'expose-pruefen': lazy(() => import('./expose-pruefen')),
   'quadratmeterpreis-bewerten': lazy(() => import('./quadratmeterpreis-bewerten')),
+  'warnsignale-expose': lazy(() => import('./warnsignale-expose')),
 }
