@@ -4,6 +4,14 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'lagebewertung-hauskauf',
+    title: 'Lagebewertung beim Hauskauf: Warum die Adresse allein nicht reicht',
+    description: 'Makrolage, Mikrolage, Lärmkarten, Hochwasserrisiko — welche 8 Lagefaktoren den Immobilienwert wirklich bestimmen und wie Sie sie prüfen.',
+    date: '11. April 2026',
+    readTime: '11 Min',
+    tags: ['Standort', 'Kaufratgeber'],
+  },
+  {
     slug: 'kaufnebenkosten-immobilienkauf',
     title: 'Kaufnebenkosten beim Immobilienkauf: Was Käufer oft unterschätzen',
     description: 'Grunderwerbsteuer, Notar, Makler — und dann noch Sanierung, Umzug und Sonderumlagen. So berechnen Sie die wahren Kosten eines Immobilienkaufs.',
@@ -100,4 +108,5 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.Com
   'warnsignale-expose': lazy(() => import('./warnsignale-expose')),
   'energieausweis-expose': lazy(() => import('./energieausweis-expose')),
   'kaufnebenkosten-immobilienkauf': lazy(() => import('./kaufnebenkosten-immobilienkauf')),
+  'lagebewertung-hauskauf': lazy(() => import('./lagebewertung-hauskauf')),
 }
