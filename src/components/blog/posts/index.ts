@@ -4,6 +4,14 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'hausgeld-ruecklagen-sonderumlage',
+    title: 'Hausgeld, Rücklagen, Sonderumlage: Was Wohnungskäufer wissen sollten',
+    description: 'Hausgeld-Aufschlüsselung, Rücklage-Richtwerte, Sonderumlage-Kosten pro Einheit und 3 WEG-Szenarien — der komplette ETW-Kosten-Guide.',
+    date: '11. April 2026',
+    readTime: '14 Min',
+    tags: ['Finanzierung', 'Kaufratgeber'],
+  },
+  {
     slug: 'wohnflaeche-richtig-einordnen',
     title: 'Wohnfläche richtig einordnen: Warum Quadratmeter allein nicht reichen',
     description: 'WoFlV vs. DIN 277, Dachschrägen-Illusion, Verkehrsflächen, Balkon-Anrechnung — warum 90 m² nicht gleich 90 m² sind.',
@@ -325,4 +333,5 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.Com
   'baujahr-und-modernisierung': lazy(() => import('./baujahr-und-modernisierung')),
   'grundriss-richtig-lesen': lazy(() => import('./grundriss-richtig-lesen')),
   'wohnflaeche-richtig-einordnen': lazy(() => import('./wohnflaeche-richtig-einordnen')),
+  'hausgeld-ruecklagen-sonderumlage': lazy(() => import('./hausgeld-ruecklagen-sonderumlage')),
 }
