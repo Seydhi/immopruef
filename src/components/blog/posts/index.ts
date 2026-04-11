@@ -4,6 +4,14 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'infrastruktur-pruefen',
+    title: 'Infrastruktur rund um die Immobilie prüfen: Was im Alltag wirklich zählt',
+    description: 'Supermarkt, ÖPNV, Schule, Arzt, Internet — 8 Infrastruktur-Bereiche mit Richtwerten, Zielgruppen-Matrix und 15-Minuten Schnell-Check.',
+    date: '11. April 2026',
+    readTime: '13 Min',
+    tags: ['Standort', 'Kaufratgeber'],
+  },
+  {
     slug: 'nebenkosten-laufende-kosten',
     title: 'Nebenkosten und laufende Kosten unterscheiden: Was Käufer dauerhaft belastet',
     description: 'Einmalige Kaufnebenkosten vs. dauerhafte laufende Kosten — mit ETW- und EFH-Kostenaufstellung, 20-Jahres-Rechnung und Tragbarkeits-Faustregel.',
@@ -352,4 +360,5 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.Com
   'hausgeld-ruecklagen-sonderumlage': lazy(() => import('./hausgeld-ruecklagen-sonderumlage')),
   'bilder-im-expose-bewerten': lazy(() => import('./bilder-im-expose-bewerten')),
   'nebenkosten-laufende-kosten': lazy(() => import('./nebenkosten-laufende-kosten')),
+  'infrastruktur-pruefen': lazy(() => import('./infrastruktur-pruefen')),
 }
