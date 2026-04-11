@@ -106,21 +106,15 @@ export default function Landing() {
 
   return (
     <>
-      <HeroSection onCta={scrollToForm} />
-
-      <FeatureGrid />
-
-      <AnalysisPreview />
-
-      {/* Pricing + Form */}
-      <section className="py-10">
-        <h2 className="font-display text-2xl font-medium text-green text-center mb-2">
+      {/* Analyse-Formular ganz oben */}
+      <div className="text-center mb-6 mt-2">
+        <h1 className="font-display text-2xl font-medium text-green leading-tight mb-1">
           Analyse starten
-        </h2>
-        <p className="text-ink-light text-sm text-center mb-6">
+        </h1>
+        <p className="text-ink-light text-sm">
           Günstiger als ein Gutachter (500–2.500 €)
         </p>
-      </section>
+      </div>
 
       <div ref={formRef} className="bg-white border border-ink/20 rounded-xl p-6 shadow-sm">
         <PricingToggle selected={pkg} onChange={handlePackageChange} />
@@ -190,6 +184,12 @@ export default function Landing() {
           )}
         </button>
       </div>
+
+      <HeroSection onCta={scrollToForm} />
+
+      <FeatureGrid />
+
+      <AnalysisPreview />
 
       <FAQ />
     </>
