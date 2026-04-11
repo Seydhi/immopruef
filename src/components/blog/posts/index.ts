@@ -4,6 +4,14 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'immobilien-vergleichen',
+    title: 'Immobilien vergleichen: Welche Kennzahlen wirklich aussagekräftig sind',
+    description: 'Kaufpreis, Quadratmeterpreis, Energieklasse — welche 8 Kennzahlen einen echten Vergleich ermöglichen und welche Fehler Sie vermeiden sollten.',
+    date: '11. April 2026',
+    readTime: '11 Min',
+    tags: ['Kaufratgeber'],
+  },
+  {
     slug: 'sanierungsbedarf-erkennen',
     title: 'Sanierungsbedarf erkennen: Erste Hinweise schon im Exposé',
     description: 'Baujahr, Energieklasse, fehlende Sanierungsangaben — welche Exposé-Signale auf versteckte Kosten hindeuten und was Sanierung wirklich kostet.',
@@ -118,4 +126,5 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.Com
   'kaufnebenkosten-immobilienkauf': lazy(() => import('./kaufnebenkosten-immobilienkauf')),
   'lagebewertung-hauskauf': lazy(() => import('./lagebewertung-hauskauf')),
   'sanierungsbedarf-erkennen': lazy(() => import('./sanierungsbedarf-erkennen')),
+  'immobilien-vergleichen': lazy(() => import('./immobilien-vergleichen')),
 }
