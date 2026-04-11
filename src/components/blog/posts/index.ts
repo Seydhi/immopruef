@@ -4,6 +4,14 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'daten-statt-bauchgefuehl',
+    title: 'Daten statt Bauchgefühl: Wie Käufer Immobilien fundierter bewerten',
+    description: '10 Datenpunkte die jeder Käufer kennen muss, ein 30-Minuten Bewertungsprozess und warum Bauchgefühl ohne Fakten gefährlich ist.',
+    date: '11. April 2026',
+    readTime: '13 Min',
+    tags: ['Kaufratgeber'],
+  },
+  {
     slug: 'immobilien-realistischer-einordnen',
     title: 'Immobilien realistischer einordnen: Warum einzelne Kennzahlen oft täuschen',
     description: '5 Kennzahlen die isoliert irreführen, 3 gefährliche Denkfehler und wie Sie aus Einzelwerten eine belastbare Gesamteinschätzung ableiten.',
@@ -253,4 +261,5 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.Com
   'besichtigung-vorbereitung': lazy(() => import('./besichtigung-vorbereitung')),
   'expose-verstehen': lazy(() => import('./expose-verstehen')),
   'immobilien-realistischer-einordnen': lazy(() => import('./immobilien-realistischer-einordnen')),
+  'daten-statt-bauchgefuehl': lazy(() => import('./daten-statt-bauchgefuehl')),
 }
