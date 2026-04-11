@@ -4,6 +4,14 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'grundriss-richtig-lesen',
+    title: 'Grundriss im Exposé richtig lesen: Worauf Käufer achten sollten',
+    description: 'Verkehrsflächen, Durchgangszimmer, Möblierbarkeit, Raumproportionen — 8 Prüfpunkte für jeden Grundriss plus Checkliste.',
+    date: '11. April 2026',
+    readTime: '13 Min',
+    tags: ['Kaufratgeber'],
+  },
+  {
     slug: 'baujahr-und-modernisierung',
     title: 'Baujahr und Modernisierung: Wie Käufer beides zusammen bewerten sollten',
     description: 'Gleiches Baujahr, völlig verschiedene Häuser — warum nur die Kombination aus Baujahr und Sanierungshistorie eine realistische Bewertung ermöglicht.',
@@ -307,4 +315,5 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.Com
   'fehler-private-kaeufer': lazy(() => import('./fehler-private-kaeufer')),
   'zustand-richtig-einschaetzen': lazy(() => import('./zustand-richtig-einschaetzen')),
   'baujahr-und-modernisierung': lazy(() => import('./baujahr-und-modernisierung')),
+  'grundriss-richtig-lesen': lazy(() => import('./grundriss-richtig-lesen')),
 }
