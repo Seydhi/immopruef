@@ -4,6 +4,14 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'unterlagen-vor-immobilienkauf',
+    title: 'Vor dem Immobilienkauf Unterlagen prüfen: Welche Dokumente wirklich wichtig sind',
+    description: '12 Pflicht-Dokumente mit Timeline (vor Besichtigung → vor Kaufentscheidung → vor Notar), getrennt nach ETW und EFH.',
+    date: '11. April 2026',
+    readTime: '13 Min',
+    tags: ['Checkliste', 'Kaufratgeber'],
+  },
+  {
     slug: 'immobilienkauf-mit-familie',
     title: 'Immobilienkauf mit Familie: Welche Kriterien besonders wichtig werden',
     description: 'Zimmeranzahl-Formel, familientauglicher Grundriss, Schulnähe, Garten, Sicherheit — 10 Familien-Kriterien mit Checkliste.',
@@ -370,4 +378,5 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.Com
   'nebenkosten-laufende-kosten': lazy(() => import('./nebenkosten-laufende-kosten')),
   'infrastruktur-pruefen': lazy(() => import('./infrastruktur-pruefen')),
   'immobilienkauf-mit-familie': lazy(() => import('./immobilienkauf-mit-familie')),
+  'unterlagen-vor-immobilienkauf': lazy(() => import('./unterlagen-vor-immobilienkauf')),
 }
