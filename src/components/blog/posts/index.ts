@@ -4,6 +4,14 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'nebenkosten-laufende-kosten',
+    title: 'Nebenkosten und laufende Kosten unterscheiden: Was Käufer dauerhaft belastet',
+    description: 'Einmalige Kaufnebenkosten vs. dauerhafte laufende Kosten — mit ETW- und EFH-Kostenaufstellung, 20-Jahres-Rechnung und Tragbarkeits-Faustregel.',
+    date: '11. April 2026',
+    readTime: '14 Min',
+    tags: ['Finanzierung', 'Kaufratgeber'],
+  },
+  {
     slug: 'bilder-im-expose-bewerten',
     title: 'Bilder im Immobilien-Exposé richtig bewerten: Was Fotos zeigen – und was nicht',
     description: 'Weitwinkel, HDR, Home Staging — wie Exposé-Fotos entstehen, welche Details sie verraten und welche blinden Flecken sie haben.',
@@ -343,4 +351,5 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.Com
   'wohnflaeche-richtig-einordnen': lazy(() => import('./wohnflaeche-richtig-einordnen')),
   'hausgeld-ruecklagen-sonderumlage': lazy(() => import('./hausgeld-ruecklagen-sonderumlage')),
   'bilder-im-expose-bewerten': lazy(() => import('./bilder-im-expose-bewerten')),
+  'nebenkosten-laufende-kosten': lazy(() => import('./nebenkosten-laufende-kosten')),
 }
