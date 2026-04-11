@@ -4,6 +4,14 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'quadratmeterpreis-bewerten',
+    title: 'Quadratmeterpreis bewerten: Wann eine Immobilie zu teuer ist',
+    description: 'Warum Vergleichswerte allein irreführend sind und welche 7 Faktoren den fairen Quadratmeterpreis bestimmen.',
+    date: '11. April 2026',
+    readTime: '9 Min',
+    tags: ['Kaufratgeber'],
+  },
+  {
     slug: 'expose-pruefen',
     title: 'Immobilien-Exposé prüfen: Worauf Käufer wirklich achten sollten',
     description: 'Systematisch Exposés auswerten: Kennzahlen, Maklersprache, Red Flags und die Fragen, die Sie vor der Besichtigung stellen müssen.',
@@ -64,4 +72,5 @@ export const BLOG_POSTS: BlogMeta[] = [
 // Map slug → lazy component (filled as posts are written)
 export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.ComponentType>> = {
   'expose-pruefen': lazy(() => import('./expose-pruefen')),
+  'quadratmeterpreis-bewerten': lazy(() => import('./quadratmeterpreis-bewerten')),
 }
