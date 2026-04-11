@@ -4,6 +4,14 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'baujahr-einordnen',
+    title: 'Baujahr richtig einordnen: Was Käufer daraus wirklich ableiten können',
+    description: 'Von Gründerzeit bis GEG-Neubau: Was jede Bauepoche über Bauweise, Energie, Schadstoffe und Sanierungsbedarf verrät.',
+    date: '11. April 2026',
+    readTime: '14 Min',
+    tags: ['Kaufratgeber'],
+  },
+  {
     slug: 'immobilien-check-vor-kauf',
     title: 'Immobilien-Check vor dem Kauf: So erkennen Käufer Risiken frühzeitig',
     description: '7 Prüfbereiche, 30-Minuten Schnell-Check und Ampelsystem — wie Sie Risiken erkennen bevor sie zu Kosten werden.',
@@ -208,4 +216,5 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.Com
   'hauskauf-mit-system': lazy(() => import('./hauskauf-mit-system')),
   'fehler-immobilienkauf': lazy(() => import('./fehler-immobilienkauf')),
   'immobilien-check-vor-kauf': lazy(() => import('./immobilien-check-vor-kauf')),
+  'baujahr-einordnen': lazy(() => import('./baujahr-einordnen')),
 }
