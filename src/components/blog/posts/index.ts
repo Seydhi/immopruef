@@ -4,6 +4,14 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'eigentumswohnung-kaufen-expose',
+    title: 'Eigentumswohnung kaufen: Welche Exposé-Angaben besonders wichtig sind',
+    description: 'Hausgeld, Rücklage, WEG-Protokolle, Teilungserklärung — die ETW-spezifischen Daten die über Kauf oder Fehlkauf entscheiden.',
+    date: '11. April 2026',
+    readTime: '13 Min',
+    tags: ['Kaufratgeber'],
+  },
+  {
     slug: 'daten-statt-bauchgefuehl',
     title: 'Daten statt Bauchgefühl: Wie Käufer Immobilien fundierter bewerten',
     description: '10 Datenpunkte die jeder Käufer kennen muss, ein 30-Minuten Bewertungsprozess und warum Bauchgefühl ohne Fakten gefährlich ist.',
@@ -262,4 +270,5 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.Com
   'expose-verstehen': lazy(() => import('./expose-verstehen')),
   'immobilien-realistischer-einordnen': lazy(() => import('./immobilien-realistischer-einordnen')),
   'daten-statt-bauchgefuehl': lazy(() => import('./daten-statt-bauchgefuehl')),
+  'eigentumswohnung-kaufen-expose': lazy(() => import('./eigentumswohnung-kaufen-expose')),
 }
