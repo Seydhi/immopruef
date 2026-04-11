@@ -5,20 +5,29 @@ interface PremiumReportProps {
 }
 
 export default function PremiumReport({ report }: PremiumReportProps) {
+  if (!report) return null
+
+  const handlePdfDownload = () => {
+    window.print()
+  }
+
   return (
     <div className="space-y-6">
       {/* Report Header */}
       <div className="bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-gold/30 rounded-xl p-5">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between flex-wrap gap-3">
           <div>
             <div className="flex items-center gap-2 mb-1">
               <span className="text-lg">📋</span>
               <span className="font-display text-lg font-medium text-amber-900">Kaufentscheidungs-Report</span>
               <span className="bg-gold text-white text-[9px] font-bold px-2 py-0.5 rounded-full tracking-wider uppercase">Premium</span>
             </div>
-            <div className="text-xs text-amber-700">Report-Nr. {report.reportNummer} · Erstellt am {report.reportDatum}</div>
+            <div className="text-xs text-amber-700">Report-Nr. {report.reportNummer || '—'} · Erstellt am {report.reportDatum || '—'}</div>
           </div>
-          <button className="bg-green text-cream text-sm font-medium px-4 py-2 rounded-lg hover:bg-green-mid transition-colors flex items-center gap-1.5">
+          <button
+            onClick={handlePdfDownload}
+            className="bg-green text-cream text-sm font-medium px-4 py-2 rounded-lg hover:bg-green-mid transition-colors flex items-center gap-1.5"
+          >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
             PDF herunterladen
           </button>
@@ -26,7 +35,7 @@ export default function PremiumReport({ report }: PremiumReportProps) {
       </div>
 
       {/* ════ Professionelle Wertermittlung ════ */}
-      <PremiumSection icon="💎" title="Professionelle Wertermittlung">
+      {report.wertermittlung && <PremiumSection icon="💎" title="Professionelle Wertermittlung">
         {/* Vergleichswertverfahren */}
         <div className="mb-4">
           <SubHeading>Vergleichswertverfahren (§15 ImmoWertV)</SubHeading>
@@ -98,10 +107,10 @@ export default function PremiumReport({ report }: PremiumReportProps) {
           <div className="text-xs text-cream/70 mb-2">Marktwertspanne: {report.wertermittlung.fazit.marktwertSpanne}</div>
           <div className="text-sm text-cream/90 leading-relaxed">{report.wertermittlung.fazit.einschaetzung}</div>
         </div>
-      </PremiumSection>
+      </PremiumSection>}
 
       {/* ════ Standort-Dossier ════ */}
-      <PremiumSection icon="📍" title="Vollständiges Standort-Dossier">
+      {report.standortDossier && <PremiumSection icon="📍" title="Vollständiges Standort-Dossier">
         {/* Entfernungen */}
         <SubHeading>Entfernungen & Infrastruktur</SubHeading>
         <div className="bg-white border border-ink/10 rounded-lg overflow-hidden mb-4">
@@ -166,10 +175,10 @@ export default function PremiumReport({ report }: PremiumReportProps) {
             Dies kann den Kauf um 2–3 Monate verzögern. Der Bezirk prüft, ob er das Vorkaufsrecht ausübt.
           </div>
         )}
-      </PremiumSection>
+      </PremiumSection>}
 
       {/* ════ 30-Jahres Vermögensvergleich ════ */}
-      <PremiumSection icon="📈" title="30-Jahres Vermögensvergleich (Kaufen vs. Mieten + ETF)">
+      {report.vermoegensvergleich && <PremiumSection icon="📈" title="30-Jahres Vermögensvergleich (Kaufen vs. Mieten + ETF)">
         <div className="bg-white border border-ink/10 rounded-lg overflow-hidden mb-3">
           <table className="w-full text-[12px]">
             <thead>
@@ -194,10 +203,10 @@ export default function PremiumReport({ report }: PremiumReportProps) {
           <span className="font-medium">Break-Even:</span> Ab Jahr {report.vermoegensvergleich.breakEvenJahr} übersteigt das Immobilienvermögen das ETF-Portfolio.
           Bei einer Haltedauer von über {report.vermoegensvergleich.breakEvenJahr} Jahren lohnt sich der Kauf finanziell.
         </div>
-      </PremiumSection>
+      </PremiumSection>}
 
       {/* ════ Steuerliche Aspekte ════ */}
-      <PremiumSection icon="🧾" title="Steuerliche Aspekte">
+      {report.steuerlicheAspekte?.length > 0 && <PremiumSection icon="🧾" title="Steuerliche Aspekte">
         <div className="space-y-2">
           {report.steuerlicheAspekte.map((asp, i) => (
             <div key={i} className="bg-white border border-ink/10 rounded-lg p-3.5">
@@ -207,10 +216,10 @@ export default function PremiumReport({ report }: PremiumReportProps) {
             </div>
           ))}
         </div>
-      </PremiumSection>
+      </PremiumSection>}
 
       {/* ════ Vor-Kauf-Checkliste ════ */}
-      <PremiumSection icon="✅" title="Vor-Kauf-Checkliste">
+      {report.vorKaufCheckliste?.length > 0 && <PremiumSection icon="✅" title="Vor-Kauf-Checkliste">
         <div className="space-y-4">
           {report.vorKaufCheckliste.map((kat, ki) => (
             <div key={ki}>
@@ -227,10 +236,10 @@ export default function PremiumReport({ report }: PremiumReportProps) {
             </div>
           ))}
         </div>
-      </PremiumSection>
+      </PremiumSection>}
 
       {/* ════ Gutachter-Empfehlung ════ */}
-      <PremiumSection icon="👷" title="Gutachter-Empfehlung">
+      {report.gutachterEmpfehlung && <PremiumSection icon="👷" title="Gutachter-Empfehlung">
         <div className={`rounded-xl p-4 ${report.gutachterEmpfehlung.empfohlen ? 'bg-amber-50 border-2 border-amber-200' : 'bg-emerald-50 border-2 border-emerald-200'}`}>
           <div className="flex items-center gap-2 mb-2">
             <span className="text-lg">{report.gutachterEmpfehlung.empfohlen ? '⚠️' : '✅'}</span>
@@ -245,7 +254,7 @@ export default function PremiumReport({ report }: PremiumReportProps) {
             💰 Geschätzte Kosten: {report.gutachterEmpfehlung.geschaetzteKosten}
           </div>
         </div>
-      </PremiumSection>
+      </PremiumSection>}
     </div>
   )
 }

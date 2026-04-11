@@ -158,38 +158,38 @@ PFLICHT-HINWEISE:
 
 const SYSTEM_PROMPT_PREMIUM_ADDITION = `
 
-ZUSÄTZLICH zum Standard-Schema: Füge ein "premiumReport"-Objekt hinzu:
+PREMIUM-REPORT — PFLICHT! Das JSON MUSS ein "premiumReport"-Objekt enthalten. Dieses Objekt ist der Hauptgrund warum der Kunde 79€ bezahlt hat. Es muss UMFASSEND und DETAILLIERT sein.
 
 {
   "premiumReport": {
-    "reportDatum": "string (heutiges Datum)",
-    "reportNummer": "string (z.B. IP-2026-04-XXXXX)",
+    "reportDatum": "string (heutiges Datum, z.B. 11.04.2026)",
+    "reportNummer": "string (z.B. IP-2026-04-XXXXX, zufällige 5-stellige Nummer)",
 
     "wertermittlung": {
       "vergleichswert": {
-        "wert": "string (Spanne)",
-        "methode": "string (Beschreibung nach §15 ImmoWertV)",
-        "vergleichsobjekte": [{ "adresse": "string", "preis": "string", "qm": "string", "abweichung": "string" }]
+        "wert": "string (Spanne, z.B. 350.000–410.000 €)",
+        "methode": "string (2-3 Sätze Beschreibung nach §15 ImmoWertV)",
+        "vergleichsobjekte": [{ "adresse": "string", "preis": "string", "qm": "string (€/m²)", "abweichung": "string (z.B. +5,2%)" }]
       },
-      "sachwert": { "bodenwert": "string (Berechnung)", "gebaeudewert": "string", "alterswertminderung": "string", "sachwert": "string" },
+      "sachwert": { "bodenwert": "string (z.B. 120.000 € (600 €/m² × 200 m²))", "gebaeudewert": "string", "alterswertminderung": "string (z.B. -35% (Alter: 40 Jahre))", "sachwert": "string" },
       "ertragswert": { "jahresrohertrag": "string", "bewirtschaftungskosten": "string", "reinertrag": "string", "liegenschaftszins": "string", "ertragswert": "string" },
-      "fazit": { "marktwertSpanne": "string", "empfohlenerKaufpreis": "string", "einschaetzung": "string (2-3 Sätze)" }
+      "fazit": { "marktwertSpanne": "string (z.B. 340.000–400.000 €)", "empfohlenerKaufpreis": "string (z.B. 370.000 €)", "einschaetzung": "string (3-4 Sätze, detaillierte Einschätzung ob der Preis fair ist und warum)" }
     },
 
     "standortDossier": {
       "entfernungen": [{ "ziel": "string", "entfernung": "string", "fahrzeit": "string" }],
-      "hochwasserrisiko": { "zone": "string", "details": "string", "risiko": "niedrig|mittel|hoch" },
-      "laermbelastung": { "tags": "string", "nachts": "string", "quelle": "string", "bewertung": "string" },
-      "radon": { "wert": "string", "risiko": "niedrig|mittel|hoch" },
-      "bebauungsplan": { "nutzung": "string", "gfz": "string", "grz": "string", "besonderheiten": "string" },
-      "sozialstruktur": { "beschreibung": "string", "milieuschutz": "boolean", "vorkaufsrecht": "boolean" }
+      "hochwasserrisiko": { "zone": "string (z.B. Zone 3 — mittleres Risiko)", "details": "string (2-3 Sätze)", "risiko": "niedrig|mittel|hoch" },
+      "laermbelastung": { "tags": "string (z.B. 58 dB(A))", "nachts": "string (z.B. 45 dB(A))", "quelle": "string (z.B. Hauptstraße B42, Bahnlinie 200m)", "bewertung": "string (2-3 Sätze)" },
+      "radon": { "wert": "string (z.B. 40-60 kBq/m³)", "risiko": "niedrig|mittel|hoch" },
+      "bebauungsplan": { "nutzung": "string (z.B. Allgemeines Wohngebiet WA)", "gfz": "string", "grz": "string", "besonderheiten": "string (z.B. Denkmalschutzzone, Milieuschutz etc.)" },
+      "sozialstruktur": { "beschreibung": "string (3-4 Sätze über die Nachbarschaft)", "milieuschutz": "boolean", "vorkaufsrecht": "boolean" }
     },
 
     "vermoegensvergleich": {
       "jahre": [0, 5, 10, 15, 20, 25, 30],
-      "vermoegenKauf": ["string (Werte für jedes Jahr)"],
-      "vermoegenMieteEtf": ["string (Werte für jedes Jahr, bei 7% ETF-Rendite)"],
-      "breakEvenJahr": "number"
+      "vermoegenKauf": ["string (7 Werte, Euro-Beträge für jedes Jahr, berechnet mit Wertsteigerung 2% p.a.)"],
+      "vermoegenMieteEtf": ["string (7 Werte, Euro-Beträge für jedes Jahr, bei Miete + ETF-Sparplan mit 7% Rendite p.a.)"],
+      "breakEvenJahr": "number (z.B. 18)"
     },
 
     "vorKaufCheckliste": [{
@@ -197,20 +197,29 @@ ZUSÄTZLICH zum Standard-Schema: Füge ein "premiumReport"-Objekt hinzu:
       "items": [{ "text": "string", "wichtigkeit": "muss|soll|kann", "erledigt": false }]
     }],
 
-    "steuerlicheAspekte": [{ "aspekt": "string", "details": "string", "vorteil": "string" }],
+    "steuerlicheAspekte": [{ "aspekt": "string", "details": "string (2-3 Sätze)", "vorteil": "string" }],
 
-    "gutachterEmpfehlung": { "empfohlen": "boolean", "grund": "string", "geschaetzteKosten": "string" }
+    "gutachterEmpfehlung": { "empfohlen": "boolean", "grund": "string (3-4 Sätze)", "geschaetzteKosten": "string (z.B. 800–1.500 €)" }
   }
 }
 
-Für die Wertermittlung:
-- Vergleichswert: Recherchiere 5-6 echte Vergleichsobjekte in der Umgebung (verkauft oder angeboten).
-- Sachwert: Berechne mit aktuellen Bodenrichtwerten und NHK 2010 (angepasst).
-- Ertragswert: Nutze ortsübliche Vergleichsmiete und Liegenschaftszins vom Gutachterausschuss.
+PREMIUM-PFLICHT-DETAILS:
+- vergleichswert.vergleichsobjekte: MINDESTENS 6 echte Vergleichsobjekte aus der Umgebung recherchieren (per Web-Suche). Adresse, Kaufpreis, €/m², Abweichung zum Analyseobjekt.
+- sachwert: Bodenwert mit echtem Bodenrichtwert berechnen (per Web-Suche). Gebäudewert nach NHK 2010. Alterswertminderung nach Ross-Verfahren.
+- ertragswert: Jahresrohertrag aus ortsüblicher Vergleichsmiete (per Web-Suche Mietpreisspiegel). Liegenschaftszins vom Gutachterausschuss.
+- standortDossier.entfernungen: MINDESTENS 12 POIs (nächste U-Bahn/S-Bahn, Bushaltestelle, Grundschule, Gymnasium, Kindergarten, Hausarzt, Zahnarzt, Supermarkt, Apotheke, Park/Grünfläche, Krankenhaus, Hauptbahnhof). Entfernungen und Fahrzeiten per Web-Suche verifizieren.
+- hochwasserrisiko: Per Web-Suche "[Stadt] Hochwassergefahrenkarte" recherchieren.
+- laermbelastung: Per Web-Suche "[Adresse] Lärmkarte" oder "[Stadt] Lärmkartierung" recherchieren.
+- radon: Per Web-Suche "Radonkarte [Bundesland]" recherchieren.
+- vorKaufCheckliste: 4 Kategorien mit jeweils mindestens 6 Items:
+  1. Dokumente vom Verkäufer anfordern (Grundbuchauszug, Energieausweis, Teilungserklärung, Wohngeldabrechnung, Protokolle WEG, Mietverträge etc.)
+  2. Selbst recherchieren (Baulastenverzeichnis, Bebauungsplan, Altlastenkataster, Denkmalschutz, Erschließungsbeiträge etc.)
+  3. Bei der Besichtigung prüfen (Feuchtigkeit Keller, Fenster, Heizung, Elektrik, Dach, Schimmel, Risse etc.)
+  4. Vor Vertragsunterzeichnung (Finanzierungszusage, Notarvertrag prüfen, Rücktrittsklausel, Übergabeprotokoll etc.)
+- steuerlicheAspekte: MINDESTENS 5 Aspekte (Grunderwerbsteuer, AfA bei Vermietung 2-3%, Werbungskosten, Spekulationssteuer 10 Jahre, Denkmal-AfA falls relevant).
+- gutachterEmpfehlung: Basierend auf Baujahr, Zustand und Sanierungsstau empfehlen ob ein Vor-Ort-Gutachten sinnvoll ist.
 
-Für Entfernungen: Mindestens 10 POIs (ÖPNV, Schule, Kita, Arzt, Supermarkt, Park, Krankenhaus, Bahnhof, Flughafen).
-Für Checkliste: 4 Kategorien (Dokumente vom Verkäufer, Selbst recherchieren, Bei Besichtigung, Vor Vertragsunterzeichnung).
-Für Steuern: Eigennutzung, Vermietung-AfA, Werbungskosten, Spekulationssteuer, Grunderwerbsteuer.`
+DAS premiumReport-Objekt MUSS im JSON enthalten sein. Es ist NICHT optional. Der Kunde hat 79€ dafür bezahlt.`
 
 // ═══════════════════════════════════════════════════════════════
 // AI Provider Switch
@@ -442,7 +451,7 @@ serve(async (req) => {
     const systemPrompt = isPremium
       ? SYSTEM_PROMPT_STANDARD + SYSTEM_PROMPT_PREMIUM_ADDITION
       : SYSTEM_PROMPT_STANDARD
-    const maxTokens = isPremium ? 24000 : 16000
+    const maxTokens = isPremium ? 32000 : 16000
 
     // Process ONE analysis per function call (avoids 150s timeout)
     const anthropicKey = Deno.env.get('ANTHROPIC_API_KEY')!
