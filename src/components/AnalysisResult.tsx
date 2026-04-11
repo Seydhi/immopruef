@@ -157,7 +157,7 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
           <div className="bg-white border border-ink/10 rounded-xl overflow-hidden mb-5">
             <table className="w-full text-[13.5px]">
               <tbody>
-                {result.objektdaten.map((row, i) => {
+                {(result.objektdaten || []).map((row, i) => {
                   const isPrice = row.merkmal?.toLowerCase().includes('preis') || row.merkmal?.toLowerCase().includes('kaufpreis')
                   return (
                     <tr key={i} className={`border-b border-ink/8 last:border-b-0 ${i % 2 === 1 ? 'bg-cream/50' : ''}`}>
@@ -240,11 +240,11 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
               </div>
               <table className="w-full text-[13.5px]">
                 <tbody>
-                  {result.gesamtkosten.kaufpreis && (
+                  {result.gesamtkosten?.kaufpreis && (
                     <KVRow label="Kaufpreis" value={result.gesamtkosten.kaufpreis} i={0} />
                   )}
                   <KVRow label="Kaufnebenkosten" value={result.gesamtkosten.kaufnebenkosten?.gesamt || '—'} i={1} />
-                  {result.gesamtkosten.geschaetzteSanierung && (
+                  {result.gesamtkosten?.geschaetzteSanierung && (
                     <KVRow label="Geschätzte Sanierung" value={result.gesamtkosten.geschaetzteSanierung} i={2} />
                   )}
                 </tbody>
@@ -267,7 +267,7 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
               </div>
               <table className="w-full text-[13.5px]">
                 <tbody>
-                  {result.gesamtkosten.laufendeKosten.map((lk, i) => (
+                  {(result.gesamtkosten?.laufendeKosten || []).map((lk, i) => (
                     <tr key={i} className={`border-b border-ink/8 last:border-b-0 ${i % 2 === 1 ? 'bg-cream/50' : ''}`}>
                       <td className="px-3.5 py-2 text-ink-light text-xs font-medium tracking-wide w-[45%]">{lk.position}</td>
                       <td className="px-3.5 py-2 text-right w-[25%]"><ValueCell>{lk.betragMonat}</ValueCell></td>
@@ -328,7 +328,7 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
                   </tr>
                 </thead>
                 <tbody>
-                  {result.energieanalyse.sanierungsoptionen.map((opt, i) => (
+                  {(result.energieanalyse?.sanierungsoptionen || []).map((opt, i) => (
                     <tr key={i} className={`border-b border-ink/8 last:border-b-0 ${i % 2 === 1 ? 'bg-cream/50' : ''}`}>
                       <td className="px-3 py-2 font-medium text-ink">{opt.massnahme}</td>
                       <td className="px-3 py-2 text-ink-mid">{opt.kosten}</td>
@@ -372,7 +372,7 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
                   </tr>
                 </thead>
                 <tbody>
-                  {result.modernisierung.items.map((item, i) => (
+                  {(result.modernisierung?.items || []).map((item, i) => (
                     <tr key={i} className={`border-b border-ink/8 last:border-b-0 ${i % 2 === 1 ? 'bg-cream/50' : ''}`}>
                       <td className="px-3 py-2 font-medium">{item.bauteil}</td>
                       <td className="px-3 py-2 text-ink-mid">{item.geschaetztesAlter}</td>
@@ -392,7 +392,7 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
               <div className="bg-green/5 px-4 py-2.5 text-xs font-medium text-green tracking-wider uppercase border-b border-ink/8">
                 Sanierungs-Timeline
               </div>
-              {result.modernisierung.timeline.map((t, i) => (
+              {(result.modernisierung?.timeline || []).map((t, i) => (
                 <div key={i} className={`px-4 py-3 flex items-start gap-3 border-b border-ink/8 last:border-b-0 ${i % 2 === 1 ? 'bg-cream/50' : ''}`}>
                   <div className="w-2 h-2 rounded-full bg-green mt-1.5 shrink-0" />
                   <div className="flex-1">
@@ -414,7 +414,7 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
           <div className="space-y-3 mb-5">
             {/* Kategorien */}
             <div className="bg-white border border-ink/10 rounded-xl overflow-hidden">
-              {result.standortanalyse.kategorien.map((kat, i) => (
+              {(result.standortanalyse?.kategorien || []).map((kat, i) => (
                 <div key={i} className={`px-4 py-2.5 flex items-center gap-3 border-b border-ink/8 last:border-b-0 ${i % 2 === 1 ? 'bg-cream/50' : ''}`}>
                   <div className="flex-1">
                     <div className="text-[13px] font-medium text-ink">{kat.kategorie}</div>
@@ -495,7 +495,7 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
 
             {/* Risk items */}
             <div className="bg-white border border-ink/10 rounded-xl overflow-hidden">
-              {result.risikobewertung.items.map((item, i) => (
+              {(result.risikobewertung?.items || []).map((item, i) => (
                 <div key={i} className={`px-4 py-3 border-b border-ink/8 last:border-b-0 ${i % 2 === 1 ? 'bg-cream/50' : ''}`}>
                   <div className="flex items-center gap-2 mb-1">
                     <RiskBadge risiko={item.risiko} />
@@ -511,7 +511,7 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
             {result.risikobewertung.redFlags.length > 0 && (
               <div className="bg-red-50 border border-red-200 rounded-xl px-4 py-3">
                 <div className="text-xs font-medium text-red-700 mb-2 tracking-wider uppercase">🚩 Red Flags</div>
-                {result.risikobewertung.redFlags.map((flag, i) => (
+                {(result.risikobewertung?.redFlags || []).map((flag, i) => (
                   <div key={i} className="flex gap-2 items-start py-1.5 text-xs text-red-700">
                     <span className="shrink-0 mt-0.5">•</span>
                     <span>{flag}</span>
@@ -529,7 +529,7 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
           <SectionHeader icon={<BankIcon />} title="Finanzierungs-Check" />
           <div className="space-y-3 mb-5">
             {/* Empfohlene Eigenkapitalquote */}
-            {result.finanzierung.empfohleneEigenkapitalquote && (
+            {result.finanzierung?.empfohleneEigenkapitalquote && (
               <div className="bg-blue-50 border border-blue-200 rounded-xl px-4 py-3 flex items-center justify-between">
                 <div className="text-sm text-blue-800">Empfohlene Eigenkapitalquote</div>
                 <div className="font-display text-lg font-medium text-blue-900">{result.finanzierung.empfohleneEigenkapitalquote}</div>
@@ -537,7 +537,7 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
             )}
             {/* Szenarien */}
             <div className="grid gap-2">
-              {result.finanzierung.szenarien.map((sz, i) => (
+              {(result.finanzierung?.szenarien || []).map((sz, i) => (
                 <div key={i} className={`bg-white border rounded-xl p-4 ${i === 0 ? 'border-green/30 ring-1 ring-green/10' : 'border-ink/10'}`}>
                   <div className="flex items-center justify-between mb-2">
                     <div className="text-sm font-medium text-green">{sz.name}</div>
@@ -565,16 +565,16 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
                 <div className="grid grid-cols-2 gap-4 mb-3">
                   <div className="text-center p-3 rounded-lg bg-cream">
                     <div className="text-[10px] text-ink-light tracking-wider uppercase mb-1">Mieten</div>
-                    <div className="font-display text-lg text-ink font-medium">{result.finanzierung.kaufenVsMieten.kostenMiete20Jahre}</div>
-                    <div className="text-[11px] text-ink-light">{result.finanzierung.kaufenVsMieten.mpiMieteMonat}/Monat</div>
+                    <div className="font-display text-lg text-ink font-medium">{result.finanzierung?.kaufenVsMieten?.kostenMiete20Jahre}</div>
+                    <div className="text-[11px] text-ink-light">{result.finanzierung?.kaufenVsMieten?.mpiMieteMonat}/Monat</div>
                   </div>
-                  <div className={`text-center p-3 rounded-lg ${result.finanzierung.kaufenVsMieten.vorteil === 'kaufen' ? 'bg-emerald-50' : 'bg-cream'}`}>
+                  <div className={`text-center p-3 rounded-lg ${result.finanzierung?.kaufenVsMieten?.vorteil === 'kaufen' ? 'bg-emerald-50' : 'bg-cream'}`}>
                     <div className="text-[10px] text-ink-light tracking-wider uppercase mb-1">Kaufen</div>
-                    <div className="font-display text-lg text-ink font-medium">{result.finanzierung.kaufenVsMieten.kostenKauf20Jahre}</div>
-                    <div className="text-[11px] text-emerald-600 font-medium">{result.finanzierung.kaufenVsMieten.vorteil === 'kaufen' ? '✓ Empfohlen' : ''}</div>
+                    <div className="font-display text-lg text-ink font-medium">{result.finanzierung?.kaufenVsMieten?.kostenKauf20Jahre}</div>
+                    <div className="text-[11px] text-emerald-600 font-medium">{result.finanzierung?.kaufenVsMieten?.vorteil === 'kaufen' ? '✓ Empfohlen' : ''}</div>
                   </div>
                 </div>
-                <div className="text-xs text-ink-mid leading-relaxed">{result.finanzierung.kaufenVsMieten.differenz}</div>
+                <div className="text-xs text-ink-mid leading-relaxed">{result.finanzierung?.kaufenVsMieten?.differenz}</div>
               </div>
             </div>
 
@@ -584,7 +584,7 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
               expanded={expandedSections['stress'] ?? false}
               onToggle={() => toggleSection('stress')}
             >
-              {result.finanzierung.stresstest.map((st, i) => (
+              {(result.finanzierung?.stresstest || []).map((st, i) => (
                 <tr key={i} className={`border-b border-ink/8 last:border-b-0 ${i % 2 === 1 ? 'bg-cream/50' : ''}`}>
                   <td className="px-3.5 py-2 text-xs text-ink-mid w-[40%]">{st.szenario}</td>
                   <td className="px-3.5 py-2 text-xs">{st.monatlicheRate}</td>
@@ -609,7 +609,7 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
         <>
           <SectionHeader icon={<BulbIcon />} title="Verhandlungstipps" />
           <div className="bg-white border border-ink/10 rounded-xl px-4 py-3 mb-5">
-            {result.verhandlungstipps.map((tip, i) => (
+            {(result.verhandlungstipps || []).map((tip, i) => (
               <div key={i} className="flex gap-2.5 items-start py-2 border-b border-ink/8 last:border-b-0 text-[13px]">
                 <span className="bg-green text-cream rounded-full w-5 h-5 flex items-center justify-center text-[10px] font-medium shrink-0 mt-0.5">
                   {i + 1}
