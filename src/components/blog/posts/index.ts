@@ -4,6 +4,14 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'zustand-folgekosten',
+    title: 'Zustand und Folgekosten: Warum günstige Immobilien oft teurer werden als gedacht',
+    description: 'Die Rechnung die viele Käufer nicht machen: Warum eine 220.000-€-Wohnung über 20 Jahre genauso viel kostet wie eine für 295.000 €.',
+    date: '11. April 2026',
+    readTime: '12 Min',
+    tags: ['Kaufratgeber', 'Finanzierung'],
+  },
+  {
     slug: 'baujahr-einordnen',
     title: 'Baujahr richtig einordnen: Was Käufer daraus wirklich ableiten können',
     description: 'Von Gründerzeit bis GEG-Neubau: Was jede Bauepoche über Bauweise, Energie, Schadstoffe und Sanierungsbedarf verrät.',
@@ -217,4 +225,5 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.Com
   'fehler-immobilienkauf': lazy(() => import('./fehler-immobilienkauf')),
   'immobilien-check-vor-kauf': lazy(() => import('./immobilien-check-vor-kauf')),
   'baujahr-einordnen': lazy(() => import('./baujahr-einordnen')),
+  'zustand-folgekosten': lazy(() => import('./zustand-folgekosten')),
 }
