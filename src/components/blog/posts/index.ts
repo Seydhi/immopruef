@@ -4,6 +4,14 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'bilder-im-expose-bewerten',
+    title: 'Bilder im Immobilien-Exposé richtig bewerten: Was Fotos zeigen – und was nicht',
+    description: 'Weitwinkel, HDR, Home Staging — wie Exposé-Fotos entstehen, welche Details sie verraten und welche blinden Flecken sie haben.',
+    date: '11. April 2026',
+    readTime: '13 Min',
+    tags: ['Kaufratgeber'],
+  },
+  {
     slug: 'hausgeld-ruecklagen-sonderumlage',
     title: 'Hausgeld, Rücklagen, Sonderumlage: Was Wohnungskäufer wissen sollten',
     description: 'Hausgeld-Aufschlüsselung, Rücklage-Richtwerte, Sonderumlage-Kosten pro Einheit und 3 WEG-Szenarien — der komplette ETW-Kosten-Guide.',
@@ -334,4 +342,5 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.Com
   'grundriss-richtig-lesen': lazy(() => import('./grundriss-richtig-lesen')),
   'wohnflaeche-richtig-einordnen': lazy(() => import('./wohnflaeche-richtig-einordnen')),
   'hausgeld-ruecklagen-sonderumlage': lazy(() => import('./hausgeld-ruecklagen-sonderumlage')),
+  'bilder-im-expose-bewerten': lazy(() => import('./bilder-im-expose-bewerten')),
 }
