@@ -4,6 +4,14 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'baujahr-und-modernisierung',
+    title: 'Baujahr und Modernisierung: Wie Käufer beides zusammen bewerten sollten',
+    description: 'Gleiches Baujahr, völlig verschiedene Häuser — warum nur die Kombination aus Baujahr und Sanierungshistorie eine realistische Bewertung ermöglicht.',
+    date: '11. April 2026',
+    readTime: '14 Min',
+    tags: ['Kaufratgeber'],
+  },
+  {
     slug: 'zustand-richtig-einschaetzen',
     title: 'Zustand einer Immobilie richtig einschätzen: Was Exposé und Besichtigung verraten',
     description: 'Zustandsbeschreibungen decoded, Foto-Analyse, Besichtigungs-Checkliste Raum für Raum und unsichtbare Mängel — der komplette Guide.',
@@ -298,4 +306,5 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.Com
   'einfamilienhaus-kaufen-expose': lazy(() => import('./einfamilienhaus-kaufen-expose')),
   'fehler-private-kaeufer': lazy(() => import('./fehler-private-kaeufer')),
   'zustand-richtig-einschaetzen': lazy(() => import('./zustand-richtig-einschaetzen')),
+  'baujahr-und-modernisierung': lazy(() => import('./baujahr-und-modernisierung')),
 }
