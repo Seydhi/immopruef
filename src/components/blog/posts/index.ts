@@ -4,6 +4,14 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'zustand-richtig-einschaetzen',
+    title: 'Zustand einer Immobilie richtig einschätzen: Was Exposé und Besichtigung verraten',
+    description: 'Zustandsbeschreibungen decoded, Foto-Analyse, Besichtigungs-Checkliste Raum für Raum und unsichtbare Mängel — der komplette Guide.',
+    date: '11. April 2026',
+    readTime: '14 Min',
+    tags: ['Kaufratgeber', 'Checkliste'],
+  },
+  {
     slug: 'fehler-private-kaeufer',
     title: 'Private Käufer beim Hauskauf: Welche Fehler besonders häufig passieren',
     description: '10 typische Käuferfehler mit konkreten Folgekosten — von emotionaler Bindung über unterschätzte Nebenkosten bis zum Kauf unter Zeitdruck.',
@@ -289,4 +297,5 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.Com
   'eigentumswohnung-kaufen-expose': lazy(() => import('./eigentumswohnung-kaufen-expose')),
   'einfamilienhaus-kaufen-expose': lazy(() => import('./einfamilienhaus-kaufen-expose')),
   'fehler-private-kaeufer': lazy(() => import('./fehler-private-kaeufer')),
+  'zustand-richtig-einschaetzen': lazy(() => import('./zustand-richtig-einschaetzen')),
 }
