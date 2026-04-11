@@ -10,6 +10,10 @@ import Toast from './components/Toast'
 import Impressum from './components/legal/Impressum'
 import Datenschutz from './components/legal/Datenschutz'
 import AGB from './components/legal/AGB'
+import BlogIndex from './components/blog/BlogIndex'
+import BlogLayout from './components/blog/BlogLayout'
+import { Suspense } from 'react'
+import { BLOG_POSTS, POST_COMPONENTS } from './components/blog/posts'
 
 type AppView =
   | { type: 'landing' }
@@ -20,6 +24,8 @@ type AppView =
   | { type: 'impressum' }
   | { type: 'datenschutz' }
   | { type: 'agb' }
+  | { type: 'blog' }
+  | { type: 'blog-post'; slug: string }
 
 export default function App() {
   const [view, setView] = useState<AppView>({ type: 'landing' })
@@ -71,6 +77,11 @@ export default function App() {
     if (path === '/impressum') { setView({ type: 'impressum' }); return }
     if (path === '/datenschutz') { setView({ type: 'datenschutz' }); return }
     if (path === '/agb') { setView({ type: 'agb' }); return }
+
+    // Blog routing
+    if (path === '/blog' || path === '/blog/') { setView({ type: 'blog' }); return }
+    const blogMatch = path.match(/^\/blog\/(.+)$/)
+    if (blogMatch) { setView({ type: 'blog-post', slug: blogMatch[1] }); return }
 
     // Clean URL
     if (sessionId || resultToken || paymentCancelled) {
@@ -170,11 +181,42 @@ export default function App() {
             {view.type === 'agb' && <AGB />}
           </div>
         )}
+
+        {/* Blog */}
+        {view.type === 'blog' && (
+          <BlogIndex onNavigate={(slug) => {
+            window.history.pushState({}, '', `/blog/${slug}`)
+            setView({ type: 'blog-post', slug })
+            window.scrollTo(0, 0)
+          }} />
+        )}
+
+        {view.type === 'blog-post' && (() => {
+          const meta = BLOG_POSTS.find(p => p.slug === view.slug)
+          const PostComponent = POST_COMPONENTS[view.slug]
+          if (!meta || !PostComponent) {
+            return (
+              <div className="text-center py-16">
+                <div className="text-ink-mid text-sm mb-4">Artikel nicht gefunden.</div>
+                <a href="/blog" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/blog'); setView({ type: 'blog' }); window.scrollTo(0, 0) }} className="text-green text-sm font-medium">← Alle Artikel</a>
+              </div>
+            )
+          }
+          return (
+            <Suspense fallback={<div className="text-center py-16 text-ink-light text-sm">Artikel wird geladen...</div>}>
+              <BlogLayout meta={meta}>
+                <PostComponent />
+              </BlogLayout>
+            </Suspense>
+          )
+        })()}
       </main>
 
       <footer className="text-center text-[11px] text-ink-light py-6 border-t border-ink/10 mt-10 mx-6">
         <p className="mb-2">KI-Analyse auf Basis öffentlich verfügbarer Daten · Keine Gewähr für Vollständigkeit oder Richtigkeit</p>
         <div className="flex items-center justify-center gap-3">
+          <a href="/blog" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/blog'); setView({ type: 'blog' }); window.scrollTo(0, 0) }} className="hover:text-green transition-colors">Blog</a>
+          <span className="text-ink/20">·</span>
           <a href="/impressum" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/impressum'); setView({ type: 'impressum' }); window.scrollTo(0, 0) }} className="hover:text-green transition-colors">Impressum</a>
           <span className="text-ink/20">·</span>
           <a href="/datenschutz" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/datenschutz'); setView({ type: 'datenschutz' }); window.scrollTo(0, 0) }} className="hover:text-green transition-colors">Datenschutz</a>
