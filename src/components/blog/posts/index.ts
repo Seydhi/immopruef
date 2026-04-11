@@ -4,6 +4,14 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'expose-analyse-vor-besichtigung',
+    title: 'Exposé-Analyse vor der Besichtigung: So filtern Käufer Angebote effizienter',
+    description: 'Das 3-Stufen-Filtersystem: Grundcheck, Kennzahlen, Kontext-Recherche — so sparen Sie dutzende Stunden Fehlbesichtigungen.',
+    date: '11. April 2026',
+    readTime: '12 Min',
+    tags: ['Checkliste', 'Kaufratgeber'],
+  },
+  {
     slug: 'was-im-expose-fehlt',
     title: 'Was im Exposé oft fehlt: Welche Angaben Käufer aktiv einfordern sollten',
     description: 'Sanierungshistorie, Heizungsalter, WEG-Protokolle, Baulasten — 10 Angaben die in Exposés fehlen und warum Sie sie brauchen.',
@@ -154,4 +162,5 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.Com
   'hauskauf-vorbereiten': lazy(() => import('./hauskauf-vorbereiten')),
   'exposes-richtig-lesen': lazy(() => import('./exposes-richtig-lesen')),
   'was-im-expose-fehlt': lazy(() => import('./was-im-expose-fehlt')),
+  'expose-analyse-vor-besichtigung': lazy(() => import('./expose-analyse-vor-besichtigung')),
 }
