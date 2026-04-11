@@ -4,6 +4,14 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'exposes-richtig-lesen',
+    title: 'Immobilienkauf für Einsteiger: Wie Sie Exposés richtig lesen',
+    description: 'Quadratmeterpreis, Baujahr, Energieklasse, Hausgeld — die 5 wichtigsten Zahlen und was Einsteiger häufig über- oder unterschätzen.',
+    date: '11. April 2026',
+    readTime: '12 Min',
+    tags: ['Kaufratgeber'],
+  },
+  {
     slug: 'hauskauf-vorbereiten',
     title: 'Hauskauf vorbereiten: Welche Daten Sie vor der Besichtigung prüfen sollten',
     description: 'Exposé auswerten, Lage recherchieren, Finanzen durchrechnen — die 60-Minuten-Vorprüfung die Ihnen teure Fehlbesichtigungen erspart.',
@@ -136,4 +144,5 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.Com
   'sanierungsbedarf-erkennen': lazy(() => import('./sanierungsbedarf-erkennen')),
   'immobilien-vergleichen': lazy(() => import('./immobilien-vergleichen')),
   'hauskauf-vorbereiten': lazy(() => import('./hauskauf-vorbereiten')),
+  'exposes-richtig-lesen': lazy(() => import('./exposes-richtig-lesen')),
 }
