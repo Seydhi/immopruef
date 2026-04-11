@@ -4,6 +4,14 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'expose-verstehen',
+    title: 'Exposé verstehen: So lesen Käufer Immobilienangaben richtig',
+    description: 'Pflichtangaben vs. Werbung, Wohnfläche-Fallen, Maklersprache decoded — wie Sie jedes Exposé in 5 Minuten richtig einordnen.',
+    date: '11. April 2026',
+    readTime: '13 Min',
+    tags: ['Kaufratgeber'],
+  },
+  {
     slug: 'besichtigung-vorbereitung',
     title: 'Besichtigungs-Vorbereitung: Welche Fragen Käufer vor Ort unbedingt stellen sollten',
     description: '30+ konkrete Fragen für die Immobilienbesichtigung — sortiert nach 8 Themenbereichen, mit Erklärung warum jede Frage wichtig ist.',
@@ -235,4 +243,5 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.Com
   'baujahr-einordnen': lazy(() => import('./baujahr-einordnen')),
   'zustand-folgekosten': lazy(() => import('./zustand-folgekosten')),
   'besichtigung-vorbereitung': lazy(() => import('./besichtigung-vorbereitung')),
+  'expose-verstehen': lazy(() => import('./expose-verstehen')),
 }
