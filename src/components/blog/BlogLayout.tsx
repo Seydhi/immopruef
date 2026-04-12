@@ -7,6 +7,7 @@ export interface BlogMeta {
   date: string
   readTime: string
   tags: string[]
+  image?: string
 }
 
 interface BlogLayoutProps {
@@ -41,6 +42,17 @@ export default function BlogLayout({ meta, children }: BlogLayoutProps) {
           ))}
         </div>
       </header>
+
+      {meta.image && (
+        <div className="mb-8 rounded-xl overflow-hidden">
+          <img
+            src={meta.image}
+            alt={meta.title}
+            className="w-full h-48 sm:h-64 object-cover"
+            loading="eager"
+          />
+        </div>
+      )}
 
       <div className="prose-immo">
         {children}

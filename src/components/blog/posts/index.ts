@@ -10,6 +10,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '13 Min',
     tags: ['Checkliste', 'Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1560440021-33f9b867899d?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'immobilienkauf-mit-familie',
@@ -18,6 +19,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '14 Min',
     tags: ['Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'infrastruktur-pruefen',
@@ -26,6 +28,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '13 Min',
     tags: ['Standort', 'Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1464082354059-27db6ce50048?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'nebenkosten-laufende-kosten',
@@ -34,6 +37,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '14 Min',
     tags: ['Finanzierung', 'Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'bilder-im-expose-bewerten',
@@ -42,6 +46,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '13 Min',
     tags: ['Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'hausgeld-ruecklagen-sonderumlage',
@@ -50,6 +55,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '14 Min',
     tags: ['Finanzierung', 'Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'wohnflaeche-richtig-einordnen',
@@ -58,6 +64,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '13 Min',
     tags: ['Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1619468129361-605ebea04b44?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'grundriss-richtig-lesen',
@@ -66,6 +73,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '13 Min',
     tags: ['Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1619468129361-605ebea04b44?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'baujahr-und-modernisierung',
@@ -74,6 +82,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '14 Min',
     tags: ['Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'zustand-richtig-einschaetzen',
@@ -82,6 +91,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '14 Min',
     tags: ['Kaufratgeber', 'Checkliste'],
+    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'fehler-private-kaeufer',
@@ -90,6 +100,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '14 Min',
     tags: ['Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'einfamilienhaus-kaufen-expose',
@@ -98,6 +109,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '14 Min',
     tags: ['Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'eigentumswohnung-kaufen-expose',
@@ -106,6 +118,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '13 Min',
     tags: ['Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'daten-statt-bauchgefuehl',
@@ -114,6 +127,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '13 Min',
     tags: ['Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1560440021-33f9b867899d?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'immobilien-realistischer-einordnen',
@@ -122,6 +136,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '12 Min',
     tags: ['Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'expose-verstehen',
@@ -130,6 +145,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '13 Min',
     tags: ['Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1560440021-33f9b867899d?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'besichtigung-vorbereitung',
@@ -138,6 +154,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '13 Min',
     tags: ['Checkliste', 'Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'zustand-folgekosten',
@@ -146,6 +163,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '12 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
+    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'baujahr-einordnen',
@@ -154,6 +172,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '14 Min',
     tags: ['Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'immobilien-check-vor-kauf',
@@ -162,6 +181,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '12 Min',
     tags: ['Checkliste', 'Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1560440021-33f9b867899d?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'fehler-immobilienkauf',
@@ -170,6 +190,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '13 Min',
     tags: ['Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'hauskauf-mit-system',
@@ -178,6 +199,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '13 Min',
     tags: ['Checkliste', 'Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'immobilienbewertung-kaeufer',
@@ -186,6 +208,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '13 Min',
     tags: ['Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'angebotspreis-fair',
@@ -194,6 +217,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '12 Min',
     tags: ['Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'expose-analyse-vor-besichtigung',
@@ -202,6 +226,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '12 Min',
     tags: ['Checkliste', 'Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1560440021-33f9b867899d?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'was-im-expose-fehlt',
@@ -210,6 +235,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '12 Min',
     tags: ['Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1560440021-33f9b867899d?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'exposes-richtig-lesen',
@@ -218,6 +244,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '12 Min',
     tags: ['Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'hauskauf-vorbereiten',
@@ -226,6 +253,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '11 Min',
     tags: ['Checkliste', 'Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'immobilien-vergleichen',
@@ -234,6 +262,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '11 Min',
     tags: ['Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1464082354059-27db6ce50048?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'sanierungsbedarf-erkennen',
@@ -242,6 +271,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '12 Min',
     tags: ['Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'lagebewertung-hauskauf',
@@ -250,6 +280,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '11 Min',
     tags: ['Standort', 'Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1464082354059-27db6ce50048?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'kaufnebenkosten-immobilienkauf',
@@ -258,6 +289,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '10 Min',
     tags: ['Finanzierung', 'Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'energieausweis-expose',
@@ -266,6 +298,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '11 Min',
     tags: ['Energie', 'Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'warnsignale-expose',
@@ -274,6 +307,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '10 Min',
     tags: ['Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1560440021-33f9b867899d?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'quadratmeterpreis-bewerten',
@@ -282,6 +316,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '9 Min',
     tags: ['Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'expose-pruefen',
@@ -290,6 +325,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '10 Min',
     tags: ['Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'hauskauf-checkliste-2026',
@@ -298,6 +334,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '8 Min',
     tags: ['Checkliste', 'Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1560440021-33f9b867899d?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'kaufnebenkosten-berechnen',
@@ -306,6 +343,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '10. April 2026',
     readTime: '6 Min',
     tags: ['Finanzierung'],
+    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'energieausweis-verstehen',
@@ -314,6 +352,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '9. April 2026',
     readTime: '7 Min',
     tags: ['Energie'],
+    image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'immobilie-richtig-bewerten',
@@ -322,6 +361,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '8. April 2026',
     readTime: '9 Min',
     tags: ['Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'standortanalyse-immobilien',
@@ -330,6 +370,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '7. April 2026',
     readTime: '7 Min',
     tags: ['Standort'],
+    image: 'https://images.unsplash.com/photo-1464082354059-27db6ce50048?w=800&h=450&fit=crop&auto=format&q=80',
   },
   {
     slug: 'makler-anschreiben-tipps',
@@ -338,6 +379,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '6. April 2026',
     readTime: '5 Min',
     tags: ['Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=450&fit=crop&auto=format&q=80',
   },
 ]
 

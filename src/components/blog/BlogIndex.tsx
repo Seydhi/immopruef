@@ -21,8 +21,17 @@ export default function BlogIndex({ onNavigate }: BlogIndexProps) {
             className="text-left bg-white border border-ink/10 rounded-xl overflow-hidden hover:border-green/30 hover:shadow-md transition-all group flex flex-col"
           >
             {/* Thumbnail */}
-            <div className="h-36 bg-gradient-to-br from-green/10 to-green/5 flex items-center justify-center border-b border-ink/8">
-              <span className="text-4xl">{post.tags[0] === 'Kaufratgeber' ? '🏠' : post.tags[0] === 'Finanzierung' ? '💰' : post.tags[0] === 'Energie' ? '⚡' : post.tags[0] === 'Standort' ? '📍' : post.tags[0] === 'Recht' ? '⚖️' : post.tags[0] === 'Checkliste' ? '✅' : '📋'}</span>
+            <div className="h-36 bg-gradient-to-br from-green/10 to-green/5 flex items-center justify-center border-b border-ink/8 overflow-hidden">
+              {post.image ? (
+                <img
+                  src={post.image}
+                  alt={post.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
+              ) : (
+                <span className="text-4xl">{post.tags[0] === 'Kaufratgeber' ? '🏠' : post.tags[0] === 'Finanzierung' ? '💰' : post.tags[0] === 'Energie' ? '⚡' : post.tags[0] === 'Standort' ? '📍' : post.tags[0] === 'Recht' ? '⚖️' : post.tags[0] === 'Checkliste' ? '✅' : '📋'}</span>
+              )}
             </div>
 
             {/* Content */}
