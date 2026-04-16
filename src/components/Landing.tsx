@@ -10,6 +10,7 @@ import HeroSection from './landing/HeroSection'
 import FeatureGrid from './landing/FeatureGrid'
 import AnalysisPreview from './landing/AnalysisPreview'
 import FAQ, { FAQS } from './landing/FAQ'
+import BlogPreview from './landing/BlogPreview'
 
 export default function Landing() {
   useSEO({
@@ -205,6 +206,8 @@ export default function Landing() {
       <AnalysisPreview />
 
       <FAQ />
+
+      <BlogPreview />
     </>
   )
 }
