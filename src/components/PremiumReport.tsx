@@ -119,16 +119,18 @@ export default function PremiumReport({ report }: PremiumReportProps) {
             const max = Math.max(...report.preistrendHistorisch.zeitreihe.map(p => p.wertNum))
             const min = Math.min(...report.preistrendHistorisch.zeitreihe.map(p => p.wertNum))
             const range = max - min || 1
+            const MIN_BAR_PX = 24
+            const MAX_BAR_PX = 110
             return (
-              <div className="flex items-end gap-2 h-32 mb-2">
+              <div className="flex items-end gap-2 mb-2" style={{ minHeight: '160px' }}>
                 {report.preistrendHistorisch.zeitreihe.map((p, i) => {
-                  const heightPct = 30 + ((p.wertNum - min) / range) * 70
+                  const heightPx = MIN_BAR_PX + ((p.wertNum - min) / range) * (MAX_BAR_PX - MIN_BAR_PX)
                   return (
                     <div key={i} className="flex-1 flex flex-col items-center gap-1">
                       <div className="text-[10px] font-medium text-ink-mid">{p.wert.split(' ')[0]}</div>
                       <div
                         className="w-full bg-green/80 rounded-t-sm hover:bg-green transition-colors"
-                        style={{ height: `${heightPct}%` }}
+                        style={{ height: `${heightPx}px` }}
                       />
                       <div className="text-[10px] text-ink-light">{p.jahr}</div>
                     </div>
