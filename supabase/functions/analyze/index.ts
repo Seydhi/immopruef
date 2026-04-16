@@ -23,6 +23,39 @@ function jsonResponse(body: unknown, status = 200) {
 }
 
 // ═══════════════════════════════════════════════════════════════
+// SSRF-Protection: URL re-validation before sending to Claude
+// Even if create-checkout validated, an attacker could manipulate the DB row
+// directly (or via SQL-injection elsewhere) to make Claude fetch internal URLs
+// like http://localhost or http://169.254.169.254 (AWS metadata).
+// ═══════════════════════════════════════════════════════════════
+
+const ALLOWED_DOMAINS = [
+  'immobilienscout24.de',
+  'immowelt.de',
+  'immonet.de',
+  'kleinanzeigen.de',
+]
+
+function isAllowedListingUrl(input: string): boolean {
+  try {
+    const url = new URL(input)
+    if (url.protocol !== 'https:' && url.protocol !== 'http:') return false
+    // Block private/internal IPs explicitly (defense in depth)
+    const host = url.hostname.toLowerCase()
+    const PRIVATE_PATTERNS = [
+      'localhost', '127.', '0.0.0.0', '::1',
+      '10.', '172.16.', '172.17.', '172.18.', '172.19.',
+      '172.2', '172.30.', '172.31.',  // 172.16-31
+      '192.168.', '169.254.',
+    ]
+    if (PRIVATE_PATTERNS.some(p => host === p.replace(/\.$/, '') || host.startsWith(p))) return false
+    return ALLOWED_DOMAINS.some(d => host === d || host.endsWith('.' + d))
+  } catch {
+    return false
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
 // System Prompts
 // ═══════════════════════════════════════════════════════════════
 
@@ -429,54 +462,10 @@ interface AIResponse {
   result: unknown
 }
 
-async function callOpenAI(systemPrompt: string, userMessage: string, maxTokens: number): Promise<AIResponse> {
-  const apiKey = Deno.env.get('OPENAI_API_KEY')!
-  console.log('Using OpenAI GPT-4o with web search (test mode)')
-
-  // Web Search + JSON mode can't be combined — use web search, extract JSON manually
-  const response = await fetch('https://api.openai.com/v1/responses', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${apiKey}`,
-    },
-    body: JSON.stringify({
-      model: 'gpt-4o',
-      instructions: systemPrompt + '\n\nAntworte AUSSCHLIESSLICH mit validem JSON. Kein Text vor oder nach dem JSON.',
-      input: userMessage,
-      tools: [{ type: 'web_search_preview' }],
-      max_output_tokens: maxTokens,
-    }),
-  })
-
-  if (!response.ok) {
-    const errBody = await response.text()
-    console.error(`OpenAI API error: ${errBody}`)
-    throw new Error(`OpenAI API error: ${response.status} — ${errBody}`)
-  }
-
-  const data = await response.json()
-
-  // Extract text from output items
-  let text = ''
-  for (const item of (data.output || [])) {
-    if (item.type === 'message') {
-      for (const content of (item.content || [])) {
-        if (content.type === 'output_text') {
-          text = content.text
-        }
-      }
-    }
-  }
-
-  if (!text) {
-    console.error('OpenAI response:', JSON.stringify(data).slice(0, 1000))
-    throw new Error('No text output from OpenAI')
-  }
-
-  console.log(`OpenAI response: ${text.length} chars`)
-  return { result: parseJson(text) }
-}
+// Note: callOpenAI fallback was removed — endpoint /v1/responses doesn't exist on
+// OpenAI API and the silent failure could have charged customers without delivering.
+// Claude-only path is now enforced. If a fallback is ever needed, use Anthropic's
+// own model fallback (e.g. Sonnet → Opus) or a different OpenAI endpoint.
 
 async function callClaude(
   systemPrompt: string,
@@ -699,6 +688,16 @@ serve(async (req) => {
     const analysis = nextPending
     {
       try {
+        // SSRF-Protection: re-validate URL before passing to Claude
+        if (!isAllowedListingUrl(analysis.url)) {
+          console.error(`Rejected non-allowed URL for analysis ${analysis.id}: ${analysis.url}`)
+          await supabase.from('analyses').update({
+            status: 'failed',
+            result: { error: 'URL ist nicht von einem unterstützten Portal' },
+          }).eq('id', analysis.id)
+          return jsonResponse({ error: 'Invalid URL' }, 400)
+        }
+
         await supabase.from('analyses').update({ status: 'processing' }).eq('id', analysis.id)
 
         const opts = analysis.options as { makleranschreiben: boolean; verhandlungstipps: boolean; risiken: boolean }
@@ -795,27 +794,18 @@ WICHTIG:
 - Antworte ausschließlich mit JSON.`
         }
 
-        // Call Claude Sonnet (primary) with GPT-4o fallback
+        // Call Claude Sonnet (primary). OpenAI fallback removed — endpoint was broken
+        // and silent failure could have charged customers without delivering analysis.
+        // If Claude fails, the outer retry-loop handles it.
         let result: unknown
-        try {
-          console.log('Calling Claude Sonnet 4 (primary)...')
-          const claudeResult = await callClaude(systemPrompt, userMessage, maxTokens, anthropicKey, isPremium)
-          result = claudeResult.result
+        console.log('Calling Claude Sonnet 4 (primary)...')
+        const claudeResult = await callClaude(systemPrompt, userMessage, maxTokens, anthropicKey, isPremium)
+        result = claudeResult.result
 
-          // Validate result completeness
-          const warnings = validateResult(result as Record<string, unknown>)
-          if (warnings.length > 0) {
-            console.warn(`Validation warnings (${warnings.length}):`, warnings.join('; '))
-          }
-        } catch (claudeErr) {
-          console.warn('Claude failed, falling back to GPT-4o:', claudeErr)
-          try {
-            const gptResult = await callOpenAI(systemPrompt, userMessage, maxTokens)
-            result = gptResult.result
-          } catch (gptErr) {
-            console.error('GPT-4o fallback also failed:', gptErr)
-            throw gptErr
-          }
+        // Validate result completeness
+        const warnings = validateResult(result as Record<string, unknown>)
+        if (warnings.length > 0) {
+          console.warn(`Validation warnings (${warnings.length}):`, warnings.join('; '))
         }
 
         await supabase
@@ -847,14 +837,8 @@ ${isPremium ? '- Premium-Report: ja' : ''}
 
 WICHTIG: Verwende Exposé-Daten und recherchierte Regionsdurchschnitte. JEDES Feld braucht einen Wert. Antworte mit JSON.`
 
-            // Retry: try Claude first, then GPT-4o
-            let retryResult: unknown
-            try {
-              retryResult = (await callClaude(systemPrompt, retryMessage, maxTokens, anthropicKey, isPremium)).result
-            } catch {
-              console.warn(`Retry ${retry}: Claude failed, trying GPT-4o...`)
-              retryResult = (await callOpenAI(systemPrompt, retryMessage, maxTokens)).result
-            }
+            // Retry: only Claude (OpenAI fallback removed — endpoint was broken)
+            const retryResult = (await callClaude(systemPrompt, retryMessage, maxTokens, anthropicKey, isPremium)).result
 
             await supabase.from('analyses').update({ result: retryResult, status: 'completed' }).eq('id', analysis.id)
             retrySuccess = true

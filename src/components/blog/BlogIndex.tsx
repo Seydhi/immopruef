@@ -49,8 +49,11 @@ export default function BlogIndex({ onNavigate }: BlogIndexProps) {
                 <img
                   src={post.image}
                   alt={post.title}
+                  width={400}
+                  height={144}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   loading="lazy"
+                  decoding="async"
                 />
               ) : (
                 <span className="text-4xl">{post.tags[0] === 'Kaufratgeber' ? '🏠' : post.tags[0] === 'Finanzierung' ? '💰' : post.tags[0] === 'Energie' ? '⚡' : post.tags[0] === 'Standort' ? '📍' : post.tags[0] === 'Recht' ? '⚖️' : post.tags[0] === 'Checkliste' ? '✅' : '📋'}</span>

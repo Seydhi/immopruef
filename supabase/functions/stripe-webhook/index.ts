@@ -80,33 +80,46 @@ serve(async (req) => {
     if (event.type === 'checkout.session.completed') {
       const session = event.data.object
 
+      // CRITICAL: Stripe fires checkout.session.completed even when payment is still pending
+      // (e.g. async payment methods). Only accept if payment is actually confirmed.
+      if (session.payment_status !== 'paid') {
+        console.log(`Skipping: payment_status=${session.payment_status} (not yet confirmed)`)
+        return new Response('OK', { status: 200 })
+      }
+
+      // Email format validation — defense in depth
+      const email = (session.customer_details?.email || '').trim()
+      const EMAIL_RE = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+      if (!email || !EMAIL_RE.test(email) || email.length > 254) {
+        console.error('Invalid email in webhook:', email)
+        return new Response('Invalid email', { status: 400 })
+      }
+
       const supabase = createClient(
         Deno.env.get('SUPABASE_URL')!,
         Deno.env.get('SB_SERVICE_ROLE_KEY')!
       )
 
-      // Idempotency check
-      const { error: idempotencyErr } = await supabase
-        .from('processed_events')
-        .insert({ event_id: event.id })
+      // Idempotency check — only skip on true duplicates (same event fully processed)
+      // Partial-failure recovery: if we haven't marked order paid yet, allow retry
+      const sessionId = session.id
 
-      if (idempotencyErr) {
-        console.log('Duplicate event, skipping:', event.id)
+      const { data: existingOrder } = await supabase
+        .from('orders')
+        .select('id, package, status')
+        .eq('stripe_session_id', sessionId)
+        .single()
+
+      if (existingOrder?.status === 'paid' || existingOrder?.status === 'processing' || existingOrder?.status === 'completed') {
+        // Already processed this session — record event for deduplication then skip
+        await supabase.from('processed_events').insert({ event_id: event.id }).catch(() => {})
+        console.log(`Order already ${existingOrder.status}, skipping:`, sessionId)
         return new Response('OK', { status: 200 })
       }
 
-      // Mark order as paid, store email
-      const email = session.customer_details?.email || ''
-      const sessionId = session.id
+      const orderData = existingOrder
 
       console.log(`Marking order paid: session=${sessionId}, email=${email}`)
-
-      // Get order details before updating
-      const { data: orderData } = await supabase
-        .from('orders')
-        .select('id, package')
-        .eq('stripe_session_id', sessionId)
-        .single()
 
       const { data: updated, error: updateErr } = await supabase
         .from('orders')
@@ -117,9 +130,16 @@ serve(async (req) => {
 
       if (updateErr) {
         console.error('Failed to update order:', updateErr)
-      } else {
-        console.log(`Order updated:`, updated)
+        return new Response('DB error', { status: 500 })  // force Stripe retry
       }
+      if (!updated || updated.length === 0) {
+        console.warn('Update matched 0 rows — race or wrong status:', sessionId)
+        return new Response('OK', { status: 200 })
+      }
+      console.log(`Order updated:`, updated)
+
+      // Mark event processed AFTER successful order update
+      await supabase.from('processed_events').insert({ event_id: event.id }).catch(() => {})
 
       // ═══════════════════════════════════════════════════════
       // Send instant confirmation email

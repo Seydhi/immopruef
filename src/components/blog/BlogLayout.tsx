@@ -24,9 +24,14 @@ function germanDateToIso(date: string): string {
     Juli: '07', August: '08', September: '09', Oktober: '10', November: '11', Dezember: '12',
   }
   const m = date.match(/(\d+)\.\s*([A-Za-zäöüÄÖÜ]+)\s*(\d{4})/)
-  if (!m) return new Date().toISOString()
+  if (!m || !months[m[2]]) {
+    // Wichtig: Fallback auf "today" macht Schema.org-Daten inkonsistent.
+    // Bessere Lösung: Loggen damit Fehler sichtbar werden, festes Fallback-Datum nutzen.
+    console.warn(`[BlogLayout] Unparseable date "${date}" — using fallback 2026-01-01`)
+    return '2026-01-01T08:00:00+02:00'
+  }
   const day = m[1].padStart(2, '0')
-  const month = months[m[2]] || '01'
+  const month = months[m[2]]
   const year = m[3]
   return `${year}-${month}-${day}T08:00:00+02:00`
 }
@@ -105,12 +110,15 @@ export default function BlogLayout({ meta, children }: BlogLayoutProps) {
       </header>
 
       {meta.image && (
-        <div className="mb-8 rounded-xl overflow-hidden">
+        <div className="mb-8 rounded-xl overflow-hidden" style={{ aspectRatio: '16 / 9' }}>
           <img
             src={meta.image}
             alt={meta.title}
+            width={800}
+            height={450}
             className="w-full h-48 sm:h-64 object-cover"
             loading="eager"
+            decoding="async"
           />
         </div>
       )}
@@ -136,8 +144,11 @@ export default function BlogLayout({ meta, children }: BlogLayoutProps) {
                     <img
                       src={p.image}
                       alt={p.title}
+                      width={400}
+                      height={96}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       loading="lazy"
+                      decoding="async"
                     />
                   </div>
                 )}

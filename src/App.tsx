@@ -7,6 +7,7 @@ import LoadingView from './components/LoadingView'
 import ResultsView from './components/ResultsView'
 import AnalysisResultView from './components/AnalysisResult'
 import Toast from './components/Toast'
+import ErrorBoundary from './components/ErrorBoundary'
 import Impressum from './components/legal/Impressum'
 import Datenschutz from './components/legal/Datenschutz'
 import AGB from './components/legal/AGB'
@@ -59,7 +60,9 @@ export default function App() {
         }
         // processing
         await new Promise((r) => setTimeout(r, 5000))
-      } catch {
+      } catch (err) {
+        // Polling failed (network/server). Wait then retry — don't crash UI.
+        console.warn('[startPolling] poll failed, retrying:', err)
         await new Promise((r) => setTimeout(r, 5000))
       }
     }
@@ -142,17 +145,21 @@ export default function App() {
         )}
 
         {view.type === 'results' && (
-          <ResultsView analyses={view.order.analyses} onBack={handleBack} />
+          <ErrorBoundary context="results-view">
+            <ResultsView analyses={view.order.analyses} onBack={handleBack} />
+          </ErrorBoundary>
         )}
 
         {view.type === 'permalink' && view.analysis.result && (
-          <div>
-            <AnalysisResultView
-              result={view.analysis.result}
-              options={view.analysis.options}
-              url={view.analysis.url}
-            />
-          </div>
+          <ErrorBoundary context="permalink-analysis">
+            <div>
+              <AnalysisResultView
+                result={view.analysis.result}
+                options={view.analysis.options}
+                url={view.analysis.url}
+              />
+            </div>
+          </ErrorBoundary>
         )}
 
         {view.type === 'error' && (
@@ -203,11 +210,13 @@ export default function App() {
             )
           }
           return (
-            <Suspense fallback={<div className="text-center py-16 text-ink-light text-sm">Artikel wird geladen...</div>}>
-              <BlogLayout meta={meta}>
-                <PostComponent />
-              </BlogLayout>
-            </Suspense>
+            <ErrorBoundary context={`blog-post:${view.slug}`}>
+              <Suspense fallback={<div className="text-center py-16 text-ink-light text-sm">Artikel wird geladen...</div>}>
+                <BlogLayout meta={meta}>
+                  <PostComponent />
+                </BlogLayout>
+              </Suspense>
+            </ErrorBoundary>
           )
         })()}
       </main>

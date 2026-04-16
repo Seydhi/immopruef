@@ -145,7 +145,8 @@ export function articleSchema(opts: {
       logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo.png` },
     },
     mainEntityOfPage: { '@type': 'WebPage', '@id': opts.url },
-    keywords: opts.tags?.join(', '),
+    // Schema.org accepts both array and CSV — array is preferred per spec
+    keywords: opts.tags && opts.tags.length > 0 ? opts.tags : undefined,
     inLanguage: 'de-DE',
   }
 }
