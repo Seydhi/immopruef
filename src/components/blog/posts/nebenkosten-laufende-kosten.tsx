@@ -5,7 +5,7 @@ export default function NebenkostenLaufendeKosten() {
         Kaufnebenkosten zahlen Sie einmal. Laufende Kosten zahlen Sie jeden Monat — 20, 25, 30 Jahre lang. Trotzdem konzentrieren sich die meisten Käufer auf den Kaufpreis und die Nebenkosten und vergessen die monatliche Belastung die nach dem Einzug beginnt. Dabei entscheiden die laufenden Kosten oft stärker über die wirtschaftliche Tragbarkeit als der Kaufpreis selbst.
       </p>
       <p>
-        Dieser Ratgeber trennt einmalige und laufende Kosten sauber voneinander, zeigt die typischen Beträge und erklärt, warum beide zusammen betrachtet werden müssen.
+        Dieser Ratgeber trennt einmalige und laufende Kosten sauber voneinander, zeigt die typischen Beträge und erklärt, warum beide zusammen betrachtet werden müssen. Die einmaligen Posten beim Kauf behandelt <a href="/blog/kaufnebenkosten-immobilienkauf">Kaufnebenkosten beim Immobilienkauf</a>; bei Eigentumswohnungen kommt zusätzlich Hausgeld dazu — Details in <a href="/blog/hausgeld-ruecklagen-sonderumlage">Hausgeld, Rücklagen, Sonderumlage</a>.
       </p>
 
       <h2>Die zwei Kostenblöcke auf einen Blick</h2>

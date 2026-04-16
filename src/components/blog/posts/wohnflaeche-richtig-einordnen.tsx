@@ -5,7 +5,7 @@ export default function WohnflaecheRichtigEinordnen() {
         90 Quadratmeter. Das klingt nach genug Platz für eine Familie. Aber wenn 18 m² auf Flure entfallen, das Schlafzimmer unter der Dachschräge nur halb nutzbar ist und der Balkon mit 12 m² voll in die Wohnfläche eingerechnet wurde, bleiben vielleicht 60 m² wirklich nutzbarer Raum. Die Quadratmeterzahl im Exposé ist eine Zahl — was sie bedeutet, hängt von mindestens sechs Faktoren ab.
       </p>
       <p>
-        Dieser Ratgeber zeigt, warum Wohnfläche allein wenig aussagt und wie Sie die tatsächliche Nutzbarkeit einer Immobilie einschätzen.
+        Dieser Ratgeber zeigt, warum Wohnfläche allein wenig aussagt und wie Sie die tatsächliche Nutzbarkeit einer Immobilie einschätzen. Die Raumaufteilung selbst lesen Sie mit <a href="/blog/grundriss-richtig-lesen">Grundriss im Exposé richtig lesen</a>; was Bilder im Exposé über den realen Eindruck verzerren, behandelt <a href="/blog/bilder-im-expose-bewerten">Bilder im Exposé richtig bewerten</a>.
       </p>
 
       <h2>WoFlV vs. DIN 277: Zwei Zahlen, eine Wohnung</h2>

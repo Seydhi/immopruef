@@ -5,7 +5,7 @@ export default function SanierungsbedarfErkennen() {
         Im Exposé steht "gepflegtes Objekt in gutem Zustand". Doch hinter dieser Formulierung kann eine Immobilie stecken, die in den nächsten fünf Jahren 50.000 € oder mehr an Sanierung verschlingt. Die gute Nachricht: Viele Hinweise auf versteckten Sanierungsbedarf lassen sich bereits aus dem Exposé ablesen — wenn man weiß, worauf man achten muss.
       </p>
       <p>
-        In diesem Ratgeber zeigen wir, welche Exposé-Angaben auf absehbaren Sanierungsbedarf hindeuten, welche Kosten typischerweise anfallen und wann Sie einen Sachverständigen einschalten sollten.
+        In diesem Ratgeber zeigen wir, welche Exposé-Angaben auf absehbaren Sanierungsbedarf hindeuten, welche Kosten typischerweise anfallen und wann Sie einen Sachverständigen einschalten sollten. Hintergrund zur Bauepoche liefert <a href="/blog/baujahr-einordnen">Baujahr richtig einordnen</a>; die langfristigen finanziellen Folgen rechnet <a href="/blog/zustand-folgekosten">Zustand und Folgekosten</a> durch.
       </p>
 
       <h2>Baujahr: Der erste und wichtigste Indikator</h2>

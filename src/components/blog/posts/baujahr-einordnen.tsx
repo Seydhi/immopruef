@@ -5,7 +5,7 @@ export default function BaujahrEinordnen() {
         "Baujahr 1972" — für die meisten Käufer ist das eine nackte Zahl. Dabei verrät das Baujahr mehr über eine Immobilie als fast jede andere Angabe im Exposé: welche Baumaterialien verwendet wurden, welcher energetische Standard galt, welche Grundrissphilosophie herrschte und welche Schwachstellen typisch sind. Wer das Baujahr richtig liest, erkennt Sanierungsbedarf bevor er die Immobilie überhaupt betritt.
       </p>
       <p>
-        Gleichzeitig gilt: Das Baujahr allein sagt nicht alles. Ein Haus von 1975 das 2020 kernsaniert wurde, ist technisch jünger als ein Neubau von 2005 ohne jede Wartung. Entscheidend ist immer die Kombination aus Baujahr und Sanierungshistorie.
+        Gleichzeitig gilt: Das Baujahr allein sagt nicht alles. Ein Haus von 1975 das 2020 kernsaniert wurde, ist technisch jünger als ein Neubau von 2005 ohne jede Wartung. Entscheidend ist immer die Kombination aus Baujahr und Sanierungshistorie — wie genau Sie beides zusammen bewerten, zeigt <a href="/blog/baujahr-und-modernisierung">Baujahr und Modernisierung: Wie Käufer beides zusammen bewerten sollten</a>. Konkrete Sanierungssignale aus dem Exposé behandelt <a href="/blog/sanierungsbedarf-erkennen">Sanierungsbedarf erkennen</a>.
       </p>
 
       <h2>Die Bauepochen und ihre Merkmale</h2>

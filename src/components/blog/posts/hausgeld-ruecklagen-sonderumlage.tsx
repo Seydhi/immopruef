@@ -5,7 +5,7 @@ export default function HausgeldRuecklagenSonderumlage() {
         Der Kaufpreis steht im Exposé. Das Hausgeld manchmal auch. Was dort fast nie steht: wie sich das Hausgeld zusammensetzt, wie hoch die Instandhaltungsrücklage ist und ob in den nächsten Jahren eine Sonderumlage droht. Dabei entscheiden genau diese drei Faktoren ob Ihre Eigentumswohnung wirtschaftlich funktioniert — oder ob Sie nach dem Kauf mit fünfstelligen Nachforderungen überrascht werden.
       </p>
       <p>
-        Dieser Ratgeber erklärt Hausgeld, Rücklage und Sonderumlage verständlich und zeigt, welche Unterlagen Sie vor dem Kauf unbedingt einfordern sollten.
+        Dieser Ratgeber erklärt Hausgeld, Rücklage und Sonderumlage verständlich und zeigt, welche Unterlagen Sie vor dem Kauf unbedingt einfordern sollten. Wer eine ETW kauft, findet die spezifischen Exposé-Prüfpunkte in <a href="/blog/eigentumswohnung-kaufen-expose">Eigentumswohnung kaufen</a>; die Abgrenzung zu allen anderen monatlichen Kosten leistet <a href="/blog/nebenkosten-laufende-kosten">Nebenkosten und laufende Kosten unterscheiden</a>.
       </p>
 
       <h2>Hausgeld: Ihre monatliche Pflicht als Eigentümer</h2>

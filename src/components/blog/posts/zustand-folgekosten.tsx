@@ -5,7 +5,7 @@ export default function ZustandFolgekosten() {
         Das Exposé zeigt eine 3-Zimmer-Wohnung für 220.000 € — deutlich unter dem Marktdurchschnitt. Ein Schnäppchen? Vielleicht. Oder eine Kostenfalle die sich über die nächsten 10 Jahre in 50.000 € Zusatzkosten verwandelt. Denn was im Exposé günstig aussieht, wird in der Praxis teuer wenn Heizung, Fenster, Dach und Elektrik am Ende sind.
       </p>
       <p>
-        Dieser Ratgeber zeigt, warum der Zustand einer Immobilie wichtiger ist als ihr Kaufpreis — und wie Sie die wahren Kosten eines Angebots berechnen bevor Sie unterschreiben.
+        Dieser Ratgeber zeigt, warum der Zustand einer Immobilie wichtiger ist als ihr Kaufpreis — und wie Sie die wahren Kosten eines Angebots berechnen bevor Sie unterschreiben. Was Exposé und Besichtigung über den Zustand verraten, behandelt <a href="/blog/zustand-richtig-einschaetzen">Zustand richtig einschätzen</a>; konkrete Sanierungssignale erkennen Sie mit <a href="/blog/sanierungsbedarf-erkennen">Sanierungsbedarf erkennen</a>.
       </p>
 
       <h2>Die Rechnung die viele Käufer nicht machen</h2>

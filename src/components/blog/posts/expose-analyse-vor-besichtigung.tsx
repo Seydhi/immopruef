@@ -5,7 +5,7 @@ export default function ExposeAnalyseVorBesichtigung() {
         Wer aktiv nach einer Immobilie sucht, kennt das Problem: Dutzende Exposés pro Woche, jedes klingt vielversprechend, aber die Besichtigung zeigt dann ein völlig anderes Bild. Jede unnötige Besichtigung kostet Zeit, Nerven und manchmal sogar Urlaubstage. Die Lösung ist nicht mehr Besichtigungen, sondern bessere Vorauswahl.
       </p>
       <p>
-        In diesem Ratgeber zeigen wir, wie Sie Exposés systematisch analysieren, unpassende Angebote vor der Besichtigung aussortieren und mit konkreten Fragen in den Ortstermin gehen.
+        In diesem Ratgeber zeigen wir, wie Sie Exposés systematisch analysieren, unpassende Angebote vor der Besichtigung aussortieren und mit konkreten Fragen in den Ortstermin gehen. Die ergänzende Vorprüfung am Schreibtisch behandelt <a href="/blog/hauskauf-vorbereiten">Hauskauf vorbereiten: 60-Minuten-Vorprüfung</a>, die systematische Exposé-Auswertung <a href="/blog/expose-pruefen">Immobilien-Exposé prüfen</a>.
       </p>
 
       <h2>Warum die meisten Käufer zu viel besichtigen</h2>

@@ -5,7 +5,7 @@ export default function ExposeVerstehen() {
         Kaufpreis, Wohnfläche, Energieklasse D, Baujahr 1978, "gepflegter Zustand in beliebter Lage" — ein typisches Immobilien-Exposé enthält dutzende Angaben. Manche sind Pflicht, manche Werbung, manche entscheidungsrelevant und manche bewusst vage. Wer nicht weiß, was was ist, übersieht das Wichtige und lässt sich vom Unwichtigen beeindrucken.
       </p>
       <p>
-        Dieser Ratgeber erklärt die Bestandteile eines Exposés verständlich — was jede Angabe bedeutet, welche Sie ernst nehmen sollten und welche Sie hinterfragen müssen.
+        Dieser Ratgeber erklärt die Bestandteile eines Exposés verständlich — was jede Angabe bedeutet, welche Sie ernst nehmen sollten und welche Sie hinterfragen müssen. Eine systematische Prüfungs-Checkliste finden Sie in <a href="/blog/expose-pruefen">Immobilien-Exposé prüfen</a>; was im Exposé typischerweise weggelassen wird, behandelt <a href="/blog/was-im-expose-fehlt">Was im Exposé oft fehlt</a>.
       </p>
 
       <h2>Die drei Informationsebenen eines Exposés</h2>

@@ -5,7 +5,7 @@ export default function BaujahrUndModernisierung() {
         Baujahr 1978 — ein Warnsignal? Oder ein Haus das nach drei Sanierungsrunden technisch auf Neubauniveau ist? Baujahr 2008 — sorgenlos? Oder ein Gebäude dessen Heizung in zwei Jahren getauscht werden muss? Die Antwort hängt davon ab, was seit dem Bau passiert ist. Und genau diese Information fehlt in den meisten Exposés.
       </p>
       <p>
-        Dieser Ratgeber zeigt, wie Sie Baujahr und Modernisierung als Einheit bewerten, welche Kombinationen günstig sind und welche teuer werden — und wie Sie die fehlenden Informationen einfordern.
+        Dieser Ratgeber zeigt, wie Sie Baujahr und Modernisierung als Einheit bewerten, welche Kombinationen günstig sind und welche teuer werden — und wie Sie die fehlenden Informationen einfordern. Eine reine Bauepochen-Einordnung liefert <a href="/blog/baujahr-einordnen">Baujahr richtig einordnen</a>; was bei schlechter Sanierungslage absehbar wird, behandelt <a href="/blog/sanierungsbedarf-erkennen">Sanierungsbedarf erkennen</a>.
       </p>
 
       <h2>Warum Baujahr allein nicht reicht</h2>

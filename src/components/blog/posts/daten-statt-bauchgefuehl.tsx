@@ -5,7 +5,7 @@ export default function DatenStattBauchgefuehl() {
         Die Wohnung fühlt sich richtig an. Helle Räume, netter Balkon, der Makler ist sympathisch. Sie können sich vorstellen, hier zu leben. Aber ist das eine Grundlage für eine 350.000-€-Entscheidung? Gefühle sind wichtig — sie sagen Ihnen, ob Sie sich wohlfühlen. Aber sie sagen Ihnen nicht, ob der Preis stimmt, das Dach dicht ist oder in drei Jahren eine Sonderumlage kommt.
       </p>
       <p>
-        Dieser Ratgeber zeigt, welche Daten Sie brauchen um Immobilien fundiert zu bewerten, warum Bauchgefühl allein nicht reicht und wie beides zusammen zu besseren Entscheidungen führt.
+        Dieser Ratgeber zeigt, welche Daten Sie brauchen um Immobilien fundiert zu bewerten, warum Bauchgefühl allein nicht reicht und wie beides zusammen zu besseren Entscheidungen führt. Den Vergleich mehrerer Objekte strukturiert <a href="/blog/immobilien-vergleichen">Immobilien vergleichen</a>; warum einzelne Kennzahlen täuschen, behandelt <a href="/blog/immobilien-realistischer-einordnen">Immobilien realistischer einordnen</a>.
       </p>
 
       <h2>Warum Bauchgefühl bei Immobilien versagt</h2>

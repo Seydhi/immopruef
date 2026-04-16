@@ -10,7 +10,7 @@ export default function QuadratmeterpreisBewerten() {
         Viele Käufer vergleichen den Quadratmeterpreis einer Immobilie mit dem regionalen Durchschnitt und ziehen daraus Schlüsse. Das Problem: Durchschnittswerte vermischen Neubauten mit Altbauten, Dachgeschosswohnungen mit Erdgeschoss, sanierte Objekte mit unsanierten. Ein Vergleich ohne Kontext ist wie ein Preisvergleich zwischen einem Neuwagen und einem Gebrauchtwagen — die Zahl allein sagt nichts über den Wert.
       </p>
       <p>
-        Anfang 2026 lagen die durchschnittlichen Quadratmeterpreise in Deutschland bei rund 3.520 €/m² für Eigentumswohnungen und 3.009 €/m² für Einfamilienhäuser im Bestand. In München werden jedoch über 9.000 €/m² aufgerufen, während in Teilen Sachsen-Anhalts unter 1.200 €/m² üblich sind.
+        Anfang 2026 lagen die durchschnittlichen Quadratmeterpreise in Deutschland bei rund 3.520 €/m² für Eigentumswohnungen und 3.009 €/m² für Einfamilienhäuser im Bestand. In München werden jedoch über 9.000 €/m² aufgerufen, während in Teilen Sachsen-Anhalts unter 1.200 €/m² üblich sind. Wer den Gesamtpreis prüfen möchte, findet in <a href="/blog/angebotspreis-fair">Angebotspreis fair?</a> drei Methoden zur Preiseinordnung; die Faktoren hinter dem Wert behandelt <a href="/blog/immobilienbewertung-kaeufer">Immobilienbewertung für Käufer</a>.
       </p>
 
       <h2>Diese 7 Faktoren beeinflussen den fairen Quadratmeterpreis</h2>

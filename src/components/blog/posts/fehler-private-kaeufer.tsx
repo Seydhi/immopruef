@@ -5,7 +5,7 @@ export default function FehlerPrivateKaeufer() {
         Private Käufer haben einen systematischen Nachteil: Sie kaufen ein- oder zweimal im Leben eine Immobilie, während die Gegenseite — Makler und Verkäufer — den Markt täglich erlebt. Dieses Erfahrungsgefälle führt zu Fehlern die sich vermeiden ließen. Nicht weil private Käufer dumm sind, sondern weil ihnen die Routine fehlt und Emotionen die Analyse übernehmen.
       </p>
       <p>
-        Dieser Ratgeber beschreibt die häufigsten Fehler privater Käufer, zeigt ihre finanziellen Folgen und gibt konkrete Strategien dagegen.
+        Dieser Ratgeber beschreibt die häufigsten Fehler privater Käufer, zeigt ihre finanziellen Folgen und gibt konkrete Strategien dagegen. Eine breitere Übersicht aller typischen Käuferfehler liefert <a href="/blog/fehler-immobilienkauf">Fehler beim Immobilienkauf</a>; den strukturierten 5-Phasen-Kaufprozess als Gegenentwurf zeigt <a href="/blog/hauskauf-mit-system">Hauskauf mit System</a>.
       </p>
 
       <h2>Fehler 1: Zu schnelle emotionale Bindung</h2>

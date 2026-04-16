@@ -5,7 +5,7 @@ export default function HauskaufMitSystem() {
         Die meisten Immobilienkäufe beginnen mit Begeisterung und enden mit Unterschrift beim Notar — dazwischen liegt oft erstaunlich wenig Struktur. Man besichtigt, findet es "irgendwie gut", lässt sich vom Makler mitreißen und entscheidet am Ende nach Bauchgefühl über die größte Investition des Lebens. Das muss nicht schiefgehen. Aber es geht häufiger schief als nötig.
       </p>
       <p>
-        Dieser Ratgeber zeigt, wie ein systematischer Kaufprozess aussieht — vom ersten Exposé bis zur finalen Entscheidung. Kein Bürokratie-Monster, sondern ein praktikabler Rahmen, der Fehlentscheidungen reduziert und bessere Verhandlungen ermöglicht.
+        Dieser Ratgeber zeigt, wie ein systematischer Kaufprozess aussieht — vom ersten Exposé bis zur finalen Entscheidung. Kein Bürokratie-Monster, sondern ein praktikabler Rahmen, der Fehlentscheidungen reduziert und bessere Verhandlungen ermöglicht. Den 30-Minuten Schnell-Check pro Objekt liefert <a href="/blog/immobilien-check-vor-kauf">Immobilien-Check vor dem Kauf</a>; die richtigen Fragen vor Ort behandelt <a href="/blog/besichtigung-vorbereitung">Besichtigungs-Vorbereitung</a>.
       </p>
 
       <h2>Warum System besser ist als Bauchgefühl</h2>

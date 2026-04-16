@@ -5,7 +5,7 @@ export default function GrundrissRichtigLesen() {
         Der Grundriss ist das ehrlichste Element eines Exposés. Fotos lügen (Weitwinkel), Beschreibungen übertreiben ("großzügig geschnittenes Wohnzimmer"), aber der Grundriss zeigt die Wahrheit: Wie groß ist der Raum wirklich? Passt ein Doppelbett ins Schlafzimmer? Muss man durch die Küche um zum Balkon zu kommen? Trotzdem überfliegen die meisten Käufer den Grundriss nur kurz — und stehen bei der Besichtigung vor Überraschungen.
       </p>
       <p>
-        Dieser Ratgeber zeigt, wie Sie einen Grundriss richtig lesen, welche Probleme Sie daraus erkennen und welche Fragen sich aus einem kritischen Blick ergeben.
+        Dieser Ratgeber zeigt, wie Sie einen Grundriss richtig lesen, welche Probleme Sie daraus erkennen und welche Fragen sich aus einem kritischen Blick ergeben. Warum die nominelle Wohnfläche täuschen kann, behandelt <a href="/blog/wohnflaeche-richtig-einordnen">Wohnfläche richtig einordnen</a>; was die Bilder zusätzlich verraten oder verbergen, klärt <a href="/blog/bilder-im-expose-bewerten">Bilder im Exposé richtig bewerten</a>.
       </p>
 
       <h2>Grundriss-Basics: Was die Symbole bedeuten</h2>

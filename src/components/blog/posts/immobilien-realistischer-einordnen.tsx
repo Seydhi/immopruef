@@ -5,7 +5,7 @@ export default function ImmobilienRealistischerEinordnen() {
         3.200 €/m² — ist das günstig oder teuer? Baujahr 1985 — ist das alt oder noch okay? Energieklasse D — ist das schlecht oder Durchschnitt? Jede dieser Kennzahlen klingt eindeutig. Keine davon ist es. Denn jede Zahl erzählt nur einen Teil der Geschichte, und wer den Teil für das Ganze hält, trifft Fehlentscheidungen.
       </p>
       <p>
-        Dieser Ratgeber zeigt, warum einzelne Kennzahlen täuschen, welche Fehlschlüsse sie provozieren und wie Sie aus vielen Einzelwerten eine realistische Gesamteinschätzung ableiten.
+        Dieser Ratgeber zeigt, warum einzelne Kennzahlen täuschen, welche Fehlschlüsse sie provozieren und wie Sie aus vielen Einzelwerten eine realistische Gesamteinschätzung ableiten. Wer datenbasiert vorgehen will, findet in <a href="/blog/daten-statt-bauchgefuehl">Daten statt Bauchgefühl</a> einen 30-Minuten-Bewertungsprozess; den Vergleich mehrerer Objekte behandelt <a href="/blog/immobilien-vergleichen">Immobilien vergleichen</a>.
       </p>
 
       <h2>Das Grundproblem: Isolation statt Kontext</h2>

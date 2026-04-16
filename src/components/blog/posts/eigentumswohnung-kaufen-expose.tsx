@@ -5,7 +5,7 @@ export default function EigentumswohnungKaufenExpose() {
         Eine Eigentumswohnung zu kaufen ist nicht dasselbe wie ein Haus zu kaufen. Sie erwerben nicht nur vier Wände, sondern treten einer Eigentümergemeinschaft bei, teilen sich Dach, Heizung und Treppenhaus mit anderen und sind an Gemeinschaftsbeschlüsse gebunden. Das Exposé einer Wohnung enthält deshalb andere entscheidungsrelevante Informationen als das eines Hauses — und es fehlen regelmäßig genau die Daten die am wichtigsten wären.
       </p>
       <p>
-        Dieser Ratgeber zeigt, worauf Sie beim Exposé einer Eigentumswohnung besonders achten müssen und welche Unterlagen Sie unbedingt anfordern sollten.
+        Dieser Ratgeber zeigt, worauf Sie beim Exposé einer Eigentumswohnung besonders achten müssen und welche Unterlagen Sie unbedingt anfordern sollten. Hausgeld-Details, Rücklagen-Richtwerte und das Sonderumlage-Risiko erklärt <a href="/blog/hausgeld-ruecklagen-sonderumlage">Hausgeld, Rücklagen, Sonderumlage</a>; das Pendant für Häuser ist <a href="/blog/einfamilienhaus-kaufen-expose">Einfamilienhaus kaufen</a>.
       </p>
 
       <h2>Hausgeld: Die zweite Miete</h2>

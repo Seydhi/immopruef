@@ -5,7 +5,7 @@ export default function ImmobilienVergleichen() {
         Sie haben drei Immobilien in der engeren Auswahl. Die eine ist günstiger, die andere hat den besseren Energieausweis, die dritte liegt näher am Arbeitsplatz. Wie vergleichen Sie objektiv? Die meisten Käufer entscheiden nach Bauchgefühl — und bereuen es später. Denn ein sinnvoller Immobilienvergleich braucht mehr als den Kaufpreis und ein gutes Foto.
       </p>
       <p>
-        In diesem Ratgeber zeigen wir, welche Kennzahlen tatsächlich vergleichbar sind, wo typische Denkfehler lauern und wie Sie aus Einzelwerten eine belastbare Gesamteinschätzung ableiten.
+        In diesem Ratgeber zeigen wir, welche Kennzahlen tatsächlich vergleichbar sind, wo typische Denkfehler lauern und wie Sie aus Einzelwerten eine belastbare Gesamteinschätzung ableiten. Wer beim Vergleich ein einzelnes „Schnäppchen" entdeckt, sollte vorher <a href="/blog/quadratmeterpreis-bewerten">Quadratmeterpreis bewerten</a> und <a href="/blog/daten-statt-bauchgefuehl">Daten statt Bauchgefühl</a> lesen.
       </p>
 
       <h2>Warum der Kaufpreis allein nicht vergleichbar ist</h2>

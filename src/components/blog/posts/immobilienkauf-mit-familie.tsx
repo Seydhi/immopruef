@@ -5,7 +5,7 @@ export default function ImmobilienkaufMitFamilie() {
         Mit Kind Nummer eins wird die 2-Zimmer-Wohnung eng. Mit Kind Nummer zwei ist sie zu klein. Plötzlich brauchen Sie nicht nur mehr Platz, sondern eine komplett andere Immobilie: Kinderzimmer, Garten, Schulnähe, sichere Straße, Stauraum für Laufrad und Buggy. Ein Immobilienkauf mit Familie folgt anderen Regeln als einer für Singles oder Paare — und die Fehler wiegen schwerer, weil Sie langfristiger gebunden sind.
       </p>
       <p>
-        Dieser Ratgeber zeigt, welche Kriterien für Familien wirklich zählen und wie Sie sie bereits im Exposé prüfen.
+        Dieser Ratgeber zeigt, welche Kriterien für Familien wirklich zählen und wie Sie sie bereits im Exposé prüfen. Den Standortwert prüfen Sie mit <a href="/blog/lagebewertung-hauskauf">Lagebewertung beim Hauskauf</a>; die Alltagstauglichkeit des Umfelds bewertet <a href="/blog/infrastruktur-pruefen">Infrastruktur rund um die Immobilie prüfen</a>.
       </p>
 
       <h2>Was Familien anders brauchen</h2>

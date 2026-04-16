@@ -5,7 +5,7 @@ export default function FehlerImmobilienkauf() {
         Beim Immobilienkauf sind die teuersten Fehler diejenigen, die man erst nach dem Notartermin bemerkt. Eine übersehene Sonderumlage von 18.000 €, ein Heizungstausch für 25.000 €, eine Lärmbelastung die den Alltag ruiniert — all das hätte sich vorher erkennen lassen. Aber in der Aufregung des Kaufprozesses passieren genau diese Fehler immer wieder.
       </p>
       <p>
-        Dieser Ratgeber zeigt die häufigsten und teuersten Irrtümer beim Immobilienkauf — und wie Sie sie vermeiden.
+        Dieser Ratgeber zeigt die häufigsten und teuersten Irrtümer beim Immobilienkauf — und wie Sie sie vermeiden. Spezifisch auf private Käufer zugeschnitten ist <a href="/blog/fehler-private-kaeufer">Private Käufer beim Hauskauf: häufige Fehler</a>; den strukturierten Gegenentwurf bietet <a href="/blog/hauskauf-mit-system">Hauskauf mit System</a>.
       </p>
 
       <h2>Fehler 1: Nur den Kaufpreis sehen</h2>

@@ -5,7 +5,7 @@ export default function AngebotspreisFair() {
         389.000 € für eine 3-Zimmer-Wohnung in Berlin-Friedrichshain. Ist das fair? Zu viel? Ein Schnäppchen? Die meisten Käufer können den Angebotspreis einer Immobilie nicht einschätzen — sie vergleichen bestenfalls mit zwei, drei anderen Inseraten und entscheiden nach Gefühl. Doch der Angebotspreis ist verhandelbar, und wer ihn fundiert einordnen kann, verhandelt aus einer stärkeren Position.
       </p>
       <p>
-        Dieser Ratgeber zeigt, welche Faktoren den fairen Preis einer Immobilie bestimmen, mit welchen Methoden Sie den Angebotspreis prüfen und wann Sie genauer hinschauen sollten.
+        Dieser Ratgeber zeigt, welche Faktoren den fairen Preis einer Immobilie bestimmen, mit welchen Methoden Sie den Angebotspreis prüfen und wann Sie genauer hinschauen sollten. Eine reine €/m²-Einordnung liefert <a href="/blog/quadratmeterpreis-bewerten">Quadratmeterpreis bewerten</a>; den professionellen Bewertungsrahmen erklärt <a href="/blog/immobilienbewertung-kaeufer">Immobilienbewertung für Käufer</a>.
       </p>
 
       <h2>Warum der Angebotspreis selten der faire Preis ist</h2>

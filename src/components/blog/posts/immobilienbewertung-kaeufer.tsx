@@ -5,7 +5,7 @@ export default function ImmobilienbewertungKaeufer() {
         Was ist eine Immobilie wirklich wert? Nicht den Preis den der Verkäufer verlangt, sondern den Wert den sie tatsächlich hat. Diese Frage beschäftigt jeden Käufer — und die Antwort ist komplexer als ein Blick auf den Quadratmeterpreis. Denn der Wert einer Immobilie ergibt sich aus dem Zusammenspiel von mindestens zehn Faktoren, die sich gegenseitig beeinflussen.
       </p>
       <p>
-        Dieser Ratgeber erklärt, welche Faktoren den Immobilienwert bestimmen, wie Profis bewerten und wie Sie als Käufer eine realistische Gesamteinschätzung ableiten.
+        Dieser Ratgeber erklärt, welche Faktoren den Immobilienwert bestimmen, wie Profis bewerten und wie Sie als Käufer eine realistische Gesamteinschätzung ableiten. Konkrete Methoden zur Preis-Plausibilisierung finden Sie in <a href="/blog/angebotspreis-fair">Angebotspreis fair?</a> und <a href="/blog/quadratmeterpreis-bewerten">Quadratmeterpreis bewerten</a>.
       </p>
 
       <h2>Warum Kaufpreis und Wert nicht dasselbe sind</h2>

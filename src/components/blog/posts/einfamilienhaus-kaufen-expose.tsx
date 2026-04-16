@@ -5,7 +5,7 @@ export default function EinfamilienhausKaufenExpose() {
         Ein Einfamilienhaus zu kaufen bedeutet: volle Freiheit, aber auch volle Verantwortung. Anders als bei einer Eigentumswohnung gibt es keine WEG die sich um Dach, Heizung und Fassade kümmert. Alles was kaputt geht, ist Ihr Problem — und Ihre Rechnung. Umso wichtiger ist es, das Exposé gründlich zu analysieren und die Kosten realistisch einzuschätzen.
       </p>
       <p>
-        Dieser Ratgeber zeigt, worauf Sie beim Exposé eines Einfamilienhauses besonders achten müssen und welche Informationen Sie unbedingt einfordern sollten.
+        Dieser Ratgeber zeigt, worauf Sie beim Exposé eines Einfamilienhauses besonders achten müssen und welche Informationen Sie unbedingt einfordern sollten. Die generische Exposé-Prüfung steht in <a href="/blog/expose-pruefen">Immobilien-Exposé prüfen</a>; Bauepoche und Sanierungshistorie kombiniert behandelt <a href="/blog/baujahr-und-modernisierung">Baujahr und Modernisierung</a>; das Pendant für Wohnungen ist <a href="/blog/eigentumswohnung-kaufen-expose">Eigentumswohnung kaufen</a>.
       </p>
 
       <h2>Grundstück: Der Wert unter dem Haus</h2>

@@ -5,7 +5,7 @@ export default function ZustandRichtigEinschaetzen() {
         "Guter Zustand" steht im Exposé. Aber was heißt das konkret? Dass die Heizung funktioniert — oder dass sie neu ist? Dass die Wände keine Risse haben — oder dass sie frisch überstrichen wurden? Der Zustand einer Immobilie entscheidet über zehntausende Euro Folgekosten, und trotzdem wird er von den meisten Käufern nur oberflächlich geprüft: ein Blick auf die Fotos, ein kurzer Rundgang, ein gutes Gefühl.
       </p>
       <p>
-        Dieser Ratgeber zeigt, welche Zustandshinweise bereits im Exposé stecken und welche Punkte Sie erst bei der Besichtigung erkennen — Raum für Raum, Bauteil für Bauteil.
+        Dieser Ratgeber zeigt, welche Zustandshinweise bereits im Exposé stecken und welche Punkte Sie erst bei der Besichtigung erkennen — Raum für Raum, Bauteil für Bauteil. Die finanziellen Konsequenzen schlechter Bausubstanz behandelt <a href="/blog/zustand-folgekosten">Zustand und Folgekosten</a>; die richtigen Fragen vor Ort liefert <a href="/blog/besichtigung-vorbereitung">Besichtigungs-Vorbereitung</a>.
       </p>
 
       <h2>Teil 1: Was das Exposé über den Zustand verrät</h2>

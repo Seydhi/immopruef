@@ -5,7 +5,7 @@ export default function WarnsignaleExpose() {
         Nicht jedes Immobilien-Exposé erzählt die ganze Wahrheit. Manche Warnsignale sind offensichtlich, andere zeigen sich erst beim genauen Hinsehen — in dem, was geschrieben steht, aber auch in dem, was fehlt. Wer ein Exposé kritisch lesen kann, spart sich teure Überraschungen nach dem Kauf.
       </p>
       <p>
-        In diesem Ratgeber zeigen wir Ihnen die wichtigsten Warnsignale — von sofortigen Ausschlusskriterien bis zu subtilen Hinweisen, die erst im Zusammenspiel kritisch werden.
+        In diesem Ratgeber zeigen wir Ihnen die wichtigsten Warnsignale — von sofortigen Ausschlusskriterien bis zu subtilen Hinweisen, die erst im Zusammenspiel kritisch werden. Eng verwandt: <a href="/blog/was-im-expose-fehlt">Was im Exposé oft fehlt</a> (Lücken sind selbst ein Warnsignal) und <a href="/blog/expose-pruefen">Immobilien-Exposé prüfen</a> (systematische Vorgehensweise).
       </p>
 
       <h2>Sofortige Warnsignale: Hier ist Vorsicht geboten</h2>

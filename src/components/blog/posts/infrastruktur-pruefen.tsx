@@ -5,7 +5,7 @@ export default function InfrastrukturPruefen() {
         "Gute Infrastruktur" steht im Exposé. Aber was heißt das für Ihren Alltag? Für eine Familie mit zwei Kindern bedeutet es Grundschule in 10 Minuten, Kinderarzt erreichbar und Spielplatz ums Eck. Für ein Paar Ende 50 bedeutet es Facharzt in der Nähe, ÖPNV ohne Auto und Supermarkt zu Fuß. Für einen Berufspendler bedeutet es schnelle Anbindung an die Autobahn oder den Hauptbahnhof. Infrastruktur ist nicht objektiv gut oder schlecht — sie passt oder passt nicht zu Ihrem Leben.
       </p>
       <p>
-        Dieser Ratgeber zeigt, welche Infrastruktur-Faktoren wirklich zählen, wie Sie sie vor dem Kauf prüfen und warum Exposé-Beschreibungen fast immer zu kurz greifen.
+        Dieser Ratgeber zeigt, welche Infrastruktur-Faktoren wirklich zählen, wie Sie sie vor dem Kauf prüfen und warum Exposé-Beschreibungen fast immer zu kurz greifen. Die übergeordnete Lage-Bewertung leistet <a href="/blog/lagebewertung-hauskauf">Lagebewertung beim Hauskauf</a>; spezifische Familien-Anforderungen behandelt <a href="/blog/immobilienkauf-mit-familie">Immobilienkauf mit Familie</a>.
       </p>
 
       <h2>Was "gute Infrastruktur" im Exposé bedeutet — und was nicht</h2>

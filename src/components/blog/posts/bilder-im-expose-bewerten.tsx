@@ -5,7 +5,7 @@ export default function BilderImExposeBewerten() {
         Ein Bild sagt mehr als tausend Worte — aber nicht immer die Wahrheit. Immobilienfotos werden von Profis gemacht: Weitwinkel lässt Räume größer wirken, perfektes Licht kaschiert Mängel und der Fotograf wählt genau den Blickwinkel der die Schokoladenseite zeigt. Das ist nicht illegal und nicht einmal unethisch — es ist Verkaufsmarketing. Aber als Käufer müssen Sie wissen, was Fotos zeigen können und was sie systematisch verbergen.
       </p>
       <p>
-        Dieser Ratgeber zeigt, wie Sie Exposé-Fotos kritisch lesen, was hinter typischen Bildtricks steckt und welche Details auf den zweiten Blick wertvolle Zustandsinformationen liefern.
+        Dieser Ratgeber zeigt, wie Sie Exposé-Fotos kritisch lesen, was hinter typischen Bildtricks steckt und welche Details auf den zweiten Blick wertvolle Zustandsinformationen liefern. Was Fotos NICHT zeigen können, ergänzt <a href="/blog/was-im-expose-fehlt">Was im Exposé oft fehlt</a>; die Raumaufteilung selbst beurteilen Sie mit <a href="/blog/grundriss-richtig-lesen">Grundriss im Exposé richtig lesen</a>.
       </p>
 
       <h2>Wie Immobilienfotos entstehen</h2>

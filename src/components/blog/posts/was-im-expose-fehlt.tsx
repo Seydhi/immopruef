@@ -5,7 +5,7 @@ export default function WasImExposeFehlt() {
         Ein Immobilien-Exposé zeigt Ihnen, was der Verkäufer zeigen möchte. Was es nicht zeigt, ist oft wichtiger. Fehlende Angaben sind keine Versehen — sie sind entweder unangenehm, unbekannt oder bewusst ausgelassen. Als Käufer ist es Ihre Aufgabe, diese Lücken zu erkennen und die fehlenden Informationen aktiv einzufordern.
       </p>
       <p>
-        Dieser Ratgeber zeigt, welche Angaben in Exposés am häufigsten fehlen, warum sie für Ihre Kaufentscheidung entscheidend sind und wie Sie sie einfordern.
+        Dieser Ratgeber zeigt, welche Angaben in Exposés am häufigsten fehlen, warum sie für Ihre Kaufentscheidung entscheidend sind und wie Sie sie einfordern. Wenn Sie zusätzlich erkennen wollen welche Formulierungen sofort misstrauisch machen sollten, lesen Sie <a href="/blog/warnsignale-expose">Warnsignale im Immobilien-Exposé</a>.
       </p>
 
       <h2>1. Konkrete Sanierungshistorie</h2>

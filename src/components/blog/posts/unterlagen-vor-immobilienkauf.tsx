@@ -5,7 +5,7 @@ export default function UnterlagenVorImmobilienkauf() {
         Das Exposé ist der Anfang, nicht die Entscheidungsgrundlage. Wer ein Haus oder eine Wohnung kauft, ohne die relevanten Unterlagen geprüft zu haben, kauft blind. Dabei sind die meisten Dokumente vor dem Kauf verfügbar — Sie müssen sie nur anfordern. Und genau daran scheitern viele Käufer: Sie wissen nicht welche Unterlagen es gibt, wo sie liegen und warum sie wichtig sind.
       </p>
       <p>
-        Dieser Ratgeber zeigt die wichtigsten Dokumente beim Immobilienkauf, sortiert nach dem Zeitpunkt wann Sie sie brauchen und unterschieden nach Eigentumswohnung und Einfamilienhaus.
+        Dieser Ratgeber zeigt die wichtigsten Dokumente beim Immobilienkauf, sortiert nach dem Zeitpunkt wann Sie sie brauchen und unterschieden nach Eigentumswohnung und Einfamilienhaus. Welche Angaben in Exposés besonders oft fehlen, behandelt <a href="/blog/was-im-expose-fehlt">Was im Exposé oft fehlt</a>; den vollständigen Kaufprozess strukturiert <a href="/blog/hauskauf-mit-system">Hauskauf mit System</a>.
       </p>
 
       <h2>Phase 1: Vor der Besichtigung anfordern</h2>

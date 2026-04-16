@@ -5,7 +5,7 @@ export default function ExposesRichtigLesen() {
         Sie suchen Ihre erste Immobilie und klicken sich durch dutzende Exposés auf ImmoScout24 oder Immowelt. Aber je mehr Sie lesen, desto unsicherer werden Sie: Was ist ein guter Quadratmeterpreis? Was bedeutet "Energieeffizienzklasse E"? Und warum steht im Exposé nichts über den Zustand der Heizung?
       </p>
       <p>
-        Dieser Ratgeber ist für alle, die zum ersten Mal eine Immobilie kaufen möchten. Wir erklären Schritt für Schritt, wie Sie ein Exposé lesen, welche Zahlen wichtig sind und welche Informationen Sie aktiv einfordern müssen.
+        Dieser Ratgeber ist für alle, die zum ersten Mal eine Immobilie kaufen möchten. Wir erklären Schritt für Schritt, wie Sie ein Exposé lesen, welche Zahlen wichtig sind und welche Informationen Sie aktiv einfordern müssen. Wenn Sie schon erste Exposés gesehen haben, hilft Ihnen <a href="/blog/expose-pruefen">Immobilien-Exposé prüfen: Worauf Käufer wirklich achten sollten</a> beim systematischen Vorgehen, und <a href="/blog/expose-verstehen">Exposé verstehen: So lesen Käufer Immobilienangaben richtig</a> entschlüsselt die Maklersprache.
       </p>
 
       <h2>Der Aufbau eines Exposés: Was steht wo?</h2>

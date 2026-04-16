@@ -5,7 +5,7 @@ export default function ImmobilienCheckVorKauf() {
         Jeder Immobilienkauf ist ein Risiko — die Frage ist nur, ob Sie die Risiken kennen bevor Sie unterschreiben oder erst danach. Die häufigsten Probleme nach dem Kauf sind nicht plötzliche Überraschungen, sondern Dinge die man hätte sehen können: die überfällige Heizung, die geplante Sonderumlage, die Lärmbelastung die man beim Sonntagsbesuch nicht bemerkt hat.
       </p>
       <p>
-        Dieser Ratgeber zeigt, wie Sie mit einem systematischen Immobilien-Check vor dem Kauf die wichtigsten Risiken erkennen — ohne Gutachter und ohne Expertenwissen. Alles was Sie brauchen ist das Exposé, einen Internetzugang und 30–45 Minuten Zeit.
+        Dieser Ratgeber zeigt, wie Sie mit einem systematischen Immobilien-Check vor dem Kauf die wichtigsten Risiken erkennen — ohne Gutachter und ohne Expertenwissen. Alles was Sie brauchen ist das Exposé, einen Internetzugang und 30–45 Minuten Zeit. Den vollständigen 5-Phasen-Kaufprozess beschreibt <a href="/blog/hauskauf-mit-system">Hauskauf mit System</a>; die teuersten Fehler die dieser Check verhindert, listet <a href="/blog/fehler-immobilienkauf">Fehler beim Immobilienkauf</a>.
       </p>
 
       <h2>Die 7 Prüfbereiche eines Immobilien-Checks</h2>
