@@ -11,6 +11,7 @@ import ErrorBoundary from './components/ErrorBoundary'
 import Impressum from './components/legal/Impressum'
 import Datenschutz from './components/legal/Datenschutz'
 import AGB from './components/legal/AGB'
+import Barrierefreiheit from './components/legal/Barrierefreiheit'
 import BlogIndex from './components/blog/BlogIndex'
 import BlogLayout from './components/blog/BlogLayout'
 import { Suspense } from 'react'
@@ -25,6 +26,7 @@ type AppView =
   | { type: 'impressum' }
   | { type: 'datenschutz' }
   | { type: 'agb' }
+  | { type: 'barrierefreiheit' }
   | { type: 'blog' }
   | { type: 'blog-post'; slug: string }
 
@@ -80,6 +82,7 @@ export default function App() {
     if (path === '/impressum') { setView({ type: 'impressum' }); return }
     if (path === '/datenschutz') { setView({ type: 'datenschutz' }); return }
     if (path === '/agb') { setView({ type: 'agb' }); return }
+    if (path === '/barrierefreiheit') { setView({ type: 'barrierefreiheit' }); return }
 
     // Blog routing
     if (path === '/blog' || path === '/blog/') { setView({ type: 'blog' }); return }
@@ -175,7 +178,7 @@ export default function App() {
           </div>
         )}
 
-        {(view.type === 'impressum' || view.type === 'datenschutz' || view.type === 'agb') && (
+        {(view.type === 'impressum' || view.type === 'datenschutz' || view.type === 'agb' || view.type === 'barrierefreiheit') && (
           <div>
             <button
               onClick={() => { window.history.pushState({}, '', '/'); setView({ type: 'landing' }) }}
@@ -186,6 +189,7 @@ export default function App() {
             {view.type === 'impressum' && <Impressum />}
             {view.type === 'datenschutz' && <Datenschutz />}
             {view.type === 'agb' && <AGB />}
+            {view.type === 'barrierefreiheit' && <Barrierefreiheit />}
           </div>
         )}
 
@@ -231,6 +235,8 @@ export default function App() {
           <a href="/datenschutz" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/datenschutz'); setView({ type: 'datenschutz' }); window.scrollTo(0, 0) }} className="hover:text-green transition-colors">Datenschutz</a>
           <span className="text-ink/20">·</span>
           <a href="/agb" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/agb'); setView({ type: 'agb' }); window.scrollTo(0, 0) }} className="hover:text-green transition-colors">AGB</a>
+          <span className="text-ink/20">·</span>
+          <a href="/barrierefreiheit" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/barrierefreiheit'); setView({ type: 'barrierefreiheit' }); window.scrollTo(0, 0) }} className="hover:text-green transition-colors">Barrierefreiheit</a>
         </div>
       </footer>
     </div>

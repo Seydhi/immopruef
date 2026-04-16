@@ -166,7 +166,7 @@ serve(async (req) => {
       return jsonResponse({ error: limit.reason }, 429, origin)
     }
 
-    const { urls, options, package: pkg, email } = await req.json()
+    const { urls, options, package: pkg, email, consents } = await req.json()
 
     // Validate package
     const expectedCount = PACKAGE_URL_COUNT[pkg]
@@ -193,6 +193,18 @@ serve(async (req) => {
       return jsonResponse({ error: 'Ungültige E-Mail-Adresse' }, 400, origin)
     }
 
+    // Validate legal consents — Pflicht fuer Vertragsschluss + Widerrufsverzicht (BGB § 356 Abs. 5)
+    if (!consents || consents.agbAccepted !== true || consents.widerrufWaived !== true) {
+      return jsonResponse(
+        { error: 'Zustimmung zu AGB und Widerrufsverzicht ist erforderlich.' },
+        400,
+        origin
+      )
+    }
+    const consentTimestamp = typeof consents.timestamp === 'string' && consents.timestamp
+      ? consents.timestamp
+      : new Date().toISOString()
+
     // Record this attempt for rate-limiting (whether or not Stripe succeeds)
     await recordCheckoutAttempt(supabase, clientIp)
 
@@ -209,6 +221,10 @@ serve(async (req) => {
         urls: JSON.stringify(urls),
         options: JSON.stringify(options),
         package: pkg,
+        agb_accepted: 'true',
+        widerruf_waived: 'true',
+        consent_timestamp: consentTimestamp,
+        consent_ip: clientIp,
       },
       success_url: `${appUrl}?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${appUrl}?payment=cancelled`,
@@ -216,7 +232,15 @@ serve(async (req) => {
 
     const { data: order, error: orderErr } = await supabase
       .from('orders')
-      .insert({ stripe_session_id: session.id, package: pkg, email: cleanEmail })
+      .insert({
+        stripe_session_id: session.id,
+        package: pkg,
+        email: cleanEmail,
+        agb_accepted: true,
+        widerruf_waived: true,
+        consent_timestamp: consentTimestamp,
+        consent_ip: clientIp,
+      })
       .select('id')
       .single()
 

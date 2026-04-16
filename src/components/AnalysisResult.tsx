@@ -56,6 +56,11 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
       )}
 
       {/* ════════════════════════════════════════════════════════════
+          DISCLAIMER — oben sichtbar vor der Analyse
+          ════════════════════════════════════════════════════════════ */}
+      <DisclaimerBanner />
+
+      {/* ════════════════════════════════════════════════════════════
           1. DECKBLATT
           ════════════════════════════════════════════════════════════ */}
       <CoverPage
@@ -618,7 +623,94 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
           </div>
         </>
       )}
+
+      {/* ════════════════════════════════════════════════════════════
+          LEGAL FOOTER — formaler Haftungsausschluss am Ende der Analyse
+          ════════════════════════════════════════════════════════════ */}
+      <LegalDisclaimerFooter />
     </div>
+  )
+}
+
+// ════════════════════════════════════════════════════════════════════
+// DISCLAIMER-KOMPONENTEN
+// ════════════════════════════════════════════════════════════════════
+
+function DisclaimerBanner() {
+  return (
+    <div
+      role="note"
+      aria-label="Rechtlicher Hinweis zur Analyse"
+      className="mb-6 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 flex items-start gap-3"
+    >
+      <span aria-hidden="true" className="text-lg leading-none mt-0.5 shrink-0">⚠️</span>
+      <div className="text-[12.5px] leading-relaxed text-amber-900">
+        <span className="font-medium">Wichtiger Hinweis: </span>
+        Diese Analyse ist eine <strong>automatisierte KI-Auswertung</strong> öffentlich
+        verfügbarer Daten und dient als <strong>Informationsgrundlage</strong> — sie stellt
+        keine Rechts-, Steuer- oder Finanzberatung dar und ersetzt keinen Sachverständigen
+        oder Gutachter. Vor einer Kaufentscheidung bitte stets offizielle Dokumente
+        (Grundbuch, Bebauungsplan, Energieausweis) und bei Bedarf einen Fachmann hinzuziehen.{' '}
+        <a href="/agb" target="_blank" rel="noopener noreferrer" className="underline hover:text-amber-950">
+          Vollständiger Haftungsausschluss
+        </a>
+        .
+      </div>
+    </div>
+  )
+}
+
+function LegalDisclaimerFooter() {
+  return (
+    <section
+      aria-labelledby="legal-disclaimer-title"
+      className="mt-8 bg-ink/[0.03] border border-ink/10 rounded-xl p-5"
+    >
+      <h2 id="legal-disclaimer-title" className="text-xs font-medium text-ink-light tracking-wider uppercase mb-3">
+        Rechtlicher Hinweis & Haftungsausschluss
+      </h2>
+      <div className="space-y-3 text-[12px] text-ink-mid leading-relaxed">
+        <p>
+          <strong className="text-ink">Keine individuelle Beratung.</strong> Diese Analyse ist
+          eine automatisierte, KI-gestützte Auswertung öffentlich verfügbarer Daten. Sie stellt
+          <strong> keine</strong> Rechts-, Steuer-, Immobilien-, Finanz- oder Anlageberatung dar
+          und ersetzt nicht die Beauftragung eines Sachverständigen, Gutachters, Rechtsanwalts,
+          Steuerberaters oder Finanzberaters. Für rechtsverbindliche Aussagen zu Bebauung,
+          Belastungen, Grundbuch oder Erschließung ziehen Sie bitte die offiziellen Dokumente
+          (Grundbuchauszug, Bebauungsplan, Flurkartenauszug, Energieausweis) sowie einen
+          entsprechenden Fachmann hinzu.
+        </p>
+        <p>
+          <strong className="text-ink">Keine Gewähr.</strong> Wir übernehmen keine Gewähr für
+          die Vollständigkeit, Richtigkeit oder Aktualität der in dieser Analyse enthaltenen
+          Informationen. Marktdaten, Preisentwicklungen, Energiekosten, Rendite-Berechnungen,
+          Zinssätze und Sanierungs-Schätzungen basieren auf generalisierten Annahmen und können
+          erheblich von der tatsächlichen Situation des Einzelobjekts abweichen.
+        </p>
+        <p>
+          <strong className="text-ink">Keine Kaufempfehlung.</strong> Diese Analyse ist weder
+          eine Aufforderung zum Kauf noch zum Verkauf einer Immobilie. Die finale
+          Kaufentscheidung trifft allein der Kunde in eigener Verantwortung und auf Basis
+          eigener Prüfungen — insbesondere einer persönlichen Besichtigung vor Ort, der
+          Einsichtnahme in alle verkaufsrelevanten Unterlagen und — sofern erforderlich —
+          einer gutachterlichen Bewertung.
+        </p>
+        <p>
+          <strong className="text-ink">Keine automatisierte Entscheidung nach Art. 22 DSGVO.</strong>{' '}
+          Die Analyse stellt keine automatisierte Entscheidung im Sinne des Art. 22 DSGVO dar —
+          sie ist eine von Ihnen aktiv bestellte Informationsleistung und trifft keine
+          Entscheidung über oder gegen Sie.
+        </p>
+        <p className="pt-2 border-t border-ink/10 text-ink-light">
+          Weitere Informationen finden Sie in unseren{' '}
+          <a href="/agb" target="_blank" rel="noopener noreferrer" className="text-green hover:text-green-mid underline">AGB</a>
+          {', '}in unserer{' '}
+          <a href="/datenschutz" target="_blank" rel="noopener noreferrer" className="text-green hover:text-green-mid underline">Datenschutzerklärung</a>
+          {' '}sowie im{' '}
+          <a href="/impressum" target="_blank" rel="noopener noreferrer" className="text-green hover:text-green-mid underline">Impressum</a>.
+        </p>
+      </div>
+    </section>
   )
 }
 

@@ -14,18 +14,25 @@ function getHeaders(): Record<string, string> {
 
 // ─── Start Checkout ───
 // Creates a Stripe Checkout session via Edge Function, returns redirect URL
+export interface CheckoutConsents {
+  agbAccepted: boolean
+  widerrufWaived: boolean
+  timestamp: string
+}
+
 export async function startCheckout(
   urls: string[],
   options: AnalysisOptions,
   pkg: Package,
-  email?: string
+  email: string,
+  consents: CheckoutConsents
 ): Promise<string> {
   if (USE_MOCKS) return mockApi.startCheckout(urls, options, pkg)
 
   const res = await fetch(getSupabaseFunctionUrl('create-checkout'), {
     method: 'POST',
     headers: getHeaders(),
-    body: JSON.stringify({ urls, options, package: pkg, email }),
+    body: JSON.stringify({ urls, options, package: pkg, email, consents }),
   })
 
   if (!res.ok) {

@@ -62,6 +62,7 @@ async function getRoutes() {
     '/impressum',
     '/datenschutz',
     '/agb',
+    '/barrierefreiheit',
     ...blogSlugs.map(s => `/blog/${s}`),
   ]
 }

@@ -37,6 +37,9 @@ export default function Landing() {
   })
   const [email, setEmail] = useState('')
   const [emailError, setEmailError] = useState('')
+  const [agbAccepted, setAgbAccepted] = useState(false)
+  const [widerrufAccepted, setWiderrufAccepted] = useState(false)
+  const [consentError, setConsentError] = useState('')
   const [loading, setLoading] = useState(false)
   const [globalError, setGlobalError] = useState('')
 
@@ -92,6 +95,15 @@ export default function Landing() {
       }
     }
     setErrors(newErrors)
+
+    // Validate consents
+    if (!agbAccepted || !widerrufAccepted) {
+      setConsentError('Bitte bestätigen Sie beide Zustimmungen, um fortzufahren.')
+      valid = false
+    } else {
+      setConsentError('')
+    }
+
     return valid
   }
 
@@ -101,7 +113,11 @@ export default function Landing() {
 
     setLoading(true)
     try {
-      const checkoutUrl = await startCheckout(urls.slice(0, urlCount), options, pkg, email.trim())
+      const checkoutUrl = await startCheckout(urls.slice(0, urlCount), options, pkg, email.trim(), {
+        agbAccepted,
+        widerrufWaived: widerrufAccepted,
+        timestamp: new Date().toISOString(),
+      })
       window.location.href = checkoutUrl
     } catch {
       setGlobalError('Verbindungsfehler. Bitte erneut versuchen.')
@@ -109,14 +125,18 @@ export default function Landing() {
     }
   }
 
-  const allFilled = urls.slice(0, urlCount).every((u) => u.trim().length > 0) && email.trim().length > 0
+  const allFilled =
+    urls.slice(0, urlCount).every((u) => u.trim().length > 0) &&
+    email.trim().length > 0 &&
+    agbAccepted &&
+    widerrufAccepted
 
   const ctaLabel =
     pkg === 'premium'
-      ? `Premium-Report erstellen (${config.price})`
+      ? `Kostenpflichtig bestellen — Premium-Report (${config.price})`
       : pkg === 'single'
-      ? `Analysieren (${config.price})`
-      : `${config.urls} Analysen starten (${config.price})`
+      ? `Kostenpflichtig bestellen (${config.price})`
+      : `Kostenpflichtig bestellen — ${config.urls} Analysen (${config.price})`
 
   return (
     <>
@@ -180,10 +200,47 @@ export default function Landing() {
           </div>
         )}
 
+        {/* Legal consents — Pflicht vor Checkout */}
+        <div className="mt-5 space-y-2.5 text-[12px] text-ink-mid leading-snug">
+          <label className="flex items-start gap-2 cursor-pointer select-none">
+            <input
+              type="checkbox"
+              checked={agbAccepted}
+              onChange={(e) => { setAgbAccepted(e.target.checked); setConsentError('') }}
+              className="w-4 h-4 accent-green cursor-pointer mt-0.5 shrink-0"
+              aria-describedby="agb-label"
+            />
+            <span id="agb-label">
+              Ich habe die{' '}
+              <a href="/agb" target="_blank" rel="noopener noreferrer" className="text-green hover:text-green-mid underline">AGB</a>
+              {' '}und die{' '}
+              <a href="/agb" target="_blank" rel="noopener noreferrer" className="text-green hover:text-green-mid underline">Widerrufsbelehrung</a>
+              {' '}gelesen und akzeptiere sie.
+            </span>
+          </label>
+          <label className="flex items-start gap-2 cursor-pointer select-none">
+            <input
+              type="checkbox"
+              checked={widerrufAccepted}
+              onChange={(e) => { setWiderrufAccepted(e.target.checked); setConsentError('') }}
+              className="w-4 h-4 accent-green cursor-pointer mt-0.5 shrink-0"
+              aria-describedby="widerruf-label"
+            />
+            <span id="widerruf-label">
+              Ich stimme ausdrücklich zu, dass die Analyse unmittelbar nach der Zahlung
+              erstellt wird, und bestätige meine Kenntnis, dass ich damit mein
+              Widerrufsrecht verliere (§ 356 Abs. 5 BGB).
+            </span>
+          </label>
+          {consentError && (
+            <p className="text-red-600 text-[11px] pl-6">{consentError}</p>
+          )}
+        </div>
+
         <button
           onClick={handleSubmit}
           disabled={!allFilled || loading}
-          className="mt-5 w-full bg-green text-cream py-3 rounded-lg font-medium text-sm flex items-center justify-center gap-2 transition-colors hover:bg-green-mid active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed"
+          className="mt-4 w-full bg-green text-cream py-3 rounded-lg font-medium text-sm flex items-center justify-center gap-2 transition-colors hover:bg-green-mid active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {loading ? (
             <>
@@ -197,6 +254,12 @@ export default function Landing() {
             </>
           )}
         </button>
+
+        <p className="text-[11px] text-ink-light text-center mt-2">
+          Mit Ihrer Bestellung erklären Sie sich mit unserer{' '}
+          <a href="/datenschutz" target="_blank" rel="noopener noreferrer" className="underline hover:text-ink-mid">Datenschutzerklärung</a>
+          {' '}einverstanden.
+        </p>
       </div>
 
       <HeroSection onCta={scrollToForm} />
