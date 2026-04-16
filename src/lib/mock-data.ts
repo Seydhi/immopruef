@@ -348,4 +348,14 @@ Mit freundlichen Gr\u00fc\u00dfen`,
     'Hausgeld 320 \u20ac/Monat \u2013 H\u00f6he der Instandhaltungsr\u00fccklage pr\u00fcfen.',
     'Milieuschutzgebiet: Vorkaufsrecht der Gemeinde m\u00f6glich.',
   ],
+
+  // \u2500\u2500\u2500 Quellen (alle Pakete) \u2500\u2500\u2500
+  quellen: [
+    { titel: 'Immobilienpreise Berlin-Kreuzberg \u2014 immowelt 2026', url: 'https://www.immowelt.de/immobilienpreise/berlin-kreuzberg', kategorie: 'Preisdaten' },
+    { titel: 'Bodenrichtwert Berlin \u2014 BORIS Berlin', url: 'https://fbinter.stadt-berlin.de/boris/', kategorie: 'Preisdaten' },
+    { titel: 'Mietspiegel Berlin 2025', url: 'https://www.berlin.de/mietspiegel', kategorie: 'Preisdaten' },
+    { titel: 'Energieausweis & GEG-Pflichten 2026 \u2014 dena', url: 'https://www.dena.de', kategorie: 'Energie' },
+    { titel: 'Berliner Umweltatlas \u2014 L\u00e4rmkarte / Hochwasser', url: 'https://www.berlin.de/umweltatlas/', kategorie: 'Lage' },
+    { titel: 'BBSR \u2014 Demografieprofile Berlin-Kreuzberg', url: 'https://www.bbsr.bund.de', kategorie: 'Lage' },
+  ],
 }

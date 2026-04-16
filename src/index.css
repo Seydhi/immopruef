@@ -75,3 +75,115 @@
   --font-display: 'Playfair Display', serif;
   --font-body: 'DM Sans', sans-serif;
 }
+
+/* ════════════════════════════════════════════════════════════
+   PDF-DRUCK / PRINT-LAYOUT (für Premium-Report Download als PDF)
+   ════════════════════════════════════════════════════════════ */
+@page {
+  size: A4;
+  margin: 16mm 14mm 18mm 14mm;
+}
+
+@media print {
+  /* Hintergrundfarben & Schatten erhalten (für Tabellen-Lesbarkeit) */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Alles was nicht im Report stehen soll */
+  header,
+  footer,
+  nav,
+  button,
+  .no-print {
+    display: none !important;
+  }
+
+  /* PDF-Druck-Button verstecken */
+  button[onclick],
+  [class*="print:hidden"] {
+    display: none !important;
+  }
+
+  /* Body & Container — kompakter */
+  body {
+    background: white !important;
+    font-size: 10pt;
+    line-height: 1.4;
+  }
+
+  main {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Premium-Sektionen — Seitenumbrüche kontrollieren */
+  .premium-section,
+  [class*="PremiumSection"] > div {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Tabellen nicht in der Mitte umbrechen */
+  table {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Neue Sektion = neue Seite ab Premium-Trennlinie */
+  .premium-page-break {
+    page-break-before: always;
+    break-before: page;
+  }
+
+  /* Schriftgrößen leicht runter für PDF */
+  h1 { font-size: 18pt !important; }
+  h2 { font-size: 14pt !important; }
+  h3 { font-size: 12pt !important; }
+
+  /* Keine Hover-States im Druck */
+  *:hover {
+    background-color: inherit !important;
+  }
+
+  /* Links unterstrichen für Druck */
+  a {
+    color: inherit !important;
+    text-decoration: underline;
+  }
+
+  /* Quellen-Links: URL anzeigen */
+  a[href]:after {
+    content: " (" attr(href) ")";
+    font-size: 8pt;
+    color: #666;
+    word-break: break-all;
+  }
+
+  /* Kein After auf internen / kurzen Links */
+  a[href^="#"]:after,
+  a[href*="javascript"]:after,
+  .no-print-url:after {
+    content: "" !important;
+  }
+
+  /* CTA-Block am Ende verstecken */
+  .cta-block,
+  [class*="bg-green text-cream rounded-xl"]:last-child {
+    /* nicht verstecken — gehört zur Empfehlung */
+  }
+
+  /* Tooltips immer ausblenden im Druck */
+  [class*="absolute z-20"],
+  [class*="tooltip"] {
+    display: none !important;
+  }
+
+  /* Collapsible-Karten immer ausgeklappt im Druck */
+  [class*="CollapsibleCard"] table,
+  details {
+    display: table !important;
+  }
+}

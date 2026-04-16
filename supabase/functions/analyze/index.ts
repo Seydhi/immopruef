@@ -141,7 +141,9 @@ JSON-Schema (alle Felder sind Pflicht):
   "makleranschreiben": "string — Professionelles, persönliches Anschreiben an den Makler/Verkäufer. MUSS enthalten: (1) Höfliche Einleitung mit Bezug auf das konkrete Objekt (Adresse, Exposé-Nr), (2) Kurze Vorstellung als seriöser Kaufinteressent, (3) Mindestens 8 konkrete Fragen zum Objekt die im Exposé NICHT beantwortet werden (z.B. Grund des Verkaufs, Alter der Heizung, letzte Renovierungen, Baulasten, Erschließungsbeiträge, Energieausweis-Details, Hausgeldentwicklung, anstehende Sanierungen der WEG, Rücklagenhöhe, Nachbarschaft), (4) Frage nach Besichtigungstermin, (5) Professioneller Abschluss. Ton: seriös aber nicht unterwürfig. Länge: ca. 200-300 Wörter. Mit Absätzen formatiert (\\n\\n für Absätze).",
   "zusammenfassung": "string (3-4 Sätze Fazit mit Gesamtinvestition und Empfehlung)",
 
-  "marktdaten": [{ "kennzahl": "string", "wert": "string", "einschaetzung": "gut|mittel|schlecht" }]
+  "marktdaten": [{ "kennzahl": "string", "wert": "string", "einschaetzung": "gut|mittel|schlecht" }],
+
+  "quellen": [{ "titel": "string (Name der Quelle / Studientitel / Plattform)", "url": "string (vollständige https-URL der Quelle)", "kategorie": "string (z.B. Preisdaten, Lage, Energie, Demografie, Verkehr, Recht)" }]
 }
 
 PFLICHT-HINWEISE:
@@ -170,7 +172,16 @@ PFLICHT-HINWEISE:
 - Alle Felder sind Pflicht AUSSER verhandlungstipps und makleranschreiben (nur wenn vom Nutzer gewünscht). Wenn nicht gewünscht: leere Arrays/Strings.
 - WICHTIG: Nutze Web-Suche um das Exposé abzurufen UND Marktdaten zu recherchieren. Suche nach der Exposé-Nummer auf ImmoScout24.
 - ABSOLUTE REGEL: Erfinde KEINE konkreten Objektdaten (Kaufpreis, Adresse, Zimmeranzahl etc.). Regionale Durchschnittswerte für fehlende Daten (Energieverbrauch, Grundsteuer, Heizkosten etc.) MÜSSEN recherchiert und eingesetzt werden — das ist KEIN Erfinden, sondern PFLICHT. Kennzeichne sie mit "(⚠️ Regionsdurchschnitt — nicht im Exposé)". JEDES Feld muss einen konkreten Zahlenwert haben. NIEMALS nur "Im Exposé nicht angegeben" oder "Nicht verfügbar" ohne Zahl schreiben.
-- LAUFENDE KOSTEN REGEL: Grundsteuer, Versicherung, Heizkosten, Instandhaltung, Strom, Wasser — diese werden IMMER berechnet. Sie stehen NIE im Exposé. Recherchiere den Hebesatz der Gemeinde, berechne Heizkosten aus Fläche × Energiekennwert × Preis. Kein Feld darf leer sein.`
+- LAUFENDE KOSTEN REGEL: Grundsteuer, Versicherung, Heizkosten, Instandhaltung, Strom, Wasser — diese werden IMMER berechnet. Sie stehen NIE im Exposé. Recherchiere den Hebesatz der Gemeinde, berechne Heizkosten aus Fläche × Energiekennwert × Preis. Kein Feld darf leer sein.
+
+- QUELLEN-PFLICHT (gilt für ALLE Pakete!): Im Feld "quellen" MÜSSEN MINDESTENS 5 echte URLs angegeben werden, die du während der Web-Recherche tatsächlich aufgerufen hast. Pflicht-Quellen-Kategorien:
+  * 1× Preisdaten (z.B. immowelt, ImmoScout24-Marktdaten, Engel & Völkers Marktbericht)
+  * 1× Bodenrichtwert (BORIS-Portal des Bundeslandes oder Gutachterausschuss-Webseite)
+  * 1× Mietspiegel (offizielle Stadt-/Gemeinde-Seite oder anerkannter Mietspiegel-Anbieter)
+  * 1× Lage/Demografie (BBSR, Statistisches Landesamt, Destatis, lokale Wikipedia-Stadtteilseite)
+  * 1× Energie/GEG (dena, BMWK, KfW Förderungen, Verbraucherzentrale)
+  Format: { "titel": "Klarer Quellen-Name z.B. 'Mietspiegel Berlin 2025'", "url": "https://...", "kategorie": "Preisdaten | Lage | Energie | Demografie | Recht | Verkehr" }
+  ABSOLUTE REGEL: NIEMALS halluzinierte URLs erfinden. Nur URLs angeben die du tatsächlich per Web-Suche besucht/zitiert hast. Lieber 5 echte URLs als 10 erfundene. Wenn du eine URL nicht eindeutig nachweisen kannst, weglassen.`
 
 const SYSTEM_PROMPT_PREMIUM_ADDITION = `
 
@@ -215,7 +226,89 @@ PREMIUM-REPORT — PFLICHT! Das JSON MUSS ein "premiumReport"-Objekt enthalten. 
 
     "steuerlicheAspekte": [{ "aspekt": "string", "details": "string (2-3 Sätze)", "vorteil": "string" }],
 
-    "gutachterEmpfehlung": { "empfohlen": "boolean", "grund": "string (3-4 Sätze)", "geschaetzteKosten": "string (z.B. 800–1.500 €)" }
+    "gutachterEmpfehlung": { "empfohlen": "boolean", "grund": "string (3-4 Sätze)", "geschaetzteKosten": "string (z.B. 800–1.500 €)" },
+
+    "maklerProfil": {
+      "name": "string (Name des Maklerunternehmens / 'Privatverkäufer' / 'Nicht im Exposé erkennbar')",
+      "art": "gewerblich | privatverkauf | unbekannt",
+      "gegruendet": "string (Jahr z.B. '1995' ODER 'Nicht öffentlich verfügbar')",
+      "mitarbeiter": "string (Anzahl ODER 'Nicht öffentlich')",
+      "qualifikation": "string (z.B. 'Geprüfte Immobilienkaufleute IHK' ODER 'Keine Angaben verfügbar')",
+      "sitz": "string (Adresse ODER 'Nicht angegeben')",
+      "ansprechpartner": "string (Name ODER 'Nicht im Exposé')",
+      "bewertungen": [{ "plattform": "string (ImmoScout24/JACASA/Google/ProvenExpert/Trustpilot)", "score": "string (X,X/5 ODER '—')", "anzahl": "string (z.B. '142 Bewertungen' ODER 'Keine')" }],
+      "ranking": "string (z.B. 'Top 10 Makler Bremen' ODER '—')",
+      "fazit": "string (3-4 Sätze BERATER-TONALITÄT — narrative Einschätzung der Seriosität)",
+      "redFlags": ["string (entweder konkrete Auffälligkeiten ODER ['Keine Auffälligkeiten — solider Anbieter'])"]
+    },
+
+    "mietrendite": {
+      "verfuegbar": "boolean (true wenn Mietspiegel-Daten findbar, false wenn Region zu klein/ländlich)",
+      "fallbackHinweis": "string (NUR wenn verfuegbar=false: erkläre warum keine Renditeberechnung möglich)",
+      "ortsuebliche_kaltmiete": "string (z.B. '9,16 €/m² laut Mietspiegel Stadt 2025, Lagestufe gut')",
+      "jahresrohertrag": "string (Berechnung sichtbar, z.B. '9,16 € × 78 m² × 12 = 8.574 €/Jahr')",
+      "bruttorendite": "string (z.B. '3,56 % p.a.')",
+      "bewirtschaftungskosten": "string (Prozent + €-Betrag, typisch 20-25%)",
+      "nettomietertrag": "string (Jahresrohertrag - Bewirtschaftungskosten)",
+      "nettorendite": "string (z.B. '2,85 % p.a. (vor Steuer)')",
+      "benchmark": "string (3-4 Sätze BERATER — Einordnung der Rendite im regionalen Kontext)",
+      "hinweis": "string (2-3 Sätze BERATER — was bei Selbstnutzung vs. Vermietung zu beachten ist)"
+    },
+
+    "finanzierungsDetail": {
+      "cashflow": [
+        { "eigenkapitalQuote": "10 %", "eigenkapitalBetrag": "string", "darlehen": "string", "zinssatz": "string (aktuell, recherchiert)", "tilgung": "2,0 %", "monatlicheRate": "string", "restschuld10Jahre": "string", "gesamtbelastung10Jahre": "string", "bewertung": "tragbar|grenzwertig|kritisch" },
+        { "eigenkapitalQuote": "20 %", "eigenkapitalBetrag": "string", "darlehen": "string", "zinssatz": "string", "tilgung": "2,0 %", "monatlicheRate": "string", "restschuld10Jahre": "string", "gesamtbelastung10Jahre": "string", "bewertung": "tragbar|grenzwertig|kritisch" },
+        { "eigenkapitalQuote": "30 %", "eigenkapitalBetrag": "string", "darlehen": "string", "zinssatz": "string", "tilgung": "2,0 %", "monatlicheRate": "string", "restschuld10Jahre": "string", "gesamtbelastung10Jahre": "string", "bewertung": "tragbar|grenzwertig|kritisch" }
+      ],
+      "empfehlung": "string (3-4 Sätze BERATER — welche Variante für welchen Käufertyp, was ist der Hebel)",
+      "beispielTilgungsplan": [
+        { "jahr": 1, "restschuld": "string", "bisherZinsen": "string", "bisherTilgung": "string" },
+        { "jahr": 5, "restschuld": "string", "bisherZinsen": "string", "bisherTilgung": "string" },
+        { "jahr": 10, "restschuld": "string", "bisherZinsen": "string", "bisherTilgung": "string" },
+        { "jahr": 15, "restschuld": "string", "bisherZinsen": "string", "bisherTilgung": "string" },
+        { "jahr": 20, "restschuld": "string", "bisherZinsen": "string", "bisherTilgung": "string" }
+      ]
+    },
+
+    "marktband": {
+      "einheit": "€/m²",
+      "guenstig": { "wert": "string (z.B. '4.200 €/m²')", "label": "string (kurz, z.B. 'Untere 25% (B-Lagen, sanierungsbedürftig)')" },
+      "durchschnittLow": { "wert": "string", "label": "string ('Mittleres Marktband (untere Hälfte)')" },
+      "durchschnittHigh": { "wert": "string", "label": "string ('Mittleres Marktband (obere Hälfte)')" },
+      "top": { "wert": "string", "label": "string ('Obere 10% (Top-Lagen, Neubau/saniert)')" },
+      "diesesObjekt": { "wert": "string (€/m² des Analyseobjekts)", "positionProzent": "number (0-100 — wo das Objekt im Band liegt, 0=ganz günstig, 100=ganz teuer)", "einordnung": "string (kurzer Satz, z.B. 'Im unteren Mittelband — leicht unter Median')" },
+      "einschaetzung": "string (3-4 Sätze BERATER — Was bedeutet diese Position für den Käufer?)"
+    },
+
+    "preistrendHistorisch": {
+      "einheit": "€/m²",
+      "zeitreihe": [
+        { "jahr": "2021", "wert": "string (z.B. '5.180 €/m²')", "wertNum": "number (numerisch z.B. 5180 für Chart-Skalierung)" },
+        { "jahr": "2022", "wert": "string", "wertNum": "number" },
+        { "jahr": "2023", "wert": "string", "wertNum": "number" },
+        { "jahr": "2024", "wert": "string", "wertNum": "number" },
+        { "jahr": "2025", "wert": "string", "wertNum": "number" },
+        { "jahr": "2026", "wert": "string", "wertNum": "number" }
+      ],
+      "trend": "steigend|stabil|fallend",
+      "veraenderungProzent": "string (z.B. '+4,6 % über 5 Jahre (≈ 0,9 % p.a.)')",
+      "prognoseHinweis": "string (3-4 Sätze BERATER — historischer Kontext + Prognose-Einordnung)"
+    },
+
+    "besichtigungsFragenSpezifisch": {
+      "fragenProThema": [
+        { "thema": "string (z.B. '🔥 Heizung & Energie (Baujahr XXXX!)' — emoji + thema + objektbezug)", "fragen": [
+          { "frage": "string (konkrete Frage)", "begruendung": "string (2-3 Sätze WARUM diese Frage wichtig ist, mit konkreten Zahlen)", "prioritaet": "kritisch|wichtig|optional", "bezugZumObjekt": "string (z.B. 'Baujahr 1965 = Asbest-Risiko' — die spezifische Verknüpfung zu Daten dieses Objekts)" }
+        ] }
+      ]
+    },
+
+    "staerkenSchwaechenNarrativ": {
+      "staerken": [{ "punkt": "string (kurze Aussage)", "begruendung": "string (1-2 Sätze WARUM ist das eine Stärke, mit konkreten Zahlen aus der Analyse)", "einfluss": "hoch|mittel|niedrig" }],
+      "schwaechen": [{ "punkt": "string", "begruendung": "string", "einfluss": "hoch|mittel|niedrig" }],
+      "empfehlung": "string (3-5 Sätze BERATER — konkrete Handlungsanweisung mit nummerierten Schritten z.B. '1) Schadstoffgutachten in Notarvertrag, 2) Verhandeln auf 375.000 €, 3) Vorkaufsrecht klären')"
+    }
   }
 }
 
@@ -234,6 +327,64 @@ PREMIUM-PFLICHT-DETAILS:
   4. Vor Vertragsunterzeichnung (Finanzierungszusage, Notarvertrag prüfen, Rücktrittsklausel, Übergabeprotokoll etc.)
 - steuerlicheAspekte: MINDESTENS 5 Aspekte (Grunderwerbsteuer, AfA bei Vermietung 2-3%, Werbungskosten, Spekulationssteuer 10 Jahre, Denkmal-AfA falls relevant).
 - gutachterEmpfehlung: Basierend auf Baujahr, Zustand und Sanierungsstau empfehlen ob ein Vor-Ort-Gutachten sinnvoll ist.
+
+═══════════════════════════════════════════════════════════════
+PREMIUM-PFLICHT — NEUE MODULE (Stufe 1 + 2)
+TONALITÄT: BERATER-STIL — narrativ, handlungsorientiert, persönlich. Verwende "Sie" statt "der Käufer".
+KEINE akademischen Floskeln, keine ImmoWertV-Paragraphen in den neuen Modulen. Schreibe wie ein erfahrener Makler-Coach.
+═══════════════════════════════════════════════════════════════
+
+- maklerProfil: Recherchiere den Maklernamen aus dem Exposé per Web-Suche. Suche gezielt nach: "[Maklername] Bewertungen", "[Maklername] ImmoScout", "[Maklername] JACASA", "[Maklername] Google reviews", "[Maklername] Impressum gegründet".
+  FALLBACK-REGELN bei fehlenden Daten:
+  * Privatverkäufer (kein Makler im Exposé) → "art": "privatverkauf", alle Felder gefüllt mit "—" oder "Nicht zutreffend (Privatverkauf)", fazit: "📋 Privatverkauf — keine Maklerprüfung möglich. Achten Sie umso stärker auf Vollständigkeit der Unterlagen und ggf. anwaltliche Vertragsprüfung."
+  * Makler ohne Online-Präsenz → "art": "unbekannt", "name": Maklername, andere Felder "Nicht öffentlich verfügbar", redFlags: ["Geringe Online-Sichtbarkeit — kann auf neuen Marktteilnehmer oder kleinen Privatmakler hindeuten. Empfehle direkten Kontakt + Anfrage nach Referenzen."]
+  * Bewertungen fehlen → bewertungen Array bleibt leer ODER ein Eintrag mit score: "—", anzahl: "Keine öffentlichen Bewertungen gefunden"
+  NIEMALS Bewertungen erfinden. Nur was du tatsächlich gefunden hast. Wenn echte Bewertungen vorhanden: Plattform, exakter Score, exakte Anzahl.
+  fazit MUSS narrativ sein (3-4 Sätze) — keine Stichpunkte. Ton: erfahrener Berater, nicht Versicherungs-Disclaimer.
+
+- mietrendite: Recherchiere die ortsübliche Vergleichsmiete per Web-Suche im offiziellen Mietspiegel der Stadt/Region für die entsprechende Lagestufe und Bauklasse. Berechne dann:
+  * jahresrohertrag = kaltmieteProQm × wohnflaeche × 12
+  * bruttorendite = jahresrohertrag / kaufpreis × 100
+  * bewirtschaftungskosten = 20-25% des Jahresrohertrags
+  * nettomietertrag = jahresrohertrag - bewirtschaftungskosten
+  * nettorendite = nettomietertrag / kaufpreis × 100
+  FALLBACK: Wenn die Region zu klein ist und kein Mietspiegel existiert (typisch Dörfer <5.000 Einwohner) → "verfuegbar": false, "fallbackHinweis": "Für [Ort] liegt kein offizieller Mietspiegel vor. Eine seriöse Renditeberechnung ist nicht möglich. Bei Vermietungsabsicht empfehle ich, vor Kauf 3-5 Vergleichsangebote in der Region einzuholen."
+  benchmark MUSS Berater-Tonalität haben — z.B. "Für eine A-Lage in Berlin ist 3,5% Bruttorendite im erwartbaren Bereich — Innenstadtlagen werden primär aus Wertsteigerungserwartung gekauft, nicht aus Cashflow."
+
+- finanzierungsDetail: Berechne 3 EK-Quoten (10/20/30%). Recherchiere AKTUELLE Bauzinsen per Web-Suche (z.B. interhyp, dr-klein, Check24 Baufinanzierung-Vergleich). Bei höherem EK typisch 0,2-0,3% bessere Zinsen. Berechne korrekt:
+  * monatlicheRate = darlehen × (zinssatz + tilgung) / 12 (Annuität)
+  * gesamtbelastung10Jahre = monatlicheRate × 120
+  * restschuld10Jahre nach Annuitätenformel
+  * bewertung "tragbar" wenn Rate < 35% Netto, "grenzwertig" 35-45%, "kritisch" >45% — Annahme: Median-Haushaltsnetto regional
+  empfehlung MUSS narrativ sein und konkret welche Variante für welchen Käufertyp passt + den größten Hebel (Zinsersparnis durch mehr EK) klar benennen.
+  beispielTilgungsplan: 5 Stützpunkte (Jahr 1, 5, 10, 15, 20) für die mittlere Variante (20% EK).
+
+- marktband: Recherchiere für den Stadtteil die Preisspanne aus mehreren Quellen (immowelt, Engel & Völkers Marktbericht, JLL/Aengevelt-Marktberichte). Bilde 4 Quartile:
+  * guenstig = ca. unteres 25%-Perzentil (B-Lagen, sanierungsbedürftig)
+  * durchschnittLow = Median-tiefer
+  * durchschnittHigh = Median-höher
+  * top = oberes 10%-Perzentil (Top-Lagen, Neubau/saniert)
+  diesesObjekt.positionProzent: Wo liegt der €/m²-Preis dieses Objekts auf der Skala 0=guenstig bis 100=top? Berechnen!
+  einschaetzung: Berater-Sätze, NICHT akademisch. z.B. "Sie zahlen ~5% unter dem Stadtteil-Median — das ist ein realistischer Eintrittspunkt, kein Schnäppchen."
+
+- preistrendHistorisch: Recherchiere die Preisentwicklung der letzten 5-6 Jahre für den Stadtteil per Web-Suche bei immowelt-Marktdaten oder ImmoScout-Marktberichten oder Engel & Völkers Marktbericht. wertNum MUSS als reine Zahl ohne Einheiten/Punkte (z.B. 5180, nicht "5.180" oder "5180 €") für die Chart-Skalierung. Wenn keine vollständige 6-Jahre-Historie findbar: schätze plausibel basierend auf bundesweiten/regionalen Trends und kennzeichne im prognoseHinweis (z.B. "Werte für 2021-2022 geschätzt aus regionalem Trend Bayern, da kein lokaler Mietspiegel verfügbar"). prognoseHinweis MUSS Berater-Tonalität — Kontext + Erwartung.
+
+- besichtigungsFragenSpezifisch: NICHT generisch! Jede Frage MUSS sich auf KONKRETE Daten DIESES Objekts beziehen. Beispiele:
+  * Wenn Baujahr 1950-1990 → Asbest-Frage als KRITISCH mit bezugZumObjekt: "Baujahr XXXX = klassische Asbest-Periode"
+  * Wenn Heizung > 15 Jahre alt → kritische Frage zum Heizungstausch mit Bezug aufs Alter
+  * Wenn ETW → WEG-Spezifika (Hausgeld, Rücklage, Sonderumlagen)
+  * Wenn EFH → Grundstücks-Spezifika (Erschließung, Wegerechte, Baulasten)
+  * Wenn Lage in Milieuschutz → Vorkaufsrecht-Frage
+  Mindestens 3 Themen mit jeweils 3-5 Fragen. begruendung MUSS konkret sein mit Zahlen ("Heizungstausch kostet 15-30k€", "Asbest-Sanierung +30-50% Kosten") — keine vagen "wichtig zu wissen" Floskeln.
+
+- staerkenSchwaechenNarrativ: Mindestens 4 Stärken + 4 Schwächen. Jede MUSS sich auf konkrete Daten der Analyse beziehen.
+  punkt = kurze Headline-Aussage (max 10 Wörter)
+  begruendung = WARUM ist das relevant + konkrete Zahlen aus der Analyse referenzieren
+  einfluss = Wie stark wirkt sich dieser Punkt auf die Kaufentscheidung aus?
+  empfehlung am Ende MUSS NUMMERIERTE Handlungsschritte enthalten (z.B. "1) ... 2) ... 3) ...") — der Käufer soll daraus eine konkrete To-Do-Liste ableiten können.
+  TONALITÄT: Wie ein erfahrener Coach. NICHT "Der Käufer sollte beachten..." sondern "Sie sollten..." / "Mein Rat: ...". Ehrliche Einschätzung — wenn Objekt mittelmäßig ist, sag es klar.
+
+ALLE NEUEN MODULE SIND PFLICHT. Wenn ein Modul wegen Datenlage unmöglich ist, IMMER den entsprechenden Fallback einsetzen — niemals Modul weglassen.
 
 DAS premiumReport-Objekt MUSS im JSON enthalten sein. Es ist NICHT optional. Der Kunde hat 79€ dafür bezahlt.`
 
@@ -306,7 +457,8 @@ async function callClaude(
   console.log('Using Claude Sonnet 4 (production mode)')
 
   // Premium gets more web searches for deeper research
-  const webSearchMaxUses = isPremium ? 15 : 10
+  // (Makler-Bewertungen, Preistrend, Marktquartile, Mietspiegel, Bauzinsen, Quellen)
+  const webSearchMaxUses = isPremium ? 28 : 12
 
   const response = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
@@ -506,7 +658,8 @@ serve(async (req) => {
     const systemPrompt = isPremium
       ? SYSTEM_PROMPT_STANDARD + SYSTEM_PROMPT_PREMIUM_ADDITION
       : SYSTEM_PROMPT_STANDARD
-    const maxTokens = isPremium ? 32000 : 16000
+    // Premium-Report stark erweitert (7 neue Module: Makler/Mietrendite/FinanzierungsDetail/Marktband/Preistrend/Besichtigungsfragen/Stärken-Schwächen + Quellen)
+    const maxTokens = isPremium ? 48000 : 18000
 
     // Process ONE analysis per function call (avoids 150s timeout)
     const anthropicKey = Deno.env.get('ANTHROPIC_API_KEY')!

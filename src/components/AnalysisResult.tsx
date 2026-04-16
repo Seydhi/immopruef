@@ -637,6 +637,38 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
         </>
       )}
 
+      {/* ════ Quellen (alle Pakete) ════ */}
+      {result.quellen && result.quellen.length > 0 && (
+        <>
+          <SectionHeader icon={<LinkIcon />} title="Quellen & Datenbasis" />
+          <div className="bg-white border border-ink/10 rounded-xl px-4 py-3 mb-5">
+            <p className="text-xs text-ink-light mb-3 leading-relaxed">
+              Diese Analyse basiert auf öffentlich verfügbaren Daten aus den folgenden Quellen.
+              Alle Werte wurden zum Stand der Erstellung recherchiert.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-x-4 gap-y-2">
+              {result.quellen.map((q, i) => (
+                <a
+                  key={i}
+                  href={q.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-start gap-2 py-1.5 border-b border-ink/5 last:border-b-0 hover:bg-cream/50 -mx-1 px-1 rounded transition-colors"
+                >
+                  <span className="bg-green/10 text-green text-[9px] font-medium px-1.5 py-0.5 rounded shrink-0 mt-0.5 tracking-wider uppercase whitespace-nowrap">
+                    {q.kategorie}
+                  </span>
+                  <span className="text-[12px] text-ink-mid group-hover:text-green flex-1 leading-snug">
+                    {q.titel}
+                    <span className="text-ink-light text-[10px] ml-1">↗</span>
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </>
+      )}
+
       {/* ════ Premium Report ════ */}
       {result.premiumReport && (
         <>
@@ -754,4 +786,7 @@ function BulbIcon() {
 }
 function LetterIcon() {
   return <svg className={iconClass} viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+}
+function LinkIcon() {
+  return <svg className={iconClass} viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
 }

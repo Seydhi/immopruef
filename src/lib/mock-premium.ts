@@ -177,4 +177,128 @@ export const MOCK_PREMIUM_REPORT: PremiumReport = {
     grund: 'Aufgrund des Baujahrs 1965 empfehlen wir ein Schadstoffgutachten (Asbest/PAK) sowie eine Kurzbegehung durch einen Bausachverständigen. Das Gebäude fällt in die kritische Baujahresklasse für Asbest. Eine Vor-Ort-Prüfung der Bausubstanz kann versteckte Mängel aufdecken, die aus dem Inserat nicht ersichtlich sind.',
     geschaetzteKosten: 'Schadstoffgutachten: 300–500 € · Kaufberatung Sachverständiger: 400–800 € · Gesamt: 700–1.300 €',
   },
+
+  // ═══════════════════════════════════════════════════════════════
+  // STUFE 1 — neue Module (Berater-Style, narrativ)
+  // ═══════════════════════════════════════════════════════════════
+
+  maklerProfil: {
+    name: 'BERLIN24 Immobilien GmbH',
+    art: 'gewerblich',
+    gegruendet: '2008',
+    mitarbeiter: '14',
+    qualifikation: 'Geprüfte Immobilienkaufleute (IHK), Sachverständige für Immobilienbewertung',
+    sitz: 'Hauptstr. 117, 10827 Berlin-Schöneberg',
+    ansprechpartner: 'Frau Dr. Anika Brenner',
+    bewertungen: [
+      { plattform: 'ImmoScout24', score: '4,7/5', anzahl: '142 Bewertungen' },
+      { plattform: 'Google', score: '4,6/5', anzahl: '89 Bewertungen' },
+      { plattform: 'ProvenExpert', score: '4,8/5', anzahl: '67 Bewertungen' },
+    ],
+    ranking: 'Top 20 Berliner Makler (ImmoScout-Ranking 2026)',
+    fazit: 'Etablierter Makler mit 18 Jahren Markterfahrung und konsistent guten Bewertungen über mehrere Plattformen. Keine Hinweise auf intransparente Geschäftspraktiken — die Reaktionszeiten in den Bewertungen werden durchgängig positiv erwähnt. Kontakt direkt über die Ansprechpartnerin empfehlenswert.',
+    redFlags: ['Keine Auffälligkeiten — solider gewerblicher Anbieter'],
+  },
+
+  mietrendite: {
+    verfuegbar: true,
+    ortsuebliche_kaltmiete: '14,80 €/m² (Mietspiegel Berlin-Kreuzberg 2025, Lagestufe „gut")',
+    jahresrohertrag: '14,80 € × 78 m² × 12 = 13.853 €/Jahr',
+    bruttorendite: '3,56 % p.a.',
+    bewirtschaftungskosten: '20 % (2.770 €/Jahr) — Hausgeld nicht-umlagefähig + Mietausfallwagnis + Verwaltung',
+    nettomietertrag: '11.083 €/Jahr',
+    nettorendite: '2,85 % p.a. (vor Steuer)',
+    benchmark: 'Für eine A-Lage in Berlin (Kreuzberg-61) liegt eine Bruttorendite von 3,5 % im erwartbaren Bereich — Berliner Innenstadtlagen werden primär aus Wertsteigerungserwartung gekauft, nicht aus laufendem Cashflow.',
+    hinweis: 'Bei Selbstnutzung greift diese Rechnung nicht. Bei späterer Vermietung sollten Sie zusätzlich AfA und Werbungskosten ansetzen — die Steuerersparnis hebt die effektive Nettorendite typischerweise auf ~3,5–4 %.',
+  },
+
+  finanzierungsDetail: {
+    cashflow: [
+      { eigenkapitalQuote: '10 %', eigenkapitalBetrag: '38.900 €', darlehen: '350.100 €', zinssatz: '3,8 %', tilgung: '2,0 %', monatlicheRate: '1.692 €', restschuld10Jahre: '283.000 €', gesamtbelastung10Jahre: '203.040 €', bewertung: 'grenzwertig' },
+      { eigenkapitalQuote: '20 %', eigenkapitalBetrag: '77.800 €', darlehen: '311.200 €', zinssatz: '3,5 %', tilgung: '2,0 %', monatlicheRate: '1.426 €', restschuld10Jahre: '252.000 €', gesamtbelastung10Jahre: '171.120 €', bewertung: 'tragbar' },
+      { eigenkapitalQuote: '30 %', eigenkapitalBetrag: '116.700 €', darlehen: '272.300 €', zinssatz: '3,3 %', tilgung: '2,0 %', monatlicheRate: '1.202 €', restschuld10Jahre: '220.000 €', gesamtbelastung10Jahre: '144.240 €', bewertung: 'tragbar' },
+    ],
+    empfehlung: 'Mit 20 % Eigenkapital landen Sie bei einer monatlichen Belastung von ~1.426 € — das entspricht etwa 35 % eines Nettoeinkommens von 4.000 €. Banken akzeptieren bis ~40 % Belastungsquote. Wer die 30 %-Variante stemmen kann, spart über 10 Jahre fast 60.000 € an Zinsen — das ist der mit Abstand größte Hebel in der Finanzierung.',
+    beispielTilgungsplan: [
+      { jahr: 1, restschuld: '305.000 €', bisherZinsen: '10.892 €', bisherTilgung: '6.220 €' },
+      { jahr: 5, restschuld: '278.000 €', bisherZinsen: '53.300 €', bisherTilgung: '32.812 €' },
+      { jahr: 10, restschuld: '252.000 €', bisherZinsen: '102.084 €', bisherTilgung: '69.036 €' },
+      { jahr: 15, restschuld: '224.000 €', bisherZinsen: '146.700 €', bisherTilgung: '109.000 €' },
+      { jahr: 20, restschuld: '194.000 €', bisherZinsen: '187.600 €', bisherTilgung: '152.400 €' },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // STUFE 2 — neue Module (Visualisierung + Narrative)
+  // ═══════════════════════════════════════════════════════════════
+
+  marktband: {
+    einheit: '€/m²',
+    guenstig: { wert: '4.200 €/m²', label: 'Untere 25 % (B-Lagen, sanierungsbedürftig)' },
+    durchschnittLow: { wert: '4.800 €/m²', label: 'Mittleres Marktband (untere Hälfte)' },
+    durchschnittHigh: { wert: '5.420 €/m²', label: 'Mittleres Marktband (obere Hälfte)' },
+    top: { wert: '6.900 €/m²', label: 'Obere 10 % (Top-Lagen, Neubau/saniert)' },
+    diesesObjekt: { wert: '4.987 €/m²', positionProzent: 28, einordnung: 'Im unteren Mittelband — leicht unter dem Median für Kreuzberg-61' },
+    einschaetzung: 'Das Objekt liegt mit ~5.000 €/m² etwa 8 % unter dem Stadtteil-Median und damit im "günstigeren Mittelband". Für Kreuzberg ist das ein realistisch bepreister Eintrittspunkt — kein Sonderschnäppchen, aber auch keine Überzahlung. Rechtfertigt aufgrund Baujahr 1965 keinen Aufpreis.',
+  },
+
+  preistrendHistorisch: {
+    einheit: '€/m²',
+    zeitreihe: [
+      { jahr: '2021', wert: '5.180 €/m²', wertNum: 5180 },
+      { jahr: '2022', wert: '5.420 €/m²', wertNum: 5420 },
+      { jahr: '2023', wert: '5.310 €/m²', wertNum: 5310 },
+      { jahr: '2024', wert: '5.350 €/m²', wertNum: 5350 },
+      { jahr: '2025', wert: '5.420 €/m²', wertNum: 5420 },
+      { jahr: '2026', wert: '5.420 €/m²', wertNum: 5420 },
+    ],
+    trend: 'stabil',
+    veraenderungProzent: '+4,6 % über 5 Jahre (≈ 0,9 % p.a.)',
+    prognoseHinweis: 'Berlin-Kreuzberg hat nach dem Korrektur-Jahr 2023 wieder das Vor-Pandemie-Niveau erreicht und verharrt seit 2024 stabil. Für die nächsten 5 Jahre wird vom IVD und Engel & Völkers eine moderate Aufwärtsentwicklung von 1–2 % p.a. erwartet — getrieben durch anhaltende Wohnraumknappheit, gebremst durch hohe Zinsen.',
+  },
+
+  besichtigungsFragenSpezifisch: {
+    fragenProThema: [
+      {
+        thema: '🔥 Heizung & Energie (Baujahr 1965!)',
+        fragen: [
+          { frage: 'Wie alt ist die aktuelle Gasheizung und wann war die letzte Wartung?', begruendung: 'Gasheizungen halten 20–25 Jahre. Bei Baujahr 1965 wurde die Heizung sehr wahrscheinlich schon mindestens 1× erneuert — aber wann? GEG-Pflicht ab 30 Jahre Alter.', prioritaet: 'kritisch', bezugZumObjekt: 'Baujahr 1965 + Gasheizung im Exposé' },
+          { frage: 'Liegt ein Bedarfsausweis (nicht nur Verbrauchsausweis) vor?', begruendung: 'Bedarfsausweis ist objektiver — der Verbrauchsausweis hängt stark vom Vorbewohner ab. Bei Effizienzklasse D im Verbrauchsausweis kann der Bedarf bis F sein.', prioritaet: 'wichtig', bezugZumObjekt: 'Klasse D im Exposé' },
+          { frage: 'Wann wurde die Fassade zuletzt gedämmt?', begruendung: 'Bei Baujahr 1965 und Klasse D wurde meist nur das Dach gedämmt, die Fassade nicht. Nachrüstung kostet 18.000–35.000 €.', prioritaet: 'wichtig', bezugZumObjekt: 'Baujahr 1965' },
+        ],
+      },
+      {
+        thema: '🏗️ Bausubstanz & Schadstoffe (Asbest-Risikobaujahr!)',
+        fragen: [
+          { frage: 'Wurde jemals ein Schadstoffgutachten gemacht (Asbest, PAK)?', begruendung: 'Baujahre 1950–1990 sind die kritische Asbest-Spanne. Im Innenputz, in Bodenbelägen, in Fensterkitten. Bei Renovierung Pflicht zur Sondersanierung.', prioritaet: 'kritisch', bezugZumObjekt: 'Baujahr 1965 = klassische Asbest-Periode' },
+          { frage: 'Gibt es Feuchtigkeitsspuren im Keller oder an Außenwänden?', begruendung: 'Vertikalsperren waren in den 60ern noch primitiv. Aufsteigende Feuchtigkeit ist die häufigste versteckte Mangel-Ursache.', prioritaet: 'kritisch', bezugZumObjekt: 'Baujahr 1965' },
+          { frage: 'Wann wurden die Fenster zuletzt erneuert? Kunststoff oder noch Holz?', begruendung: 'Originalfenster von 1965 sind energetische Katastrophe. Kunststofffenster aus den 90ern halten noch 5–10 Jahre.', prioritaet: 'wichtig', bezugZumObjekt: 'Baujahr 1965 + Klasse D' },
+        ],
+      },
+      {
+        thema: '📋 WEG & laufende Kosten',
+        fragen: [
+          { frage: 'Höhe der aktuellen Instandhaltungsrücklage und Plan für die nächsten 5 Jahre?', begruendung: 'Bei einem Gebäude von 1965 stehen mittelfristig große Sanierungen an. Eine niedrige Rücklage = Sonderumlagen.', prioritaet: 'kritisch', bezugZumObjekt: 'Älteres Gebäude, ETW' },
+          { frage: 'Sind in den letzten 3 WEG-Versammlungen Sonderumlagen beschlossen worden?', begruendung: 'Wenn ja, übernehmen Sie diese Verpflichtung mit dem Kauf. Direkter Einfluss auf die Gesamtkosten.', prioritaet: 'kritisch', bezugZumObjekt: 'ETW-Spezifika' },
+          { frage: 'Gilt für das Gebäude die Milieuschutzverordnung?', begruendung: 'Kreuzberg-61 ist Erhaltungsgebiet. Vorkaufsrecht der Gemeinde verzögert den Notar-Termin um 2–3 Monate.', prioritaet: 'wichtig', bezugZumObjekt: 'Lage Kreuzberg-61' },
+        ],
+      },
+    ],
+  },
+
+  staerkenSchwaechenNarrativ: {
+    staerken: [
+      { punkt: 'Preis liegt 8 % unter dem Stadtteil-Median', begruendung: 'Bei stabiler Marktentwicklung in Kreuzberg ist das ein realistisch bepreister Einstieg — keine Überzahlung. Verhandlungsspielraum auf 370–380k vorhanden.', einfluss: 'hoch' },
+      { punkt: 'Lage Kreuzberg-61: hohe Wertstabilität', begruendung: 'Innenstadtlage mit U6/U7, 5 Min. zum Viktoriapark, gemischtes Quartier — historisch hat Kreuzberg-61 selbst in Korrekturphasen kaum Wert verloren.', einfluss: 'hoch' },
+      { punkt: 'Energieklasse D — keine GEG-Sofortpflicht', begruendung: 'Erst ab Klasse F greift die Tausch-Pflicht für Heizung. Sie haben 5–10 Jahre Zeit zur energetischen Sanierung — das ist planbar.', einfluss: 'mittel' },
+      { punkt: 'Etablierter Makler mit 18 Jahren Erfahrung', begruendung: 'BERLIN24 Immobilien hat über 290 Bewertungen mit Schnitt 4,7+ — keine Hinweise auf intransparente Praktiken oder versteckte Provisionen.', einfluss: 'mittel' },
+    ],
+    schwaechen: [
+      { punkt: 'Baujahr 1965 — kritische Asbest-Periode', begruendung: 'Innenputz, Bodenbeläge und Fensterkitt aus diesen Jahren enthalten häufig Asbest. Bei Renovierung Sondersanierung Pflicht (+30–50 % Kosten).', einfluss: 'hoch' },
+      { punkt: 'Mietrendite mit 2,85 % netto unterdurchschnittlich', begruendung: 'Berliner Innenstadtlagen werden primär aus Wertsteigerungserwartung gekauft, nicht aus Cashflow. Wer das Objekt zur reinen Vermietung sucht, findet bessere Renditen in B-Städten.', einfluss: 'mittel' },
+      { punkt: 'Milieuschutz = Vorkaufsrecht der Gemeinde', begruendung: 'Der Bezirk hat 2 Monate Zeit zur Prüfung — der Notar-Termin verschiebt sich entsprechend. In <5 % der Fälle wird das Vorkaufsrecht ausgeübt, ist aber ein Restrisiko.', einfluss: 'mittel' },
+      { punkt: 'Kein Stellplatz im Exposé', begruendung: 'In Kreuzberg ist Parken eine Herausforderung. Mindert Wiederverkaufswert um 5–8 %, vor allem für Familien.', einfluss: 'niedrig' },
+    ],
+    empfehlung: 'Solides Objekt mit klarem Profil: Sie kaufen Lage und Wertstabilität, nicht Cashflow. Konkretes Vorgehen: 1) Schadstoffgutachten als Bedingung in den Notar-Vertrag, 2) Verhandeln Sie auf 375.000 € (–3,6 %), 3) Klären Sie vor Notar das Vorkaufsrecht des Bezirks. Bei diesem Preis und mit Schadstoffsicherheit ist das ein guter Kauf für 10+ Jahre Haltedauer.',
+  },
 }
