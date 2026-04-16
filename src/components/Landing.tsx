@@ -130,7 +130,7 @@ export default function Landing() {
         </p>
       </div>
 
-      <div ref={formRef} className="bg-white border border-ink/20 rounded-xl p-6 shadow-sm">
+      <div ref={formRef} id="analyse-form" className="bg-white border border-ink/20 rounded-xl p-6 shadow-sm">
         <PricingToggle selected={pkg} onChange={handlePackageChange} />
 
         <div className="mb-4">

@@ -1,141 +1,167 @@
+import { useState } from 'react'
+import { MOCK_ANALYSIS_RESULT } from '../../lib/mock-data'
+import { MOCK_PREMIUM_REPORT } from '../../lib/mock-premium'
+import AnalysisResult from '../AnalysisResult'
+
+// Vorschau-Sektion: 2 Kacheln (Standard / Premium) — Klick öffnet die echte
+// Analyse-UI als Fullscreen-Overlay mit Mock-Daten. So sehen Käufer was sie
+// bekommen, bevor sie 19/29/34/79€ ausgeben.
+
+type Variant = 'standard' | 'premium'
+
 export default function AnalysisPreview() {
+  const [open, setOpen] = useState<Variant | null>(null)
+
   return (
     <section className="py-10">
-      <h2 className="font-display text-2xl font-medium text-green text-center mb-2">
+      <h2 className="font-display text-2xl sm:text-3xl font-medium text-green text-center mb-2">
         So sieht Ihre Analyse aus
       </h2>
       <p className="text-ink-light text-sm text-center mb-8">
-        Beispiel einer Quick-Check Analyse
+        Klicken Sie auf eine Variante und sehen Sie die komplette Beispielanalyse
       </p>
 
-      <div className="space-y-4 max-w-[700px] mx-auto">
-        {/* Mock: Scores */}
-        <div className="bg-white border border-ink/10 rounded-xl p-5">
-          <div className="text-xs text-ink-light uppercase tracking-wider mb-3 font-medium">Bewertung auf einen Blick</div>
-          <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
-            {[
-              { label: 'Gesamt', score: 7.2 },
-              { label: 'Lage', score: 8 },
-              { label: 'Preis', score: 6 },
-              { label: 'Zustand', score: 7 },
-              { label: 'Energie', score: 5 },
-              { label: 'Finanz.', score: 8 },
-            ].map((s) => (
-              <div key={s.label} className="text-center">
-                <div className={`font-display text-xl font-semibold ${s.score >= 7 ? 'text-emerald-600' : s.score >= 5 ? 'text-amber-500' : 'text-red-500'}`}>
-                  {s.score}
-                </div>
-                <div className="text-[10px] text-ink-light">{s.label}</div>
-              </div>
-            ))}
+      {/* 2-Kachel-Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-[700px] mx-auto">
+        {/* Standard */}
+        <button
+          onClick={() => setOpen('standard')}
+          className="group bg-white border-2 border-ink/10 hover:border-green/40 hover:shadow-md rounded-2xl p-6 text-left transition-all flex flex-col"
+        >
+          <div className="flex items-center gap-2 mb-3">
+            <span className="text-2xl">📋</span>
+            <span className="font-display text-xl font-medium text-ink">Standard</span>
+            <span className="ml-auto bg-green/10 text-green text-[10px] font-bold px-2 py-0.5 rounded-full tracking-wider uppercase">ab 19 €</span>
           </div>
-        </div>
-
-        {/* Mock: Objektdaten */}
-        <div className="bg-white border border-ink/10 rounded-xl overflow-hidden">
-          <div className="bg-green/5 px-4 py-2.5 text-xs font-medium text-green tracking-wider uppercase border-b border-ink/8 flex items-center gap-2">
-            <div className="w-5 h-5 bg-green rounded flex items-center justify-center">
-              <svg width="12" height="12" fill="none" stroke="white" strokeWidth="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
-            </div>
-            Objektdaten
+          <p className="text-sm text-ink-mid leading-relaxed mb-4 flex-1">
+            Vollständige Analyse mit Preisbewertung, Energie-Check, Standortanalyse, Finanzierung, Risiken und mehr.
+          </p>
+          <ul className="space-y-1.5 mb-4 text-xs text-ink-mid">
+            <FeatureItem text="6 Bewertungs-Scores" />
+            <FeatureItem text="Gesamtkosten-Rechner" />
+            <FeatureItem text="Standortanalyse (8 Kategorien)" />
+            <FeatureItem text="3 Finanzierungs-Szenarien" />
+            <FeatureItem text="Verhandlungstipps + Makleranschreiben" />
+          </ul>
+          <div className="text-green text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
+            Standard-Beispiel ansehen <span>→</span>
           </div>
-          <table className="w-full text-[13px]">
-            <tbody>
-              {[
-                ['Adresse', 'Musterstraße 42, 10115 Berlin'],
-                ['Typ', 'Eigentumswohnung'],
-                ['Kaufpreis', '389.000 €'],
-                ['Wohnfläche', '78,5 m²'],
-                ['Zimmer', '3'],
-                ['Baujahr', '1962'],
-                ['Energieeffizienz', 'D (142 kWh/m²a)'],
-              ].map(([k, v], i) => (
-                <tr key={k} className={`border-b border-ink/8 last:border-b-0 ${i % 2 === 1 ? 'bg-cream/50' : ''}`}>
-                  <td className="px-4 py-2 text-ink-light text-xs font-medium w-[40%]">{k}</td>
-                  <td className="px-4 py-2 font-medium">{v}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        </button>
 
-        {/* Mock: Gesamtkosten */}
-        <div className="bg-white border border-ink/10 rounded-xl overflow-hidden">
-          <div className="bg-green/5 px-4 py-2.5 text-xs font-medium text-green tracking-wider uppercase border-b border-ink/8 flex items-center gap-2">
-            <div className="w-5 h-5 bg-green rounded flex items-center justify-center">
-              <svg width="12" height="12" fill="none" stroke="white" strokeWidth="2" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-            </div>
-            Kaufnebenkosten
+        {/* Premium */}
+        <button
+          onClick={() => setOpen('premium')}
+          className="group bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-gold/40 hover:border-gold hover:shadow-lg rounded-2xl p-6 text-left transition-all flex flex-col relative overflow-hidden"
+        >
+          {/* Premium-Glanz */}
+          <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-gold/20 to-transparent rounded-bl-full pointer-events-none" />
+
+          <div className="flex items-center gap-2 mb-3">
+            <span className="text-2xl">💎</span>
+            <span className="font-display text-xl font-medium text-amber-900">Premium</span>
+            <span className="ml-auto bg-gold text-white text-[10px] font-bold px-2 py-0.5 rounded-full tracking-wider uppercase">79 €</span>
           </div>
-          <table className="w-full text-[13px]">
-            <tbody>
-              {[
-                ['Grunderwerbsteuer (6,0%)', '23.340 €'],
-                ['Notar (1,5%)', '5.835 €'],
-                ['Grundbuch (0,5%)', '1.945 €'],
-                ['Makler (3,57%)', '13.887 €'],
-              ].map(([k, v], i) => (
-                <tr key={k} className={`border-b border-ink/8 ${i % 2 === 1 ? 'bg-cream/50' : ''}`}>
-                  <td className="px-4 py-2 text-ink-light text-xs font-medium w-[55%]">{k}</td>
-                  <td className="px-4 py-2 font-medium text-right">{v}</td>
-                </tr>
-              ))}
-              <tr className="bg-green/5 font-medium">
-                <td className="px-4 py-2.5 text-green text-xs">Nebenkosten Gesamt</td>
-                <td className="px-4 py-2.5 text-green font-display text-base text-right">45.007 €</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        {/* Mock: Gesamtinvestition */}
-        <div className="bg-green text-cream rounded-xl px-4 py-3.5 flex items-center justify-between">
-          <div>
-            <div className="text-cream/70 text-[10px] tracking-wider uppercase mb-0.5">Gesamtinvestition</div>
-            <div className="text-xs text-cream/60">Kaufpreis + Nebenkosten + Sanierung</div>
+          <p className="text-sm text-amber-900/80 leading-relaxed mb-4 flex-1">
+            Alles aus Standard <strong>plus</strong> 7 Premium-Module: Stärken/Schwächen, Maklerprofil, Mietrendite, Wertermittlung u.v.m.
+          </p>
+          <ul className="space-y-1.5 mb-4 text-xs text-amber-900/80">
+            <FeatureItem text="Stärken & Schwächen narrativ" gold />
+            <FeatureItem text="Marktband + Preistrend (5 J.)" gold />
+            <FeatureItem text="Maklerprofil mit Bewertungen" gold />
+            <FeatureItem text="Mietrendite + Cashflow-Detail" gold />
+            <FeatureItem text="Wertermittlung (3 Verfahren)" gold />
+          </ul>
+          <div className="text-amber-700 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
+            Premium-Beispiel ansehen <span>→</span>
           </div>
-          <div className="font-display text-2xl font-medium">459.007 €</div>
-        </div>
-
-        {/* Mock: Standort */}
-        <div className="bg-white border border-ink/10 rounded-xl overflow-hidden">
-          <div className="bg-green/5 px-4 py-2.5 text-xs font-medium text-green tracking-wider uppercase border-b border-ink/8 flex items-center gap-2">
-            <div className="w-5 h-5 bg-green rounded flex items-center justify-center">
-              <svg width="12" height="12" fill="none" stroke="white" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            </div>
-            Standortanalyse — 8.0 / 10
-          </div>
-          <table className="w-full text-[13px]">
-            <tbody>
-              {[
-                ['ÖPNV-Anbindung', '9/10', 'U-Bahn 200m, Bus 100m'],
-                ['Schulen & Kitas', '8/10', '3 Grundschulen im Umkreis'],
-                ['Einkaufsmöglichkeiten', '9/10', 'Supermarkt 150m, Wochenmarkt'],
-                ['Ärztliche Versorgung', '7/10', 'Hausarzt 300m, Krankenhaus 2km'],
-                ['Lärm', '6/10', 'Straßenlärm tags 55 dB'],
-              ].map(([k, score, detail], i) => (
-                <tr key={k} className={`border-b border-ink/8 last:border-b-0 ${i % 2 === 1 ? 'bg-cream/50' : ''}`}>
-                  <td className="px-4 py-2 text-ink-light text-xs font-medium w-[30%]">{k}</td>
-                  <td className="px-4 py-2 text-center w-[15%]">
-                    <span className={`inline-block text-xs font-semibold px-2 py-0.5 rounded-full ${
-                      parseInt(score as string) >= 8 ? 'bg-emerald-50 text-emerald-700' :
-                      parseInt(score as string) >= 6 ? 'bg-amber-50 text-amber-700' :
-                      'bg-red-50 text-red-700'
-                    }`}>{score}</span>
-                  </td>
-                  <td className="px-4 py-2 text-xs text-ink-mid">{detail}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        {/* Fade-out overlay */}
-        <div className="relative h-16 -mt-16 bg-gradient-to-t from-cream to-transparent pointer-events-none rounded-b-xl" />
-        <p className="text-center text-xs text-ink-light -mt-4">
-          + Energie-Analyse, Modernisierungs-Check, Risikobewertung, Finanzierung, Verhandlungstipps, Makleranschreiben
-        </p>
+        </button>
       </div>
+
+      {/* Modal-Overlay mit Live-Analyse */}
+      {open && (
+        <PreviewModal
+          variant={open}
+          onClose={() => setOpen(null)}
+        />
+      )}
     </section>
+  )
+}
+
+function FeatureItem({ text, gold }: { text: string; gold?: boolean }) {
+  return (
+    <li className="flex items-start gap-1.5">
+      <span className={`shrink-0 mt-0.5 ${gold ? 'text-gold' : 'text-green'}`}>✓</span>
+      <span>{text}</span>
+    </li>
+  )
+}
+
+function PreviewModal({ variant, onClose }: { variant: Variant; onClose: () => void }) {
+  const isPremium = variant === 'premium'
+  const result = isPremium
+    ? { ...MOCK_ANALYSIS_RESULT, premiumReport: MOCK_PREMIUM_REPORT }
+    : MOCK_ANALYSIS_RESULT
+
+  return (
+    <div
+      className="fixed inset-0 z-50 bg-ink/80 backdrop-blur-sm flex items-start justify-center overflow-y-auto p-4 sm:p-8"
+      onClick={onClose}
+    >
+      <div
+        className="bg-cream w-full max-w-[900px] rounded-2xl shadow-2xl my-4 relative"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Sticky Header mit Close-Button + Hinweis */}
+        <div className="sticky top-0 z-10 bg-amber-50 border-b border-amber-200 rounded-t-2xl px-5 py-3 flex items-center justify-between gap-3 flex-wrap">
+          <div className="flex items-center gap-2 text-sm">
+            <span className="text-lg">{isPremium ? '💎' : '📋'}</span>
+            <span className="font-medium text-amber-900">
+              Beispielanalyse — {isPremium ? 'Premium-Report' : 'Standard'}
+            </span>
+            <span className="bg-amber-200 text-amber-900 text-[9px] font-bold px-2 py-0.5 rounded-full tracking-wider uppercase">
+              Mock-Daten · keine echte Analyse
+            </span>
+          </div>
+          <button
+            onClick={onClose}
+            aria-label="Schließen"
+            className="bg-white hover:bg-cream-dark border border-ink/15 rounded-lg w-9 h-9 flex items-center justify-center text-ink-mid hover:text-ink transition-colors shrink-0"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+
+        {/* Inhalt */}
+        <div className="px-4 sm:px-6 pb-6 pt-4">
+          <AnalysisResult
+            result={result}
+            options={{ makleranschreiben: true, verhandlungstipps: true, risiken: true }}
+            url="https://www.immobilienscout24.de/expose/example-mock-id"
+            showBackButton={false}
+          />
+        </div>
+
+        {/* Sticky CTA-Footer */}
+        <div className="sticky bottom-0 bg-gradient-to-t from-cream via-cream to-cream/90 backdrop-blur-sm border-t border-ink/10 rounded-b-2xl px-5 py-4">
+          <div className="flex items-center justify-between gap-4 flex-wrap">
+            <div className="text-sm text-ink-mid">
+              Überzeugt? Starten Sie jetzt mit Ihrer eigenen Immobilie.
+            </div>
+            <button
+              onClick={() => {
+                onClose()
+                setTimeout(() => {
+                  document.querySelector('#analyse-form')?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+                }, 100)
+              }}
+              className="bg-green text-cream text-sm font-medium px-5 py-2.5 rounded-lg hover:bg-green-mid transition-colors"
+            >
+              {isPremium ? 'Premium starten — 79 €' : 'Jetzt analysieren — ab 19 €'}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
