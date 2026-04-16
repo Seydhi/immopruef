@@ -148,6 +148,14 @@ JSON-Schema (alle Felder sind Pflicht):
 
 PFLICHT-HINWEISE:
 - objektdaten: Adresse, Typ, Kaufpreis, Wohnfläche, Grundstück, Zimmer, Baujahr, Zustand, Heizung, Energieeffizienz, Stellplatz, Keller, Hausgeld, Provision. Werte aus dem Exposé. Wenn ein Wert fehlt: regionalen Durchschnitt recherchieren und mit "(⚠️ Regionsdurchschnitt — nicht im Exposé)" kennzeichnen.
+  WICHTIG für das DECKBLATT der Analyse: Die folgenden 5 Einträge MÜSSEN in dieser exakten Schreibweise vorhanden sein, weil sie als Hero-Stats angezeigt werden:
+  * { "merkmal": "Adresse", "wert": "Vollständige Adresse mit PLZ und Ort" }
+  * { "merkmal": "Objekttyp", "wert": "z.B. Eigentumswohnung, Reihenhaus, Einfamilienhaus" }
+  * { "merkmal": "Kaufpreis", "wert": "z.B. 389.000 €" }
+  * { "merkmal": "Wohnfläche", "wert": "z.B. 78 m²" }
+  * { "merkmal": "Zimmer", "wert": "z.B. 3" }
+  * { "merkmal": "Baujahr", "wert": "z.B. 1965" }
+  * { "merkmal": "Energieeffizienz", "wert": "z.B. D (128 kWh/m²a)" }
 - standortanalyse.kategorien: ÖPNV, Schulen/Kitas, Einkauf, Ärzte, Freizeit, Lärm, Sicherheit, Entwicklungsperspektive. JEDE Kategorie braucht Score 1-10 basierend auf Web-Recherche.
 - finanzierung.szenarien: IMMER 3 Szenarien berechnen (Konservativ 30% EK, Standard 20% EK, Minimal 10% EK). Recherchiere aktuelle Bauzinsen per Web-Suche. IMMER konkrete Euro-Beträge korrekt durchrechnen.
 - stresstest: IMMER 3 Szenarien (Zinserhöhung auf 5,5%, Sonderumlage 15.000€, Einkommensverlust 30%). Korrekt berechnen.
