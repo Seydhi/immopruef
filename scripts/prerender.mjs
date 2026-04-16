@@ -11,8 +11,18 @@ import { mkdir, writeFile, readFile, stat } from 'node:fs/promises'
 import { existsSync, createReadStream } from 'node:fs'
 import { join, dirname, extname } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import puppeteer from 'puppeteer'
 import { createServer } from 'node:http'
+
+// Lokal: volles puppeteer (mit eingebautem Chrome)
+// Auf Vercel: puppeteer-core + @sparticuz/chromium (serverless Chrome)
+const IS_VERCEL = process.env.VERCEL === '1'
+let puppeteer, chromium
+if (IS_VERCEL) {
+  puppeteer = (await import('puppeteer-core')).default
+  chromium = (await import('@sparticuz/chromium')).default
+} else {
+  puppeteer = (await import('puppeteer')).default
+}
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = join(__dirname, '..')
@@ -142,11 +152,19 @@ async function main() {
   console.log('Starte lokalen Test-Server auf Port', PORT)
   const server = await startServer(DIST, PORT)
 
-  console.log('Starte Puppeteer (Headless Chrome)')
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
-  })
+  console.log(`Starte Puppeteer (${IS_VERCEL ? 'Vercel + @sparticuz/chromium' : 'lokal'})`)
+  const launchOptions = IS_VERCEL
+    ? {
+        headless: true,
+        args: chromium.args,
+        defaultViewport: chromium.defaultViewport,
+        executablePath: await chromium.executablePath(),
+      }
+    : {
+        headless: true,
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      }
+  const browser = await puppeteer.launch(launchOptions)
 
   const routes = await getRoutes()
   console.log(`Pre-rendere ${routes.length} Routen:\n`)
