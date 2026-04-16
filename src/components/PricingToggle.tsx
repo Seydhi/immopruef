@@ -61,9 +61,9 @@ export default function PricingToggle({ selected, onChange }: PricingToggleProps
             : 'border-ink/10 bg-white hover:border-gold/40'
         }`}
       >
-        <div className="flex items-center justify-between">
-          <div>
-            <div className="flex items-center gap-2">
+        <div className="flex items-start justify-between gap-3 flex-wrap">
+          <div className="min-w-0 flex-1">
+            <div className="flex items-center gap-2 flex-wrap">
               <span className="text-base">📋</span>
               <span className={`font-display text-base font-medium ${isPremiumSelected ? 'text-amber-900' : 'text-ink'}`}>
                 Kaufentscheidungs-Report
@@ -76,12 +76,12 @@ export default function PricingToggle({ selected, onChange }: PricingToggleProps
               Immobilienbewertung · Standort-Dossier · Finanzierungsplan · Checkliste · PDF-Export
             </div>
           </div>
-          <div className="text-right shrink-0 ml-4">
+          <div className="text-right shrink-0">
             <div className={`font-display text-xl font-medium ${isPremiumSelected ? 'text-amber-900' : 'text-ink'}`}>
               79,00 €
             </div>
-            <div className={`text-[10px] ${isPremiumSelected ? 'text-amber-600' : 'text-ink-light'}`}>
-              statt 500–2.500 € Gutachter
+            <div className={`text-[10px] leading-tight ${isPremiumSelected ? 'text-amber-600' : 'text-ink-light'}`}>
+              statt 500–2.500&nbsp;€<br />Gutachter
             </div>
           </div>
         </div>

@@ -323,7 +323,8 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
 
           <div className="bg-white border border-ink/10 rounded-xl overflow-hidden">
             <div className="bg-green/5 px-4 py-2.5 text-xs font-medium text-green tracking-wider uppercase border-b border-ink/8">Sanierungsoptionen & Förderung</div>
-            <table className="w-full text-[13px]">
+            <div className="overflow-x-auto">
+            <table className="w-full text-[13px] min-w-[500px]">
               <thead>
                 <tr className="border-b border-ink/10 text-ink-light">
                   <th className="px-3 py-2 text-left text-[10px] font-medium tracking-wider uppercase">Maßnahme</th>
@@ -343,6 +344,7 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
                 ))}
               </tbody>
             </table>
+            </div>
             <div className="bg-emerald-50 px-4 py-2.5 text-xs text-emerald-700 font-medium">💰 {result.energieanalyse.foerdermittelGesamt}</div>
           </div>
         </div>
@@ -357,8 +359,8 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
             <div className="font-display text-xl text-amber-700 font-medium">{result.modernisierung.sanierungsstauGesamt}</div>
           </div>
 
-          <div className="bg-white border border-ink/10 rounded-xl overflow-hidden">
-            <table className="w-full text-[13px]">
+          <div className="bg-white border border-ink/10 rounded-xl overflow-x-auto">
+            <table className="w-full text-[13px] min-w-[520px]">
               <thead>
                 <tr className="border-b border-ink/10 text-ink-light">
                   <th className="px-3 py-2 text-left text-[10px] font-medium tracking-wider uppercase">Bauteil</th>

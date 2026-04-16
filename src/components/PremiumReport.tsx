@@ -89,22 +89,23 @@ export default function PremiumReport({ report, slot }: PremiumReportProps) {
 function HeaderSlot({ report }: { report: PremiumReportType }) {
   const handlePdfDownload = () => window.print()
   return (
-    <div className="bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-gold/30 rounded-xl p-5 mb-6">
+    <div className="bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-gold/30 rounded-xl p-4 sm:p-5 mb-6">
       <div className="flex items-center justify-between flex-wrap gap-3">
-        <div>
-          <div className="flex items-center gap-2 mb-1">
+        <div className="min-w-0 flex-1">
+          <div className="flex items-center gap-2 mb-1 flex-wrap">
             <span className="text-lg">📋</span>
-            <span className="font-display text-lg font-medium text-amber-900">Premium-Kaufentscheidungs-Report</span>
+            <span className="font-display text-base sm:text-lg font-medium text-amber-900">Premium-Kaufentscheidungs-Report</span>
             <span className="bg-gold text-white text-[9px] font-bold px-2 py-0.5 rounded-full tracking-wider uppercase">Premium</span>
           </div>
-          <div className="text-xs text-amber-700">Report-Nr. {report.reportNummer || '—'} · Erstellt am {report.reportDatum || '—'}</div>
+          <div className="text-[11px] sm:text-xs text-amber-700">Report-Nr. {report.reportNummer || '—'} · Erstellt am {report.reportDatum || '—'}</div>
         </div>
         <button
           onClick={handlePdfDownload}
-          className="bg-green text-cream text-sm font-medium px-4 py-2 rounded-lg hover:bg-green-mid transition-colors flex items-center gap-1.5 no-print"
+          className="bg-green text-cream text-sm font-medium px-4 py-2 rounded-lg hover:bg-green-mid transition-colors flex items-center gap-1.5 no-print shrink-0"
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
-          PDF herunterladen
+          <span className="hidden sm:inline">PDF herunterladen</span>
+          <span className="sm:hidden">PDF</span>
         </button>
       </div>
     </div>
@@ -263,8 +264,8 @@ function MietrenditeSlot({ data }: { data: NonNullable<PremiumReportType['mietre
 function FinanzierungSlot({ data }: { data: NonNullable<PremiumReportType['finanzierungsDetail']> }) {
   return (
     <PremiumSection icon="🏦" title="Finanzierungs-Cashflow im Detail">
-      <div className="bg-white border border-ink/10 rounded-lg overflow-hidden mb-3">
-        <table className="w-full text-[12px]">
+      <div className="bg-white border border-ink/10 rounded-lg overflow-x-auto mb-3">
+        <table className="w-full text-[12px] min-w-[600px]">
           <thead>
             <tr className="bg-cream text-ink-light">
               <th className="px-3 py-2 text-left font-medium tracking-wider uppercase text-[10px]">EK-Quote</th>
@@ -302,8 +303,8 @@ function FinanzierungSlot({ data }: { data: NonNullable<PremiumReportType['finan
         <div className="text-[12px] text-ink-mid leading-relaxed">{data.empfehlung}</div>
       </div>
       <SubHeading>Tilgungsplan (Standardszenario)</SubHeading>
-      <div className="bg-white border border-ink/10 rounded-lg overflow-hidden text-[12px]">
-        <table className="w-full">
+      <div className="bg-white border border-ink/10 rounded-lg overflow-x-auto text-[12px]">
+        <table className="w-full min-w-[480px]">
           <thead>
             <tr className="bg-cream text-ink-light">
               <th className="px-3 py-2 text-left font-medium tracking-wider uppercase text-[10px]">Jahr</th>
@@ -331,8 +332,8 @@ function FinanzierungSlot({ data }: { data: NonNullable<PremiumReportType['finan
 function VermoegenSlot({ data }: { data: NonNullable<PremiumReportType['vermoegensvergleich']> }) {
   return (
     <PremiumSection icon="📈" title="30-Jahres Vermögensvergleich (Kaufen vs. Mieten + ETF)">
-      <div className="bg-white border border-ink/10 rounded-lg overflow-hidden mb-3">
-        <table className="w-full text-[12px]">
+      <div className="bg-white border border-ink/10 rounded-lg overflow-x-auto mb-3">
+        <table className="w-full text-[12px] min-w-[450px]">
           <thead>
             <tr className="bg-cream text-ink-light">
               <th className="px-3 py-2 text-left font-medium tracking-wider uppercase text-[10px]">Jahr</th>
@@ -365,8 +366,8 @@ function WertermittlungSlot({ data }: { data: NonNullable<PremiumReportType['wer
       <div className="mb-4">
         <SubHeading>Vergleichswertverfahren (§15 ImmoWertV)</SubHeading>
         <p className="text-xs text-ink-mid mb-3">{data.vergleichswert.methode}</p>
-        <div className="bg-white border border-ink/10 rounded-lg overflow-hidden">
-          <table className="w-full text-[12px]">
+        <div className="bg-white border border-ink/10 rounded-lg overflow-x-auto">
+          <table className="w-full text-[12px] min-w-[500px]">
             <thead>
               <tr className="bg-cream text-ink-light">
                 <th className="px-3 py-2 text-left font-medium tracking-wider uppercase text-[10px]">Vergleichsobjekt</th>

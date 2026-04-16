@@ -105,22 +105,22 @@ function PreviewModal({ variant, onClose }: { variant: Variant; onClose: () => v
 
   return (
     <div
-      className="fixed inset-0 z-50 bg-ink/80 backdrop-blur-sm flex items-start justify-center overflow-y-auto p-4 sm:p-8"
+      className="fixed inset-0 z-50 bg-ink/80 backdrop-blur-sm flex items-start justify-center overflow-y-auto p-2 sm:p-4 md:p-8"
       onClick={onClose}
     >
       <div
-        className="bg-cream w-full max-w-[900px] rounded-2xl shadow-2xl my-4 relative"
+        className="bg-cream w-full max-w-[900px] rounded-2xl shadow-2xl my-2 sm:my-4 relative overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Sticky Header mit Close-Button + Hinweis */}
-        <div className="sticky top-0 z-10 bg-amber-50 border-b border-amber-200 rounded-t-2xl px-5 py-3 flex items-center justify-between gap-3 flex-wrap">
-          <div className="flex items-center gap-2 text-sm">
+        <div className="sticky top-0 z-10 bg-amber-50 border-b border-amber-200 px-3 sm:px-5 py-3 flex items-center justify-between gap-2 flex-wrap">
+          <div className="flex items-center gap-2 text-sm min-w-0 flex-1 flex-wrap">
             <span className="text-lg">{isPremium ? '💎' : '📋'}</span>
-            <span className="font-medium text-amber-900">
-              Beispielanalyse — {isPremium ? 'Premium-Report' : 'Standard'}
+            <span className="font-medium text-amber-900 text-[13px] sm:text-sm">
+              Beispielanalyse — {isPremium ? 'Premium' : 'Standard'}
             </span>
-            <span className="bg-amber-200 text-amber-900 text-[9px] font-bold px-2 py-0.5 rounded-full tracking-wider uppercase">
-              Mock-Daten · keine echte Analyse
+            <span className="bg-amber-200 text-amber-900 text-[8px] sm:text-[9px] font-bold px-1.5 sm:px-2 py-0.5 rounded-full tracking-wider uppercase">
+              Mock · keine echte Analyse
             </span>
           </div>
           <button
@@ -133,7 +133,7 @@ function PreviewModal({ variant, onClose }: { variant: Variant; onClose: () => v
         </div>
 
         {/* Inhalt */}
-        <div className="px-4 sm:px-6 pb-6 pt-4">
+        <div className="px-3 sm:px-6 pb-6 pt-4">
           <AnalysisResult
             result={result}
             options={{ makleranschreiben: true, verhandlungstipps: true, risiken: true }}
@@ -143,9 +143,9 @@ function PreviewModal({ variant, onClose }: { variant: Variant; onClose: () => v
         </div>
 
         {/* Sticky CTA-Footer */}
-        <div className="sticky bottom-0 bg-gradient-to-t from-cream via-cream to-cream/90 backdrop-blur-sm border-t border-ink/10 rounded-b-2xl px-5 py-4">
-          <div className="flex items-center justify-between gap-4 flex-wrap">
-            <div className="text-sm text-ink-mid">
+        <div className="sticky bottom-0 bg-gradient-to-t from-cream via-cream to-cream/90 backdrop-blur-sm border-t border-ink/10 px-3 sm:px-5 py-3 sm:py-4">
+          <div className="flex items-center justify-between gap-2 sm:gap-4 flex-wrap">
+            <div className="text-xs sm:text-sm text-ink-mid hidden sm:block">
               Überzeugt? Starten Sie jetzt mit Ihrer eigenen Immobilie.
             </div>
             <button
@@ -155,7 +155,7 @@ function PreviewModal({ variant, onClose }: { variant: Variant; onClose: () => v
                   document.querySelector('#analyse-form')?.scrollIntoView({ behavior: 'smooth', block: 'center' })
                 }, 100)
               }}
-              className="bg-green text-cream text-sm font-medium px-5 py-2.5 rounded-lg hover:bg-green-mid transition-colors"
+              className="bg-green text-cream text-sm font-medium px-4 sm:px-5 py-2.5 rounded-lg hover:bg-green-mid transition-colors w-full sm:w-auto"
             >
               {isPremium ? 'Premium starten — 79 €' : 'Jetzt analysieren — ab 19 €'}
             </button>
