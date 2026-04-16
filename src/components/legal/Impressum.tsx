@@ -1,4 +1,12 @@
+import { useSEO } from '../../lib/useSEO'
+
 export default function Impressum() {
+  useSEO({
+    title: 'Impressum',
+    description: 'Impressum von ImmoPrüf — Anbieter, Kontaktdaten und rechtliche Angaben gemäß § 5 TMG.',
+    canonical: 'https://immopruef.de/impressum',
+    type: 'website',
+  })
   return (
     <div className="max-w-[680px] mx-auto">
       <h1 className="text-2xl font-heading font-bold text-ink mb-8">Impressum</h1>

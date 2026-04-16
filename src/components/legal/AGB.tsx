@@ -1,4 +1,12 @@
+import { useSEO } from '../../lib/useSEO'
+
 export default function AGB() {
+  useSEO({
+    title: 'AGB — Allgemeine Geschäftsbedingungen',
+    description: 'Allgemeine Geschäftsbedingungen für die Nutzung von ImmoPrüf — Vertragsbedingungen, Widerrufsrecht und Haftung.',
+    canonical: 'https://immopruef.de/agb',
+    type: 'website',
+  })
   return (
     <div className="max-w-[680px] mx-auto">
       <h1 className="text-2xl font-heading font-bold text-ink mb-8">Allgemeine Geschäftsbedingungen</h1>

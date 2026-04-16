@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const FAQS = [
+export const FAQS = [
   {
     q: 'Was analysiert ImmoPrüf genau?',
     a: 'Jede Analyse umfasst: Preisbewertung mit Marktvergleich, vollständige Kaufnebenkosten-Berechnung, Energie-Analyse mit Fördermittel-Check, Modernisierungs-Check mit Sanierungsfahrplan, Standortanalyse (ÖPNV, Schulen, Ärzte, Demografie), Risikobewertung mit Red Flags, Finanzierungs-Check mit 3 Szenarien und Stresstest, Verhandlungstipps und ein direkt nutzbares Makleranschreiben.',

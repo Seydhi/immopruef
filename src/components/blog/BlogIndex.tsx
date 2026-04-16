@@ -1,11 +1,34 @@
 import type { BlogMeta } from './BlogLayout'
 import { BLOG_POSTS } from './posts'
+import { useSEO, breadcrumbSchema } from '../../lib/useSEO'
 
 interface BlogIndexProps {
   onNavigate: (slug: string) => void
 }
 
 export default function BlogIndex({ onNavigate }: BlogIndexProps) {
+  useSEO({
+    title: 'Blog: Ratgeber & Tipps zum Immobilienkauf',
+    description: '36 Ratgeber rund um Exposé-Prüfung, Preisbewertung, Energieausweis, Standortanalyse und Finanzierung. Fundiertes Wissen für Käufer in Deutschland.',
+    canonical: 'https://immopruef.de/blog',
+    type: 'website',
+    jsonLd: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        name: 'ImmoPrüf Blog — Ratgeber zum Immobilienkauf',
+        url: 'https://immopruef.de/blog',
+        description: 'Blog-Übersicht mit 36 Ratgebern zum Immobilienkauf in Deutschland',
+        inLanguage: 'de-DE',
+        isPartOf: { '@type': 'WebSite', name: 'ImmoPrüf', url: 'https://immopruef.de' },
+      },
+      breadcrumbSchema([
+        { name: 'Startseite', url: 'https://immopruef.de/' },
+        { name: 'Blog', url: 'https://immopruef.de/blog' },
+      ]),
+    ],
+  })
+
   return (
     <div>
       <div className="mb-8 text-center">

@@ -3,14 +3,27 @@ import type { Package, AnalysisOptions } from '../lib/types'
 import { PACKAGE_CONFIG } from '../lib/types'
 import { isValidPropertyUrl } from '../lib/validation'
 import { startCheckout } from '../lib/api'
+import { useSEO, organizationSchema, webSiteSchema, productSchema, faqSchema } from '../lib/useSEO'
 import PricingToggle from './PricingToggle'
 import UrlInputGroup from './UrlInputGroup'
 import HeroSection from './landing/HeroSection'
 import FeatureGrid from './landing/FeatureGrid'
 import AnalysisPreview from './landing/AnalysisPreview'
-import FAQ from './landing/FAQ'
+import FAQ, { FAQS } from './landing/FAQ'
 
 export default function Landing() {
+  useSEO({
+    title: 'KI-gestützte Immobilienanalyse für Käufer in Deutschland',
+    description: 'Soll ich diese Immobilie kaufen? Preisbewertung, Standortanalyse, Energie-Check, Finanzierung und Risiken in einem Report. Ab 19 € pro Analyse — Premium-Report ab 79 €.',
+    canonical: 'https://immopruef.de/',
+    type: 'website',
+    jsonLd: [
+      organizationSchema(),
+      webSiteSchema(),
+      productSchema(),
+      faqSchema(FAQS.map(f => ({ question: f.q, answer: f.a }))),
+    ],
+  })
   const formRef = useRef<HTMLDivElement>(null)
   const scrollToForm = () => formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
   const [pkg, setPkg] = useState<Package>('single')

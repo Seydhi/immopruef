@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import { BLOG_POSTS } from './posts'
+import { useSEO, articleSchema, breadcrumbSchema } from '../../lib/useSEO'
 
 export interface BlogMeta {
   slug: string
@@ -14,6 +15,20 @@ export interface BlogMeta {
 interface BlogLayoutProps {
   meta: BlogMeta
   children: ReactNode
+}
+
+// Konvertiert "11. April 2026" zu ISO 8601 für Schema.org
+function germanDateToIso(date: string): string {
+  const months: Record<string, string> = {
+    Januar: '01', Februar: '02', März: '03', April: '04', Mai: '05', Juni: '06',
+    Juli: '07', August: '08', September: '09', Oktober: '10', November: '11', Dezember: '12',
+  }
+  const m = date.match(/(\d+)\.\s*([A-Za-zäöüÄÖÜ]+)\s*(\d{4})/)
+  if (!m) return new Date().toISOString()
+  const day = m[1].padStart(2, '0')
+  const month = months[m[2]] || '01'
+  const year = m[3]
+  return `${year}-${month}-${day}T08:00:00+02:00`
 }
 
 // Findet 3 verwandte Posts mit größter Tag-Überlappung
@@ -32,6 +47,35 @@ function findRelatedPosts(currentSlug: string, currentTags: string[], limit = 3)
 
 export default function BlogLayout({ meta, children }: BlogLayoutProps) {
   const related = findRelatedPosts(meta.slug, meta.tags)
+  const url = `https://immopruef.de/blog/${meta.slug}`
+  const isoDate = germanDateToIso(meta.date)
+
+  useSEO({
+    title: meta.title,
+    description: meta.description,
+    canonical: url,
+    image: meta.image,
+    type: 'article',
+    publishedTime: isoDate,
+    modifiedTime: isoDate,
+    tags: meta.tags,
+    jsonLd: [
+      articleSchema({
+        title: meta.title,
+        description: meta.description,
+        url,
+        image: meta.image,
+        datePublished: isoDate,
+        dateModified: isoDate,
+        tags: meta.tags,
+      }),
+      breadcrumbSchema([
+        { name: 'Startseite', url: 'https://immopruef.de/' },
+        { name: 'Blog', url: 'https://immopruef.de/blog' },
+        { name: meta.title, url },
+      ]),
+    ],
+  })
 
   return (
     <article className="max-w-[680px] mx-auto">

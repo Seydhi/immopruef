@@ -1,4 +1,12 @@
+import { useSEO } from '../../lib/useSEO'
+
 export default function Datenschutz() {
+  useSEO({
+    title: 'Datenschutzerklärung',
+    description: 'Datenschutzerklärung von ImmoPrüf — wie wir Ihre Daten verarbeiten, gemäß DSGVO und BDSG.',
+    canonical: 'https://immopruef.de/datenschutz',
+    type: 'website',
+  })
   return (
     <div className="max-w-[680px] mx-auto">
       <h1 className="text-2xl font-heading font-bold text-ink mb-8">Datenschutzerklärung</h1>
