@@ -332,23 +332,37 @@ PREMIUM-PFLICHT-DETAILS:
 PREMIUM-PFLICHT — NEUE MODULE (Stufe 1 + 2)
 TONALITÄT: BERATER-STIL — narrativ, handlungsorientiert, persönlich. Verwende "Sie" statt "der Käufer".
 KEINE akademischen Floskeln, keine ImmoWertV-Paragraphen in den neuen Modulen. Schreibe wie ein erfahrener Makler-Coach.
+
+🚨 OBERSTE PFLICHT — KEINE LEEREN FELDER: Der Kunde zahlt 79€. Jedes Feld in jedem Premium-Modul MUSS einen sinnvollen Wert haben — entweder echte Daten oder einen plausibilisierten Regionsdurchschnitt mit "(⚠️ Regionsdurchschnitt — nicht direkt nachweisbar)" Kennzeichnung. Leere Strings, "—" alleine ohne Kontext, oder leere Arrays sind VERBOTEN. Ausnahmen siehe unten (Persönlichkeitsrechte bei Makler-Bewertungen).
+
+DATEN-FÜLLUNGS-HIERARCHIE (gilt für ALLE Markt-/Preis-/Renditedaten):
+  1. STUFE — Echte lokale Daten aus Web-Recherche (z.B. Mietspiegel der Stadt)
+  2. STUFE — Daten der nächstgrößeren vergleichbaren Stadt/Region als Proxy + Kennzeichnung "(⚠️ Proxy aus [Vergleichsstadt] — kein lokaler Mietspiegel)"
+  3. STUFE — Bundesweiter/Landes-Durchschnitt für Stadttyp + Kennzeichnung "(⚠️ Regionsdurchschnitt — kein lokaler Wert ermittelbar)"
+  Erst wenn ALLE 3 Stufen scheitern, darf ein Modul als "verfuegbar: false" markiert werden — das ist absoluter Notfall.
 ═══════════════════════════════════════════════════════════════
 
 - maklerProfil: Recherchiere den Maklernamen aus dem Exposé per Web-Suche. Suche gezielt nach: "[Maklername] Bewertungen", "[Maklername] ImmoScout", "[Maklername] JACASA", "[Maklername] Google reviews", "[Maklername] Impressum gegründet".
-  FALLBACK-REGELN bei fehlenden Daten:
-  * Privatverkäufer (kein Makler im Exposé) → "art": "privatverkauf", alle Felder gefüllt mit "—" oder "Nicht zutreffend (Privatverkauf)", fazit: "📋 Privatverkauf — keine Maklerprüfung möglich. Achten Sie umso stärker auf Vollständigkeit der Unterlagen und ggf. anwaltliche Vertragsprüfung."
-  * Makler ohne Online-Präsenz → "art": "unbekannt", "name": Maklername, andere Felder "Nicht öffentlich verfügbar", redFlags: ["Geringe Online-Sichtbarkeit — kann auf neuen Marktteilnehmer oder kleinen Privatmakler hindeuten. Empfehle direkten Kontakt + Anfrage nach Referenzen."]
-  * Bewertungen fehlen → bewertungen Array bleibt leer ODER ein Eintrag mit score: "—", anzahl: "Keine öffentlichen Bewertungen gefunden"
-  NIEMALS Bewertungen erfinden. Nur was du tatsächlich gefunden hast. Wenn echte Bewertungen vorhanden: Plattform, exakter Score, exakte Anzahl.
+  ⚠️ AUSNAHME zur Daten-Füllungs-Pflicht: Bei MAKLER-BEWERTUNGEN (score, anzahl, Plattform) NIEMALS Werte erfinden oder Durchschnitte einsetzen — das wäre Rufschädigung. Hier ist "Keine öffentlichen Bewertungen verfügbar" die EINZIG erlaubte Antwort wenn nicht findbar.
+  Bei FAKTISCHEN Daten (Gründung, Mitarbeiterzahl, Sitz) gilt:
+  * Erst Impressum-Suche, dann Handelsregister-Suche, dann LinkedIn/Xing
+  * Wenn nicht findbar → "Nicht öffentlich verfügbar" — auch hier KEIN Schätzen (ist Faktenbehauptung)
+  FALLBACK-REGELN:
+  * Privatverkäufer (kein Makler im Exposé) → "art": "privatverkauf", alle Felder "Nicht zutreffend (Privatverkauf)", bewertungen-Array LEER, fazit: "📋 Privatverkauf — keine Maklerprüfung möglich. Bei Privatverkäufen ist die Unterlagen-Vollständigkeit doppelt wichtig: Lassen Sie den Kaufvertrag von einem unabhängigen Anwalt prüfen (300-500€). Klären Sie persönlich den Verkaufsgrund — emotionale Verkäufe (Erbschaft, Scheidung) sind oft gut verhandelbar."
+  * Makler ohne Online-Präsenz → "art": "unbekannt", "name": echter Maklername, andere Faktendaten "Nicht öffentlich verfügbar", bewertungen-Array LEER, redFlags: ["Geringe Online-Sichtbarkeit — kann auf neuen Marktteilnehmer oder rein lokal arbeitenden Privatmakler hindeuten. Bitten Sie um 2-3 Referenzkunden."]
   fazit MUSS narrativ sein (3-4 Sätze) — keine Stichpunkte. Ton: erfahrener Berater, nicht Versicherungs-Disclaimer.
 
-- mietrendite: Recherchiere die ortsübliche Vergleichsmiete per Web-Suche im offiziellen Mietspiegel der Stadt/Region für die entsprechende Lagestufe und Bauklasse. Berechne dann:
+- mietrendite: Daten-Füllungs-Hierarchie strikt befolgen — "verfuegbar: false" ist absoluter NOTFALL.
+  STUFE 1: Lokaler Mietspiegel der Stadt → kaltmieteProQm exakt für die Lagestufe + Baujahresklasse + Wohnungsgröße entnehmen
+  STUFE 2: Wenn kein lokaler Mietspiegel → Mietspiegel der nächstgrößeren vergleichbaren Stadt im Umkreis 30km nutzen → Wert mit Hinweis kennzeichnen "10,50 €/m² (⚠️ Proxy aus Augsburg-Stadt — kein Mietspiegel für Königsbrunn verfügbar)"
+  STUFE 3: Wenn auch das nicht → bundesweiter Mittelwert für Stadttyp (Großstadt/Mittelstadt/Kleinstadt/Dorf) aus aktuellen IVD-Daten → "8,20 €/m² (⚠️ Bundesschnitt für Mittelstädte 20-50k EW — kein regionaler Wert ermittelbar)"
+  STUFE 4 (NUR wenn alles scheitert): "verfuegbar": false, "fallbackHinweis": "Für [Ort] und Umgebung liegen keine ausreichend belastbaren Mietdaten vor. Konkrete Empfehlung: 3-5 vergleichbare Mietangebote in der Region selbst recherchieren (z.B. immowelt-Suche im Umkreis 10km)."
+  Berechnung wenn Daten verfügbar:
   * jahresrohertrag = kaltmieteProQm × wohnflaeche × 12
   * bruttorendite = jahresrohertrag / kaufpreis × 100
   * bewirtschaftungskosten = 20-25% des Jahresrohertrags
   * nettomietertrag = jahresrohertrag - bewirtschaftungskosten
   * nettorendite = nettomietertrag / kaufpreis × 100
-  FALLBACK: Wenn die Region zu klein ist und kein Mietspiegel existiert (typisch Dörfer <5.000 Einwohner) → "verfuegbar": false, "fallbackHinweis": "Für [Ort] liegt kein offizieller Mietspiegel vor. Eine seriöse Renditeberechnung ist nicht möglich. Bei Vermietungsabsicht empfehle ich, vor Kauf 3-5 Vergleichsangebote in der Region einzuholen."
   benchmark MUSS Berater-Tonalität haben — z.B. "Für eine A-Lage in Berlin ist 3,5% Bruttorendite im erwartbaren Bereich — Innenstadtlagen werden primär aus Wertsteigerungserwartung gekauft, nicht aus Cashflow."
 
 - finanzierungsDetail: Berechne 3 EK-Quoten (10/20/30%). Recherchiere AKTUELLE Bauzinsen per Web-Suche (z.B. interhyp, dr-klein, Check24 Baufinanzierung-Vergleich). Bei höherem EK typisch 0,2-0,3% bessere Zinsen. Berechne korrekt:
@@ -359,15 +373,24 @@ KEINE akademischen Floskeln, keine ImmoWertV-Paragraphen in den neuen Modulen. S
   empfehlung MUSS narrativ sein und konkret welche Variante für welchen Käufertyp passt + den größten Hebel (Zinsersparnis durch mehr EK) klar benennen.
   beispielTilgungsplan: 5 Stützpunkte (Jahr 1, 5, 10, 15, 20) für die mittlere Variante (20% EK).
 
-- marktband: Recherchiere für den Stadtteil die Preisspanne aus mehreren Quellen (immowelt, Engel & Völkers Marktbericht, JLL/Aengevelt-Marktberichte). Bilde 4 Quartile:
+- marktband: ALLE 4 Quartile MÜSSEN gefüllt sein — niemals leer lassen.
+  STUFE 1: Recherchiere für den Stadtteil die Preisspanne aus mehreren Quellen (immowelt-Marktdaten, Engel & Völkers Marktbericht, ImmoScout24-Atlas, JLL/Aengevelt-Marktberichte)
+  STUFE 2: Wenn keine Stadtteil-Daten → ganzstädtische Daten + Hinweis im Label "(Gesamtstadt)"
+  STUFE 3: Wenn auch das nicht → Bundesländer-Schnitt für Stadttyp + Hinweis "(⚠️ Landesdurchschnitt — kein lokaler Marktbericht verfügbar)"
+  Bilde 4 Quartile (immer in absteigender Reihenfolge):
   * guenstig = ca. unteres 25%-Perzentil (B-Lagen, sanierungsbedürftig)
   * durchschnittLow = Median-tiefer
   * durchschnittHigh = Median-höher
   * top = oberes 10%-Perzentil (Top-Lagen, Neubau/saniert)
-  diesesObjekt.positionProzent: Wo liegt der €/m²-Preis dieses Objekts auf der Skala 0=guenstig bis 100=top? Berechnen!
+  diesesObjekt.positionProzent: Wo liegt der €/m²-Preis dieses Objekts auf der Skala 0=guenstig bis 100=top? Linear interpolieren zwischen guenstig und top.
   einschaetzung: Berater-Sätze, NICHT akademisch. z.B. "Sie zahlen ~5% unter dem Stadtteil-Median — das ist ein realistischer Eintrittspunkt, kein Schnäppchen."
 
-- preistrendHistorisch: Recherchiere die Preisentwicklung der letzten 5-6 Jahre für den Stadtteil per Web-Suche bei immowelt-Marktdaten oder ImmoScout-Marktberichten oder Engel & Völkers Marktbericht. wertNum MUSS als reine Zahl ohne Einheiten/Punkte (z.B. 5180, nicht "5.180" oder "5180 €") für die Chart-Skalierung. Wenn keine vollständige 6-Jahre-Historie findbar: schätze plausibel basierend auf bundesweiten/regionalen Trends und kennzeichne im prognoseHinweis (z.B. "Werte für 2021-2022 geschätzt aus regionalem Trend Bayern, da kein lokaler Mietspiegel verfügbar"). prognoseHinweis MUSS Berater-Tonalität — Kontext + Erwartung.
+- preistrendHistorisch: ALLE 6 Jahre (2021-2026) MÜSSEN Werte haben — niemals einzelne Jahre weglassen.
+  STUFE 1: Echte Stadtteil-Daten aus immowelt-Marktdaten / ImmoScout-Marktberichten / Engel & Völkers Marktbericht für 5-6 Jahre
+  STUFE 2: Wenn nur 2-3 echte Jahre findbar → fehlende Jahre plausibilisieren basierend auf bundesweitem/regionalem Trend (z.B. -5% in 2023 wegen Zinswende, +1% p.a. ab 2024) und im prognoseHinweis transparent benennen "Werte 2021-2022 geschätzt aus Bayern-Trend, 2023-2026 aus lokalen Marktberichten"
+  STUFE 3: Wenn keine lokalen Daten → komplette Zeitreihe aus Stadttyp-Trend ableiten + klar kennzeichnen "(⚠️ Geschätzte Reihe basierend auf Trend für Mittelstädte in NRW)"
+  wertNum MUSS als reine Zahl ohne Einheiten/Punkte (z.B. 5180, nicht "5.180" oder "5180 €") für die Chart-Skalierung.
+  prognoseHinweis MUSS Berater-Tonalität — Kontext + Erwartung — und Transparenz über Datenquelle/Schätzung.
 
 - besichtigungsFragenSpezifisch: NICHT generisch! Jede Frage MUSS sich auf KONKRETE Daten DIESES Objekts beziehen. Beispiele:
   * Wenn Baujahr 1950-1990 → Asbest-Frage als KRITISCH mit bezugZumObjekt: "Baujahr XXXX = klassische Asbest-Periode"
