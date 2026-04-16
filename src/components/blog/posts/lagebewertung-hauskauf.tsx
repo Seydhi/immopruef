@@ -5,7 +5,7 @@ export default function LagebewertungHauskauf() {
         Im Exposé steht "begehrte Lage" oder "ruhiges Wohnviertel". Doch was bedeutet das konkret? Die Lage ist der wichtigste Wertfaktor einer Immobilie — sie bestimmt bis zu 60 % des Kaufpreises und lässt sich im Gegensatz zu Zustand oder Ausstattung nicht verändern. Trotzdem verlassen sich viele Käufer auf den Stadtteilnamen oder die Beschreibung des Maklers, ohne die Mikrolage tatsächlich zu prüfen.
       </p>
       <p>
-        Dieser Ratgeber zeigt, welche Lagefaktoren wirklich zählen, wo Exposé-Sprache und Realität auseinanderklaffen und wie Sie die Lage einer Immobilie systematisch bewerten.
+        Dieser Ratgeber zeigt, welche Lagefaktoren wirklich zählen, wo Exposé-Sprache und Realität auseinanderklaffen und wie Sie die Lage einer Immobilie systematisch bewerten. Für die Alltagstauglichkeit ergänzt <a href="/blog/infrastruktur-pruefen">Infrastruktur rund um die Immobilie prüfen</a> diesen Beitrag.
       </p>
 
       <h2>Makrolage vs. Mikrolage: Zwei verschiedene Welten</h2>

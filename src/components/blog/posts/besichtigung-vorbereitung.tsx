@@ -5,7 +5,7 @@ export default function BesichtigungVorbereitung() {
         Eine Besichtigung dauert 30–45 Minuten. In dieser Zeit sollen Sie entscheiden, ob ein Objekt in die engere Auswahl kommt — eine Entscheidung die mehrere hunderttausend Euro wert ist. Die meisten Käufer gehen unvorbereitet hin, lassen sich von der Einrichtung beeindrucken und vergessen die Hälfte ihrer Fragen. Zurück bleibt ein vages Gefühl statt belastbarer Informationen.
       </p>
       <p>
-        Dieser Ratgeber gibt Ihnen die Fragen an die Hand, die Sie bei jeder Besichtigung stellen sollten — sortiert nach Themenbereich, mit Erklärung warum jede Frage wichtig ist.
+        Dieser Ratgeber gibt Ihnen die Fragen an die Hand, die Sie bei jeder Besichtigung stellen sollten — sortiert nach Themenbereich, mit Erklärung warum jede Frage wichtig ist. Die Vorprüfung am Schreibtisch liefert <a href="/blog/hauskauf-vorbereiten">Hauskauf vorbereiten: 60-Minuten-Vorprüfung</a>.
       </p>
 
       <h2>Vor der Besichtigung: 15 Minuten Vorbereitung</h2>

@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { BLOG_POSTS } from './posts'
 
 export interface BlogMeta {
   slug: string
@@ -15,7 +16,23 @@ interface BlogLayoutProps {
   children: ReactNode
 }
 
+// Findet 3 verwandte Posts mit größter Tag-Überlappung
+function findRelatedPosts(currentSlug: string, currentTags: string[], limit = 3): BlogMeta[] {
+  return BLOG_POSTS
+    .filter((p) => p.slug !== currentSlug)
+    .map((p) => ({
+      post: p,
+      score: p.tags.filter((t) => currentTags.includes(t)).length,
+    }))
+    .filter((x) => x.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit)
+    .map((x) => x.post)
+}
+
 export default function BlogLayout({ meta, children }: BlogLayoutProps) {
+  const related = findRelatedPosts(meta.slug, meta.tags)
+
   return (
     <article className="max-w-[680px] mx-auto">
       <a
@@ -57,6 +74,45 @@ export default function BlogLayout({ meta, children }: BlogLayoutProps) {
       <div className="prose-immo">
         {children}
       </div>
+
+      {/* Verwandte Artikel — automatisch via Tag-Überlappung */}
+      {related.length > 0 && (
+        <section className="mt-14 pt-8 border-t border-ink/10">
+          <h2 className="font-display text-xl font-medium text-green mb-1">Weiterlesen</h2>
+          <p className="text-xs text-ink-light mb-5">Verwandte Artikel zu {meta.tags.join(' & ')}</p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {related.map((p) => (
+              <a
+                key={p.slug}
+                href={`/blog/${p.slug}`}
+                className="group bg-white border border-ink/10 rounded-xl overflow-hidden hover:border-green/30 hover:shadow-sm transition-all flex flex-col"
+              >
+                {p.image && (
+                  <div className="h-24 overflow-hidden bg-cream">
+                    <img
+                      src={p.image}
+                      alt={p.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                    />
+                  </div>
+                )}
+                <div className="p-3 flex flex-col flex-1">
+                  <div className="flex gap-1 mb-1.5">
+                    {p.tags.slice(0, 2).map((t) => (
+                      <span key={t} className="bg-green/8 text-green text-[9px] font-medium px-1.5 py-0.5 rounded-full">{t}</span>
+                    ))}
+                  </div>
+                  <h3 className="font-display text-[13px] font-semibold text-ink group-hover:text-green leading-snug mb-1.5">
+                    {p.title}
+                  </h3>
+                  <div className="text-[10px] text-ink-light mt-auto">{p.readTime} Lesezeit</div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* CTA */}
       <div className="mt-12 bg-green text-cream rounded-xl p-6 text-center">

@@ -4,6 +4,9 @@ export default function KaufnebenkostenImmobilienkauf() {
       <p>
         Der Kaufpreis steht im Exposé. Was dort nicht steht: die tausende Euro an Nebenkosten, die beim Immobilienkauf zusätzlich anfallen. Je nach Bundesland und Situation können das 5,5 % bis über 15 % des Kaufpreises sein. Bei einer Immobilie für 400.000 € bedeutet das 22.000 bis 60.000 € — Geld, das die meisten Käufer aus Eigenkapital aufbringen müssen, weil Banken Nebenkosten selten mitfinanzieren.
       </p>
+      <p>
+        Wichtig: Diese einmaligen Nebenkosten sind nicht das Gleiche wie die <a href="/blog/nebenkosten-laufende-kosten">laufenden monatlichen Kosten</a> — beides muss separat eingeplant werden.
+      </p>
 
       <h2>Die vier festen Kaufnebenkosten</h2>
       <p>
@@ -112,7 +115,7 @@ export default function KaufnebenkostenImmobilienkauf() {
 
       <h3>10. Sonderumlagen (bei ETW)</h3>
       <p>
-        Bei Eigentumswohnungen können Sonderumlagen für Dachsanierung, Heizungstausch oder Fassadendämmung anfallen. Üblich sind 5.000–20.000 € pro Einheit. Prüfen Sie die WEG-Protokolle der letzten drei Jahre — dort stehen geplante Maßnahmen und deren Finanzierung.
+        Bei Eigentumswohnungen können Sonderumlagen für Dachsanierung, Heizungstausch oder Fassadendämmung anfallen. Üblich sind 5.000–20.000 € pro Einheit. Prüfen Sie die WEG-Protokolle der letzten drei Jahre — dort stehen geplante Maßnahmen und deren Finanzierung. Tiefer ins Thema steigt <a href="/blog/hausgeld-ruecklagen-sonderumlage">Hausgeld, Rücklagen, Sonderumlage: Was Wohnungskäufer wissen sollten</a> ein.
       </p>
 
       <h2>Die laufenden Kosten nach dem Kauf</h2>

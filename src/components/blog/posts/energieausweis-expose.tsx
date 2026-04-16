@@ -5,7 +5,7 @@ export default function EnergieausweisExpose() {
         Im Exposé stehen Energiekennwerte — Effizienzklasse, Endenergiebedarf, Heizungstyp. Doch was sagen diese Zahlen tatsächlich aus? Viele Käufer überfliegen die Angaben, ohne zu wissen, welche Folgekosten sich dahinter verbergen. Dabei kann die Differenz zwischen Klasse A und Klasse F über 20 Jahre gerechnet einen fünfstelligen Betrag ausmachen.
       </p>
       <p>
-        In diesem Ratgeber erklären wir, wie Sie die Energiewerte im Exposé richtig einordnen, wo typische Missverständnisse liegen und wann schlechte Kennzahlen ein echtes Warnsignal sind.
+        In diesem Ratgeber erklären wir, wie Sie die Energiewerte im Exposé richtig einordnen, wo typische Missverständnisse liegen und wann schlechte Kennzahlen ein echtes Warnsignal sind. Wer eine schlechte Energieklasse sieht, sollte parallel <a href="/blog/sanierungsbedarf-erkennen">Sanierungsbedarf erkennen</a> lesen.
       </p>
 
       <h2>Pflichtangaben: Was im Exposé stehen muss</h2>

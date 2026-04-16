@@ -5,7 +5,7 @@ export default function ExposePruefen() {
         Sie haben ein interessantes Exposé gefunden und überlegen, ob die Immobilie zu Ihnen passt. Doch bevor Sie zur Besichtigung fahren oder gar ein Angebot abgeben, lohnt sich ein systematischer Blick auf die Unterlagen. Denn ein Exposé verrät oft mehr, als man auf den ersten Blick denkt — und verschweigt gleichzeitig Dinge, die bares Geld kosten können.
       </p>
       <p>
-        In diesem Ratgeber zeigen wir Ihnen, worauf Sie beim Prüfen eines Immobilien-Exposés achten sollten — ob Eigentumswohnung oder Einfamilienhaus.
+        In diesem Ratgeber zeigen wir Ihnen, worauf Sie beim Prüfen eines Immobilien-Exposés achten sollten — ob Eigentumswohnung oder Einfamilienhaus. Wer noch ganz am Anfang steht, findet im Beitrag <a href="/blog/exposes-richtig-lesen">Exposés richtig lesen</a> die wichtigsten Kennzahlen erklärt.
       </p>
 
       <h2>1. Die Eckdaten: Stimmen die Basics?</h2>
@@ -38,7 +38,7 @@ export default function ExposePruefen() {
         </tbody>
       </table>
       <p>
-        Die Spanne ist je nach Region enorm — von unter 1.500 €/m² in ländlichen Gebieten bis über 10.000 €/m² in Münchner Bestlagen. Vergleichen Sie daher immer mit dem lokalen Bodenrichtwert und ähnlichen Angeboten in der Umgebung.
+        Die Spanne ist je nach Region enorm — von unter 1.500 €/m² in ländlichen Gebieten bis über 10.000 €/m² in Münchner Bestlagen. Vergleichen Sie daher immer mit dem lokalen Bodenrichtwert und ähnlichen Angeboten in der Umgebung. Eine ausführliche Methodik finden Sie in <a href="/blog/quadratmeterpreis-bewerten">Quadratmeterpreis bewerten: Wann eine Immobilie zu teuer ist</a>.
       </p>
 
       <h2>3. Energieausweis: Die versteckten Folgekosten</h2>
@@ -51,7 +51,7 @@ export default function ExposePruefen() {
         <li><strong>Heizungstyp und -alter</strong> — Ölheizungen über 30 Jahre müssen nach GEG getauscht werden</li>
       </ul>
       <p>
-        Was viele unterschätzen: Die Energieeffizienzklasse hat direkten Einfluss auf den Immobilienwert. Wohnungen der Klasse A+/A sind im Schnitt rund 650 €/m² teurer als solche der Klasse D/E. Umgekehrt sind Häuser der schlechtesten Klasse H etwa 14 % weniger wert als der Durchschnitt.
+        Was viele unterschätzen: Die Energieeffizienzklasse hat direkten Einfluss auf den Immobilienwert. Wohnungen der Klasse A+/A sind im Schnitt rund 650 €/m² teurer als solche der Klasse D/E. Umgekehrt sind Häuser der schlechtesten Klasse H etwa 14 % weniger wert als der Durchschnitt. Mehr dazu in <a href="/blog/energieausweis-expose">Energieausweis im Exposé: Was die Werte über eine Immobilie verraten</a>.
       </p>
 
       <h2>4. Maklersprache entschlüsseln</h2>
@@ -109,12 +109,12 @@ export default function ExposePruefen() {
         <li><strong>Maklergebühr:</strong> bis zu 3,57 % (Käuferanteil)</li>
       </ul>
       <p>
-        Bei einem Kaufpreis von 400.000 € können die Nebenkosten also zwischen 22.000 € und 50.000 € liegen. Diesen Betrag sollten Sie im Idealfall aus Eigenkapital finanzieren.
+        Bei einem Kaufpreis von 400.000 € können die Nebenkosten also zwischen 22.000 € und 50.000 € liegen. Diesen Betrag sollten Sie im Idealfall aus Eigenkapital finanzieren. Eine vollständige Übersicht aller Posten finden Sie in <a href="/blog/kaufnebenkosten-immobilienkauf">Kaufnebenkosten beim Immobilienkauf: Was Käufer oft unterschätzen</a>.
       </p>
 
       <h2>8. Red Flags: Wann Sie vorsichtig sein sollten</h2>
       <p>
-        Nicht jedes Exposé ist seriös. Achten Sie auf diese Warnsignale:
+        Nicht jedes Exposé ist seriös. Achten Sie auf diese Warnsignale (eine ausführliche Liste finden Sie in <a href="/blog/warnsignale-expose">Warnsignale im Immobilien-Exposé</a>):
       </p>
       <ul>
         <li><strong>Preis deutlich unter Marktwert</strong> — könnte ein Betrugsversuch sein</li>

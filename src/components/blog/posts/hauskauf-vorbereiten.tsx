@@ -5,7 +5,7 @@ export default function HauskaufVorbereiten() {
         Die meisten Käufer betreten eine Besichtigung mit wenig mehr als dem Exposé und einem guten Gefühl. Dabei lassen sich 80 % der relevanten Informationen bereits am Schreibtisch prüfen — bevor Sie auch nur einen Fuß in die Immobilie setzen. Wer vorbereitet besichtigt, stellt die richtigen Fragen, erkennt Probleme schneller und verhandelt aus einer stärkeren Position.
       </p>
       <p>
-        Dieser Ratgeber zeigt, welche Daten Sie vor der Besichtigung prüfen sollten, wo Sie sie finden und wie eine strukturierte Vorprüfung Ihre Kaufentscheidung absichert.
+        Dieser Ratgeber zeigt, welche Daten Sie vor der Besichtigung prüfen sollten, wo Sie sie finden und wie eine strukturierte Vorprüfung Ihre Kaufentscheidung absichert. Wenn Sie zur eigentlichen Besichtigung kommen, ergänzt <a href="/blog/besichtigung-vorbereitung">Welche Fragen Käufer vor Ort stellen sollten</a> diesen Beitrag perfekt.
       </p>
 
       <h2>Warum Vorbereitung den Unterschied macht</h2>
@@ -56,7 +56,7 @@ export default function HauskaufVorbereiten() {
 
       <h3>Lücken identifizieren</h3>
       <p>
-        Notieren Sie alles, was im Exposé nicht steht — das sind Ihre Fragen für die Besichtigung oder das Vorgespräch mit dem Makler:
+        Notieren Sie alles, was im Exposé nicht steht — das sind Ihre Fragen für die Besichtigung oder das Vorgespräch mit dem Makler. Eine systematische Übersicht der typischen Leerstellen finden Sie in <a href="/blog/was-im-expose-fehlt">Was im Exposé oft fehlt</a>:
       </p>
       <ul>
         <li>Fehlt das Baujahr der Heizung?</li>
