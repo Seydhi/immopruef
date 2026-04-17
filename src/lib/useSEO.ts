@@ -194,17 +194,47 @@ export function webSiteSchema(): object {
 }
 
 export function productSchema(): object {
+  // Digitales Produkt → keine physische Lieferung, kein Widerruf nach Erbringung
+  const shippingDetails = {
+    '@type': 'OfferShippingDetails',
+    shippingRate: { '@type': 'MonetaryAmount', value: '0', currency: 'EUR' },
+    shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'DE' },
+    deliveryTime: {
+      '@type': 'ShippingDeliveryTime',
+      handlingTime: { '@type': 'QuantitativeValue', minValue: 0, maxValue: 0, unitCode: 'HUR' },
+      transitTime: { '@type': 'QuantitativeValue', minValue: 0, maxValue: 0, unitCode: 'HUR' },
+    },
+  }
+
+  const returnPolicy = {
+    '@type': 'MerchantReturnPolicy',
+    applicableCountry: 'DE',
+    returnPolicyCategory: 'https://schema.org/MerchantReturnNotPermitted',
+  }
+
+  const makeOffer = (name: string, price: string) => ({
+    '@type': 'Offer',
+    name,
+    price,
+    priceCurrency: 'EUR',
+    availability: 'https://schema.org/InStock',
+    url: SITE_URL,
+    shippingDetails,
+    hasMerchantReturnPolicy: returnPolicy,
+  })
+
   return {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: 'ImmoPrüf KI-Immobilienanalyse',
     description: 'KI-gestützte Analyse einer Immobilie aus dem Exposé — Preisbewertung, Standort, Finanzierung, Risiken in einem Report.',
+    image: DEFAULT_IMAGE,
     brand: { '@type': 'Brand', name: SITE_NAME },
     offers: [
-      { '@type': 'Offer', name: '1 Analyse', price: '19.00', priceCurrency: 'EUR', availability: 'https://schema.org/InStock', url: SITE_URL },
-      { '@type': 'Offer', name: '2 Analysen', price: '29.00', priceCurrency: 'EUR', availability: 'https://schema.org/InStock', url: SITE_URL },
-      { '@type': 'Offer', name: '3 Analysen', price: '34.00', priceCurrency: 'EUR', availability: 'https://schema.org/InStock', url: SITE_URL },
-      { '@type': 'Offer', name: 'Premium-Report', price: '79.00', priceCurrency: 'EUR', availability: 'https://schema.org/InStock', url: SITE_URL },
+      makeOffer('1 Analyse', '19.00'),
+      makeOffer('2 Analysen', '29.00'),
+      makeOffer('3 Analysen', '34.00'),
+      makeOffer('Premium-Report', '79.00'),
     ],
   }
 }
