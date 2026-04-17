@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import type { Package, AnalysisOptions } from '../lib/types'
+import type { Package } from '../lib/types'
 import { PACKAGE_CONFIG } from '../lib/types'
 import { isValidPropertyUrl } from '../lib/validation'
 import { startCheckout } from '../lib/api'
@@ -30,11 +30,11 @@ export default function Landing() {
   const [pkg, setPkg] = useState<Package>('single')
   const [urls, setUrls] = useState<string[]>([''])
   const [errors, setErrors] = useState<string[]>([])
-  const [options, setOptions] = useState<AnalysisOptions>({
+  const options = {
     makleranschreiben: true,
     verhandlungstipps: true,
     risiken: true,
-  })
+  } as const
   const [email, setEmail] = useState('')
   const [emailError, setEmailError] = useState('')
   const [agbAccepted, setAgbAccepted] = useState(false)
@@ -55,10 +55,6 @@ export default function Landing() {
       return updated.slice(0, newCount)
     })
     setErrors([])
-  }
-
-  const toggleOption = (key: keyof AnalysisOptions) => {
-    setOptions((prev) => ({ ...prev, [key]: !prev[key] }))
   }
 
   const validateEmail = (value: string): boolean => {
@@ -178,20 +174,20 @@ export default function Landing() {
           count={urlCount}
         />
 
-        <div className="flex gap-4 mt-4 flex-wrap">
-          {(['makleranschreiben', 'verhandlungstipps', 'risiken'] as const).map((key) => (
-            <label key={key} className="flex items-center gap-1.5 text-[13px] text-ink-mid cursor-pointer select-none">
-              <input
-                type="checkbox"
-                checked={options[key]}
-                onChange={() => toggleOption(key)}
-                className="w-4 h-4 accent-green cursor-pointer"
-              />
-              {key === 'makleranschreiben' && 'Makleranschreiben'}
-              {key === 'verhandlungstipps' && 'Verhandlungstipps'}
-              {key === 'risiken' && 'Risikohinweise'}
-            </label>
-          ))}
+        <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1.5 text-[12px] text-ink-light">
+          <span className="inline-flex items-center gap-1">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="text-green" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Makleranschreiben
+          </span>
+          <span className="inline-flex items-center gap-1">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="text-green" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Verhandlungstipps
+          </span>
+          <span className="inline-flex items-center gap-1">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="text-green" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Risikohinweise
+          </span>
+          <span className="text-ink-light/70">— immer enthalten</span>
         </div>
 
         {globalError && (

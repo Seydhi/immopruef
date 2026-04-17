@@ -79,7 +79,12 @@ async function checkRateLimit(supabase: ReturnType<typeof createClient>, ip: str
 }
 
 async function recordCheckoutAttempt(supabase: ReturnType<typeof createClient>, ip: string): Promise<void> {
-  await supabase.from('checkout_attempts').insert({ ip }).throwOnError().catch(() => {})
+  try {
+    const { error } = await supabase.from('checkout_attempts').insert({ ip })
+    if (error) console.warn('Failed to record checkout attempt:', error.message)
+  } catch (e) {
+    console.warn('recordCheckoutAttempt threw:', e)
+  }
 }
 
 function getClientIp(req: Request): string {
