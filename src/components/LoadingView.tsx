@@ -22,6 +22,7 @@ interface LoadingViewProps {
 
 export default function LoadingView({ error, onRetry, timedOut, progress }: LoadingViewProps) {
   const [msgIndex, setMsgIndex] = useState(0)
+  const [elapsed, setElapsed] = useState(0)
 
   useEffect(() => {
     if (error || timedOut) return
@@ -29,6 +30,12 @@ export default function LoadingView({ error, onRetry, timedOut, progress }: Load
       setMsgIndex((i) => (i + 1) % STATUS_MESSAGES.length)
     }, 4000)
     return () => clearInterval(interval)
+  }, [error, timedOut])
+
+  useEffect(() => {
+    if (error || timedOut) return
+    const t = setInterval(() => setElapsed(e => e + 1), 1000)
+    return () => clearInterval(t)
   }, [error, timedOut])
 
   if (timedOut) {
@@ -71,14 +78,6 @@ export default function LoadingView({ error, onRetry, timedOut, progress }: Load
       </div>
     )
   }
-
-  // Elapsed time tracker
-  const [elapsed, setElapsed] = useState(0)
-  useEffect(() => {
-    if (error || timedOut) return
-    const t = setInterval(() => setElapsed(e => e + 1), 1000)
-    return () => clearInterval(t)
-  }, [error, timedOut])
 
   const formatTime = (s: number) => {
     const m = Math.floor(s / 60)

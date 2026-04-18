@@ -1,0 +1,7 @@
+project_id = "nhziphgjgodwttypmqgy"
+
+# Stripe webhooks senden keinen JWT-Auth-Header, sondern eine stripe-signature.
+# Ohne diese Einstellung blockt Supabase den Webhook mit 401 UNAUTHORIZED_NO_AUTH_HEADER.
+# Die Sicherheit wird durch die HMAC-Signatur-Verifikation in der Function selbst gewaehrleistet.
+[functions.stripe-webhook]
+verify_jwt = false

@@ -139,12 +139,14 @@ export default function App() {
         {view.type === 'landing' && <Landing />}
 
         {view.type === 'loading' && (
-          <LoadingView
-            error={loadingError}
-            onRetry={handleRetry}
-            timedOut={timedOut}
-            progress={progress}
-          />
+          <ErrorBoundary context="loading-view">
+            <LoadingView
+              error={loadingError}
+              onRetry={handleRetry}
+              timedOut={timedOut}
+              progress={progress}
+            />
+          </ErrorBoundary>
         )}
 
         {view.type === 'results' && (
