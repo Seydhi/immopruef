@@ -61,6 +61,41 @@ function isAllowedListingUrl(input: string): boolean {
 
 const SYSTEM_PROMPT_STANDARD = `Du bist ein erfahrener Immobilienanalyst und Berater für den deutschen Markt.
 
+═══════════════════════════════════════════════════════════════
+🚨 ABSOLUT VERBOTENE STRINGS 🚨
+Diese Texte dürfen in KEINEM Feld der Antwort vorkommen — NICHT als Wert, NICHT als Teil eines Wertes:
+- "nicht verfügbar"
+- "Nicht verfügbar"
+- "Nicht im Exposé angegeben" (ohne konkreten Wert davor)
+- "Im Exposé nicht angegeben" (ohne konkreten Wert davor)
+- "Keine Angabe"
+- "Daten nicht ableitbar"
+- "n/a" / "N/A"
+- "—" oder "-" als kompletter Wert (außer in bewertungen-Array bei echten Privatverkäufen)
+- "unbekannt" als einziger Wert
+- leere Strings ""
+
+WENN EIN WERT NICHT IM EXPOSÉ STEHT:
+→ Recherchiere einen regionalen Durchschnitt (Bundesland/Stadttyp) via web_search
+→ Schreibe den konkreten Zahlenwert + Kennzeichnung: "ca. 85 €/Monat (⚠️ Regionsdurchschnitt — nicht im Exposé)"
+→ NIEMALS nur die Kennzeichnung ohne Zahl
+
+NUR für Makler-Bewertungen (rufschädigungsrelevant) gilt: "Keine öffentlichen Bewertungen verfügbar" ist erlaubt wenn nachweislich keine online findbar.
+NUR für Makler-Faktendaten (Gründungsjahr, Mitarbeiterzahl): "Nicht öffentlich verfügbar" erlaubt wenn nicht im Impressum/Handelsregister findbar.
+
+ZWINGENDE WEB-SEARCHES (MÜSSEN VOR DER JSON-ANTWORT DURCHGEFÜHRT WERDEN):
+1. "[Stadt aus Exposé] Mietspiegel 2025" oder "[Stadt] ortsübliche Vergleichsmiete"
+2. "[Stadt] Bodenrichtwert [Stadtteil]" oder "BORIS [Bundesland] [Stadt]"
+3. "[Stadt] Grundsteuer Hebesatz"
+4. "Bauzinsen aktuell [heutiger Monat] 2026" (interhyp, dr-klein, check24)
+5. "[Stadt] Immobilienpreise €/m² [Stadtteil]" (immowelt-Marktdaten, ImmoScout24-Atlas)
+
+QUELLEN-REGELN:
+- Jede "quellen"-URL MUSS zur Stadt/Region des Objekts passen. Eine München-Quelle bei einem Bremerhaven-Objekt ist ein KRITISCHER FEHLER.
+- Prüfe vor dem Einfügen jeder URL: Enthält die URL oder der Titel einen Bezug zur Objekt-Stadt? Wenn nein → verwerfen.
+- Die "titel"-Felder müssen die Stadt nennen ("Mietspiegel Bremerhaven 2025", nicht nur "Mietspiegel").
+═══════════════════════════════════════════════════════════════
+
 WICHTIGE REGELN:
 1. Rufe ZUERST die URL auf und lies ALLE Details des Exposés (Preis, Fläche, Zimmer, Baujahr, Energieausweis, Lage etc.).
 2. Suche DANACH nach: "[Stadtteil] Bodenrichtwert", "[Stadt] Immobilienpreise pro qm", "[Stadt] Mietpreisspiegel", "[Stadt] Grundsteuer Hebesatz".
@@ -549,6 +584,78 @@ function parseJson(text: string): unknown {
   }
 }
 
+// Extract the object's city from objektdaten for source validation.
+// Returns lowercase city slug candidates (city name + common abbreviations).
+function extractObjektStadt(result: Record<string, unknown>): string[] {
+  const objektdaten = result.objektdaten as Array<{ merkmal?: string; wert?: string }> | undefined
+  if (!Array.isArray(objektdaten)) return []
+
+  const adresse = objektdaten.find(o => /adresse|ort|stadt/i.test(o.merkmal || ''))?.wert || ''
+  if (!adresse) return []
+
+  // Extract: "12345 Bremerhaven-Lehe" → ["bremerhaven", "lehe"]
+  // "80331 München" → ["munchen", "muenchen"]
+  const parts = adresse
+    .replace(/\d{5}/g, '')
+    .split(/[,\-\s/]+/)
+    .map(p => p.trim().toLowerCase())
+    .filter(p => p.length >= 4 && !/^(straße|str|platz|weg|allee|ring|ufer|damm)$/i.test(p))
+    .map(p => p.replace(/[äöü]/g, c => ({ä: 'ae', ö: 'oe', ü: 'ue'}[c]!)))
+
+  // Add original umlaut form too
+  const withUmlauts = parts.flatMap(p => {
+    const original = adresse.toLowerCase().split(/[,\-\s/]+/).find(x => x.replace(/[äöü]/g, c => ({ä: 'ae', ö: 'oe', ü: 'ue'}[c]!)) === p)
+    return original && original !== p ? [p, original] : [p]
+  })
+
+  return [...new Set(withUmlauts)]
+}
+
+// Check whether a source URL/title references the object's city.
+// Allows nationwide portals (immowelt.de, destatis.de) even without city match
+// because they can contain city-specific pages via path params.
+const NATIONWIDE_PORTALS = [
+  'destatis.de', 'bmwk.de', 'bmwsb.de', 'kfw.de', 'bafa.de', 'dena.de',
+  'verbraucherzentrale.de', 'geoportal.de', 'umweltbundesamt.de',
+  'wikipedia.org', 'gesetze-im-internet.de',
+]
+
+function sourceMatchesCity(src: { titel?: string; url?: string }, cityTerms: string[]): boolean {
+  if (cityTerms.length === 0) return true // no city extracted → can't validate
+  const url = (src.url || '').toLowerCase()
+  const titel = (src.titel || '').toLowerCase()
+  const haystack = url + ' ' + titel
+
+  if (cityTerms.some(t => haystack.includes(t))) return true
+
+  // Nationwide portal: allowed if they include city-specific content (best effort)
+  try {
+    const host = new URL(src.url || '').hostname.toLowerCase()
+    if (NATIONWIDE_PORTALS.some(d => host === d || host.endsWith('.' + d))) return true
+  } catch { /* invalid URL — fall through */ }
+
+  return false
+}
+
+// Filter out sources that don't match the object's city.
+// Logs the filtered count for monitoring.
+function validateSources(result: Record<string, unknown>): number {
+  const quellen = result.quellen as Array<{ titel?: string; url?: string; kategorie?: string }> | undefined
+  if (!Array.isArray(quellen)) return 0
+
+  const cityTerms = extractObjektStadt(result)
+  if (cityTerms.length === 0) return 0
+
+  const before = quellen.length
+  const filtered = quellen.filter(q => sourceMatchesCity(q, cityTerms))
+  result.quellen = filtered
+  const removed = before - filtered.length
+  if (removed > 0) {
+    console.warn(`validateSources: removed ${removed}/${before} sources not matching city [${cityTerms.join(', ')}]`)
+  }
+  return removed
+}
+
 // Post-parse validation: ensure no critical arrays are empty
 function validateResult(result: Record<string, unknown>): string[] {
   const warnings: string[] = []
@@ -862,6 +969,9 @@ WICHTIG:
           console.warn(`Validation warnings (${warnings.length}):`, warnings.join('; '))
         }
 
+        // Filter sources that don't match the object's city (e.g. München data for Bremerhaven object)
+        validateSources(result as Record<string, unknown>)
+
         await supabase
           .from('analyses')
           .update({ result, status: 'completed' })
@@ -893,6 +1003,7 @@ WICHTIG: Verwende Exposé-Daten und recherchierte Regionsdurchschnitte. JEDES Fe
 
             // Retry: only Claude (OpenAI fallback removed — endpoint was broken)
             const retryResult = (await callClaude(systemPrompt, retryMessage, maxTokens, anthropicKey, isPremium)).result
+            validateSources(retryResult as Record<string, unknown>)
 
             await supabase.from('analyses').update({ result: retryResult, status: 'completed' }).eq('id', analysis.id)
             retrySuccess = true
