@@ -817,6 +817,8 @@ serve(async (req) => {
         // ═══════════════════════════════════════════════════════════
         // JINA READER: Fetch listing as Markdown (free, reliable, no JS execution)
         // Gives Claude ground-truth expose text so it doesn't have to re-fetch via web_search.
+        // Note: ImmoScout24/Immowelt frequently return bot-blocking pages to Jina.
+        // We validate the content has real expose data before using it.
         // ═══════════════════════════════════════════════════════════
         let exposeMarkdown: string | null = null
         try {
@@ -828,17 +830,29 @@ serve(async (req) => {
           }
           if (jinaKey) jinaHeaders['Authorization'] = `Bearer ${jinaKey}`
 
-          const jinaRes = await fetch(jinaUrl, { headers: jinaHeaders })
+          const jinaController = new AbortController()
+          const jinaTimer = setTimeout(() => jinaController.abort(), 20000)
+          const jinaRes = await fetch(jinaUrl, { headers: jinaHeaders, signal: jinaController.signal })
+          clearTimeout(jinaTimer)
+
           if (jinaRes.ok) {
             const md = await jinaRes.text()
-            // Trim to ~40k chars to keep prompt lean (typical expose is 5-15k)
-            exposeMarkdown = md.length > 40000 ? md.slice(0, 40000) + '\n\n[...gekürzt]' : md
-            console.log(`Jina Reader: ${md.length} chars from ${cleanUrl}`)
+            // Validate: must be substantial AND contain price-like content.
+            // Bot-block pages are typically < 3000 chars and lack € symbols.
+            const hasPrice = /\d[\d.,]*\s*(€|EUR)/i.test(md) || /kaufpreis/i.test(md)
+            const isSubstantial = md.length >= 3000
+            if (isSubstantial && hasPrice) {
+              exposeMarkdown = md.length > 40000 ? md.slice(0, 40000) + '\n\n[...gekürzt]' : md
+              console.log(`Jina Reader OK: ${md.length} chars, price detected`)
+            } else {
+              console.warn(`Jina Reader blocked/incomplete: ${md.length} chars, hasPrice=${hasPrice} — falling back to web_search`)
+            }
           } else {
-            console.warn(`Jina Reader failed: ${jinaRes.status}`)
+            const errText = await jinaRes.text().catch(() => '')
+            console.warn(`Jina Reader HTTP ${jinaRes.status}: ${errText.slice(0, 200)}`)
           }
         } catch (e) {
-          console.warn('Jina Reader call failed:', e)
+          console.warn('Jina Reader call failed:', e instanceof Error ? e.message : String(e))
         }
 
         // ═══════════════════════════════════════════════════════════
