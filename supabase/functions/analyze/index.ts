@@ -56,6 +56,32 @@ function isAllowedListingUrl(input: string): boolean {
 }
 
 // ═══════════════════════════════════════════════════════════════
+// HTML → Plain text (for Bright Data raw HTML responses)
+// Strips scripts/styles/svgs/comments, keeps visible text, collapses whitespace.
+// ═══════════════════════════════════════════════════════════════
+function htmlToText(html: string): string {
+  return html
+    .replace(/<!--[\s\S]*?-->/g, '')
+    .replace(/<script[\s\S]*?<\/script>/gi, '')
+    .replace(/<style[\s\S]*?<\/style>/gi, '')
+    .replace(/<svg[\s\S]*?<\/svg>/gi, '')
+    .replace(/<noscript[\s\S]*?<\/noscript>/gi, '')
+    .replace(/<(br|\/p|\/div|\/li|\/tr|\/h[1-6])\s*\/?>/gi, '\n')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(parseInt(n, 10)))
+    .replace(/&(euro|EUR);/g, '€')
+    .replace(/[ \t]+/g, ' ')
+    .replace(/\n[ \t]+/g, '\n')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim()
+}
+
+// ═══════════════════════════════════════════════════════════════
 // System Prompts
 // ═══════════════════════════════════════════════════════════════
 
@@ -814,14 +840,54 @@ serve(async (req) => {
         const exposeMatch = analysis.url.match(/expose\/(\d+)/)
         const exposeId = exposeMatch ? exposeMatch[1] : ''
 
-        // ═══════════════════════════════════════════════════════════
-        // JINA READER: Fetch listing as Markdown (free, reliable, no JS execution)
-        // Gives Claude ground-truth expose text so it doesn't have to re-fetch via web_search.
-        // Note: ImmoScout24/Immowelt frequently return bot-blocking pages to Jina.
-        // We validate the content has real expose data before using it.
-        // ═══════════════════════════════════════════════════════════
         let exposeMarkdown: string | null = null
-        try {
+
+        // ═══════════════════════════════════════════════════════════
+        // BRIGHT DATA WEB UNLOCKER: primary scraper for bot-protected portals
+        // (ImmoScout24, Immowelt actively block Jina/Playwright without residential IPs).
+        // API: POST https://api.brightdata.com/request
+        // Pricing: pay-as-you-go ~$3 per 1000 requests.
+        // ═══════════════════════════════════════════════════════════
+        const bdToken = Deno.env.get('BRIGHTDATA_API_TOKEN')
+        const bdZone = Deno.env.get('BRIGHTDATA_ZONE')
+        if (bdToken && bdZone) {
+          try {
+            const bdController = new AbortController()
+            const bdTimer = setTimeout(() => bdController.abort(), 45000)
+            const bdRes = await fetch('https://api.brightdata.com/request', {
+              method: 'POST',
+              headers: {
+                'Authorization': `Bearer ${bdToken}`,
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ zone: bdZone, url: cleanUrl, format: 'raw' }),
+              signal: bdController.signal,
+            })
+            clearTimeout(bdTimer)
+            if (bdRes.ok) {
+              const html = await bdRes.text()
+              const text = htmlToText(html)
+              const hasPrice = /\d[\d.,]*\s*(€|EUR)/i.test(text) || /kaufpreis/i.test(text)
+              if (text.length >= 3000 && hasPrice) {
+                exposeMarkdown = text.length > 40000 ? text.slice(0, 40000) + '\n\n[...gekürzt]' : text
+                console.log(`Bright Data OK: ${html.length} HTML → ${text.length} text chars`)
+              } else {
+                console.warn(`Bright Data incomplete: ${text.length} text chars, hasPrice=${hasPrice}`)
+              }
+            } else {
+              const errText = await bdRes.text().catch(() => '')
+              console.warn(`Bright Data HTTP ${bdRes.status}: ${errText.slice(0, 200)}`)
+            }
+          } catch (e) {
+            console.warn('Bright Data call failed:', e instanceof Error ? e.message : String(e))
+          }
+        }
+
+        // ═══════════════════════════════════════════════════════════
+        // JINA READER: Fallback scraper (free, no JS). Often blocked by ImmoScout24/Immowelt.
+        // Only runs if Bright Data didn't yield usable content.
+        // ═══════════════════════════════════════════════════════════
+        if (!exposeMarkdown) try {
           const jinaUrl = `https://r.jina.ai/${cleanUrl}`
           const jinaKey = Deno.env.get('JINA_API_KEY')
           const jinaHeaders: Record<string, string> = {
