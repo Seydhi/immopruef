@@ -19,7 +19,7 @@ export default function UrlInputGroup({ urls, onChange, errors, count }: UrlInpu
       {Array.from({ length: count }, (_, i) => (
         <div key={i}>
           <label className="block text-[11px] font-medium tracking-widest uppercase text-ink-light mb-1.5">
-            {count > 1 ? `Immobilie ${i + 1}` : 'Inserat-Link eingeben'}
+            {count > 1 ? `Immobilie ${i + 1}` : 'Link zum Immobilienangebot einfügen'}
           </label>
           <input
             type="url"
@@ -34,6 +34,11 @@ export default function UrlInputGroup({ urls, onChange, errors, count }: UrlInpu
           )}
         </div>
       ))}
+      {count === 1 && (
+        <p className="text-xs text-ink-mid leading-relaxed">
+          Wir erstellen daraus eine strukturierte Ersteinschätzung mit Markthinweisen, Kostenschätzungen und Prüfempfehlungen.
+        </p>
+      )}
       <p className="text-[11px] text-ink-light">
         Unterstützt: {SUPPORTED_PLATFORMS}
       </p>

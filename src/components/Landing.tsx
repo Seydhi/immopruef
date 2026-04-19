@@ -14,8 +14,8 @@ import BlogPreview from './landing/BlogPreview'
 
 export default function Landing() {
   useSEO({
-    title: 'KI-gestützte Immobilienanalyse für Käufer in Deutschland',
-    description: 'Soll ich diese Immobilie kaufen? Preisbewertung, Standortanalyse, Energie-Check, Finanzierung und Risiken in einem Report. Ab 19 € pro Analyse — Premium-Report ab 79 €.',
+    title: 'Immobilienangebote strukturiert einordnen — ImmoPrüf',
+    description: 'Strukturierte Ersteinschätzung zu Angebotspreis, Standort, möglichen Risiken und offenen Prüfpunkten vor Besichtigung und Kauf. Ab 19 € pro Analyse — Premium-Report ab 79 €.',
     canonical: 'https://immopruef.de/',
     type: 'website',
     jsonLd: [
