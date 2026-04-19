@@ -99,15 +99,19 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
       {/* Standard: Preisbewertung Tabelle */}
       {result.preisbewertung && (
         <div className="bg-white border border-ink/10 rounded-xl overflow-hidden mb-5">
-          <div className={`px-4 py-3 text-sm font-medium flex items-center gap-2 ${
-            result.preisbewertung.ampel === 'guenstig' ? 'bg-emerald-50 text-emerald-700' :
-            result.preisbewertung.ampel === 'teuer' ? 'bg-red-50 text-red-700' :
-            'bg-amber-50 text-amber-700'
+          <div className={`px-4 py-3 text-sm font-medium ${
+            result.preisbewertung.ampel === 'guenstig' ? 'bg-emerald-50 text-emerald-800' :
+            result.preisbewertung.ampel === 'teuer' ? 'bg-amber-50 text-amber-900' :
+            'bg-stone-50 text-stone-700'
           }`}>
-            <span className="text-lg">{result.preisbewertung.ampel === 'guenstig' ? '✅' : result.preisbewertung.ampel === 'teuer' ? '🚨' : '⚠️'}</span>
-            {result.preisbewertung.ampel === 'guenstig' && 'Preis liegt unter dem Marktdurchschnitt'}
-            {result.preisbewertung.ampel === 'fair' && 'Preis liegt im Marktdurchschnitt'}
-            {result.preisbewertung.ampel === 'teuer' && 'Preis liegt über dem Marktdurchschnitt'}
+            <div>
+              {result.preisbewertung.ampel === 'guenstig' && 'Der Angebotspreis liegt unter unserem regionalen Vergleichsband.'}
+              {result.preisbewertung.ampel === 'fair' && 'Der Angebotspreis liegt innerhalb unseres regionalen Vergleichsbands.'}
+              {result.preisbewertung.ampel === 'teuer' && 'Der Angebotspreis liegt über unserem regionalen Vergleichsband.'}
+            </div>
+            <div className="text-[12.5px] font-normal mt-1 opacity-90 leading-snug">
+              Das kann ein positives Preisniveau anzeigen, kann aber auch auf Zustand, Mikro-Lage, Ausstattungsniveau oder Sanierungsbedarf hindeuten.
+            </div>
           </div>
           <table className="w-full text-[13.5px]">
             <tbody>
@@ -601,8 +605,7 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
           <SectionDivider icon="🔗" title="Quellen & Datenbasis" />
           <div className="bg-white border border-ink/10 rounded-xl px-4 py-3 mb-5">
             <p className="text-xs text-ink-light mb-3 leading-relaxed">
-              Diese Analyse basiert auf öffentlich verfügbaren Daten aus den folgenden Quellen.
-              Alle Werte wurden zum Stand der Erstellung recherchiert.
+              Diese Ersteinschätzung kombiniert Angebotsdaten, regionale Vergleichswerte und öffentlich zugängliche Standort- und Markthinweise. Nicht alle Angaben stammen direkt aus dem Angebot; geschätzte Werte sind jeweils als solche gekennzeichnet.
             </p>
             <div className="grid sm:grid-cols-2 gap-x-4 gap-y-2">
               {result.quellen.map((q, i) => (
@@ -737,11 +740,10 @@ function CoverPage({ objektdaten, ampel, ampelText, preisProQm, regionalerDurchs
   const zimmer = find(['zimmer'])
   const energie = find(['energieeffizienz', 'energieklasse', 'effizienzklasse'])
 
-  const ampelBg = ampel === 'guenstig' ? 'bg-emerald-50 border-emerald-300 text-emerald-700' :
-                  ampel === 'teuer' ? 'bg-red-50 border-red-300 text-red-700' :
-                  'bg-amber-50 border-amber-300 text-amber-700'
-  const ampelEmoji = ampel === 'guenstig' ? '✅' : ampel === 'teuer' ? '🚨' : '⚠️'
-  const ampelLabel = ampel === 'guenstig' ? 'Günstig' : ampel === 'teuer' ? 'Über Markt' : 'Marktüblich'
+  const ampelBg = ampel === 'guenstig' ? 'bg-emerald-50 border-emerald-300 text-emerald-800' :
+                  ampel === 'teuer' ? 'bg-amber-50 border-amber-300 text-amber-900' :
+                  'bg-stone-50 border-stone-300 text-stone-700'
+  const ampelLabel = ampel === 'guenstig' ? 'Unter Vergleichsband' : ampel === 'teuer' ? 'Über Vergleichsband' : 'Im Vergleichsband'
 
   return (
     <div className="bg-gradient-to-br from-cream-dark to-cream border border-ink/15 rounded-2xl p-6 sm:p-8 mb-8 shadow-sm">
@@ -766,15 +768,12 @@ function CoverPage({ objektdaten, ampel, ampelText, preisProQm, regionalerDurchs
         <HeroStat label="Energieklasse" value={energie} />
       </div>
 
-      {/* Ampel-Banner */}
+      {/* Preiseinordnung-Banner */}
       {ampel && (
         <div className={`${ampelBg} border-2 rounded-xl px-4 py-3 mb-4 flex items-center justify-between flex-wrap gap-2`}>
-          <div className="flex items-center gap-2.5">
-            <span className="text-xl">{ampelEmoji}</span>
-            <div>
-              <div className="text-xs font-medium tracking-wider uppercase opacity-80">Preiseinordnung</div>
-              <div className="text-sm font-medium">{ampelLabel} — {ampelText}</div>
-            </div>
+          <div>
+            <div className="text-xs font-medium tracking-wider uppercase opacity-80">Preiseinordnung (regionales Vergleichsband)</div>
+            <div className="text-sm font-medium">{ampelLabel}{ampelText ? ` — ${ampelText}` : ''}</div>
           </div>
           {preisProQm && regionalerDurchschnitt && (
             <div className="text-right text-xs">
@@ -785,10 +784,10 @@ function CoverPage({ objektdaten, ampel, ampelText, preisProQm, regionalerDurchs
         </div>
       )}
 
-      {/* Fazit */}
+      {/* Kurzbewertung */}
       {zusammenfassung && (
         <div className="bg-green-light border border-green/18 rounded-xl px-5 py-4 mb-4 text-sm text-green leading-relaxed">
-          <span className="font-display font-medium">Fazit:</span> {zusammenfassung}
+          <span className="font-display font-medium">Kurzbewertung:</span> {zusammenfassung}
         </div>
       )}
 
@@ -893,7 +892,38 @@ function SubSectionHeader({ icon, title }: { icon: React.ReactNode; title: strin
 // HELPERS
 // ════════════════════════════════════════════════════════════════════
 
-const REGION_HINTS = ['Regionsdurchschnitt', 'nicht im Exposé', 'Nicht im Exposé', 'nicht angegeben', 'Durchschnitt der Region', 'Proxy aus', 'Bundesschnitt', 'Landesdurchschnitt']
+// Erkennt Kennzeichnungen, die Claude an Werten anhängt wenn diese nicht im Angebot stehen.
+// Neu: "regionaler Schätzwert" / "nicht aus dem Angebot".
+// Legacy (weiterhin erkannt für alte DB-Records): "Regionsdurchschnitt", "nicht im Exposé", "Proxy aus", "Bundesschnitt".
+const REGION_HINTS = [
+  'regionaler Schätzwert',
+  'nicht aus dem Angebot',
+  'Regionsdurchschnitt',
+  'nicht im Exposé',
+  'Nicht im Exposé',
+  'nicht angegeben',
+  'Durchschnitt der Region',
+  'Proxy aus',
+  'Bundesschnitt',
+  'Landesdurchschnitt',
+]
+
+const SCHAETZ_TOOLTIP = 'Schätzwert auf Basis regionaler Durchschnittswerte; nicht objektspezifisch.'
+
+function SchaetzBadge({ className = '' }: { className?: string }) {
+  return (
+    <span
+      title={SCHAETZ_TOOLTIP}
+      aria-label={SCHAETZ_TOOLTIP}
+      className={`inline-flex items-center gap-1 px-1.5 py-0.5 bg-amber-50 border border-amber-200 rounded text-[10px] text-amber-800 font-medium whitespace-nowrap ${className}`}
+    >
+      <svg aria-hidden="true" width="11" height="11" viewBox="0 0 20 20" fill="currentColor" className="shrink-0">
+        <path fillRule="evenodd" d="M18 10A8 8 0 112 10a8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd"/>
+      </svg>
+      Regionaler Schätzwert
+    </span>
+  )
+}
 
 function ValueCell({ children }: { children: ReactNode }) {
   if (typeof children !== 'string') return <>{children}</>
@@ -903,20 +933,12 @@ function ValueCell({ children }: { children: ReactNode }) {
   const idx = children.indexOf('(')
   const value = idx > 0 ? children.slice(0, idx).trim() : children
   if (!value || value === children) {
-    return (
-      <span className="inline-flex items-center gap-1 px-1.5 py-0.5 bg-red-50 border border-red-200 rounded text-[10px] text-red-600 font-medium">
-        <svg aria-hidden="true" width="12" height="12" viewBox="0 0 20 20" fill="currentColor" className="shrink-0"><path fillRule="evenodd" d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.168 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495zM10 6a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0v-3.5A.75.75 0 0110 6zm0 9a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd"/></svg>
-        Nicht im Exposé
-      </span>
-    )
+    return <SchaetzBadge />
   }
   return (
     <span>
       {value}
-      <span className="inline-flex items-center gap-1 ml-1.5 px-1.5 py-0.5 bg-red-50 border border-red-200 rounded text-[10px] text-red-600 font-medium whitespace-nowrap">
-        <svg aria-hidden="true" width="12" height="12" viewBox="0 0 20 20" fill="currentColor" className="shrink-0"><path fillRule="evenodd" d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.168 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495zM10 6a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0v-3.5A.75.75 0 0110 6zm0 9a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd"/></svg>
-        Regionsdurchschnitt
-      </span>
+      <SchaetzBadge className="ml-1.5" />
     </span>
   )
 }

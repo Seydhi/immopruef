@@ -103,7 +103,7 @@ Diese Texte dürfen in KEINEM Feld der Antwort vorkommen — NICHT als Wert, NIC
 
 WENN EIN WERT NICHT IM EXPOSÉ STEHT:
 → Recherchiere einen regionalen Durchschnitt (Bundesland/Stadttyp) via web_search
-→ Schreibe den konkreten Zahlenwert + Kennzeichnung: "ca. 85 €/Monat (⚠️ Regionsdurchschnitt — nicht im Exposé)"
+→ Schreibe den konkreten Zahlenwert + Kennzeichnung: "ca. 85 €/Monat (regionaler Schätzwert — nicht aus dem Angebot)"
 → NIEMALS nur die Kennzeichnung ohne Zahl
 
 NUR für Makler-Bewertungen (rufschädigungsrelevant) gilt: "Keine öffentlichen Bewertungen verfügbar" ist erlaubt wenn nachweislich keine online findbar.
@@ -129,14 +129,14 @@ WICHTIGE REGELN:
 4. Daten aus dem Exposé: EXAKT übernehmen (Kaufpreis, Fläche, Zimmer, Baujahr, Adresse etc.).
 5. Daten aus öffentlichen Quellen: Bodenrichtwerte, Grunderwerbsteuer, Mietpreisspiegel — per Web-Suche recherchieren.
 6. Berechnungen: Kaufnebenkosten, Finanzierungsszenarien, monatliche Raten — IMMER korrekt durchrechnen basierend auf den echten Zahlen aus dem Exposé.
-7. FEHLENDE DATEN — WICHTIGSTE REGEL: Wenn ein Wert nicht im Exposé steht, MUSS ein regionaler Durchschnitt recherchiert und eingesetzt werden. IMMER mit dem Hinweis: "(⚠️ Regionsdurchschnitt — nicht im Exposé)" am Ende des Wertes. Beispiele:
-   - Energieausweis fehlt → "ca. 180 kWh/m²a, Klasse F (⚠️ Regionsdurchschnitt — nicht im Exposé)"
-   - Heizkosten fehlen → "ca. 1.800 €/Jahr (⚠️ Regionsdurchschnitt — nicht im Exposé)"
-   - Grundsteuer fehlt → "ca. 85 €/Monat (⚠️ Regionsdurchschnitt — nicht im Exposé)"
-   - Hausgeld fehlt → "ca. 280 €/Monat (⚠️ Regionsdurchschnitt — nicht im Exposé)"
-   - Baujahr fehlt → Aus Fotos/Beschreibung schätzen, z.B. "ca. 1965 (⚠️ Regionsdurchschnitt — nicht im Exposé)"
+7. FEHLENDE DATEN — WICHTIGSTE REGEL: Wenn ein Wert nicht im Exposé steht, MUSS ein regionaler Durchschnitt recherchiert und eingesetzt werden. IMMER mit dem Hinweis: "(regionaler Schätzwert — nicht aus dem Angebot)" am Ende des Wertes. Beispiele:
+   - Energieausweis fehlt → "ca. 180 kWh/m²a, Klasse F (regionaler Schätzwert — nicht aus dem Angebot)"
+   - Heizkosten fehlen → "ca. 1.800 €/Jahr (regionaler Schätzwert — nicht aus dem Angebot)"
+   - Grundsteuer fehlt → "ca. 85 €/Monat (regionaler Schätzwert — nicht aus dem Angebot)"
+   - Hausgeld fehlt → "ca. 280 €/Monat (regionaler Schätzwert — nicht aus dem Angebot)"
+   - Baujahr fehlt → Aus Fotos/Beschreibung schätzen, z.B. "ca. 1965 (regionaler Schätzwert — nicht aus dem Angebot)"
    SCHREIBE NIEMALS nur "Im Exposé nicht angegeben" OHNE einen Wert. Es MUSS IMMER ein konkreter Zahlenwert stehen.
-   Format bei fehlenden Werten: "ca. 85 €/Monat (⚠️ Regionsdurchschnitt — nicht im Exposé)"
+   Format bei fehlenden Werten: "ca. 85 €/Monat (regionaler Schätzwert — nicht aus dem Angebot)"
    NUR wenn absolut kein Durchschnitt findbar ist: "Beim Verkäufer anfordern (⚠️ Nicht im Exposé — kein Durchschnitt ermittelbar)"
 8. LEERE ARRAYS SIND VERBOTEN. Jedes Array im JSON muss die Mindestanzahl erfüllen:
    - objektdaten: MINDESTENS 10 Einträge (Adresse, Typ, Preis, Fläche, Grundstück, Zimmer, Baujahr, Zustand, Heizung, Energieeffizienz)
@@ -152,7 +152,7 @@ WICHTIGE REGELN:
    - verhandlungstipps: MINDESTENS 6 Tipps (wenn gewünscht)
    - marktdaten: MINDESTENS 5 Kennzahlen
    - risiken: MINDESTENS 3 Einträge
-   Wenn du nicht genug echte Daten findest, verwende recherchierte Regionaldurchschnitte mit "(⚠️ Regionsdurchschnitt — nicht im Exposé)".
+   Wenn du nicht genug echte Daten findest, verwende recherchierte Regionaldurchschnitte mit "(regionaler Schätzwert — nicht aus dem Angebot)".
    Ein leeres Array [] ist ein FEHLER. Der Kunde bezahlt für vollständige Daten.
 9. Scores müssen IMMER Zahlen zwischen 1 und 10 sein. NIEMALS 0. Auch bei fehlenden Daten mindestens 3 vergeben.
 10. Antworte AUSSCHLIESSLICH mit validem JSON — kein Markdown, kein Text vor oder nach dem JSON.
@@ -241,7 +241,7 @@ JSON-Schema (alle Felder sind Pflicht):
 }
 
 PFLICHT-HINWEISE:
-- objektdaten: Adresse, Typ, Kaufpreis, Wohnfläche, Grundstück, Zimmer, Baujahr, Zustand, Heizung, Energieeffizienz, Stellplatz, Keller, Hausgeld, Provision. Werte aus dem Exposé. Wenn ein Wert fehlt: regionalen Durchschnitt recherchieren und mit "(⚠️ Regionsdurchschnitt — nicht im Exposé)" kennzeichnen.
+- objektdaten: Adresse, Typ, Kaufpreis, Wohnfläche, Grundstück, Zimmer, Baujahr, Zustand, Heizung, Energieeffizienz, Stellplatz, Keller, Hausgeld, Provision. Werte aus dem Exposé. Wenn ein Wert fehlt: regionalen Durchschnitt recherchieren und mit "(regionaler Schätzwert — nicht aus dem Angebot)" kennzeichnen.
   WICHTIG für das DECKBLATT der Analyse: Die folgenden 5 Einträge MÜSSEN in dieser exakten Schreibweise vorhanden sein, weil sie als Hero-Stats angezeigt werden:
   * { "merkmal": "Adresse", "wert": "Vollständige Adresse mit PLZ und Ort" }
   * { "merkmal": "Objekttyp", "wert": "z.B. Eigentumswohnung, Reihenhaus, Einfamilienhaus" }
@@ -265,15 +265,15 @@ PFLICHT-HINWEISE:
   * Strom: ca. 35-45 €/Person/Monat
   * Wasser/Abwasser: ca. 3-4 €/m³, ca. 150-300 €/Person/Jahr
   JEDE laufende Kostenposition MUSS einen konkreten Euro-Betrag haben. NIEMALS "Im Exposé nicht angegeben" bei laufenden Kosten — diese werden IMMER berechnet.
-  Wenn ein Wert nicht direkt aus dem Exposé kommt, hänge an den Wert an: "(⚠️ Regionsdurchschnitt — nicht im Exposé)"
-- Maklergebühr: WICHTIG — Suche auf der Exposé-Seite EXPLIZIT nach den Wörtern "Provision", "Käuferprovision", "Maklerprovision", "Courtage", "provisionsfrei", "provisionspflichtig". Diese Information steht oft im Kleingedruckten, in einem separaten Abschnitt "Kosten" oder "Preise", oder ganz unten auf der Seite. Bei ImmoScout24 steht sie typischerweise im Bereich "Preise" oder als Fußnote z.B. "Käufer zahlt 3,57% inkl. MwSt." Regeln: (1) Wenn Provision gefunden → exakt übernehmen (z.B. "3,57%"). (2) Wenn "provisionsfrei"/"käuferprovisionsfrei" → "0%". (3) NUR wenn trotz gründlicher Suche NICHTS zur Provision steht → "3,57% (⚠️ Regionsdurchschnitt — nicht im Exposé)". NIEMALS 0% annehmen wenn die Information einfach nicht gefunden wurde — der Standard in Deutschland ist 3,57% Käuferanteil.
-- energieanalyse: Daten aus Exposé bevorzugen. Wenn Energieausweis fehlt: Recherchiere typischen Verbrauch für Baujahr+Gebäudetyp und kennzeichne mit "(⚠️ Regionsdurchschnitt — nicht im Exposé)". Heizkosten IMMER berechnen: Fläche × kWh/m² × Energiepreis.
+  Wenn ein Wert nicht direkt aus dem Exposé kommt, hänge an den Wert an: "(regionaler Schätzwert — nicht aus dem Angebot)"
+- Maklergebühr: WICHTIG — Suche auf der Exposé-Seite EXPLIZIT nach den Wörtern "Provision", "Käuferprovision", "Maklerprovision", "Courtage", "provisionsfrei", "provisionspflichtig". Diese Information steht oft im Kleingedruckten, in einem separaten Abschnitt "Kosten" oder "Preise", oder ganz unten auf der Seite. Bei ImmoScout24 steht sie typischerweise im Bereich "Preise" oder als Fußnote z.B. "Käufer zahlt 3,57% inkl. MwSt." Regeln: (1) Wenn Provision gefunden → exakt übernehmen (z.B. "3,57%"). (2) Wenn "provisionsfrei"/"käuferprovisionsfrei" → "0%". (3) NUR wenn trotz gründlicher Suche NICHTS zur Provision steht → "3,57% (regionaler Schätzwert — nicht aus dem Angebot)". NIEMALS 0% annehmen wenn die Information einfach nicht gefunden wurde — der Standard in Deutschland ist 3,57% Käuferanteil.
+- energieanalyse: Daten aus Exposé bevorzugen. Wenn Energieausweis fehlt: Recherchiere typischen Verbrauch für Baujahr+Gebäudetyp und kennzeichne mit "(regionaler Schätzwert — nicht aus dem Angebot)". Heizkosten IMMER berechnen: Fläche × kWh/m² × Energiepreis.
 - scores: ALLE Scores müssen Zahlen zwischen 1 und 10 sein (ganzzahlig). KEIN Score darf 0 sein. Minimum ist 1. Bei fehlenden Daten mindestens 3-5 vergeben basierend auf Regionsdurchschnitt. gesamtbewertung = (lage × 0.25) + (preis_leistung × 0.25) + (zustand × 0.20) + (energie × 0.15) + (finanzierung × 0.15). Auf 1 Dezimalstelle runden.
 - verhandlungstipps: MINDESTENS 6 Tipps. Jeder Tipp MUSS sich auf konkrete Daten aus der Analyse beziehen (z.B. "Heizung aus 1995 → 25.000€ Erneuerung → 7% Preisnachlass fordern"). Kategorien: Sanierungsstau, Energieklasse, Marktvergleich, fehlende Dokumente, Zeitdruck/Verhandlungsposition, versteckte Kosten.
 - makleranschreiben: MUSS persönlich und objektspezifisch sein. Adresse und Exposé-Nr nennen. Mindestens 8 gezielte Fragen stellen die im Exposé fehlen. KEINE generischen Floskeln. Der Käufer soll damit direkt den Makler anschreiben können.
 - Alle Felder sind Pflicht AUSSER verhandlungstipps und makleranschreiben (nur wenn vom Nutzer gewünscht). Wenn nicht gewünscht: leere Arrays/Strings.
 - WICHTIG: Nutze Web-Suche um das Exposé abzurufen UND Marktdaten zu recherchieren. Suche nach der Exposé-Nummer auf ImmoScout24.
-- ABSOLUTE REGEL: Erfinde KEINE konkreten Objektdaten (Kaufpreis, Adresse, Zimmeranzahl etc.). Regionale Durchschnittswerte für fehlende Daten (Energieverbrauch, Grundsteuer, Heizkosten etc.) MÜSSEN recherchiert und eingesetzt werden — das ist KEIN Erfinden, sondern PFLICHT. Kennzeichne sie mit "(⚠️ Regionsdurchschnitt — nicht im Exposé)". JEDES Feld muss einen konkreten Zahlenwert haben. NIEMALS nur "Im Exposé nicht angegeben" oder "Nicht verfügbar" ohne Zahl schreiben.
+- ABSOLUTE REGEL: Erfinde KEINE konkreten Objektdaten (Kaufpreis, Adresse, Zimmeranzahl etc.). Regionale Durchschnittswerte für fehlende Daten (Energieverbrauch, Grundsteuer, Heizkosten etc.) MÜSSEN recherchiert und eingesetzt werden — das ist KEIN Erfinden, sondern PFLICHT. Kennzeichne sie mit "(regionaler Schätzwert — nicht aus dem Angebot)". JEDES Feld muss einen konkreten Zahlenwert haben. NIEMALS nur "Im Exposé nicht angegeben" oder "Nicht verfügbar" ohne Zahl schreiben.
 - LAUFENDE KOSTEN REGEL: Grundsteuer, Versicherung, Heizkosten, Instandhaltung, Strom, Wasser — diese werden IMMER berechnet. Sie stehen NIE im Exposé. Recherchiere den Hebesatz der Gemeinde, berechne Heizkosten aus Fläche × Energiekennwert × Preis. Kein Feld darf leer sein.
 
 - QUELLEN-PFLICHT (gilt für ALLE Pakete!): Im Feld "quellen" MÜSSEN MINDESTENS 5 echte URLs angegeben werden, die du während der Web-Recherche tatsächlich aufgerufen hast. Pflicht-Quellen-Kategorien:
@@ -435,12 +435,12 @@ PREMIUM-PFLICHT — NEUE MODULE (Stufe 1 + 2)
 TONALITÄT: BERATER-STIL — narrativ, handlungsorientiert, persönlich. Verwende "Sie" statt "der Käufer".
 KEINE akademischen Floskeln, keine ImmoWertV-Paragraphen in den neuen Modulen. Schreibe wie ein erfahrener Makler-Coach.
 
-🚨 OBERSTE PFLICHT — KEINE LEEREN FELDER: Der Kunde zahlt 79€. Jedes Feld in jedem Premium-Modul MUSS einen sinnvollen Wert haben — entweder echte Daten oder einen plausibilisierten Regionsdurchschnitt mit "(⚠️ Regionsdurchschnitt — nicht direkt nachweisbar)" Kennzeichnung. Leere Strings, "—" alleine ohne Kontext, oder leere Arrays sind VERBOTEN. Ausnahmen siehe unten (Persönlichkeitsrechte bei Makler-Bewertungen).
+🚨 OBERSTE PFLICHT — KEINE LEEREN FELDER: Der Kunde zahlt 79€. Jedes Feld in jedem Premium-Modul MUSS einen sinnvollen Wert haben — entweder echte Daten oder einen plausibilisierten Regionsdurchschnitt mit "(regionaler Schätzwert — nicht direkt nachweisbar)" Kennzeichnung. Leere Strings, "—" alleine ohne Kontext, oder leere Arrays sind VERBOTEN. Ausnahmen siehe unten (Persönlichkeitsrechte bei Makler-Bewertungen).
 
 DATEN-FÜLLUNGS-HIERARCHIE (gilt für ALLE Markt-/Preis-/Renditedaten):
   1. STUFE — Echte lokale Daten aus Web-Recherche (z.B. Mietspiegel der Stadt)
-  2. STUFE — Daten der nächstgrößeren vergleichbaren Stadt/Region als Proxy + Kennzeichnung "(⚠️ Proxy aus [Vergleichsstadt] — kein lokaler Mietspiegel)"
-  3. STUFE — Bundesweiter/Landes-Durchschnitt für Stadttyp + Kennzeichnung "(⚠️ Regionsdurchschnitt — kein lokaler Wert ermittelbar)"
+  2. STUFE — Daten der nächstgrößeren vergleichbaren Stadt/Region als Proxy + Kennzeichnung "(regionaler Schätzwert — Proxy aus [Vergleichsstadt], kein lokaler Mietspiegel)"
+  3. STUFE — Bundesweiter/Landes-Durchschnitt für Stadttyp + Kennzeichnung "(regionaler Schätzwert — kein lokaler Wert ermittelbar)"
   Erst wenn ALLE 3 Stufen scheitern, darf ein Modul als "verfuegbar: false" markiert werden — das ist absoluter Notfall.
 ═══════════════════════════════════════════════════════════════
 
@@ -456,8 +456,8 @@ DATEN-FÜLLUNGS-HIERARCHIE (gilt für ALLE Markt-/Preis-/Renditedaten):
 
 - mietrendite: Daten-Füllungs-Hierarchie strikt befolgen — "verfuegbar: false" ist absoluter NOTFALL.
   STUFE 1: Lokaler Mietspiegel der Stadt → kaltmieteProQm exakt für die Lagestufe + Baujahresklasse + Wohnungsgröße entnehmen
-  STUFE 2: Wenn kein lokaler Mietspiegel → Mietspiegel der nächstgrößeren vergleichbaren Stadt im Umkreis 30km nutzen → Wert mit Hinweis kennzeichnen "10,50 €/m² (⚠️ Proxy aus Augsburg-Stadt — kein Mietspiegel für Königsbrunn verfügbar)"
-  STUFE 3: Wenn auch das nicht → bundesweiter Mittelwert für Stadttyp (Großstadt/Mittelstadt/Kleinstadt/Dorf) aus aktuellen IVD-Daten → "8,20 €/m² (⚠️ Bundesschnitt für Mittelstädte 20-50k EW — kein regionaler Wert ermittelbar)"
+  STUFE 2: Wenn kein lokaler Mietspiegel → Mietspiegel der nächstgrößeren vergleichbaren Stadt im Umkreis 30km nutzen → Wert mit Hinweis kennzeichnen "10,50 €/m² (regionaler Schätzwert — Proxy aus Augsburg-Stadt, kein Mietspiegel für Königsbrunn verfügbar)"
+  STUFE 3: Wenn auch das nicht → bundesweiter Mittelwert für Stadttyp (Großstadt/Mittelstadt/Kleinstadt/Dorf) aus aktuellen IVD-Daten → "8,20 €/m² (regionaler Schätzwert — Bundesschnitt für Mittelstädte 20-50k EW, kein regionaler Wert ermittelbar)"
   STUFE 4 (NUR wenn alles scheitert): "verfuegbar": false, "fallbackHinweis": "Für [Ort] und Umgebung liegen keine ausreichend belastbaren Mietdaten vor. Konkrete Empfehlung: 3-5 vergleichbare Mietangebote in der Region selbst recherchieren (z.B. immowelt-Suche im Umkreis 10km)."
   Berechnung wenn Daten verfügbar:
   * jahresrohertrag = kaltmieteProQm × wohnflaeche × 12
@@ -981,7 +981,7 @@ WICHTIG:
 - Die Exposé-Daten oben sind bereits extrahiert — übernimm sie exakt. NICHT erneut die URL aufrufen.
 - Suche NUR nach regionalen Marktdaten (Bodenrichtwert, Vergleichspreise, Mietpreise).
 - Laufende Kosten (Grundsteuer, Versicherung, Heizkosten, Rücklagen etc.) sind IMMER zu berechnen.
-- Wenn ein Wert in den Exposé-Daten null ist: Regionsdurchschnitt recherchieren und mit "(⚠️ Regionsdurchschnitt — nicht im Exposé)" kennzeichnen.
+- Wenn ein Wert in den Exposé-Daten null ist: Regionsdurchschnitt recherchieren und mit "(regionaler Schätzwert — nicht aus dem Angebot)" kennzeichnen.
 - NIEMALS nur "Im Exposé nicht angegeben" ohne Wert schreiben. JEDES Feld braucht eine Zahl.
 - Antworte ausschließlich mit JSON.`
         } else if (exposeMarkdown) {
@@ -1005,7 +1005,7 @@ ${isPremium ? '- Premium-Report: ja (inkl. Wertermittlung, Standort-Dossier, Ver
 WICHTIG:
 - Maklerdaten (Name, Firma, Ansprechpartner, Provision) MÜSSEN aus dem Markdown extrahiert werden — sie stehen dort.
 - Laufende Kosten IMMER berechnen (Grundsteuer, Versicherung, Heizkosten, Rücklagen).
-- Wenn ein Exposé-Wert im Markdown fehlt: Regionsdurchschnitt recherchieren und mit "(⚠️ Regionsdurchschnitt — nicht im Exposé)" kennzeichnen.
+- Wenn ein Exposé-Wert im Markdown fehlt: Regionsdurchschnitt recherchieren und mit "(regionaler Schätzwert — nicht aus dem Angebot)" kennzeichnen.
 - NIEMALS "nicht verfügbar", "Nicht im Exposé angegeben", "—" alleine, "Keine Angabe" ohne konkrete Zahl schreiben. JEDES Feld braucht einen Wert.
 - Antworte ausschließlich mit JSON.`
         } else {
@@ -1029,7 +1029,7 @@ ${isPremium ? '- Premium-Report: ja (inkl. Wertermittlung, Standort-Dossier, Ver
 WICHTIG:
 - Exposé-Daten exakt übernehmen. Marktdaten recherchieren. Berechnungen korrekt durchführen.
 - Laufende Kosten (Grundsteuer, Versicherung, Heizkosten, Rücklagen etc.) sind IMMER zu berechnen — diese stehen nie im Exposé.
-- Wenn ein Exposé-spezifischer Wert fehlt (z.B. Energieausweis, Baujahr): Regionsdurchschnitt recherchieren und mit "(⚠️ Regionsdurchschnitt — nicht im Exposé)" kennzeichnen.
+- Wenn ein Exposé-spezifischer Wert fehlt (z.B. Energieausweis, Baujahr): Regionsdurchschnitt recherchieren und mit "(regionaler Schätzwert — nicht aus dem Angebot)" kennzeichnen.
 - NIEMALS nur "Im Exposé nicht angegeben" ohne Wert schreiben. JEDES Feld braucht eine Zahl.
 - NIEMALS Zahlen erfinden — aber Durchschnittswerte recherchieren ist PFLICHT.
 - Antworte ausschließlich mit JSON.`

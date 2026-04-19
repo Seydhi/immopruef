@@ -330,39 +330,61 @@ function FinanzierungSlot({ data }: { data: NonNullable<PremiumReportType['finan
 }
 
 function VermoegenSlot({ data }: { data: NonNullable<PremiumReportType['vermoegensvergleich']> }) {
+  const hasValues = Array.isArray(data.vermoegenKauf) && Array.isArray(data.vermoegenMieteEtf)
+    && data.vermoegenKauf.some(v => v && v.trim() && !/nicht verf|keine angab|—$/i.test(v))
+  const hasBreakEven = typeof data.breakEvenJahr === 'number' && data.breakEvenJahr > 0
+
   return (
-    <PremiumSection icon="📈" title="30-Jahres Vermögensvergleich (Kaufen vs. Mieten + ETF)">
-      <div className="bg-white border border-ink/10 rounded-lg overflow-x-auto mb-3">
-        <table className="w-full text-[12px] min-w-[450px]">
-          <thead>
-            <tr className="bg-cream text-ink-light">
-              <th className="px-3 py-2 text-left font-medium tracking-wider uppercase text-[10px]">Jahr</th>
-              <th className="px-3 py-2 text-right font-medium tracking-wider uppercase text-[10px]">Vermögen (Kauf)</th>
-              <th className="px-3 py-2 text-right font-medium tracking-wider uppercase text-[10px]">Vermögen (Miete + ETF)</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.jahre.map((jahr, i) => (
-              <tr key={i} className={`border-t border-ink/8 ${i % 2 === 1 ? 'bg-cream/30' : ''}`}>
-                <td className="px-3 py-2 font-medium">Jahr {jahr}</td>
-                <td className="px-3 py-2 text-right text-green font-medium">{data.vermoegenKauf[i]}</td>
-                <td className="px-3 py-2 text-right text-amber-600 font-medium">{data.vermoegenMieteEtf[i]}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <div className="bg-green-light border border-green/18 rounded-lg px-4 py-3 text-sm text-green">
-        <span className="font-medium">Break-Even:</span> Ab Jahr {data.breakEvenJahr} übersteigt das Immobilienvermögen das ETF-Portfolio.
-        Bei einer Haltedauer von über {data.breakEvenJahr} Jahren lohnt sich der Kauf finanziell.
-      </div>
+    <PremiumSection icon="📈" title="Kaufen vs. Mieten über 30 Jahre — Modellrechnung">
+      <p className="text-xs text-ink-mid mb-3 leading-relaxed">
+        Modellhafter Vergleich auf Basis angenommener Wertsteigerung (Kauf) und ETF-Rendite (Miete + Sparplan). Die tatsächliche Entwicklung kann erheblich abweichen — persönliche Steuersituation, Mietentwicklung und Zinsniveau sind nicht berücksichtigt.
+      </p>
+      {hasValues ? (
+        <>
+          <div className="bg-white border border-ink/10 rounded-lg overflow-x-auto mb-3">
+            <table className="w-full text-[12px] min-w-[450px]">
+              <thead>
+                <tr className="bg-cream text-ink-light">
+                  <th className="px-3 py-2 text-left font-medium tracking-wider uppercase text-[10px]">Jahr</th>
+                  <th className="px-3 py-2 text-right font-medium tracking-wider uppercase text-[10px]">Vermögen (Kauf)</th>
+                  <th className="px-3 py-2 text-right font-medium tracking-wider uppercase text-[10px]">Vermögen (Miete + ETF)</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.jahre.map((jahr, i) => (
+                  <tr key={i} className={`border-t border-ink/8 ${i % 2 === 1 ? 'bg-cream/30' : ''}`}>
+                    <td className="px-3 py-2 font-medium">Jahr {jahr}</td>
+                    <td className="px-3 py-2 text-right text-green font-medium">{data.vermoegenKauf[i]}</td>
+                    <td className="px-3 py-2 text-right text-amber-600 font-medium">{data.vermoegenMieteEtf[i]}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          {hasBreakEven && (
+            <div className="bg-stone-50 border border-stone-200 rounded-lg px-4 py-3 text-sm text-stone-800">
+              <span className="font-medium">Rechnerischer Break-Even:</span> Nach etwa {data.breakEvenJahr} Jahren Haltedauer läge das Immobilienvermögen in diesem Modell rechnerisch über dem ETF-Portfolio. Dies ist eine Modellgröße, kein prognostizierter Vorteil.
+            </div>
+          )}
+        </>
+      ) : (
+        <div className="bg-stone-50 border border-stone-200 rounded-lg px-4 py-3 text-sm text-stone-700">
+          Ein belastbarer Vermögensvergleich konnte für dieses Objekt nicht berechnet werden, da wesentliche Eingabedaten fehlen. Für eine valide Kauf-vs.-Mieten-Rechnung benötigen wir insbesondere realistische Mietannahmen, Nebenkosten und Instandhaltungsdaten.
+        </div>
+      )}
     </PremiumSection>
   )
 }
 
 function WertermittlungSlot({ data }: { data: NonNullable<PremiumReportType['wertermittlung']> }) {
+  const hasEmpfehlung = data.fazit?.empfohlenerKaufpreis
+    && !/nicht verf|keine angab|—$/i.test(data.fazit.empfohlenerKaufpreis)
+    && data.fazit.empfohlenerKaufpreis.trim() !== ''
   return (
-    <PremiumSection icon="💎" title="Professionelle Wertermittlung (3 Verfahren nach ImmoWertV)">
+    <PremiumSection icon="💎" title="Indikative Wert-Einschätzung (Verfahren angelehnt an ImmoWertV)">
+      <p className="text-xs text-ink-mid mb-4 leading-relaxed">
+        Diese Werte sind eine strukturierte Einordnung auf Basis öffentlich zugänglicher Daten und ersetzen kein Verkehrswertgutachten eines öffentlich bestellten Sachverständigen.
+      </p>
       <div className="mb-4">
         <SubHeading>Vergleichswertverfahren (§15 ImmoWertV)</SubHeading>
         <p className="text-xs text-ink-mid mb-3">{data.vergleichswert.methode}</p>
@@ -417,12 +439,19 @@ function WertermittlungSlot({ data }: { data: NonNullable<PremiumReportType['wer
           </div>
         </div>
       </div>
-      <div className="bg-green text-cream rounded-xl p-4">
-        <div className="text-cream/70 text-[10px] tracking-wider uppercase mb-1">Empfohlener Kaufpreis</div>
-        <div className="font-display text-2xl font-medium mb-2">{data.fazit.empfohlenerKaufpreis}</div>
-        <div className="text-xs text-cream/70 mb-2">Marktwertspanne: {data.fazit.marktwertSpanne}</div>
-        <div className="text-sm text-cream/90 leading-relaxed">{data.fazit.einschaetzung}</div>
-      </div>
+      {hasEmpfehlung ? (
+        <div className="bg-green text-cream rounded-xl p-4">
+          <div className="text-cream/70 text-[10px] tracking-wider uppercase mb-1">Indikativer Preisrahmen</div>
+          <div className="font-display text-2xl font-medium mb-2">{data.fazit.empfohlenerKaufpreis}</div>
+          <div className="text-xs text-cream/70 mb-2">Marktwertspanne (modellhaft): {data.fazit.marktwertSpanne}</div>
+          <div className="text-sm text-cream/90 leading-relaxed">{data.fazit.einschaetzung}</div>
+        </div>
+      ) : (
+        <div className="bg-stone-50 border border-stone-200 rounded-xl p-4 text-sm text-stone-700 leading-relaxed">
+          <div className="font-medium text-stone-900 mb-1">Keine belastbare Wert-Einschätzung möglich</div>
+          Für eine belastbare Wert-Einschätzung fehlen derzeit ausreichend Vergleichs- oder Objektdaten. Deshalb geben wir hier keinen belastbaren Zielkaufpreis aus.
+        </div>
+      )}
     </PremiumSection>
   )
 }
@@ -481,11 +510,14 @@ function StandortDossierSlot({ data }: { data: NonNullable<PremiumReportType['st
 
 function MaklerProfilSlot({ data }: { data: NonNullable<PremiumReportType['maklerProfil']> }) {
   return (
-    <PremiumSection icon="👔" title="Wer verkauft? — Makler-Check & Seriositätsprüfung">
+    <PremiumSection icon="👔" title="Anbieterprofil — öffentlich auffindbare Informationen">
+      <p className="text-xs text-ink-mid mb-3 leading-relaxed">
+        Zusammengetragen aus Impressum, Handelsregister und öffentlichen Bewertungsplattformen. Keine Seriositätsprüfung, sondern eine Einordnung, welche Informationen online auffindbar sind.
+      </p>
       {data.art === 'privatverkauf' ? (
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm">
-          <div className="font-medium text-blue-900 mb-2">📋 Privatverkauf</div>
-          <div className="text-xs text-blue-800 leading-relaxed">{data.fazit}</div>
+        <div className="bg-stone-50 border border-stone-200 rounded-lg p-4 text-sm">
+          <div className="font-medium text-stone-900 mb-2">Privatverkauf</div>
+          <div className="text-xs text-stone-700 leading-relaxed">{data.fazit}</div>
         </div>
       ) : (
         <>
@@ -516,14 +548,17 @@ function MaklerProfilSlot({ data }: { data: NonNullable<PremiumReportType['makle
             <div className={`rounded-lg p-3 mb-3 text-xs ${
               data.redFlags[0].toLowerCase().includes('keine') || data.redFlags[0].toLowerCase().includes('solide')
                 ? 'bg-emerald-50 border border-emerald-200 text-emerald-800'
-                : 'bg-red-50 border border-red-200 text-red-800'
+                : 'bg-stone-50 border border-stone-200 text-stone-800'
             }`}>
-              <div className="font-medium mb-1">{data.redFlags[0].toLowerCase().includes('keine') ? '✓ Keine Red Flags' : '🚩 Red Flags'}</div>
+              <div className="font-medium mb-1">{data.redFlags[0].toLowerCase().includes('keine') ? 'Keine Auffälligkeiten in öffentlichen Quellen' : 'Hinweise aus öffentlichen Quellen'}</div>
               {data.redFlags.map((f, i) => <div key={i} className="leading-relaxed">{f}</div>)}
+              <div className="mt-2 text-[11px] opacity-80 leading-relaxed">
+                Das ist kein Negativmerkmal, aber ein Grund, Referenzen, vollständige Kontaktdaten und Unterlagen direkt anzufragen.
+              </div>
             </div>
           )}
-          <div className="bg-amber-50/50 border border-amber-200 rounded-lg p-3.5">
-            <div className="text-xs font-medium text-amber-900 mb-1">Mein Fazit zum Makler:</div>
+          <div className="bg-stone-50 border border-stone-200 rounded-lg p-3.5">
+            <div className="text-xs font-medium text-stone-900 mb-1">Einordnung:</div>
             <div className="text-[12px] text-ink-mid leading-relaxed">{data.fazit}</div>
           </div>
         </>
