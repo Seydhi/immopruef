@@ -4,6 +4,33 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'rauchen-dampfen-wohnqualitaet',
+    title: 'Rauchen, Dampfen und Wohnqualität: Welche Spuren Innenraumnutzung in Immobilien hinterlassen kann',
+    description: 'Gerüche, Verfärbungen, Oberflächenspuren — wie sich Nutzungsgeschichte bei Besichtigungen erkennen lässt und was Sanierung kostet.',
+    date: '19. April 2026',
+    readTime: '13 Min',
+    tags: ['Kaufratgeber', 'Besichtigung'],
+    image: 'https://images.unsplash.com/photo-1522444195799-478538b28823?w=800&h=450&fit=crop&auto=format&q=80',
+  },
+  {
+    slug: 'fristen-immobilienkauf',
+    title: 'Wichtige Unterlagen und Fristen beim Immobilienkauf: Was Käufer rechtzeitig im Blick haben sollten',
+    description: 'Die 12 wichtigsten Fristen im Kaufprozess chronologisch, Unterlagen-Matrix in drei Blöcken und ein praktikables Fristen-System für Privatkäufer.',
+    date: '19. April 2026',
+    readTime: '14 Min',
+    tags: ['Kaufratgeber', 'Checkliste'],
+    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=450&fit=crop&auto=format&q=80',
+  },
+  {
+    slug: 'immobilienanfragen-bearbeiten',
+    title: 'Immobilienanfragen effizient bearbeiten: Wie Makler und Verkäufer Anfragen besser vorsortieren',
+    description: 'Anfrageflut strukturiert bewältigen: Ampel-Raster, 5-Schritte-Prozess, sinnvolle Automatisierung und was Käufer daraus lernen können.',
+    date: '19. April 2026',
+    readTime: '13 Min',
+    tags: ['Kaufratgeber', 'Checkliste'],
+    image: 'https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=800&h=450&fit=crop&auto=format&q=80',
+  },
+  {
     slug: 'unterlagen-vor-immobilienkauf',
     title: 'Vor dem Immobilienkauf Unterlagen prüfen: Welche Dokumente wirklich wichtig sind',
     description: '12 Pflicht-Dokumente mit Timeline (vor Besichtigung → vor Kaufentscheidung → vor Notar), getrennt nach ETW und EFH.',
@@ -367,4 +394,7 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.Com
   'infrastruktur-pruefen': lazy(() => import('./infrastruktur-pruefen')),
   'immobilienkauf-mit-familie': lazy(() => import('./immobilienkauf-mit-familie')),
   'unterlagen-vor-immobilienkauf': lazy(() => import('./unterlagen-vor-immobilienkauf')),
+  'immobilienanfragen-bearbeiten': lazy(() => import('./immobilienanfragen-bearbeiten')),
+  'fristen-immobilienkauf': lazy(() => import('./fristen-immobilienkauf')),
+  'rauchen-dampfen-wohnqualitaet': lazy(() => import('./rauchen-dampfen-wohnqualitaet')),
 }
