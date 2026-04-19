@@ -6,7 +6,7 @@ export default function Header() {
         Immo<span className="text-gold-light">Prüf</span>
       </a>
       <div className="bg-gold/20 border border-gold/40 text-gold-light text-[11px] font-medium px-2.5 py-1 rounded-full uppercase tracking-widest">
-        KI-gestützt
+        Ersteinschätzung
       </div>
     </header>
   )

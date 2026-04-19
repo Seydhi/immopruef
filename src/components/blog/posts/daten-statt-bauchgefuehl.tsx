@@ -149,7 +149,7 @@ export default function DatenStattBauchgefuehl() {
           <tr><td>Fühle ich mich wohl?</td><td>❌ Nicht messbar</td><td>✅ Entscheidend</td></tr>
           <tr><td>Passt der Grundriss?</td><td>✅ Für Fläche/Effizienz</td><td>✅ Für Wohlgefühl</td></tr>
           <tr><td>Gibt es versteckte Risiken?</td><td>✅ Entscheidend</td><td>❌ Oft übersehen</td></tr>
-          <tr><td>Soll ich kaufen?</td><td>✅ Fundament</td><td>✅ Finale Bestätigung</td></tr>
+          <tr><td>Was muss ich prüfen?</td><td>✅ Fundament</td><td>✅ Finale Bestätigung</td></tr>
         </tbody>
       </table>
       <p>
