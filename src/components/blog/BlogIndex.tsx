@@ -7,9 +7,10 @@ interface BlogIndexProps {
 }
 
 export default function BlogIndex({ onNavigate }: BlogIndexProps) {
+  const postCount = BLOG_POSTS.length
   useSEO({
     title: 'Blog: Ratgeber & Tipps zum Immobilienkauf',
-    description: '36 Ratgeber rund um Exposé-Prüfung, Preisbewertung, Energieausweis, Standortanalyse und Finanzierung. Fundiertes Wissen für Käufer in Deutschland.',
+    description: `${postCount} Ratgeber rund um Exposé-Prüfung, Preisbewertung, Energieausweis, Standortanalyse und Finanzierung. Fundiertes Wissen für Käufer in Deutschland.`,
     canonical: 'https://immopruef.de/blog',
     type: 'website',
     jsonLd: [
@@ -18,7 +19,7 @@ export default function BlogIndex({ onNavigate }: BlogIndexProps) {
         '@type': 'CollectionPage',
         name: 'ImmoPrüf Blog — Ratgeber zum Immobilienkauf',
         url: 'https://immopruef.de/blog',
-        description: 'Blog-Übersicht mit 36 Ratgebern zum Immobilienkauf in Deutschland',
+        description: `Blog-Übersicht mit ${postCount} Ratgebern zum Immobilienkauf in Deutschland`,
         inLanguage: 'de-DE',
         isPartOf: { '@type': 'WebSite', name: 'ImmoPrüf', url: 'https://immopruef.de' },
       },

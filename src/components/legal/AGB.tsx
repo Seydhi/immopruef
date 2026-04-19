@@ -41,7 +41,7 @@ export default function AGB() {
           </p>
           <ul className="list-disc pl-5 space-y-1 mt-1">
             <li><strong>Quick-Check (1/2/3 Immobilien):</strong> Preisbewertung, Gesamtkosten-Rechner, Energie-Analyse, Modernisierungs-Check, Standortanalyse, Risikobewertung, Finanzierungs-Check, Verhandlungstipps, Makleranschreiben</li>
-            <li><strong>Kaufentscheidungs-Report (Premium):</strong> Alle Quick-Check-Inhalte plus professionelle Wertermittlung, Standort-Dossier, 30-Jahres-Vermögensvergleich, Vor-Kauf-Checkliste und steuerliche Analyse</li>
+            <li><strong>Kaufentscheidungs-Report (Premium):</strong> Alle Quick-Check-Inhalte plus indikative Wert-Einschätzung (angelehnt an ImmoWertV-Verfahren, ersetzt kein Verkehrswertgutachten), Standort-Dossier, 30-Jahres-Modellrechnung Kaufen vs. Mieten, Vor-Kauf-Checkliste und steuerliche Hinweise</li>
           </ul>
           <p className="mt-2">
             (3) Die Analyse basiert auf öffentlich verfügbaren Daten und KI-gestützter Auswertung.

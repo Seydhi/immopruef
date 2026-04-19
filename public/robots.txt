@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /*?session_id=
+Disallow: /*?result=
 
 Sitemap: https://immopruef.de/sitemap.xml

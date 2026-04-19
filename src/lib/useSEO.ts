@@ -131,7 +131,7 @@ export function articleSchema(opts: {
 }): object {
   return {
     '@context': 'https://schema.org',
-    '@type': 'Article',
+    '@type': 'BlogPosting',
     headline: opts.title,
     description: opts.description,
     image: opts.image || DEFAULT_IMAGE,

@@ -83,6 +83,17 @@ export default function Datenschutz() {
               der von Ihnen angefragten Analyse und speichern sie zusammen mit dem
               Analyse-Ergebnis.
             </li>
+            <li>
+              <strong>Maklerinformationen aus öffentlichen Quellen</strong> — Für den
+              Premium-Report werden öffentlich zugängliche Informationen zum anbietenden
+              Makler bzw. Maklerunternehmen recherchiert (z.B. Name, Sitz, Qualifikation,
+              öffentliche Bewertungen auf Plattformen wie ImmoScout24, Google, ProvenExpert).
+              Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse des
+              Käufers an einer vollständigen Einordnung des Angebots). Die Daten werden
+              ausschließlich im Analyse-Ergebnis verwendet, nicht an Dritte weitergegeben
+              und nicht zu Werbezwecken verarbeitet. Betroffene können der Verarbeitung
+              jederzeit widersprechen (Art. 21 DSGVO, Kontakt siehe Impressum).
+            </li>
             <li><strong>Zahlungsdaten</strong> — werden ausschließlich von Stripe verarbeitet (siehe Punkt 5)</li>
             <li><strong>Technische Daten</strong> — IP-Adresse, Browser-Typ, Zeitpunkt des Zugriffs (Server-Logs)</li>
           </ul>

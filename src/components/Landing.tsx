@@ -142,7 +142,7 @@ export default function Landing() {
           Analyse starten
         </h1>
         <p className="text-ink-light text-sm">
-          Günstiger als ein Gutachter (500–2.500 €)
+          Strukturierte Ersteinschätzung in wenigen Minuten
         </p>
       </div>
 

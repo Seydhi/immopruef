@@ -81,7 +81,7 @@ export default function PricingToggle({ selected, onChange }: PricingToggleProps
               79,00 €
             </div>
             <div className={`text-[10px] leading-tight ${isPremiumSelected ? 'text-amber-600' : 'text-ink-light'}`}>
-              statt 500–2.500&nbsp;€<br />Gutachter
+              Ersteinschätzung<br />inkl. PDF-Export
             </div>
           </div>
         </div>
@@ -90,7 +90,7 @@ export default function PricingToggle({ selected, onChange }: PricingToggleProps
         {isPremiumSelected && (
           <div className="grid grid-cols-2 gap-x-4 gap-y-1 mt-3 pt-3 border-t border-amber-200">
             {[
-              'Professionelle Wertermittlung',
+              'Indikative Wert-Einschätzung',
               'Vergleichs- & Sachwertverfahren',
               'Vollständiges Standort-Dossier',
               'Hochwasser- & Lärmkarten',
