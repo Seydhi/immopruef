@@ -708,7 +708,34 @@ serve(async (req) => {
         const exposeId = exposeMatch ? exposeMatch[1] : ''
 
         // ═══════════════════════════════════════════════════════════
-        // SCRAPER: Extract listing data via Playwright before Claude
+        // JINA READER: Fetch listing as Markdown (free, reliable, no JS execution)
+        // Gives Claude ground-truth expose text so it doesn't have to re-fetch via web_search.
+        // ═══════════════════════════════════════════════════════════
+        let exposeMarkdown: string | null = null
+        try {
+          const jinaUrl = `https://r.jina.ai/${cleanUrl}`
+          const jinaKey = Deno.env.get('JINA_API_KEY')
+          const jinaHeaders: Record<string, string> = {
+            'Accept': 'text/plain',
+            'X-Return-Format': 'markdown',
+          }
+          if (jinaKey) jinaHeaders['Authorization'] = `Bearer ${jinaKey}`
+
+          const jinaRes = await fetch(jinaUrl, { headers: jinaHeaders })
+          if (jinaRes.ok) {
+            const md = await jinaRes.text()
+            // Trim to ~40k chars to keep prompt lean (typical expose is 5-15k)
+            exposeMarkdown = md.length > 40000 ? md.slice(0, 40000) + '\n\n[...gekürzt]' : md
+            console.log(`Jina Reader: ${md.length} chars from ${cleanUrl}`)
+          } else {
+            console.warn(`Jina Reader failed: ${jinaRes.status}`)
+          }
+        } catch (e) {
+          console.warn('Jina Reader call failed:', e)
+        }
+
+        // ═══════════════════════════════════════════════════════════
+        // SCRAPER: Extract listing data via Playwright before Claude (optional fallback)
         // ═══════════════════════════════════════════════════════════
         const scraperUrl = Deno.env.get('SCRAPER_URL')
         const scraperKey = Deno.env.get('SCRAPER_API_KEY')
@@ -737,8 +764,11 @@ serve(async (req) => {
           }
         }
 
-        // Build user message — with or without scraped data
+        // Build user message — prefer Jina Markdown, fall back to Scraper JSON, then pure web_search
         let userMessage: string
+        const jinaBlock = exposeMarkdown
+          ? `\n\n--- EXPOSÉ-MARKDOWN (bereits per Jina Reader abgerufen — AUSSCHLIESSLICH diesen Text als Exposé-Quelle verwenden, NICHT erneut die URL fetchen) ---\n${exposeMarkdown}\n--- ENDE EXPOSÉ-MARKDOWN ---\n`
+          : ''
 
         if (scrapedData && (scrapedData.price || scrapedData.title)) {
           // SCRAPER SUCCESS: Claude gets structured data, only needs to search market data
@@ -749,8 +779,8 @@ ${exposeId ? `Exposé-Nr: ${exposeId}` : ''}
 
 EXPOSÉ-DATEN (bereits aus dem Inserat extrahiert — NICHT erneut per Web-Suche abrufen):
 ${JSON.stringify(scrapedData, null, 2)}
-
-SCHRITT 1: Verwende die obigen Exposé-Daten als Grundlage. Diese Daten sind korrekt und direkt aus dem Inserat extrahiert.
+${jinaBlock}
+SCHRITT 1: Verwende die obigen Exposé-Daten als Grundlage. Diese Daten sind korrekt und direkt aus dem Inserat extrahiert. Der EXPOSÉ-MARKDOWN enthält zusätzlichen Volltext — nutze ihn für Details (Makler-Name, Provision, Beschreibungstext, Ausstattung etc.).
 SCHRITT 2: Suche NUR nach MARKTDATEN für die Region: Bodenrichtwert, Vergleichspreise pro m², Mietpreisspiegel, Grundsteuer-Hebesatz.
 SCHRITT 3: Erstelle die vollständige Analyse mit ALLEN Berechnungen.
 
@@ -767,9 +797,33 @@ WICHTIG:
 - Wenn ein Wert in den Exposé-Daten null ist: Regionsdurchschnitt recherchieren und mit "(⚠️ Regionsdurchschnitt — nicht im Exposé)" kennzeichnen.
 - NIEMALS nur "Im Exposé nicht angegeben" ohne Wert schreiben. JEDES Feld braucht eine Zahl.
 - Antworte ausschließlich mit JSON.`
+        } else if (exposeMarkdown) {
+          // JINA SUCCESS (no Playwright scraper): use Markdown as primary source
+          console.log('Using Jina Reader Markdown as expose source')
+          userMessage = `Analysiere diese Kaufimmobilie vollständig.
+
+URL: ${cleanUrl}
+${exposeId ? `Exposé-Nr: ${exposeId}` : ''}
+${jinaBlock}
+SCHRITT 1: Extrahiere ALLE Exposé-Details aus dem EXPOSÉ-MARKDOWN oben (Kaufpreis, Fläche, Zimmer, Baujahr, Adresse, Energieausweis, Hausgeld, Provision, Maklername, Ansprechpartner etc.). NICHT erneut die URL per web_search aufrufen — der Markdown ist die Quelle.
+SCHRITT 2: Nutze web_search NUR für Marktdaten der Region des Objekts: Bodenrichtwert, Vergleichspreise €/m², Mietpreisspiegel, Grundsteuer-Hebesatz, Lärmkarte, Hochwasserzone.
+SCHRITT 3: Erstelle die vollständige Analyse mit ALLEN Berechnungen basierend auf den extrahierten Exposé-Werten + den recherchierten Marktdaten.
+
+Optionen:
+- Makleranschreiben: ${opts.makleranschreiben ? 'ja' : 'nein'}
+- Verhandlungstipps: ${opts.verhandlungstipps ? 'ja' : 'nein'}
+- Risikohinweise: ${opts.risiken ? 'ja' : 'nein'}
+${isPremium ? '- Premium-Report: ja (inkl. Wertermittlung, Standort-Dossier, Vermögensvergleich, Checkliste)' : ''}
+
+WICHTIG:
+- Maklerdaten (Name, Firma, Ansprechpartner, Provision) MÜSSEN aus dem Markdown extrahiert werden — sie stehen dort.
+- Laufende Kosten IMMER berechnen (Grundsteuer, Versicherung, Heizkosten, Rücklagen).
+- Wenn ein Exposé-Wert im Markdown fehlt: Regionsdurchschnitt recherchieren und mit "(⚠️ Regionsdurchschnitt — nicht im Exposé)" kennzeichnen.
+- NIEMALS "nicht verfügbar", "Nicht im Exposé angegeben", "—" alleine, "Keine Angabe" ohne konkrete Zahl schreiben. JEDES Feld braucht einen Wert.
+- Antworte ausschließlich mit JSON.`
         } else {
-          // SCRAPER FAILED: Fallback to web search (old behavior)
-          console.log('Scraper unavailable — falling back to web search')
+          // NEITHER Jina NOR Scraper worked: Fallback to pure web search (old behavior)
+          console.log('Neither Jina nor Scraper available — falling back to web search')
           userMessage = `Analysiere diese Kaufimmobilie vollständig.
 
 URL: ${cleanUrl}
@@ -824,7 +878,7 @@ WICHTIG:
 
 URL: ${analysis.url.split('#')[0].split('?')[0]}
 ${analysis.url.match(/expose\/(\d+)/) ? `Exposé-Nr: ${analysis.url.match(/expose\/(\d+)/)![1]}` : ''}
-${scrapedData ? `\n--- EXPOSÉ-DATEN (vom Scraper) ---\n${JSON.stringify(scrapedData, null, 2)}\n--- ENDE EXPOSÉ-DATEN ---\n` : ''}
+${scrapedData ? `\n--- EXPOSÉ-DATEN (vom Scraper) ---\n${JSON.stringify(scrapedData, null, 2)}\n--- ENDE EXPOSÉ-DATEN ---\n` : ''}${exposeMarkdown ? `\n--- EXPOSÉ-MARKDOWN (Jina Reader) ---\n${exposeMarkdown}\n--- ENDE ---\n` : ''}
 SCHRITT 1: Rufe die URL auf und lies ALLE Exposé-Details
 SCHRITT 2: Suche nach Marktdaten für die Region
 SCHRITT 3: Erstelle die vollständige Analyse
