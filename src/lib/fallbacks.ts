@@ -27,7 +27,7 @@ export function isUnavailable(value: string | undefined | null): boolean {
 }
 
 // ─── Parser: Rohzahl aus "€/m²/etc."-String ───
-function parseNumber(value: string | undefined): number | null {
+function parseNumber(value: string | undefined | null): number | null {
   if (!value) return null
   // "75.000 €" → "75000", "56 m²" → "56", "3,5%" → "3.5"
   const cleaned = String(value)
