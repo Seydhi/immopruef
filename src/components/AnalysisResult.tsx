@@ -1,15 +1,6 @@
-import { useMemo, useState, type ReactNode } from 'react'
+import { useState, type ReactNode } from 'react'
 import type { AnalysisResult as AnalysisResultType, AnalysisOptions, Scores, Objektdaten } from '../lib/types'
 import PremiumReport from './PremiumReport'
-import {
-  isUnavailable,
-  parseObjektdaten,
-  estimateKaufenVsMieten,
-  estimateVermoegensvergleich,
-  estimateWertermittlung,
-  estimateMaklerProfil,
-  estimateSanierung,
-} from '../lib/fallbacks'
 
 // ════════════════════════════════════════════════════════════════════
 // AnalysisResult — strukturierter Aufbau (vom Großen zum Kleinen)
@@ -35,14 +26,9 @@ interface AnalysisResultProps {
   onBack?: () => void
 }
 
-export default function AnalysisResult({ result: rawResult, options, url, showBackButton = true, onBack }: AnalysisResultProps) {
+export default function AnalysisResult({ result, options, url, showBackButton = true, onBack }: AnalysisResultProps) {
   const [copied, setCopied] = useState(false)
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({})
-
-  // Patched Result: fehlende Premium-Felder werden durch deterministische
-  // Schätzungen ersetzt. `schaetzungen` listet, welche Sections substituiert
-  // wurden, damit das UI eine klare "Schätzung"-Kennzeichnung zeigt.
-  const { result, schaetzungen } = useMemo(() => applyFallbacks(rawResult), [rawResult])
 
   const copyLetter = () => {
     navigator.clipboard.writeText(result.makleranschreiben).then(() => {
@@ -182,7 +168,7 @@ export default function AnalysisResult({ result: rawResult, options, url, showBa
               <tbody>
                 {result.gesamtkosten?.kaufpreis && <KVRow label="Kaufpreis" value={result.gesamtkosten.kaufpreis} i={0} />}
                 <KVRow label="Kaufnebenkosten" value={result.gesamtkosten.kaufnebenkosten?.gesamt || '—'} i={1} />
-                {result.gesamtkosten?.geschaetzteSanierung && <KVRow label={schaetzungen.has('sanierung') ? 'Geschätzte Sanierung (Schätzung)' : 'Geschätzte Sanierung'} value={result.gesamtkosten.geschaetzteSanierung} i={2} />}
+                {result.gesamtkosten?.geschaetzteSanierung && <KVRow label="Geschätzte Sanierung" value={result.gesamtkosten.geschaetzteSanierung} i={2} />}
               </tbody>
             </table>
           </div>
@@ -264,10 +250,7 @@ export default function AnalysisResult({ result: rawResult, options, url, showBa
       {/* Standard: Kaufen vs Mieten */}
       {result.finanzierung && (
         <div className="bg-white border border-ink/10 rounded-xl overflow-hidden mb-5">
-          <div className="bg-green/5 px-4 py-2.5 text-xs font-medium text-green tracking-wider uppercase border-b border-ink/8 flex items-center justify-between">
-            <span>Kaufen vs. Mieten (20-Jahres-Vergleich)</span>
-            {schaetzungen.has('kaufenVsMieten') && <SchaetzungBadge />}
-          </div>
+          <div className="bg-green/5 px-4 py-2.5 text-xs font-medium text-green tracking-wider uppercase border-b border-ink/8">Kaufen vs. Mieten (20-Jahres-Vergleich)</div>
           <div className="p-4">
             <div className="grid grid-cols-2 gap-4 mb-3">
               <div className="text-center p-3 rounded-lg bg-cream">
@@ -289,7 +272,6 @@ export default function AnalysisResult({ result: rawResult, options, url, showBa
       {/* Premium: 30-Jahres Vermögensvergleich */}
       {isPremium && result.premiumReport && (
         <div className="mb-5">
-          {schaetzungen.has('vermoegen') && <SchaetzungHinweis scope="Vermögensvergleich" />}
           <PremiumReport report={result.premiumReport} slot="vermoegen" />
         </div>
       )}
@@ -426,7 +408,6 @@ export default function AnalysisResult({ result: rawResult, options, url, showBa
       {/* Premium: Wertermittlung (3 Verfahren — am Ende des Zustand-Blocks weil juristisch) */}
       {isPremium && result.premiumReport && (
         <div className="mb-5">
-          {schaetzungen.has('wertermittlung') && <SchaetzungHinweis scope="Wertermittlung" />}
           <PremiumReport report={result.premiumReport} slot="wertermittlung" />
         </div>
       )}
@@ -498,7 +479,6 @@ export default function AnalysisResult({ result: rawResult, options, url, showBa
         <>
           <SectionDivider icon="👔" title="Wer verkauft?" />
           <div className="mb-5">
-            {schaetzungen.has('makler') && <SchaetzungHinweis scope="Makler-Check" />}
             <PremiumReport report={result.premiumReport} slot="maklerProfil" />
           </div>
         </>
@@ -1001,123 +981,4 @@ function BankIcon() {
 }
 function BulbIcon() {
   return <svg aria-hidden="true" className={iconClass} viewBox="0 0 24 24"><line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg>
-}
-
-// ════════════════════════════════════════════════════════════════════
-// Schätzung-Kennzeichnung für gepatchte Sections
-// ════════════════════════════════════════════════════════════════════
-function SchaetzungBadge() {
-  return (
-    <span
-      className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 tracking-wider uppercase"
-      title="Schätzung: berechnet aus Kaufpreis, Fläche, Baujahr und regionalen Kennzahlen"
-    >
-      Schätzung
-    </span>
-  )
-}
-
-function SchaetzungHinweis({ scope }: { scope: string }) {
-  return (
-    <div className="bg-amber-50 border border-amber-200 rounded-t-xl px-4 py-2 text-[11px] text-amber-800 flex items-center gap-2 mb-[-1px]">
-      <span className="font-medium">ℹ️ Schätzung ({scope}):</span>
-      <span className="text-amber-700">
-        Berechnet aus Kaufpreis, Fläche, Baujahr und regionalen Kennzahlen. Keine Live-Marktdaten verfügbar — Werte dienen zur Orientierung.
-      </span>
-    </div>
-  )
-}
-
-// ════════════════════════════════════════════════════════════════════
-// FALLBACK-PATCHER
-// Ersetzt "nicht verfügbar"/"nicht berechenbar"-Platzhalter durch
-// deterministische Schätzungen basierend auf Kaufpreis, Fläche, Baujahr
-// und regionalen Kennzahlen. Jede Substitution wird in `schaetzungen`
-// vermerkt, damit das UI eine Schätzung-Kennzeichnung zeigen kann.
-// ════════════════════════════════════════════════════════════════════
-function applyFallbacks(raw: AnalysisResultType): { result: AnalysisResultType; schaetzungen: Set<string> } {
-  const schaetzungen = new Set<string>()
-  const result: AnalysisResultType = { ...raw }
-  const parsed = parseObjektdaten(raw)
-
-  // 1. Sanierung (Standard-Block)
-  if (isUnavailable(raw.gesamtkosten?.geschaetzteSanierung)) {
-    const est = estimateSanierung(parsed)
-    if (est && raw.gesamtkosten) {
-      result.gesamtkosten = { ...raw.gesamtkosten, geschaetzteSanierung: est.wert }
-      schaetzungen.add('sanierung')
-    }
-  }
-
-  // 2. Kaufen-vs-Mieten
-  const kvm = raw.finanzierung?.kaufenVsMieten
-  if (
-    raw.finanzierung &&
-    (!kvm ||
-      isUnavailable(kvm.mpiMieteMonat) ||
-      isUnavailable(kvm.kostenMiete20Jahre) ||
-      isUnavailable(kvm.kostenKauf20Jahre) ||
-      isUnavailable(kvm.differenz))
-  ) {
-    const est = estimateKaufenVsMieten(parsed)
-    if (est) {
-      result.finanzierung = { ...raw.finanzierung, kaufenVsMieten: est }
-      schaetzungen.add('kaufenVsMieten')
-    }
-  }
-
-  // 3. Premium-Report Felder
-  if (raw.premiumReport) {
-    let patchedPremium = raw.premiumReport
-    let touched = false
-
-    // Vermögensvergleich
-    const vv = raw.premiumReport.vermoegensvergleich
-    const vvFehlt = !vv || vv.vermoegenKauf?.some(isUnavailable) || vv.vermoegenMieteEtf?.some(isUnavailable)
-    if (vvFehlt) {
-      const est = estimateVermoegensvergleich(parsed)
-      if (est) {
-        patchedPremium = { ...patchedPremium, vermoegensvergleich: est }
-        schaetzungen.add('vermoegen')
-        touched = true
-      }
-    }
-
-    // Wertermittlung
-    const we = raw.premiumReport.wertermittlung
-    const weFehlt =
-      !we ||
-      isUnavailable(we.vergleichswert?.wert) ||
-      isUnavailable(we.sachwert?.sachwert) ||
-      isUnavailable(we.ertragswert?.ertragswert) ||
-      isUnavailable(we.fazit?.empfohlenerKaufpreis)
-    if (weFehlt) {
-      const est = estimateWertermittlung(parsed)
-      if (est) {
-        patchedPremium = { ...patchedPremium, wertermittlung: est }
-        schaetzungen.add('wertermittlung')
-        touched = true
-      }
-    }
-
-    // Makler-Profil
-    const mp = raw.premiumReport.maklerProfil
-    const mpFehlt =
-      !mp ||
-      mp.art === 'unbekannt' ||
-      isUnavailable(mp.name) ||
-      /nicht im expos[ée] erkennbar|nicht erkennbar/i.test(mp.name || '')
-    if (mpFehlt) {
-      const est = estimateMaklerProfil(raw)
-      if (est) {
-        patchedPremium = { ...patchedPremium, maklerProfil: est }
-        schaetzungen.add('makler')
-        touched = true
-      }
-    }
-
-    if (touched) result.premiumReport = patchedPremium
-  }
-
-  return { result, schaetzungen }
 }
