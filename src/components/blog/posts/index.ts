@@ -4,6 +4,15 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'raeume-richtig-nutzen',
+    title: 'Räume richtig nutzen: Wie Grundriss und Einrichtung den Alltag in Immobilien beeinflussen',
+    description: 'Wegeführung, Möblierbarkeit, Mehrfachnutzung, Flexibilität — 8 Nutzungs-Aspekte, wie Käufer Grundriss-Qualität einschätzen und Exposé-Lücken erkennen.',
+    date: '22. April 2026',
+    readTime: '13 Min',
+    tags: ['Kaufratgeber', 'Grundriss'],
+    image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?w=800&h=450&fit=crop&auto=format&q=80',
+  },
+  {
     slug: 'wohnqualitaet-bewerten',
     title: 'Wohnqualität richtig bewerten: Welche Faktoren im Alltag wirklich entscheidend sind',
     description: 'Raumaufteilung, Licht, Lärm, Lage, Flexibilität, Stauraum, Außenflächen, Klima — 8 Faktoren, die Wohnqualität prägen und wie Käufer sie trotz Exposé-Lücken einschätzen.',
@@ -417,4 +426,5 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.Com
   'rauchen-dampfen-wohnqualitaet': lazy(() => import('./rauchen-dampfen-wohnqualitaet')),
   'homeoffice-immobilienkauf': lazy(() => import('./homeoffice-immobilienkauf')),
   'wohnqualitaet-bewerten': lazy(() => import('./wohnqualitaet-bewerten')),
+  'raeume-richtig-nutzen': lazy(() => import('./raeume-richtig-nutzen')),
 }
