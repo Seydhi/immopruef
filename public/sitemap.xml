@@ -5,18 +5,24 @@
   <!-- Startseite & Blog-Index -->
   <url>
     <loc>https://immopruef.de/</loc>
-    <lastmod>2026-04-19</lastmod>
+    <lastmod>2026-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://immopruef.de/blog</loc>
-    <lastmod>2026-04-19</lastmod>
+    <lastmod>2026-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Blog Posts (39) -->
+  <!-- Blog Posts (40) -->
+  <url>
+    <loc>https://immopruef.de/blog/homeoffice-immobilienkauf</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <url>
     <loc>https://immopruef.de/blog/rauchen-dampfen-wohnqualitaet</loc>
     <lastmod>2026-04-19</lastmod>
@@ -255,25 +261,25 @@
   <!-- Legal -->
   <url>
     <loc>https://immopruef.de/impressum</loc>
-    <lastmod>2026-04-19</lastmod>
+    <lastmod>2026-04-22</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://immopruef.de/datenschutz</loc>
-    <lastmod>2026-04-19</lastmod>
+    <lastmod>2026-04-22</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://immopruef.de/agb</loc>
-    <lastmod>2026-04-19</lastmod>
+    <lastmod>2026-04-22</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://immopruef.de/barrierefreiheit</loc>
-    <lastmod>2026-04-19</lastmod>
+    <lastmod>2026-04-22</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>

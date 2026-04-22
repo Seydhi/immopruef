@@ -4,6 +4,15 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'homeoffice-immobilienkauf',
+    title: 'Homeoffice beim Immobilienkauf: Worauf Käufer bei Raum, Licht und Ausstattung achten sollten',
+    description: 'Grundriss, Tageslicht, Lärm, Internet, Strom, flexible Nutzung — 8 Prüfpunkte für Homeoffice-Tauglichkeit, Exposé-Formulierungen entschlüsselt und Bewertungsrelevanz.',
+    date: '22. April 2026',
+    readTime: '13 Min',
+    tags: ['Kaufratgeber', 'Grundriss'],
+    image: 'https://images.unsplash.com/photo-1593476550610-87baa860004a?w=800&h=450&fit=crop&auto=format&q=80',
+  },
+  {
     slug: 'rauchen-dampfen-wohnqualitaet',
     title: 'Rauchen, Dampfen und Wohnqualität: Welche Spuren Innenraumnutzung in Immobilien hinterlassen kann',
     description: 'Gerüche, Verfärbungen, Oberflächenspuren — wie sich Nutzungsgeschichte bei Besichtigungen erkennen lässt und was Sanierung kostet.',
@@ -397,4 +406,5 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.Com
   'immobilienanfragen-bearbeiten': lazy(() => import('./immobilienanfragen-bearbeiten')),
   'fristen-immobilienkauf': lazy(() => import('./fristen-immobilienkauf')),
   'rauchen-dampfen-wohnqualitaet': lazy(() => import('./rauchen-dampfen-wohnqualitaet')),
+  'homeoffice-immobilienkauf': lazy(() => import('./homeoffice-immobilienkauf')),
 }
