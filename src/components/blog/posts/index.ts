@@ -4,6 +4,15 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'wohnqualitaet-bewerten',
+    title: 'Wohnqualität richtig bewerten: Welche Faktoren im Alltag wirklich entscheidend sind',
+    description: 'Raumaufteilung, Licht, Lärm, Lage, Flexibilität, Stauraum, Außenflächen, Klima — 8 Faktoren, die Wohnqualität prägen und wie Käufer sie trotz Exposé-Lücken einschätzen.',
+    date: '22. April 2026',
+    readTime: '14 Min',
+    tags: ['Kaufratgeber', 'Standort'],
+    image: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=450&fit=crop&auto=format&q=80',
+  },
+  {
     slug: 'homeoffice-immobilienkauf',
     title: 'Homeoffice beim Immobilienkauf: Worauf Käufer bei Raum, Licht und Ausstattung achten sollten',
     description: 'Grundriss, Tageslicht, Lärm, Internet, Strom, flexible Nutzung — 8 Prüfpunkte für Homeoffice-Tauglichkeit, Exposé-Formulierungen entschlüsselt und Bewertungsrelevanz.',
@@ -407,4 +416,5 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.Com
   'fristen-immobilienkauf': lazy(() => import('./fristen-immobilienkauf')),
   'rauchen-dampfen-wohnqualitaet': lazy(() => import('./rauchen-dampfen-wohnqualitaet')),
   'homeoffice-immobilienkauf': lazy(() => import('./homeoffice-immobilienkauf')),
+  'wohnqualitaet-bewerten': lazy(() => import('./wohnqualitaet-bewerten')),
 }
