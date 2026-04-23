@@ -4,6 +4,15 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'innenausbau-bewerten',
+    title: 'Innenausbau richtig bewerten: Welche Rolle Bodenbeläge und Materialien beim Immobilienkauf spielen',
+    description: 'Bodenbeläge im Vergleich (Fliesen, Parkett, Laminat, Vinyl, Teppich), Wände, Türen, Sanitär, Heizkörper — wie Käufer Innenausbau-Qualität einordnen und Folgekosten kalkulieren.',
+    date: '22. April 2026',
+    readTime: '14 Min',
+    tags: ['Kaufratgeber', 'Zustand'],
+    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=450&fit=crop&auto=format&q=80',
+  },
+  {
     slug: 'fliesen-qualitaetsmerkmal-immobilie',
     title: 'Fliesen als Qualitätsmerkmal bei Immobilien: Worauf Käufer und Investoren achten sollten',
     description: 'Material, Verlegung, Fugenzustand, Rutschklasse, Altlasten: Was Fliesen über Bausubstanz, Sanierungsstand und Modernisierungskosten einer Immobilie verraten.',
@@ -437,4 +446,5 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.Com
   'wohnqualitaet-bewerten': lazy(() => import('./wohnqualitaet-bewerten')),
   'raeume-richtig-nutzen': lazy(() => import('./raeume-richtig-nutzen')),
   'fliesen-qualitaetsmerkmal-immobilie': lazy(() => import('./fliesen-qualitaetsmerkmal-immobilie')),
+  'innenausbau-bewerten': lazy(() => import('./innenausbau-bewerten')),
 }
