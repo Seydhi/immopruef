@@ -4,6 +4,15 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'fliesen-qualitaetsmerkmal-immobilie',
+    title: 'Fliesen als Qualitätsmerkmal bei Immobilien: Worauf Käufer und Investoren achten sollten',
+    description: 'Material, Verlegung, Fugenzustand, Rutschklasse, Altlasten: Was Fliesen über Bausubstanz, Sanierungsstand und Modernisierungskosten einer Immobilie verraten.',
+    date: '22. April 2026',
+    readTime: '13 Min',
+    tags: ['Kaufratgeber', 'Zustand'],
+    image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&h=450&fit=crop&auto=format&q=80',
+  },
+  {
     slug: 'raeume-richtig-nutzen',
     title: 'Räume richtig nutzen: Wie Grundriss und Einrichtung den Alltag in Immobilien beeinflussen',
     description: 'Wegeführung, Möblierbarkeit, Mehrfachnutzung, Flexibilität — 8 Nutzungs-Aspekte, wie Käufer Grundriss-Qualität einschätzen und Exposé-Lücken erkennen.',
@@ -427,4 +436,5 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.Com
   'homeoffice-immobilienkauf': lazy(() => import('./homeoffice-immobilienkauf')),
   'wohnqualitaet-bewerten': lazy(() => import('./wohnqualitaet-bewerten')),
   'raeume-richtig-nutzen': lazy(() => import('./raeume-richtig-nutzen')),
+  'fliesen-qualitaetsmerkmal-immobilie': lazy(() => import('./fliesen-qualitaetsmerkmal-immobilie')),
 }
