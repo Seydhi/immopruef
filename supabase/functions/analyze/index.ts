@@ -283,7 +283,7 @@ PFLICHT-HINWEISE:
 - stresstest: IMMER 3 Szenarien (Zinserhöhung auf 5,5%, Sonderumlage 15.000€, Einkommensverlust 30%). Korrekt berechnen.
 - kaufenVsMieten: IMMER berechnen. Vergleichsmiete per Web-Suche aus dem Mietpreisspiegel der Stadt recherchieren.
 - modernisierung.items: IMMER mindestens 6 Bauteile (Heizung, Fenster, Elektrik, Bad, Dach, Fassade). Alter NUR ableiten wenn Baujahr im Exposé steht.
-- gesamtkosten: Grunderwerbsteuer KORREKT je Bundesland: Bayern 3,5%, Sachsen 3,5%, BaWü 5,0%, NRW 6,5%, Berlin 6,0%, Hamburg 5,5%, Hessen 6,0%, Niedersachsen 5,0%, Brandenburg 6,5%, SH 6,5%, Bremen 5,0%, RLP 5,0%, Saarland 6,5%, Sachsen-Anhalt 5,0%, MV 6,0%, Thüringen 5,0%.
+- gesamtkosten: Grunderwerbsteuer KORREKT je Bundesland (Stand 2026): Bayern 3,5%, BaWü 5,0%, Niedersachsen 5,0%, RLP 5,0%, Sachsen-Anhalt 5,0%, Thüringen 5,0%, Bremen 5,5%, Hamburg 5,5%, Sachsen 5,5%, Berlin 6,0%, Hessen 6,0%, MV 6,0%, Brandenburg 6,5%, NRW 6,5%, SH 6,5%, Saarland 6,5%.
 - laufendeKosten: Diese Werte stehen FAST NIE im Exposé — sie müssen IMMER berechnet/recherchiert werden:
   * Hausgeld: Aus Exposé wenn vorhanden, sonst ca. 3-4 €/m²/Monat als Durchschnitt
   * Grundsteuer: IMMER recherchieren (Hebesatz der Gemeinde × Grundsteuerwert). Wenn nicht findbar: ca. 50-120 €/Monat je nach Stadt
@@ -325,7 +325,7 @@ PREMIUM-REPORT — PFLICHT! Das JSON MUSS ein "premiumReport"-Objekt enthalten. 
     "wertermittlung": {
       "vergleichswert": {
         "wert": "string (Spanne, z.B. 350.000–410.000 €)",
-        "methode": "string (2-3 Sätze Beschreibung nach §15 ImmoWertV)",
+        "methode": "string (2-3 Sätze: Einordnung anhand vergleichbarer AKTUELLER ANGEBOTE in der Umgebung — ausdrücklich Angebotspreise, KEINE notariellen Verkaufspreise. Verwende NICHT die Wörter 'verkauft' oder 'Verkaufspreis')",
         "vergleichsobjekte": [{ "adresse": "string", "preis": "string", "qm": "string (€/m²)", "abweichung": "string (z.B. +5,2%)" }]
       },
       "sachwert": { "bodenwert": "string (z.B. 120.000 € (600 €/m² × 200 m²))", "gebaeudewert": "string", "alterswertminderung": "string (z.B. -35% (Alter: 40 Jahre))", "sachwert": "string" },
@@ -443,7 +443,7 @@ PREMIUM-REPORT — PFLICHT! Das JSON MUSS ein "premiumReport"-Objekt enthalten. 
 }
 
 PREMIUM-PFLICHT-DETAILS:
-- vergleichswert.vergleichsobjekte: MINDESTENS 6 echte Vergleichsobjekte aus der Umgebung recherchieren (per Web-Suche). Adresse, Kaufpreis, €/m², Abweichung zum Analyseobjekt.
+- vergleichswert.vergleichsobjekte: Recherchiere per Web-Suche vergleichbare AKTUELLE ANGEBOTE in der Umgebung (immowelt-/ImmoScout24-Inserate). 🚨 WICHTIG: Echte notarielle Verkaufspreise sind in Deutschland NICHT öffentlich verfügbar (nur Gutachterausschuss / Kaufpreissammlung, §195 BauGB). Gib daher ausschließlich ANGEBOTSPREISE an; das Feld "preis" ist ein Angebotspreis, kein Kaufpreis. Verwende NIEMALS "verkauft" oder behaupte abgeschlossene Verkäufe. Ziel: 3–6 vergleichbare Angebote mit Adresse/Stadtteil, €/m², Abweichung. Wenn die Web-Suche keine belastbaren Vergleichsangebote liefert, gib lieber 2–3 echte an statt 6 — erfinde NIEMALS Adressen oder Preise.
 - sachwert: Bodenwert mit echtem Bodenrichtwert berechnen (per Web-Suche). Gebäudewert nach NHK 2010. Alterswertminderung nach Ross-Verfahren.
 - ertragswert: Jahresrohertrag aus ortsüblicher Vergleichsmiete (per Web-Suche Mietpreisspiegel). Liegenschaftszins vom Gutachterausschuss.
 - standortDossier.entfernungen: MINDESTENS 12 POIs (nächste U-Bahn/S-Bahn, Bushaltestelle, Grundschule, Gymnasium, Kindergarten, Hausarzt, Zahnarzt, Supermarkt, Apotheke, Park/Grünfläche, Krankenhaus, Hauptbahnhof). Entfernungen und Fahrzeiten per Web-Suche verifizieren.
