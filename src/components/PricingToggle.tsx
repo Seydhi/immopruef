@@ -93,7 +93,7 @@ export default function PricingToggle({ selected, onChange }: PricingToggleProps
               'Indikative Wert-Einschätzung',
               'Vergleichs- & Sachwertverfahren',
               'Vollständiges Standort-Dossier',
-              'Hochwasser- & Lärmkarten',
+              'Hochwasser- & Lärmhinweise',
               '5 Finanzierungsszenarien',
               '30-Jahres-Vermögensvergleich',
               'Sanierungsfahrplan mit Kosten',

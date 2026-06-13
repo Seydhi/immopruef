@@ -15,15 +15,15 @@ export const FAQS = [
   },
   {
     q: 'Wie genau sind die Ergebnisse?',
-    a: 'Die Analyse basiert auf den Daten aus dem Exposé und öffentlich verfügbaren Marktdaten (Bodenrichtwerte, Mietpreisspiegel, regionale Vergleichsdaten). Werte die nicht im Exposé stehen werden als Regionsdurchschnitt gekennzeichnet. ImmoPrüf ersetzt keine professionelle Immobilienbewertung durch einen Sachverständigen.',
+    a: 'Die Analyse wertet die Angaben aus dem Exposé aus und ergänzt sie um allgemein zugängliches Markt- und Standortwissen. Werte, die nicht im Exposé stehen, sind Schätzungen und werden als solche gekennzeichnet; für amtliche Daten wie Bodenrichtwerte oder Mietspiegel verweisen wir auf die jeweilige Quelle zum Selbstprüfen. ImmoPrüf liefert eine strukturierte Ersteinschätzung und ersetzt keine Immobilienbewertung durch einen Sachverständigen.',
   },
   {
     q: 'Brauche ich einen Account?',
-    a: 'Nein — kein Account, keine Registrierung. Sie geben nur Ihre E-Mail-Adresse ein, damit wir Ihnen den Link zur Analyse zusenden können. Der Link ist 60 Tage gültig.',
+    a: 'Nein — kein Account, keine Registrierung. Sie geben nur Ihre E-Mail-Adresse ein, damit wir Ihnen den Link zur Analyse zusenden können. Der Link ist 180 Tage gültig.',
   },
   {
     q: 'Was ist der Unterschied zwischen Quick-Check und Premium?',
-    a: 'Der Quick-Check enthält die vollständige Analyse mit allen 8 Bereichen. Der Premium Kaufentscheidungs-Report enthält zusätzlich: professionelle Wertermittlung nach 3 Verfahren, vollständiges Standort-Dossier mit Hochwasser- und Lärmkarten, 30-Jahres-Vermögensvergleich, steuerliche Analyse und eine Vor-Kauf-Checkliste.',
+    a: 'Der Quick-Check enthält die vollständige Analyse mit allen Bereichen. Der Premium Kaufentscheidungs-Report enthält zusätzlich: eine indikative Wert-Einschätzung nach drei Verfahren (angelehnt an die ImmoWertV), ein vollständiges Standort-Dossier mit Hinweisen zur Hochwasser- und Lärmlage, einen 30-Jahres-Vermögensvergleich, eine steuerliche Einordnung und eine Vor-Kauf-Checkliste.',
   },
 ]
 

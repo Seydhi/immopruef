@@ -231,12 +231,8 @@ export default function AGB() {
             Bei Verbrauchern verbleibt es bei den gesetzlichen Regelungen.
           </p>
           <p className="mt-2">
-            (4) Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung
-            (OS) bereit, die Sie unter{' '}
-            <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer" className="text-green hover:text-green-mid">
-              https://ec.europa.eu/consumers/odr
-            </a>{' '}
-            erreichen können. Der Anbieter ist nicht bereit und nicht verpflichtet, an
+            (4) Die frühere EU-Plattform zur Online-Streitbeilegung (OS-Plattform) wurde zum
+            20. Juli 2025 eingestellt. Der Anbieter ist nicht bereit und nicht verpflichtet, an
             Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen
             (§ 36 VSBG).
           </p>

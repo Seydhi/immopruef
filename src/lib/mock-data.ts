@@ -85,7 +85,7 @@ export const MOCK_ANALYSIS_RESULT: AnalysisResult = {
         massnahme: 'W\u00e4rmepumpe (Luft-Wasser)',
         kosten: '18.000\u201325.000 \u20ac',
         ersparnis: 'ca. 40% Heizkosten',
-        foerderung: 'Bis 70% \u00fcber BEG (Basis 30% + Klimabonus 20% + Einkommensbonus 20%)',
+        foerderung: 'Bis 70% \u00fcber BEG (Basis 30% + Klimabonus 20% + ggf. Einkommensbonus 30%, Deckel 70%)',
       },
       {
         massnahme: 'Fenster (3-fach Verglasung)',
@@ -353,7 +353,7 @@ Mit freundlichen Gr\u00fc\u00dfen`,
   quellen: [
     { titel: 'Immobilienpreise Berlin-Kreuzberg \u2014 immowelt 2026', url: 'https://www.immowelt.de/immobilienpreise/berlin-kreuzberg', kategorie: 'Preisdaten' },
     { titel: 'Bodenrichtwert Berlin \u2014 BORIS Berlin', url: 'https://fbinter.stadt-berlin.de/boris/', kategorie: 'Preisdaten' },
-    { titel: 'Mietspiegel Berlin 2025', url: 'https://www.berlin.de/mietspiegel', kategorie: 'Preisdaten' },
+    { titel: 'Mietspiegel Berlin 2026', url: 'https://www.berlin.de/mietspiegel', kategorie: 'Preisdaten' },
     { titel: 'Energieausweis & GEG-Pflichten 2026 \u2014 dena', url: 'https://www.dena.de', kategorie: 'Energie' },
     { titel: 'Berliner Umweltatlas \u2014 L\u00e4rmkarte / Hochwasser', url: 'https://www.berlin.de/umweltatlas/', kategorie: 'Lage' },
     { titel: 'BBSR \u2014 Demografieprofile Berlin-Kreuzberg', url: 'https://www.bbsr.bund.de', kategorie: 'Lage' },

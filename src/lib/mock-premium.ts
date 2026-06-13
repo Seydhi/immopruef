@@ -8,7 +8,7 @@ export const MOCK_PREMIUM_REPORT: PremiumReport = {
   wertermittlung: {
     vergleichswert: {
       wert: '375.000–405.000 €',
-      methode: 'Vergleichswertverfahren nach §15 ImmoWertV auf Basis von 6 Vergleichsobjekten im Umkreis von 1 km, verkauft in den letzten 12 Monaten.',
+      methode: 'Orientierung an 6 vergleichbaren Angeboten im Umkreis von 1 km (Angebotspreise, keine amtlichen Verkaufswerte); Verfahren angelehnt an §15 ImmoWertV.',
       vergleichsobjekte: [
         { adresse: 'Bergmannstr. 28, 10961', preis: '395.000 €', qm: '82 m² (4.817 €/m²)', abweichung: '-3,4%' },
         { adresse: 'Gneisenaustr. 14, 10961', preis: '368.000 €', qm: '71 m² (5.183 €/m²)', abweichung: '+3,9%' },
@@ -63,7 +63,7 @@ export const MOCK_PREMIUM_REPORT: PremiumReport = {
       tags: '65–70 dB(A) an der Straßenseite',
       nachts: '55–60 dB(A) an der Straßenseite',
       quelle: 'Hauptverkehrsstraße Mehringdamm (DTV: ca. 25.000 Kfz/Tag)',
-      bewertung: 'Grenzwert für Mischgebiet: 64 dB(A) tags / 49 dB(A) nachts → Straßenseite überschreitet Grenzwerte. Hinterhof-Ausrichtung empfohlen (ca. 45 dB tags). Schallschutzfenster (Klasse 4) kosten ca. 3.000–5.000 € und reduzieren den Innenpegel auf unter 35 dB.',
+      bewertung: 'Grenzwert für Mischgebiet: 64 dB(A) tags / 54 dB(A) nachts → Straßenseite überschreitet Grenzwerte. Hinterhof-Ausrichtung empfohlen (ca. 45 dB tags). Schallschutzfenster (Klasse 4) kosten ca. 3.000–5.000 € und reduzieren den Innenpegel auf unter 35 dB.',
     },
     radon: {
       wert: 'Geschätzt <40 kBq/m³ (Niedrigrisikozone)',
@@ -183,26 +183,26 @@ export const MOCK_PREMIUM_REPORT: PremiumReport = {
   // ═══════════════════════════════════════════════════════════════
 
   maklerProfil: {
-    name: 'BERLIN24 Immobilien GmbH',
+    name: 'Mustermann Immobilien GmbH (fiktives Beispiel)',
     art: 'gewerblich',
     gegruendet: '2008',
     mitarbeiter: '14',
     qualifikation: 'Geprüfte Immobilienkaufleute (IHK), Sachverständige für Immobilienbewertung',
-    sitz: 'Hauptstr. 117, 10827 Berlin-Schöneberg',
-    ansprechpartner: 'Frau Dr. Anika Brenner',
+    sitz: 'Musterstraße 12, 10827 Berlin-Schöneberg',
+    ansprechpartner: 'Frau Dr. Mustermann',
     bewertungen: [
       { plattform: 'ImmoScout24', score: '4,7/5', anzahl: '142 Bewertungen' },
       { plattform: 'Google', score: '4,6/5', anzahl: '89 Bewertungen' },
       { plattform: 'ProvenExpert', score: '4,8/5', anzahl: '67 Bewertungen' },
     ],
-    ranking: 'Top 20 Berliner Makler (ImmoScout-Ranking 2026)',
+    ranking: 'Etablierter Berliner Makler (Beispieldaten)',
     fazit: 'Etablierter Makler mit 18 Jahren Markterfahrung und konsistent guten Bewertungen über mehrere Plattformen. Keine Hinweise auf intransparente Geschäftspraktiken — die Reaktionszeiten in den Bewertungen werden durchgängig positiv erwähnt. Kontakt direkt über die Ansprechpartnerin empfehlenswert.',
     redFlags: ['Keine Auffälligkeiten — solider gewerblicher Anbieter'],
   },
 
   mietrendite: {
     verfuegbar: true,
-    ortsuebliche_kaltmiete: '14,80 €/m² (Mietspiegel Berlin-Kreuzberg 2025, Lagestufe „gut")',
+    ortsuebliche_kaltmiete: '14,80 €/m² (Angebotsmieten Berlin-Kreuzberg 2026, Lagestufe „gut")',
     jahresrohertrag: '14,80 € × 78 m² × 12 = 13.853 €/Jahr',
     bruttorendite: '3,56 % p.a.',
     bewirtschaftungskosten: '20 % (2.770 €/Jahr) — Hausgeld nicht-umlagefähig + Mietausfallwagnis + Verwaltung',
@@ -214,17 +214,17 @@ export const MOCK_PREMIUM_REPORT: PremiumReport = {
 
   finanzierungsDetail: {
     cashflow: [
-      { eigenkapitalQuote: '10 %', eigenkapitalBetrag: '38.900 €', darlehen: '350.100 €', zinssatz: '3,8 %', tilgung: '2,0 %', monatlicheRate: '1.692 €', restschuld10Jahre: '283.000 €', gesamtbelastung10Jahre: '203.040 €', bewertung: 'grenzwertig' },
-      { eigenkapitalQuote: '20 %', eigenkapitalBetrag: '77.800 €', darlehen: '311.200 €', zinssatz: '3,5 %', tilgung: '2,0 %', monatlicheRate: '1.426 €', restschuld10Jahre: '252.000 €', gesamtbelastung10Jahre: '171.120 €', bewertung: 'tragbar' },
-      { eigenkapitalQuote: '30 %', eigenkapitalBetrag: '116.700 €', darlehen: '272.300 €', zinssatz: '3,3 %', tilgung: '2,0 %', monatlicheRate: '1.202 €', restschuld10Jahre: '220.000 €', gesamtbelastung10Jahre: '144.240 €', bewertung: 'tragbar' },
+      { eigenkapitalQuote: '10 %', eigenkapitalBetrag: '38.900 €', darlehen: '350.100 €', zinssatz: '3,8 %', tilgung: '2,0 %', monatlicheRate: '1.692 €', restschuld10Jahre: '265.000 €', gesamtbelastung10Jahre: '203.040 €', bewertung: 'grenzwertig' },
+      { eigenkapitalQuote: '20 %', eigenkapitalBetrag: '77.800 €', darlehen: '311.200 €', zinssatz: '3,5 %', tilgung: '2,0 %', monatlicheRate: '1.426 €', restschuld10Jahre: '237.000 €', gesamtbelastung10Jahre: '171.120 €', bewertung: 'tragbar' },
+      { eigenkapitalQuote: '30 %', eigenkapitalBetrag: '116.700 €', darlehen: '272.300 €', zinssatz: '3,3 %', tilgung: '2,0 %', monatlicheRate: '1.202 €', restschuld10Jahre: '208.000 €', gesamtbelastung10Jahre: '144.240 €', bewertung: 'tragbar' },
     ],
     empfehlung: 'Mit 20 % Eigenkapital landen Sie bei einer monatlichen Belastung von ~1.426 € — das entspricht etwa 35 % eines Nettoeinkommens von 4.000 €. Banken akzeptieren bis ~40 % Belastungsquote. Wer die 30 %-Variante stemmen kann, spart über 10 Jahre fast 60.000 € an Zinsen — das ist der mit Abstand größte Hebel in der Finanzierung.',
     beispielTilgungsplan: [
       { jahr: 1, restschuld: '305.000 €', bisherZinsen: '10.892 €', bisherTilgung: '6.220 €' },
-      { jahr: 5, restschuld: '278.000 €', bisherZinsen: '53.300 €', bisherTilgung: '32.812 €' },
-      { jahr: 10, restschuld: '252.000 €', bisherZinsen: '102.084 €', bisherTilgung: '69.036 €' },
-      { jahr: 15, restschuld: '224.000 €', bisherZinsen: '146.700 €', bisherTilgung: '109.000 €' },
-      { jahr: 20, restschuld: '194.000 €', bisherZinsen: '187.600 €', bisherTilgung: '152.400 €' },
+      { jahr: 5, restschuld: '277.000 €', bisherZinsen: '51.700 €', bisherTilgung: '33.900 €' },
+      { jahr: 10, restschuld: '237.000 €', bisherZinsen: '96.800 €', bisherTilgung: '74.300 €' },
+      { jahr: 15, restschuld: '189.000 €', bisherZinsen: '134.200 €', bisherTilgung: '122.500 €' },
+      { jahr: 20, restschuld: '131.000 €', bisherZinsen: '162.500 €', bisherTilgung: '179.700 €' },
     ],
   },
 
@@ -290,8 +290,8 @@ export const MOCK_PREMIUM_REPORT: PremiumReport = {
     staerken: [
       { punkt: 'Preis liegt 8 % unter dem Stadtteil-Median', begruendung: 'Bei stabiler Marktentwicklung in Kreuzberg ist das ein realistisch bepreister Einstieg — keine Überzahlung. Verhandlungsspielraum auf 370–380k vorhanden.', einfluss: 'hoch' },
       { punkt: 'Lage Kreuzberg-61: hohe Wertstabilität', begruendung: 'Innenstadtlage mit U6/U7, 5 Min. zum Viktoriapark, gemischtes Quartier — historisch hat Kreuzberg-61 selbst in Korrekturphasen kaum Wert verloren.', einfluss: 'hoch' },
-      { punkt: 'Energieklasse D — keine GEG-Sofortpflicht', begruendung: 'Erst ab Klasse F greift die Tausch-Pflicht für Heizung. Sie haben 5–10 Jahre Zeit zur energetischen Sanierung — das ist planbar.', einfluss: 'mittel' },
-      { punkt: 'Etablierter Makler mit 18 Jahren Erfahrung', begruendung: 'BERLIN24 Immobilien hat über 290 Bewertungen mit Schnitt 4,7+ — keine Hinweise auf intransparente Praktiken oder versteckte Provisionen.', einfluss: 'mittel' },
+      { punkt: 'Energieklasse D — keine GEG-Sofortpflicht', begruendung: 'Die funktionierende Heizung darf weiterlaufen — erst beim Austausch greift die 65-%-EE-Regel des GEG. Sie haben 5–10 Jahre Zeit zur energetischen Sanierung — das ist planbar.', einfluss: 'mittel' },
+      { punkt: 'Etablierter Makler mit 18 Jahren Erfahrung', begruendung: 'Der Beispiel-Makler hat über 290 Bewertungen mit Schnitt 4,7+ — keine Hinweise auf intransparente Praktiken oder versteckte Provisionen.', einfluss: 'mittel' },
     ],
     schwaechen: [
       { punkt: 'Baujahr 1965 — kritische Asbest-Periode', begruendung: 'Innenputz, Bodenbeläge und Fensterkitt aus diesen Jahren enthalten häufig Asbest. Bei Renovierung Sondersanierung Pflicht (+30–50 % Kosten).', einfluss: 'hoch' },

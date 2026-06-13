@@ -393,7 +393,7 @@ function WertermittlungSlot({ data }: { data: NonNullable<PremiumReportType['wer
             <thead>
               <tr className="bg-cream text-ink-light">
                 <th className="px-3 py-2 text-left font-medium tracking-wider uppercase text-[10px]">Vergleichsobjekt</th>
-                <th className="px-3 py-2 text-left font-medium tracking-wider uppercase text-[10px]">Kaufpreis</th>
+                <th className="px-3 py-2 text-left font-medium tracking-wider uppercase text-[10px]">Vergleichspreis</th>
                 <th className="px-3 py-2 text-left font-medium tracking-wider uppercase text-[10px]">Fläche (€/m²)</th>
                 <th className="px-3 py-2 text-right font-medium tracking-wider uppercase text-[10px]">Abweichung</th>
               </tr>
@@ -413,6 +413,7 @@ function WertermittlungSlot({ data }: { data: NonNullable<PremiumReportType['wer
           </table>
         </div>
         <div className="mt-2 text-right text-sm font-medium text-green">Vergleichswert: {data.vergleichswert.wert}</div>
+        <p className="mt-2 text-[11px] text-ink-light leading-snug">Hinweis: Vergleichswerte sind Schätzungen auf Basis öffentlich zugänglicher Angebotsdaten. Tatsächliche Kaufpreise vergleichbarer Objekte sind in Deutschland ausschließlich über den Gutachterausschuss (Kaufpreissammlung) erhältlich und nicht Teil dieser Ersteinschätzung.</p>
       </div>
       <div className="mb-4">
         <SubHeading>Sachwertverfahren (§21 ImmoWertV)</SubHeading>

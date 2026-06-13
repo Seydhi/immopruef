@@ -138,9 +138,9 @@ export default function Landing() {
     <>
       {/* Analyse-Formular ganz oben */}
       <div className="text-center mb-6 mt-2">
-        <h1 className="font-display text-2xl font-medium text-green leading-tight mb-1">
+        <h2 className="font-display text-2xl font-medium text-green leading-tight mb-1">
           Analyse starten
-        </h1>
+        </h2>
         <p className="text-ink-light text-sm">
           Strukturierte Ersteinschätzung in wenigen Minuten
         </p>

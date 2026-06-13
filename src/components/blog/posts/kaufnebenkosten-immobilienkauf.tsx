@@ -15,16 +15,16 @@ export default function KaufnebenkostenImmobilienkauf() {
 
       <h3>1. Grunderwerbsteuer — der größte Posten</h3>
       <p>
-        Die Grunderwerbsteuer ist der teuerste Nebenkosten-Posten und variiert je nach Bundesland erheblich:
+        Die Grunderwerbsteuer ist der teuerste Nebenkosten-Posten und variiert je nach Bundesland erheblich (Stand 2026):
       </p>
       <table>
         <thead>
           <tr><th>Bundesland</th><th>Steuersatz</th><th>Bei 400.000 € Kaufpreis</th></tr>
         </thead>
         <tbody>
-          <tr><td>Bayern, Sachsen</td><td>3,5 %</td><td>14.000 €</td></tr>
-          <tr><td>Baden-Württemberg, Niedersachsen, Rheinland-Pfalz, Sachsen-Anhalt, Thüringen, Bremen</td><td>5,0 %</td><td>20.000 €</td></tr>
-          <tr><td>Hamburg</td><td>5,5 %</td><td>22.000 €</td></tr>
+          <tr><td>Bayern</td><td>3,5 %</td><td>14.000 €</td></tr>
+          <tr><td>Baden-Württemberg, Niedersachsen, Rheinland-Pfalz, Sachsen-Anhalt, Thüringen</td><td>5,0 %</td><td>20.000 €</td></tr>
+          <tr><td>Bremen, Hamburg, Sachsen</td><td>5,5 %</td><td>22.000 €</td></tr>
           <tr><td>Berlin, Hessen, Mecklenburg-Vorpommern</td><td>6,0 %</td><td>24.000 €</td></tr>
           <tr><td>Brandenburg, NRW, Schleswig-Holstein, Saarland</td><td>6,5 %</td><td>26.000 €</td></tr>
         </tbody>

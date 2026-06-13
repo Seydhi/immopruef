@@ -896,6 +896,9 @@ function SubSectionHeader({ icon, title }: { icon: React.ReactNode; title: strin
 // Neu: "regionaler Schätzwert" / "nicht aus dem Angebot".
 // Legacy (weiterhin erkannt für alte DB-Records): "Regionsdurchschnitt", "nicht im Exposé", "Proxy aus", "Bundesschnitt".
 const REGION_HINTS = [
+  'geschätzt',
+  'Schätzung',
+  'Annahme',
   'regionaler Schätzwert',
   'nicht aus dem Angebot',
   'Regionsdurchschnitt',

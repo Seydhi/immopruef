@@ -21,7 +21,7 @@ export default function BlogPreview() {
           href="/blog"
           className="text-sm text-green hover:text-green-mid font-medium inline-flex items-center gap-1 group"
         >
-          Alle 36 Artikel ansehen
+          Alle Artikel ansehen
           <span className="transition-transform group-hover:translate-x-0.5">→</span>
         </a>
       </div>
