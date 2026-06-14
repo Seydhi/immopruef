@@ -63,6 +63,8 @@ async function getRoutes() {
     '/datenschutz',
     '/agb',
     '/barrierefreiheit',
+    '/grunderwerbsteuer-rechner',
+    '/ueber-uns',
     ...blogSlugs.map(s => `/blog/${s}`),
   ]
 }

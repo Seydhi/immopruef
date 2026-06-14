@@ -100,6 +100,11 @@ export default function BlogLayout({ meta, children }: BlogLayoutProps) {
           <span className="text-ink/20">·</span>
           <span>{meta.readTime} Lesezeit</span>
         </div>
+        <div className="mt-2 text-xs text-ink-light">
+          Von der{' '}
+          <a href="/ueber-uns" className="text-green hover:text-green-mid">ImmoPrüf-Redaktion</a>
+          {' '}· recherchiert &amp; faktengeprüft
+        </div>
         <div className="flex gap-2 mt-3">
           {meta.tags.map((tag) => (
             <span key={tag} className="bg-green/8 text-green text-[10px] font-medium px-2 py-0.5 rounded-full">

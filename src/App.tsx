@@ -14,6 +14,8 @@ import AGB from './components/legal/AGB'
 import Barrierefreiheit from './components/legal/Barrierefreiheit'
 import BlogIndex from './components/blog/BlogIndex'
 import BlogLayout from './components/blog/BlogLayout'
+import Rechner from './components/Rechner'
+import UeberUns from './components/UeberUns'
 import { Suspense } from 'react'
 import { BLOG_POSTS, POST_COMPONENTS } from './components/blog/posts'
 
@@ -27,6 +29,8 @@ type AppView =
   | { type: 'datenschutz' }
   | { type: 'agb' }
   | { type: 'barrierefreiheit' }
+  | { type: 'rechner' }
+  | { type: 'ueber-uns' }
   | { type: 'blog' }
   | { type: 'blog-post'; slug: string }
 
@@ -83,6 +87,8 @@ export default function App() {
     if (path === '/datenschutz') { setView({ type: 'datenschutz' }); return }
     if (path === '/agb') { setView({ type: 'agb' }); return }
     if (path === '/barrierefreiheit') { setView({ type: 'barrierefreiheit' }); return }
+    if (path === '/grunderwerbsteuer-rechner') { setView({ type: 'rechner' }); return }
+    if (path === '/ueber-uns') { setView({ type: 'ueber-uns' }); return }
 
     // Blog routing
     if (path === '/blog' || path === '/blog/') { setView({ type: 'blog' }); return }
@@ -195,6 +201,19 @@ export default function App() {
           </div>
         )}
 
+        {(view.type === 'rechner' || view.type === 'ueber-uns') && (
+          <div>
+            <button
+              onClick={() => { window.history.pushState({}, '', '/'); setView({ type: 'landing' }) }}
+              className="text-green text-sm font-medium hover:text-green-mid transition-colors mb-6 flex items-center gap-1"
+            >
+              ← Zurück zur Startseite
+            </button>
+            {view.type === 'rechner' && <Rechner />}
+            {view.type === 'ueber-uns' && <UeberUns />}
+          </div>
+        )}
+
         {/* Blog */}
         {view.type === 'blog' && (
           <BlogIndex onNavigate={(slug) => {
@@ -231,6 +250,10 @@ export default function App() {
         <p className="mb-2">KI-Analyse auf Basis öffentlich verfügbarer Daten · Keine Gewähr für Vollständigkeit oder Richtigkeit</p>
         <div className="flex items-center justify-center gap-3">
           <a href="/blog" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/blog'); setView({ type: 'blog' }); window.scrollTo(0, 0) }} className="hover:text-green transition-colors">Blog</a>
+          <span className="text-ink/20">·</span>
+          <a href="/grunderwerbsteuer-rechner" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/grunderwerbsteuer-rechner'); setView({ type: 'rechner' }); window.scrollTo(0, 0) }} className="hover:text-green transition-colors">Rechner</a>
+          <span className="text-ink/20">·</span>
+          <a href="/ueber-uns" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/ueber-uns'); setView({ type: 'ueber-uns' }); window.scrollTo(0, 0) }} className="hover:text-green transition-colors">Über uns</a>
           <span className="text-ink/20">·</span>
           <a href="/impressum" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/impressum'); setView({ type: 'impressum' }); window.scrollTo(0, 0) }} className="hover:text-green transition-colors">Impressum</a>
           <span className="text-ink/20">·</span>
