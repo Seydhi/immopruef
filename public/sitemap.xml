@@ -16,7 +16,55 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Blog Posts (80) -->
+  <!-- Blog Posts (88) -->
+  <url>
+    <loc>https://immopruef.de/blog/bausparvertrag-immobilienkauf</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://immopruef.de/blog/bausachverstaendiger-hauskauf-kosten</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://immopruef.de/blog/uebergabeprotokoll-hauskauf</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://immopruef.de/blog/dach-pruefen-hauskauf</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://immopruef.de/blog/asbest-im-haus-erkennen</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://immopruef.de/blog/hochwasser-risiko-immobilie-pruefen</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://immopruef.de/blog/neubau-bautraeger-vertrag-mabv</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://immopruef.de/blog/grundstueck-kaufen-worauf-achten</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <url>
     <loc>https://immopruef.de/blog/zwangsversteigerung-immobilie-kaufen</loc>
     <lastmod>2026-06-13</lastmod>
