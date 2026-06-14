@@ -128,6 +128,7 @@ export function articleSchema(opts: {
   datePublished?: string
   dateModified?: string
   tags?: string[]
+  reviewedBy?: object
 }): object {
   return {
     '@context': 'https://schema.org',
@@ -147,6 +148,8 @@ export function articleSchema(opts: {
     mainEntityOfPage: { '@type': 'WebPage', '@id': opts.url },
     // Schema.org accepts both array and CSV — array is preferred per spec
     keywords: opts.tags && opts.tags.length > 0 ? opts.tags : undefined,
+    // Fachlicher Reviewer (nur wo wahrheitsgemäß geprüft, z. B. Energie-Artikel)
+    reviewedBy: opts.reviewedBy,
     inLanguage: 'de-DE',
   }
 }

@@ -36,7 +36,7 @@ export default function EnergieausweisExpose() {
           <tr><td><strong>Abhängig von</strong></td><td>Heizverhalten der Bewohner</td><td>Bauphysikalischen Eigenschaften</td></tr>
           <tr><td><strong>Problem</strong></td><td>Sparsame Vormieter = gute Werte trotz schlechter Dämmung</td><td>Kann theoretisch besser sein als der reale Verbrauch</td></tr>
           <tr><td><strong>Aussagekraft</strong></td><td>Eingeschränkt</td><td>Höher — vergleichbar zwischen Objekten</td></tr>
-          <tr><td><strong>Pflicht</strong></td><td>Nur bei Gebäuden ab 5 Wohneinheiten oder Baujahr ab 1977</td><td>Bei Gebäuden unter 5 Einheiten und Baujahr vor 1977</td></tr>
+          <tr><td><strong>Vorschrift</strong></td><td>Frei wählbar bei mind. 5 Wohneinheiten oder Bauantrag ab 01.11.1977 (bzw. entsprechend saniert)</td><td>Pflicht nur bei unter 5 Wohneinheiten und Bauantrag vor dem 01.11.1977 — sonst ebenfalls frei wählbar</td></tr>
           <tr><td><strong>Kosten</strong></td><td>ca. 50–100 €</td><td>ca. 300–500 €</td></tr>
         </tbody>
       </table>
@@ -64,6 +64,9 @@ export default function EnergieausweisExpose() {
           <tr><td><strong>H</strong></td><td>über 250</td><td>Dringender Bedarf</td><td>Ungedämmt, alte Heizung</td></tr>
         </tbody>
       </table>
+      <p>
+        <strong>Hinweis:</strong> In Deutschland gilt 2026 weiterhin die Skala A+ bis H. Die EU-Gebäuderichtlinie (EPBD) sieht mittelfristig eine einheitliche Skala von A bis G vor; sobald sie in deutsches Recht umgesetzt ist, können sich die Klassengrenzen ändern.
+      </p>
 
       <h2>So rechnen Sie: Was die Klasse in Euro bedeutet</h2>
       <p>
@@ -134,7 +137,7 @@ export default function EnergieausweisExpose() {
       </p>
       <ul>
         <li><strong>Klasse E oder schlechter bei hohem Kaufpreis:</strong> Der Preis sollte den Sanierungsbedarf widerspiegeln. Wenn nicht, ist die Immobilie überteuert.</li>
-        <li><strong>Ölheizung älter als 25 Jahre:</strong> Tauschpflicht nach GEG steht bevor. Kosten: 15.000–30.000 € für Ersatz durch Wärmepumpe.</li>
+        <li><strong>Konstanttemperatur-/Standard-Ölheizung älter als 30 Jahre:</strong> Hier greift die GEG-Austauschpflicht — Brennwert- und Niedertemperaturkessel sowie selbstnutzende Ein-/Zweifamilienhaus-Eigentümer (seit dem 01.02.2002) sind ausgenommen. Ein Ersatz durch eine Wärmepumpe kostet grob 27.000–45.000 € vor Förderung; über den KfW-Zuschuss 458 sind bis zu 70 % förderfähig.</li>
         <li><strong>Kein Energieausweis trotz Pflicht:</strong> Was wird versteckt? Fordern Sie ihn ein — es ist Ihr gesetzliches Recht als Kaufinteressent.</li>
         <li><strong>Großer Unterschied zwischen Verbrauchs- und Bedarfswert:</strong> Wenn vorhanden, deutet das auf ungewöhnliches Heizverhalten oder Messfehler hin.</li>
         <li><strong>Hoher Energiebedarf + keine Angabe zu vergangenen Sanierungen:</strong> Wahrscheinlich wurde seit Jahrzehnten nichts investiert — Dach, Fenster, Leitungen könnten alle am Ende sein.</li>
@@ -160,13 +163,13 @@ export default function EnergieausweisExpose() {
         Die gute Nachricht: Für energetische Sanierung gibt es umfangreiche Förderung:
       </p>
       <ul>
-        <li><strong>BAFA-Einzelmaßnahmen:</strong> 15–20 % Zuschuss für Dämmung, Fenster, Heizungstausch</li>
-        <li><strong>KfW-Kredit 261/262:</strong> Bis 150.000 € zinsgünstiger Kredit mit Tilgungszuschuss</li>
-        <li><strong>iSFP-Bonus:</strong> Zusätzlich 5 % bei individuellem Sanierungsfahrplan</li>
-        <li><strong>Steuerliche Förderung:</strong> 20 % der Sanierungskosten über 3 Jahre absetzbar (§35c EStG)</li>
+        <li><strong>BAFA-Einzelmaßnahmen:</strong> 15 % Zuschuss für die Gebäudehülle (Dämmung, Fenster, Türen, Lüftung) — mit individuellem Sanierungsfahrplan (iSFP) zusätzlich +5 %, also 20 %</li>
+        <li><strong>Heizungstausch über die KfW (Zuschuss 458):</strong> 30 % Grundförderung, mit Klimageschwindigkeits- und Einkommensbonus bis zu 70 % — der Heizungstausch läuft seit 2024 nicht mehr über das BAFA</li>
+        <li><strong>KfW-Kredit 261:</strong> Bis 150.000 € zinsgünstiger Kredit mit Tilgungszuschuss für die Sanierung zum Effizienzhaus</li>
+        <li><strong>Steuerliche Förderung (§35c EStG):</strong> alternativ 20 % der Kosten über 3 Jahre absetzbar (max. 40.000 € je Objekt) — nur für selbstgenutztes Eigentum und nicht zusätzlich zu BAFA/KfW für dieselbe Maßnahme</li>
       </ul>
       <p>
-        Ein individueller Sanierungsfahrplan (iSFP) kostet ca. 300–400 € nach Förderung und zeigt Ihnen genau, welche Maßnahmen in welcher Reihenfolge sinnvoll sind. Für die Kaufentscheidung ist das Gold wert.
+        Ein individueller Sanierungsfahrplan (iSFP) kostet nach der BAFA-Förderung (seit August 2024 noch 50 %, vorher 80 %) für ein Ein- oder Zweifamilienhaus real rund 650 € Eigenanteil und zeigt Ihnen genau, welche Maßnahmen in welcher Reihenfolge sinnvoll sind. Für die Kaufentscheidung ist das Gold wert.
       </p>
 
       <h2>Fazit: Energiewerte im Gesamtbild bewerten</h2>

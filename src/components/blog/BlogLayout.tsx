@@ -55,6 +55,16 @@ export default function BlogLayout({ meta, children }: BlogLayoutProps) {
   const url = `https://immopruef.de/blog/${meta.slug}`
   const isoDate = germanDateToIso(meta.date)
 
+  // Energie-Artikel werden fachlich von Ahmad El Chouli geprüft (real, eingewilligt)
+  const energyReviewer = meta.tags.includes('Energie')
+    ? {
+        '@type': 'Person',
+        name: 'Ahmad El Chouli',
+        jobTitle: 'Projektingenieur für Energiemanagement',
+        url: 'https://immopruef.de/ueber-uns',
+      }
+    : undefined
+
   useSEO({
     title: meta.title,
     description: meta.description,
@@ -73,6 +83,7 @@ export default function BlogLayout({ meta, children }: BlogLayoutProps) {
         datePublished: isoDate,
         dateModified: isoDate,
         tags: meta.tags,
+        reviewedBy: energyReviewer,
       }),
       breadcrumbSchema([
         { name: 'Startseite', url: 'https://immopruef.de/' },
@@ -104,6 +115,13 @@ export default function BlogLayout({ meta, children }: BlogLayoutProps) {
           Von der{' '}
           <a href="/ueber-uns" className="text-green hover:text-green-mid">ImmoPrüf-Redaktion</a>
           {' '}· recherchiert &amp; faktengeprüft
+          {meta.tags.includes('Energie') && (
+            <>
+              {' '}· fachlich geprüft von{' '}
+              <a href="/ueber-uns" className="text-green hover:text-green-mid">Ahmad El Chouli</a>
+              {' '}(Projektingenieur Energiemanagement)
+            </>
+          )}
         </div>
         <div className="flex gap-2 mt-3">
           {meta.tags.map((tag) => (
