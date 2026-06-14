@@ -3,6 +3,7 @@ import { useSEO, breadcrumbSchema } from '../lib/useSEO'
 
 export default function UeberUns() {
   const [photoOk, setPhotoOk] = useState(true)
+  const [ahmadPhotoOk, setAhmadPhotoOk] = useState(true)
 
   useSEO({
     title: 'Über ImmoPrüf: Wer wir sind und wie wir arbeiten',
@@ -46,6 +47,18 @@ export default function UeberUns() {
         image: 'https://immopruef.de/team/seydhan-cakmak.jpg',
         description: 'Gründer von ImmoPrüf, Wirtschaftsinformatiker und Immobilien-Enthusiast.',
         knowsAbout: ['Immobilienkauf', 'Immobilienanalyse', 'Immobilienfinanzierung', 'Wirtschaftsinformatik'],
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: 'Ahmad El Chouli',
+        jobTitle: 'Projektingenieur für Energiemanagement',
+        worksFor: { '@type': 'Organization', name: 'Lixcon GmbH & Co. KG' },
+        alumniOf: { '@type': 'CollegeOrUniversity', name: 'Hochschule Bremerhaven' },
+        url: 'https://immopruef.de/ueber-uns',
+        image: 'https://immopruef.de/team/ahmad-el-chouli.jpg',
+        description: 'Projektingenieur für Energiemanagement und fachlicher Berater von ImmoPrüf für Energie- und Gebäudethemen.',
+        knowsAbout: ['Energiemanagement', 'Energieeffizienz', 'Gebäudeenergie', 'Heiztechnik', 'Energieausweis'],
       },
       breadcrumbSchema([
         { name: 'Startseite', url: 'https://immopruef.de/' },
@@ -139,6 +152,34 @@ export default function UeberUns() {
                 vorbehalten ist.
               </p>
               <a href="mailto:info@immopruef.com" className="text-green hover:text-green-mid underline text-[12px] inline-block mt-1.5">info@immopruef.com</a>
+            </div>
+          </div>
+
+          <div className="bg-white border border-ink/10 rounded-xl p-5 mb-4 flex items-start gap-4 sm:gap-5">
+            <div className="shrink-0 w-20 h-20 rounded-full overflow-hidden bg-green/10 text-green flex items-center justify-center font-display text-2xl font-semibold">
+              {ahmadPhotoOk ? (
+                <img
+                  src="/team/ahmad-el-chouli.jpg"
+                  alt="Ahmad El Chouli, fachlicher Berater Energie bei ImmoPrüf"
+                  width={80}
+                  height={80}
+                  className="w-20 h-20 object-cover"
+                  loading="eager"
+                  decoding="async"
+                  onError={() => setAhmadPhotoOk(false)}
+                />
+              ) : (
+                <span aria-hidden="true">AE</span>
+              )}
+            </div>
+            <div>
+              <div className="font-semibold text-ink">Ahmad El Chouli</div>
+              <div className="text-[12px] text-ink-light mb-1.5">Fachlicher Berater · Energie &amp; Gebäudetechnik</div>
+              <p className="text-[13px] text-ink-mid leading-relaxed">
+                Ahmad ist Projektingenieur für Energiemanagement (Lixcon GmbH &amp; Co. KG) und Absolvent der Hochschule
+                Bremerhaven. Als fachlicher Berater bringt er die energetische Perspektive in ImmoPrüf ein — von
+                Energieausweis über Heizung bis zu Sanierung und Förderung.
+              </p>
             </div>
           </div>
 
