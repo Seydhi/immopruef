@@ -1,6 +1,9 @@
+import { useState } from 'react'
 import { useSEO, breadcrumbSchema } from '../lib/useSEO'
 
 export default function UeberUns() {
+  const [photoOk, setPhotoOk] = useState(true)
+
   useSEO({
     title: 'Über ImmoPrüf: Wer wir sind und wie wir arbeiten',
     description:
@@ -40,6 +43,9 @@ export default function UeberUns() {
         jobTitle: 'Gründer & Geschäftsführer',
         worksFor: { '@type': 'Organization', name: 'ImmoPrüf', url: 'https://immopruef.de' },
         url: 'https://immopruef.de/ueber-uns',
+        image: 'https://immopruef.de/team/seydhan-cakmak.jpg',
+        description: 'Gründer von ImmoPrüf, Wirtschaftsinformatiker und Immobilien-Enthusiast.',
+        knowsAbout: ['Immobilienkauf', 'Immobilienanalyse', 'Immobilienfinanzierung', 'Wirtschaftsinformatik'],
       },
       breadcrumbSchema([
         { name: 'Startseite', url: 'https://immopruef.de/' },
@@ -106,17 +112,33 @@ export default function UeberUns() {
         <section>
           <h2 className="font-display text-xl font-medium text-green mb-2">Wer dahintersteht</h2>
 
-          <div className="bg-white border border-ink/10 rounded-xl p-4 mb-4 flex items-start gap-4">
-            <div className="shrink-0 w-12 h-12 rounded-full bg-green/10 text-green flex items-center justify-center font-display text-lg font-semibold" aria-hidden="true">
-              SC
+          <div className="bg-white border border-ink/10 rounded-xl p-5 mb-4 flex items-start gap-4 sm:gap-5">
+            <div className="shrink-0 w-20 h-20 rounded-full overflow-hidden bg-green/10 text-green flex items-center justify-center font-display text-2xl font-semibold">
+              {photoOk ? (
+                <img
+                  src="/team/seydhan-cakmak.jpg"
+                  alt="Seydhan Cakmak, Gründer von ImmoPrüf"
+                  width={80}
+                  height={80}
+                  className="w-20 h-20 object-cover"
+                  loading="eager"
+                  decoding="async"
+                  onError={() => setPhotoOk(false)}
+                />
+              ) : (
+                <span aria-hidden="true">SC</span>
+              )}
             </div>
             <div>
               <div className="font-semibold text-ink">Seydhan Cakmak</div>
-              <div className="text-[12px] text-ink-light mb-1">Gründer &amp; Geschäftsführer · verantwortlich für die Inhalte</div>
-              <p className="text-[13px] text-ink-mid">
-                Seydhan verantwortet ImmoPrüf und die redaktionelle Qualität der Ratgeber. Erreichbar unter{' '}
-                <a href="mailto:info@immopruef.com" className="text-green hover:text-green-mid underline">info@immopruef.com</a>.
+              <div className="text-[12px] text-ink-light mb-1.5">Gründer &amp; Geschäftsführer · verantwortlich für die Inhalte</div>
+              <p className="text-[13px] text-ink-mid leading-relaxed">
+                Seydhan hat Wirtschaftsinformatik studiert und verbindet einen daten- und technikgetriebenen Blick mit
+                einer großen Leidenschaft für Immobilien. Aus dieser Kombination ist ImmoPrüf entstanden — mit dem Ziel,
+                Kaufinteressenten dieselbe strukturierte, datenbasierte Einordnung an die Hand zu geben, die sonst Profis
+                vorbehalten ist.
               </p>
+              <a href="mailto:info@immopruef.com" className="text-green hover:text-green-mid underline text-[12px] inline-block mt-1.5">info@immopruef.com</a>
             </div>
           </div>
 
