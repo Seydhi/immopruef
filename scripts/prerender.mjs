@@ -64,6 +64,7 @@ async function getRoutes() {
     '/agb',
     '/barrierefreiheit',
     '/grunderwerbsteuer-rechner',
+    '/budgetrechner',
     '/ueber-uns',
     ...blogSlugs.map(s => `/blog/${s}`),
   ]

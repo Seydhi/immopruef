@@ -1,32 +1,6 @@
 import { useState, useMemo } from 'react'
 import { useSEO, faqSchema, breadcrumbSchema } from '../lib/useSEO'
-
-// Grunderwerbsteuersätze je Bundesland (Stand 2026)
-const GREST: { land: string; satz: number }[] = [
-  { land: 'Baden-Württemberg', satz: 5.0 },
-  { land: 'Bayern', satz: 3.5 },
-  { land: 'Berlin', satz: 6.0 },
-  { land: 'Brandenburg', satz: 6.5 },
-  { land: 'Bremen', satz: 5.5 },
-  { land: 'Hamburg', satz: 5.5 },
-  { land: 'Hessen', satz: 6.0 },
-  { land: 'Mecklenburg-Vorpommern', satz: 6.0 },
-  { land: 'Niedersachsen', satz: 5.0 },
-  { land: 'Nordrhein-Westfalen', satz: 6.5 },
-  { land: 'Rheinland-Pfalz', satz: 5.0 },
-  { land: 'Saarland', satz: 6.5 },
-  { land: 'Sachsen', satz: 5.5 },
-  { land: 'Sachsen-Anhalt', satz: 5.0 },
-  { land: 'Schleswig-Holstein', satz: 6.5 },
-  { land: 'Thüringen', satz: 5.0 },
-]
-
-const NOTAR_SATZ = 1.5
-const GRUNDBUCH_SATZ = 0.5
-
-const eur = (n: number) =>
-  n.toLocaleString('de-DE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 })
-const pct = (n: number) => n.toLocaleString('de-DE', { minimumFractionDigits: 1, maximumFractionDigits: 2 }) + ' %'
+import { GREST, NOTAR_SATZ, GRUNDBUCH_SATZ, eur, pct } from '../lib/kaufnebenkosten'
 
 export default function Rechner() {
   const [preis, setPreis] = useState(400000)

@@ -40,6 +40,7 @@ const staticUrls = [
   { loc: `${BASE}/`, lastmod: today, changefreq: 'weekly', priority: '1.0' },
   { loc: `${BASE}/blog`, lastmod: today, changefreq: 'weekly', priority: '0.8' },
   { loc: `${BASE}/grunderwerbsteuer-rechner`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
+  { loc: `${BASE}/budgetrechner`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
   { loc: `${BASE}/ueber-uns`, lastmod: today, changefreq: 'yearly', priority: '0.5' },
 ]
 const legalUrls = [

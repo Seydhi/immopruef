@@ -33,6 +33,14 @@ export default function UeberUns() {
           areaServed: 'DE',
         },
       },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: 'Seydhan Cakmak',
+        jobTitle: 'Gründer & Geschäftsführer',
+        worksFor: { '@type': 'Organization', name: 'ImmoPrüf', url: 'https://immopruef.de' },
+        url: 'https://immopruef.de/ueber-uns',
+      },
       breadcrumbSchema([
         { name: 'Startseite', url: 'https://immopruef.de/' },
         { name: 'Über uns', url: 'https://immopruef.de/ueber-uns' },
@@ -97,6 +105,21 @@ export default function UeberUns() {
 
         <section>
           <h2 className="font-display text-xl font-medium text-green mb-2">Wer dahintersteht</h2>
+
+          <div className="bg-white border border-ink/10 rounded-xl p-4 mb-4 flex items-start gap-4">
+            <div className="shrink-0 w-12 h-12 rounded-full bg-green/10 text-green flex items-center justify-center font-display text-lg font-semibold" aria-hidden="true">
+              SC
+            </div>
+            <div>
+              <div className="font-semibold text-ink">Seydhan Cakmak</div>
+              <div className="text-[12px] text-ink-light mb-1">Gründer &amp; Geschäftsführer · verantwortlich für die Inhalte</div>
+              <p className="text-[13px] text-ink-mid">
+                Seydhan verantwortet ImmoPrüf und die redaktionelle Qualität der Ratgeber. Erreichbar unter{' '}
+                <a href="mailto:info@immopruef.com" className="text-green hover:text-green-mid underline">info@immopruef.com</a>.
+              </p>
+            </div>
+          </div>
+
           <p>
             ImmoPrüf ist ein Angebot der <strong className="text-ink">Neuralpfad UG (haftungsbeschränkt)</strong> mit Sitz
             in 27711 Osterholz-Scharmbeck, vertreten durch den Geschäftsführer Seydhan Cakmak. Wir sind ein kleines,
