@@ -8,26 +8,53 @@ import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 // Manual webhook signature verification (no SDK dependency)
 // ═══════════════════════════════════════════════════════════════
 
+// Constant-time string comparison to avoid timing side-channels.
+// Both inputs are fixed-length hex strings (SHA-256 -> 64 chars).
+function timingSafeEqual(a: string, b: string): boolean {
+  if (a.length !== b.length) return false
+  let mismatch = 0
+  for (let i = 0; i < a.length; i++) {
+    mismatch |= a.charCodeAt(i) ^ b.charCodeAt(i)
+  }
+  return mismatch === 0
+}
+
+// Minimal HTML escaping for values interpolated into the confirmation email.
+function escapeHtml(s: string): string {
+  return s
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+}
+
 async function verifyWebhookSignature(
   payload: string,
   sigHeader: string,
   secret: string,
   tolerance = 300 // 5 minutes
 ): Promise<boolean> {
-  const parts = sigHeader.split(',').reduce((acc, part) => {
-    const [key, value] = part.split('=')
-    acc[key.trim()] = value
-    return acc
-  }, {} as Record<string, string>)
+  // Parse the Stripe-Signature header. During signing-secret rotation Stripe
+  // sends MULTIPLE v1 signatures (comma-separated) — collect them all and
+  // accept if any matches. Split on the FIRST '=' so values are never mangled.
+  let timestamp = ''
+  const v1Signatures: string[] = []
+  for (const part of sigHeader.split(',')) {
+    const eq = part.indexOf('=')
+    if (eq === -1) continue
+    const key = part.slice(0, eq).trim()
+    const value = part.slice(eq + 1).trim()
+    if (key === 't') timestamp = value
+    else if (key === 'v1') v1Signatures.push(value)
+  }
 
-  const timestamp = parts['t']
-  const signature = parts['v1']
+  if (!timestamp || v1Signatures.length === 0) return false
 
-  if (!timestamp || !signature) return false
-
-  // Check timestamp tolerance
+  // Check timestamp tolerance (replay protection)
   const now = Math.floor(Date.now() / 1000)
-  if (Math.abs(now - parseInt(timestamp)) > tolerance) return false
+  const ts = parseInt(timestamp, 10)
+  if (!Number.isFinite(ts) || Math.abs(now - ts) > tolerance) return false
 
   // Compute expected signature
   const signedPayload = `${timestamp}.${payload}`
@@ -44,7 +71,8 @@ async function verifyWebhookSignature(
     .map((b) => b.toString(16).padStart(2, '0'))
     .join('')
 
-  return expectedSig === signature
+  // Constant-time compare against every provided v1 signature
+  return v1Signatures.some((s) => timingSafeEqual(expectedSig, s))
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -77,11 +105,19 @@ serve(async (req) => {
     const event = JSON.parse(body)
     console.log(`Webhook received: ${event.type} (${event.id})`)
 
-    if (event.type === 'checkout.session.completed') {
+    // Fulfill on instant completion AND on delayed/async payment success.
+    // checkout.session.completed fires immediately (payment_status may be 'unpaid'
+    // for async methods like SEPA/Klarna); checkout.session.async_payment_succeeded
+    // fires later when the async payment clears. Handling both prevents
+    // paid-but-never-fulfilled orders. (Ensure both event types are enabled on the
+    // webhook endpoint in the Stripe Dashboard.)
+    if (
+      event.type === 'checkout.session.completed' ||
+      event.type === 'checkout.session.async_payment_succeeded'
+    ) {
       const session = event.data.object
 
-      // CRITICAL: Stripe fires checkout.session.completed even when payment is still pending
-      // (e.g. async payment methods). Only accept if payment is actually confirmed.
+      // Only fulfill once payment is actually confirmed.
       if (session.payment_status !== 'paid') {
         console.log(`Skipping: payment_status=${session.payment_status} (not yet confirmed)`)
         return new Response('OK', { status: 200 })
@@ -173,16 +209,17 @@ serve(async (req) => {
           const urlList = (orderAnalyses || [])
             .map((a: { url: string }, i: number) => {
               const cleanUrl = a.url.split('#')[0].split('?')[0]
+              const safeUrl = escapeHtml(cleanUrl)
               const exposeNr = a.url.match(/expose\/(\d+)/)?.[1] || ''
               return `
                 <tr>
                   <td style="padding:10px 16px;border-bottom:1px solid #f0f0f0;">
                     <div style="font-size:13px;color:#444;">
                       <span style="color:#1a6b3c;font-weight:600;">${i + 1}.</span>
-                      ${exposeNr ? `Exposé ${exposeNr}` : cleanUrl}
+                      ${exposeNr ? `Exposé ${exposeNr}` : safeUrl}
                     </div>
                     <div style="font-size:11px;color:#999;margin-top:2px;">
-                      <a href="${cleanUrl}" style="color:#999;text-decoration:none;">${cleanUrl}</a>
+                      <a href="${safeUrl}" style="color:#999;text-decoration:none;">${safeUrl}</a>
                     </div>
                   </td>
                 </tr>`
@@ -297,6 +334,13 @@ serve(async (req) => {
           // Don't fail the webhook because of email issues
         }
       }
+    }
+
+    // Async payment failed (e.g. SEPA/Klarna) — log for visibility.
+    // The order stays 'pending' and is treated like an abandoned checkout.
+    if (event.type === 'checkout.session.async_payment_failed') {
+      const session = event.data.object
+      console.warn(`Async payment failed for session ${session.id}`)
     }
 
     return new Response('OK', { status: 200 })
