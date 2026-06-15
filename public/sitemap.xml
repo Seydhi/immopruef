@@ -28,6 +28,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://immopruef.de/tilgungsrechner</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://immopruef.de/mieten-oder-kaufen-rechner</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://immopruef.de/ueber-uns</loc>
     <lastmod>2026-06-15</lastmod>
     <changefreq>yearly</changefreq>

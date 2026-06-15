@@ -65,6 +65,8 @@ async function getRoutes() {
     '/barrierefreiheit',
     '/grunderwerbsteuer-rechner',
     '/budgetrechner',
+    '/tilgungsrechner',
+    '/mieten-oder-kaufen-rechner',
     '/ueber-uns',
     ...blogSlugs.map(s => `/blog/${s}`),
   ]
