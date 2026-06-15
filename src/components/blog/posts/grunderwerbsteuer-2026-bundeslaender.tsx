@@ -5,7 +5,7 @@ export default function Grunderwerbsteuer2026Bundeslaender() {
       <p>Dieser Artikel zeigt die aktuellen Steuersätze aller 16 Bundesländer (Stand 2026) in einer Tabelle, erklärt, wann die Steuer fällig wird, und stellt fünf legale Möglichkeiten vor, die Bemessungsgrundlage zu senken. Außerdem erfahren Sie, warum Sie die Grunderwerbsteuer in aller Regel aus Eigenkapital bezahlen müssen — und was das für Ihre Finanzierungsplanung bedeutet.</p>
       
       <h2>Grunderwerbsteuer 2026: Tabelle aller 16 Bundesländer</h2>
-      <p>Die Grunderwerbsteuer ist Ländersache. Seit 2006 dürfen die Bundesländer den Steuersatz selbst festlegen — vorher galt bundesweit einheitlich 3,5 %. Diesen Satz hält heute nur noch Bayern. Die folgende Tabelle zeigt alle Steuersätze sowie den jeweiligen Steuerbetrag bei einem Kaufpreis von 400.000 €:</p>
+      <p>Die Grunderwerbsteuer ist Ländersache. Seit 2006 dürfen die Bundesländer den Steuersatz selbst festlegen — vorher galt bundesweit einheitlich 3,5 %. Diesen Satz hält heute nur noch Bayern. Verwechseln Sie die Grunderwerbsteuer nicht mit <a href="/blog/grundsteuer-reform-2025-2026">der laufenden Grundsteuer nach der Reform 2025/2026</a>: Erstere fällt einmalig beim Kauf an, Letztere zahlen Sie als Eigentümer jährlich. Die folgende Tabelle zeigt alle Steuersätze sowie den jeweiligen Steuerbetrag bei einem Kaufpreis von 400.000 €:</p>
       <table>
       <thead>
       <tr><th>Bundesland</th><th>Steuersatz</th><th>Steuer bei 400.000 €</th></tr>

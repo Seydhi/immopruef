@@ -58,7 +58,7 @@ export default function BaulastenGrunddienstbarkeiten() {
       
       <p>Grunddienstbarkeiten finden Sie in Abteilung II des Grundbuchs, also dort, wo Lasten und Beschränkungen stehen. Wie Sie diese Abteilung systematisch durchgehen, beschreibt unser Beitrag dazu, wie Sie das <a href="/blog/grundbuch-lesen">Grundbuch lesen</a>. Hier kommt es darauf an, jede Eintragung danach zu beurteilen, ob sie Sie belastet oder ob sie Ihnen ein Recht sichert.</p>
       
-      <p>Die häufigsten Formen sind (die ersten beiden sind echte Grunddienstbarkeiten zugunsten eines Nachbargrundstücks, Wohnrecht und Nießbrauch dagegen persönliche Dienstbarkeiten zugunsten einer Person):</p>
+      <p>Die häufigsten Formen sind (die ersten beiden sind echte Grunddienstbarkeiten zugunsten eines Nachbargrundstücks, <a href="/blog/wohnrecht-niessbrauch-immobilie-kaufen">Wohnrecht und Nießbrauch beim Immobilienkauf</a> dagegen persönliche Dienstbarkeiten zugunsten einer Person):</p>
       
       <ul>
       <li><strong>Wege-, Geh- und Fahrtrecht:</strong> Ein Nachbar darf einen Teil Ihres Grundstücks nutzen, um zu seinem eigenen zu gelangen. Liegt das Recht auf Ihrem Grundstück, müssen Sie die Nutzung dulden.</li>

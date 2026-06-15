@@ -8,7 +8,7 @@ export default function BausachverstaendigerHauskaufKosten() {
       <p>Ein Bausachverständiger, auch Baugutachter genannt, beurteilt vor dem Kauf den baulichen Zustand einer Immobilie. Er prüft das Gebäude systematisch und deckt versteckte Mängel auf, die bei einer normalen Besichtigung leicht unentdeckt bleiben. Dazu zählen typischerweise:</p>
       <ul>
       <li>Feuchtigkeit im Keller, an Wänden oder im Mauerwerk</li>
-      <li>Risse in Fassade, Wänden oder Decken</li>
+      <li>Risse in Fassade, Wänden oder Decken, deren Gefahrenpotenzial sich nur mit Erfahrung einordnen lässt – wie Sie <a href="/blog/risse-im-mauerwerk-beurteilen">Risse im Mauerwerk richtig beurteilen</a>, lesen Sie im verlinkten Beitrag</li>
       <li>Mängel am Dach, etwa an Eindeckung, Dämmung oder Dachstuhl</li>
       <li>Zustand und Alter der Heizung</li>
       <li>Mängel an der Elektrik</li>

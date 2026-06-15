@@ -37,7 +37,7 @@ export default function GrundbuchLesen() {
       
       <h2>Abteilung I: Wem gehört die Immobilie?</h2>
       <p>Abteilung I beantwortet die grundlegendste Frage beim Kauf: Wer ist überhaupt der rechtmäßige Eigentümer? Eingetragen sind hier die Eigentümer und die Eigentumsverhältnisse, also wer als Eigentümer geführt wird und auf welcher Grundlage er das Eigentum erworben hat.</p>
-      <p>Gerade bei der Erwerbsgrundlage lohnt der genaue Blick. Steht dort etwa ein Erbe als Eigentümer, sollten Sie prüfen, ob er allein verfügungsberechtigt ist oder ob es eine Erbengemeinschaft gibt. Bei mehreren Eigentümern muss klar sein, dass alle dem Verkauf zustimmen. Wer hier in Abteilung I eingetragen ist, muss am Ende auch derjenige sein, der Ihnen die Immobilie verkauft.</p>
+      <p>Gerade bei der Erwerbsgrundlage lohnt der genaue Blick. Steht dort etwa ein Erbe als Eigentümer, sollten Sie prüfen, ob er allein verfügungsberechtigt ist oder ob es eine Erbengemeinschaft gibt; für Erben selbst stellt sich dann oft die Frage, ob sie <a href="/blog/haus-geerbt-verkaufen-vermieten">eine geerbte Immobilie verkaufen, vermieten oder selbst nutzen</a> wollen. Bei mehreren Eigentümern muss klar sein, dass alle dem Verkauf zustimmen. Wer hier in Abteilung I eingetragen ist, muss am Ende auch derjenige sein, der Ihnen die Immobilie verkauft.</p>
       <p>Praktischer Hinweis: Vergleichen Sie die Namen in Abteilung I mit den Angaben im Exposé und im Kaufvertragsentwurf. Abweichungen sind ein Signal, genauer nachzufragen, bevor Sie weitermachen.</p>
       
       <h2>Abteilung II: Lasten und Beschränkungen</h2>
@@ -45,7 +45,7 @@ export default function GrundbuchLesen() {
       <p>Typische Eintragungen in Abteilung II sind:</p>
       <ul>
       <li><strong>Wegerechte und Grunddienstbarkeiten:</strong> Ein Nachbar darf zum Beispiel über Ihr Grundstück fahren, um zu seinem eigenen zu gelangen.</li>
-      <li><strong>Wohnrechte und Nießbrauch:</strong> Eine dritte Person darf in der Immobilie wohnen oder sie nutzen und die Erträge ziehen, oft lebenslang. Das kann den Einzug oder die Vermietung blockieren.</li>
+      <li><strong>Wohnrechte und Nießbrauch:</strong> Eine dritte Person darf in der Immobilie wohnen oder sie nutzen und die Erträge ziehen, oft lebenslang. Das kann den Einzug oder die Vermietung blockieren. Was diese Rechte konkret bedeuten, erklärt der Beitrag zu <a href="/blog/wohnrecht-niessbrauch-immobilie-kaufen">Wohnrecht und Nießbrauch beim Immobilienkauf</a>.</li>
       <li><strong>Vorkaufsrechte:</strong> Ein Berechtigter darf in den Kaufvertrag eintreten und die Immobilie zu denselben Konditionen erwerben.</li>
       <li><strong>Erbbaurechte:</strong> Das Gebäude steht auf einem Grundstück, das nicht Ihnen gehört, sondern für das laufend Erbbauzins zu zahlen ist.</li>
       <li><strong>Auflassungsvormerkung:</strong> Sie sichert den Anspruch eines Käufers auf Eigentumsübertragung ab und verhindert einen Zweitverkauf.</li>

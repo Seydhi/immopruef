@@ -137,7 +137,7 @@ export default function EnergieausweisExpose() {
       </p>
       <ul>
         <li><strong>Klasse E oder schlechter bei hohem Kaufpreis:</strong> Der Preis sollte den Sanierungsbedarf widerspiegeln. Wenn nicht, ist die Immobilie überteuert.</li>
-        <li><strong>Konstanttemperatur-/Standard-Ölheizung älter als 30 Jahre:</strong> Hier greift die GEG-Austauschpflicht — Brennwert- und Niedertemperaturkessel sowie selbstnutzende Ein-/Zweifamilienhaus-Eigentümer (seit dem 01.02.2002) sind ausgenommen. Ein Ersatz durch eine Wärmepumpe kostet grob 27.000–45.000 € vor Förderung; über den KfW-Zuschuss 458 sind bis zu 70 % förderfähig.</li>
+        <li><strong>Konstanttemperatur-/Standard-Ölheizung älter als 30 Jahre:</strong> Hier greift die GEG-Austauschpflicht — Brennwert- und Niedertemperaturkessel sowie selbstnutzende Ein-/Zweifamilienhaus-Eigentümer (seit dem 01.02.2002) sind ausgenommen. Ein Ersatz durch eine Wärmepumpe kostet grob 27.000–45.000 € vor Förderung; über den KfW-Zuschuss 458 sind bis zu 70 % förderfähig. Welche weiteren Pflichten beim Erwerb eines Bestandsgebäudes auf Sie zukommen, fasst unser Ratgeber zu <a href="/blog/geg-sanierungspflichten-altbau-kauf">den GEG-Sanierungspflichten beim Altbau-Kauf</a> zusammen.</li>
         <li><strong>Kein Energieausweis trotz Pflicht:</strong> Was wird versteckt? Fordern Sie ihn ein — es ist Ihr gesetzliches Recht als Kaufinteressent.</li>
         <li><strong>Großer Unterschied zwischen Verbrauchs- und Bedarfswert:</strong> Wenn vorhanden, deutet das auf ungewöhnliches Heizverhalten oder Messfehler hin.</li>
         <li><strong>Hoher Energiebedarf + keine Angabe zu vergangenen Sanierungen:</strong> Wahrscheinlich wurde seit Jahrzehnten nichts investiert — Dach, Fenster, Leitungen könnten alle am Ende sein.</li>
@@ -148,7 +148,7 @@ export default function EnergieausweisExpose() {
         Trotz seiner Bedeutung hat der Energieausweis blinde Flecken:
       </p>
       <ul>
-        <li><strong>Stromverbrauch für Haushalt:</strong> Nur Heizung und Warmwasser, nicht Licht, Geräte, Kochen</li>
+        <li><strong>Stromverbrauch für Haushalt:</strong> Nur Heizung und Warmwasser, nicht Licht, Geräte, Kochen — auch eine Photovoltaikanlage taucht hier nicht auf, weshalb Sie <a href="/blog/photovoltaik-immobilie-bewerten">eine vorhandene Photovoltaikanlage richtig bewerten</a> sollten</li>
         <li><strong>Sommerlicher Wärmeschutz:</strong> Überhitzung im Sommer wird nicht bewertet</li>
         <li><strong>Schimmelrisiko:</strong> Wärmebrücken und Lüftungsverhalten werden nicht erfasst</li>
         <li><strong>Zustand der Haustechnik:</strong> Alter und Wartungszustand der Heizung sind nicht Teil der Bewertung</li>

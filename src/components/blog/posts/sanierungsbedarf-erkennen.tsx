@@ -65,7 +65,7 @@ export default function SanierungsbedarfErkennen() {
 
       <h3>2. Heizungstyp Öl oder Gas ohne Altersangabe</h3>
       <p>
-        Wenn im Exposé "Ölzentralheizung" oder "Gaszentralheizung" steht, aber kein Alter genannt wird, ist die Heizung wahrscheinlich alt. Denn neue Heizungen sind ein Verkaufsargument — sie würden erwähnt. Nach dem Gebäudeenergiegesetz müssen Öl- und Gasheizungen die älter als 30 Jahre sind getauscht werden. Ab 2026 gilt in Kommunen mit Wärmeplan die Pflicht zu mindestens 65 % erneuerbarer Energie bei neuen Heizungen.
+        Wenn im Exposé "Ölzentralheizung" oder "Gaszentralheizung" steht, aber kein Alter genannt wird, ist die Heizung wahrscheinlich alt. Denn neue Heizungen sind ein Verkaufsargument — sie würden erwähnt. Nach dem Gebäudeenergiegesetz müssen Öl- und Gasheizungen die älter als 30 Jahre sind getauscht werden — welche weiteren Pflichten greifen, lesen Sie unter <a href="/blog/geg-sanierungspflichten-altbau-kauf">die GEG-Sanierungspflichten beim Altbau-Kauf</a>. Ab 2026 gilt in Kommunen mit Wärmeplan die Pflicht zu mindestens 65 % erneuerbarer Energie bei neuen Heizungen.
       </p>
       <p>
         Fragen Sie konkret: Welches Baujahr hat die Heizung? Wann war die letzte Wartung? Liegt das Schornsteinfegerprotokoll vor?
@@ -108,7 +108,7 @@ export default function SanierungsbedarfErkennen() {
         <li><strong>Heizkörper:</strong> Alte Rippenheizkörper deuten auf veraltete Heizung hin</li>
         <li><strong>Fenster:</strong> Holzfenster mit Einfachverglasung = massive Energieverluste</li>
         <li><strong>Bäder:</strong> Pastellfarbene Fliesen, Badewanne ohne Dusche = 70er/80er Jahre Standard</li>
-        <li><strong>Elektrik:</strong> Alte Steckdosen, Kipp-Lichtschalter = möglicherweise keine Erdung</li>
+        <li><strong>Elektrik:</strong> Alte Steckdosen, Kipp-Lichtschalter = möglicherweise keine Erdung; wie Sie <a href="/blog/elektroinstallation-altbau-pruefen">die Elektroinstallation im Altbau prüfen</a>, zeigt der separate Ratgeber</li>
         <li><strong>Decken:</strong> Holzdecken mit Profilbrettern = evtl. KMF-Dämmung darüber</li>
         <li><strong>Keller:</strong> Feuchte Flecken, Ausblühungen, muffiger Eindruck auf Fotos</li>
       </ul>

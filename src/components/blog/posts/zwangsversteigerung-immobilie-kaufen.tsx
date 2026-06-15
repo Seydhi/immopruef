@@ -98,7 +98,7 @@ export default function ZwangsversteigerungImmobilieKaufen() {
       <ul>
       <li><strong>Keine Innenbesichtigung:</strong> Meist besteht kein Anspruch auf eine Besichtigung von innen. Sie sind auf das Gutachten und die Außenansicht angewiesen. Über den tatsächlichen Zustand, etwa versteckte Schäden, erfahren Sie unter Umständen wenig.</li>
       <li><strong>Keine Gewährleistung, kein Rücktritt:</strong> Anders als beim normalen Kauf gibt es keine Gewährleistung für Mängel und kein Rücktrittsrecht. Stellt sich nach dem Zuschlag ein Schaden heraus, tragen Sie ihn allein.</li>
-      <li><strong>Bestehende Rechte Dritter:</strong> Rechte Dritter und Mietverhältnisse können bestehen bleiben. Ein vermietetes Objekt erwerben Sie unter Umständen samt laufendem Mietvertrag.</li>
+      <li><strong>Bestehende Rechte Dritter:</strong> Rechte Dritter und Mietverhältnisse können bestehen bleiben. Ein vermietetes Objekt erwerben Sie unter Umständen samt laufendem Mietvertrag. Danach stellt sich dieselbe Grundsatzfrage wie bei vielen Eigentümern, die sich entscheiden müssen, ob sie <a href="/blog/haus-geerbt-verkaufen-vermieten">eine geerbte Immobilie verkaufen, vermieten oder selbst nutzen</a> wollen.</li>
       <li><strong>Gefahr des Überbietens:</strong> Im Bietgefecht besteht die Gefahr, sich von der Dynamik mitreißen zu lassen und mehr zu bieten, als das Objekt wert ist.</li>
       </ul>
       <p>Besonders sorgfältig sollten Sie die Abteilung II des Grundbuchs prüfen. Dort sind Lasten und Beschränkungen wie Wohnrechte, Wegerechte oder Nießbrauch eingetragen, die nach dem Zuschlag bestehen bleiben können. Wie Sie einen Grundbuchauszug richtig lesen, zeigt der Beitrag dazu, wie Sie ein <a href="/blog/grundbuch-lesen">Grundbuch lesen</a>.</p>

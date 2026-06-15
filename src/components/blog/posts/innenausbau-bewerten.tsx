@@ -195,7 +195,7 @@ export default function InnenausbauBewerten() {
         <li>Welche Qualitäts­stufe haben Innentüren (Vollholz / Furnier / Folie)?</li>
         <li>Welches Alter haben Sanitär­objekte und Armaturen? Sind sie funktions­fähig oder auf Tausch vorbereitet?</li>
         <li>Welche Heiz­körper sind verbaut — und wie alt ist die Heizungs­verteilung?</li>
-        <li>Wann wurde die Elektrik zuletzt überholt? Welche Sicherungs­art (FI-Schalter vorhanden)?</li>
+        <li>Wann wurde die Elektrik zuletzt überholt? Welche Sicherungs­art (FI-Schalter vorhanden)? Bei älteren Objekten lohnt es sich, gezielt <a href="/blog/elektroinstallation-altbau-pruefen">die Elektroinstallation im Altbau zu prüfen</a>.</li>
         <li>Lassen sich Materialien und Verarbeitung in einer Klasse einordnen (einfach / mittel / gehoben)? Passt das zum Kaufpreis?</li>
         <li>Welche Gewerke stehen in den nächsten 5–10 Jahren nach Kauf realistisch zur Erneuerung an — und ist das im Budget eingeplant?</li>
       </ol>

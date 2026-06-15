@@ -29,7 +29,7 @@ export default function SchimmelFeuchtigkeitHauskauf() {
       <li><strong>Muffiger Geruch:</strong> Ein modriger, kellerartiger Geruch ist oft das erste Signal, auch wenn noch nichts zu sehen ist. Vertrauen Sie hier Ihrer Nase.</li>
       <li><strong>Stockflecken und dunkle Punkte:</strong> Verfärbungen, besonders in Ecken und an Fensterlaibungen, deuten auf Kondensat und beginnenden Schimmel hin.</li>
       <li><strong>Abblätternde Farbe:</strong> Wo sich Farbe oder Tapete löst oder Blasen wirft, war oder ist die Wand feucht.</li>
-      <li><strong>Salzausblühungen im Keller:</strong> Weiße, kristalline Beläge auf Kellerwänden zeigen an, dass Feuchtigkeit durch das Mauerwerk wandert und dabei Salze ausgelöst hat.</li>
+      <li><strong>Salzausblühungen im Keller:</strong> Weiße, kristalline Beläge auf Kellerwänden zeigen an, dass Feuchtigkeit durch das Mauerwerk wandert und dabei Salze ausgelöst hat. Treten zusätzlich Risse auf, hilft Ihnen unser Beitrag, <a href="/blog/risse-im-mauerwerk-beurteilen">Risse im Mauerwerk richtig zu beurteilen</a>.</li>
       </ul>
       
       <p>Seien Sie besonders aufmerksam bei <strong>frisch und nur stellenweise überstrichenen Wänden</strong>. Wenn ausgerechnet eine einzelne Wand oder eine Ecke neu gestrichen ist, während der Rest des Raums älter wirkt, kann das ein Versuch sein, Spuren zu überdecken. Ein einfaches Feuchtemessgerät, das Sie an die verdächtigen Stellen halten, gibt Ihnen einen ersten Anhaltspunkt, ob dahinter tatsächlich erhöhte Feuchtigkeit steckt.</p>

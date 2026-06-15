@@ -99,7 +99,7 @@ export default function NebenkostenLaufendeKosten() {
         </tbody>
       </table>
       <p>
-        Bei einem Einfamilienhaus können die laufenden Kosten leicht 1.000 € pro Monat übersteigen — zusätzlich zur Kreditrate. Das überrascht viele Erstkäufer die bisher zur Miete gewohnt haben, wo Grundsteuer, Versicherung und Instandhaltung in der Miete steckten.
+        Bei einem Einfamilienhaus können die laufenden Kosten leicht 1.000 € pro Monat übersteigen — zusätzlich zur Kreditrate. Das überrascht viele Erstkäufer die bisher zur Miete gewohnt haben, wo Grundsteuer, Versicherung und Instandhaltung in der Miete steckten. Was Eigentümer zu <a href="/blog/wohngebaeudeversicherung-hauskauf">der Wohngebäudeversicherung beim Hauskauf</a> wissen müssen, behandelt der eigene Ratgeber.
       </p>
 
       <h2>Die 20-Jahres-Rechnung: Warum laufende Kosten wichtiger sind als Nebenkosten</h2>
@@ -202,7 +202,7 @@ export default function NebenkostenLaufendeKosten() {
         <li><strong>Kreditrate berechnen:</strong> Online-Rechner mit aktuellem Zinssatz. Gesamtinvestition (nicht nur Kaufpreis) als Darlehenssumme.</li>
         <li><strong>Hausgeld/Nebenkosten aus dem Exposé entnehmen.</strong> Wenn nicht vorhanden: 3,50 €/m² als Schätzung für ETW, Einzelpositionen für EFH.</li>
         <li><strong>Heizkosten berechnen:</strong> Wohnfläche × kWh/m²a × Energiepreis ÷ 12 Monate.</li>
-        <li><strong>Grundsteuer schätzen:</strong> Bei der Gemeinde nachfragen oder 50–100 €/Monat als Puffer.</li>
+        <li><strong>Grundsteuer schätzen:</strong> Bei der Gemeinde nachfragen oder 50–100 €/Monat als Puffer. Wie sich <a href="/blog/grundsteuer-reform-2025-2026">die laufende Grundsteuer nach der Reform 2025/2026</a> berechnet, erklärt der eigene Ratgeber.</li>
         <li><strong>Instandhaltung einplanen:</strong> 1,50–2,50 €/m² pro Monat je nach Alter.</li>
         <li><strong>Summe bilden:</strong> Kreditrate + alle laufenden Kosten = tatsächliche monatliche Belastung.</li>
         <li><strong>Tragbarkeitscheck:</strong> Liegt die Summe unter 35–40 % des Nettohaushaltseinkommens?</li>

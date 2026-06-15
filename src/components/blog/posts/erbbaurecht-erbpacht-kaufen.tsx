@@ -8,7 +8,7 @@ export default function ErbbaurechtErbpachtKaufen() {
       <h2>Was bedeutet Erbbaurecht (Erbpacht)?</h2>
       <p>Das Erbbaurecht ist das vererbliche und veräußerliche Recht, auf einem fremden Grundstück ein Gebäude zu haben. Vereinfacht gesagt: Sie kaufen das Haus, nicht den Grund. Der Grund und Boden gehört weiterhin dem sogenannten Erbbaugeber, während Ihnen das Bauwerk darauf zusteht. Geregelt ist das Ganze im Erbbaurechtsgesetz (ErbbauRG).</p>
       <p>Der Begriff "Erbpacht" ist dabei umgangssprachlich verbreitet, juristisch aber eigentlich überholt. Korrekt heißt es Erbbaurecht. Wichtig ist vor allem, was sich dahinter verbirgt: ein langfristiges Nutzungsrecht am Grundstück, kombiniert mit dem Eigentum am Gebäude.</p>
-      <p>Weil das Recht vererblich und veräußerlich ist, können Sie ein Erbbaurecht grundsätzlich verkaufen oder an Ihre Kinder weitergeben. Es ist also kein bloßes Mietverhältnis, sondern ein eigenständiges, im Grundbuch gesichertes Recht.</p>
+      <p>Weil das Recht vererblich und veräußerlich ist, können Sie ein Erbbaurecht grundsätzlich verkaufen oder an Ihre Kinder weitergeben. Es ist also kein bloßes Mietverhältnis, sondern ein eigenständiges, im Grundbuch gesichertes Recht – ähnlich wie andere grundbuchlich gesicherte Nutzungsrechte, etwa <a href="/blog/wohnrecht-niessbrauch-immobilie-kaufen">Wohnrecht und Nießbrauch beim Immobilienkauf</a>.</p>
       
       <h2>Der Erbbauzins: Was Sie für den Grund zahlen</h2>
       <p>Für die Nutzung des Grundstücks zahlen Sie einen jährlichen Erbbauzins. Er ist gewissermaßen die laufende Gegenleistung dafür, dass Ihnen der Boden nicht gehört, Sie ihn aber nutzen dürfen. Üblich ist eine Größenordnung von etwa 3 bis 5 % des Grundstückswerts pro Jahr.</p>
