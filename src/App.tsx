@@ -18,7 +18,10 @@ import Rechner from './components/Rechner'
 import Budgetrechner from './components/Budgetrechner'
 import Tilgungsrechner from './components/Tilgungsrechner'
 import MietenOderKaufen from './components/MietenOderKaufen'
+import RegionalKaufnebenkosten from './components/RegionalKaufnebenkosten'
+import KaufnebenkostenIndex from './components/KaufnebenkostenIndex'
 import UeberUns from './components/UeberUns'
+import { regioForSlug } from './lib/regional'
 import { Suspense } from 'react'
 import { BLOG_POSTS, POST_COMPONENTS } from './components/blog/posts'
 
@@ -36,6 +39,8 @@ type AppView =
   | { type: 'budgetrechner' }
   | { type: 'tilgungsrechner' }
   | { type: 'mieten-oder-kaufen' }
+  | { type: 'kaufnebenkosten-index' }
+  | { type: 'regional'; slug: string }
   | { type: 'ueber-uns' }
   | { type: 'blog' }
   | { type: 'blog-post'; slug: string }
@@ -97,6 +102,9 @@ export default function App() {
     if (path === '/budgetrechner') { setView({ type: 'budgetrechner' }); return }
     if (path === '/tilgungsrechner') { setView({ type: 'tilgungsrechner' }); return }
     if (path === '/mieten-oder-kaufen-rechner') { setView({ type: 'mieten-oder-kaufen' }); return }
+    if (path === '/kaufnebenkosten-index') { setView({ type: 'kaufnebenkosten-index' }); return }
+    const regioMatch = path.match(/^\/kaufnebenkosten-([a-z-]+)$/)
+    if (regioMatch && regioForSlug(regioMatch[1])) { setView({ type: 'regional', slug: regioMatch[1] }); return }
     if (path === '/ueber-uns') { setView({ type: 'ueber-uns' }); return }
 
     // Blog routing
@@ -210,7 +218,7 @@ export default function App() {
           </div>
         )}
 
-        {(view.type === 'rechner' || view.type === 'budgetrechner' || view.type === 'tilgungsrechner' || view.type === 'mieten-oder-kaufen' || view.type === 'ueber-uns') && (
+        {(view.type === 'rechner' || view.type === 'budgetrechner' || view.type === 'tilgungsrechner' || view.type === 'mieten-oder-kaufen' || view.type === 'kaufnebenkosten-index' || view.type === 'regional' || view.type === 'ueber-uns') && (
           <div>
             <button
               onClick={() => { window.history.pushState({}, '', '/'); setView({ type: 'landing' }) }}
@@ -222,6 +230,8 @@ export default function App() {
             {view.type === 'budgetrechner' && <Budgetrechner />}
             {view.type === 'tilgungsrechner' && <Tilgungsrechner />}
             {view.type === 'mieten-oder-kaufen' && <MietenOderKaufen />}
+            {view.type === 'kaufnebenkosten-index' && <KaufnebenkostenIndex />}
+            {view.type === 'regional' && <RegionalKaufnebenkosten slug={view.slug} />}
             {view.type === 'ueber-uns' && <UeberUns />}
           </div>
         )}
@@ -270,6 +280,8 @@ export default function App() {
           <a href="/tilgungsrechner" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/tilgungsrechner'); setView({ type: 'tilgungsrechner' }); window.scrollTo(0, 0) }} className="hover:text-green transition-colors">Tilgungsrechner</a>
           <span className="text-ink/20">·</span>
           <a href="/mieten-oder-kaufen-rechner" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/mieten-oder-kaufen-rechner'); setView({ type: 'mieten-oder-kaufen' }); window.scrollTo(0, 0) }} className="hover:text-green transition-colors">Mieten oder Kaufen</a>
+          <span className="text-ink/20">·</span>
+          <a href="/kaufnebenkosten-index" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/kaufnebenkosten-index'); setView({ type: 'kaufnebenkosten-index' }); window.scrollTo(0, 0) }} className="hover:text-green transition-colors">Kaufnebenkosten je Bundesland</a>
           <span className="text-ink/20">·</span>
           <a href="/ueber-uns" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/ueber-uns'); setView({ type: 'ueber-uns' }); window.scrollTo(0, 0) }} className="hover:text-green transition-colors">Über uns</a>
           <span className="text-ink/20">·</span>

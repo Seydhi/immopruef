@@ -4,6 +4,24 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'kostenlose-immobilienbewertung-serioes',
+    title: 'Kostenlose Immobilienbewertung: seriös oder reine Lead-Falle?',
+    description: 'Wie kostenlose Online-Immobilienbewertungen funktionieren, warum sie meist verkäuferseitig sind und worauf Käufer bei Daten und Kontakt achten sollten.',
+    date: '16. Juni 2026',
+    readTime: '9 Min',
+    tags: ['Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=450&fit=crop&auto=format&q=80',
+  },
+  {
+    slug: 'ki-immobilienbewertung-2026-grenzen',
+    title: 'KI-Immobilienbewertung 2026: Was sie kann und ihre Grenzen',
+    description: 'KI-Immobilienbewertung 2026 ehrlich erklärt: Was AVM und Online-Ersteinschätzung bei Preis, Lage und Risiken leisten – und wo Fachleute unverzichtbar bleiben.',
+    date: '16. Juni 2026',
+    readTime: '9 Min',
+    tags: ['Kaufratgeber'],
+    image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&h=450&fit=crop&auto=format&q=80',
+  },
+  {
     slug: 'grundsteuer-reform-2025-2026',
     title: 'Grundsteuer 2026 nach der Reform: Was Käufer zahlen',
     description: 'Grundsteuer 2026 nach der Reform: Berechnung, Bundes- vs. Ländermodelle, Hebesätze und wie Käufer die jährliche Belastung vor dem Kauf richtig abschätzen.',
@@ -967,6 +985,8 @@ export const BLOG_POSTS: BlogMeta[] = [
 
 // Map slug → lazy component (filled as posts are written)
 export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.ComponentType>> = {
+  'kostenlose-immobilienbewertung-serioes': lazy(() => import('./kostenlose-immobilienbewertung-serioes')),
+  'ki-immobilienbewertung-2026-grenzen': lazy(() => import('./ki-immobilienbewertung-2026-grenzen')),
   'grundsteuer-reform-2025-2026': lazy(() => import('./grundsteuer-reform-2025-2026')),
   'wohngebaeudeversicherung-hauskauf': lazy(() => import('./wohngebaeudeversicherung-hauskauf')),
   'geg-sanierungspflichten-altbau-kauf': lazy(() => import('./geg-sanierungspflichten-altbau-kauf')),

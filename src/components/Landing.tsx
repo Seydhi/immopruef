@@ -144,6 +144,9 @@ export default function Landing() {
         <p className="text-ink-light text-sm">
           Strukturierte Ersteinschätzung in wenigen Minuten
         </p>
+        <p className="text-[12px] text-green/90 font-medium mt-1.5">
+          Käuferseitig · keine Makler-Leads · keine Werbeanrufe
+        </p>
       </div>
 
       <div ref={formRef} id="analyse-form" className="bg-white border border-ink/20 rounded-xl p-6 shadow-sm">

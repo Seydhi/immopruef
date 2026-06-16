@@ -43,6 +43,12 @@ const staticUrls = [
   { loc: `${BASE}/budgetrechner`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
   { loc: `${BASE}/tilgungsrechner`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
   { loc: `${BASE}/mieten-oder-kaufen-rechner`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
+  { loc: `${BASE}/kaufnebenkosten-index`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
+  ...[
+    'baden-wuerttemberg', 'bayern', 'berlin', 'brandenburg', 'bremen', 'hamburg', 'hessen',
+    'mecklenburg-vorpommern', 'niedersachsen', 'nordrhein-westfalen', 'rheinland-pfalz', 'saarland',
+    'sachsen', 'sachsen-anhalt', 'schleswig-holstein', 'thueringen',
+  ].map((s) => ({ loc: `${BASE}/kaufnebenkosten-${s}`, lastmod: today, changefreq: 'monthly', priority: '0.7' })),
   { loc: `${BASE}/ueber-uns`, lastmod: today, changefreq: 'yearly', priority: '0.5' },
 ]
 const legalUrls = [

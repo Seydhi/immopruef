@@ -54,6 +54,12 @@ async function getBlogSlugs() {
   return slugs
 }
 
+const REGIO_SLUGS = [
+  'baden-wuerttemberg', 'bayern', 'berlin', 'brandenburg', 'bremen', 'hamburg', 'hessen',
+  'mecklenburg-vorpommern', 'niedersachsen', 'nordrhein-westfalen', 'rheinland-pfalz', 'saarland',
+  'sachsen', 'sachsen-anhalt', 'schleswig-holstein', 'thueringen',
+]
+
 async function getRoutes() {
   const blogSlugs = await getBlogSlugs()
   return [
@@ -67,6 +73,8 @@ async function getRoutes() {
     '/budgetrechner',
     '/tilgungsrechner',
     '/mieten-oder-kaufen-rechner',
+    '/kaufnebenkosten-index',
+    ...REGIO_SLUGS.map(s => `/kaufnebenkosten-${s}`),
     '/ueber-uns',
     ...blogSlugs.map(s => `/blog/${s}`),
   ]
