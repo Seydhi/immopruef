@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 import { BLOG_POSTS } from './posts'
-import { useSEO, articleSchema, breadcrumbSchema } from '../../lib/useSEO'
+import { useSEO, articleSchema, breadcrumbSchema, faqSchema } from '../../lib/useSEO'
 
 export interface BlogMeta {
   slug: string
@@ -10,6 +10,7 @@ export interface BlogMeta {
   readTime: string
   tags: string[]
   image?: string
+  faq?: { question: string; answer: string }[]
 }
 
 interface BlogLayoutProps {
@@ -90,6 +91,7 @@ export default function BlogLayout({ meta, children }: BlogLayoutProps) {
         { name: 'Blog', url: 'https://immopruef.de/blog' },
         { name: meta.title, url },
       ]),
+      ...(meta.faq && meta.faq.length > 0 ? [faqSchema(meta.faq)] : []),
     ],
   })
 
@@ -149,6 +151,21 @@ export default function BlogLayout({ meta, children }: BlogLayoutProps) {
       <div className="prose-immo">
         {children}
       </div>
+
+      {/* Häufige Fragen — FAQPage-Schema + GEO/AEO-optimiert */}
+      {meta.faq && meta.faq.length > 0 && (
+        <section className="mt-12 pt-8 border-t border-ink/10">
+          <h2 className="font-display text-xl font-medium text-green mb-4">Häufige Fragen</h2>
+          <div className="space-y-4">
+            {meta.faq.map((item, i) => (
+              <div key={i}>
+                <h3 className="font-medium text-ink text-[15px] mb-1">{item.question}</h3>
+                <p className="text-ink-mid text-sm leading-relaxed">{item.answer}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Verwandte Artikel — automatisch via Tag-Überlappung */}
       {related.length > 0 && (

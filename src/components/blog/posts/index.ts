@@ -11,6 +11,14 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
     image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=450&fit=crop&auto=format&q=80',
+    faq: [
+      { question: 'Was ist der Unterschied zwischen Grunderwerbsteuer und Grundsteuer?', answer: 'Die Grunderwerbsteuer zahlen Sie einmal, die Grundsteuer immer wieder. Die Grunderwerbsteuer wird einmalig beim Kauf nach der notariellen Beurkundung fällig und liegt je nach Bundesland zwischen 3,5 und 6,5 Prozent des Kaufpreises. Die Grundsteuer B dagegen ist eine jährlich wiederkehrende Halte- und Betriebskostenposition, die Sie zahlen, solange Ihnen die Immobilie gehört.' },
+      { question: 'Wie wird die Grundsteuer B seit der Reform 2025 berechnet?', answer: 'Im Bundesmodell gilt seit dem 1. Januar 2025 die Formel: Grundsteuerwert mal Steuermesszahl mal Hebesatz ergibt die jährliche Grundsteuer. Der Grundsteuerwert wird vom Finanzamt festgestellt und ersetzt den alten Einheitswert. Die Steuermesszahl beträgt für Wohngrundstücke 0,31 Promille. Der Hebesatz wird von jeder Gemeinde selbst festgelegt.' },
+      { question: 'Warum ist der Hebesatz bei der Grundsteuer so entscheidend?', answer: 'Der kommunale Hebesatz ist der letzte und oft größte Faktor und wird von jeder Gemeinde eigenständig festgelegt. Der bundesweite Durchschnitt liegt grob bei etwa 550 Prozent, einzelne Kommunen reichen von zweistelligen Prozentwerten bis über 1.000 Prozent. Bei gleichem Messbetrag von 93 Euro ergeben 500 Prozent eine Steuer von 465 Euro, 800 Prozent dagegen 744 Euro.' },
+      { question: 'Welche Bundesländer rechnen nach dem Bundesmodell und welche anders?', answer: 'Neun Länder wenden das Bundesmodell an: Berlin, Brandenburg, Bremen, Mecklenburg-Vorpommern, NRW, Rheinland-Pfalz, Sachsen-Anhalt, Schleswig-Holstein und Thüringen. Saarland und Sachsen folgen ihm mit eigenen Messzahlen. Fünf Länder gehen eigene Wege: Baden-Württemberg per Bodenwertmodell, Bayern per reinem Flächenmodell, Hamburg, Niedersachsen und Hessen per Flächen-Lage-Modell.' },
+      { question: 'Wie kann ich die Grundsteuer vor dem Immobilienkauf abschätzen?', answer: 'Lassen Sie sich vom Verkäufer den aktuellen Grundsteuerbescheid 2025/2026 zeigen, denn er ist die verlässlichste Quelle für die tatsächliche Jahresbelastung des Objekts. Prüfen Sie zusätzlich den ab 2025 gültigen Hebesatz der Gemeinde und beachten Sie das Modell des Bundeslandes. Pauschale Faustformeln aus dem Internet liefern nur grobe Orientierung.' },
+      { question: 'Kann ich die Grundsteuer als Vermieter auf die Mieter umlegen?', answer: 'Ja, bei vermieteten Wohnungen kann die Grundsteuer über die Betriebskostenabrechnung auf die Mieter umgelegt werden. Bei Eigennutzung tragen Sie sie dagegen selbst. Die Grundsteuer wird in der Regel vierteljährlich an die Gemeinde gezahlt, und als Käufer übernehmen Sie die laufende Zahlung ab dem Eigentumsübergang.' },
+    ],
   },
   {
     slug: 'wohngebaeudeversicherung-hauskauf',
@@ -20,6 +28,14 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
     image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=450&fit=crop&auto=format&q=80',
+    faq: [
+      { question: 'Ist eine Wohngebäudeversicherung beim Hauskauf gesetzlich Pflicht?', answer: 'Nein, eine allgemeine gesetzliche Pflicht zur Wohngebäudeversicherung gibt es in Deutschland nicht. Anders als bei der Kfz-Haftpflicht schreibt kein Bundesgesetz vor, dass ein Wohnhaus versichert sein muss. In der Praxis ist sie aber unverzichtbar: Praktisch jede finanzierende Bank verlangt einen Versicherungsnachweis und zahlt das Darlehen ohne ihn meist gar nicht aus.' },
+      { question: 'Muss ich beim Hauskauf eine neue Wohngebäudeversicherung abschließen?', answer: 'Nein, in der Regel nicht. Nach § 95 VVG treten Sie als Erwerber automatisch in den bestehenden Wohngebäudevertrag des Verkäufers ein, mit allen Rechten und Pflichten. Maßgeblich ist die Eigentumsumschreibung im Grundbuch, nicht die Unterschrift beim Notar. So entsteht keine Deckungslücke: Ab dem Tag des Grundbucheintrags sind Sie versichert, ohne selbst aktiv zu werden.' },
+      { question: 'Wie lange kann ich die geerbte Wohngebäudeversicherung nach dem Hauskauf kündigen?', answer: 'Nach § 96 VVG haben Sie ein Sonderkündigungsrecht und können den geerbten Vertrag innerhalb eines Monats kündigen, gerechnet ab Ihrem Eintrag als neuer Eigentümer im Grundbuch. Diese Sonderkündigung wirkt zum nächstmöglichen Zeitpunkt, nicht erst zum Ende der Versicherungsperiode. Wer vom Vertrag nichts wusste, bei dem beginnt die Frist erst mit Kenntnis.' },
+      { question: 'Welche Schäden deckt eine Wohngebäudeversicherung ab?', answer: 'Der Standardschutz umfasst drei Gefahrengruppen: Feuer (Brand, Blitzschlag, Explosion, meist auch Löschwasser), Leitungswasser (etwa bei Rohrbruch) sowie Sturm ab Windstärke 8 und Hagel. Versichert ist das Gebäude selbst, also Mauern, Dach und fest verbaute Teile. Der Hausrat ist nicht enthalten; dafür brauchen Sie eine separate Hausratversicherung.' },
+      { question: 'Sind Überschwemmung und Starkregen in der Wohngebäudeversicherung enthalten?', answer: 'Nein, Schäden durch Überschwemmung, Starkregen und Rückstau sind im Standardtarif nicht enthalten. Diese sogenannten Elementargefahren müssen als eigener Zusatzbaustein vereinbart werden. Laut GDV hatten 2024 nur etwa 57 Prozent der Wohngebäude eine solche Absicherung gegen weitere Naturgefahren, während Sturm und Hagel bei rund 96 Prozent mitversichert sind.' },
+      { question: 'Was beeinflusst die Höhe der Wohngebäudeversicherung?', answer: 'Den Jahresbeitrag bestimmen mehrere Faktoren: Wohnfläche und umbauter Raum, Bauart und Dachform (Massivbau gilt als günstiger), Baujahr und Zustand, die Lage beziehungsweise ZÜRS-Zone, ein vereinbarter Selbstbehalt sowie der Leistungsumfang. Je höher das Hochwasserrisiko der Adresse, desto teurer oder schwieriger der Elementarschutz. Für Ihr konkretes Objekt sollten Sie mehrere Vergleichsangebote einholen.' },
+    ],
   },
   {
     slug: 'geg-sanierungspflichten-altbau-kauf',
@@ -209,6 +225,14 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '9 Min',
     tags: ['Kaufratgeber', 'Energie'],
     image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&h=450&fit=crop&auto=format&q=80',
+    faq: [
+      { question: 'Was kostet eine neue Wärmepumpe in der Anschaffung?', answer: 'Eine Wärmepumpe kostet in der Anschaffung grob zwischen 18.000 und 35.000 Euro und ist damit vergleichsweise teuer. Über den KfW-Zuschuss 458 sind je nach Voraussetzungen aber bis zu 70 Prozent der förderfähigen Kosten möglich, was die effektive Anschaffung erheblich senkt. Am effizientesten arbeitet sie in gut gedämmten Gebäuden.' },
+      { question: 'Lohnt sich eine Wärmepumpe oder eine Gasheizung beim Hauskauf?', answer: 'Das hängt vom Gebäude ab. Die Wärmepumpe punktet mit niedrigen Betriebskosten, hoher Förderung und guter Zukunftssicherheit, setzt aber eine ordentliche Dämmung voraus. Die Gasheizung ist mit 8.000 bis 12.000 Euro günstig in der Anschaffung, durch steigenden CO2-Preis und Vorgaben des Gebäudeenergiegesetzes aber weniger zukunftssicher.' },
+      { question: 'Wie viel kostet Heizen mit Gas im Vergleich zur Wärmepumpe?', answer: 'Gas kostet als grobe Orientierung etwa 0,10 bis 0,12 Euro pro Kilowattstunde. Eine Wärmepumpe liegt bei einer Jahresarbeitszahl von 3 bis 4 effektiv meist bei 0,09 bis 0,12 Euro pro Kilowattstunde, mit speziellem Wärmepumpen-Stromtarif auch darunter. Beide bewegen sich auf vergleichbarem Niveau, im gut gedämmten Gebäude ist die Wärmepumpe günstiger.' },
+      { question: 'Wie lange hält eine Heizungsanlage?', answer: 'Eine Heizungsanlage hält typischerweise rund 15 bis 25 Jahre. Danach steht in der Regel ein Austausch an, der je nach System mehrere zehntausend Euro kosten kann. Wer ein Haus mit einer 20 Jahre alten Heizung kauft, übernimmt damit faktisch einen Kostenfaktor, der in den nächsten Jahren fällig wird.' },
+      { question: 'Ist eine alte Heizung ein Verhandlungsargument beim Hauskauf?', answer: 'Ja, eine alte Heizung ist ein handfestes Verhandlungsargument. Bei einer Lebensdauer von 15 bis 25 Jahren ist sie ein konkreter Kostenfaktor für die nächsten Jahre. Steht absehbar ein Austausch an, lässt sich dieser Punkt in die Preisverhandlung einbringen. Fragen Sie gezielt nach Alter, Wartungszustand und Brennstoff der Anlage.' },
+      { question: 'Lohnt sich der Kauf eines Hauses mit Ölheizung noch?', answer: 'Die Ölheizung gilt als Auslaufmodell. Bei einer Bestandsimmobilie mit Ölheizung sollten Sie davon ausgehen, dass mittelfristig ein Wechsel ansteht. Heizöl ist ein fossiler Brennstoff, dessen Kosten der CO2-Preis tendenziell weiter erhöht. Planen Sie die absehbaren Austauschkosten daher von Anfang an in Ihre Kalkulation ein.' },
+    ],
   },
   {
     slug: 'reservierungsgebuehr-immobilie',
@@ -407,6 +431,14 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '7 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
     image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=450&fit=crop&auto=format&q=80',
+    faq: [
+      { question: 'Wie hoch ist die Grunderwerbsteuer 2026 in den einzelnen Bundeslaendern?', answer: 'Die Grunderwerbsteuer liegt 2026 je nach Bundesland zwischen 3,5 % und 6,5 % des Kaufpreises. Den niedrigsten Satz hat Bayern mit 3,5 %, den hoechsten Brandenburg, Nordrhein-Westfalen, das Saarland und Schleswig-Holstein mit jeweils 6,5 %. Bei einem Kaufpreis von 400.000 Euro bedeutet das eine Steuer zwischen 14.000 und 26.000 Euro.' },
+      { question: 'Welches Bundesland zaehlt fuer die Grunderwerbsteuer, mein Wohnsitz oder die Lage der Immobilie?', answer: 'Massgeblich ist immer das Bundesland, in dem die Immobilie liegt, nicht Ihr Wohnsitz. Wer etwa in Hamburg wohnt und ein Haus in Schleswig-Holstein kauft, zahlt 6,5 % statt 5,5 %. Bei 400.000 Euro Kaufpreis macht dieser Unterschied 4.000 Euro aus.' },
+      { question: 'Wann wird die Grunderwerbsteuer faellig und wie viel Zeit habe ich zur Zahlung?', answer: 'Nach der notariellen Beurkundung meldet der Notar den Verkauf ans Finanzamt, das den Grunderwerbsteuerbescheid verschickt. Ab Zugang des Bescheids haben Sie einen Monat Zeit zu zahlen. Der Bescheid kommt oft schon wenige Wochen nach dem Notartermin, meist deutlich vor der Kaufpreiszahlung, daher muss das Geld frueh verfuegbar sein.' },
+      { question: 'Muss ich die Grunderwerbsteuer aus Eigenkapital bezahlen?', answer: 'Ja, die Grunderwerbsteuer muessen Sie fast immer aus Eigenkapital zahlen. Banken finanzieren diese Nebenkosten in der Regel nicht mit, weil ihnen kein verwertbarer Sachwert gegenuebersteht. Bei einem Kauf fuer 400.000 Euro in Nordrhein-Westfalen brauchen Sie allein fuer die Steuer 26.000 Euro auf dem Konto, zusaetzlich zu Notar, Grundbuch und Makler.' },
+      { question: 'Wie kann ich die Grunderwerbsteuer beim Hauskauf legal senken?', answer: 'Den Steuersatz koennen Sie nicht beeinflussen, wohl aber die Bemessungsgrundlage. Weisen Sie bewegliches Inventar wie Einbaukueche oder Gartenhaus separat im Kaufvertrag aus und bei Eigentumswohnungen die anteilige Instandhaltungsruecklage. Beim Neubau senkt eine echte Trennung von Grundstueckskauf und Bauvertrag die Steuer auf den reinen Grundstueckspreis.' },
+      { question: 'Muss ich Grunderwerbsteuer zahlen, wenn ich das Haus von meinen Eltern kaufe?', answer: 'Nein. Nach Paragraf 3 GrEStG sind Grundstuecksverkaeufe zwischen Verwandten in gerader Linie, also zwischen Eltern und Kindern, sowie zwischen Ehegatten von der Grunderwerbsteuer befreit, unabhaengig vom Kaufpreis. Wer das Elternhaus von den Eltern kauft, zahlt keine Grunderwerbsteuer. Geschwister fallen nicht unter diese Befreiung, da sie nicht in gerader Linie verwandt sind.' },
+    ],
   },
   {
     slug: 'hauskauf-checkliste-2026',
@@ -416,6 +448,14 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Checkliste'],
     image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&h=450&fit=crop&auto=format&q=80',
+    faq: [
+      { question: 'Wie lange dauert ein Hauskauf von der Suche bis zur Schlüsselübergabe?', answer: 'Realistisch dauert ein Hauskauf 3 bis 9 Monate von der ersten Suche bis zur Schlüsselübergabe. Die Vorbereitung braucht 2 bis 4 Wochen, Suche und Besichtigung 1 bis 5 Monate, Finanzierung und Kaufvertrag bis zum Notartermin 4 bis 6 Wochen sowie die Abwicklung bis zur Übergabe weitere 4 bis 8 Wochen. Die größte Stellschraube ist die Suchphase.' },
+      { question: 'Wie hoch sollte die monatliche Kreditrate beim Hauskauf maximal sein?', answer: 'Als Faustregel sollten höchstens 35 bis 40 Prozent des Nettohaushaltseinkommens in die Kreditrate fließen. Bei 4.000 Euro netto im Monat entspricht das 1.400 bis 1.600 Euro. Rechnen Sie ehrlich mit allen laufenden Verpflichtungen, Rücklagen für Instandhaltung und einem Puffer für Unvorhergesehenes.' },
+      { question: 'Wie hoch sind die Kaufnebenkosten beim Hauskauf?', answer: 'Die Kaufnebenkosten summieren sich auf 10 bis 12 Prozent des Kaufpreises. Dazu zählen Grunderwerbsteuer, Notar- und Grundbuchkosten sowie gegebenenfalls die Maklerprovision. Bei einem Kaufpreis von 400.000 Euro sind das 40.000 bis 48.000 Euro. Diese Kosten sollten zusätzlich aus Eigenkapital bezahlt werden und nicht über den Kredit laufen.' },
+      { question: 'Muss die Finanzierungszusage vor dem Notartermin vorliegen?', answer: 'Ja, die verbindliche Finanzierungszusage muss zwingend vor dem Notartermin vorliegen. Wer ohne Zusage beurkundet und die Finanzierung anschließend nicht erhält, bleibt auf erheblichen Kosten sitzen und riskiert Schadensersatzforderungen des Verkäufers. Lassen Sie sich von niemandem zu einem früheren Notartermin drängen.' },
+      { question: 'Habe ich als Käufer ein Recht, den Kaufvertrag vorab zu prüfen?', answer: 'Ja, als Verbraucher haben Sie Anspruch auf eine Prüffrist von 14 Tagen vor der Beurkundung (§ 17 Abs. 2a BeurkG). Nutzen Sie diese zwei Wochen vollständig und prüfen Sie Kaufgegenstand, mitverkauftes Inventar, Fälligkeitsvoraussetzungen, Übergabetermin und Gewährleistung. Unklare Punkte klären Sie vorab schriftlich mit dem Notariat, denn spätere Änderungen kosten Zeit und Geld.' },
+      { question: 'Wann muss ich beim Hauskauf den Kaufpreis bezahlen?', answer: 'Den Kaufpreis überweisen Sie erst nach Erhalt der Fälligkeitsmitteilung, nie vorher. Zuvor lässt der Notar eine Auflassungsvormerkung ins Grundbuch eintragen, die Ihren Eigentumsanspruch sichert, und organisiert bei bestehender Grundschuld die Lastenfreistellung. Erst wenn alle Voraussetzungen erfüllt sind, erhalten Sie die Fälligkeitsmitteilung und zahlen.' },
+    ],
   },
   {
     slug: 'kaufen-oder-mieten-2026',
@@ -425,6 +465,14 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
     image: 'https://images.unsplash.com/photo-1560440021-33f9b867899d?w=800&h=450&fit=crop&auto=format&q=80',
+    faq: [
+      { question: 'Lohnt sich Kaufen oder Mieten 2026 mehr?', answer: 'Das hängt nicht von Überzeugungen ab, sondern von konkreten Zahlen: Kaufpreis, Vergleichsmiete, Zinssatz, Nebenkosten, Haltedauer und Lebenssituation. Mitte 2026 liegen die Bauzinsen bei rund 3,5 bis 4,0 Prozent für zehn Jahre Zinsbindung. Kaufen lohnt sich typischerweise bei Haltedauer über 10 bis 15 Jahren, stabiler Lebenssituation und einem Kaufpreisfaktor unter 25.' },
+      { question: 'Wie berechne ich den Kaufpreisfaktor einer Immobilie?', answer: 'Sie teilen den Kaufpreis durch die Jahreskaltmiete einer vergleichbaren Wohnung. Das Ergebnis zeigt, wie viele Jahresmieten Sie für das Objekt zahlen. Ein Faktor unter 20 spricht eher für Kaufen, 20 bis 25 ist neutral, über 25 spricht eher für Mieten. In deutschen Großstädten liegen die Faktoren oft bei 25 bis 35.' },
+      { question: 'Wie hoch sind die Kaufnebenkosten beim Immobilienkauf 2026?', answer: 'Die Kaufnebenkosten liegen typischerweise bei 10 bis 12 Prozent des Kaufpreises: Grunderwerbsteuer je nach Bundesland 3,5 bis 6,5 Prozent, Notar und Grundbuch rund 2 Prozent sowie gegebenenfalls Maklerprovision bis 3,57 Prozent. Diese Summe ist mit dem Tag des Kaufs verloren, baut kein Vermögen auf und muss durch Wertsteigerung erst wieder hereingeholt werden.' },
+      { question: 'Wie viel sollte ich pro Jahr für Instandhaltung einer Immobilie einplanen?', answer: 'Als Faustregel sollten Eigentümer 1,5 bis 2 Prozent des Gebäudewerts pro Jahr für Instandhaltung einplanen, mindestens aber 1 Euro pro Quadratmeter und Monat als Rücklage. Instandhaltung ist der am häufigsten unterschätzte Posten beim Kauf und trifft Eigentümer allein, während Mieter sie nicht tragen.' },
+      { question: 'Wann kann ich meine selbstgenutzte Immobilie steuerfrei verkaufen?', answer: 'Eigennutzer können ihre Immobilie steuerfrei verkaufen, wenn sie sie im Verkaufsjahr und den beiden vorangegangenen Kalenderjahren selbst bewohnt haben, also nach drei Kalenderjahren Eigennutzung. Bei vermieteten Objekten gilt dagegen die zehnjährige Spekulationsfrist, innerhalb derer ein Verkaufsgewinn steuerpflichtig sein kann.' },
+      { question: 'Ist Miete wirklich rausgeworfenes Geld?', answer: 'Nein, dieser Satz ist schief. Auch Eigentümer werfen Geld raus, nur an anderer Stelle: Zinsen an die Bank, Kaufnebenkosten an Staat, Notar und Makler sowie laufende Instandhaltung. Keiner dieser Posten baut Vermögen auf. Beim Kauf entsteht Vermögen ausschließlich durch Tilgung und eine eventuelle Wertsteigerung. Mieter, die die Differenz konsequent in einen ETF-Sparplan investieren, können rechnerisch mit dem Käufer gleichziehen.' },
+    ],
   },
   {
     slug: 'maklerprovision-immobilienkauf',
@@ -434,6 +482,14 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '7 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
     image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=450&fit=crop&auto=format&q=80',
+    faq: [
+      { question: 'Wie viel Maklerprovision zahlt der Käufer beim Wohnungs- oder Hauskauf?', answer: 'Beim Kauf einer Eigentumswohnung oder eines Einfamilienhauses zahlt der Käufer höchstens die Hälfte der Maklerprovision. Üblich ist ein Käuferanteil von 2,98 bis 3,57 Prozent des Kaufpreises. Der häufigste Satz liegt bei 3,57 Prozent, also 3,0 Prozent Honorar plus 19 Prozent Mehrwertsteuer. Bei 400.000 Euro Kaufpreis sind das rund 14.280 Euro.' },
+      { question: 'Muss der Käufer die ganze Maklerprovision allein zahlen?', answer: 'Nein. Seit der Reform vom 23. Dezember 2020 (§§ 656c und 656d BGB) darf dem Käufer einer Wohnung oder eines Einfamilienhauses höchstens die Hälfte der Gesamtprovision in Rechnung gestellt werden. Ist der Makler für beide Seiten tätig, zahlen Käufer und Verkäufer gleich viel. Verträge, die mehr als 50 Prozent abwälzen, sind unwirksam.' },
+      { question: 'Wann wird die Maklerprovision fällig?', answer: 'Die Maklerprovision ist eine reine Erfolgsvergütung und entsteht erst, wenn durch die Vermittlung tatsächlich ein notarieller Kaufvertrag zustande kommt. Fällig wird sie in der Regel mit Wirksamkeit dieses Vertrags. Platzt der Kauf vor dem Notartermin, schulden Sie nichts, egal wie viele Besichtigungen stattgefunden haben.' },
+      { question: 'Wann fällt beim Immobilienkauf gar keine Maklerprovision an?', answer: 'Keine Provision zahlen Sie beim Kauf direkt vom Eigentümer (Privatverkäufe sind auf Portalen als provisionsfrei gekennzeichnet) und beim Kauf vom Bauträger, da Neubauprojekte oft provisionsfrei vertrieben werden. Auch bei reiner Innenprovision trägt der Verkäufer die komplette Courtage. Hinweis: provisionsfrei heißt nicht automatisch günstiger, da Verkäufer Maklerkosten oft einkalkulieren.' },
+      { question: 'Kann man die Maklerprovision verhandeln?', answer: 'Ja, die Provision ist gesetzlich nicht festgelegt und damit verhandelbar, anders als Grunderwerbsteuer und Notargebühren. Verhandeln Sie den Satz mit dem Makler, bevor Sie den Maklervertrag in Textform schließen, also früh im Prozess. Realistische Ansatzpunkte sind eine lange Inseratsdauer, hohe Kaufpreise oder ein verbindliches Komplettpaket mit Finanzierungszusage.' },
+      { question: 'Zählt die Maklerprovision zur Grunderwerbsteuer?', answer: 'Nein. Die Grunderwerbsteuer wird auf den Kaufpreis der Immobilie berechnet. Die Maklerprovision, die Sie aufgrund eines eigenen Maklervertrags schulden, gehört nicht zur Bemessungsgrundlage und verteuert den Kauf steuerlich nicht zusätzlich. Wie alle Kaufnebenkosten muss die Provision aber meist aus Eigenkapital bezahlt werden, da Banken sie nicht mitfinanzieren.' },
+    ],
   },
   {
     slug: 'notarkosten-grundbuchkosten-immobilienkauf',
@@ -443,6 +499,14 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '7 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
     image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=450&fit=crop&auto=format&q=80',
+    faq: [
+      { question: 'Wie hoch sind Notar- und Grundbuchkosten beim Immobilienkauf?', answer: 'Notar und Grundbuchamt kosten zusammen etwa 1,5 bis 2,0 Prozent des Kaufpreises. Davon entfallen rund 1,0 bis 1,5 Prozent auf den Notar (mit Grundschuldbestellung eher 1,5 Prozent) und etwa 0,5 Prozent auf das Grundbuchamt. Bei 400.000 Euro Kaufpreis sind das rund 7.000 bis 8.000 Euro, die zusaetzlich anfallen.' },
+      { question: 'Kann ich durch die Wahl eines guenstigeren Notars sparen?', answer: 'Nein. Die Gebuehren von Notaren und Grundbuchaemtern sind bundeseinheitlich im Gerichts- und Notarkostengesetz (GNotKG) geregelt und nicht verhandelbar. Jeder Notar in Deutschland kostet fuer dieselbe Leistung gleich viel. Massgeblich fuer die Hoehe ist im Wesentlichen der Kaufpreis als Geschaeftswert. Ein Vergleich verschiedener Notare lohnt sich daher nicht.' },
+      { question: 'Wer zahlt die Notar- und Grundbuchkosten beim Hauskauf?', answer: 'Ueblicherweise traegt der Kaeufer die Notar- und Grundbuchkosten des Erwerbs. Das ist grundsaetzlich Verhandlungssache, in der Praxis aber der Standard und wird so im Kaufvertrag festgehalten. Eine Ausnahme: Sind noch alte Grundschulden des Verkaeufers eingetragen, zahlt der Verkaeufer die Kosten fuer deren Loeschung.' },
+      { question: 'Muss ich die Notarkosten auch zahlen, wenn der Kauf platzt?', answer: 'Ja. Die Notarkosten fallen auch dann an, wenn der Kauf nach der Beurkundung noch scheitert, etwa weil die Finanzierung platzt. Wer erst unterschreibt und dann rechnet, riskiert reale Verluste. Deshalb sollten Finanzierung und Pruefung des Vertrags vor dem Beurkundungstermin abgeschlossen sein.' },
+      { question: 'Wie lange habe ich Zeit, den Kaufvertrag vor der Beurkundung zu pruefen?', answer: 'Der Notar muss Ihnen den Kaufvertragsentwurf mindestens 14 Tage vor der Beurkundung zur Verfuegung stellen (Paragraf 17 Abs. 2a BeurkG). Diese Prueffrist ist ein zentrales Schutzinstrument fuer private Kaeufer. Nutzen Sie sie, um Vertragstext, Kostenaufteilung und Unterlagen in Ruhe zu kontrollieren, bevor Sie zum Beurkundungstermin gehen.' },
+      { question: 'Wie kann ich bei Notar- und Grundbuchkosten sparen?', answer: 'Das Sparpotenzial ist begrenzt, weil die Gebuehren gesetzlich festgelegt sind. Drei Stellschrauben gibt es: die Grundschuld nur in tatsaechlicher Darlehenshoehe statt in Kaufpreishoehe eintragen lassen, bewegliches Inventar wie Einbaukueche oder Moebel separat im Vertrag ausweisen und auf das kostenpflichtige Notaranderkonto verzichten. Einen niedrigeren Kaufpreis beurkunden zu lassen ist illegal.' },
+    ],
   },
   {
     slug: 'eigenkapital-immobilienkauf',
@@ -452,6 +516,14 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '7 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
     image: 'https://images.unsplash.com/photo-1464082354059-27db6ce50048?w=800&h=450&fit=crop&auto=format&q=80',
+    faq: [
+      { question: 'Wie viel Eigenkapital brauche ich für den Immobilienkauf?', answer: 'Die verbreitete Empfehlung lautet: mindestens 20 Prozent des Kaufpreises plus die vollständigen Kaufnebenkosten aus eigenen Mitteln, ideal sind 30 Prozent. Die Kaufnebenkosten von etwa 10 bis 12 Prozent des Kaufpreises sollten immer aus Eigenkapital stammen, weil Banken sie ungern mitfinanzieren. Wer diese Leitplanken einhält, finanziert günstiger und sicherer.' },
+      { question: 'Wie viel Eigenkapital brauche ich bei einer Immobilie für 400.000 Euro?', answer: 'Bei einem 400.000-Euro-Objekt betragen die Kaufnebenkosten etwa 40.000 bis 48.000 Euro. Der Gesamtbedarf liegt damit bei rund 85.000 Euro für 10 Prozent Eigenkapital, rund 125.000 Euro für 20 Prozent und rund 165.000 Euro für 30 Prozent. Die Nebenkosten erhöhen die nötige Summe um mehr als die Hälfte gegenüber den reinen 20 Prozent vom Kaufpreis.' },
+      { question: 'Warum finanzieren Banken die Kaufnebenkosten nicht mit?', answer: 'Banken finanzieren Nebenkosten ungern mit, weil Grunderwerbsteuer, Notargebühren und Maklerprovision keinen Gegenwert schaffen, den die Bank im Ernstfall verwerten könnte. Eine sogenannte 110-Prozent-Finanzierung, bei der auch die Nebenkosten kreditfinanziert werden, vergeben Banken nur an Käufer mit Top-Bonität, und sie ist deutlich teurer als eine klassische Finanzierung.' },
+      { question: 'Wie hoch darf die monatliche Kreditrate im Verhältnis zum Einkommen sein?', answer: 'Als Faustregel sollte die Rate maximal 35 bis 40 Prozent des Nettohaushaltseinkommens betragen. Bei 4.000 Euro netto im Monat wären das 1.400 bis 1.600 Euro. Zusätzlich sollten drei Netto-Monatsgehälter als Notreserve zurückbleiben und nicht in die Finanzierung fließen, damit unerwartete Kosten wie eine defekte Heizung die Rate nicht gefährden.' },
+      { question: 'Was erkennen Banken alles als Eigenkapital an?', answer: 'Banken erkennen üblicherweise Bankguthaben auf Giro-, Tagesgeld- und Festgeldkonten an, außerdem Wertpapiere wie Aktien, Fonds und ETFs mit einem Abschlag, Bausparguthaben, Schenkungen wie ein vorgezogenes Erbe sowie bereits abbezahlte Grundstücke. Eigenleistung als Muskelhypothek zählt nur begrenzt, realistisch sind 5 bis 10 Prozent der Bausumme bei einer Sanierung.' },
+      { question: 'Lohnt sich mehr Eigenkapital beim Hauskauf wirklich?', answer: 'Ja, Eigenkapital hat einen doppelten Effekt: Es senkt die Darlehenssumme und über den besseren Zinssatz auch die Kosten jedes geliehenen Euros. Im 400.000-Euro-Beispiel liegen zwischen dem 10- und dem 30-Prozent-Szenario 375 Euro Monatsrate, Monat für Monat über die gesamte Zinsbindung. Wenig Eigenkapital bedeutet zudem höhere Restschuld und Risiken bei Preisrückgängen.' },
+    ],
   },
   {
     slug: 'kaufpreisfaktor-mietrendite',
@@ -461,6 +533,14 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '7 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
     image: 'https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=800&h=450&fit=crop&auto=format&q=80',
+    faq: [
+      { question: 'Wie berechne ich den Kaufpreisfaktor einer Immobilie?', answer: 'Der Kaufpreisfaktor ergibt sich aus Kaufpreis geteilt durch Jahreskaltmiete. Maßgeblich ist die Kaltmiete ohne Betriebskosten, hochgerechnet auf zwölf Monate. Ein Faktor von 25 bedeutet, dass der Kaufpreis 25 Jahreskaltmieten entspricht. Rechnerisch dauert es also 25 Jahre, bis die Mieteinnahmen den Kaufpreis erreicht haben.' },
+      { question: 'Welcher Kaufpreisfaktor gilt als günstig und welcher als teuer?', answer: 'Ein Faktor unter 20 gilt als günstig, oft aber in strukturschwächeren Regionen mit höherem Risiko. Werte von 20 bis 25 sind solide und ausgewogen. Faktoren zwischen 25 und 30 gelten als teuer und sind typisch für gefragte Großstadtlagen. Über 30 ist sehr teuer, hier ist der Kauf primär eine Wette auf Wertsteigerung.' },
+      { question: 'Wie viel Mietrendite entspricht einem Kaufpreisfaktor von 25?', answer: 'Ein Kaufpreisfaktor von 25 entspricht 4,0 Prozent Bruttomietrendite, ein Faktor von 20 entspricht 5,0 Prozent. Die Bruttomietrendite ist der Kehrwert des Kaufpreisfaktors. Es gilt: Je höher der Faktor, desto niedriger die Rendite und desto teurer die Immobilie im Verhältnis zu ihrer Miete.' },
+      { question: 'Wie berechne ich die Bruttomietrendite?', answer: 'Die Bruttomietrendite ergibt sich aus Jahreskaltmiete geteilt durch Kaufpreis mal 100. Beispiel: 13.680 Euro Jahreskaltmiete geteilt durch 389.000 Euro Kaufpreis mal 100 ergeben 3,5 Prozent. Sie eignet sich für den schnellen Vergleich mehrerer Angebote, lässt aber Kaufnebenkosten und laufende Bewirtschaftungskosten außen vor.' },
+      { question: 'Warum ist die Nettomietrendite niedriger als die Bruttomietrendite?', answer: 'Die Nettomietrendite berücksichtigt Kaufnebenkosten wie Grunderwerbsteuer, Notar und Makler sowie nicht-umlagefähige Bewirtschaftungskosten von oft 20 bis 25 Prozent der Kaltmiete. Als Faustregel liegt sie typischerweise 1 bis 1,5 Prozentpunkte unter der Bruttomietrendite. Im Artikelbeispiel sinkt sie von 3,5 Prozent brutto auf rund 2,5 Prozent netto.' },
+      { question: 'Welche Miete soll ich für die Berechnung des Kaufpreisfaktors ansetzen?', answer: 'Setzen Sie die realistische ortsübliche Miete an, nicht die Wunschmiete aus dem Exposé. Ein Blick in den Mietspiegel und vergleichbare Mietangebote der Umgebung schafft Klarheit. Beachten Sie zudem Mietpreisbremse und Mietspiegel, die Erhöhungen begrenzen. Bei Leerstand oder Sanierungsstau ist die angesetzte Miete nur eine Annahme und verzerrt die Kennzahl.' },
+    ],
   },
   {
     slug: 'altbau-oder-neubau-kaufen',
@@ -830,6 +910,14 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '10 Min',
     tags: ['Finanzierung', 'Kaufratgeber'],
     image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=450&fit=crop&auto=format&q=80',
+    faq: [
+      { question: 'Wie hoch sind die Kaufnebenkosten beim Immobilienkauf?', answer: 'Die Kaufnebenkosten betragen je nach Bundesland und Situation 5,5 % bis über 15 % des Kaufpreises. Bei einer Immobilie für 400.000 € sind das rund 22.000 bis 60.000 €. Sie setzen sich aus Grunderwerbsteuer, Notar, Grundbuch und Maklergebühr zusammen. Banken finanzieren diese Nebenkosten selten mit, sodass Käufer sie meist aus Eigenkapital aufbringen müssen.' },
+      { question: 'Wie viel Grunderwerbsteuer zahle ich beim Hauskauf?', answer: 'Die Grunderwerbsteuer ist der größte Nebenkosten-Posten und variiert je nach Bundesland von 3,5 % bis 6,5 % des Kaufpreises (Stand 2026). In Bayern gelten 3,5 %, in NRW, Brandenburg, Schleswig-Holstein und im Saarland 6,5 %. Bei 400.000 € Kaufpreis bedeutet das zwischen 14.000 € in Bayern und 26.000 € in NRW.' },
+      { question: 'Was kostet der Notar beim Immobilienkauf?', answer: 'Notarkosten liegen bei etwa 1,0 bis 1,5 % des Kaufpreises, bei 400.000 € also rund 5.000 bis 6.000 €. Der Notar beurkundet den Kaufvertrag, bestellt die Grundschuld und veranlasst die Eigentumsumschreibung. Die Gebühren sind im Gerichts- und Notarkostengesetz (GNotKG) festgelegt und damit nicht verhandelbar.' },
+      { question: 'Wie viel Maklerprovision zahlt der Käufer?', answer: 'Seit Dezember 2020 darf der Verkäufer dem Käufer bei Wohnimmobilien maximal die Hälfte der Maklerprovision auferlegen. Üblich ist eine 50/50-Aufteilung mit je 3,57 % inklusive Mehrwertsteuer pro Partei. Bei 400.000 € sind das rund 14.280 € für den Käufer. Die Provision ist verhandelbar, und manche Objekte werden provisionsfrei angeboten.' },
+      { question: 'Muss ich beim Immobilienkauf Eigenkapital für die Nebenkosten mitbringen?', answer: 'Ja. Banken finanzieren Kaufnebenkosten selten mit, daher müssen die meisten Käufer sie aus Eigenkapital aufbringen. Beispiel: Bei einer Eigentumswohnung in Hessen für 380.000 € liegen die Gesamtkosten fast 72.000 € über dem Kaufpreis. Bei einer 90-%-Finanzierung wären mindestens 71.706 € Eigenkapital nötig, also alle Nebenkosten plus 10 % des Kaufpreises.' },
+      { question: 'Wie kann ich beim Immobilienkauf Nebenkosten sparen?', answer: 'Drei Hebel helfen: provisionsfrei kaufen spart bei 400.000 € bis zu 14.000 €; Inventar wie Einbauküche oder Markise separat im Kaufvertrag aufführen, da darauf keine Grunderwerbsteuer anfällt (bis zu 975 € bei 15.000 € Inventar und 6,5 %); und das Bundesland beachten, denn zwischen Bayern und NRW liegen bei 400.000 € genau 12.000 € Grunderwerbsteuer.' },
+    ],
   },
   {
     slug: 'energieausweis-expose',
@@ -839,6 +927,14 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '11 Min',
     tags: ['Energie', 'Kaufratgeber'],
     image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=450&fit=crop&auto=format&q=80',
+    faq: [
+      { question: 'Welche Energieangaben müssen im Immobilien-Exposé stehen?', answer: 'Das Gebäudeenergiegesetz (GEG) schreibt fünf Pflichtangaben für jedes Immobilieninserat vor: Art des Energieausweises (Verbrauchs- oder Bedarfsausweis), Endenergiebedarf oder -verbrauch in kWh/m²a, Energieeffizienzklasse (A+ bis H), wesentlicher Energieträger (etwa Gas, Öl, Fernwärme oder Wärmepumpe) und das Baujahr. Fehlt eine Angabe, ist das eine Ordnungswidrigkeit und ein Warnsignal.' },
+      { question: 'Was kostet eine schlechte Energieklasse beim Heizen pro Jahr?', answer: 'Die Effizienzklasse bestimmt direkt die Heizkosten. Für eine 85-m²-Wohnung mit Gasheizung kostet Klasse A rund 340 Euro pro Jahr, Klasse C etwa 765 Euro, Klasse E rund 1.233 Euro und Klasse H etwa 2.380 Euro. Über 20 Jahre summiert sich der Unterschied zwischen Klasse A und H auf über 40.000 Euro Mehrkosten allein fürs Heizen.' },
+      { question: 'Was ist der Unterschied zwischen Verbrauchsausweis und Bedarfsausweis?', answer: 'Der Verbrauchsausweis basiert auf dem tatsächlichen Verbrauch der letzten drei Jahre und hängt vom Heizverhalten der Bewohner ab; sparsame Vormieter ergeben gute Werte trotz schlechter Dämmung. Der Bedarfsausweis berechnet den Bedarf aus Gebäudehülle und Technik, ist objektiver und besser vergleichbar. Verbrauchsausweise kosten 50 bis 100 Euro, Bedarfsausweise 300 bis 500 Euro.' },
+      { question: 'Wie viel beeinflusst die Energieklasse den Immobilienwert?', answer: 'Die Effizienzklasse wirkt sich deutlich auf den Marktwert aus. Wohnungen der Klasse A+ oder A sind im Schnitt rund 650 Euro pro Quadratmeter teurer als Klasse D oder E. Häuser der Klasse H haben etwa 14 Prozent weniger Marktwert als der Durchschnitt. Eine Sanierung von D/E auf A+/A kostet rund 700 Euro pro Quadratmeter.' },
+      { question: 'Lohnt sich der Kauf einer Immobilie mit schlechter Energieklasse?', answer: 'Ein niedriger Kaufpreis bei schlechter Energieklasse kann ein gutes Geschäft sein, wenn die Sanierungskosten den Preisabschlag nicht auffressen. Eine Sanierung von Klasse D/E auf A+/A kostet rund 700 Euro pro Quadratmeter. Entscheidend ist, Kaufpreis, Sanierungskosten und ersparte Heizkosten über die geplante Haltedauer gegenzurechnen, statt nur auf die Klasse zu schauen.' },
+      { question: 'Welche Förderung gibt es bei energetischer Sanierung?', answer: 'Für die Gebäudehülle gibt es 15 Prozent BAFA-Zuschuss, mit individuellem Sanierungsfahrplan (iSFP) 20 Prozent. Der Heizungstausch läuft über die KfW (Zuschuss 458) mit 30 Prozent Grundförderung, durch Boni bis zu 70 Prozent. Der KfW-Kredit 261 bietet bis 150.000 Euro mit Tilgungszuschuss. Alternativ sind über §35c EStG 20 Prozent über drei Jahre absetzbar, maximal 40.000 Euro je Objekt.' },
+    ],
   },
   {
     slug: 'warnsignale-expose',

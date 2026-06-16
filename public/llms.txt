@@ -1,0 +1,23 @@
+# ImmoPrüf
+
+> ImmoPrüf (immopruef.de) ist ein deutsches Online-Tool für private Immobilienkäufer. Aus dem Link zu einem Exposé (ImmobilienScout24, Immowelt, Immonet, Kleinanzeigen) erstellt ImmoPrüf in Minuten eine strukturierte, KI-gestützte Ersteinschätzung: Preisplausibilität, Kaufnebenkosten, Standortanalyse, Risiken und Finanzierungs-Szenarien. ImmoPrüf arbeitet käuferseitig, verkauft keine Kontaktdaten an Makler und ist keine Lead-Generierung. Betreiber: Neuralpfad UG (haftungsbeschränkt). Eine Analyse ersetzt kein Verkehrswertgutachten und keine Rechts-, Steuer- oder Finanzberatung.
+
+## Kostenlose Rechner
+- [Kaufnebenkosten-/Grunderwerbsteuer-Rechner](https://immopruef.de/grunderwerbsteuer-rechner): Berechnet Grunderwerbsteuer (je Bundesland), Notar, Grundbuch und Maklerprovision für einen Kaufpreis.
+- [Budgetrechner](https://immopruef.de/budgetrechner): Ermittelt aus Nettoeinkommen, Eigenkapital, Zins und Tilgung den leistbaren Kaufpreis.
+- [Tilgungsrechner](https://immopruef.de/tilgungsrechner): Annuitätendarlehen — Monatsrate, Restschuld nach Zinsbindung, Gesamtzinsen und Tilgungsplan, optional mit Sondertilgung.
+- [Mieten-oder-Kaufen-Rechner](https://immopruef.de/mieten-oder-kaufen-rechner): Vergleicht das Vermögen nach Jahren beim Kauf gegenüber Mieten plus Anlage der Differenz, mit Break-even-Jahr.
+
+## Wichtige Ratgeber
+- [Kaufnebenkosten beim Immobilienkauf](https://immopruef.de/blog/kaufnebenkosten-immobilienkauf): Welche Nebenkosten anfallen (rund 10–15 % des Kaufpreises) und wie sie sich zusammensetzen.
+- [Grunderwerbsteuer 2026 nach Bundesland](https://immopruef.de/blog/grunderwerbsteuer-2026-bundeslaender): Aktuelle Steuersätze von 3,5 % bis 6,5 % je Bundesland.
+- [Grundsteuer 2026 nach der Reform](https://immopruef.de/blog/grundsteuer-reform-2025-2026): Wie sich die laufende Grundsteuer nach der Reform berechnet.
+- [Energieausweis im Exposé verstehen](https://immopruef.de/blog/energieausweis-expose): Effizienzklassen, Verbrauchs- vs. Bedarfsausweis und versteckte Folgekosten.
+- [Maklerprovision beim Immobilienkauf](https://immopruef.de/blog/maklerprovision-immobilienkauf): Höhe, Teilung zwischen Käufer und Verkäufer und gesetzliche Regeln.
+- [Eigenkapital beim Immobilienkauf](https://immopruef.de/blog/eigenkapital-immobilienkauf): Wie viel Eigenkapital sinnvoll ist und was es bewirkt.
+- [Kaufen oder mieten 2026](https://immopruef.de/blog/kaufen-oder-mieten-2026): Wann sich der Kauf gegenüber dem Mieten rechnet.
+- [Hauskauf-Checkliste 2026](https://immopruef.de/blog/hauskauf-checkliste-2026): Schritt-für-Schritt-Checkliste für den Immobilienkauf.
+
+## Über ImmoPrüf
+- [Über uns und Methodik](https://immopruef.de/ueber-uns): Wer hinter ImmoPrüf steht und wie die Analysen und Ratgeber entstehen und geprüft werden.
+- [Alle Ratgeber-Artikel](https://immopruef.de/blog): Über 90 Artikel rund um den Immobilienkauf (Finanzierung, Recht, Zustand, Standort, Energie).
