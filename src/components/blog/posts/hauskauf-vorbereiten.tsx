@@ -221,7 +221,7 @@ export default function HauskaufVorbereiten() {
 
       <h2>Fazit: Vorbereitung ist der halbe Kauf</h2>
       <p>
-        Die beste Besichtigung nützt wenig, wenn Sie nicht wissen, wonach Sie suchen. Eine systematische Vorprüfung kostet eine Stunde — und kann Ihnen Wochen an Fehlbesichtigungen und zehntausende Euro an übersehenen Mängeln ersparen. Besichtigen Sie nie eine Immobilie, ohne vorher Preis, Lage, Energie und Finanzen geprüft zu haben.
+        Die beste Besichtigung nützt wenig, wenn Sie nicht wissen, wonach Sie suchen. Eine systematische Vorprüfung kostet eine Stunde — und kann Ihnen Wochen an Fehlbesichtigungen und zehntausende Euro an übersehenen Mängeln ersparen. Besichtigen Sie nie eine Immobilie, ohne vorher Preis, Lage, Energie und Finanzen geprüft zu haben. Den größeren Zusammenhang zeigt <a href="/blog/hauskauf-ablauf-leitfaden">der komplette Hauskauf-Ablauf von der Suche bis zur Übergabe</a>.
       </p>
       <p>
         <strong>ImmoPrüf</strong> erledigt die Phasen 1 bis 3 automatisch in wenigen Minuten: Exposé-Daten auswerten, Standort analysieren, Kaufnebenkosten berechnen, Finanzierungsszenarien durchrechnen und Risiken identifizieren. So gehen Sie mit einer vollständigen Datengrundlage in jede Besichtigung — und mit den richtigen Fragen im Gepäck.

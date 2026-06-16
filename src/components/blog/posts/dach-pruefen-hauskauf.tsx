@@ -2,7 +2,7 @@ export default function DachPruefenHauskauf() {
   return (
     <>
       <p>Das Dach gehört zu den teuersten Bauteilen eines Hauses. Wer beim Kauf nicht genau hinschaut, riskiert kurz nach dem Einzug eine Rechnung im fünfstelligen Bereich. Genau deshalb lohnt sich eine sorgfältige Prüfung von Zustand und Alter, bevor Sie ein verbindliches Angebot abgeben.</p>
-      <p>Die gute Nachricht: Viele Hinweise auf ein sanierungsbedürftiges Dach erkennen Sie bereits mit bloßem Auge, vom Gehweg aus oder beim Gang über den Dachboden. Dieser Leitfaden zeigt Ihnen Schritt für Schritt, worauf Sie achten sollten, mit welchen Sanierungskosten Sie rechnen müssen und wie ein altes Dach zum Verhandlungsargument wird.</p>
+      <p>Die gute Nachricht: Viele Hinweise auf ein sanierungsbedürftiges Dach erkennen Sie bereits mit bloßem Auge, vom Gehweg aus oder beim Gang über den Dachboden. Dieser Leitfaden zeigt Ihnen Schritt für Schritt, worauf Sie achten sollten, mit welchen Sanierungskosten Sie rechnen müssen und wie ein altes Dach zum Verhandlungsargument wird. Den größeren Zusammenhang zeigt unser Überblick, <a href="/blog/immobilie-zustand-pruefen-leitfaden">wie Sie Bausubstanz &amp; Zustand vor dem Kauf prüfen</a>.</p>
       <p>Wichtig vorab: Die folgenden Werte sind grobe Orientierungsgrößen für eine erste Einschätzung. Sie ersetzen keine fachliche Begutachtung vor Ort, helfen Ihnen aber dabei, ein Angebot realistisch einzuordnen und gezielt nachzufragen.</p>
       
       <h2>Warum das Dach so teuer werden kann</h2>

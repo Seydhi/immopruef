@@ -231,7 +231,7 @@ export default function BaujahrUndModernisierung() {
 
       <h2>Fazit: Baujahr und Modernisierung immer zusammen lesen</h2>
       <p>
-        Das Baujahr zeigt, was einmal war. Die Modernisierung zeigt, was heute ist. Nur beides zusammen ergibt ein realistisches Bild. Ein Haus von 1975 ist nicht automatisch schlecht und ein Haus von 2010 nicht automatisch gut. Was zählt ist: Welche Bauteile wurden wann erneuert — und welche stehen als nächstes an. Wer diese Frage systematisch beantwortet, kauft mit offenen Augen.
+        Das Baujahr zeigt, was einmal war. Die Modernisierung zeigt, was heute ist. Nur beides zusammen ergibt ein realistisches Bild. Ein Haus von 1975 ist nicht automatisch schlecht und ein Haus von 2010 nicht automatisch gut. Was zählt ist: Welche Bauteile wurden wann erneuert — und welche stehen als nächstes an. Wer diese Frage systematisch beantwortet, kauft mit offenen Augen. Den größeren Zusammenhang zeigt <a href="/blog/immobilie-zustand-pruefen-leitfaden">wie Sie Bausubstanz &amp; Zustand vor dem Kauf prüfen</a>.
       </p>
       <p>
         <strong>ImmoPrüf</strong> führt Baujahr, Energieklasse und Exposé-Angaben automatisch zusammen: Der Modernisierungs-Check zeigt für jedes Bauteil die geschätzte Restlebensdauer, die erwartbaren Erneuerungskosten und eine Sanierungs-Timeline. So sehen Sie nicht nur was heute ist, sondern was in den nächsten 5, 10 und 20 Jahren auf Sie zukommt.

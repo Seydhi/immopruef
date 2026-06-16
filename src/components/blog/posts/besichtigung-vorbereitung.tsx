@@ -191,7 +191,7 @@ export default function BesichtigungVorbereitung() {
 
       <h2>Fazit: Fragen kosten nichts — Unwissenheit schon</h2>
       <p>
-        Jede Frage die Sie bei der Besichtigung stellen, ist eine Frage die Sie nach dem Kauf nicht mit Geld beantworten müssen. Bereiten Sie sich vor, nehmen Sie Ihre Liste mit und scheuen Sie sich nicht, unbequeme Fragen zu stellen. Ein seriöser Verkäufer beantwortet sie gerne. Ein unseriöser wird ausweichend — und das ist die wertvollste Information von allen.
+        Jede Frage die Sie bei der Besichtigung stellen, ist eine Frage die Sie nach dem Kauf nicht mit Geld beantworten müssen. Bereiten Sie sich vor, nehmen Sie Ihre Liste mit und scheuen Sie sich nicht, unbequeme Fragen zu stellen. Ein seriöser Verkäufer beantwortet sie gerne. Ein unseriöser wird ausweichend — und das ist die wertvollste Information von allen. Wo die Besichtigung im großen Ganzen steht, zeigt <a href="/blog/hauskauf-ablauf-leitfaden">der komplette Hauskauf-Ablauf von der Suche bis zur Übergabe</a>.
       </p>
       <p>
         <strong>ImmoPrüf</strong> bereitet Sie auf jede Besichtigung vor: Die Analyse identifiziert Informationslücken im Exposé und generiert einen personalisierten Fragenkatalog für genau Ihr Objekt — inklusive eines fertigen Makleranschreibens mit den wichtigsten Rückfragen. So gehen Sie vorbereitet in den Termin statt unvorbereitet wieder raus.

@@ -2,7 +2,7 @@ export default function AnnuitaetendarlehenErklaert() {
   return (
     <>
       <p>Das Annuitätendarlehen ist die häufigste Form der Baufinanzierung in Deutschland. Wer eine Immobilie kauft und dafür einen Kredit aufnimmt, finanziert in den allermeisten Fällen genau so: mit einer monatlichen Rate, die während der gesamten Zinsbindung gleich bleibt.</p>
-      <p>Gleichbleibende Rate klingt zunächst einfach, doch dahinter steckt ein Mechanismus aus Zins und Tilgung, der sich über die Jahre verschiebt. Wer ihn versteht, kann Angebote besser vergleichen und realistisch einschätzen, wie lange die Rückzahlung dauert und welche Restschuld am Ende der Zinsbindung übrig bleibt.</p>
+      <p>Gleichbleibende Rate klingt zunächst einfach, doch dahinter steckt ein Mechanismus aus Zins und Tilgung, der sich über die Jahre verschiebt. Wer ihn versteht, kann Angebote besser vergleichen und realistisch einschätzen, wie lange die Rückzahlung dauert und welche Restschuld am Ende der Zinsbindung übrig bleibt. Den größeren Zusammenhang zeigt <a href="/blog/baufinanzierung-leitfaden">den großen Baufinanzierungs-Leitfaden</a>.</p>
       <p>Dieser Artikel erklärt Schritt für Schritt, wie sich die Rate zusammensetzt, wie Sie sie überschlagen können und worauf Sie bei der Tilgung und der Anschlussfinanzierung achten sollten.</p>
       
       <h2>Was ist ein Annuitätendarlehen?</h2>

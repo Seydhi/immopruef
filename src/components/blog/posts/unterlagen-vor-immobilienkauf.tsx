@@ -197,7 +197,7 @@ export default function UnterlagenVorImmobilienkauf() {
 
       <h2>Fazit: Dokumente prüfen bevor Sie unterschreiben</h2>
       <p>
-        Das Exposé zeigt was der Verkäufer zeigen möchte. Die Dokumente zeigen was tatsächlich ist. Energieausweis, Grundriss, WEG-Protokolle, Grundbuch, Sanierungsnachweise — jedes einzelne kann Informationen enthalten die den Kaufpreis, die Folgekosten oder sogar die Kaufentscheidung verändern. Fordern Sie sie frühzeitig an, prüfen Sie sie gründlich und lassen Sie sich nicht mit "kommt noch" vertrösten.
+        Das Exposé zeigt was der Verkäufer zeigen möchte. Die Dokumente zeigen was tatsächlich ist. Energieausweis, Grundriss, WEG-Protokolle, Grundbuch, Sanierungsnachweise — jedes einzelne kann Informationen enthalten die den Kaufpreis, die Folgekosten oder sogar die Kaufentscheidung verändern. Fordern Sie sie frühzeitig an, prüfen Sie sie gründlich und lassen Sie sich nicht mit "kommt noch" vertrösten. Den größeren Zusammenhang zeigt <a href="/blog/hauskauf-ablauf-leitfaden">der komplette Hauskauf-Ablauf von der Suche bis zur Übergabe</a>.
       </p>
       <p>
         <strong>ImmoPrüf</strong> beginnt die Dokumentenprüfung bereits beim Exposé: Die Analyse identifiziert fehlende Angaben, generiert einen personalisierten Fragenkatalog und erstellt ein fertiges Makleranschreiben mit genau den Dokumenten die Sie für Ihr Objekt anfordern sollten. So starten Sie vorbereitet in den Kaufprozess.

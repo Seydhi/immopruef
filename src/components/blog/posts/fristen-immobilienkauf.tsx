@@ -218,7 +218,7 @@ export default function FristenImmobilienkauf() {
 
       <h3>Wie lange dauert ein Immobilienkauf insgesamt?</h3>
       <p>
-        Von der Besichtigung bis zur Schlüsselübergabe vergehen typischerweise 8 bis 16 Wochen. Bis zur Umschreibung im Grundbuch kommen weitere 2 bis 6 Monate hinzu. Verzögerungen durch fehlende Unterlagen, überlastete Grundbuchämter oder komplizierte Finanzierungen sind häufig und sollten im Zeitplan berücksichtigt werden.
+        Von der Besichtigung bis zur Schlüsselübergabe vergehen typischerweise 8 bis 16 Wochen. Bis zur Umschreibung im Grundbuch kommen weitere 2 bis 6 Monate hinzu. Verzögerungen durch fehlende Unterlagen, überlastete Grundbuchämter oder komplizierte Finanzierungen sind häufig und sollten im Zeitplan berücksichtigt werden. Den größeren Zusammenhang zeigt <a href="/blog/hauskauf-ablauf-leitfaden">den kompletten Hauskauf-Ablauf von der Suche bis zur Übergabe</a>.
       </p>
 
       <h3>Was ist die 14-Tage-Frist beim Notar?</h3>

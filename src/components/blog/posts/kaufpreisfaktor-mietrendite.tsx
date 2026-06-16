@@ -5,7 +5,7 @@ export default function KaufpreisfaktorMietrendite() {
       
       <p>Das Prinzip dahinter ist einfach: Die Miete ist der Ertrag, den eine Immobilie erwirtschaften kann. Steht der Kaufpreis in einem ungesunden Verhältnis zu diesem Ertrag, sollte das jeden Käufer aufhorchen lassen – auch Eigennutzer, die nie vermieten wollen. Denn ein überhöhter Einstiegspreis lässt sich später weder durch Mieteinnahmen noch durch Wertsteigerung verlässlich aufholen.</p>
       
-      <p>In diesem Artikel erfahren Sie, wie Sie beide Kennzahlen selbst berechnen, welche Werte als günstig oder teuer gelten und wo die Grenzen dieser einfachen Rechnung liegen. Ein durchgerechnetes Beispiel zeigt Schritt für Schritt, wie aus den Angaben im Exposé eine erste Preiseinschätzung wird.</p>
+      <p>In diesem Artikel erfahren Sie, wie Sie beide Kennzahlen selbst berechnen, welche Werte als günstig oder teuer gelten und wo die Grenzen dieser einfachen Rechnung liegen. Ein durchgerechnetes Beispiel zeigt Schritt für Schritt, wie aus den Angaben im Exposé eine erste Preiseinschätzung wird. Den größeren Zusammenhang zeigt unser Leitfaden dazu, <a href="/blog/immobilie-bewerten-leitfaden">wie Sie ein Immobilienangebot richtig bewerten</a>.</p>
       
       <h2>Was ist der Kaufpreisfaktor?</h2>
       

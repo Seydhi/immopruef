@@ -87,7 +87,7 @@ export default function NotarkostenGrundbuchkostenImmobilienkauf() {
       <li>Sind alle Voraussetzungen erfüllt, erhalten Sie die Fälligkeitsmitteilung und überweisen den Kaufpreis direkt an den Verkäufer.</li>
       <li>Nach Zahlungsbestätigung veranlasst der Notar die Eigentumsumschreibung. Mit der Eintragung im Grundbuch sind Sie Eigentümer.</li>
       </ol>
-      <p>Die Rechnungen von Notar und Grundbuchamt erreichen Sie gestaffelt entlang dieser Schritte. Ein Punkt wird oft übersehen: Die Notarkosten fallen auch dann an, wenn der Kauf nach der Beurkundung noch platzt, etwa weil die Finanzierung scheitert. Wer erst unterschreibt und dann rechnet, riskiert also reale Verluste. Eine strukturierte Vorbereitung, zum Beispiel mit unserer <a href="/blog/hauskauf-checkliste-2026">Hauskauf-Checkliste 2026</a>, schützt vor genau diesem Szenario.</p>
+      <p>Die Rechnungen von Notar und Grundbuchamt erreichen Sie gestaffelt entlang dieser Schritte. Ein Punkt wird oft übersehen: Die Notarkosten fallen auch dann an, wenn der Kauf nach der Beurkundung noch platzt, etwa weil die Finanzierung scheitert. Wer erst unterschreibt und dann rechnet, riskiert also reale Verluste. Eine strukturierte Vorbereitung, zum Beispiel mit unserer <a href="/blog/hauskauf-checkliste-2026">Hauskauf-Checkliste 2026</a>, schützt vor genau diesem Szenario. Den größeren Zusammenhang zeigt unser Leitfaden zum <a href="/blog/hauskauf-ablauf-leitfaden">kompletten Hauskauf-Ablauf von der Suche bis zur Übergabe</a>.</p>
       
       <h2>Sparpotenzial: Wo Sie ansetzen können und wo nicht</h2>
       <p>Da die Gebühren gesetzlich festgelegt sind, ist das Sparpotenzial begrenzt. Drei Stellschrauben gibt es dennoch:</p>

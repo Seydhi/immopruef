@@ -5,7 +5,7 @@ export default function Zinsbindung10Oder15Jahre() {
       
       <p>Die Zinsbindung ist der Zeitraum, in dem der Sollzins fest vereinbart ist. Innerhalb dieser Frist ändert sich Ihr Zinssatz nicht, egal wie sich der Markt entwickelt. Üblich sind in Deutschland Bindungen von 5, 10, 15 oder 20 Jahren.</p>
       
-      <p>Dieser Artikel zeigt Ihnen, worin sich die beiden Varianten unterscheiden, welche rechtliche Besonderheit Ihre Entscheidung deutlich entspannt und wie Sie anhand des aktuellen Zinsniveaus zu einer fundierten Wahl kommen.</p>
+      <p>Dieser Artikel zeigt Ihnen, worin sich die beiden Varianten unterscheiden, welche rechtliche Besonderheit Ihre Entscheidung deutlich entspannt und wie Sie anhand des aktuellen Zinsniveaus zu einer fundierten Wahl kommen. Den größeren Zusammenhang zeigt <a href="/blog/baufinanzierung-leitfaden">der große Baufinanzierungs-Leitfaden</a>.</p>
       
       <h2>Was die Zinsbindung überhaupt bewirkt</h2>
       

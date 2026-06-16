@@ -109,7 +109,7 @@ export default function SondertilgungSinnvoll() {
       
       <h2>Sondertilgung im Gesamtbild der Finanzierung</h2>
       
-      <p>Die Sondertilgung ist kein isoliertes Werkzeug, sondern ein Baustein Ihrer gesamten Finanzierungsstrategie. Sie wirkt in dieselbe Richtung wie eine hohe anfängliche Tilgung und ein solider Eigenkapitalanteil: Alle drei senken die Zinslast und das Risiko. Wer schon beim Kauf viel eigenes Geld einbringt, hat eine kleinere Restschuld – wie viel hier sinnvoll ist, zeigt unser Beitrag zum <a href="/blog/eigenkapital-immobilienkauf">Eigenkapital beim Immobilienkauf</a>.</p>
+      <p>Die Sondertilgung ist kein isoliertes Werkzeug, sondern ein Baustein Ihrer gesamten Finanzierungsstrategie. Sie wirkt in dieselbe Richtung wie eine hohe anfängliche Tilgung und ein solider Eigenkapitalanteil: Alle drei senken die Zinslast und das Risiko. Wer schon beim Kauf viel eigenes Geld einbringt, hat eine kleinere Restschuld – wie viel hier sinnvoll ist, zeigt unser Beitrag zum <a href="/blog/eigenkapital-immobilienkauf">Eigenkapital beim Immobilienkauf</a>. Wie all diese Bausteine zusammenspielen, ordnet <a href="/blog/baufinanzierung-leitfaden">den großen Baufinanzierungs-Leitfaden</a> ein.</p>
       
       <p>Gerade Käufer, die heute zwischen Eigentum und Miete schwanken, sollten die Sondertilgung in ihre Rechnung einbeziehen: Die Möglichkeit, Erspartes flexibel in die Tilgung zu schieben, ist ein Argument für den Kauf, das in vielen Vergleichen untergeht. Eine Einordnung für das laufende Jahr liefert unser Beitrag <a href="/blog/kaufen-oder-mieten-2026">Kaufen oder Mieten 2026</a>.</p>
       

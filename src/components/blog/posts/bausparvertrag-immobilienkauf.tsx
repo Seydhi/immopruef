@@ -3,7 +3,7 @@ export default function BausparvertragImmobilienkauf() {
     <>
       <p>Der Bausparvertrag gehört zu den ältesten Bausteinen der Immobilienfinanzierung in Deutschland. Viele Käufer haben einen solchen Vertrag bereits in jungen Jahren abgeschlossen oder überlegen, ob er ein sinnvoller Baustein für den geplanten Kauf ist. Die zentrale Frage lautet: Lohnt sich Bausparen für meinen Immobilienkauf wirklich?</p>
       <p>Die Antwort hängt stark davon ab, ob Sie sofort kaufen oder erst in einigen Jahren bauen oder modernisieren wollen. Für einen unmittelbaren Kauf ist meist eine andere Finanzierungsform passender, während der Bausparvertrag seine Stärke vor allem in der langfristigen Zinsabsicherung ausspielt.</p>
-      <p>Dieser Artikel erklärt, wie ein Bausparvertrag funktioniert, welche Vorteile und Nachteile er hat, welche staatliche Förderung möglich ist und in welchen Situationen er sich für private Käufer tatsächlich rechnet.</p>
+      <p>Dieser Artikel erklärt, wie ein Bausparvertrag funktioniert, welche Vorteile und Nachteile er hat, welche staatliche Förderung möglich ist und in welchen Situationen er sich für private Käufer tatsächlich rechnet. Den größeren Zusammenhang zeigt <a href="/blog/baufinanzierung-leitfaden">der große Baufinanzierungs-Leitfaden</a>.</p>
       
       <h2>Wie funktioniert ein Bausparvertrag?</h2>
       <p>Ein Bausparvertrag durchläuft zwei Phasen. In der ersten Phase, der Sparphase, zahlen Sie regelmäßig in den Vertrag ein und bauen so ein Guthaben auf. Erst wenn Sie ein vereinbartes Mindestguthaben erreicht haben, oft rund 40 bis 50 % der vereinbarten Bausparsumme, kann der Vertrag zugeteilt werden.</p>

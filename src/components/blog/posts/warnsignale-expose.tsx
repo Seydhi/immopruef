@@ -144,7 +144,7 @@ export default function WarnsignaleExpose() {
 
       <h2>Fazit: Kritisch prüfen heißt besser kaufen</h2>
       <p>
-        Warnsignale in einem Exposé bedeuten nicht automatisch, dass Sie die Immobilie meiden sollten. Sie bedeuten, dass Sie genauer hinschauen, mehr Fragen stellen und Zahlen nachrechnen müssen. Die meisten teuren Fehlkäufe entstehen nicht durch offensichtliche Mängel, sondern durch Informationen, die man nicht eingefordert hat.
+        Warnsignale in einem Exposé bedeuten nicht automatisch, dass Sie die Immobilie meiden sollten. Sie bedeuten, dass Sie genauer hinschauen, mehr Fragen stellen und Zahlen nachrechnen müssen. Die meisten teuren Fehlkäufe entstehen nicht durch offensichtliche Mängel, sondern durch Informationen, die man nicht eingefordert hat. Den größeren Zusammenhang zeigt <a href="/blog/immobilie-bewerten-leitfaden">wie Sie ein Immobilienangebot richtig bewerten</a>.
       </p>
       <p>
         <strong>ImmoPrüf</strong> hilft Ihnen, diese Prüfung zu systematisieren. Geben Sie den Link zum Exposé ein und erhalten Sie eine strukturierte Analyse: Preiseinordnung, Energiebewertung, Standortdaten, Risikobewertung und die Fragen, die Sie dem Verkäufer stellen sollten — in wenigen Minuten statt Stunden eigener Recherche.

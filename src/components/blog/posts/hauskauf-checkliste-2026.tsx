@@ -2,7 +2,7 @@ export default function HauskaufCheckliste2026() {
   return (
     <>
       <p>Der Kauf eines Hauses ist für die meisten Menschen die größte finanzielle Entscheidung ihres Lebens – und ein Prozess mit vielen Beteiligten: Verkäufer, Makler, Bank, Notar, Grundbuchamt und Finanzamt. Wer die richtige Reihenfolge der Schritte kennt, vermeidet teure Fehler, verliert in begehrten Lagen keine Zeit und behält die Kosten von Anfang an im Griff.</p>
-      <p>Realistisch dauert der Weg von der ersten Suche bis zur Schlüsselübergabe 3 bis 9 Monate. Allein zwischen Notartermin und Übergabe vergehen meist 4 bis 8 Wochen. Diese Checkliste führt Sie durch alle 12 Schritte des Hauskaufs 2026 – mit den wichtigsten Fristen, Unterlagen und Faustregeln für private Käufer.</p>
+      <p>Realistisch dauert der Weg von der ersten Suche bis zur Schlüsselübergabe 3 bis 9 Monate. Allein zwischen Notartermin und Übergabe vergehen meist 4 bis 8 Wochen. Diese Checkliste führt Sie durch alle 12 Schritte des Hauskaufs 2026 – mit den wichtigsten Fristen, Unterlagen und Faustregeln für private Käufer. Den größeren Zusammenhang zeigt <a href="/blog/hauskauf-ablauf-leitfaden">der komplette Hauskauf-Ablauf von der Suche bis zur Übergabe</a>.</p>
       <p>Die 12 Schritte gliedern sich in vier Phasen: Vorbereitung (Schritte 1 bis 3), Prüfung und Besichtigung (Schritte 4 bis 7), Finanzierung und Kaufvertrag (Schritte 8 bis 10) sowie Abwicklung und Übergabe (Schritte 11 und 12).</p>
       
       <h2>Phase 1: Vorbereitung (Schritte 1 bis 3)</h2>

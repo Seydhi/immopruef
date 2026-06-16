@@ -3,7 +3,7 @@ export default function EigenkapitalImmobilienkauf() {
     <>
       <p>Eigenkapital ist der wichtigste Hebel Ihrer Baufinanzierung. Je mehr eigenes Geld Sie einbringen, desto niedriger fällt der Zinssatz aus, desto kleiner ist das Darlehen – und desto geringer das Risiko, dass die Finanzierung in Schieflage gerät. Trotzdem herrscht bei vielen privaten Käufern Unsicherheit: Wie viel Eigenkapital ist wirklich nötig, und was passiert, wenn weniger vorhanden ist?</p>
       
-      <p>Dieser Artikel erklärt die gängige Empfehlung, rechnet ein konkretes Beispiel an einem Objekt für 400.000 € durch und vergleicht drei Eigenkapitalquoten – 10, 20 und 30 Prozent – inklusive der Auswirkungen auf Zinssatz und Monatsrate. Außerdem erfahren Sie, was Banken überhaupt als Eigenkapital anerkennen und welche Strategien helfen, wenn das Ersparte noch nicht reicht.</p>
+      <p>Dieser Artikel erklärt die gängige Empfehlung, rechnet ein konkretes Beispiel an einem Objekt für 400.000 € durch und vergleicht drei Eigenkapitalquoten – 10, 20 und 30 Prozent – inklusive der Auswirkungen auf Zinssatz und Monatsrate. Außerdem erfahren Sie, was Banken überhaupt als Eigenkapital anerkennen und welche Strategien helfen, wenn das Ersparte noch nicht reicht. Den größeren Zusammenhang zeigt <a href="/blog/baufinanzierung-leitfaden">der große Baufinanzierungs-Leitfaden</a>.</p>
       
       <h2>Die Grundregel: mindestens 20 Prozent plus Kaufnebenkosten</h2>
       

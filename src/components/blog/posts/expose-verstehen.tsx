@@ -220,7 +220,7 @@ export default function ExposeVerstehen() {
 
       <h2>Fazit: Lesen mit den Augen eines Analysten</h2>
       <p>
-        Ein Exposé ist ein Verkaufsdokument. Es zeigt die beste Seite einer Immobilie — und das ist auch in Ordnung. Ihre Aufgabe als Käufer ist es, zwischen Pflichtangaben, Fakten und Werbung zu unterscheiden, die richtigen Kennzahlen zu berechnen und die Lücken zu erkennen. Wer das beherrscht, trifft bessere Entscheidungen — und spart sich dutzende Fehlbesichtigungen.
+        Ein Exposé ist ein Verkaufsdokument. Es zeigt die beste Seite einer Immobilie — und das ist auch in Ordnung. Ihre Aufgabe als Käufer ist es, zwischen Pflichtangaben, Fakten und Werbung zu unterscheiden, die richtigen Kennzahlen zu berechnen und die Lücken zu erkennen. Wer das beherrscht, trifft bessere Entscheidungen — und spart sich dutzende Fehlbesichtigungen. Den größeren Zusammenhang zeigt <a href="/blog/immobilie-bewerten-leitfaden">wie Sie ein Immobilienangebot richtig bewerten</a>.
       </p>
       <p>
         <strong>ImmoPrüf</strong> macht diese Analyse in wenigen Minuten automatisch: Pflichtangaben extrahiert, Kennzahlen berechnet, Lage bewertet, Warnsignale identifiziert. So verstehen Sie jedes Exposé auf den ersten Blick — und wissen, welche Fragen Sie stellen müssen bevor Sie den Besichtigungstermin vereinbaren.

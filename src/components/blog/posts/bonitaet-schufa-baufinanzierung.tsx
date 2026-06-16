@@ -3,7 +3,7 @@ export default function BonitaetSchufaBaufinanzierung() {
     <>
       <p>Wenn Sie eine Immobilie über einen Kredit finanzieren, entscheidet nicht allein der Kaufpreis darüber, ob Sie ein Darlehen bekommen. Die Bank prüft vor allem, ob Sie die monatliche Rate dauerhaft tragen können und wie zuverlässig Sie in der Vergangenheit mit Krediten umgegangen sind.</p>
       <p>Im Zentrum stehen dabei zwei Begriffe: die Bonität, also Ihre allgemeine Kreditwürdigkeit, und der SCHUFA-Score, der das Zahlungsverhalten in einer Kennzahl bündelt. Beide zusammen beeinflussen nicht nur die Zusage, sondern auch den Zinssatz, den Ihnen die Bank anbietet.</p>
-      <p>Dieser Artikel zeigt, was Banken bei der Baufinanzierung konkret prüfen, wie der SCHUFA-Score Ihre Konditionen beeinflusst und wie Sie sich vorbereiten, bevor Sie eine Finanzierung anfragen.</p>
+      <p>Dieser Artikel zeigt, was Banken bei der Baufinanzierung konkret prüfen, wie der SCHUFA-Score Ihre Konditionen beeinflusst und wie Sie sich vorbereiten, bevor Sie eine Finanzierung anfragen. Den größeren Zusammenhang von Eigenkapital, Zins und Tilgung zeigt <a href="/blog/baufinanzierung-leitfaden">den großen Baufinanzierungs-Leitfaden</a>.</p>
       
       <h2>Die Kapitaldienstfähigkeit ist der wichtigste Faktor</h2>
       <p>Bevor eine Bank überhaupt auf den SCHUFA-Score schaut, prüft sie die sogenannte Kapitaldienstfähigkeit. Die Kernfrage lautet schlicht: Reicht Ihr Einkommen aus, um die monatliche Rate dauerhaft zu zahlen, ohne dass Ihr Haushalt finanziell überlastet wird?</p>

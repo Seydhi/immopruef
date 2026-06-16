@@ -2,7 +2,7 @@ export default function QuadratmeterpreisBewerten() {
   return (
     <>
       <p>
-        Der Quadratmeterpreis ist die meistgenutzte Kennzahl beim Immobilienkauf. Doch wer sich allein auf den Preis pro Quadratmeter verlässt, riskiert Fehlentscheidungen. Ein vermeintlich günstiger Preis kann teuer werden — und ein hoher Quadratmeterpreis kann trotzdem ein gutes Geschäft sein. Entscheidend ist der Kontext.
+        Der Quadratmeterpreis ist die meistgenutzte Kennzahl beim Immobilienkauf. Doch wer sich allein auf den Preis pro Quadratmeter verlässt, riskiert Fehlentscheidungen. Ein vermeintlich günstiger Preis kann teuer werden — und ein hoher Quadratmeterpreis kann trotzdem ein gutes Geschäft sein. Entscheidend ist der Kontext. Den größeren Zusammenhang zeigt <a href="/blog/immobilie-bewerten-leitfaden">wie Sie ein Immobilienangebot richtig bewerten</a>.
       </p>
 
       <h2>Warum der Quadratmeterpreis allein wenig aussagt</h2>

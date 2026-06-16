@@ -5,7 +5,7 @@ export default function KfwWohneigentumFamilien2026() {
       
       <p>Das Programm richtet sich an Familien mit mindestens einem minderjährigen Kind im Haushalt, die ein selbst genutztes, klimafreundliches Wohngebäude neu bauen oder als Ersterwerb kaufen. Im Gegenzug für strenge Energie- und Einkommensvoraussetzungen erhalten Sie einen Kredit zu Konditionen unter dem Marktniveau.</p>
       
-      <p>Dieser Artikel erklärt, welche Voraussetzungen gelten, wo die Einkommensgrenzen liegen, wie sich das WEF-Programm vom allgemeinen KfW-Wohneigentumsprogramm unterscheidet und worauf Sie beim Antrag achten müssen. Alle hier genannten Zahlen sind der Stand 2026 – prüfen Sie konkrete Zinssätze und Höchstbeträge vor dem Antrag immer auf kfw.de.</p>
+      <p>Dieser Artikel erklärt, welche Voraussetzungen gelten, wo die Einkommensgrenzen liegen, wie sich das WEF-Programm vom allgemeinen KfW-Wohneigentumsprogramm unterscheidet und worauf Sie beim Antrag achten müssen. Alle hier genannten Zahlen sind der Stand 2026 – prüfen Sie konkrete Zinssätze und Höchstbeträge vor dem Antrag immer auf kfw.de. Den größeren Zusammenhang zwischen Förderung, Bankdarlehen und Eigenkapital zeigt <a href="/blog/baufinanzierung-leitfaden">den großen Baufinanzierungs-Leitfaden</a>.</p>
       
       <h2>Was ist das KfW-Programm "Wohneigentum für Familien"?</h2>
       

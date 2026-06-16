@@ -125,7 +125,7 @@ export default function UebergabeprotokollHauskauf() {
       <p>Bewahren Sie Ihre Ausfertigung zusammen mit dem Kaufvertrag und den übergebenen Unterlagen sorgfältig auf. Diese Dokumente bilden gemeinsam den Nachweis über den Zustand Ihrer Immobilie bei der Übernahme.</p>
       
       <h2>So ordnen Sie die Übergabe in den Gesamtablauf ein</h2>
-      <p>Die Übergabe ist der letzte von mehreren Schritten beim Hauskauf. Damit alles reibungslos zusammenpasst, hilft ein Blick auf den gesamten Ablauf. Einen kompakten Überblick über den Prozess bietet unsere <a href="/blog/hauskauf-checkliste-2026">Hauskauf-Checkliste 2026</a>.</p>
+      <p>Die Übergabe ist der letzte von mehreren Schritten beim Hauskauf. Damit alles reibungslos zusammenpasst, hilft ein Blick auf den gesamten Ablauf. Den größeren Zusammenhang zeigt <a href="/blog/hauskauf-ablauf-leitfaden">der komplette Hauskauf-Ablauf von der Suche bis zur Übergabe</a>. Einen kompakten Überblick über den Prozess bietet unsere <a href="/blog/hauskauf-checkliste-2026">Hauskauf-Checkliste 2026</a>.</p>
       <p>Wichtig ist auch das Timing: Wann der Kaufpreis fällig wird und wann die Übergabe erfolgen kann, hängt von mehreren Voraussetzungen ab. Welche Fristen typischerweise zu beachten sind, erläutern wir im Beitrag zu den <a href="/blog/fristen-immobilienkauf">Fristen beim Immobilienkauf</a>. Wie der vorangehende Termin beim Notar abläuft, lesen Sie unter <a href="/blog/notartermin-ablauf-hauskauf">Notartermin beim Hauskauf</a>.</p>
       <p>Wer diese Bausteine kennt, geht entspannter in den Übergabetermin und weiß genau, worauf es ankommt.</p>
       
