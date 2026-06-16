@@ -159,7 +159,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-cream font-body text-ink text-[15px] leading-relaxed">
+    <div className="min-h-screen bg-cream font-body text-ink text-[15px] leading-relaxed overflow-x-hidden">
       <Header />
 
       {toast && (
@@ -286,7 +286,7 @@ export default function App() {
 
       <footer className="text-center text-[11px] text-ink-light py-6 border-t border-ink/10 mt-10 mx-6">
         <p className="mb-2">KI-Analyse auf Basis öffentlich verfügbarer Daten · Keine Gewähr für Vollständigkeit oder Richtigkeit</p>
-        <div className="flex items-center justify-center gap-3">
+        <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1.5 max-w-full">
           <a href="/blog" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/blog'); setView({ type: 'blog' }); window.scrollTo(0, 0) }} className="hover:text-green transition-colors">Blog</a>
           <span className="text-ink/20">·</span>
           <a href="/rechner" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/rechner'); setView({ type: 'rechner-hub' }); window.scrollTo(0, 0) }} className="hover:text-green transition-colors">Rechner</a>
