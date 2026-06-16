@@ -172,7 +172,31 @@
     <priority>0.5</priority>
   </url>
 
-  <!-- Blog Posts (98) -->
+  <!-- Blog Posts (102) -->
+  <url>
+    <loc>https://immopruef.de/blog/hauskauf-ablauf-leitfaden</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://immopruef.de/blog/baufinanzierung-leitfaden</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://immopruef.de/blog/immobilie-zustand-pruefen-leitfaden</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://immopruef.de/blog/immobilie-bewerten-leitfaden</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <url>
     <loc>https://immopruef.de/blog/kostenlose-immobilienbewertung-serioes</loc>
     <lastmod>2026-06-16</lastmod>
