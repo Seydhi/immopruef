@@ -16,6 +16,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://immopruef.de/rechner</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://immopruef.de/grunderwerbsteuer-rechner</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
@@ -35,6 +41,24 @@
   </url>
   <url>
     <loc>https://immopruef.de/mieten-oder-kaufen-rechner</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://immopruef.de/mietrendite-rechner</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://immopruef.de/instandhaltungsruecklage-rechner</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://immopruef.de/wohnflaechen-rechner</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

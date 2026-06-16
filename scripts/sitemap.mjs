@@ -39,10 +39,14 @@ const blogUrls = entries
 const staticUrls = [
   { loc: `${BASE}/`, lastmod: today, changefreq: 'weekly', priority: '1.0' },
   { loc: `${BASE}/blog`, lastmod: today, changefreq: 'weekly', priority: '0.8' },
+  { loc: `${BASE}/rechner`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
   { loc: `${BASE}/grunderwerbsteuer-rechner`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
   { loc: `${BASE}/budgetrechner`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
   { loc: `${BASE}/tilgungsrechner`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
   { loc: `${BASE}/mieten-oder-kaufen-rechner`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
+  { loc: `${BASE}/mietrendite-rechner`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
+  { loc: `${BASE}/instandhaltungsruecklage-rechner`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
+  { loc: `${BASE}/wohnflaechen-rechner`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
   { loc: `${BASE}/kaufnebenkosten-index`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
   ...[
     'baden-wuerttemberg', 'bayern', 'berlin', 'brandenburg', 'bremen', 'hamburg', 'hessen',

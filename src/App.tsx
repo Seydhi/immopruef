@@ -18,6 +18,10 @@ import Rechner from './components/Rechner'
 import Budgetrechner from './components/Budgetrechner'
 import Tilgungsrechner from './components/Tilgungsrechner'
 import MietenOderKaufen from './components/MietenOderKaufen'
+import MietrenditeRechner from './components/MietrenditeRechner'
+import InstandhaltungRechner from './components/InstandhaltungRechner'
+import WohnflaechenRechner from './components/WohnflaechenRechner'
+import RechnerHub from './components/RechnerHub'
 import RegionalKaufnebenkosten from './components/RegionalKaufnebenkosten'
 import KaufnebenkostenIndex from './components/KaufnebenkostenIndex'
 import UeberUns from './components/UeberUns'
@@ -39,6 +43,10 @@ type AppView =
   | { type: 'budgetrechner' }
   | { type: 'tilgungsrechner' }
   | { type: 'mieten-oder-kaufen' }
+  | { type: 'mietrendite' }
+  | { type: 'instandhaltung' }
+  | { type: 'wohnflaechen' }
+  | { type: 'rechner-hub' }
   | { type: 'kaufnebenkosten-index' }
   | { type: 'regional'; slug: string }
   | { type: 'ueber-uns' }
@@ -102,6 +110,10 @@ export default function App() {
     if (path === '/budgetrechner') { setView({ type: 'budgetrechner' }); return }
     if (path === '/tilgungsrechner') { setView({ type: 'tilgungsrechner' }); return }
     if (path === '/mieten-oder-kaufen-rechner') { setView({ type: 'mieten-oder-kaufen' }); return }
+    if (path === '/mietrendite-rechner') { setView({ type: 'mietrendite' }); return }
+    if (path === '/instandhaltungsruecklage-rechner') { setView({ type: 'instandhaltung' }); return }
+    if (path === '/wohnflaechen-rechner') { setView({ type: 'wohnflaechen' }); return }
+    if (path === '/rechner') { setView({ type: 'rechner-hub' }); return }
     if (path === '/kaufnebenkosten-index') { setView({ type: 'kaufnebenkosten-index' }); return }
     const regioMatch = path.match(/^\/kaufnebenkosten-([a-z-]+)$/)
     if (regioMatch && regioForSlug(regioMatch[1])) { setView({ type: 'regional', slug: regioMatch[1] }); return }
@@ -218,7 +230,7 @@ export default function App() {
           </div>
         )}
 
-        {(view.type === 'rechner' || view.type === 'budgetrechner' || view.type === 'tilgungsrechner' || view.type === 'mieten-oder-kaufen' || view.type === 'kaufnebenkosten-index' || view.type === 'regional' || view.type === 'ueber-uns') && (
+        {(view.type === 'rechner' || view.type === 'budgetrechner' || view.type === 'tilgungsrechner' || view.type === 'mieten-oder-kaufen' || view.type === 'mietrendite' || view.type === 'instandhaltung' || view.type === 'wohnflaechen' || view.type === 'rechner-hub' || view.type === 'kaufnebenkosten-index' || view.type === 'regional' || view.type === 'ueber-uns') && (
           <div>
             <button
               onClick={() => { window.history.pushState({}, '', '/'); setView({ type: 'landing' }) }}
@@ -230,6 +242,10 @@ export default function App() {
             {view.type === 'budgetrechner' && <Budgetrechner />}
             {view.type === 'tilgungsrechner' && <Tilgungsrechner />}
             {view.type === 'mieten-oder-kaufen' && <MietenOderKaufen />}
+            {view.type === 'mietrendite' && <MietrenditeRechner />}
+            {view.type === 'instandhaltung' && <InstandhaltungRechner />}
+            {view.type === 'wohnflaechen' && <WohnflaechenRechner />}
+            {view.type === 'rechner-hub' && <RechnerHub />}
             {view.type === 'kaufnebenkosten-index' && <KaufnebenkostenIndex />}
             {view.type === 'regional' && <RegionalKaufnebenkosten slug={view.slug} />}
             {view.type === 'ueber-uns' && <UeberUns />}
@@ -273,13 +289,7 @@ export default function App() {
         <div className="flex items-center justify-center gap-3">
           <a href="/blog" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/blog'); setView({ type: 'blog' }); window.scrollTo(0, 0) }} className="hover:text-green transition-colors">Blog</a>
           <span className="text-ink/20">·</span>
-          <a href="/grunderwerbsteuer-rechner" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/grunderwerbsteuer-rechner'); setView({ type: 'rechner' }); window.scrollTo(0, 0) }} className="hover:text-green transition-colors">Rechner</a>
-          <span className="text-ink/20">·</span>
-          <a href="/budgetrechner" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/budgetrechner'); setView({ type: 'budgetrechner' }); window.scrollTo(0, 0) }} className="hover:text-green transition-colors">Budgetrechner</a>
-          <span className="text-ink/20">·</span>
-          <a href="/tilgungsrechner" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/tilgungsrechner'); setView({ type: 'tilgungsrechner' }); window.scrollTo(0, 0) }} className="hover:text-green transition-colors">Tilgungsrechner</a>
-          <span className="text-ink/20">·</span>
-          <a href="/mieten-oder-kaufen-rechner" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/mieten-oder-kaufen-rechner'); setView({ type: 'mieten-oder-kaufen' }); window.scrollTo(0, 0) }} className="hover:text-green transition-colors">Mieten oder Kaufen</a>
+          <a href="/rechner" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/rechner'); setView({ type: 'rechner-hub' }); window.scrollTo(0, 0) }} className="hover:text-green transition-colors">Rechner</a>
           <span className="text-ink/20">·</span>
           <a href="/kaufnebenkosten-index" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/kaufnebenkosten-index'); setView({ type: 'kaufnebenkosten-index' }); window.scrollTo(0, 0) }} className="hover:text-green transition-colors">Kaufnebenkosten je Bundesland</a>
           <span className="text-ink/20">·</span>
