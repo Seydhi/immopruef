@@ -2,7 +2,16 @@ import type { AnalysisOptions, OrderResult, Analysis, Package } from './types'
 import * as mockApi from './mock-api'
 import { supabase, getSupabaseFunctionUrl } from './supabase'
 
-const USE_MOCKS = import.meta.env.VITE_USE_MOCKS === 'true'
+// Mock-Modus: nur wenn explizit aktiviert UND NICHT auf dem Produktions-Host.
+// Schutz gegen die Konfig-Falle "VITE_USE_MOCKS=false vergessen" — sonst würde
+// die Live-Seite Fake-Analysen zeigen und keine echten Zahlungen abwickeln.
+const MOCK_FLAG = import.meta.env.VITE_USE_MOCKS === 'true'
+const IS_PROD_HOST = typeof window !== 'undefined'
+  && /(^|\.)immopruef\.(de|com)$/.test(window.location.hostname)
+const USE_MOCKS = MOCK_FLAG && !IS_PROD_HOST
+if (MOCK_FLAG && IS_PROD_HOST) {
+  console.error('[ImmoPrüf] VITE_USE_MOCKS=true wird auf dem Produktions-Host ignoriert — echte API/Zahlungen aktiv. Bitte VITE_USE_MOCKS=false setzen.')
+}
 const ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY || ''
 
 function getHeaders(): Record<string, string> {

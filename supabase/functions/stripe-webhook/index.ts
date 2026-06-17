@@ -29,6 +29,32 @@ function escapeHtml(s: string): string {
     .replace(/'/g, '&#39;')
 }
 
+// ═══════════════════════════════════════════════════════════════
+// Server-side kick: start analysis processing independently of the browser.
+// Previously analysis was triggered ONLY by the frontend poll — if the customer
+// closed the tab after paying, the analysis (esp. URLs 2/3 of a Double/Triple)
+// never ran. We fire-and-forget a call to the analyze function here so the order
+// completes regardless. analyze self-chains to the remaining analyses.
+// ═══════════════════════════════════════════════════════════════
+function fireAndForget(promise: Promise<unknown>) {
+  try {
+    const er = (globalThis as { EdgeRuntime?: { waitUntil?: (p: Promise<unknown>) => void } }).EdgeRuntime
+    if (er?.waitUntil) er.waitUntil(promise)
+  } catch { /* waitUntil unavailable — promise still runs best-effort */ }
+}
+
+function kickAnalyze(sessionId: string) {
+  const base = Deno.env.get('SUPABASE_URL')
+  const key = Deno.env.get('SB_SERVICE_ROLE_KEY')
+  if (!base || !key) return
+  const p = fetch(`${base}/functions/v1/analyze`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` },
+    body: JSON.stringify({ session_id: sessionId }),
+  }).catch((e) => console.warn('kickAnalyze failed:', e instanceof Error ? e.message : String(e)))
+  fireAndForget(p)
+}
+
 async function verifyWebhookSignature(
   payload: string,
   sigHeader: string,
@@ -176,6 +202,9 @@ serve(async (req) => {
 
       // Mark event processed AFTER successful order update
       await supabase.from('processed_events').insert({ event_id: event.id }).catch(() => {})
+
+      // Start analysis processing server-side (browser-independent).
+      kickAnalyze(sessionId)
 
       // ═══════════════════════════════════════════════════════
       // Send instant confirmation email

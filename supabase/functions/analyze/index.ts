@@ -23,6 +23,33 @@ function jsonResponse(body: unknown, status = 200) {
 }
 
 // ═══════════════════════════════════════════════════════════════
+// Self-Chaining / server-side kick
+// Triggert eine (weitere) analyze-Invocation unabhaengig vom Browser.
+// Wird vom Stripe-Webhook (Erst-Anstoss) und von analyze selbst
+// (Verarbeitung der naechsten pending-Analyse) aufgerufen.
+// fire-and-forget via EdgeRuntime.waitUntil, damit der Aufruf den
+// aktuellen Response nicht blockiert, aber zuverlaessig abgesetzt wird.
+// ═══════════════════════════════════════════════════════════════
+function fireAndForget(promise: Promise<unknown>) {
+  try {
+    const er = (globalThis as { EdgeRuntime?: { waitUntil?: (p: Promise<unknown>) => void } }).EdgeRuntime
+    if (er?.waitUntil) er.waitUntil(promise)
+  } catch { /* waitUntil unavailable — promise still runs best-effort */ }
+}
+
+function kickAnalyze(sessionId: string) {
+  const base = Deno.env.get('SUPABASE_URL')
+  const key = Deno.env.get('SB_SERVICE_ROLE_KEY')
+  if (!base || !key) return
+  const p = fetch(`${base}/functions/v1/analyze`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` },
+    body: JSON.stringify({ session_id: sessionId }),
+  }).catch((e) => console.warn('kickAnalyze failed:', e instanceof Error ? e.message : String(e)))
+  fireAndForget(p)
+}
+
+// ═══════════════════════════════════════════════════════════════
 // SSRF-Protection: URL re-validation before sending to Claude
 // Even if create-checkout validated, an attacker could manipulate the DB row
 // directly (or via SQL-injection elsewhere) to make Claude fetch internal URLs
@@ -545,8 +572,6 @@ DAS premiumReport-Objekt MUSS im JSON enthalten sein. Es ist NICHT optional. Der
 // AI Provider Switch
 // ═══════════════════════════════════════════════════════════════
 
-const TEST_MODE = Deno.env.get('TEST_MODE') === 'true'
-
 interface AIResponse {
   result: unknown
 }
@@ -749,6 +774,43 @@ function validateResult(result: Record<string, unknown>): string[] {
   return warnings
 }
 
+// Hard completeness gate: a result missing any of these core sections is a
+// hollow report the customer paid for. Throwing here routes into the retry
+// loop; if all retries stay incomplete the analysis is marked 'failed' and the
+// customer sees the retry UI instead of an empty paid report.
+function assertComplete(result: Record<string, unknown>, isPremium: boolean): void {
+  const len = (v: unknown) => (Array.isArray(v) ? v.length : 0)
+  const problems: string[] = []
+
+  if (len(result.objektdaten) < 5) problems.push('objektdaten')
+
+  const gk = result.gesamtkosten as Record<string, unknown> | undefined
+  if (!gk || len(gk.laufendeKosten) < 4) problems.push('gesamtkosten.laufendeKosten')
+
+  const sa = result.standortanalyse as Record<string, unknown> | undefined
+  if (!sa || len(sa.kategorien) < 5) problems.push('standortanalyse.kategorien')
+
+  const fin = result.finanzierung as Record<string, unknown> | undefined
+  if (!fin || len(fin.szenarien) < 2) problems.push('finanzierung.szenarien')
+
+  const rb = result.risikobewertung as Record<string, unknown> | undefined
+  if (!rb || len(rb.items) < 3) problems.push('risikobewertung.items')
+
+  if (typeof result.zusammenfassung !== 'string' || result.zusammenfassung.trim().length < 40) {
+    problems.push('zusammenfassung')
+  }
+
+  // Premium customers (79€) must receive the premiumReport — without it the
+  // product is not what was sold.
+  if (isPremium && (!result.premiumReport || typeof result.premiumReport !== 'object')) {
+    problems.push('premiumReport')
+  }
+
+  if (problems.length > 0) {
+    throw new Error(`Unvollständige Analyse — fehlende/zu dünne Felder: ${problems.join(', ')}`)
+  }
+}
+
 // ═══════════════════════════════════════════════════════════════
 // Main Handler
 // ═══════════════════════════════════════════════════════════════
@@ -811,12 +873,19 @@ serve(async (req) => {
       return jsonResponse({ error: 'No analyses found' }, 500)
     }
 
-    // Reset stuck "processing" analyses (from previous timed-out calls) back to pending
+    // Reset STUCK "processing" analyses (from crashed/timed-out calls) back to pending.
+    // Time-guarded: only analyses whose claim is older than STUCK_MS are reset, so we
+    // never interrupt an analysis that a concurrent invocation is actively processing
+    // (webhook-kick + frontend-poll + self-chain can run in parallel).
+    const STUCK_MS = 3 * 60 * 1000
     for (const a of allAnalyses) {
       if (a.status === 'processing') {
-        console.log(`Resetting stuck analysis ${a.id} from processing → pending`)
-        await supabase.from('analyses').update({ status: 'pending' }).eq('id', a.id)
-        a.status = 'pending'
+        const startedAt = a.processing_started_at ? new Date(a.processing_started_at).getTime() : 0
+        if (Date.now() - startedAt > STUCK_MS) {
+          console.log(`Resetting stuck analysis ${a.id} from processing → pending`)
+          await supabase.from('analyses').update({ status: 'pending' }).eq('id', a.id)
+          a.status = 'pending'
+        }
       }
     }
 
@@ -859,7 +928,19 @@ serve(async (req) => {
           return jsonResponse({ error: 'Invalid URL' }, 400)
         }
 
-        await supabase.from('analyses').update({ status: 'processing' }).eq('id', analysis.id)
+        // Atomic claim: only ONE invocation may move this row pending → processing.
+        // Prevents a concurrent invocation (webhook-kick / frontend-poll / self-chain)
+        // from processing the same analysis twice (= double Claude cost).
+        const { data: claimed } = await supabase
+          .from('analyses')
+          .update({ status: 'processing', processing_started_at: new Date().toISOString() })
+          .eq('id', analysis.id)
+          .eq('status', 'pending')
+          .select('id')
+        if (!claimed || claimed.length === 0) {
+          console.log(`Analysis ${analysis.id} already claimed by another invocation — skipping`)
+          return jsonResponse({ order_status: 'processing', analyses: allAnalyses })
+        }
 
         const opts = analysis.options as { makleranschreiben: boolean; verhandlungstipps: boolean; risiken: boolean }
 
@@ -969,10 +1050,10 @@ serve(async (req) => {
             })
             if (scrapeRes.ok) {
               scrapedData = await scrapeRes.json()
-              console.log(`Scraper returned data for ${cleanUrl} — fields: ${Object.keys(scrapedData || {}).filter(k => (scrapedData as any)[k] !== null).length}`)
+              console.log(`Scraper returned data for ${cleanUrl} — fields: ${Object.keys(scrapedData || {}).filter(k => (scrapedData as Record<string, unknown>)[k] !== null).length}`)
             } else {
               const err = await scrapeRes.json().catch(() => ({}))
-              console.warn(`Scraper failed (${scrapeRes.status}): ${(err as any).code || 'unknown'}`)
+              console.warn(`Scraper failed (${scrapeRes.status}): ${(err as { code?: string }).code || 'unknown'}`)
             }
           } catch (e) {
             console.warn('Scraper call failed:', e)
@@ -1066,16 +1147,18 @@ WICHTIG:
         // Call Claude Sonnet (primary). OpenAI fallback removed — endpoint was broken
         // and silent failure could have charged customers without delivering analysis.
         // If Claude fails, the outer retry-loop handles it.
-        let result: unknown
         console.log('Calling Claude Sonnet 4 (primary)...')
         const claudeResult = await callClaude(systemPrompt, userMessage, maxTokens, anthropicKey, isPremium)
-        result = claudeResult.result
+        const result = claudeResult.result
 
-        // Validate result completeness
+        // Validate result completeness (logs soft warnings for monitoring)
         const warnings = validateResult(result as Record<string, unknown>)
         if (warnings.length > 0) {
           console.warn(`Validation warnings (${warnings.length}):`, warnings.join('; '))
         }
+
+        // HARD gate: never deliver a hollow report. Throwing routes into the retry loop.
+        assertComplete(result as Record<string, unknown>, isPremium)
 
         // Filter sources that don't match the object's city (e.g. München data for Bremerhaven object)
         validateSources(result as Record<string, unknown>)
@@ -1111,6 +1194,7 @@ WICHTIG: Verwende Exposé-Daten und recherchierte Regionsdurchschnitte. JEDES Fe
 
             // Retry: only Claude (OpenAI fallback removed — endpoint was broken)
             const retryResult = (await callClaude(systemPrompt, retryMessage, maxTokens, anthropicKey, isPremium)).result
+            assertComplete(retryResult as Record<string, unknown>, isPremium)
             validateSources(retryResult as Record<string, unknown>)
 
             await supabase.from('analyses').update({ result: retryResult, status: 'completed' }).eq('id', analysis.id)
@@ -1141,7 +1225,11 @@ WICHTIG: Verwende Exposé-Daten und recherchierte Regionsdurchschnitte. JEDES Fe
     if (nowAllDone) {
       await supabase.from('orders').update({ status: 'completed' }).eq('id', order.id)
     } else {
-      // Still more analyses pending — frontend will poll again and trigger next one
+      // Still more analyses pending. Kick the next invocation SERVER-SIDE so the
+      // order completes even if the customer closed the browser tab. The frontend
+      // poll (if still open) drives the UI in parallel; the atomic claim prevents
+      // double-processing.
+      kickAnalyze(session_id)
       return jsonResponse({ order_status: 'processing', analyses })
     }
 

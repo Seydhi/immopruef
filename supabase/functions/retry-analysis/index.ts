@@ -18,6 +18,27 @@ function jsonResponse(body: unknown, status = 200) {
   })
 }
 
+// Fire-and-forget server-side kick so the retried analysis is processed even if
+// the customer's tab is closed. analyze claims it atomically and self-chains.
+function fireAndForget(promise: Promise<unknown>) {
+  try {
+    const er = (globalThis as { EdgeRuntime?: { waitUntil?: (p: Promise<unknown>) => void } }).EdgeRuntime
+    if (er?.waitUntil) er.waitUntil(promise)
+  } catch { /* waitUntil unavailable — promise still runs best-effort */ }
+}
+
+function kickAnalyze(sessionId: string) {
+  const base = Deno.env.get('SUPABASE_URL')
+  const key = Deno.env.get('SB_SERVICE_ROLE_KEY')
+  if (!base || !key) return
+  const p = fetch(`${base}/functions/v1/analyze`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` },
+    body: JSON.stringify({ session_id: sessionId }),
+  }).catch((e) => console.warn('kickAnalyze failed:', e instanceof Error ? e.message : String(e)))
+  fireAndForget(p)
+}
+
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response(null, { status: 204, headers: CORS_HEADERS })
@@ -41,7 +62,7 @@ serve(async (req) => {
     // Verify the analysis exists and is failed
     const { data: analysis, error: fetchErr } = await supabase
       .from('analyses')
-      .select('*, orders!inner(status)')
+      .select('*, orders!inner(status, stripe_session_id)')
       .eq('id', analysis_id)
       .single()
 
@@ -66,6 +87,10 @@ serve(async (req) => {
       .eq('id', analysis.order_id)
 
     console.log(`Analysis ${analysis_id} reset for retry`)
+
+    // Trigger processing server-side (browser-independent).
+    const sessionId = (analysis.orders as { stripe_session_id?: string } | null)?.stripe_session_id
+    if (sessionId) kickAnalyze(sessionId)
 
     return jsonResponse({ success: true, message: 'Analysis queued for retry' })
   } catch (err) {

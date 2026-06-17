@@ -16,7 +16,7 @@ Die App läuft standardmäßig im **Mock-Modus** (`VITE_USE_MOCKS=true`). Alle A
 - **Frontend:** React 19 + TypeScript + Tailwind CSS v4 + Vite
 - **Backend:** Supabase Edge Functions (Deno)
 - **Payments:** Stripe Checkout
-- **KI:** Claude Opus (Anthropic API mit Web Search)
+- **KI:** Claude Sonnet 4 (Anthropic API mit Web Search)
 - **E-Mail:** Resend
 
 ## Deployment
