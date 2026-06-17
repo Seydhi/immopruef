@@ -43,12 +43,11 @@ export default function Impressum() {
           <h2 className="text-base font-heading font-semibold text-ink mb-2">Handelsregister</h2>
           <p>
             Eingetragen im Handelsregister.<br />
-            Registergericht: [Amtsgericht wird nachgetragen]<br />
+            Registergericht: Amtsgericht Walsrode<br />
             Registernummer: [HRB-Nummer wird nachgetragen]
           </p>
           <p className="mt-1 text-xs text-ink-light">
-            <em>Hinweis: Die HRB-Nummer und das zuständige Registergericht sind zeitnah zu ergänzen,
-            sobald die Eintragung vorliegt bzw. bekannt ist.</em>
+            <em>Hinweis: Die HRB-Nummer wird zeitnah ergänzt, sobald die Eintragung vorliegt.</em>
           </p>
         </section>
 
