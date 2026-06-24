@@ -92,27 +92,28 @@ export async function retryAnalysis(analysisId: string): Promise<Analysis | null
 }
 
 // ─── Get Analysis by Token ───
-// Direct Supabase query for permalink access (RLS allows public read)
+// Permalink access via security-definer RPC. Direct table reads are no longer
+// allowed for anon (RLS policy removed in migration 006) — the RPC returns
+// strictly the single row addressed by the exact token, closing the
+// full-table-read hole that `using (true)` had opened.
 export async function getAnalysisByToken(token: string): Promise<Analysis | null> {
   if (USE_MOCKS) return mockApi.getAnalysisByToken(token)
 
   if (!supabase) throw new Error('Supabase not configured')
 
   const { data, error } = await supabase
-    .from('analyses')
-    .select('*')
-    .eq('token', token)
-    .single()
+    .rpc('get_analysis_by_token', { p_token: token })
 
-  if (error || !data) return null
+  if (error || !data || data.length === 0) return null
+  const row = data[0]
 
   return {
-    id: data.id,
-    token: data.token,
-    url: data.url,
-    options: data.options as AnalysisOptions,
-    status: data.status,
-    result: data.result,
-    created_at: data.created_at,
+    id: row.id,
+    token: row.token,
+    url: row.url,
+    options: row.options as AnalysisOptions,
+    status: row.status,
+    result: row.result,
+    created_at: row.created_at,
   }
 }

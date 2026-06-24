@@ -9,16 +9,29 @@ import Stripe from 'https://esm.sh/stripe@17?target=deno'
 // CORS
 // ═══════════════════════════════════════════════════════════════
 
-const CORS_HEADERS = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type, Authorization, x-client-info, apikey',
+// CORS restricted to known origins (was '*'). Server-to-server calls
+// (kickAnalyze / self-chaining) are unaffected — CORS is browser-only.
+const ALLOWED_ORIGINS = new Set([
+  'https://immopruef.de',
+  'https://www.immopruef.de',
+  'http://localhost:5173',
+  'http://localhost:4173',
+])
+
+function corsHeaders(origin: string | null): Record<string, string> {
+  const allowedOrigin = origin && ALLOWED_ORIGINS.has(origin) ? origin : 'https://immopruef.de'
+  return {
+    'Access-Control-Allow-Origin': allowedOrigin,
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization, x-client-info, apikey',
+    'Vary': 'Origin',
+  }
 }
 
-function jsonResponse(body: unknown, status = 200) {
+function jsonResponse(body: unknown, status = 200, origin: string | null = null) {
   return new Response(JSON.stringify(body), {
     status,
-    headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
+    headers: { ...corsHeaders(origin), 'Content-Type': 'application/json' },
   })
 }
 
@@ -39,7 +52,7 @@ function fireAndForget(promise: Promise<unknown>) {
 
 function kickAnalyze(sessionId: string) {
   const base = Deno.env.get('SUPABASE_URL')
-  const key = Deno.env.get('SB_SERVICE_ROLE_KEY')
+  const key = Deno.env.get('SB_SERVICE_ROLE_KEY') ?? Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')
   if (!base || !key) return
   const p = fetch(`${base}/functions/v1/analyze`, {
     method: 'POST',
@@ -780,12 +793,17 @@ function validateResult(result: Record<string, unknown>): string[] {
 // customer sees the retry UI instead of an empty paid report.
 function assertComplete(result: Record<string, unknown>, isPremium: boolean): void {
   const len = (v: unknown) => (Array.isArray(v) ? v.length : 0)
+  const isObj = (v: unknown): v is Record<string, unknown> => !!v && typeof v === 'object' && !Array.isArray(v)
   const problems: string[] = []
 
   if (len(result.objektdaten) < 5) problems.push('objektdaten')
 
+  if (!isObj(result.preisbewertung)) problems.push('preisbewertung')
+  if (!isObj(result.energieanalyse)) problems.push('energieanalyse')
+
   const gk = result.gesamtkosten as Record<string, unknown> | undefined
   if (!gk || len(gk.laufendeKosten) < 4) problems.push('gesamtkosten.laufendeKosten')
+  if (gk && !isObj(gk.kaufnebenkosten)) problems.push('gesamtkosten.kaufnebenkosten')
 
   const sa = result.standortanalyse as Record<string, unknown> | undefined
   if (!sa || len(sa.kategorien) < 5) problems.push('standortanalyse.kategorien')
@@ -800,10 +818,28 @@ function assertComplete(result: Record<string, unknown>, isPremium: boolean): vo
     problems.push('zusammenfassung')
   }
 
-  // Premium customers (79€) must receive the premiumReport — without it the
-  // product is not what was sold.
-  if (isPremium && (!result.premiumReport || typeof result.premiumReport !== 'object')) {
-    problems.push('premiumReport')
+  // Premium customers (79€) must receive a SUBSTANTIVE premiumReport — not just an
+  // empty object. Verify the high-value core modules are actually present, otherwise
+  // the customer would silently get less than what was sold (UI renders nothing for
+  // missing optional modules). Missing → retry instead of delivery.
+  if (isPremium) {
+    const pr = result.premiumReport as Record<string, unknown> | undefined
+    if (!isObj(pr)) {
+      problems.push('premiumReport')
+    } else {
+      const we = pr.wertermittlung as Record<string, unknown> | undefined
+      if (!isObj(we) || !isObj(we.fazit)) problems.push('premiumReport.wertermittlung')
+      const sd = pr.standortDossier as Record<string, unknown> | undefined
+      if (!isObj(sd) || len(sd.entfernungen) < 4) problems.push('premiumReport.standortDossier')
+      if (!isObj(pr.mietrendite)) problems.push('premiumReport.mietrendite')
+      const fd = pr.finanzierungsDetail as Record<string, unknown> | undefined
+      if (!isObj(fd) || len(fd.cashflow) < 1) problems.push('premiumReport.finanzierungsDetail')
+      if (!isObj(pr.marktband)) problems.push('premiumReport.marktband')
+      if (!isObj(pr.staerkenSchwaechenNarrativ)) problems.push('premiumReport.staerkenSchwaechen')
+      const bf = pr.besichtigungsFragenSpezifisch as Record<string, unknown> | undefined
+      if (!isObj(bf) || len(bf.fragenProThema) < 1) problems.push('premiumReport.besichtigungsfragen')
+      if (len(pr.vorKaufCheckliste) < 1) problems.push('premiumReport.vorKaufCheckliste')
+    }
   }
 
   if (problems.length > 0) {
@@ -816,24 +852,26 @@ function assertComplete(result: Record<string, unknown>, isPremium: boolean): vo
 // ═══════════════════════════════════════════════════════════════
 
 serve(async (req) => {
+  const origin = req.headers.get('origin')
+
   // Handle CORS preflight
   if (req.method === 'OPTIONS') {
-    return new Response(null, { status: 204, headers: CORS_HEADERS })
+    return new Response(null, { status: 204, headers: corsHeaders(origin) })
   }
 
   if (req.method !== 'POST') {
-    return jsonResponse({ error: 'Method not allowed' }, 405)
+    return jsonResponse({ error: 'Method not allowed' }, 405, origin)
   }
 
   try {
     const { session_id } = await req.json()
     if (!session_id) {
-      return jsonResponse({ error: 'session_id required' }, 400)
+      return jsonResponse({ error: 'session_id required' }, 400, origin)
     }
 
     const supabase = createClient(
       Deno.env.get('SUPABASE_URL')!,
-      Deno.env.get('SB_SERVICE_ROLE_KEY')!
+      (Deno.env.get('SB_SERVICE_ROLE_KEY') ?? Deno.env.get('SUPABASE_SERVICE_ROLE_KEY'))!
     )
 
     // Look up order
@@ -844,12 +882,12 @@ serve(async (req) => {
       .single()
 
     if (orderErr || !order) {
-      return jsonResponse({ error: 'Order not found' }, 404)
+      return jsonResponse({ error: 'Order not found' }, 404, origin)
     }
 
     // If still pending payment
     if (order.status === 'pending') {
-      return jsonResponse({ error: 'pending', message: 'Zahlung wird noch verarbeitet' }, 402)
+      return jsonResponse({ error: 'pending', message: 'Zahlung wird noch verarbeitet' }, 402, origin)
     }
 
     // Set order to processing if it's paid (first time)
@@ -870,7 +908,7 @@ serve(async (req) => {
       .eq('order_id', order.id)
 
     if (!allAnalyses?.length) {
-      return jsonResponse({ error: 'No analyses found' }, 500)
+      return jsonResponse({ error: 'No analyses found' }, 500, origin)
     }
 
     // Reset STUCK "processing" analyses (from crashed/timed-out calls) back to pending.
@@ -893,14 +931,14 @@ serve(async (req) => {
     const allDone = allAnalyses.every((a: { status: string }) => a.status === 'completed' || a.status === 'failed')
     if (allDone) {
       await supabase.from('orders').update({ status: 'completed' }).eq('id', order.id)
-      return jsonResponse({ order_status: 'completed', analyses: allAnalyses })
+      return jsonResponse({ order_status: 'completed', analyses: allAnalyses }, 200, origin)
     }
 
     // Find the NEXT pending analysis (process ONE at a time to avoid timeout)
     const nextPending = allAnalyses.find((a: { status: string }) => a.status === 'pending')
     if (!nextPending) {
       // Some still processing from a previous call — return current state
-      return jsonResponse({ order_status: 'processing', analyses: allAnalyses })
+      return jsonResponse({ order_status: 'processing', analyses: allAnalyses }, 200, origin)
     }
 
     // Determine if premium
@@ -925,7 +963,7 @@ serve(async (req) => {
             status: 'failed',
             result: { error: 'URL ist nicht von einem unterstützten Portal' },
           }).eq('id', analysis.id)
-          return jsonResponse({ error: 'Invalid URL' }, 400)
+          return jsonResponse({ error: 'Invalid URL' }, 400, origin)
         }
 
         // Atomic claim: only ONE invocation may move this row pending → processing.
@@ -939,7 +977,7 @@ serve(async (req) => {
           .select('id')
         if (!claimed || claimed.length === 0) {
           console.log(`Analysis ${analysis.id} already claimed by another invocation — skipping`)
-          return jsonResponse({ order_status: 'processing', analyses: allAnalyses })
+          return jsonResponse({ order_status: 'processing', analyses: allAnalyses }, 200, origin)
         }
 
         const opts = analysis.options as { makleranschreiben: boolean; verhandlungstipps: boolean; risiken: boolean }
@@ -1230,7 +1268,7 @@ WICHTIG: Verwende Exposé-Daten und recherchierte Regionsdurchschnitte. JEDES Fe
       // poll (if still open) drives the UI in parallel; the atomic claim prevents
       // double-processing.
       kickAnalyze(session_id)
-      return jsonResponse({ order_status: 'processing', analyses })
+      return jsonResponse({ order_status: 'processing', analyses }, 200, origin)
     }
 
     // Send email only when ALL analyses are done
@@ -1371,9 +1409,9 @@ WICHTIG: Verwende Exposé-Daten und recherchierte Regionsdurchschnitte. JEDES Fe
       .select('*')
       .eq('order_id', order.id)
 
-    return jsonResponse({ order_status: 'completed', analyses: finalAnalyses })
+    return jsonResponse({ order_status: 'completed', analyses: finalAnalyses }, 200, origin)
   } catch (err) {
     console.error('Analyze error:', err)
-    return jsonResponse({ error: 'Interner Fehler' }, 500)
+    return jsonResponse({ error: 'Interner Fehler' }, 500, origin)
   }
 })

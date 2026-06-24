@@ -45,7 +45,7 @@ function fireAndForget(promise: Promise<unknown>) {
 
 function kickAnalyze(sessionId: string) {
   const base = Deno.env.get('SUPABASE_URL')
-  const key = Deno.env.get('SB_SERVICE_ROLE_KEY')
+  const key = Deno.env.get('SB_SERVICE_ROLE_KEY') ?? Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')
   if (!base || !key) return
   const p = fetch(`${base}/functions/v1/analyze`, {
     method: 'POST',
@@ -159,7 +159,7 @@ serve(async (req) => {
 
       const supabase = createClient(
         Deno.env.get('SUPABASE_URL')!,
-        Deno.env.get('SB_SERVICE_ROLE_KEY')!
+        (Deno.env.get('SB_SERVICE_ROLE_KEY') ?? Deno.env.get('SUPABASE_SERVICE_ROLE_KEY'))!
       )
 
       // Idempotency check — only skip on true duplicates (same event fully processed)

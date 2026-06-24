@@ -160,7 +160,7 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
                 <KVRow label={`Makler (${result.gesamtkosten.kaufnebenkosten?.makler?.satz || '—'})`} value={result.gesamtkosten.kaufnebenkosten?.makler?.betrag || '—'} i={3} />
                 <tr className="bg-green/5 font-medium">
                   <td className="px-3.5 py-2.5 text-green text-xs tracking-wide">Nebenkosten Gesamt</td>
-                  <td className="px-3.5 py-2.5 text-green font-display text-base">{result.gesamtkosten.kaufnebenkosten.gesamt}</td>
+                  <td className="px-3.5 py-2.5 text-green font-display text-base">{result.gesamtkosten.kaufnebenkosten?.gesamt || '—'}</td>
                 </tr>
               </tbody>
             </table>
@@ -198,8 +198,8 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
                 ))}
                 <tr className="bg-green/5 font-medium">
                   <td className="px-3.5 py-2.5 text-green text-xs tracking-wide">Gesamt</td>
-                  <td className="px-3.5 py-2.5 text-green text-right font-display">{result.gesamtkosten.laufendeKostenGesamt.monat}</td>
-                  <td className="px-3.5 py-2.5 text-green text-right text-xs">{result.gesamtkosten.laufendeKostenGesamt.jahr}/J.</td>
+                  <td className="px-3.5 py-2.5 text-green text-right font-display">{result.gesamtkosten.laufendeKostenGesamt?.monat || '—'}</td>
+                  <td className="px-3.5 py-2.5 text-green text-right text-xs">{result.gesamtkosten.laufendeKostenGesamt?.jahr || '—'}/J.</td>
                 </tr>
               </tbody>
             </table>
@@ -323,9 +323,9 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
                 <div className="text-xs text-ink-light">Geschätzte Heizkosten</div>
               </div>
             </div>
-            {result.energieanalyse.gegPflicht.besteht && (
+            {result.energieanalyse.gegPflicht?.besteht && (
               <div className="bg-amber-50 border border-amber-200 rounded-lg px-3.5 py-2.5 text-xs text-amber-800">
-                <span className="font-medium">⚠️ GEG-Pflicht:</span> {result.energieanalyse.gegPflicht.details}
+                <span className="font-medium">⚠️ GEG-Pflicht:</span> {result.energieanalyse.gegPflicht?.details}
               </div>
             )}
           </div>
@@ -449,23 +449,29 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
             ))}
           </div>
 
-          <CollapsibleCard title="Demografie & Bevölkerung" expanded={expandedSections['demo'] ?? false} onToggle={() => toggleSection('demo')}>
-            <KVRow label="Bevölkerungsentwicklung" value={result.standortanalyse.demografie.bevoelkerungsentwicklung} i={0} />
-            <KVRow label="Trend" value={result.standortanalyse.demografie.trend === 'wachsend' ? '🟢 Wachsend' : result.standortanalyse.demografie.trend === 'stabil' ? '🟡 Stabil' : '🔴 Schrumpfend'} i={1} />
-            <KVRow label="Altersstruktur" value={result.standortanalyse.demografie.altersstruktur} i={2} />
-            <KVRow label="Kaufkraftindex" value={result.standortanalyse.demografie.kaufkraftindex} i={3} />
-          </CollapsibleCard>
+          {result.standortanalyse.demografie && (
+            <CollapsibleCard title="Demografie & Bevölkerung" expanded={expandedSections['demo'] ?? false} onToggle={() => toggleSection('demo')}>
+              <KVRow label="Bevölkerungsentwicklung" value={result.standortanalyse.demografie.bevoelkerungsentwicklung} i={0} />
+              <KVRow label="Trend" value={result.standortanalyse.demografie.trend === 'wachsend' ? '🟢 Wachsend' : result.standortanalyse.demografie.trend === 'stabil' ? '🟡 Stabil' : '🔴 Schrumpfend'} i={1} />
+              <KVRow label="Altersstruktur" value={result.standortanalyse.demografie.altersstruktur} i={2} />
+              <KVRow label="Kaufkraftindex" value={result.standortanalyse.demografie.kaufkraftindex} i={3} />
+            </CollapsibleCard>
+          )}
 
-          <CollapsibleCard title="Wirtschaft & Arbeitsmarkt" expanded={expandedSections['wirtschaft'] ?? false} onToggle={() => toggleSection('wirtschaft')}>
-            <KVRow label="Arbeitslosenquote" value={result.standortanalyse.wirtschaft.arbeitslosenquote} i={0} />
-            <KVRow label="Top-Arbeitgeber" value={result.standortanalyse.wirtschaft.topArbeitgeber.join(', ')} i={1} />
-            <KVRow label="Branchenstruktur" value={result.standortanalyse.wirtschaft.branchenstruktur} i={2} />
-          </CollapsibleCard>
+          {result.standortanalyse.wirtschaft && (
+            <CollapsibleCard title="Wirtschaft & Arbeitsmarkt" expanded={expandedSections['wirtschaft'] ?? false} onToggle={() => toggleSection('wirtschaft')}>
+              <KVRow label="Arbeitslosenquote" value={result.standortanalyse.wirtschaft.arbeitslosenquote} i={0} />
+              <KVRow label="Top-Arbeitgeber" value={result.standortanalyse.wirtschaft.topArbeitgeber?.join(', ') || '—'} i={1} />
+              <KVRow label="Branchenstruktur" value={result.standortanalyse.wirtschaft.branchenstruktur} i={2} />
+            </CollapsibleCard>
+          )}
 
-          <CollapsibleCard title="Internet & Mobilfunk" expanded={expandedSections['infra'] ?? false} onToggle={() => toggleSection('infra')}>
-            <KVRow label="Breitband" value={`${result.standortanalyse.infrastruktur.breitband} (${result.standortanalyse.infrastruktur.breitbandTyp})`} i={0} />
-            <KVRow label="Mobilfunk" value={result.standortanalyse.infrastruktur.mobilfunk} i={1} />
-          </CollapsibleCard>
+          {result.standortanalyse.infrastruktur && (
+            <CollapsibleCard title="Internet & Mobilfunk" expanded={expandedSections['infra'] ?? false} onToggle={() => toggleSection('infra')}>
+              <KVRow label="Breitband" value={`${result.standortanalyse.infrastruktur.breitband} (${result.standortanalyse.infrastruktur.breitbandTyp})`} i={0} />
+              <KVRow label="Mobilfunk" value={result.standortanalyse.infrastruktur.mobilfunk} i={1} />
+            </CollapsibleCard>
+          )}
         </div>
       )}
 
@@ -518,7 +524,7 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
             ))}
           </div>
 
-          {result.risikobewertung.redFlags.length > 0 && (
+          {(result.risikobewertung.redFlags?.length ?? 0) > 0 && (
             <div className="bg-red-50 border border-red-200 rounded-xl px-4 py-3">
               <div className="text-xs font-medium text-red-700 mb-2 tracking-wider uppercase">🚩 Red Flags</div>
               {(result.risikobewertung?.redFlags || []).map((flag, i) => (
