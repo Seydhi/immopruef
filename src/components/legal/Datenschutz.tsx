@@ -157,22 +157,34 @@ export default function Datenschutz() {
         <section>
           <h2 className="text-base font-heading font-semibold text-ink mb-2">6. KI-gestützte Analyse</h2>
           <p>
-            Zur Erstellung der Immobilienanalyse nutzen wir KI-Dienste der Anthropic PBC,
-            548 Market Street, PMB 90375, San Francisco, CA 94104, USA (Claude), sowie
-            ggf. der OpenAI, L.L.C., 3180 18th Street, San Francisco, CA 94110, USA.
+            Zur Erstellung der Immobilienanalyse nutzen wir den KI-Dienst der Anthropic PBC,
+            548 Market Street, PMB 90375, San Francisco, CA 94104, USA (Claude).
             Dabei werden die von Ihnen eingegebenen Immobilien-URLs und daraus extrahierte
-            Inhalte an den jeweiligen Dienst übermittelt. Direkte Kundendaten (E-Mail, Name)
-            werden nicht an die KI-Dienste weitergegeben.
+            Inhalte an den Dienst übermittelt. Direkte Kundendaten (E-Mail, Name)
+            werden nicht an den KI-Dienst weitergegeben.
           </p>
           <p className="mt-2">
             Die Verarbeitung erfolgt in unserem Auftrag auf Grundlage eines Auftragsverarbeitungs-
-            vertrags nach Art. 28 DSGVO. Beide Anbieter sind unter dem EU-US Data Privacy
-            Framework zertifiziert bzw. stützen sich auf EU-Standardvertragsklauseln
+            vertrags nach Art. 28 DSGVO. Anthropic stützt sich auf EU-Standardvertragsklauseln
             (vgl. Abschnitt 12).
           </p>
           <p className="mt-2">
-            Anthropic: <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener noreferrer" className="text-green hover:text-green-mid">anthropic.com/privacy</a><br />
-            OpenAI: <a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-green hover:text-green-mid">openai.com/policies/privacy-policy</a>
+            Anthropic: <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener noreferrer" className="text-green hover:text-green-mid">anthropic.com/privacy</a>
+          </p>
+
+          <h3 className="font-semibold text-ink mt-3 mb-1">Abruf der Inseratsdaten (Bright Data, Jina)</h3>
+          <p>
+            Um den Inhalt des von Ihnen angegebenen Immobilien-Inserats abzurufen, setzen wir
+            technische Abruf-/Auslese-Dienste ein: Bright Data Ltd. (USA/Israel) sowie Jina AI
+            GmbH bzw. deren Reader-Dienst (r.jina.ai). An diese Dienste wird ausschließlich die
+            von Ihnen eingegebene Inserats-URL übermittelt, um die öffentlich abrufbare Inseratsseite
+            zu laden. Es werden keine direkten Kundendaten (E-Mail, Name) übertragen.
+            Die Verarbeitung erfolgt in unserem Auftrag nach Art. 28 DSGVO; ein etwaiger
+            Drittlandtransfer wird durch EU-Standardvertragsklauseln abgesichert (vgl. Abschnitt 12).
+          </p>
+          <p className="mt-1">
+            Bright Data: <a href="https://brightdata.com/privacy" target="_blank" rel="noopener noreferrer" className="text-green hover:text-green-mid">brightdata.com/privacy</a><br />
+            Jina AI: <a href="https://jina.ai/legal/" target="_blank" rel="noopener noreferrer" className="text-green hover:text-green-mid">jina.ai/legal</a>
           </p>
         </section>
 
@@ -255,7 +267,8 @@ export default function Datenschutz() {
           </p>
           <ul className="list-disc pl-5 space-y-1 mt-2">
             <li><strong>Vercel Inc.</strong> (Website-Hosting, technische Zugriffsdaten)</li>
-            <li><strong>Anthropic PBC / OpenAI L.L.C.</strong> (KI-gestützte Analyse der Immobilien-URLs)</li>
+            <li><strong>Anthropic PBC</strong> (KI-gestützte Analyse der Immobilien-URLs)</li>
+            <li><strong>Bright Data Ltd. / Jina AI</strong> (Abruf der öffentlichen Inseratsseite anhand der eingegebenen URL)</li>
             <li><strong>Resend Inc.</strong> (E-Mail-Versand)</li>
             <li><strong>Supabase Inc.</strong> (mögliche Zugriffe durch US-Muttergesellschaft, Daten liegen in der EU)</li>
           </ul>
@@ -297,7 +310,7 @@ export default function Datenschutz() {
             Die Logik der Analyse basiert auf:
           </p>
           <ul className="list-disc pl-5 space-y-1 mt-1">
-            <li>Textanalyse des Inserats durch KI-Modelle (Claude / OpenAI)</li>
+            <li>Textanalyse des Inserats durch das KI-Modell Claude (Anthropic)</li>
             <li>Preisvergleich mit Marktdaten</li>
             <li>Regelbasierter Auswertung von Energieausweis-, Modernisierungs- und Standortindikatoren</li>
           </ul>

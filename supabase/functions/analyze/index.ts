@@ -409,7 +409,7 @@ PREMIUM-REPORT — PFLICHT! Das JSON MUSS ein "premiumReport"-Objekt enthalten. 
       "bewertungen": [{ "plattform": "string (ImmoScout24/JACASA/Google/ProvenExpert/Trustpilot)", "score": "string (X,X/5 ODER '—')", "anzahl": "string (z.B. '142 Bewertungen' ODER 'Keine')" }],
       "ranking": "string (z.B. 'Top 10 Makler Bremen' ODER '—')",
       "fazit": "string (3-4 Sätze BERATER-TONALITÄT — narrative Einschätzung der Seriosität)",
-      "redFlags": ["string (entweder konkrete Auffälligkeiten ODER ['Keine Auffälligkeiten — solider Anbieter'])"]
+      "redFlags": ["string (sachliche, öffentlich belegbare Hinweise ODER ['Keine öffentlich auffindbaren Auffälligkeiten'] — KEINE Werturteile über den Anbieter)"]
     },
 
     "mietrendite": {
@@ -483,10 +483,10 @@ PREMIUM-REPORT — PFLICHT! Das JSON MUSS ein "premiumReport"-Objekt enthalten. 
 }
 
 PREMIUM-PFLICHT-DETAILS:
-- vergleichswert.vergleichsobjekte: Recherchiere per Web-Suche vergleichbare AKTUELLE ANGEBOTE in der Umgebung (immowelt-/ImmoScout24-Inserate). 🚨 WICHTIG: Echte notarielle Verkaufspreise sind in Deutschland NICHT öffentlich verfügbar (nur Gutachterausschuss / Kaufpreissammlung, §195 BauGB). Gib daher ausschließlich ANGEBOTSPREISE an; das Feld "preis" ist ein Angebotspreis, kein Kaufpreis. Verwende NIEMALS "verkauft" oder behaupte abgeschlossene Verkäufe. Ziel: 3–6 vergleichbare Angebote mit Adresse/Stadtteil, €/m², Abweichung. Wenn die Web-Suche keine belastbaren Vergleichsangebote liefert, gib lieber 2–3 echte an statt 6 — erfinde NIEMALS Adressen oder Preise.
+- vergleichswert.vergleichsobjekte: Recherchiere per Web-Suche vergleichbare AKTUELLE ANGEBOTE in der Umgebung (immowelt-/ImmoScout24-Inserate). Dies sind BEISPIEL-Vergleichsangebote zur Orientierung, keine abgeschlossenen Verkäufe. 🚨 WICHTIG: Echte notarielle Verkaufspreise sind in Deutschland NICHT öffentlich verfügbar (nur Gutachterausschuss / Kaufpreissammlung, §195 BauGB). Gib daher ausschließlich ANGEBOTSPREISE an; das Feld "preis" ist ein Angebotspreis, kein Kaufpreis. Verwende NIEMALS "verkauft" oder behaupte abgeschlossene Verkäufe. KEINE harte Mindestanzahl — Qualität vor Quantität: gib nur Angebote an, die du per Web-Suche tatsächlich gefunden hast (typisch 2–5). 🚫 ERFINDE NIEMALS Adressen, Hausnummern, Stadtteile oder Preise. Wenn die Web-Suche keine belastbaren Vergleichsangebote liefert, gib lieber ein LEERES Array zurück (die UI zeigt dann einen entsprechenden Hinweis) als auch nur ein erfundenes Objekt.
 - sachwert: Bodenwert mit echtem Bodenrichtwert berechnen (per Web-Suche). Gebäudewert nach NHK 2010. Alterswertminderung nach Ross-Verfahren.
 - ertragswert: Jahresrohertrag aus ortsüblicher Vergleichsmiete (per Web-Suche Mietpreisspiegel). Liegenschaftszins vom Gutachterausschuss.
-- standortDossier.entfernungen: MINDESTENS 12 POIs (nächste U-Bahn/S-Bahn, Bushaltestelle, Grundschule, Gymnasium, Kindergarten, Hausarzt, Zahnarzt, Supermarkt, Apotheke, Park/Grünfläche, Krankenhaus, Hauptbahnhof). Entfernungen und Fahrzeiten per Web-Suche verifizieren.
+- standortDossier.entfernungen: Die wichtigsten erreichbaren POIs (Ziel ~8–12, mindestens 4: z.B. nächste ÖPNV-Haltestelle, Grundschule, Supermarkt, Hausarzt; je nach Lage zusätzlich U-/S-Bahn, Gymnasium, Kindergarten, Zahnarzt, Apotheke, Park, Krankenhaus, Hauptbahnhof). NUR per Web-Suche/Kartendaten VERIFIZIERTE Entfernungen und Fahrzeiten — 🚫 erfinde KEINE Distanzen. Gib lieber weniger, dafür echte POIs an als eine erzwungene Liste mit geschätzten Werten.
 - hochwasserrisiko: Per Web-Suche "[Stadt] Hochwassergefahrenkarte" recherchieren.
 - laermbelastung: Per Web-Suche "[Adresse] Lärmkarte" oder "[Stadt] Lärmkartierung" recherchieren.
 - radon: Per Web-Suche "Radonkarte [Bundesland]" recherchieren.
@@ -519,8 +519,9 @@ DATEN-FÜLLUNGS-HIERARCHIE (gilt für ALLE Markt-/Preis-/Renditedaten):
   * Wenn nicht findbar → "Nicht öffentlich verfügbar" — auch hier KEIN Schätzen (ist Faktenbehauptung)
   FALLBACK-REGELN:
   * Privatverkäufer (kein Makler im Exposé) → "art": "privatverkauf", alle Felder "Nicht zutreffend (Privatverkauf)", bewertungen-Array LEER, fazit: "📋 Privatverkauf — keine Maklerprüfung möglich. Bei Privatverkäufen ist die Unterlagen-Vollständigkeit doppelt wichtig: Lassen Sie den Kaufvertrag von einem unabhängigen Anwalt prüfen (300-500€). Klären Sie persönlich den Verkaufsgrund — emotionale Verkäufe (Erbschaft, Scheidung) sind oft gut verhandelbar."
-  * Makler ohne Online-Präsenz → "art": "unbekannt", "name": echter Maklername, andere Faktendaten "Nicht öffentlich verfügbar", bewertungen-Array LEER, redFlags: ["Geringe Online-Sichtbarkeit — kann auf neuen Marktteilnehmer oder rein lokal arbeitenden Privatmakler hindeuten. Bitten Sie um 2-3 Referenzkunden."]
-  fazit MUSS narrativ sein (3-4 Sätze) — keine Stichpunkte. Ton: erfahrener Berater, nicht Versicherungs-Disclaimer.
+  * Makler ohne Online-Präsenz → "art": "unbekannt", "name": echter Maklername, andere Faktendaten "Nicht öffentlich verfügbar", bewertungen-Array LEER, redFlags: ["Zu diesem Anbieter waren wenige öffentliche Informationen auffindbar. Das ist KEIN Negativmerkmal — fragen Sie zur eigenen Sicherheit nach Referenzen, vollständigen Kontaktdaten und Unterlagen."]
+  🚫 HAFTUNG/PERSÖNLICHKEITSRECHT: fazit und redFlags MÜSSEN sich strikt auf ÖFFENTLICH AUFFINDBARE Informationen beschränken. KEINE wertenden Tatsachenbehauptungen über den namentlich genannten Anbieter (NICHT "seriös"/"unseriös"/"vertrauenswürdig", KEINE Mutmaßungen über Geschäftsgebaren, Erfahrung oder Größe aus fehlenden Daten ableiten). Beschreibe NUR, welche Informationen auffindbar sind/fehlen und welche Unterlagen/Referenzen der Käufer anfragen sollte.
+  fazit MUSS narrativ sein (3-4 Sätze) — keine Stichpunkte. Ton: sachlich-beraterisch, neutral.
 
 - mietrendite: Daten-Füllungs-Hierarchie strikt befolgen — "verfuegbar: false" ist absoluter NOTFALL.
   STUFE 1: Lokaler Mietspiegel der Stadt → kaltmieteProQm exakt für die Lagestufe + Baujahresklasse + Wohnungsgröße entnehmen
@@ -603,9 +604,10 @@ async function callClaude(
 ): Promise<AIResponse> {
   console.log('Using Claude Sonnet 4 (production mode)')
 
-  // Premium gets more web searches for deeper research
-  // (Makler-Bewertungen, Preistrend, Marktquartile, Mietspiegel, Bauzinsen, Quellen)
-  const webSearchMaxUses = isPremium ? 28 : 12
+  // Premium gets more web searches for deeper research, but capped to keep the
+  // single Edge-Function invocation under the wall-clock limit (~150s). 28 sequential
+  // searches + 48k-token generation risked timeouts → 18 is a safer ceiling.
+  const webSearchMaxUses = isPremium ? 18 : 12
 
   const response = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
@@ -632,6 +634,13 @@ async function callClaude(
 
   const data = await response.json()
   console.log(`Claude response: stop_reason=${data.stop_reason}, content_blocks=${data.content?.length}`)
+
+  // If generation hit the token ceiling the JSON is truncated and unusable.
+  // Throw a clear error so the retry loop re-runs (rather than parsing a partial
+  // object). Premium is most at risk given its large schema.
+  if (data.stop_reason === 'max_tokens') {
+    throw new Error('Claude-Antwort abgeschnitten (stop_reason=max_tokens) — JSON unvollständig, Retry wird ausgelöst')
+  }
 
   // Web search (server_tool_use) is handled automatically by the API.
   // The response comes back with stop_reason="end_turn" when done,
@@ -1301,6 +1310,8 @@ WICHTIG: Verwende Exposé-Daten und recherchierte Regionsdurchschnitte. JEDES Fe
 
         const completed = (completedAnalyses || []).filter((a: { status: string }) => a.status === 'completed')
         const analysisCount = completed.length
+        const totalCount = (completedAnalyses || []).length
+        const failedCount = totalCount - analysisCount
 
         const linkRows = completed
           .map((a: { token: string; url: string }, i: number) => {
@@ -1371,6 +1382,16 @@ WICHTIG: Verwende Exposé-Daten und recherchierte Regionsdurchschnitte. JEDES Fe
       <table width="100%" cellpadding="0" cellspacing="0" style="background:#f9f8f5;border-radius:8px;overflow:hidden;">
         ${linkRows}
       </table>
+
+      ${failedCount > 0 ? `
+      <div style="margin-top:20px;padding:14px 16px;background:#fdecea;border:1px solid #f5c6cb;border-radius:8px;">
+        <div style="font-size:13px;color:#a13b30;font-weight:600;margin-bottom:4px;">Hinweis: ${failedCount} von ${totalCount} Analyse${totalCount === 1 ? '' : 'n'} konnte${failedCount === 1 ? '' : 'n'} nicht erstellt werden</div>
+        <div style="font-size:12px;color:#a13b30;line-height:1.5;">
+          Bei ${failedCount === 1 ? 'einer Ihrer Immobilien' : `${failedCount} Ihrer Immobilien`} konnten wir keine vollständige Analyse erstellen (z.B. weil das Inserat nicht abrufbar war).
+          Sie haben dafür selbstverständlich nichts zu verlieren: Antworten Sie einfach auf diese E-Mail — wir starten die fehlende Analyse kostenfrei neu oder erstatten den anteiligen Betrag.
+        </div>
+      </div>
+      ` : ''}
 
       ${isPremium ? `
       <div style="margin-top:20px;padding:14px 16px;background:#fef9ee;border:1px solid #e8d9a8;border-radius:8px;">
