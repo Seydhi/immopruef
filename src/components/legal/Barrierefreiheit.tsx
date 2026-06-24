@@ -105,7 +105,7 @@ export default function Barrierefreiheit() {
             <strong>Ansprechpartner:</strong><br />
             Neuralpfad UG (haftungsbeschränkt)<br />
             Seydhan Cakmak<br />
-            E-Mail: <a href="mailto:info@immopruef.com?subject=Barrierefreiheit" className="text-green hover:text-green-mid transition-colors">info@immopruef.com</a>
+            E-Mail: <a href="mailto:info@immopruef.de?subject=Barrierefreiheit" className="text-green hover:text-green-mid transition-colors">info@immopruef.de</a>
           </p>
           <p className="mt-2">
             Wir bemühen uns, auf Ihr Feedback innerhalb von <strong>6 Wochen</strong> zu
