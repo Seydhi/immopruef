@@ -7,10 +7,15 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="ImmoPrüf – KI-gestützte Immobilienanalyse. Preisbewertung, Standortanalyse, Finanzierungs-Check und mehr. Ab 19 €." />
+    <!-- Canonical-Fallback (wird pro Route von useSEO überschrieben; Prerender konsolidiert) -->
+    <link rel="canonical" href="https://immopruef.de/" />
     <!-- Open Graph (WhatsApp, Discord, Facebook, LinkedIn) -->
     <meta property="og:title" content="ImmoPrüf – KI-gestützte Immobilienanalyse" />
     <meta property="og:description" content="Soll ich diese Immobilie kaufen? Preisbewertung, Standort, Finanzierung, Risiken — alles in einem Report. Ab 19 €." />
     <meta property="og:image" content="https://immopruef.de/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="ImmoPrüf – KI-gestützte Immobilienanalyse" />
     <meta property="og:url" content="https://immopruef.de" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="de_DE" />
@@ -19,11 +24,13 @@
     <meta name="twitter:title" content="ImmoPrüf – KI-gestützte Immobilienanalyse" />
     <meta name="twitter:description" content="Soll ich diese Immobilie kaufen? Preisbewertung, Standort, Finanzierung, Risiken — alles in einem Report. Ab 19 €." />
     <meta name="twitter:image" content="https://immopruef.de/og-image.png" />
+    <meta name="twitter:image:alt" content="ImmoPrüf – KI-gestützte Immobilienanalyse" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-    <title>ImmoPrüf – KI-gestützte Immobilienanalyse</title>
+    <!-- Fonts non-render-blocking laden (display=swap verhindert FOIT) -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" /></noscript>
+    <title>ImmoPrüf – Immobilienangebote vor dem Kauf strukturiert einordnen</title>
   </head>
   <body>
     <div id="root"></div>

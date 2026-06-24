@@ -138,9 +138,12 @@ export default function Landing() {
     <>
       {/* Analyse-Formular ganz oben */}
       <div className="text-center mb-6 mt-2">
-        <h2 className="font-display text-2xl font-medium text-green leading-tight mb-1">
+        {/* Bewusst KEIN <h2>: Das semantische Seiten-H1 sitzt in der HeroSection.
+            Diese Formular-Überschrift ist rein visuell, damit die Heading-Hierarchie
+            (genau ein H1, keine Überschrift davor) korrekt bleibt. */}
+        <div role="presentation" className="font-display text-2xl font-medium text-green leading-tight mb-1">
           Analyse starten
-        </h2>
+        </div>
         <p className="text-ink-light text-sm">
           Strukturierte Ersteinschätzung in wenigen Minuten
         </p>

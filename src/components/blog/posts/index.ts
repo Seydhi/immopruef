@@ -1,5 +1,6 @@
 import { lazy } from 'react'
 import type { BlogMeta } from '../BlogLayout'
+import { EXTRA_FAQ } from './faq-data'
 
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
@@ -1178,6 +1179,15 @@ export const BLOG_POSTS: BlogMeta[] = [
     image: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&h=450&fit=crop&auto=format&q=80',
   },
 ]
+
+// FAQ-Daten (H8 SEO/AEO) für Artikel, die kein inline `faq` haben, aus faq-data.ts
+// nachziehen. Bestehende inline-FAQs haben Vorrang und werden NICHT überschrieben.
+// Speist FAQPage-Schema + sichtbare "Häufige Fragen"-Sektion in BlogLayout.
+for (const post of BLOG_POSTS) {
+  if ((!post.faq || post.faq.length === 0) && EXTRA_FAQ[post.slug]) {
+    post.faq = EXTRA_FAQ[post.slug]
+  }
+}
 
 // Map slug → lazy component (filled as posts are written)
 export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.ComponentType>> = {
