@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react'
 import { useSEO, faqSchema, breadcrumbSchema } from '../lib/useSEO'
 import { GREST, NOTAR_SATZ, GRUNDBUCH_SATZ, eur, pct } from '../lib/kaufnebenkosten'
+import { Row } from './calcUi'
 
 export default function Rechner() {
   const [preis, setPreis] = useState(400000)
@@ -66,18 +67,6 @@ export default function Rechner() {
       ]),
     ],
   })
-
-  const Row = ({ label, sub, value, strong = false }: { label: string; sub?: string; value: string; strong?: boolean }) => (
-    <div className={`flex items-baseline justify-between gap-4 py-2.5 ${strong ? '' : 'border-b border-ink/8'}`}>
-      <div>
-        <div className={`text-sm ${strong ? 'font-semibold text-ink' : 'text-ink-mid'}`}>{label}</div>
-        {sub && <div className="text-[11px] text-ink-light">{sub}</div>}
-      </div>
-      <div className={`text-right tabular-nums ${strong ? 'font-display text-lg font-semibold text-green' : 'text-sm font-medium text-ink'}`}>
-        {value}
-      </div>
-    </div>
-  )
 
   return (
     <div className="max-w-[680px] mx-auto">

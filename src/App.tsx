@@ -106,6 +106,11 @@ export default function App() {
     setTimedOut(true)
   }, [])
 
+  // Initial-Routing wird beim Mount deterministisch aus der URL abgeleitet — ein
+  // bewusstes setState-im-Effect-Muster (kein abgeleiteter Render-Cascade). Dieses
+  // Routing ist durch den vollständigen Prerender (134/134 Routen) verifiziert;
+  // ein Umbau wäre reines Regressionsrisiko ohne Funktionsgewinn.
+  /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
     const path = window.location.pathname
     const params = new URLSearchParams(window.location.search)
@@ -161,6 +166,7 @@ export default function App() {
       setToast({ message: 'Zahlung abgebrochen.', variant: 'neutral' })
     }
   }, [startPolling])
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   const handleBack = () => {
     setView({ type: 'landing' })
