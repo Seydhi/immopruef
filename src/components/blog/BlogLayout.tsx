@@ -37,6 +37,37 @@ function germanDateToIso(date: string): string {
   return `${year}-${month}-${day}T08:00:00+02:00`
 }
 
+// ─── Kontextuelle Artikel→Rechner-Verlinkung (GEO/Interne Verlinkung) ───
+// Statt 100+ Artikel einzeln zu editieren: tag-basierte Zuordnung an einer Stelle.
+type Tool = { href: string; label: string; desc: string }
+const TOOLS: Record<string, Tool> = {
+  grunderwerbsteuer: { href: '/grunderwerbsteuer-rechner', label: 'Kaufnebenkosten-Rechner', desc: 'Grunderwerbsteuer, Notar, Grundbuch & Makler' },
+  budget: { href: '/budgetrechner', label: 'Budgetrechner', desc: 'Wie viel Immobilie kann ich mir leisten?' },
+  tilgung: { href: '/tilgungsrechner', label: 'Tilgungsrechner', desc: 'Rate, Restschuld & Tilgungsplan' },
+  mietenkaufen: { href: '/mieten-oder-kaufen-rechner', label: 'Mieten oder Kaufen', desc: 'Vermögensvergleich über die Jahre' },
+  mietrendite: { href: '/mietrendite-rechner', label: 'Mietrendite-Rechner', desc: 'Brutto-/Nettorendite & Kaufpreisfaktor' },
+  instandhaltung: { href: '/instandhaltungsruecklage-rechner', label: 'Instandhaltungsrücklage', desc: 'Sinnvolle Rücklage je m²' },
+  wohnflaeche: { href: '/wohnflaechen-rechner', label: 'Wohnflächen-Rechner', desc: 'Fläche nach WoFlV korrekt einordnen' },
+}
+// Spezifische Tags zuerst, danach Default — dedupliziert, max. 3 Tools je Artikel.
+const TAG_TOOLS: Record<string, (keyof typeof TOOLS)[]> = {
+  Finanzierung: ['tilgung', 'budget', 'mietenkaufen'],
+  Zustand: ['instandhaltung', 'wohnflaeche'],
+  Grundriss: ['wohnflaeche'],
+  Energie: ['instandhaltung'],
+  Checkliste: ['grunderwerbsteuer', 'budget'],
+  Kaufratgeber: ['grunderwerbsteuer', 'budget'],
+}
+function relatedTools(tags: string[], limit = 3): Tool[] {
+  const keys: (keyof typeof TOOLS)[] = []
+  // Spezifische Tags zuerst (alle außer dem generischen Kaufratgeber), dann Default
+  const ordered = [...tags.filter((t) => t !== 'Kaufratgeber'), 'Kaufratgeber']
+  for (const tag of ordered) {
+    for (const k of TAG_TOOLS[tag] || []) if (!keys.includes(k)) keys.push(k)
+  }
+  return keys.slice(0, limit).map((k) => TOOLS[k])
+}
+
 // Findet 3 verwandte Posts mit größter Tag-Überlappung
 function findRelatedPosts(currentSlug: string, currentTags: string[], limit = 3): BlogMeta[] {
   return BLOG_POSTS
@@ -53,6 +84,7 @@ function findRelatedPosts(currentSlug: string, currentTags: string[], limit = 3)
 
 export default function BlogLayout({ meta, children }: BlogLayoutProps) {
   const related = findRelatedPosts(meta.slug, meta.tags)
+  const tools = relatedTools(meta.tags)
   const url = `https://immopruef.de/blog/${meta.slug}`
   const isoDate = germanDateToIso(meta.date)
 
@@ -162,6 +194,26 @@ export default function BlogLayout({ meta, children }: BlogLayoutProps) {
                 <h3 className="font-medium text-ink text-[15px] mb-1">{item.question}</h3>
                 <p className="text-ink-mid text-sm leading-relaxed">{item.answer}</p>
               </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Passende Rechner — kontextuelle Artikel→Tool-Verlinkung (tag-basiert) */}
+      {tools.length > 0 && (
+        <section className="mt-12 pt-8 border-t border-ink/10">
+          <h2 className="font-display text-xl font-medium text-green mb-1">Passende Rechner</h2>
+          <p className="text-xs text-ink-light mb-5">Kostenlos &amp; ohne Anmeldung — direkt im Browser rechnen</p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {tools.map((t) => (
+              <a
+                key={t.href}
+                href={t.href}
+                className="group bg-white border border-ink/10 rounded-xl p-4 hover:border-green/30 hover:shadow-sm transition-all"
+              >
+                <div className="font-display text-[14px] font-semibold text-ink group-hover:text-green mb-1">{t.label}</div>
+                <div className="text-[12px] text-ink-light leading-snug">{t.desc}</div>
+              </a>
             ))}
           </div>
         </section>
