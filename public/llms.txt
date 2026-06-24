@@ -7,6 +7,15 @@
 - [Budgetrechner](https://immopruef.de/budgetrechner): Ermittelt aus Nettoeinkommen, Eigenkapital, Zins und Tilgung den leistbaren Kaufpreis.
 - [Tilgungsrechner](https://immopruef.de/tilgungsrechner): Annuitätendarlehen — Monatsrate, Restschuld nach Zinsbindung, Gesamtzinsen und Tilgungsplan, optional mit Sondertilgung.
 - [Mieten-oder-Kaufen-Rechner](https://immopruef.de/mieten-oder-kaufen-rechner): Vergleicht das Vermögen nach Jahren beim Kauf gegenüber Mieten plus Anlage der Differenz, mit Break-even-Jahr.
+- [Mietrendite-Rechner](https://immopruef.de/mietrendite-rechner): Brutto- und Nettomietrendite, Kaufpreisfaktor und Cashflow einer Kapitalanlage.
+- [Instandhaltungsrücklage-Rechner](https://immopruef.de/instandhaltungsruecklage-rechner): Schätzt die sinnvolle Rücklage je m² nach Baujahr und Zustand.
+- [Wohnflächen-Rechner](https://immopruef.de/wohnflaechen-rechner): Wohnfläche nach WoFlV (Dachschrägen, Balkone, Keller) korrekt einordnen.
+
+## Pillar-Leitfäden
+- [Hauskauf-Ablauf 2026 (kompletter Leitfaden)](https://immopruef.de/blog/hauskauf-ablauf-leitfaden): Die 6 Phasen vom Suchen bis zur Übergabe mit Fristen und Dauer.
+- [Baufinanzierung 2026 (Leitfaden)](https://immopruef.de/blog/baufinanzierung-leitfaden): Eigenkapital, Annuität, Tilgung, Zinsbindung, Anschlussfinanzierung, KfW, Bonität.
+- [Immobilienangebot bewerten](https://immopruef.de/blog/immobilie-bewerten-leitfaden): Preis, Quadratmeter, Lage, Bodenrichtwert und Risiken strukturiert prüfen.
+- [Bausubstanz & Zustand prüfen](https://immopruef.de/blog/immobilie-zustand-pruefen-leitfaden): Dach, Feuchtigkeit, Risse, Elektrik, Schadstoffe und Energieausweis vor dem Kauf.
 
 ## Wichtige Ratgeber
 - [Kaufnebenkosten beim Immobilienkauf](https://immopruef.de/blog/kaufnebenkosten-immobilienkauf): Welche Nebenkosten anfallen (rund 10–15 % des Kaufpreises) und wie sie sich zusammensetzen.
@@ -20,4 +29,4 @@
 
 ## Über ImmoPrüf
 - [Über uns und Methodik](https://immopruef.de/ueber-uns): Wer hinter ImmoPrüf steht und wie die Analysen und Ratgeber entstehen und geprüft werden.
-- [Alle Ratgeber-Artikel](https://immopruef.de/blog): Über 90 Artikel rund um den Immobilienkauf (Finanzierung, Recht, Zustand, Standort, Energie).
+- [Alle Ratgeber-Artikel](https://immopruef.de/blog): Über 100 Artikel rund um den Immobilienkauf (Finanzierung, Recht, Zustand, Standort, Energie) — viele mit FAQ.

@@ -25,6 +25,7 @@ import RechnerHub from './components/RechnerHub'
 import RegionalKaufnebenkosten from './components/RegionalKaufnebenkosten'
 import KaufnebenkostenIndex from './components/KaufnebenkostenIndex'
 import UeberUns from './components/UeberUns'
+import NotFound from './components/NotFound'
 import { regioForSlug } from './lib/regional'
 import { Suspense } from 'react'
 import { BLOG_POSTS, POST_COMPONENTS } from './components/blog/posts'
@@ -52,6 +53,7 @@ type AppView =
   | { type: 'ueber-uns' }
   | { type: 'blog' }
   | { type: 'blog-post'; slug: string }
+  | { type: 'notfound' }
 
 export default function App() {
   const [view, setView] = useState<AppView>({ type: 'landing' })
@@ -67,9 +69,12 @@ export default function App() {
     setProgress(null)
 
     const maxAttempts = 120 // 10 minutes (120 × 5s)
+    let consecutiveErrors = 0
+    const MAX_CONSECUTIVE_ERRORS = 6 // ~30s durchgehende Fehler → früher Timeout statt 10 Min stumm
     for (let attempt = 0; attempt < maxAttempts; attempt++) {
       try {
         const result = await pollAnalysis(sessionId)
+        consecutiveErrors = 0
         if (result.order_status === 'completed' || result.order_status === 'failed') {
           setView({ type: 'results', order: result })
           return
@@ -87,7 +92,14 @@ export default function App() {
         await new Promise((r) => setTimeout(r, 5000))
       } catch (err) {
         // Polling failed (network/server). Wait then retry — don't crash UI.
-        console.warn('[startPolling] poll failed, retrying:', err)
+        consecutiveErrors++
+        console.warn(`[startPolling] poll failed (${consecutiveErrors}/${MAX_CONSECUTIVE_ERRORS}), retrying:`, err)
+        if (consecutiveErrors >= MAX_CONSECUTIVE_ERRORS) {
+          // Zahlung ist erfasst (Webhook + Watchdog verarbeiten weiter). Nicht 10 Min
+          // stumm warten — Nutzer früh informieren, dass er es später erneut laden kann.
+          setTimedOut(true)
+          return
+        }
         await new Promise((r) => setTimeout(r, 5000))
       }
     }
@@ -123,6 +135,10 @@ export default function App() {
     if (path === '/blog' || path === '/blog/') { setView({ type: 'blog' }); return }
     const blogMatch = path.match(/^\/blog\/(.+)$/)
     if (blogMatch) { setView({ type: 'blog-post', slug: blogMatch[1] }); return }
+
+    // Unbekannte Route → 404 (alle bekannten Routen wurden oben via early return
+    // behandelt; gültige Param-Flows wie ?session_id=/?result= laufen über Pfad "/").
+    if (path !== '/') { setView({ type: 'notfound' }); return }
 
     // Clean URL
     if (sessionId || resultToken || paymentCancelled) {
@@ -265,12 +281,7 @@ export default function App() {
           const meta = BLOG_POSTS.find(p => p.slug === view.slug)
           const PostComponent = POST_COMPONENTS[view.slug]
           if (!meta || !PostComponent) {
-            return (
-              <div className="text-center py-16">
-                <div className="text-ink-mid text-sm mb-4">Artikel nicht gefunden.</div>
-                <a href="/blog" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/blog'); setView({ type: 'blog' }); window.scrollTo(0, 0) }} className="text-green text-sm font-medium">← Alle Artikel</a>
-              </div>
-            )
+            return <NotFound message="Diesen Ratgeber-Artikel gibt es nicht (mehr)." />
           }
           return (
             <ErrorBoundary context={`blog-post:${view.slug}`}>
@@ -282,6 +293,8 @@ export default function App() {
             </ErrorBoundary>
           )
         })()}
+
+        {view.type === 'notfound' && <NotFound />}
       </main>
 
       <footer className="text-center text-[11px] text-ink-light py-6 border-t border-ink/10 mt-10 mx-6">

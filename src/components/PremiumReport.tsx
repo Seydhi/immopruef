@@ -354,8 +354,8 @@ function VermoegenSlot({ data }: { data: NonNullable<PremiumReportType['vermoege
                 {data.jahre.map((jahr, i) => (
                   <tr key={i} className={`border-t border-ink/8 ${i % 2 === 1 ? 'bg-cream/30' : ''}`}>
                     <td className="px-3 py-2 font-medium">Jahr {jahr}</td>
-                    <td className="px-3 py-2 text-right text-green font-medium">{data.vermoegenKauf[i]}</td>
-                    <td className="px-3 py-2 text-right text-amber-600 font-medium">{data.vermoegenMieteEtf[i]}</td>
+                    <td className="px-3 py-2 text-right text-green font-medium">{data.vermoegenKauf[i] ?? '—'}</td>
+                    <td className="px-3 py-2 text-right text-amber-600 font-medium">{data.vermoegenMieteEtf[i] ?? '—'}</td>
                   </tr>
                 ))}
               </tbody>
@@ -442,8 +442,8 @@ function WertermittlungSlot({ data }: { data: NonNullable<PremiumReportType['wer
       </div>
       {hasEmpfehlung ? (
         <div className="bg-green text-cream rounded-xl p-4">
-          <div className="text-cream/70 text-[10px] tracking-wider uppercase mb-1">Indikativer Preisrahmen</div>
-          <div className="font-display text-2xl font-medium mb-2">{data.fazit.empfohlenerKaufpreis}</div>
+          <div className="text-cream/70 text-[10px] tracking-wider uppercase mb-1">Indikativer Preisrahmen (Verhandlungsanker, keine Wertfestsetzung)</div>
+          <div className="font-display text-xl font-medium mb-2">{data.fazit.empfohlenerKaufpreis}</div>
           <div className="text-xs text-cream/70 mb-2">Marktwertspanne (modellhaft): {data.fazit.marktwertSpanne}</div>
           <div className="text-sm text-cream/90 leading-relaxed">{data.fazit.einschaetzung}</div>
         </div>

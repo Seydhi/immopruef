@@ -329,7 +329,7 @@ PFLICHT-HINWEISE:
   * Grundsteuer: IMMER recherchieren (Hebesatz der Gemeinde × Grundsteuerwert). Wenn nicht findbar: ca. 50-120 €/Monat je nach Stadt
   * Gebäudeversicherung: ca. 200-600 €/Jahr für EFH, ca. 100-300 €/Jahr für ETW
   * Instandhaltungsrücklage: 1-1,5 €/m²/Monat (Neubau) bis 2-3 €/m²/Monat (Altbau)
-  * Heizkosten: Fläche × Energiekennwert × Energiepreis berechnen. Gas: 0,10 €/kWh, Öl: 0,09 €/kWh, Wärmepumpe: 0,30 €/kWh (÷ COP 3,5)
+  * Heizkosten: Fläche × Energiekennwert × Energiepreis berechnen. Gas: 0,10 €/kWh, Öl: 0,09 €/kWh, Wärmepumpe: Strompreis ~0,30 €/kWh ÷ JAZ ~3,5 (Jahresarbeitszahl) ≈ 0,086 €/kWh Nutzwärme
   * Strom: ca. 35-45 €/Person/Monat
   * Wasser/Abwasser: ca. 3-4 €/m³, ca. 150-300 €/Person/Jahr
   JEDE laufende Kostenposition MUSS einen konkreten Euro-Betrag haben. NIEMALS "Im Exposé nicht angegeben" bei laufenden Kosten — diese werden IMMER berechnet.
@@ -370,7 +370,7 @@ PREMIUM-REPORT — PFLICHT! Das JSON MUSS ein "premiumReport"-Objekt enthalten. 
       },
       "sachwert": { "bodenwert": "string (z.B. 120.000 € (600 €/m² × 200 m²))", "gebaeudewert": "string", "alterswertminderung": "string (z.B. -35% (Alter: 40 Jahre))", "sachwert": "string" },
       "ertragswert": { "jahresrohertrag": "string", "bewirtschaftungskosten": "string", "reinertrag": "string", "liegenschaftszins": "string", "ertragswert": "string" },
-      "fazit": { "marktwertSpanne": "string (z.B. 340.000–400.000 €)", "empfohlenerKaufpreis": "string (z.B. 370.000 €)", "einschaetzung": "string (3-4 Sätze, detaillierte Einschätzung ob der Preis fair ist und warum)" }
+      "fazit": { "marktwertSpanne": "string (z.B. 340.000–400.000 €)", "empfohlenerKaufpreis": "string — indikativer Preisrahmen / Verhandlungsanker (z.B. 370.000 €), KEINE verbindliche Verkehrswert-/Wertfestsetzung", "einschaetzung": "string (3-4 Sätze, einordnende Einschätzung zur Preisplausibilität — defensiv, keine Kaufempfehlung)" }
     },
 
     "standortDossier": {
@@ -924,7 +924,9 @@ serve(async (req) => {
     // Time-guarded: only analyses whose claim is older than STUCK_MS are reset, so we
     // never interrupt an analysis that a concurrent invocation is actively processing
     // (webhook-kick + frontend-poll + self-chain can run in parallel).
-    const STUCK_MS = 3 * 60 * 1000
+    // Über realistischer Premium-Laufzeit (große Schema-Generierung + bis 18 Websuchen),
+    // damit eine aktiv laufende Invocation nicht mitten in der Arbeit zurückgesetzt wird.
+    const STUCK_MS = 6 * 60 * 1000
     for (const a of allAnalyses) {
       if (a.status === 'processing') {
         const startedAt = a.processing_started_at ? new Date(a.processing_started_at).getTime() : 0

@@ -9,7 +9,12 @@ const POSTS_FILE = resolve(ROOT, 'src/components/blog/posts/index.ts')
 const OUT = resolve(ROOT, 'public/sitemap.xml')
 const BASE = 'https://immopruef.de'
 
-const today = new Date().toISOString().slice(0, 10)
+const today = new Date().toISOString().slice(0, 10) // nur für Logging
+
+// Fester Stand für statische Seiten (Startseite, Rechner, Regional, Legal).
+// NICHT bei jedem Build automatisch auf "today" setzen — das würde das lastmod-Signal
+// bei jedem Deploy entwerten. Beim inhaltlichen Update dieser Seiten manuell hochsetzen.
+const STATIC_LASTMOD = '2026-06-24'
 
 const src = readFileSync(POSTS_FILE, 'utf8')
 
@@ -37,29 +42,29 @@ const blogUrls = entries
   .map(e => ({ loc: `${BASE}/blog/${e.slug}`, lastmod: germanToIso(e.date), changefreq: 'monthly', priority: '0.7' }))
 
 const staticUrls = [
-  { loc: `${BASE}/`, lastmod: today, changefreq: 'weekly', priority: '1.0' },
-  { loc: `${BASE}/blog`, lastmod: today, changefreq: 'weekly', priority: '0.8' },
-  { loc: `${BASE}/rechner`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
-  { loc: `${BASE}/grunderwerbsteuer-rechner`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
-  { loc: `${BASE}/budgetrechner`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
-  { loc: `${BASE}/tilgungsrechner`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
-  { loc: `${BASE}/mieten-oder-kaufen-rechner`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
-  { loc: `${BASE}/mietrendite-rechner`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
-  { loc: `${BASE}/instandhaltungsruecklage-rechner`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
-  { loc: `${BASE}/wohnflaechen-rechner`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
-  { loc: `${BASE}/kaufnebenkosten-index`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
+  { loc: `${BASE}/`, lastmod: STATIC_LASTMOD, changefreq: 'weekly', priority: '1.0' },
+  { loc: `${BASE}/blog`, lastmod: STATIC_LASTMOD, changefreq: 'weekly', priority: '0.8' },
+  { loc: `${BASE}/rechner`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.8' },
+  { loc: `${BASE}/grunderwerbsteuer-rechner`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.8' },
+  { loc: `${BASE}/budgetrechner`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.8' },
+  { loc: `${BASE}/tilgungsrechner`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.8' },
+  { loc: `${BASE}/mieten-oder-kaufen-rechner`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.8' },
+  { loc: `${BASE}/mietrendite-rechner`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.8' },
+  { loc: `${BASE}/instandhaltungsruecklage-rechner`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.8' },
+  { loc: `${BASE}/wohnflaechen-rechner`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.8' },
+  { loc: `${BASE}/kaufnebenkosten-index`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.8' },
   ...[
     'baden-wuerttemberg', 'bayern', 'berlin', 'brandenburg', 'bremen', 'hamburg', 'hessen',
     'mecklenburg-vorpommern', 'niedersachsen', 'nordrhein-westfalen', 'rheinland-pfalz', 'saarland',
     'sachsen', 'sachsen-anhalt', 'schleswig-holstein', 'thueringen',
-  ].map((s) => ({ loc: `${BASE}/kaufnebenkosten-${s}`, lastmod: today, changefreq: 'monthly', priority: '0.7' })),
-  { loc: `${BASE}/ueber-uns`, lastmod: today, changefreq: 'yearly', priority: '0.5' },
+  ].map((s) => ({ loc: `${BASE}/kaufnebenkosten-${s}`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.7' })),
+  { loc: `${BASE}/ueber-uns`, lastmod: STATIC_LASTMOD, changefreq: 'yearly', priority: '0.5' },
 ]
 const legalUrls = [
-  { loc: `${BASE}/impressum`, lastmod: today, changefreq: 'yearly', priority: '0.2' },
-  { loc: `${BASE}/datenschutz`, lastmod: today, changefreq: 'yearly', priority: '0.2' },
-  { loc: `${BASE}/agb`, lastmod: today, changefreq: 'yearly', priority: '0.2' },
-  { loc: `${BASE}/barrierefreiheit`, lastmod: today, changefreq: 'yearly', priority: '0.2' },
+  { loc: `${BASE}/impressum`, lastmod: STATIC_LASTMOD, changefreq: 'yearly', priority: '0.2' },
+  { loc: `${BASE}/datenschutz`, lastmod: STATIC_LASTMOD, changefreq: 'yearly', priority: '0.2' },
+  { loc: `${BASE}/agb`, lastmod: STATIC_LASTMOD, changefreq: 'yearly', priority: '0.2' },
+  { loc: `${BASE}/barrierefreiheit`, lastmod: STATIC_LASTMOD, changefreq: 'yearly', priority: '0.2' },
 ]
 
 function urlBlock(u) {

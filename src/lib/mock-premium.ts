@@ -19,10 +19,10 @@ export const MOCK_PREMIUM_REPORT: PremiumReport = {
       ],
     },
     sachwert: {
-      bodenwert: '78 m² × 4.200 €/m² (Bodenrichtwert) = 327.600 €',
-      gebaeudewert: 'Normalherstellungskosten: 1.800 €/m² × 78 m² = 140.400 €',
-      alterswertminderung: '61 Jahre / 80 Jahre Gesamtlebensdauer = 76,25% → Minderung: 107.055 €',
-      sachwert: '327.600 € + 33.345 € = 360.945 €',
+      bodenwert: 'Miteigentumsanteil am Grund: ca. 30 m² × 4.200 €/m² (Bodenrichtwert) = 126.000 €',
+      gebaeudewert: 'Normalherstellungskosten (NHK): 1.800 €/m² × 78 m² = 140.400 €',
+      alterswertminderung: 'Alter 61 J. / Gesamtnutzungsdauer 80 J. → 76,25 % Minderung auf den Gebäudewert (−107.055 €)',
+      sachwert: '126.000 € + 33.345 € = 159.345 € (vorläufiger Sachwert vor Marktanpassung)',
     },
     ertragswert: {
       jahresrohertrag: '1.140 €/Monat × 12 = 13.680 €/Jahr (ortsübliche Vergleichsmiete)',

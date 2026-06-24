@@ -10,6 +10,7 @@ export interface SEOMeta {
   modifiedTime?: string               // ISO 8601 für Article
   tags?: string[]                     // Article tags
   jsonLd?: object | object[]          // Schema.org JSON-LD
+  noindex?: boolean                   // true → <meta name="robots" content="noindex, follow">
 }
 
 const SITE_NAME = 'ImmoPrüf'
@@ -35,6 +36,13 @@ export function useSEO(meta: SEOMeta): void {
     // Canonical URL
     const canonical = meta.canonical || `${SITE_URL}${window.location.pathname}`
     setLink('canonical', canonical)
+
+    // Robots: dünne/transiente Seiten (404, Fehler) aus dem Index halten
+    if (meta.noindex) {
+      setMeta('robots', 'noindex, follow', 'name')
+    } else {
+      document.querySelector('meta[name="robots"]')?.remove()
+    }
 
     // Open Graph
     setMetaProp('og:title', fullTitle)
@@ -89,7 +97,7 @@ export function useSEO(meta: SEOMeta): void {
         document.querySelectorAll('meta[property="article:tag"]').forEach(el => el.remove())
       }
     }
-  }, [meta.title, meta.description, meta.canonical, meta.image, meta.type, meta.publishedTime, meta.modifiedTime, meta.tags, meta.jsonLd])
+  }, [meta.title, meta.description, meta.canonical, meta.image, meta.type, meta.publishedTime, meta.modifiedTime, meta.tags, meta.jsonLd, meta.noindex])
 }
 
 // ─── Helpers ───
