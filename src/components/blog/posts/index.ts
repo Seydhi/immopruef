@@ -1183,8 +1183,16 @@ export const BLOG_POSTS: BlogMeta[] = [
 // FAQ-Daten (H8 SEO/AEO) für Artikel, die kein inline `faq` haben, aus faq-data.ts
 // nachziehen. Bestehende inline-FAQs haben Vorrang und werden NICHT überschrieben.
 // Speist FAQPage-Schema + sichtbare "Häufige Fragen"-Sektion in BlogLayout.
+// Ausnahme: Diese Artikel rendern bereits eine eigene FAQ-Sektion im Fließtext —
+// hier würde der Merge eine zweite, doppelte Sektion erzeugen. (Optionaler Follow-up:
+// deren Inline-FAQ nach meta.faq migrieren, um auch dort FAQPage-Schema zu erhalten.)
+const FAQ_IN_BODY = new Set([
+  'rauchen-dampfen-wohnqualitaet',
+  'fristen-immobilienkauf',
+  'immobilienanfragen-bearbeiten',
+])
 for (const post of BLOG_POSTS) {
-  if ((!post.faq || post.faq.length === 0) && EXTRA_FAQ[post.slug]) {
+  if ((!post.faq || post.faq.length === 0) && EXTRA_FAQ[post.slug] && !FAQ_IN_BODY.has(post.slug)) {
     post.faq = EXTRA_FAQ[post.slug]
   }
 }
