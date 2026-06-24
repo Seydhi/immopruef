@@ -80,7 +80,6 @@ export interface StandortKategorie {
   bewertung: string
   score: number
   details: string
-  icon?: string
 }
 
 export interface StandortDemografie {
