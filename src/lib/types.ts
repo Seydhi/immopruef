@@ -225,6 +225,9 @@ export interface AnalysisResult {
   verhandlungstipps: string[]
   makleranschreiben: string
 
+  // 8b. Rechtliche Prüfpunkte vor dem Notartermin (Standard)
+  rechtlicheOffenePunkte?: string[]
+
   // 9. Quellen (alle Pakete)
   quellen?: Quelle[]
 

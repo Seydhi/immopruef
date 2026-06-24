@@ -191,20 +191,31 @@ async function main() {
   let failed = 0
   const start = Date.now()
 
+  const failedRoutes = []
   for (const route of routes) {
     const t0 = Date.now()
-    try {
-      const html = await renderRoute(browser, route)
-      const outputPath = getOutputPath(route)
-      await mkdir(dirname(outputPath), { recursive: true })
-      await writeFile(outputPath, html, 'utf-8')
-      const ms = Date.now() - t0
-      console.log(`  ok ${route.padEnd(50)} ${ms.toString().padStart(5)}ms . ${(html.length / 1024).toFixed(1)}KB`)
-      success++
-    } catch (err) {
-      console.error(`  FAIL ${route.padEnd(50)} FEHLER: ${err.message}`)
-      failed++
+    let html = null
+    // 1 Retry gegen transiente Puppeteer-/Timeout-Fehler
+    for (let attempt = 1; attempt <= 2 && html === null; attempt++) {
+      try {
+        html = await renderRoute(browser, route)
+      } catch (err) {
+        if (attempt === 2) {
+          console.error(`  FAIL ${route.padEnd(50)} FEHLER: ${err.message}`)
+          failed++
+          failedRoutes.push(route)
+        } else {
+          console.warn(`  retry ${route} (${err.message})`)
+        }
+      }
     }
+    if (html === null) continue
+    const outputPath = getOutputPath(route)
+    await mkdir(dirname(outputPath), { recursive: true })
+    await writeFile(outputPath, html, 'utf-8')
+    const ms = Date.now() - t0
+    console.log(`  ok ${route.padEnd(50)} ${ms.toString().padStart(5)}ms . ${(html.length / 1024).toFixed(1)}KB`)
+    success++
   }
 
   await browser.close()
@@ -212,9 +223,22 @@ async function main() {
 
   const totalMs = Date.now() - start
   console.log(`\nFertig: ${success}/${routes.length} Routen . ${(totalMs / 1000).toFixed(1)}s gesamt`)
+
+  // Fehlertoleranz: Einzelne fehlgeschlagene Routen brechen den Build NICHT ab —
+  // sie werden client-seitig (SPA-Fallback via index.html) ausgeliefert und sind
+  // damit erreichbar, nur nicht vorgerendert. Erst ein systemischer Ausfall (>10%
+  // der Routen) oder PRERENDER_STRICT=true lässt den Build fehlschlagen.
   if (failed > 0) {
-    console.error(`${failed} Routen fehlgeschlagen`)
-    process.exit(1)
+    const failRatio = routes.length ? failed / routes.length : 0
+    const STRICT = process.env.PRERENDER_STRICT === 'true'
+    const MAX_FAIL_RATIO = 0.1
+    console.error(`${failed} Routen fehlgeschlagen (${(failRatio * 100).toFixed(1)}%): ${failedRoutes.join(', ')}`)
+    console.error('Fehlgeschlagene Routen werden client-seitig (SPA-Fallback) ausgeliefert.')
+    if (STRICT || failRatio > MAX_FAIL_RATIO) {
+      console.error(STRICT ? 'PRERENDER_STRICT=true → Build bricht ab.' : `Über Toleranz (${MAX_FAIL_RATIO * 100}%) → Build bricht ab.`)
+      process.exit(1)
+    }
+    console.warn('Innerhalb der Toleranz → Build wird fortgesetzt.')
   }
 }
 

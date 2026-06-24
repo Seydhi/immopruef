@@ -11,6 +11,7 @@ export default function RegionalKaufnebenkosten({ slug }: { slug: string }) {
   const regio = regioForSlug(slug)
 
   // Routing garantiert ein gültiges Bundesland; Fallback nur zur Sicherheit.
+  // Guard im Wrapper, Hooks erst in der Inner-Component → rules-of-hooks sauber.
   if (!regio) {
     return (
       <div className="max-w-[680px] mx-auto text-center py-16">
@@ -20,6 +21,10 @@ export default function RegionalKaufnebenkosten({ slug }: { slug: string }) {
     )
   }
 
+  return <RegionalContent slug={slug} regio={regio} />
+}
+
+function RegionalContent({ slug, regio }: { slug: string; regio: NonNullable<ReturnType<typeof regioForSlug>> }) {
   const { land, satz } = regio
   const quoteOhne = nkQuote(satz, false)
   const quoteMit = nkQuote(satz, true)

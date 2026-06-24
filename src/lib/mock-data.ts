@@ -309,6 +309,14 @@ export const MOCK_ANALYSIS_RESULT: AnalysisResult = {
     'Bieten Sie eine schnelle, unkomplizierte Abwicklung an \u2013 das ist f\u00fcr viele Verk\u00e4ufer wertvoller als ein h\u00f6herer Preis.',
     'Pr\u00fcfen Sie ob ein Vorkaufsrecht der Gemeinde besteht (Milieuschutzgebiet Kreuzberg) \u2013 dies kann den Kauf verz\u00f6gern.',
   ],
+  rechtlicheOffenePunkte: [
+    'Aktuellen Grundbuchauszug (Abt. II + III) beim Verkäufer anfordern und auf Wege-/Wohnrechte, Grundschulden und Reallasten prüfen.',
+    'Teilungserklärung und Gemeinschaftsordnung der WEG anfordern – Sondernutzungsrechte (z.B. Keller, Stellplatz) und Stimmrechtsverteilung prüfen.',
+    'WEG-Protokolle der letzten 2–3 Jahre sowie die aktuelle Wohngeldabrechnung anfordern – beschlossene oder absehbare Sonderumlagen erkennen.',
+    'Höhe der Instandhaltungsrücklage schriftlich bestätigen lassen und mit dem Sanierungsstau des Gebäudes abgleichen.',
+    'Beim Bezirksamt klären, ob ein Vorkaufsrecht der Gemeinde besteht (Milieuschutzgebiet Kreuzberg) – kann den Kauf um 2–3 Monate verzögern.',
+    'Energieausweis im Original einsehen (nicht nur Effizienzklasse) und auf Ausstellungsdatum sowie Modernisierungsempfehlungen prüfen.',
+  ],
   makleranschreiben: `Sehr geehrte Damen und Herren,
 
 mit gro\u00dfem Interesse habe ich Ihr Angebot der 3-Zimmer-Eigentumswohnung am Mehringdamm 45, 10961 Berlin, auf ImmobilienScout24 gesehen. Die zentrale Lage in Kreuzberg sowie der Grundriss entsprechen genau meinen Vorstellungen, und ich m\u00f6chte mich hiermit als ernsthafter Kaufinteressent bei Ihnen melden.

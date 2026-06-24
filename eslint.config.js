@@ -19,5 +19,11 @@ export default defineConfig([
       ecmaVersion: 2020,
       globals: globals.browser,
     },
+    rules: {
+      // Bewusst ungenutzte Argumente/Variablen mit _-Präfix erlauben (idiomatisch).
+      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
+      // Konstanten-Exports neben Komponenten zulassen (Fast-Refresh nur als Warnung).
+      'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+    },
   },
 ])

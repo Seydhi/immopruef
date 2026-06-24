@@ -220,6 +220,7 @@ WICHTIGE REGELN:
    - verhandlungstipps: MINDESTENS 6 Tipps (wenn gewünscht)
    - marktdaten: MINDESTENS 5 Kennzahlen
    - risiken: MINDESTENS 3 Einträge
+   - rechtlicheOffenePunkte: MINDESTENS 4 Einträge (objektspezifische rechtliche Prüfpunkte)
    Wenn du nicht genug echte Daten findest, verwende recherchierte Regionaldurchschnitte mit "(regionaler Schätzwert — nicht aus dem Angebot)".
    Ein leeres Array [] ist ein FEHLER. Der Kunde bezahlt für vollständige Daten.
 9. Scores müssen IMMER Zahlen zwischen 1 und 10 sein. NIEMALS 0. Auch bei fehlenden Daten mindestens 3 vergeben.
@@ -299,6 +300,7 @@ JSON-Schema (alle Felder sind Pflicht):
   "scores": { "gesamtbewertung": "number", "lage": "number", "preis_leistung": "number", "zustand": "number", "energie": "number", "finanzierung": "number" },
 
   "risiken": ["string (kurze Zusammenfassung der wichtigsten Risiken)"],
+  "rechtlicheOffenePunkte": ["string — MINDESTENS 4 konkrete rechtliche Prüfpunkte, die VOR dem Notartermin zu klären sind. Jeder Punkt nennt WAS anzufordern/zu prüfen ist und WO/bei wem. Objekttyp-abhängig: bei Eigentumswohnung (Teilungserklärung, WEG-Protokolle der letzten 2-3 Jahre, Höhe der Instandhaltungsrücklage, beschlossene Sonderumlagen); bei Haus/Grundstück (Baulastenverzeichnis, Erschließungsbeitragsstatus bei der Gemeinde, Bebauungsplan); IMMER (aktueller Grundbuchauszug Abt. II+III auf Wege-/Wohnrechte und Grundschulden, etwaige Vorkaufsrechte der Gemeinde/Milieuschutz, Energieausweis im Original, Altlastenkataster). 🚫 KEINE konkreten Eintragungen erfinden/behaupten — nur benennen, was der Käufer anfordern/prüfen sollte."],
   "verhandlungstipps": ["string — MINDESTENS 6 konkrete, auf das Objekt zugeschnittene Tipps. Jeder Tipp muss einen konkreten Geldbetrag oder Prozentsatz enthalten, z.B. 'Sanierungsstau Heizung (Baujahr 1995, Lebensdauer überschritten): Argumentieren Sie mit 15.000–25.000 € Erneuerungskosten für eine Preisreduktion von 5–8%'. Kategorien: Sanierungsstau, Energetische Mängel, Marktvergleich (falls überteuert), Verhandlungszeitpunkt, Nebenkosten als Druckmittel, fehlende Unterlagen"],
   "makleranschreiben": "string — Professionelles, persönliches Anschreiben an den Makler/Verkäufer. MUSS enthalten: (1) Höfliche Einleitung mit Bezug auf das konkrete Objekt (Adresse, Exposé-Nr), (2) Kurze Vorstellung als seriöser Kaufinteressent, (3) Mindestens 8 konkrete Fragen zum Objekt die im Exposé NICHT beantwortet werden (z.B. Grund des Verkaufs, Alter der Heizung, letzte Renovierungen, Baulasten, Erschließungsbeiträge, Energieausweis-Details, Hausgeldentwicklung, anstehende Sanierungen der WEG, Rücklagenhöhe, Nachbarschaft), (4) Frage nach Besichtigungstermin, (5) Professioneller Abschluss. Ton: seriös aber nicht unterwürfig. Länge: ca. 200-300 Wörter. Mit Absätzen formatiert (\\n\\n für Absätze).",
   "zusammenfassung": "string (3-4 Sätze Fazit mit Gesamtinvestition und Empfehlung)",

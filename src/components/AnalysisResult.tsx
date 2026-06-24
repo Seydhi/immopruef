@@ -537,6 +537,26 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
         </div>
       )}
 
+      {/* Standard: Rechtliche offene Punkte — vor dem Notartermin prüfen */}
+      {result.rechtlicheOffenePunkte && result.rechtlicheOffenePunkte.length > 0 && (
+        <div className="bg-white border border-ink/10 rounded-xl overflow-hidden mb-5">
+          <div className="bg-green/5 px-4 py-2.5 text-xs font-medium text-green tracking-wider uppercase border-b border-ink/8">
+            ⚖️ Rechtliche offene Punkte — vor dem Notartermin klären
+          </div>
+          <div className="px-4 py-3">
+            <p className="text-xs text-ink-light mb-2.5 leading-relaxed">
+              Diese Unterlagen bzw. Eintragungen lassen sich nicht aus dem Angebot ableiten — fordern Sie sie an bzw. prüfen Sie sie vor der Unterschrift.
+            </p>
+            {result.rechtlicheOffenePunkte.map((punkt, i) => (
+              <div key={i} className="flex gap-2.5 items-start py-2 border-b border-ink/8 last:border-b-0 text-[13px]">
+                <span className="text-ink-light mt-0.5 shrink-0">☐</span>
+                <span className="text-ink-mid"><ValueCell>{punkt}</ValueCell></span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Premium: Gutachter-Empfehlung */}
       {isPremium && result.premiumReport && (
         <div className="mb-5">
