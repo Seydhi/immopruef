@@ -480,6 +480,9 @@ function StandortDossierSlot({ data }: { data: NonNullable<PremiumReportType['st
             ))}
           </tbody>
         </table>
+        <p className="px-3 py-2 border-t border-ink/8 text-[11px] text-ink-light leading-snug">
+          Entfernungen und Fahrzeiten sind Näherungswerte aus Karten- und Web-Recherche — für die konkrete Adresse per Kartendienst verifizieren.
+        </p>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
         <RiskCard title="🌊 Hochwasserrisiko" risiko={data.hochwasserrisiko.risiko} zone={data.hochwasserrisiko.zone} details={data.hochwasserrisiko.details} />
