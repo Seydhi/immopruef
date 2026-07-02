@@ -278,7 +278,8 @@ PFLICHT-HINWEISE:
   * { "merkmal": "Zimmer", "wert": "z.B. 3" }
   * { "merkmal": "Baujahr", "wert": "z.B. 1965" }
   * { "merkmal": "Energieeffizienz", "wert": "z.B. D (128 kWh/m²a)" }
-- standortanalyse.kategorien: ÖPNV, Schulen/Kitas, Einkauf, Ärzte, Freizeit, Lärm, Sicherheit, Entwicklungsperspektive. JEDE Kategorie braucht Score 1-10 basierend auf Web-Recherche.
+- standortanalyse.kategorien: ÖPNV, Schulen/Kitas, Einkauf, Ärzte, Freizeit, Lärm, Sicherheit, Entwicklungsperspektive. JEDE Kategorie braucht Score 1-10 basierend auf Web-Recherche. In "details" KEINE erfundenen Eigennamen (Kitas, Praxen, Läden) — nur belegbare Namen oder generische Kategorien.
+- standortanalyse.demografie/wirtschaft/infrastruktur: Präzise Zahlen (Arbeitslosenquote, Bevölkerungsentwicklung, Kaufkraftindex) NUR wenn per Web-Suche belegt (Statistikamt, Arbeitsagentur, Wegweiser-Kommune). Ohne Beleg: Größenordnung + Kennzeichnung "(regionaler Schätzwert — nicht aus dem Angebot)". kaufkraftindex ohne belegten Indexwert qualitativ formulieren ("leicht über Bundesschnitt (regionaler Schätzwert — nicht aus dem Angebot)") statt einer präzisen Scheinzahl. breitband als Verfügbarkeits-Aussage mit Prüfhinweis ("laut Breitbandatlas verfügbar — Verfügbarkeit für die konkrete Adresse beim Anbieter prüfen").
 - finanzierung.szenarien: IMMER 3 Szenarien berechnen (Konservativ 30% EK, Standard 20% EK, Minimal 10% EK). Recherchiere aktuelle Bauzinsen per Web-Suche. IMMER konkrete Euro-Beträge korrekt durchrechnen.
 - stresstest: IMMER 3 Szenarien (Zinserhöhung auf 5,5%, Sonderumlage 15.000€, Einkommensverlust 30%). Korrekt berechnen.
 - kaufenVsMieten: IMMER berechnen. Vergleichsmiete per Web-Suche aus dem Mietpreisspiegel der Stadt recherchieren.
@@ -367,8 +368,8 @@ PREMIUM-REPORT — PFLICHT! Das JSON MUSS ein "premiumReport"-Objekt enthalten. 
       "sitz": "string (Adresse ODER 'Nicht angegeben')",
       "ansprechpartner": "string (Name ODER 'Nicht im Exposé')",
       "bewertungen": [{ "plattform": "string (ImmoScout24/JACASA/Google/ProvenExpert/Trustpilot)", "score": "string (X,X/5 ODER '—')", "anzahl": "string (z.B. '142 Bewertungen' ODER 'Keine')" }],
-      "ranking": "string (z.B. 'Top 10 Makler Bremen' ODER '—')",
-      "fazit": "string (3-4 Sätze BERATER-TONALITÄT — narrative Einschätzung der Seriosität)",
+      "ranking": "string (NUR wenn ein real existierendes, benanntes Ranking per Web-Suche gefunden wurde — mit Namensnennung der Quelle. Sonst '—'. NIEMALS ein Ranking erfinden)",
+      "fazit": "string (3-4 Sätze BERATER-TONALITÄT — Einordnung der öffentlich auffindbaren Informationslage. KEIN Seriositäts-Urteil über die Firma oder Personen — beschreibe nur, was auffindbar ist und was der Käufer selbst anfragen sollte)",
       "redFlags": ["string (entweder konkrete Auffälligkeiten ODER ['Keine Auffälligkeiten — solider Anbieter'])"]
     },
 
@@ -446,10 +447,11 @@ PREMIUM-PFLICHT-DETAILS:
 - vergleichswert.vergleichsobjekte: Recherchiere per Web-Suche vergleichbare AKTUELLE ANGEBOTE in der Umgebung (immowelt-/ImmoScout24-Inserate). 🚨 WICHTIG: Echte notarielle Verkaufspreise sind in Deutschland NICHT öffentlich verfügbar (nur Gutachterausschuss / Kaufpreissammlung, §195 BauGB). Gib daher ausschließlich ANGEBOTSPREISE an; das Feld "preis" ist ein Angebotspreis, kein Kaufpreis. Verwende NIEMALS "verkauft" oder behaupte abgeschlossene Verkäufe. Ziel: 3–6 vergleichbare Angebote mit Adresse/Stadtteil, €/m², Abweichung. Wenn die Web-Suche keine belastbaren Vergleichsangebote liefert, gib lieber 2–3 echte an statt 6 — erfinde NIEMALS Adressen oder Preise.
 - sachwert: Bodenwert mit echtem Bodenrichtwert berechnen (per Web-Suche). Gebäudewert nach NHK 2010. Alterswertminderung nach Ross-Verfahren.
 - ertragswert: Jahresrohertrag aus ortsüblicher Vergleichsmiete (per Web-Suche Mietpreisspiegel). Liegenschaftszins vom Gutachterausschuss.
-- standortDossier.entfernungen: MINDESTENS 12 POIs (nächste U-Bahn/S-Bahn, Bushaltestelle, Grundschule, Gymnasium, Kindergarten, Hausarzt, Zahnarzt, Supermarkt, Apotheke, Park/Grünfläche, Krankenhaus, Hauptbahnhof). Entfernungen und Fahrzeiten per Web-Suche verifizieren.
-- hochwasserrisiko: Per Web-Suche "[Stadt] Hochwassergefahrenkarte" recherchieren.
-- laermbelastung: Per Web-Suche "[Adresse] Lärmkarte" oder "[Stadt] Lärmkartierung" recherchieren.
-- radon: Per Web-Suche "Radonkarte [Bundesland]" recherchieren.
+- standortDossier.entfernungen: 6–12 POIs — NUR Ziele, die im Exposé genannt werden oder per Web-Suche konkret belegbar sind (z.B. nächster Bahnhof, benannter Park, Krankenhaus, Stadtzentrum, Autobahnanschluss). 🚨 ERFINDE NIEMALS Eigennamen von Kitas, Arztpraxen oder Geschäften ("Kita Sonnenschein", "Praxis Dr. Weber") — wenn kein Beleg findbar, formuliere generisch mit Kategorie ("Nächste Grundschule (laut Stadtteil-Info)"). ALLE Entfernungen und Fahrzeiten sind Näherungswerte und MÜSSEN mit "ca." beginnen. 6 belegbare Einträge sind besser als 12 geratene — lass Kategorien ohne Beleg weg.
+- hochwasserrisiko: Per Web-Suche "[Stadt] Hochwassergefahrenkarte" recherchieren. Wenn keine amtliche Karte gefunden: Risiko aus Gewässernähe/Topografie ableiten und kennzeichnen "(abgeleitet aus Lage — Hochwassergefahrenkarte des Landes selbst prüfen)".
+- laermbelastung: Per Web-Suche "[Stadt] Lärmkartierung" bzw. Umgebungslärm-Portal des Bundeslandes recherchieren. Konkrete dB-Werte NUR angeben, wenn eine Lärmkartierung/amtliche Quelle gefunden wurde. Sonst: Spanne anhand Straßentyp/Lage schätzen und IM WERT kennzeichnen, z.B. "ca. 55–65 dB(A) (geschätzt anhand Straßentyp — Lärmkartierung der Stadt selbst prüfen)". Im Feld "quelle" die tatsächliche Grundlage nennen (Kartierung ODER Straßentyp-Schätzung).
+- radon: Per Web-Suche "Radonkarte [Bundesland]" (BfS-Übersichtskarte) recherchieren. Der Wert gilt auf Landkreis-Ebene — IMMER anfügen: "(BfS-Karte, Landkreis-Ebene — Gebäudewerte können abweichen)".
+- bebauungsplan: nutzung/gfz/grz NUR mit konkreten Werten füllen, wenn ein Bebauungsplan/Geoportal-Eintrag per Web-Suche gefunden wurde. Sonst: "nutzung" aus dem Gebietscharakter ableiten mit Kennzeichnung "(abgeleitet aus Umgebung — kein B-Plan öffentlich gefunden)" und für gfz/grz exakt schreiben: "Im B-Plan beim Bauamt einsehbar". Diese Formulierung ist hier die EINZIGE erlaubte Ausnahme von der Zahlen-Pflicht — niemals GFZ/GRZ-Werte raten.
 - vorKaufCheckliste: 4 Kategorien mit jeweils mindestens 6 Items:
   1. Dokumente vom Verkäufer anfordern (Grundbuchauszug, Energieausweis, Teilungserklärung, Wohngeldabrechnung, Protokolle WEG, Mietverträge etc.)
   2. Selbst recherchieren (Baulastenverzeichnis, Bebauungsplan, Altlastenkataster, Denkmalschutz, Erschließungsbeiträge etc.)
@@ -545,6 +547,11 @@ DAS premiumReport-Objekt MUSS im JSON enthalten sein. Es ist NICHT optional. Der
 // AI Provider Switch
 // ═══════════════════════════════════════════════════════════════
 
+// Sonnet 5: Intro-Pricing 2$/10$ pro MTok bis 31.08.2026 (danach 3$/15$),
+// neuer Tokenizer (~30% mehr Tokens als Sonnet 4), deutlich besseres
+// Agentic-/Web-Search-Verhalten. Per Env-Var übersteuerbar (z.B. für Tests).
+const ANTHROPIC_MODEL = Deno.env.get('ANTHROPIC_MODEL') || 'claude-sonnet-5'
+
 const TEST_MODE = Deno.env.get('TEST_MODE') === 'true'
 
 interface AIResponse {
@@ -563,7 +570,7 @@ async function callClaude(
   anthropicKey: string,
   isPremium: boolean = false
 ): Promise<AIResponse> {
-  console.log('Using Claude Sonnet 4 (production mode)')
+  console.log(`Using ${ANTHROPIC_MODEL} (production mode)`)
 
   // Premium gets more web searches for deeper research
   // (Makler-Bewertungen, Preistrend, Marktquartile, Mietspiegel, Bauzinsen, Quellen)
@@ -577,13 +584,30 @@ async function callClaude(
       'anthropic-version': '2023-06-01',
     },
     body: JSON.stringify({
-      model: 'claude-sonnet-4-20250514',
+      model: ANTHROPIC_MODEL,
       max_tokens: maxTokens,
-      system: systemPrompt,
+      // Adaptive Thinking (Sonnet-5-Default) explizit + Effort "medium":
+      // mit Thinking sucht das Modell zuverlässiger (Pflicht-Websearches);
+      // "medium" begrenzt Thinking-Tokens und Laufzeit (150s-Edge-Limit).
+      thinking: { type: 'adaptive' },
+      output_config: { effort: 'medium' },
+      // cache_control: System-Prompt (~12k Tokens) wird pro Such-Iteration
+      // neu verarbeitet — mit Cache kosten Iteration 2..N nur 10% Input-Preis.
+      system: [
+        { type: 'text', text: systemPrompt, cache_control: { type: 'ephemeral' } },
+      ],
       // Web search is a SERVER-MANAGED tool — the API handles search results automatically.
       // We do NOT need to manually handle tool_use/tool_result for web_search.
-      tools: [{ type: 'web_search_20250305', name: 'web_search', max_uses: webSearchMaxUses }],
-      messages: [{ role: 'user', content: userMessage }],
+      // _20260209 = dynamische Ergebnis-Filterung (weniger Input-Tokens pro Suche).
+      tools: [{ type: 'web_search_20260209', name: 'web_search', max_uses: webSearchMaxUses }],
+      messages: [
+        {
+          role: 'user',
+          content: [
+            { type: 'text', text: userMessage, cache_control: { type: 'ephemeral' } },
+          ],
+        },
+      ],
     }),
   })
 
@@ -750,6 +774,165 @@ function validateResult(result: Record<string, unknown>): string[] {
 }
 
 // ═══════════════════════════════════════════════════════════════
+// Deterministische Finanz-Nachberechnung
+// Claude liefert die Eingangsgrößen (Darlehen, Zins, Tilgung, Sätze) —
+// Annuität, Restschuld, Tilgungsplan und Summen werden hier exakt
+// nachgerechnet und überschreiben die LLM-Arithmetik. Scheitert das
+// Parsen einer Eingangsgröße, bleiben die LLM-Werte unangetastet.
+// ═══════════════════════════════════════════════════════════════
+
+// "389.000 €" / "3,65 % (10 J.)" / "ca. 1.468 €" → 389000 / 3.65 / 1468
+function parseGermanNumber(s: unknown): number | null {
+  if (typeof s === 'number') return isFinite(s) ? s : null
+  if (typeof s !== 'string') return null
+  const m = s.replace(/ /g, ' ').match(/-?\d{1,3}(?:\.\d{3})+(?:,\d+)?|-?\d+(?:,\d+)?/)
+  if (!m) return null
+  const n = parseFloat(m[0].replace(/\./g, '').replace(',', '.'))
+  return isFinite(n) ? n : null
+}
+
+function formatEuro(n: number): string {
+  return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ' €'
+}
+
+function formatPercent(n: number): string {
+  return n.toFixed(2).replace('.', ',') + ' %'
+}
+
+// Annuitätendarlehen mit monatlicher Verrechnung (marktüblich)
+function annuity(darlehen: number, zinsPct: number, tilgPct: number) {
+  const monthlyRate = darlehen * (zinsPct + tilgPct) / 100 / 12
+  const i = zinsPct / 100 / 12
+  const balanceAfter = (months: number): number => {
+    if (i === 0) return Math.max(0, darlehen - monthlyRate * months)
+    const q = Math.pow(1 + i, months)
+    return Math.max(0, darlehen * q - monthlyRate * (q - 1) / i)
+  }
+  const totalMonths = (): number | null => {
+    if (i === 0) return monthlyRate > 0 ? Math.ceil(darlehen / monthlyRate) : null
+    if (monthlyRate <= darlehen * i) return null
+    return Math.ceil(Math.log(monthlyRate / (monthlyRate - darlehen * i)) / Math.log(1 + i))
+  }
+  return { monthlyRate, balanceAfter, totalMonths }
+}
+
+function parseLoanInputs(row: Record<string, unknown>, darlehenKey: string): { darlehen: number; zins: number; tilg: number } | null {
+  const darlehen = parseGermanNumber(row?.[darlehenKey])
+  const zins = parseGermanNumber(row?.zinssatz)
+  const tilg = parseGermanNumber(row?.tilgung)
+  if (
+    darlehen === null || darlehen < 10_000 || darlehen > 10_000_000 ||
+    zins === null || zins <= 0 || zins > 12 ||
+    tilg === null || tilg <= 0 || tilg > 12
+  ) return null
+  return { darlehen, zins, tilg }
+}
+
+function recomputeFinances(result: Record<string, unknown>): void {
+  const fixed: string[] = []
+
+  const gk = result.gesamtkosten as Record<string, any> | undefined
+  const objektdaten = result.objektdaten as Array<{ merkmal?: string; wert?: string }> | undefined
+  const kaufpreis = parseGermanNumber(gk?.kaufpreis)
+    ?? parseGermanNumber(objektdaten?.find(o => /kaufpreis/i.test(o.merkmal || ''))?.wert)
+
+  // 1) Kaufnebenkosten: betrag = satz × kaufpreis, gesamt = Summe
+  if (gk?.kaufnebenkosten && kaufpreis && kaufpreis > 10_000) {
+    const nk = gk.kaufnebenkosten
+    let sum = 0
+    let ok = true
+    for (const key of ['grunderwerbsteuer', 'notar', 'grundbuch', 'makler']) {
+      const eintrag = nk[key]
+      const satz = parseGermanNumber(eintrag?.satz)
+      if (eintrag && satz !== null && satz >= 0 && satz < 20) {
+        const betrag = kaufpreis * satz / 100
+        eintrag.betrag = formatEuro(betrag)
+        sum += betrag
+      } else ok = false
+    }
+    if (ok) {
+      nk.gesamt = formatEuro(sum)
+      fixed.push('kaufnebenkosten')
+    }
+  }
+
+  // 2) laufendeKostenGesamt = Summe aller Positionen
+  if (gk && Array.isArray(gk.laufendeKosten) && gk.laufendeKosten.length >= 4) {
+    const betraege = gk.laufendeKosten.map((p: Record<string, unknown>) => parseGermanNumber(p?.betragMonat))
+    if (betraege.every((b: number | null) => b !== null && b >= 0 && b < 20_000)) {
+      const monat = (betraege as number[]).reduce((a, b) => a + b, 0)
+      gk.laufendeKostenGesamt = { monat: formatEuro(monat), jahr: formatEuro(monat * 12) }
+      fixed.push('laufendeKostenGesamt')
+    }
+  }
+
+  // 3) finanzierung.szenarien: Rate, Restschuld nach 10J, Gesamtlaufzeit
+  const fin = result.finanzierung as Record<string, any> | undefined
+  if (fin && Array.isArray(fin.szenarien)) {
+    for (const sz of fin.szenarien) {
+      const inp = parseLoanInputs(sz, 'darlehenssumme')
+      if (!inp) continue
+      const a = annuity(inp.darlehen, inp.zins, inp.tilg)
+      sz.monatlicheRate = formatEuro(a.monthlyRate)
+      sz.restschuld10Jahre = formatEuro(a.balanceAfter(120))
+      const months = a.totalMonths()
+      if (months) sz.gesamtlaufzeit = `~${Math.round(months / 12)} Jahre`
+      fixed.push(`szenario(${sz.name || '?'})`)
+    }
+  }
+
+  // 4) premiumReport.finanzierungsDetail: Cashflow-Zeilen + Beispiel-Tilgungsplan
+  const pr = result.premiumReport as Record<string, any> | undefined
+  const fd = pr?.finanzierungsDetail
+  if (fd && Array.isArray(fd.cashflow)) {
+    let mittlere: { darlehen: number; zins: number; tilg: number } | null = null
+    for (const cf of fd.cashflow) {
+      const inp = parseLoanInputs(cf, 'darlehen')
+      if (!inp) continue
+      const a = annuity(inp.darlehen, inp.zins, inp.tilg)
+      cf.monatlicheRate = formatEuro(a.monthlyRate)
+      cf.restschuld10Jahre = formatEuro(a.balanceAfter(120))
+      cf.gesamtbelastung10Jahre = formatEuro(a.monthlyRate * 120)
+      if (/20/.test(String(cf.eigenkapitalQuote ?? ''))) mittlere = inp
+      fixed.push(`cashflow(${cf.eigenkapitalQuote || '?'})`)
+    }
+    if (mittlere && Array.isArray(fd.beispielTilgungsplan)) {
+      const a = annuity(mittlere.darlehen, mittlere.zins, mittlere.tilg)
+      for (const row of fd.beispielTilgungsplan) {
+        const jahr = typeof row?.jahr === 'number' ? row.jahr : parseGermanNumber(row?.jahr)
+        if (!jahr || jahr <= 0 || jahr > 40) continue
+        const months = Math.round(jahr * 12)
+        const balance = a.balanceAfter(months)
+        const getilgt = mittlere.darlehen - balance
+        row.restschuld = formatEuro(balance)
+        row.bisherTilgung = formatEuro(getilgt)
+        row.bisherZinsen = formatEuro(a.monthlyRate * months - getilgt)
+      }
+      fixed.push('beispielTilgungsplan')
+    }
+  }
+
+  // 5) premiumReport.mietrendite: Renditen aus sichtbarer Rechnung nachrechnen.
+  // Nur wenn jahresrohertrag die dokumentierte Rechnung "… = X €/Jahr" enthält.
+  const mr = pr?.mietrendite
+  if (mr && mr.verfuegbar !== false && kaufpreis && typeof mr.jahresrohertrag === 'string' && mr.jahresrohertrag.includes('=')) {
+    const rohertrag = parseGermanNumber(mr.jahresrohertrag.split('=').pop())
+    if (rohertrag !== null && rohertrag >= 1_200 && rohertrag < kaufpreis) {
+      mr.bruttorendite = formatPercent(rohertrag / kaufpreis * 100) + ' p.a.'
+      const bwPct = parseGermanNumber(mr.bewirtschaftungskosten)
+      if (bwPct !== null && bwPct > 0 && bwPct < 60) {
+        const netto = rohertrag * (1 - bwPct / 100)
+        mr.nettomietertrag = formatEuro(netto) + '/Jahr'
+        mr.nettorendite = formatPercent(netto / kaufpreis * 100) + ' p.a. (vor Steuer)'
+      }
+      fixed.push('mietrendite')
+    }
+  }
+
+  if (fixed.length) console.log(`recomputeFinances: ${fixed.join(', ')}`)
+}
+
+// ═══════════════════════════════════════════════════════════════
 // Main Handler
 // ═══════════════════════════════════════════════════════════════
 
@@ -840,7 +1023,8 @@ serve(async (req) => {
       ? SYSTEM_PROMPT_STANDARD + SYSTEM_PROMPT_PREMIUM_ADDITION
       : SYSTEM_PROMPT_STANDARD
     // Premium-Report stark erweitert (7 neue Module: Makler/Mietrendite/FinanzierungsDetail/Marktband/Preistrend/Besichtigungsfragen/Stärken-Schwächen + Quellen)
-    const maxTokens = isPremium ? 48000 : 18000
+    // Headroom für Sonnet-5-Tokenizer (~30% mehr Tokens) + Adaptive-Thinking-Anteil
+    const maxTokens = isPremium ? 56000 : 24000
 
     // Process ONE analysis per function call (avoids 150s timeout)
     const anthropicKey = Deno.env.get('ANTHROPIC_API_KEY')!
@@ -1067,7 +1251,7 @@ WICHTIG:
         // and silent failure could have charged customers without delivering analysis.
         // If Claude fails, the outer retry-loop handles it.
         let result: unknown
-        console.log('Calling Claude Sonnet 4 (primary)...')
+        console.log(`Calling ${ANTHROPIC_MODEL} (primary)...`)
         const claudeResult = await callClaude(systemPrompt, userMessage, maxTokens, anthropicKey, isPremium)
         result = claudeResult.result
 
@@ -1079,6 +1263,13 @@ WICHTIG:
 
         // Filter sources that don't match the object's city (e.g. München data for Bremerhaven object)
         validateSources(result as Record<string, unknown>)
+
+        // Finanz-Arithmetik deterministisch nachrechnen (LLM-Rechenfehler überschreiben)
+        try {
+          recomputeFinances(result as Record<string, unknown>)
+        } catch (e) {
+          console.warn('recomputeFinances failed — keeping LLM values:', e)
+        }
 
         await supabase
           .from('analyses')
@@ -1112,6 +1303,11 @@ WICHTIG: Verwende Exposé-Daten und recherchierte Regionsdurchschnitte. JEDES Fe
             // Retry: only Claude (OpenAI fallback removed — endpoint was broken)
             const retryResult = (await callClaude(systemPrompt, retryMessage, maxTokens, anthropicKey, isPremium)).result
             validateSources(retryResult as Record<string, unknown>)
+            try {
+              recomputeFinances(retryResult as Record<string, unknown>)
+            } catch (e) {
+              console.warn('recomputeFinances (retry) failed — keeping LLM values:', e)
+            }
 
             await supabase.from('analyses').update({ result: retryResult, status: 'completed' }).eq('id', analysis.id)
             retrySuccess = true
