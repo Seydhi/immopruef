@@ -10,7 +10,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '16. Juni 2026',
     readTime: '12 Min',
     tags: ['Kaufratgeber', 'Checkliste'],
-    image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/8292791/pexels-photo-8292791.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Wie lange dauert ein Hauskauf in Deutschland?', answer: 'Realistisch dauert ein Hauskauf vom Beginn der ernsthaften Suche bis zur Schlüsselübergabe drei bis neun Monate. Wie lange es konkret dauert, hängt vom lokalen Markt, der Geschwindigkeit Ihrer Finanzierung sowie der Arbeitsweise von Notar, Grundbuchamt und Gemeinde ab. Besonders die letzte Phase zieht sich oft länger als erwartet.' },
       { question: 'In welchen Phasen läuft ein Immobilienkauf ab?', answer: 'Ein Immobilienkauf läuft in sechs Phasen ab: Vorbereitung und Suche, Besichtigung und Prüfung des Angebots, Finanzierung sichern, Reservierung und Verhandlung, Kaufvertrag und Notartermin sowie Zahlung, Grundbuch und Übergabe. Wer diese Reihenfolge einhält und keinen Schritt überspringt, vermeidet die teuersten Fehler beim Hauskauf.' },
@@ -27,7 +27,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '16. Juni 2026',
     readTime: '13 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
-    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/8292895/pexels-photo-8292895.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Wie viel Eigenkapital brauche ich für eine Baufinanzierung 2026?', answer: 'Als verbreitete Faustregel sollten Sie mindestens die Kaufnebenkosten und idealerweise rund 20 Prozent des Kaufpreises aus eigenen Mitteln einbringen. Das ist eine Orientierung, kein gesetzliches Muss. Mehr Eigenkapital senkt meist den Zinssatz und das Risiko. Ein Kauf mit wenig oder ohne Eigenkapital ist möglich, aber teurer und anspruchsvoller.' },
       { question: 'Wie hoch sind die Bauzinsen 2026?', answer: 'Anfang 2026 liegen die Bauzinsen grob im Bereich von etwa 3,5 bis 4,0 Prozent für zehnjährige Zinsbindungen. Das ist ein grober Orientierungswert und keine Garantie. Ihr konkreter Zinssatz hängt von Eigenkapital, Bonität, dem Objekt und der jeweiligen Bank ab und sollte stets individuell mit aktuellen Angeboten verglichen werden.' },
@@ -44,7 +44,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '16. Juni 2026',
     readTime: '12 Min',
     tags: ['Kaufratgeber', 'Zustand'],
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/8293635/pexels-photo-8293635.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Wie prüfe ich den baulichen Zustand einer Immobilie vor dem Kauf?', answer: 'Gehen Sie systematisch vor: Beginnen Sie mit dem Gesamteindruck, prüfen Sie dann die teuren Gewerke wie Dach, Feuchtigkeit, Risse im Mauerwerk und Elektrik, anschließend Schadstoffe und Energieeffizienz. Achten Sie auf Warnsignale wie frisch überstrichene Stellen und fehlende Nachweise. Im Zweifel sollten Sie einen Bausachverständigen hinzuziehen.' },
       { question: 'Welche Bauteile verursachen die höchsten Folgekosten?', answer: 'Zu den teuersten Posten zählen Dacherneuerung, Heizungstausch, Fenster, eine komplette Elektroerneuerung und die Beseitigung von Feuchtigkeit oder Schadstoffen wie Asbest. Statisch relevante Risse können ebenfalls hohe Kosten verursachen. Konkrete Beträge lassen sich nur objektbezogen ermitteln, da sie stark von Größe, Region und Ausführung abhängen.' },
@@ -61,7 +61,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '16. Juni 2026',
     readTime: '13 Min',
     tags: ['Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/4792498/pexels-photo-4792498.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Wie bewerte ich ein Immobilienangebot objektiv?', answer: 'Gehen Sie systematisch vor: Lesen Sie zuerst das Exposé und trennen Sie Fakten von Werbung, erkennen Sie Warnsignale, prüfen Sie dann Wohnfläche, Quadratmeterpreis, Lage und Bodenrichtwert. Ordnen Sie den Angebotspreis anhand vergleichbarer Objekte ein und rechnen Sie Nebenkosten sowie gegebenenfalls die Mietrendite mit. Erst das Zusammenspiel ergibt ein belastbares Gesamtbild.' },
       { question: 'Ist der Quadratmeterpreis allein aussagekräftig?', answer: 'Nein. Der Quadratmeterpreis ist nur dann aussagekräftig, wenn Sie ihn mit Objekten derselben Lage, Größe, Art und Zustand sowie desselben Zeitpunkts vergleichen. Ein Neubau in zentraler Lage und ein sanierungsbedürftiges Haus am Ortsrand haben naturgemäß sehr unterschiedliche Werte. Prüfen Sie außerdem, welche Fläche dem Preis zugrunde liegt.' },
@@ -78,7 +78,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '16. Juni 2026',
     readTime: '9 Min',
     tags: ['Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/5077049/pexels-photo-5077049.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'ki-immobilienbewertung-2026-grenzen',
@@ -87,7 +87,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '16. Juni 2026',
     readTime: '9 Min',
     tags: ['Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/1921326/pexels-photo-1921326.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'grundsteuer-reform-2025-2026',
@@ -96,7 +96,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '15. Juni 2026',
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
-    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/6928994/pexels-photo-6928994.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Was ist der Unterschied zwischen Grunderwerbsteuer und Grundsteuer?', answer: 'Die Grunderwerbsteuer zahlen Sie einmal, die Grundsteuer immer wieder. Die Grunderwerbsteuer wird einmalig beim Kauf nach der notariellen Beurkundung fällig und liegt je nach Bundesland zwischen 3,5 und 6,5 Prozent des Kaufpreises. Die Grundsteuer B dagegen ist eine jährlich wiederkehrende Halte- und Betriebskostenposition, die Sie zahlen, solange Ihnen die Immobilie gehört.' },
       { question: 'Wie wird die Grundsteuer B seit der Reform 2025 berechnet?', answer: 'Im Bundesmodell gilt seit dem 1. Januar 2025 die Formel: Grundsteuerwert mal Steuermesszahl mal Hebesatz ergibt die jährliche Grundsteuer. Der Grundsteuerwert wird vom Finanzamt festgestellt und ersetzt den alten Einheitswert. Die Steuermesszahl beträgt für Wohngrundstücke 0,31 Promille. Der Hebesatz wird von jeder Gemeinde selbst festgelegt.' },
@@ -113,7 +113,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '15. Juni 2026',
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
-    image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/36833262/pexels-photo-36833262.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Ist eine Wohngebäudeversicherung beim Hauskauf gesetzlich Pflicht?', answer: 'Nein, eine allgemeine gesetzliche Pflicht zur Wohngebäudeversicherung gibt es in Deutschland nicht. Anders als bei der Kfz-Haftpflicht schreibt kein Bundesgesetz vor, dass ein Wohnhaus versichert sein muss. In der Praxis ist sie aber unverzichtbar: Praktisch jede finanzierende Bank verlangt einen Versicherungsnachweis und zahlt das Darlehen ohne ihn meist gar nicht aus.' },
       { question: 'Muss ich beim Hauskauf eine neue Wohngebäudeversicherung abschließen?', answer: 'Nein, in der Regel nicht. Nach § 95 VVG treten Sie als Erwerber automatisch in den bestehenden Wohngebäudevertrag des Verkäufers ein, mit allen Rechten und Pflichten. Maßgeblich ist die Eigentumsumschreibung im Grundbuch, nicht die Unterschrift beim Notar. So entsteht keine Deckungslücke: Ab dem Tag des Grundbucheintrags sind Sie versichert, ohne selbst aktiv zu werden.' },
@@ -130,7 +130,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '15. Juni 2026',
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Zustand'],
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/36054139/pexels-photo-36054139.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Wie lange habe ich nach dem Kauf eines Altbaus Zeit, die GEG-Pflichten zu erfuellen?', answer: 'In der Regel zwei Jahre ab dem Eigentumsuebergang. Bei einem bislang selbst genutzten Ein- oder Zweifamilienhaus ruhte der Bestandsschutz nach Paragraf 73 GEG, entfaellt aber mit dem Eigentuemerwechsel durch Kauf, Schenkung oder Erbschaft. Massgeblich ist die Eigentumsumschreibung im Grundbuch; ab diesem Stichtag laeuft typischerweise die Zwei-Jahres-Frist fuer die offenen Massnahmen.' },
       { question: 'Muss ich meinen alten Gas- oder Oelkessel nach dem Hauskauf austauschen?', answer: 'Nicht zwingend. Paragraf 72 GEG verbietet nur den Weiterbetrieb von Konstanttemperatur-Kesseln, die vor dem 1. Januar 1991 eingebaut wurden oder aelter als 30 Jahre sind. Niedertemperatur- und Brennwertkessel sind ausgenommen, ebenso Anlagen unter 4 Kilowatt und ueber 400 Kilowatt. Ein moderner Brennwertkessel muss also nicht allein wegen seines Alters stillgelegt werden.' },
@@ -147,7 +147,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '15. Juni 2026',
     readTime: '9 Min',
     tags: ['Kaufratgeber', 'Zustand'],
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/12243093/pexels-photo-12243093.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'risse-im-mauerwerk-beurteilen',
@@ -156,7 +156,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '15. Juni 2026',
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Zustand'],
-    image: 'https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/34763353/pexels-photo-34763353.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'elektroinstallation-altbau-pruefen',
@@ -165,7 +165,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '15. Juni 2026',
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Zustand'],
-    image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/10065200/pexels-photo-10065200.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'haus-geerbt-verkaufen-vermieten',
@@ -174,7 +174,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '15. Juni 2026',
     readTime: '9 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
-    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/5389188/pexels-photo-5389188.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Wie hoch ist der Erbschaftsteuer-Freibetrag fuer Kinder beim geerbten Haus?', answer: 'Kinder und Stiefkinder haben 2026 einen persoenlichen Freibetrag von 400.000 Euro (Steuerklasse I). Erst der darueber liegende Teil des geerbten Vermoegens wird besteuert. Ehegatten und eingetragene Lebenspartner haben 500.000 Euro, Enkel bei lebenden Eltern 200.000 Euro, Geschwister und Neffen nur 20.000 Euro. Im reinen Erbfall steht der Freibetrag einmalig zur Verfuegung.' },
       { question: 'Muss ich beim Verkauf eines geerbten Hauses Spekulationssteuer zahlen?', answer: 'Nein, wenn der Erblasser die Immobilie vor mehr als zehn Jahren gekauft hat. Beim geerbten Objekt zaehlt nicht der Erbfall, sondern das Anschaffungsdatum des Erblassers laut notariellem Kaufvertrag. Der Erbe uebernimmt dessen laufende Frist. Liegt der Kauf weniger als zehn Jahre zurueck, kann beim Verkauf innerhalb der Restfrist Spekulationssteuer auf den Wertzuwachs anfallen.' },
@@ -191,7 +191,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '15. Juni 2026',
     readTime: '9 Min',
     tags: ['Kaufratgeber', 'Checkliste'],
-    image: 'https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/5637720/pexels-photo-5637720.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'bausparvertrag-immobilienkauf',
@@ -200,7 +200,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juni 2026',
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
-    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/4056856/pexels-photo-4056856.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'bausachverstaendiger-hauskauf-kosten',
@@ -209,7 +209,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juni 2026',
     readTime: '7 Min',
     tags: ['Kaufratgeber', 'Zustand'],
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/28101526/pexels-photo-28101526.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'uebergabeprotokoll-hauskauf',
@@ -218,7 +218,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juni 2026',
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Checkliste'],
-    image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/7415097/pexels-photo-7415097.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'dach-pruefen-hauskauf',
@@ -227,7 +227,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juni 2026',
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Zustand'],
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/29114658/pexels-photo-29114658.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'asbest-im-haus-erkennen',
@@ -236,7 +236,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juni 2026',
     readTime: '7 Min',
     tags: ['Kaufratgeber', 'Zustand'],
-    image: 'https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/6474204/pexels-photo-6474204.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'hochwasser-risiko-immobilie-pruefen',
@@ -245,7 +245,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juni 2026',
     readTime: '9 Min',
     tags: ['Kaufratgeber', 'Standort'],
-    image: 'https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/14823609/pexels-photo-14823609.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'neubau-bautraeger-vertrag-mabv',
@@ -254,7 +254,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juni 2026',
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Checkliste'],
-    image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/27938318/pexels-photo-27938318.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'grundstueck-kaufen-worauf-achten',
@@ -263,7 +263,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juni 2026',
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Standort'],
-    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/16753029/pexels-photo-16753029.png?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'zwangsversteigerung-immobilie-kaufen',
@@ -272,7 +272,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juni 2026',
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/5668473/pexels-photo-5668473.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'bodenrichtwert-verstehen-abfragen',
@@ -281,7 +281,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juni 2026',
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Standort'],
-    image: 'https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/5802821/pexels-photo-5802821.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'notartermin-ablauf-hauskauf',
@@ -290,7 +290,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juni 2026',
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Checkliste'],
-    image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/261621/pexels-photo-261621.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Was kostet der Notartermin beim Hauskauf?', answer: 'Notar und Grundbuch zusammen kosten beim Hauskauf typischerweise rund 1,5 bis 2 Prozent des Kaufpreises. Bei 400.000 Euro Kaufpreis sind das ungefaehr 6.000 bis 8.000 Euro, je nach Umfang der Eintragungen. Die Gebuehren sind im GNotKG gesetzlich festgelegt und nicht verhandelbar; jeder Notar rechnet gleich ab. Diese Summe traegt in der Regel der Kaeufer.' },
       { question: 'Wie lange habe ich Zeit, den Kaufvertrag vor dem Notartermin zu pruefen?', answer: 'Als Verbraucher muss Ihnen der Vertragsentwurf typischerweise mindestens 14 Tage vor der Beurkundung vorliegen. Das regelt Paragraf 17 Absatz 2a BeurkG und soll verhindern, dass Sie unter Zeitdruck unterschreiben. Nutzen Sie die zwei Wochen aktiv, lesen Sie den Entwurf gruendlich und sprechen Sie offene Fragen oder gewuenschte Aenderungen vorab mit dem Notar ab.' },
@@ -307,7 +307,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juni 2026',
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Checkliste'],
-    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/8962381/pexels-photo-8962381.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Prueft der Notar, ob der Kaufpreis angemessen ist?', answer: 'Nein, der Notar bewertet den Kaufpreis nicht. Er ist zur Neutralitaet verpflichtet und prueft weder, ob der Preis angemessen ist, noch ob die Konditionen fuer Sie guenstig sind. Diese inhaltliche Bewertung muessen Sie als Kaeufer selbst leisten und den Vertragsentwurf vor dem Notartermin gruendlich pruefen, bevor Sie unterschreiben.' },
       { question: 'Was bedeutet gekauft wie gesehen im Kaufvertrag?', answer: 'Gekauft wie gesehen bedeutet den vollstaendigen Ausschluss der Sachmaengelhaftung, bei gebrauchten Immobilien der Normalfall. Entdecken Sie nach dem Kauf einen Mangel wie feuchte Waende oder einen defekten Heizkessel, koennen Sie den Verkaeufer im Grundsatz nicht mehr haftbar machen. Eine Ausnahme gilt nur fuer arglistig verschwiegene Maengel.' },
@@ -324,7 +324,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juni 2026',
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
-    image: 'https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/37739217/pexels-photo-37739217.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Wie hoch ist der Erbbauzins beim Erbbaurecht pro Jahr?', answer: 'Der jaehrliche Erbbauzins liegt ueblicherweise bei etwa 3 bis 5 Prozent des Grundstueckswerts. Bei einem Grundstueckswert von 200.000 Euro und einem Zinssatz von 4 Prozent zahlen Sie also rund 8.000 Euro pro Jahr, das entspricht etwa 667 Euro im Monat allein fuer die Grundstuecksnutzung. Dieser Betrag laeuft ueber die gesamte Vertragslaufzeit.' },
       { question: 'Steigt der Erbbauzins ueber die Jahre an?', answer: 'Ja, der Erbbauzins bleibt meist nicht konstant. Viele Vertraege enthalten eine Anpassungsklausel, oft eine Indexierung etwa an die Verbraucherpreise. Dadurch steigt der Zins ueber die Jahre, und bei langen Laufzeiten kann sich die jaehrliche Belastung deutlich erhoehen. Pruefen Sie genau, nach welcher Regel und in welchen Abstaenden der Zins angepasst werden darf.' },
@@ -341,7 +341,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juni 2026',
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Zustand'],
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/17374615/pexels-photo-17374615.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'heizungsarten-vergleich-kosten',
@@ -350,7 +350,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juni 2026',
     readTime: '9 Min',
     tags: ['Kaufratgeber', 'Energie'],
-    image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/12644994/pexels-photo-12644994.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Was kostet eine neue Wärmepumpe in der Anschaffung?', answer: 'Eine Wärmepumpe kostet in der Anschaffung grob zwischen 18.000 und 35.000 Euro und ist damit vergleichsweise teuer. Über den KfW-Zuschuss 458 sind je nach Voraussetzungen aber bis zu 70 Prozent der förderfähigen Kosten möglich, was die effektive Anschaffung erheblich senkt. Am effizientesten arbeitet sie in gut gedämmten Gebäuden.' },
       { question: 'Lohnt sich eine Wärmepumpe oder eine Gasheizung beim Hauskauf?', answer: 'Das hängt vom Gebäude ab. Die Wärmepumpe punktet mit niedrigen Betriebskosten, hoher Förderung und guter Zukunftssicherheit, setzt aber eine ordentliche Dämmung voraus. Die Gasheizung ist mit 8.000 bis 12.000 Euro günstig in der Anschaffung, durch steigenden CO2-Preis und Vorgaben des Gebäudeenergiegesetzes aber weniger zukunftssicher.' },
@@ -367,7 +367,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juni 2026',
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
-    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/7642008/pexels-photo-7642008.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'vorfaelligkeitsentschaedigung',
@@ -376,7 +376,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juni 2026',
     readTime: '7 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
-    image: 'https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/10958528/pexels-photo-10958528.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'grundschuld-vs-hypothek',
@@ -385,7 +385,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juni 2026',
     readTime: '7 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
-    image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/8293764/pexels-photo-8293764.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'kfw-wohneigentum-familien-2026',
@@ -394,7 +394,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juni 2026',
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
-    image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/7414952/pexels-photo-7414952.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Wer wird beim KfW-Programm Wohneigentum fuer Familien (300) gefoerdert?', answer: 'Gefoerdert werden Familien mit mindestens einem minderjaehrigen Kind im Haushalt, die ein selbst genutztes, klimafreundliches Wohngebaeude neu bauen oder als Ersterwerb kaufen. Voraussetzungen sind Selbstnutzung, kein bestehendes Wohneigentum bei Antragstellung sowie ein hoher Energiestandard von mindestens Effizienzhaus 40. Eine reine Vermietung ist nicht foerderfaehig.' },
       { question: 'Bis zu welchem Einkommen wird beim WEF-Programm gefoerdert?', answer: 'Massgeblich ist das zu versteuernde Jahreshaushaltseinkommen, nicht Brutto oder Netto. Bei einem Kind liegt die Grenze bei maximal 90.000 Euro, je weiterem Kind erhoeht sie sich um 10.000 Euro: 100.000 Euro bei zwei, 110.000 Euro bei drei und 120.000 Euro bei vier Kindern. Gerechnet wird der Durchschnitt aus dem zweiten und dritten Jahr vor Antragstellung.' },
@@ -411,7 +411,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juni 2026',
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
-    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/7821529/pexels-photo-7821529.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Wie hoch darf die monatliche Rate im Verhaeltnis zum Einkommen sein?', answer: 'Als Faustregel sollte die monatliche Rate rund 35 bis 40 Prozent des Nettohaushaltseinkommens nicht ueberschreiten. Bei 4.500 Euro netto im Monat liegt die Obergrenze je nach Bank zwischen etwa 1.575 Euro und 1.800 Euro. Die Grenze ist keine starre Vorschrift, sondern eine Orientierung, die je nach Bank und Ausgabenstruktur unterschiedlich gehandhabt wird.' },
       { question: 'Was prueft die Bank bei einer Baufinanzierung zuerst?', answer: 'Zuerst prueft die Bank die Kapitaldienstfaehigkeit, also ob Ihr Einkommen reicht, um die monatliche Rate dauerhaft ohne finanzielle Ueberlastung zu zahlen. Erst danach kommen weitere Bausteine wie Eigenkapital, Beschaeftigungsverhaeltnis, bestehende Kredite und der SCHUFA-Score hinzu. Diese Faktoren ergeben zusammen Ihr Risikoprofil und greifen ineinander.' },
@@ -428,7 +428,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juni 2026',
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/29274530/pexels-photo-29274530.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'vorkaufsrecht-gemeinde-milieuschutz',
@@ -437,7 +437,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juni 2026',
     readTime: '8 Min',
     tags: ['Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/13846532/pexels-photo-13846532.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'baulasten-grunddienstbarkeiten',
@@ -446,7 +446,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juni 2026',
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Checkliste'],
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/33583881/pexels-photo-33583881.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Was ist der Unterschied zwischen Baulast und Grunddienstbarkeit?', answer: 'Eine Grunddienstbarkeit ist ein privatrechtliches Recht und steht im Grundbuch in Abteilung II, etwa als Wege-, Geh- und Fahrtrecht oder Leitungsrecht zugunsten eines Nachbargrundstuecks. Eine Baulast ist dagegen eine oeffentlich-rechtliche Verpflichtung gegenueber der Baubehoerde und steht im Baulastenverzeichnis der Gemeinde, nicht im Grundbuch. Beide wirken auch gegen den neuen Eigentuemer.' },
       { question: 'Muss ich vor dem Hauskauf wirklich beide Register pruefen?', answer: 'Ja, pruefen Sie vor dem Kauf immer beide Register, nicht nur eines. Grunddienstbarkeiten stehen im Grundbuch in Abteilung II, Baulasten im Baulastenverzeichnis beim Bauordnungsamt der Gemeinde. Wer nur eine Quelle einsieht, uebersieht moeglicherweise die entscheidende Beschraenkung. Lassen Sie sich einen aktuellen Grundbuchauszug vorlegen und fragen Sie zusaetzlich beim zustaendigen Bauordnungsamt nach eingetragenen Baulasten.' },
@@ -463,7 +463,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juni 2026',
     readTime: '7 Min',
     tags: ['Kaufratgeber', 'Checkliste'],
-    image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/1370294/pexels-photo-1370294.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'wohnung-kaufen-vermieten-kapitalanlage',
@@ -472,7 +472,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juni 2026',
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
-    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/12029115/pexels-photo-12029115.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'denkmalschutz-immobilie-kaufen',
@@ -481,7 +481,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juni 2026',
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Zustand'],
-    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/1115155/pexels-photo-1115155.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'hauskauf-ohne-eigenkapital',
@@ -490,7 +490,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juni 2026',
     readTime: '7 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
-    image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/31330436/pexels-photo-31330436.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Kann man ein Haus ohne Eigenkapital finanzieren?', answer: 'Ja, technisch ist ein Hauskauf ohne Eigenkapital moeglich, aber nur unter bestimmten Voraussetzungen und deutlich teurer als mit eigenem Geld. Banken vergeben sogenannte 100- oder 110-Prozent-Finanzierungen, wenn Bonitaet, Einkommen und Objekt stimmen. Es ist kein Standardprodukt, sondern eine Konstruktion fuer eine klar umrissene Gruppe von Kaeufern.' },
       { question: 'Was ist der Unterschied zwischen einer 100- und einer 110-Prozent-Finanzierung?', answer: 'Bei der 100-Prozent-Finanzierung deckt das Darlehen den vollstaendigen Kaufpreis, die Kaufnebenkosten von rund 10 bis 12 Prozent bringen Sie selbst auf. Die 110-Prozent-Finanzierung deckt zusaetzlich die Nebenkosten ab, sodass Sie rechnerisch gar kein eigenes Geld mitbringen. Diese echte Vollfinanzierung ohne Eigenkapital ist am schwersten zu bekommen und am teuersten.' },
@@ -507,7 +507,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juni 2026',
     readTime: '7 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
-    image: 'https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/8293750/pexels-photo-8293750.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Was ist ein Annuitaetendarlehen einfach erklaert?', answer: 'Ein Annuitaetendarlehen ist die haeufigste Baufinanzierung in Deutschland. Sie zahlen ueber die gesamte Zinsbindung eine konstante monatliche Rate, die Annuitaet. Diese setzt sich aus Zins und Tilgung zusammen. Die Summe bleibt gleich, doch das Verhaeltnis verschiebt sich: Der Zinsanteil sinkt mit der Zeit, der Tilgungsanteil steigt.' },
       { question: 'Wie berechne ich die monatliche Rate eines Annuitaetendarlehens?', answer: 'Nutzen Sie die Faustformel: Jahresrate gleich Darlehen mal Sollzins plus anfaenglicher Tilgungssatz, geteilt durch 12. Beispiel: 320.000 Euro bei 3,6 Prozent Sollzins und 2,0 Prozent Tilgung ergeben 5,6 Prozent, also 17.920 Euro pro Jahr oder rund 1.493 Euro pro Monat. Der Wert ist ein guter erster Ueberschlag.' },
@@ -524,7 +524,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juni 2026',
     readTime: '7 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
-    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/11391951/pexels-photo-11391951.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Wie viel darf ich pro Jahr kostenlos sondertilgen?', answer: 'Viele Banken raeumen kostenlos eine Sondertilgung von bis zu 5 Prozent der urspruenglichen Darlehenssumme pro Jahr ein. Bei einem Darlehen ueber 320.000 Euro waeren das bis zu 16.000 Euro jaehrlich. Voraussetzung ist allerdings, dass dieses Recht im Darlehensvertrag vereinbart ist. Der konkrete Umfang variiert je nach Bank, deshalb lohnt der Blick in die Unterlagen.' },
       { question: 'Wie viel Zinsen spare ich mit einer Sondertilgung von 10.000 Euro?', answer: 'Eine Sondertilgung verzinst sich genau mit Ihrem Sollzins, und zwar steuerfrei. Bei 3,5 Prozent Sollzins sparen 10.000 Euro Sondertilgung rund 350 Euro Zinsen im ersten Jahr. Bei 2 Prozent sind es etwa 200 Euro, bei 4,5 Prozent rund 450 Euro. Da die ersparten Zinsen in den Folgejahren mittilgen, summiert sich der Effekt ueber die Laufzeit deutlich.' },
@@ -541,7 +541,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juni 2026',
     readTime: '7 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
-    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/4397907/pexels-photo-4397907.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Was kostet eine 15-jaehrige Zinsbindung mehr als eine 10-jaehrige?', answer: 'Eine 15-jaehrige Zinsbindung kostet meist einen kleinen Zinsaufschlag. Im Beispiel des Artikels liegt der Sollzins bei 10 Jahren bei 3,5 Prozent und bei 15 Jahren bei 3,7 Prozent. Bei 300.000 Euro Darlehen und 2 Prozent Tilgung bedeutet das rund 1.425 Euro statt 1.375 Euro Monatsrate, also etwa 50 Euro mehr pro Monat fuer fuenf zusaetzliche Jahre Sicherheit.' },
       { question: 'Kann ich ein Darlehen mit 15 Jahren Zinsbindung schon nach 10 Jahren kuendigen?', answer: 'Ja. Nach Paragraf 489 Abs. 1 Nr. 2 BGB darf der Darlehensnehmer jedes Darlehen mit gebundenem Sollzins nach 10 Jahren ab vollstaendiger Auszahlung mit einer Frist von 6 Monaten kuendigen, ohne Vorfaelligkeitsentschaedigung. Dieses Recht gilt auch bei einer vereinbarten Zinsbindung von 15 oder 20 Jahren. Sie kommen also nach zehn Jahren heraus, wenn es sich lohnt.' },
@@ -558,7 +558,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juni 2026',
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
-    image: 'https://images.unsplash.com/photo-1619468129361-605ebea04b44?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/19375387/pexels-photo-19375387.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Was ist eine Anschlussfinanzierung beim Immobilienkredit?', answer: 'Die Anschlussfinanzierung ist die Weiterfinanzierung der Restschuld nach Ablauf der Zinsbindung. Ein Annuitaetendarlehen mit fester Zinsbindung von meist 10 oder 15 Jahren ist am Ende oft nicht vollstaendig getilgt. Die verbleibende Summe wird mit einem neuen Darlehensvertrag, neuem Zinssatz und neuer Zinsbindung weiterfinanziert.' },
       { question: 'Was ist der Unterschied zwischen Prolongation und Umschuldung?', answer: 'Bei der Prolongation bleiben Sie bei Ihrer bisherigen Bank und unterschreiben ein neues Angebot fuer die Restschuld; die Grundschuld bleibt bestehen und es fallen keine Notarkosten an. Bei der Umschuldung wechseln Sie zu einer Bank mit besseren Konditionen, wobei die Grundschuld abgetreten wird und geringe Notarkosten entstehen.' },
@@ -575,7 +575,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juni 2026',
     readTime: '7 Min',
     tags: ['Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/13627494/pexels-photo-13627494.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'provisionsfrei-immobilie-bedeutung',
@@ -584,7 +584,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juni 2026',
     readTime: '7 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/8469940/pexels-photo-8469940.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'grundbuch-lesen',
@@ -593,7 +593,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juni 2026',
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Checkliste'],
-    image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/8236200/pexels-photo-8236200.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Was steht in den drei Abteilungen des Grundbuchs?', answer: 'Das Grundbuch besteht aus Bestandsverzeichnis und drei Abteilungen. Das Bestandsverzeichnis nennt Lage, Flurstück und Größe des Grundstücks. Abteilung I führt die Eigentümer und Eigentumsverhältnisse. Abteilung II enthält Lasten und Beschränkungen wie Wohnrechte oder Wegerechte. Abteilung III listet Grundpfandrechte, also Hypotheken und Grundschulden der Banken.' },
       { question: 'Worauf muss ich als Käufer im Grundbuch besonders achten?', answer: 'Prüfen Sie vor allem Abteilung II und Abteilung III. In Abteilung II stehen Lasten wie Wohnrechte, Nießbrauch oder Wegerechte, die die Nutzung einschränken oder den Wert mindern können. In Abteilung III achten Sie darauf, dass alte Grundschulden des Verkäufers im Zuge des Kaufs gelöscht oder abgelöst werden, damit Sie ein lastenfreies Objekt erhalten.' },
@@ -610,7 +610,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juni 2026',
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Checkliste'],
-    image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/4792483/pexels-photo-4792483.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Wer zahlt bei einer Eigentumswohnung Reparaturen am Fenster oder Balkon?', answer: 'In den meisten Teilungserklaerungen gehoeren Fenster (Rahmen und Glas) sowie der Balkon (Konstruktion, Abdichtung, Bruestung) zum Gemeinschaftseigentum. Damit traegt die Eigentuemergemeinschaft die Sanierungskosten gemeinsam, finanziert aus Hausgeld und Instandhaltungsruecklage. Eigenmaechtig veraendern duerfen Sie diese Bauteile nicht, denn ueber ihre Sanierung entscheidet die Eigentuemerversammlung, nicht Sie allein.' },
       { question: 'Wie hoch sind meine Kosten bei einer Dachsanierung als Wohnungseigentuemer?', answer: 'Ihr Kostenanteil richtet sich nach Ihrem Miteigentumsanteil. Beispiel aus dem Artikel: Eine 80-Quadratmeter-Wohnung in einem Haus mit 800 Quadratmetern Gesamtflaeche entspricht rund 100 von 1.000 Anteilen, also 10 Prozent. Bei einer Dachsanierung fuer 200.000 Euro entfielen rechnerisch etwa 20.000 Euro auf Sie, finanziert aus Ruecklage und gegebenenfalls Sonderumlage.' },
@@ -627,7 +627,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juni 2026',
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Energie'],
-    image: 'https://images.unsplash.com/photo-1593476550610-87baa860004a?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/6124239/pexels-photo-6124239.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Wie hoch ist der Zuschuss beim Heizungstausch 2026?', answer: 'Beim Heizungstausch sind 2026 bis zu 70 Prozent Zuschuss von der KfW moeglich. Er setzt sich zusammen aus 30 Prozent Grundfoerderung, 20 Prozent Klimageschwindigkeitsbonus fuer den Austausch einer alten fossilen Heizung und 30 Prozent Einkommensbonus bei einem Haushaltseinkommen bis 40.000 Euro pro Jahr. Foerderfaehig sind Kosten bis 30.000 Euro, also maximal 21.000 Euro Zuschuss.' },
       { question: 'Was kostet eine neue Waermepumpe nach Abzug der Foerderung?', answer: 'Bei einer Investition von 32.000 Euro bleiben fuer Selbstnutzer mit Einkommen unter 40.000 Euro rund 11.000 Euro Eigenanteil. Die KfW foerdert die ersten 30.000 Euro mit 70 Prozent, das ergibt 21.000 Euro Zuschuss. Die darueber liegenden 2.000 Euro sind nicht foerderfaehig. Ohne Einkommensbonus sinkt der Satz auf 50 Prozent und der Zuschuss auf 15.000 Euro.' },
@@ -644,7 +644,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '12. Juni 2026',
     readTime: '7 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
-    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/29031562/pexels-photo-29031562.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Wie hoch ist die Grunderwerbsteuer 2026 in den einzelnen Bundeslaendern?', answer: 'Die Grunderwerbsteuer liegt 2026 je nach Bundesland zwischen 3,5 % und 6,5 % des Kaufpreises. Den niedrigsten Satz hat Bayern mit 3,5 %, den hoechsten Brandenburg, Nordrhein-Westfalen, das Saarland und Schleswig-Holstein mit jeweils 6,5 %. Bei einem Kaufpreis von 400.000 Euro bedeutet das eine Steuer zwischen 14.000 und 26.000 Euro.' },
       { question: 'Welches Bundesland zaehlt fuer die Grunderwerbsteuer, mein Wohnsitz oder die Lage der Immobilie?', answer: 'Massgeblich ist immer das Bundesland, in dem die Immobilie liegt, nicht Ihr Wohnsitz. Wer etwa in Hamburg wohnt und ein Haus in Schleswig-Holstein kauft, zahlt 6,5 % statt 5,5 %. Bei 400.000 Euro Kaufpreis macht dieser Unterschied 4.000 Euro aus.' },
@@ -661,7 +661,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '12. Juni 2026',
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Checkliste'],
-    image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/6837789/pexels-photo-6837789.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Wie lange dauert ein Hauskauf von der Suche bis zur Schlüsselübergabe?', answer: 'Realistisch dauert ein Hauskauf 3 bis 9 Monate von der ersten Suche bis zur Schlüsselübergabe. Die Vorbereitung braucht 2 bis 4 Wochen, Suche und Besichtigung 1 bis 5 Monate, Finanzierung und Kaufvertrag bis zum Notartermin 4 bis 6 Wochen sowie die Abwicklung bis zur Übergabe weitere 4 bis 8 Wochen. Die größte Stellschraube ist die Suchphase.' },
       { question: 'Wie hoch sollte die monatliche Kreditrate beim Hauskauf maximal sein?', answer: 'Als Faustregel sollten höchstens 35 bis 40 Prozent des Nettohaushaltseinkommens in die Kreditrate fließen. Bei 4.000 Euro netto im Monat entspricht das 1.400 bis 1.600 Euro. Rechnen Sie ehrlich mit allen laufenden Verpflichtungen, Rücklagen für Instandhaltung und einem Puffer für Unvorhergesehenes.' },
@@ -678,7 +678,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '12. Juni 2026',
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
-    image: 'https://images.unsplash.com/photo-1560440021-33f9b867899d?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/6990404/pexels-photo-6990404.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Lohnt sich Kaufen oder Mieten 2026 mehr?', answer: 'Das hängt nicht von Überzeugungen ab, sondern von konkreten Zahlen: Kaufpreis, Vergleichsmiete, Zinssatz, Nebenkosten, Haltedauer und Lebenssituation. Mitte 2026 liegen die Bauzinsen bei rund 3,5 bis 4,0 Prozent für zehn Jahre Zinsbindung. Kaufen lohnt sich typischerweise bei Haltedauer über 10 bis 15 Jahren, stabiler Lebenssituation und einem Kaufpreisfaktor unter 25.' },
       { question: 'Wie berechne ich den Kaufpreisfaktor einer Immobilie?', answer: 'Sie teilen den Kaufpreis durch die Jahreskaltmiete einer vergleichbaren Wohnung. Das Ergebnis zeigt, wie viele Jahresmieten Sie für das Objekt zahlen. Ein Faktor unter 20 spricht eher für Kaufen, 20 bis 25 ist neutral, über 25 spricht eher für Mieten. In deutschen Großstädten liegen die Faktoren oft bei 25 bis 35.' },
@@ -695,7 +695,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '12. Juni 2026',
     readTime: '7 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
-    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/7937330/pexels-photo-7937330.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Wie viel Maklerprovision zahlt der Käufer beim Wohnungs- oder Hauskauf?', answer: 'Beim Kauf einer Eigentumswohnung oder eines Einfamilienhauses zahlt der Käufer höchstens die Hälfte der Maklerprovision. Üblich ist ein Käuferanteil von 2,98 bis 3,57 Prozent des Kaufpreises. Der häufigste Satz liegt bei 3,57 Prozent, also 3,0 Prozent Honorar plus 19 Prozent Mehrwertsteuer. Bei 400.000 Euro Kaufpreis sind das rund 14.280 Euro.' },
       { question: 'Muss der Käufer die ganze Maklerprovision allein zahlen?', answer: 'Nein. Seit der Reform vom 23. Dezember 2020 (§§ 656c und 656d BGB) darf dem Käufer einer Wohnung oder eines Einfamilienhauses höchstens die Hälfte der Gesamtprovision in Rechnung gestellt werden. Ist der Makler für beide Seiten tätig, zahlen Käufer und Verkäufer gleich viel. Verträge, die mehr als 50 Prozent abwälzen, sind unwirksam.' },
@@ -712,7 +712,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '12. Juni 2026',
     readTime: '7 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
-    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/955392/pexels-photo-955392.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Wie hoch sind Notar- und Grundbuchkosten beim Immobilienkauf?', answer: 'Notar und Grundbuchamt kosten zusammen etwa 1,5 bis 2,0 Prozent des Kaufpreises. Davon entfallen rund 1,0 bis 1,5 Prozent auf den Notar (mit Grundschuldbestellung eher 1,5 Prozent) und etwa 0,5 Prozent auf das Grundbuchamt. Bei 400.000 Euro Kaufpreis sind das rund 7.000 bis 8.000 Euro, die zusaetzlich anfallen.' },
       { question: 'Kann ich durch die Wahl eines guenstigeren Notars sparen?', answer: 'Nein. Die Gebuehren von Notaren und Grundbuchaemtern sind bundeseinheitlich im Gerichts- und Notarkostengesetz (GNotKG) geregelt und nicht verhandelbar. Jeder Notar in Deutschland kostet fuer dieselbe Leistung gleich viel. Massgeblich fuer die Hoehe ist im Wesentlichen der Kaufpreis als Geschaeftswert. Ein Vergleich verschiedener Notare lohnt sich daher nicht.' },
@@ -729,7 +729,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '12. Juni 2026',
     readTime: '7 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
-    image: 'https://images.unsplash.com/photo-1464082354059-27db6ce50048?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/9821387/pexels-photo-9821387.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Wie viel Eigenkapital brauche ich für den Immobilienkauf?', answer: 'Die verbreitete Empfehlung lautet: mindestens 20 Prozent des Kaufpreises plus die vollständigen Kaufnebenkosten aus eigenen Mitteln, ideal sind 30 Prozent. Die Kaufnebenkosten von etwa 10 bis 12 Prozent des Kaufpreises sollten immer aus Eigenkapital stammen, weil Banken sie ungern mitfinanzieren. Wer diese Leitplanken einhält, finanziert günstiger und sicherer.' },
       { question: 'Wie viel Eigenkapital brauche ich bei einer Immobilie für 400.000 Euro?', answer: 'Bei einem 400.000-Euro-Objekt betragen die Kaufnebenkosten etwa 40.000 bis 48.000 Euro. Der Gesamtbedarf liegt damit bei rund 85.000 Euro für 10 Prozent Eigenkapital, rund 125.000 Euro für 20 Prozent und rund 165.000 Euro für 30 Prozent. Die Nebenkosten erhöhen die nötige Summe um mehr als die Hälfte gegenüber den reinen 20 Prozent vom Kaufpreis.' },
@@ -746,7 +746,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '12. Juni 2026',
     readTime: '7 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
-    image: 'https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/7580757/pexels-photo-7580757.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Wie berechne ich den Kaufpreisfaktor einer Immobilie?', answer: 'Der Kaufpreisfaktor ergibt sich aus Kaufpreis geteilt durch Jahreskaltmiete. Maßgeblich ist die Kaltmiete ohne Betriebskosten, hochgerechnet auf zwölf Monate. Ein Faktor von 25 bedeutet, dass der Kaufpreis 25 Jahreskaltmieten entspricht. Rechnerisch dauert es also 25 Jahre, bis die Mieteinnahmen den Kaufpreis erreicht haben.' },
       { question: 'Welcher Kaufpreisfaktor gilt als günstig und welcher als teuer?', answer: 'Ein Faktor unter 20 gilt als günstig, oft aber in strukturschwächeren Regionen mit höherem Risiko. Werte von 20 bis 25 sind solide und ausgewogen. Faktoren zwischen 25 und 30 gelten als teuer und sind typisch für gefragte Großstadtlagen. Über 30 ist sehr teuer, hier ist der Kauf primär eine Wette auf Wertsteigerung.' },
@@ -763,7 +763,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '12. Juni 2026',
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Zustand'],
-    image: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/14943770/pexels-photo-14943770.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'innenausbau-bewerten',
@@ -772,7 +772,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '22. April 2026',
     readTime: '14 Min',
     tags: ['Kaufratgeber', 'Zustand'],
-    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/36035073/pexels-photo-36035073.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'fliesen-qualitaetsmerkmal-immobilie',
@@ -781,7 +781,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '22. April 2026',
     readTime: '13 Min',
     tags: ['Kaufratgeber', 'Zustand'],
-    image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/8141966/pexels-photo-8141966.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'raeume-richtig-nutzen',
@@ -790,7 +790,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '22. April 2026',
     readTime: '13 Min',
     tags: ['Kaufratgeber', 'Grundriss'],
-    image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/3284980/pexels-photo-3284980.png?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'wohnqualitaet-bewerten',
@@ -799,7 +799,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '22. April 2026',
     readTime: '14 Min',
     tags: ['Kaufratgeber', 'Standort'],
-    image: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/7836571/pexels-photo-7836571.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'homeoffice-immobilienkauf',
@@ -808,7 +808,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '22. April 2026',
     readTime: '13 Min',
     tags: ['Kaufratgeber', 'Grundriss'],
-    image: 'https://images.unsplash.com/photo-1593476550610-87baa860004a?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/1128207/pexels-photo-1128207.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'rauchen-dampfen-wohnqualitaet',
@@ -817,7 +817,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '19. April 2026',
     readTime: '13 Min',
     tags: ['Kaufratgeber', 'Besichtigung'],
-    image: 'https://images.unsplash.com/photo-1522444195799-478538b28823?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/10254323/pexels-photo-10254323.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'fristen-immobilienkauf',
@@ -826,7 +826,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '19. April 2026',
     readTime: '14 Min',
     tags: ['Kaufratgeber', 'Checkliste'],
-    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/11773871/pexels-photo-11773871.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'immobilienanfragen-bearbeiten',
@@ -835,7 +835,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '19. April 2026',
     readTime: '13 Min',
     tags: ['Kaufratgeber', 'Checkliste'],
-    image: 'https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/374074/pexels-photo-374074.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'unterlagen-vor-immobilienkauf',
@@ -844,7 +844,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '13 Min',
     tags: ['Checkliste', 'Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1560440021-33f9b867899d?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/7654588/pexels-photo-7654588.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'immobilienkauf-mit-familie',
@@ -853,7 +853,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '14 Min',
     tags: ['Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/4868600/pexels-photo-4868600.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'infrastruktur-pruefen',
@@ -862,7 +862,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '13 Min',
     tags: ['Standort', 'Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1464082354059-27db6ce50048?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/19798157/pexels-photo-19798157.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'nebenkosten-laufende-kosten',
@@ -871,7 +871,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '14 Min',
     tags: ['Finanzierung', 'Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/3806749/pexels-photo-3806749.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'bilder-im-expose-bewerten',
@@ -880,7 +880,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '13 Min',
     tags: ['Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/34613043/pexels-photo-34613043.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'hausgeld-ruecklagen-sonderumlage',
@@ -889,7 +889,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '14 Min',
     tags: ['Finanzierung', 'Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/29274535/pexels-photo-29274535.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'wohnflaeche-richtig-einordnen',
@@ -898,7 +898,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '13 Min',
     tags: ['Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1619468129361-605ebea04b44?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/4048078/pexels-photo-4048078.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'grundriss-richtig-lesen',
@@ -907,7 +907,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '13 Min',
     tags: ['Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1619468129361-605ebea04b44?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/6615086/pexels-photo-6615086.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'baujahr-und-modernisierung',
@@ -916,7 +916,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '14 Min',
     tags: ['Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/5798984/pexels-photo-5798984.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'zustand-richtig-einschaetzen',
@@ -925,7 +925,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '14 Min',
     tags: ['Kaufratgeber', 'Checkliste'],
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/30226733/pexels-photo-30226733.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'fehler-private-kaeufer',
@@ -934,7 +934,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '14 Min',
     tags: ['Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/9052797/pexels-photo-9052797.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'einfamilienhaus-kaufen-expose',
@@ -943,7 +943,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '14 Min',
     tags: ['Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/3958954/pexels-photo-3958954.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'eigentumswohnung-kaufen-expose',
@@ -952,7 +952,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '13 Min',
     tags: ['Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/16110999/pexels-photo-16110999.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'daten-statt-bauchgefuehl',
@@ -961,7 +961,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '13 Min',
     tags: ['Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1560440021-33f9b867899d?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/8636589/pexels-photo-8636589.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'immobilien-realistischer-einordnen',
@@ -970,7 +970,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '12 Min',
     tags: ['Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/10599784/pexels-photo-10599784.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'expose-verstehen',
@@ -979,7 +979,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '13 Min',
     tags: ['Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1560440021-33f9b867899d?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/6214/hands-people-woman-girl.jpg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'besichtigung-vorbereitung',
@@ -988,7 +988,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '13 Min',
     tags: ['Checkliste', 'Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/19966758/pexels-photo-19966758.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'zustand-folgekosten',
@@ -997,7 +997,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '12 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/6419128/pexels-photo-6419128.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'baujahr-einordnen',
@@ -1006,7 +1006,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '14 Min',
     tags: ['Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/15524090/pexels-photo-15524090.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'immobilien-check-vor-kauf',
@@ -1015,7 +1015,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '12 Min',
     tags: ['Checkliste', 'Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1560440021-33f9b867899d?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/6981528/pexels-photo-6981528.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'fehler-immobilienkauf',
@@ -1024,7 +1024,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '13 Min',
     tags: ['Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/7984773/pexels-photo-7984773.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'hauskauf-mit-system',
@@ -1033,7 +1033,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '13 Min',
     tags: ['Checkliste', 'Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/6913186/pexels-photo-6913186.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'immobilienbewertung-kaeufer',
@@ -1042,7 +1042,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '13 Min',
     tags: ['Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/8293715/pexels-photo-8293715.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'angebotspreis-fair',
@@ -1051,7 +1051,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '12 Min',
     tags: ['Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/1111319/pexels-photo-1111319.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'expose-analyse-vor-besichtigung',
@@ -1060,7 +1060,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '12 Min',
     tags: ['Checkliste', 'Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1560440021-33f9b867899d?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/8369248/pexels-photo-8369248.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'was-im-expose-fehlt',
@@ -1069,7 +1069,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '12 Min',
     tags: ['Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1560440021-33f9b867899d?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/17770333/pexels-photo-17770333.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'exposes-richtig-lesen',
@@ -1078,7 +1078,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '12 Min',
     tags: ['Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/265642/pexels-photo-265642.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'hauskauf-vorbereiten',
@@ -1087,7 +1087,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '11 Min',
     tags: ['Checkliste', 'Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/7657877/pexels-photo-7657877.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'immobilien-vergleichen',
@@ -1096,7 +1096,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '11 Min',
     tags: ['Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1464082354059-27db6ce50048?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/6194236/pexels-photo-6194236.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'sanierungsbedarf-erkennen',
@@ -1105,7 +1105,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '12 Min',
     tags: ['Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/12207831/pexels-photo-12207831.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'lagebewertung-hauskauf',
@@ -1114,7 +1114,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '11 Min',
     tags: ['Standort', 'Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1464082354059-27db6ce50048?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/14754006/pexels-photo-14754006.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'kaufnebenkosten-immobilienkauf',
@@ -1123,7 +1123,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '10 Min',
     tags: ['Finanzierung', 'Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/7680696/pexels-photo-7680696.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Wie hoch sind die Kaufnebenkosten beim Immobilienkauf?', answer: 'Die Kaufnebenkosten betragen je nach Bundesland und Situation 5,5 % bis über 15 % des Kaufpreises. Bei einer Immobilie für 400.000 € sind das rund 22.000 bis 60.000 €. Sie setzen sich aus Grunderwerbsteuer, Notar, Grundbuch und Maklergebühr zusammen. Banken finanzieren diese Nebenkosten selten mit, sodass Käufer sie meist aus Eigenkapital aufbringen müssen.' },
       { question: 'Wie viel Grunderwerbsteuer zahle ich beim Hauskauf?', answer: 'Die Grunderwerbsteuer ist der größte Nebenkosten-Posten und variiert je nach Bundesland von 3,5 % bis 6,5 % des Kaufpreises (Stand 2026). In Bayern gelten 3,5 %, in NRW, Brandenburg, Schleswig-Holstein und im Saarland 6,5 %. Bei 400.000 € Kaufpreis bedeutet das zwischen 14.000 € in Bayern und 26.000 € in NRW.' },
@@ -1140,7 +1140,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '11 Min',
     tags: ['Energie', 'Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/3946152/pexels-photo-3946152.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Welche Energieangaben müssen im Immobilien-Exposé stehen?', answer: 'Das Gebäudeenergiegesetz (GEG) schreibt fünf Pflichtangaben für jedes Immobilieninserat vor: Art des Energieausweises (Verbrauchs- oder Bedarfsausweis), Endenergiebedarf oder -verbrauch in kWh/m²a, Energieeffizienzklasse (A+ bis H), wesentlicher Energieträger (etwa Gas, Öl, Fernwärme oder Wärmepumpe) und das Baujahr. Fehlt eine Angabe, ist das eine Ordnungswidrigkeit und ein Warnsignal.' },
       { question: 'Was kostet eine schlechte Energieklasse beim Heizen pro Jahr?', answer: 'Die Effizienzklasse bestimmt direkt die Heizkosten. Für eine 85-m²-Wohnung mit Gasheizung kostet Klasse A rund 340 Euro pro Jahr, Klasse C etwa 765 Euro, Klasse E rund 1.233 Euro und Klasse H etwa 2.380 Euro. Über 20 Jahre summiert sich der Unterschied zwischen Klasse A und H auf über 40.000 Euro Mehrkosten allein fürs Heizen.' },
@@ -1157,7 +1157,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '10 Min',
     tags: ['Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1560440021-33f9b867899d?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/4447140/pexels-photo-4447140.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'quadratmeterpreis-bewerten',
@@ -1166,7 +1166,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '9 Min',
     tags: ['Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/19904351/pexels-photo-19904351.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
   {
     slug: 'expose-pruefen',
@@ -1175,7 +1175,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '11. April 2026',
     readTime: '10 Min',
     tags: ['Kaufratgeber'],
-    image: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&h=450&fit=crop&auto=format&q=80',
+    image: 'https://images.pexels.com/photos/7821675/pexels-photo-7821675.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   },
 ]
 

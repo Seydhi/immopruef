@@ -113,7 +113,7 @@ export default function BlogIndex({ onNavigate }: BlogIndexProps) {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {BLOG_POSTS.map((post: BlogMeta) => (
+        {BLOG_POSTS.map((post: BlogMeta, postIndex: number) => (
           <a
             key={post.slug}
             href={`/blog/${post.slug}`}
@@ -123,10 +123,22 @@ export default function BlogIndex({ onNavigate }: BlogIndexProps) {
             }}
             className="text-left bg-white border border-ink/10 rounded-xl overflow-hidden hover:border-green/30 hover:shadow-md transition-all group flex flex-col no-underline"
           >
-            {/* Generiertes Themen-Cover (einzigartig je Artikel) */}
+            {/* Kuratiertes Foto (einzigartig je Artikel); SVG-Cover als Fallback */}
             <div className="h-36 border-b border-ink/8 overflow-hidden">
               <div className="w-full h-full group-hover:scale-105 transition-transform duration-300">
-                <CoverArt post={post} />
+                {post.image ? (
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    width={400}
+                    height={144}
+                    className="w-full h-full object-cover"
+                    loading={postIndex < 6 ? 'eager' : 'lazy'}
+                    decoding="async"
+                  />
+                ) : (
+                  <CoverArt post={post} />
+                )}
               </div>
             </div>
 
