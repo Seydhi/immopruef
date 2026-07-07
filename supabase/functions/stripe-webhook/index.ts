@@ -209,6 +209,7 @@ serve(async (req) => {
           const urlList = (orderAnalyses || [])
             .map((a: { url: string }, i: number) => {
               const cleanUrl = a.url.split('#')[0].split('?')[0]
+              const isUpload = !cleanUrl.startsWith('http')
               const safeUrl = escapeHtml(cleanUrl)
               const exposeNr = a.url.match(/expose\/(\d+)/)?.[1] || ''
               return `
@@ -216,11 +217,12 @@ serve(async (req) => {
                   <td style="padding:10px 16px;border-bottom:1px solid #f0f0f0;">
                     <div style="font-size:13px;color:#444;">
                       <span style="color:#1a6b3c;font-weight:600;">${i + 1}.</span>
-                      ${exposeNr ? `Exposé ${exposeNr}` : safeUrl}
+                      ${isUpload ? 'Hochgeladenes Exposé (PDF/Fotos)' : exposeNr ? `Exposé ${exposeNr}` : safeUrl}
                     </div>
+                    ${isUpload ? '' : `
                     <div style="font-size:11px;color:#999;margin-top:2px;">
                       <a href="${safeUrl}" style="color:#999;text-decoration:none;">${safeUrl}</a>
-                    </div>
+                    </div>`}
                   </td>
                 </tr>`
             }).join('')

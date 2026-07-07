@@ -25,14 +25,15 @@ export async function startCheckout(
   options: AnalysisOptions,
   pkg: Package,
   email: string,
-  consents: CheckoutConsents
+  consents: CheckoutConsents,
+  files: string[] = []
 ): Promise<string> {
   if (USE_MOCKS) return mockApi.startCheckout(urls, options, pkg)
 
   const res = await fetch(getSupabaseFunctionUrl('create-checkout'), {
     method: 'POST',
     headers: getHeaders(),
-    body: JSON.stringify({ urls, options, package: pkg, email, consents }),
+    body: JSON.stringify({ urls, files, options, package: pkg, email, consents }),
   })
 
   if (!res.ok) {
@@ -42,6 +43,42 @@ export async function startCheckout(
 
   const data = await res.json()
   return data.url
+}
+
+// ─── Exposé-Upload (PDF/Fotos) ───
+// Lädt Dateien in den privaten Bucket "exposes" (Ordner uploads/) und gibt die
+// Storage-Pfade zurück, die create-checkout als `files` entgegennimmt.
+export const UPLOAD_MAX_BYTES = 20 * 1024 * 1024 // Bucket-Limit: 20 MB pro Datei
+export const UPLOAD_MAX_IMAGES = 8
+export const UPLOAD_TYPES: Record<string, string> = {
+  'application/pdf': 'pdf',
+  'image/jpeg': 'jpg',
+  'image/png': 'png',
+  'image/webp': 'webp',
+}
+
+function randomFileId(): string {
+  const bytes = crypto.getRandomValues(new Uint8Array(12))
+  return Array.from(bytes, (b) => b.toString(16).padStart(2, '0')).join('')
+}
+
+export async function uploadExposeFiles(files: File[]): Promise<string[]> {
+  if (!supabase) throw new Error('Supabase not configured')
+
+  const paths: string[] = []
+  for (const file of files) {
+    const ext = UPLOAD_TYPES[file.type]
+    if (!ext) throw new Error(`Dateityp nicht unterstützt: ${file.name}`)
+    if (file.size > UPLOAD_MAX_BYTES) throw new Error(`Datei zu groß (max. 20 MB): ${file.name}`)
+
+    const path = `uploads/${randomFileId()}.${ext}`
+    const { error } = await supabase.storage
+      .from('exposes')
+      .upload(path, file, { contentType: file.type })
+    if (error) throw new Error(`Upload fehlgeschlagen: ${file.name}`)
+    paths.push(path)
+  }
+  return paths
 }
 
 // ─── Poll Analysis ───

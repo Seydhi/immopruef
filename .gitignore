@@ -5,3 +5,5 @@ dist
 .vercel
 .supabase-token
 .anthropic-key
+.pexels-key
+supabase/.temp

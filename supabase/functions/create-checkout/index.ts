@@ -171,7 +171,7 @@ serve(async (req) => {
       return jsonResponse({ error: limit.reason }, 429, origin)
     }
 
-    const { urls, options, package: pkg, email, consents } = await req.json()
+    const { urls, files, options, package: pkg, email, consents } = await req.json()
 
     // Validate package
     const expectedCount = PACKAGE_URL_COUNT[pkg]
@@ -179,17 +179,46 @@ serve(async (req) => {
       return jsonResponse({ error: 'Ungültiges Paket' }, 400, origin)
     }
 
-    // Validate URLs
-    if (!Array.isArray(urls) || urls.length !== expectedCount) {
-      return jsonResponse({ error: `${expectedCount} URL(s) erforderlich` }, 400, origin)
-    }
+    // Eingabe: Portal-URLs ODER hochgeladene Dateien (PDF/Fotos, gleicher Preis).
+    // Datei-Upload gilt für 1-Objekt-Pakete (single/premium): 1 PDF oder bis zu 8 Fotos.
+    const fileList: string[] = Array.isArray(files) ? files : []
+    const FILE_RE = /^uploads\/[A-Za-z0-9_-]{10,80}\.(pdf|jpe?g|png|webp)$/i
 
-    const invalidUrls: number[] = []
-    for (let i = 0; i < urls.length; i++) {
-      if (!isValidUrl(urls[i])) invalidUrls.push(i)
-    }
-    if (invalidUrls.length > 0) {
-      return jsonResponse({ error: 'Ungültige URL(s)', invalidUrls }, 400, origin)
+    if (fileList.length > 0) {
+      if (pkg !== 'single' && pkg !== 'premium') {
+        return jsonResponse({ error: 'Datei-Upload ist nur für Einzel-Analysen möglich (Einzel-Check oder Premium).' }, 400, origin)
+      }
+      if (Array.isArray(urls) && urls.length > 0) {
+        return jsonResponse({ error: 'Bitte entweder Link ODER Datei-Upload verwenden.' }, 400, origin)
+      }
+      if (fileList.length > 8 || fileList.some((f) => typeof f !== 'string' || !FILE_RE.test(f))) {
+        return jsonResponse({ error: 'Ungültige Datei-Referenz(en).' }, 400, origin)
+      }
+      const pdfCount = fileList.filter((f) => f.toLowerCase().endsWith('.pdf')).length
+      if (pdfCount > 1 || (pdfCount === 1 && fileList.length > 1)) {
+        return jsonResponse({ error: 'Entweder 1 Exposé-PDF oder bis zu 8 Fotos.' }, 400, origin)
+      }
+      // Existenz im Storage prüfen (Uploads laufen vor dem Checkout)
+      for (const f of fileList) {
+        const name = f.slice('uploads/'.length)
+        const { data: found } = await supabase.storage.from('exposes').list('uploads', { search: name, limit: 1 })
+        if (!found?.length) {
+          return jsonResponse({ error: 'Hochgeladene Datei nicht gefunden — bitte erneut hochladen.' }, 400, origin)
+        }
+      }
+    } else {
+      // Validate URLs
+      if (!Array.isArray(urls) || urls.length !== expectedCount) {
+        return jsonResponse({ error: `${expectedCount} URL(s) erforderlich` }, 400, origin)
+      }
+
+      const invalidUrls: number[] = []
+      for (let i = 0; i < urls.length; i++) {
+        if (!isValidUrl(urls[i])) invalidUrls.push(i)
+      }
+      if (invalidUrls.length > 0) {
+        return jsonResponse({ error: 'Ungültige URL(s)', invalidUrls }, 400, origin)
+      }
     }
 
     // Validate email if provided (Stripe webhook also validates, but defense-in-depth)
@@ -223,7 +252,8 @@ serve(async (req) => {
       line_items: [{ price: priceId, quantity: 1 }],
       customer_email: cleanEmail || undefined,
       metadata: {
-        urls: JSON.stringify(urls),
+        urls: JSON.stringify(fileList.length > 0 ? [] : urls),
+        input: fileList.length > 0 ? `upload:${fileList.length}` : 'urls',
         options: JSON.stringify(options),
         package: pkg,
         agb_accepted: 'true',
@@ -251,12 +281,20 @@ serve(async (req) => {
 
     if (orderErr) throw orderErr
 
-    const analysisRows = urls.map((url: string) => ({
-      order_id: order.id,
-      token: nanoid(),
-      url,
-      options,
-    }))
+    const analysisRows = fileList.length > 0
+      ? [{
+          order_id: order.id,
+          token: nanoid(),
+          url: 'upload', // kein Portal-Link; analyze nutzt file_paths
+          options,
+          file_paths: fileList,
+        }]
+      : urls.map((url: string) => ({
+          order_id: order.id,
+          token: nanoid(),
+          url,
+          options,
+        }))
 
     const { error: analysisErr } = await supabase.from('analyses').insert(analysisRows)
     if (analysisErr) throw analysisErr

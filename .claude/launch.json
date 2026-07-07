@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "immo-analyse",
-      "runtimeExecutable": "/Users/seydhan/Desktop/Wohnung:HausApp/immo-analyse/node_modules/.bin/vite",
-      "runtimeArgs": ["--port", "5173"],
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--", "--port", "5173"],
       "port": 5173
     }
   ]

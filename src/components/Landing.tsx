@@ -2,7 +2,8 @@ import { useRef, useState } from 'react'
 import type { Package } from '../lib/types'
 import { PACKAGE_CONFIG } from '../lib/types'
 import { isValidPropertyUrl } from '../lib/validation'
-import { startCheckout } from '../lib/api'
+import { startCheckout, uploadExposeFiles } from '../lib/api'
+import ExposeUploadInput from './ExposeUploadInput'
 import { useSEO, organizationSchema, webSiteSchema, productSchema, faqSchema } from '../lib/useSEO'
 import PricingToggle from './PricingToggle'
 import UrlInputGroup from './UrlInputGroup'
@@ -30,6 +31,11 @@ export default function Landing() {
   const [pkg, setPkg] = useState<Package>('single')
   const [urls, setUrls] = useState<string[]>([''])
   const [errors, setErrors] = useState<string[]>([])
+  // Eingabeweg: Portal-Link oder hochgeladenes Exposé (PDF/Fotos) — Upload nur bei 1-Objekt-Paketen
+  const [inputMode, setInputMode] = useState<'link' | 'upload'>('link')
+  const [files, setFiles] = useState<File[]>([])
+  const [fileError, setFileError] = useState('')
+  const [uploading, setUploading] = useState(false)
   const options = {
     makleranschreiben: true,
     verhandlungstipps: true,
@@ -55,6 +61,11 @@ export default function Landing() {
       return updated.slice(0, newCount)
     })
     setErrors([])
+    // Vergleichspakete (2/3 Objekte) laufen ausschließlich über Links
+    if (newCount > 1) {
+      setInputMode('link')
+      setFileError('')
+    }
   }
 
   const validateEmail = (value: string): boolean => {
@@ -77,20 +88,29 @@ export default function Landing() {
       setEmailError('')
     }
 
-    // Validate URLs
-    for (let i = 0; i < urlCount; i++) {
-      const url = urls[i]?.trim() || ''
-      if (!url) {
-        newErrors[i] = 'Bitte einen Link eingeben.'
-        valid = false
-      } else if (!isValidPropertyUrl(url)) {
-        newErrors[i] = 'Bitte einen Link von einer unterstützten Plattform eingeben.'
+    // Validate input (Link ODER Datei-Upload)
+    if (inputMode === 'upload') {
+      if (files.length === 0) {
+        setFileError('Bitte ein Exposé-PDF oder Fotos hochladen.')
         valid = false
       } else {
-        newErrors[i] = ''
+        setFileError('')
       }
+    } else {
+      for (let i = 0; i < urlCount; i++) {
+        const url = urls[i]?.trim() || ''
+        if (!url) {
+          newErrors[i] = 'Bitte einen Link eingeben.'
+          valid = false
+        } else if (!isValidPropertyUrl(url)) {
+          newErrors[i] = 'Bitte einen Link von einer unterstützten Plattform eingeben.'
+          valid = false
+        } else {
+          newErrors[i] = ''
+        }
+      }
+      setErrors(newErrors)
     }
-    setErrors(newErrors)
 
     // Validate consents
     if (!agbAccepted || !widerrufAccepted) {
@@ -109,20 +129,41 @@ export default function Landing() {
 
     setLoading(true)
     try {
-      const checkoutUrl = await startCheckout(urls.slice(0, urlCount), options, pkg, email.trim(), {
+      const consents = {
         agbAccepted,
         widerrufWaived: widerrufAccepted,
         timestamp: new Date().toISOString(),
-      })
+      }
+
+      let checkoutUrl: string
+      if (inputMode === 'upload') {
+        // Erst Dateien in den Storage laden, dann Checkout mit den Pfaden starten
+        setUploading(true)
+        let paths: string[]
+        try {
+          paths = await uploadExposeFiles(files)
+        } finally {
+          setUploading(false)
+        }
+        checkoutUrl = await startCheckout([], options, pkg, email.trim(), consents, paths)
+      } else {
+        checkoutUrl = await startCheckout(urls.slice(0, urlCount), options, pkg, email.trim(), consents)
+      }
       window.location.href = checkoutUrl
-    } catch {
-      setGlobalError('Verbindungsfehler. Bitte erneut versuchen.')
+    } catch (err) {
+      setGlobalError(err instanceof Error && err.message && !err.message.startsWith('HTTP')
+        ? err.message
+        : 'Verbindungsfehler. Bitte erneut versuchen.')
       setLoading(false)
     }
   }
 
+  const inputFilled = inputMode === 'upload'
+    ? files.length > 0
+    : urls.slice(0, urlCount).every((u) => u.trim().length > 0)
+
   const allFilled =
-    urls.slice(0, urlCount).every((u) => u.trim().length > 0) &&
+    inputFilled &&
     email.trim().length > 0 &&
     agbAccepted &&
     widerrufAccepted
@@ -170,12 +211,43 @@ export default function Landing() {
           )}
         </div>
 
-        <UrlInputGroup
-          urls={urls}
-          onChange={setUrls}
-          errors={errors}
-          count={urlCount}
-        />
+        {urlCount === 1 && (
+          <div className="mb-4 grid grid-cols-2 gap-1 bg-cream border border-ink/15 rounded-lg p-1" role="tablist" aria-label="Eingabeart">
+            <button
+              type="button"
+              role="tab"
+              aria-selected={inputMode === 'link'}
+              onClick={() => { setInputMode('link'); setFileError('') }}
+              className={`py-2 rounded-md text-[13px] font-medium transition-colors ${
+                inputMode === 'link' ? 'bg-white text-green shadow-sm border border-ink/10' : 'text-ink-light hover:text-ink-mid'
+              }`}
+            >
+              Link zum Inserat
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected={inputMode === 'upload'}
+              onClick={() => { setInputMode('upload'); setErrors([]) }}
+              className={`py-2 rounded-md text-[13px] font-medium transition-colors ${
+                inputMode === 'upload' ? 'bg-white text-green shadow-sm border border-ink/10' : 'text-ink-light hover:text-ink-mid'
+              }`}
+            >
+              PDF / Fotos hochladen
+            </button>
+          </div>
+        )}
+
+        {inputMode === 'upload' && urlCount === 1 ? (
+          <ExposeUploadInput files={files} onChange={setFiles} error={fileError} />
+        ) : (
+          <UrlInputGroup
+            urls={urls}
+            onChange={setUrls}
+            errors={errors}
+            count={urlCount}
+          />
+        )}
 
         <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1.5 text-[12px] text-ink-light">
           <span className="inline-flex items-center gap-1">
@@ -244,7 +316,7 @@ export default function Landing() {
           {loading ? (
             <>
               <span className="w-4 h-4 border-2 border-cream/30 border-t-cream rounded-full animate-spin" />
-              Weiterleitung zur Bezahlung…
+              {uploading ? 'Dateien werden hochgeladen…' : 'Weiterleitung zur Bezahlung…'}
             </>
           ) : (
             <>

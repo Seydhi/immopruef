@@ -1,9 +1,10 @@
 // Supabase Edge Function: analyze
 // Verifies payment, runs Claude analysis, stores results, sends email
+// WICHTIG: nativer Deno.serve + npm:-Imports — der alte std@0.177-Server
+// crasht Hintergrund-Jobs (EdgeRuntime.waitUntil) mit "runMicrotasks not supported".
 
-import { serve } from 'https://deno.land/std@0.177.0/http/server.ts'
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
-import Stripe from 'https://esm.sh/stripe@17?target=deno'
+import { createClient } from 'npm:@supabase/supabase-js@2'
+import Stripe from 'npm:stripe@17'
 
 // ═══════════════════════════════════════════════════════════════
 // CORS
@@ -136,6 +137,18 @@ WENN EIN WERT NICHT IM EXPOSÉ STEHT:
 
 NUR für Makler-Bewertungen (rufschädigungsrelevant) gilt: "Keine öffentlichen Bewertungen verfügbar" ist erlaubt wenn nachweislich keine online findbar.
 NUR für Makler-Faktendaten (Gründungsjahr, Mitarbeiterzahl): "Nicht öffentlich verfügbar" erlaubt wenn nicht im Impressum/Handelsregister findbar.
+
+AUSNAHME — INSERAT NICHT VERFÜGBAR:
+Wenn das Inserat nachweislich offline ist (Portal meldet z.B. "Anzeige gelöscht" / "nicht mehr verfügbar" / Seite existiert nicht) UND auch die Web-Suche keine belastbaren Daten zu GENAU diesem Inserat liefert: Erfinde NIEMALS ein Objekt. Antworte dann AUSSCHLIESSLICH mit diesem JSON (keinem anderen Text):
+{"error": "listing_unavailable", "hinweis": "<1-2 Sätze auf Deutsch: was festgestellt wurde>"}
+
+EINGABE ALS PDF/FOTOS (statt Portal-Link):
+Liegt das Exposé als Dokument (PDF) oder als Fotos bei, gilt zusätzlich:
+1. AKRIBISCHE EXTRAKTION: Gehe JEDE Seite durch und erfasse ALLE Daten und Fakten — jede Zahl, jedes Merkmal (Kaufpreis, Flächen, Zimmer, Baujahr, Energieausweis, Heizung inkl. Typ/Baujahr, Zustand, Ausstattung, Hausgeld, Provision, Adresse, Besonderheiten). Nichts überspringen, nichts zusammenfassen bevor alles erfasst ist.
+2. FOTOS AUSWERTEN: Leite aus Bildern nur nachvollziehbare Beobachtungen ab (sichtbarer Zustand, Modernisierungsgrad, Bauteile) und kennzeichne JEDE solche Einschätzung mit "(aus Fotos abgeleitet)". Behaupte nichts, was auf den Bildern nicht erkennbar ist.
+3. WEB-GEGENCHECK: Plausibilisiere die Kerndaten per web_search — existiert Ort/Adresse? Passt der Preis zum regionalen Niveau? Widerspricht das Dokument der Web-Recherche, benenne das ausdrücklich als Prüfpunkt (nicht stillschweigend übergehen).
+4. FEHLT DER KAUFPREIS im Dokument (z.B. Bankunterlage/Objektdokumentation): Erstelle die Analyse als indikative Wert-Einschätzung. Recherchiere das regionale Preisniveau, setze einen begründeten Modell-Anker und kennzeichne ALLE preisabhängigen Rechnungen mit "(Modellrechnung am Anker X €)". preisbewertung.ampel dann "fair" und in kaufpreismieteEinschaetzung ausdrücklich erklären, dass kein Angebotspreis vorlag.
+5. Alle übrigen Regeln (Pflicht-Websearches, Labeling, Tonalität, JSON-only) gelten unverändert.
 
 ZWINGENDE WEB-SEARCHES (MÜSSEN VOR DER JSON-ANTWORT DURCHGEFÜHRT WERDEN):
 1. "[Stadt aus Exposé] Mietspiegel 2025" oder "[Stadt] ortsübliche Vergleichsmiete"
@@ -563,71 +576,104 @@ interface AIResponse {
 // Claude-only path is now enforced. If a fallback is ever needed, use Anthropic's
 // own model fallback (e.g. Sonnet → Opus) or a different OpenAI endpoint.
 
-async function callClaude(
+// ═══════════════════════════════════════════════════════════════
+// Anthropic Message Batches — die Analyse läuft als Batch:
+// • kein Edge-Wall-Clock-Limit (Batch rechnet bei Anthropic, Function pollt nur)
+// • 50% Token-Rabatt auf alle Analysen
+// Phase A submittet, Phase B holt Ergebnisse ab (siehe Handler).
+// ═══════════════════════════════════════════════════════════════
+
+const ANTHROPIC_HEADERS = (key: string) => ({
+  'Content-Type': 'application/json',
+  'x-api-key': key,
+  'anthropic-version': '2023-06-01',
+})
+
+interface BatchMessage {
+  content: Array<{ type: string; text?: string }>
+  stop_reason?: string
+  usage?: Record<string, unknown>
+}
+
+interface BatchResultEntry {
+  type: string // succeeded | errored | canceled | expired
+  message?: BatchMessage
+  error?: unknown
+}
+
+function buildMessageParams(
   systemPrompt: string,
-  userMessage: string,
+  userContent: Array<Record<string, unknown>>,
   maxTokens: number,
-  anthropicKey: string,
-  isPremium: boolean = false
-): Promise<AIResponse> {
-  console.log(`Using ${ANTHROPIC_MODEL} (production mode)`)
-
+  isPremium: boolean
+): Record<string, unknown> {
   // Premium gets more web searches for deeper research
-  // (Makler-Bewertungen, Preistrend, Marktquartile, Mietspiegel, Bauzinsen, Quellen)
   const webSearchMaxUses = isPremium ? 28 : 12
-
-  const response = await fetch('https://api.anthropic.com/v1/messages', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'x-api-key': anthropicKey,
-      'anthropic-version': '2023-06-01',
-    },
-    body: JSON.stringify({
-      model: ANTHROPIC_MODEL,
-      max_tokens: maxTokens,
-      // Adaptive Thinking (Sonnet-5-Default) explizit + Effort "medium":
-      // mit Thinking sucht das Modell zuverlässiger (Pflicht-Websearches);
-      // "medium" begrenzt Thinking-Tokens und Laufzeit (150s-Edge-Limit).
-      thinking: { type: 'adaptive' },
-      output_config: { effort: 'medium' },
-      // cache_control: System-Prompt (~12k Tokens) wird pro Such-Iteration
-      // neu verarbeitet — mit Cache kosten Iteration 2..N nur 10% Input-Preis.
-      system: [
-        { type: 'text', text: systemPrompt, cache_control: { type: 'ephemeral' } },
-      ],
-      // Web search is a SERVER-MANAGED tool — the API handles search results automatically.
-      // We do NOT need to manually handle tool_use/tool_result for web_search.
-      // _20260209 = dynamische Ergebnis-Filterung (weniger Input-Tokens pro Suche).
-      tools: [{ type: 'web_search_20260209', name: 'web_search', max_uses: webSearchMaxUses }],
-      messages: [
-        {
-          role: 'user',
-          content: [
-            { type: 'text', text: userMessage, cache_control: { type: 'ephemeral' } },
-          ],
-        },
-      ],
-    }),
-  })
-
-  if (!response.ok) {
-    const errBody = await response.text()
-    throw new Error(`Anthropic API error: ${response.status} — ${errBody}`)
+  return {
+    model: ANTHROPIC_MODEL,
+    max_tokens: maxTokens,
+    // Adaptive Thinking: sucht zuverlässiger (Pflicht-Websearches); effort medium
+    // hält Thinking-Anteil und Kosten im Rahmen.
+    thinking: { type: 'adaptive' },
+    output_config: { effort: 'medium' },
+    // cache_control: System-Prompt wird pro Such-Iteration neu gelesen — Cache
+    // macht Iteration 2..N ~90% günstiger.
+    system: [{ type: 'text', text: systemPrompt, cache_control: { type: 'ephemeral' } }],
+    // web_search_20260209 = server-managed + dynamische Ergebnis-Filterung.
+    tools: [{ type: 'web_search_20260209', name: 'web_search', max_uses: webSearchMaxUses }],
+    // userContent: Text-Block (URL-Fall) ODER document/image-Blöcke + Instruktions-
+    // Text (PDF-/Foto-Upload). cache_control sitzt auf dem LETZTEN Block und cached
+    // damit den gesamten Prefix inkl. der Dokumente.
+    messages: [{ role: 'user', content: userContent }],
   }
+}
 
-  const data = await response.json()
-  console.log(`Claude response: stop_reason=${data.stop_reason}, content_blocks=${data.content?.length}`)
+async function submitBatch(
+  requests: Array<{ custom_id: string; params: Record<string, unknown> }>,
+  key: string
+): Promise<{ id: string }> {
+  const res = await fetch('https://api.anthropic.com/v1/messages/batches', {
+    method: 'POST',
+    headers: ANTHROPIC_HEADERS(key),
+    body: JSON.stringify({ requests }),
+  })
+  if (!res.ok) throw new Error(`Batch submit: ${res.status} — ${(await res.text()).slice(0, 400)}`)
+  return await res.json()
+}
 
-  // Web search (server_tool_use) is handled automatically by the API.
-  // The response comes back with stop_reason="end_turn" when done,
-  // including all web search results already processed.
-  // We only need to extract the final JSON from text blocks.
-  //
-  // If stop_reason is still "tool_use" it means a CLIENT tool was requested
-  // (which we don't have), so we just extract whatever text we got.
+async function getBatch(batchId: string, key: string): Promise<{ processing_status: string; results_url?: string }> {
+  const res = await fetch(`https://api.anthropic.com/v1/messages/batches/${batchId}`, {
+    headers: ANTHROPIC_HEADERS(key),
+  })
+  if (!res.ok) throw new Error(`Batch status: ${res.status}`)
+  return await res.json()
+}
 
-  return { result: extractClaudeJson(data) }
+async function getBatchResults(resultsUrl: string, key: string): Promise<Map<string, BatchResultEntry>> {
+  const res = await fetch(resultsUrl, { headers: ANTHROPIC_HEADERS(key) })
+  if (!res.ok) throw new Error(`Batch results: ${res.status}`)
+  const text = await res.text()
+  const map = new Map<string, BatchResultEntry>()
+  for (const line of text.split('\n')) {
+    if (!line.trim()) continue
+    try {
+      const row = JSON.parse(line) as { custom_id: string; result: BatchResultEntry }
+      map.set(row.custom_id, row.result)
+    } catch (e) {
+      console.error('Batch-Result-Zeile unlesbar:', e)
+    }
+  }
+  return map
+}
+
+function logBatchMessage(id: string, msg: BatchMessage): void {
+  const blockTypes = (msg.content || []).map((b) => b.type).join(',')
+  const searches = (msg.content || []).filter((b) => b.type === 'server_tool_use').length
+  const u = (msg.usage || {}) as Record<string, unknown>
+  console.log(
+    `Analyse ${id}: stop=${msg.stop_reason}, blocks=[${blockTypes}], web_searches=${searches}, ` +
+    `in=${u.input_tokens} cacheW=${u.cache_creation_input_tokens} cacheR=${u.cache_read_input_tokens} out=${u.output_tokens}`
+  )
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -645,8 +691,22 @@ function extractClaudeJson(data: { content: Array<{ type: string; text?: string 
   if (textBlocks.length === 0) {
     throw new Error('No text response from Claude')
   }
-  const text = textBlocks[textBlocks.length - 1].text!
-  return parseJson(text)
+
+  // Das Modell hängt gelegentlich NACH dem JSON noch einen Prosa-Block an
+  // ("Die wichtigsten Erkenntnisse in Kürze: …"). Daher: Text-Blöcke von hinten
+  // nach vorne durchgehen und den ersten nehmen, der valides JSON-Objekt enthält.
+  let lastError: unknown = null
+  for (let i = textBlocks.length - 1; i >= 0; i--) {
+    const text = textBlocks[i].text
+    if (!text || !text.includes('{')) continue
+    try {
+      const parsed = parseJson(text)
+      if (parsed && typeof parsed === 'object') return parsed
+    } catch (e) {
+      lastError = e
+    }
+  }
+  throw lastError instanceof Error ? lastError : new Error('Could not parse JSON from Claude response')
 }
 
 function parseJson(text: string): unknown {
@@ -657,7 +717,32 @@ function parseJson(text: string): unknown {
   } catch {
     // Try to extract the outermost JSON object
     const match = cleaned.match(/\{[\s\S]*\}/)
-    if (match) return JSON.parse(match[0])
+    if (match) {
+      try {
+        return JSON.parse(match[0])
+      } catch {
+        // Letzter Versuch: bis zur letzten balancierten Klammer schneiden
+        // (repariert abgeschnittene/nachlaufende Zeichen)
+        const s = match[0]
+        let depth = 0
+        let lastBalanced = -1
+        let inString = false
+        let escaped = false
+        for (let i = 0; i < s.length; i++) {
+          const c = s[i]
+          if (escaped) { escaped = false; continue }
+          if (c === '\\') { escaped = true; continue }
+          if (c === '"') inString = !inString
+          if (inString) continue
+          if (c === '{') depth++
+          if (c === '}') { depth--; if (depth === 0) lastBalanced = i }
+        }
+        if (lastBalanced > 0) return JSON.parse(s.slice(0, lastBalanced + 1))
+      }
+    }
+    // Diagnose: zeigen, WAS das Modell geliefert hat (Anfang + Ende)
+    console.error(`JSON-Parse fehlgeschlagen. Antwort-Anfang: ${text.slice(0, 400)}`)
+    console.error(`Antwort-Ende: ${text.slice(-300)}`)
     throw new Error('Could not parse JSON from Claude response')
   }
 }
@@ -936,7 +1021,7 @@ function recomputeFinances(result: Record<string, unknown>): void {
 // Main Handler
 // ═══════════════════════════════════════════════════════════════
 
-serve(async (req) => {
+Deno.serve(async (req) => {
   // Handle CORS preflight
   if (req.method === 'OPTIONS') {
     return new Response(null, { status: 204, headers: CORS_HEADERS })
@@ -994,12 +1079,20 @@ serve(async (req) => {
       return jsonResponse({ error: 'No analyses found' }, 500)
     }
 
-    // Reset stuck "processing" analyses (from previous timed-out calls) back to pending
+    // Reset stuck "processing" analyses back to pending — aber NUR wenn der Lauf
+    // nachweislich alt ist (>8 min oder ohne Startzeit). Frische "processing"-Zeilen
+    // gehören einem aktiven Hintergrund-Job; sofortiges Reset würde Doppel-Läufe starten.
+    const STALE_MS = 8 * 60 * 1000
     for (const a of allAnalyses) {
-      if (a.status === 'processing') {
-        console.log(`Resetting stuck analysis ${a.id} from processing → pending`)
-        await supabase.from('analyses').update({ status: 'pending' }).eq('id', a.id)
-        a.status = 'pending'
+      // Zeilen MIT batch_id gehören einem laufenden Anthropic-Batch (kann legitim
+      // länger dauern) — nur verwaiste Claims ohne Batch werden zurückgesetzt.
+      if (a.status === 'processing' && !a.batch_id) {
+        const startedAt = a.processing_started_at ? new Date(a.processing_started_at).getTime() : 0
+        if (Date.now() - startedAt > STALE_MS) {
+          console.log(`Resetting stale analysis ${a.id} (processing seit ${a.processing_started_at || 'unbekannt'}) → pending`)
+          await supabase.from('analyses').update({ status: 'pending', processing_started_at: null }).eq('id', a.id)
+          a.status = 'pending'
+        }
       }
     }
 
@@ -1010,49 +1103,175 @@ serve(async (req) => {
       return jsonResponse({ order_status: 'completed', analyses: allAnalyses })
     }
 
-    // Find the NEXT pending analysis (process ONE at a time to avoid timeout)
-    const nextPending = allAnalyses.find((a: { status: string }) => a.status === 'pending')
-    if (!nextPending) {
-      // Some still processing from a previous call — return current state
-      return jsonResponse({ order_status: 'processing', analyses: allAnalyses })
-    }
-
-    // Determine if premium
+    // ═══ Batch-Verarbeitung: Phase B (Ergebnisse abholen) → Phase A (submitten) ═══
     const isPremium = order.package === 'premium'
     const systemPrompt = isPremium
       ? SYSTEM_PROMPT_STANDARD + SYSTEM_PROMPT_PREMIUM_ADDITION
       : SYSTEM_PROMPT_STANDARD
-    // Premium-Report stark erweitert (7 neue Module: Makler/Mietrendite/FinanzierungsDetail/Marktband/Preistrend/Besichtigungsfragen/Stärken-Schwächen + Quellen)
     // Headroom für Sonnet-5-Tokenizer (~30% mehr Tokens) + Adaptive-Thinking-Anteil
     const maxTokens = isPremium ? 56000 : 24000
-
-    // Process ONE analysis per function call (avoids 150s timeout)
     const anthropicKey = Deno.env.get('ANTHROPIC_API_KEY')!
     const appUrl = Deno.env.get('APP_URL') || 'https://immopruef.de'
 
-    const analysis = nextPending
-    {
-      try {
-        // SSRF-Protection: re-validate URL before passing to Claude
-        if (!isAllowedListingUrl(analysis.url)) {
-          console.error(`Rejected non-allowed URL for analysis ${analysis.id}: ${analysis.url}`)
-          await supabase.from('analyses').update({
-            status: 'failed',
-            result: { error: 'URL ist nicht von einem unterstützten Portal' },
-          }).eq('id', analysis.id)
-          return jsonResponse({ error: 'Invalid URL' }, 400)
+      // Abschluss: Order-Status setzen + ggf. E-Mail — läuft nach JEDEM Ausgang.
+      const finalize = async (): Promise<void> => {
+        const { data: updatedAnalyses } = await supabase
+          .from('analyses')
+          .select('*')
+          .eq('order_id', order.id)
+
+        const analyses = updatedAnalyses || allAnalyses
+        const nowAllDone = analyses.every((a: { status: string }) => a.status === 'completed' || a.status === 'failed')
+        if (!nowAllDone) return // weitere Analysen offen — nächster Poll triggert sie
+
+        // Atomare Transition: nur der Poll, der die Umstellung gewinnt, verschickt die Mail
+        const { data: won } = await supabase
+          .from('orders')
+          .update({ status: 'completed' })
+          .eq('id', order.id)
+          .neq('status', 'completed')
+          .select('id')
+        if (!won?.length) return
+        console.log('All analyses done — sending email...')
+
+        let email = order.email
+        if (!email) {
+          try {
+            const stripe = new Stripe(Deno.env.get('STRIPE_SECRET_KEY')!)
+            const session = await stripe.checkout.sessions.retrieve(session_id)
+            email = session.customer_details?.email || ''
+            if (email) {
+              await supabase.from('orders').update({ email }).eq('id', order.id)
+            }
+          } catch {
+            console.error('Failed to retrieve email from Stripe')
+          }
         }
+        console.log(`Email recipient: ${email || 'NONE'}`)
+        if (!email) return
 
-        await supabase.from('analyses').update({ status: 'processing' }).eq('id', analysis.id)
+        try {
+          const completed = analyses.filter((a: { status: string }) => a.status === 'completed')
+          const analysisCount = completed.length
+          if (analysisCount === 0) {
+            // Keine fertige Analyse -> keine Erfolgs-Mail ("Ihre 0 Analysen sind fertig").
+            console.error(`Order ${order.id}: alle Analysen fehlgeschlagen — Erfolgs-Mail unterdrueckt`)
+            return
+          }
 
-        const opts = analysis.options as { makleranschreiben: boolean; verhandlungstipps: boolean; risiken: boolean }
+          const linkRows = completed
+            .map((a: { token: string; url: string }, i: number) => {
+              const exposeNr = a.url.match(/expose\/(\d+)/)?.[1] || ''
+              const cleanUrl = a.url.split('#')[0].split('?')[0]
+              return `
+              <tr>
+                <td style="padding:14px 16px;border-bottom:1px solid #f0f0f0;">
+                  <div style="font-size:13px;color:#666;margin-bottom:6px;">Immobilie ${i + 1}${exposeNr ? ` · Exposé ${exposeNr}` : ''}</div>
+                  <div style="margin-bottom:8px;">
+                    <a href="${appUrl}?result=${a.token}" style="display:inline-block;background:#1a6b3c;color:#fff;font-weight:600;font-size:14px;text-decoration:none;padding:8px 18px;border-radius:6px;">
+                      Analyse ansehen →
+                    </a>
+                  </div>
+                  ${cleanUrl.startsWith('http') ? `
+                  <div style="font-size:12px;">
+                    <a href="${cleanUrl}" style="color:#888;text-decoration:none;">
+                      📎 Originalinserat: ${cleanUrl}
+                    </a>
+                  </div>` : `
+                  <div style="font-size:12px;color:#888;">📎 Hochgeladenes Exposé (PDF/Fotos)</div>`}
+                </td>
+              </tr>`
+            }).join('')
+
+          const subject = isPremium
+            ? 'Ihr Kaufentscheidungs-Report ist fertig'
+            : analysisCount === 1
+              ? 'Ihre Immobilienanalyse ist fertig'
+              : `Ihre ${analysisCount} Immobilienanalysen sind fertig`
+
+          const greeting = isPremium ? 'Ihr umfassender Kaufentscheidungs-Report' : analysisCount === 1 ? 'Ihre Immobilienanalyse' : `Ihre ${analysisCount} Immobilienanalysen`
+
+          const emailFrom = Deno.env.get('EMAIL_FROM') || 'ImmoPrüf <info@immopruef.de>'
+          console.log(`Sending email from=${emailFrom} to=${email} subject="${subject}"`)
+
+          const emailRes = await fetch('https://api.resend.com/emails', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${Deno.env.get('RESEND_API_KEY')}`,
+            },
+            body: JSON.stringify({
+              from: emailFrom,
+              to: email,
+              subject,
+              html: `
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#f7f5f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+  <div style="max-width:560px;margin:0 auto;padding:32px 16px;">
+
+    <!-- Header -->
+    <div style="background:#1a3c2a;border-radius:12px 12px 0 0;padding:28px 24px;text-align:center;">
+      <h1 style="margin:0;color:#f7f5f0;font-size:22px;font-weight:600;letter-spacing:0.5px;">
+        Immo<span style="color:#c9a84c;">Prüf</span>
+      </h1>
+    </div>
+
+    <!-- Body -->
+    <div style="background:#ffffff;padding:28px 24px;border-left:1px solid #e8e4dc;border-right:1px solid #e8e4dc;">
+      <p style="margin:0 0 6px;font-size:18px;font-weight:600;color:#1a1a1a;">
+        ${greeting} ${analysisCount === 1 ? 'ist' : 'sind'} fertig ✓
+      </p>
+      <p style="margin:0 0 24px;font-size:14px;color:#666;line-height:1.5;">
+        Klicken Sie auf den Link um Ihre vollständige Analyse aufzurufen. Der Link ist 180 Tage gültig.
+      </p>
+
+      <!-- Analysis Links -->
+      <table width="100%" cellpadding="0" cellspacing="0" style="background:#f9f8f5;border-radius:8px;overflow:hidden;">
+        ${linkRows}
+      </table>
+
+      ${isPremium ? `
+      <div style="margin-top:20px;padding:14px 16px;background:#fef9ee;border:1px solid #e8d9a8;border-radius:8px;">
+        <div style="font-size:13px;color:#8a6d1b;font-weight:600;margin-bottom:4px;">★ Premium Kaufentscheidungs-Report</div>
+        <div style="font-size:12px;color:#a68b2e;line-height:1.4;">Inkl. Wertermittlung, Standort-Dossier, 30-Jahres-Vermögensvergleich und Vor-Kauf-Checkliste.</div>
+      </div>
+      ` : ''}
+    </div>
+
+    <!-- Footer -->
+    <div style="background:#f9f8f5;border-radius:0 0 12px 12px;padding:20px 24px;border:1px solid #e8e4dc;border-top:none;">
+      <p style="margin:0 0 8px;font-size:11px;color:#999;line-height:1.4;">
+        KI-Analyse auf Basis öffentlich verfügbarer Daten. Keine Gewähr für Vollständigkeit oder Richtigkeit. Ersetzt keine professionelle Beratung.
+      </p>
+      <p style="margin:0;font-size:11px;color:#bbb;">
+        <a href="${appUrl}" style="color:#1a6b3c;text-decoration:none;">immopruef.de</a> · Professionelle Immobilienanalyse
+      </p>
+    </div>
+
+  </div>
+</body></html>
+              `,
+            }),
+          })
+
+          const emailResult = await emailRes.json()
+          console.log(`Resend response: ${emailRes.status}`, JSON.stringify(emailResult))
+        } catch (err) {
+          console.error('Failed to send email:', err)
+        }
+      }
+
+    // Exposé beschaffen (Jina/Scraper/Web-Search-Fallback) und Nutzer-Nachricht bauen
+    const buildUserMessage = async (analysis: { id: string; url: string; options: unknown }): Promise<string> => {
+      const opts = analysis.options as { makleranschreiben: boolean; verhandlungstipps: boolean; risiken: boolean }
+      let exposeMarkdown: string | null = null
+      let scrapedData: Record<string, unknown> | null = null
 
         // Clean URL for better web search results
         const cleanUrl = analysis.url.split('#')[0].split('?')[0]
         const exposeMatch = analysis.url.match(/expose\/(\d+)/)
         const exposeId = exposeMatch ? exposeMatch[1] : ''
-
-        let exposeMarkdown: string | null = null
 
         // ═══════════════════════════════════════════════════════════
         // BRIGHT DATA WEB UNLOCKER: primary scraper for bot-protected portals
@@ -1138,7 +1357,6 @@ serve(async (req) => {
         // ═══════════════════════════════════════════════════════════
         const scraperUrl = Deno.env.get('SCRAPER_URL')
         const scraperKey = Deno.env.get('SCRAPER_API_KEY')
-        let scrapedData: Record<string, unknown> | null = null
 
         if (scraperUrl && scraperKey) {
           try {
@@ -1247,239 +1465,192 @@ WICHTIG:
 - Antworte ausschließlich mit JSON.`
         }
 
-        // Call Claude Sonnet (primary). OpenAI fallback removed — endpoint was broken
-        // and silent failure could have charged customers without delivering analysis.
-        // If Claude fails, the outer retry-loop handles it.
-        let result: unknown
-        console.log(`Calling ${ANTHROPIC_MODEL} (primary)...`)
-        const claudeResult = await callClaude(systemPrompt, userMessage, maxTokens, anthropicKey, isPremium)
-        result = claudeResult.result
+      return userMessage
+    }
 
-        // Validate result completeness
-        const warnings = validateResult(result as Record<string, unknown>)
-        if (warnings.length > 0) {
-          console.warn(`Validation warnings (${warnings.length}):`, warnings.join('; '))
+    // Hochgeladene Dateien (PDF/Fotos) aus dem Storage laden und als native
+    // document-/image-Blöcke für Claude aufbereiten (akribische Intake per Prompt).
+    const buildFileUserContent = async (analysis: { id: string; file_paths: unknown; options: unknown }): Promise<Array<Record<string, unknown>>> => {
+      const opts = analysis.options as { makleranschreiben: boolean; verhandlungstipps: boolean; risiken: boolean }
+      const paths = (analysis.file_paths || []) as string[]
+      const blocks: Array<Record<string, unknown>> = []
+
+      for (const p of paths) {
+        const { data, error } = await supabase.storage.from('exposes').download(p)
+        if (error || !data) throw new Error(`Storage-Download fehlgeschlagen (${p}): ${error?.message || 'leer'}`)
+        const buf = new Uint8Array(await data.arrayBuffer())
+        // Chunked base64 (String-Konkatenation über Array — kein quadratisches Verhalten)
+        const parts: string[] = []
+        const CHUNK = 32768
+        for (let i = 0; i < buf.length; i += CHUNK) {
+          parts.push(String.fromCharCode(...buf.subarray(i, Math.min(i + CHUNK, buf.length))))
         }
-
-        // Filter sources that don't match the object's city (e.g. München data for Bremerhaven object)
-        validateSources(result as Record<string, unknown>)
-
-        // Finanz-Arithmetik deterministisch nachrechnen (LLM-Rechenfehler überschreiben)
-        try {
-          recomputeFinances(result as Record<string, unknown>)
-        } catch (e) {
-          console.warn('recomputeFinances failed — keeping LLM values:', e)
+        const b64 = btoa(parts.join(''))
+        const ext = p.split('.').pop()?.toLowerCase()
+        if (ext === 'pdf') {
+          blocks.push({ type: 'document', source: { type: 'base64', media_type: 'application/pdf', data: b64 } })
+        } else {
+          const mediaType = ext === 'png' ? 'image/png' : ext === 'webp' ? 'image/webp' : 'image/jpeg'
+          blocks.push({ type: 'image', source: { type: 'base64', media_type: mediaType, data: b64 } })
         }
+      }
 
-        await supabase
-          .from('analyses')
-          .update({ result, status: 'completed' })
-          .eq('id', analysis.id)
-      } catch (err) {
-        console.error(`Analysis attempt failed for ${analysis.url}:`, err)
+      blocks.push({
+        type: 'text',
+        text: `Analysiere diese Kaufimmobilie vollständig. Das Exposé liegt als Dokument/Fotos bei (KEIN Portal-Link).
 
-        // Auto-retry up to 2 more times — use FULL prompt with all context
-        let retrySuccess = false
-        for (let retry = 1; retry <= 2; retry++) {
-          console.log(`Retry ${retry}/2 for ${analysis.url}...`)
-          try {
-            const retryMessage = `Analysiere diese Kaufimmobilie vollständig.
-
-URL: ${analysis.url.split('#')[0].split('?')[0]}
-${analysis.url.match(/expose\/(\d+)/) ? `Exposé-Nr: ${analysis.url.match(/expose\/(\d+)/)![1]}` : ''}
-${scrapedData ? `\n--- EXPOSÉ-DATEN (vom Scraper) ---\n${JSON.stringify(scrapedData, null, 2)}\n--- ENDE EXPOSÉ-DATEN ---\n` : ''}${exposeMarkdown ? `\n--- EXPOSÉ-MARKDOWN (Jina Reader) ---\n${exposeMarkdown}\n--- ENDE ---\n` : ''}
-SCHRITT 1: Rufe die URL auf und lies ALLE Exposé-Details
-SCHRITT 2: Suche nach Marktdaten für die Region
-SCHRITT 3: Erstelle die vollständige Analyse
+SCHRITT 1: Extrahiere AKRIBISCH alle Objektdaten aus dem beiliegenden Material — jede Seite, jede Zahl, jedes Merkmal. Werte auch die Fotos aus und kennzeichne Bild-Einschätzungen mit "(aus Fotos abgeleitet)".
+SCHRITT 2: Plausibilisiere die Kerndaten per web_search (existiert Ort/Adresse? passt der Preis zum regionalen Niveau?) und recherchiere die Marktdaten der Region: Bodenrichtwert, Vergleichspreise €/m², Mietspiegel, Grundsteuer-Hebesatz, Bauzinsen.
+SCHRITT 3: Erstelle die vollständige Analyse mit ALLEN Berechnungen. Fehlt der Kaufpreis im Dokument, arbeite als indikative Wert-Einschätzung mit begründetem Modell-Anker (Regel "EINGABE ALS PDF/FOTOS" Punkt 4).
 
 Optionen:
 - Makleranschreiben: ${opts.makleranschreiben ? 'ja' : 'nein'}
 - Verhandlungstipps: ${opts.verhandlungstipps ? 'ja' : 'nein'}
 - Risikohinweise: ${opts.risiken ? 'ja' : 'nein'}
-${isPremium ? '- Premium-Report: ja' : ''}
+${isPremium ? '- Premium-Report: ja (inkl. Wertermittlung, Standort-Dossier, Vermögensvergleich, Checkliste)' : ''}
 
-WICHTIG: Verwende Exposé-Daten und recherchierte Regionsdurchschnitte. JEDES Feld braucht einen Wert. Antworte mit JSON.`
+WICHTIG:
+- Laufende Kosten (Grundsteuer, Versicherung, Heizkosten, Rücklagen) IMMER berechnen/recherchieren.
+- Fehlende Werte: Regionsdurchschnitt recherchieren und mit "(regionaler Schätzwert — nicht aus dem Angebot)" kennzeichnen.
+- Antworte ausschließlich mit JSON.`,
+        cache_control: { type: 'ephemeral' },
+      })
 
-            // Retry: only Claude (OpenAI fallback removed — endpoint was broken)
-            const retryResult = (await callClaude(systemPrompt, retryMessage, maxTokens, anthropicKey, isPremium)).result
-            validateSources(retryResult as Record<string, unknown>)
-            try {
-              recomputeFinances(retryResult as Record<string, unknown>)
-            } catch (e) {
-              console.warn('recomputeFinances (retry) failed — keeping LLM values:', e)
+      return blocks
+    }
+
+    // ── Phase B: Ergebnisse fertiger Batches einsammeln ──
+    type Row = { id: string; status: string; url: string; batch_id: string | null; retry_count: number; options: unknown; file_paths: unknown }
+    const withBatch = (allAnalyses as Row[]).filter((a) => a.status === 'processing' && a.batch_id)
+    const batchIds = [...new Set(withBatch.map((a) => a.batch_id as string))]
+    for (const bid of batchIds) {
+      let meta: { processing_status: string; results_url?: string }
+      try {
+        meta = await getBatch(bid, anthropicKey)
+      } catch (e) {
+        console.error(`Batch ${bid}: Status-Abruf fehlgeschlagen:`, e)
+        continue
+      }
+      if (meta.processing_status !== 'ended') continue
+
+      let results: Map<string, BatchResultEntry>
+      try {
+        results = await getBatchResults(meta.results_url!, anthropicKey)
+      } catch (e) {
+        console.error(`Batch ${bid}: Results-Abruf fehlgeschlagen:`, e)
+        continue
+      }
+
+      for (const a of withBatch.filter((x) => x.batch_id === bid)) {
+        const r = results.get(a.id)
+        if (r?.type === 'succeeded' && r.message) {
+          logBatchMessage(a.id, r.message)
+          try {
+            const parsed = extractClaudeJson(r.message) as Record<string, unknown>
+
+            // Inserat offline? Definitiver Zustand — ehrlich speichern, kein Retry.
+            if (parsed?.error === 'listing_unavailable') {
+              console.warn(`Listing offline: ${a.url} — ${parsed.hinweis ?? ''}`)
+              await supabase.from('analyses').update({ status: 'failed', result: parsed }).eq('id', a.id)
+              continue
             }
 
-            await supabase.from('analyses').update({ result: retryResult, status: 'completed' }).eq('id', analysis.id)
-            retrySuccess = true
-            console.log(`Retry ${retry} succeeded`)
-            break
-          } catch (retryErr) {
-            console.error(`Retry ${retry} failed:`, retryErr)
+            const warnings = validateResult(parsed)
+            if (warnings.length > 0) {
+              console.warn(`Validation warnings (${warnings.length}):`, warnings.join('; '))
+            }
+            validateSources(parsed)
+            try {
+              recomputeFinances(parsed)
+            } catch (e) {
+              console.warn('recomputeFinances failed — keeping LLM values:', e)
+            }
+
+            await supabase.from('analyses').update({ result: parsed, status: 'completed' }).eq('id', a.id)
+            console.log(`Analyse ${a.id} completed (Batch ${bid})`)
+            continue
+          } catch (e) {
+            console.error(`Analyse ${a.id}: Batch-Ergebnis unbrauchbar:`, e)
+          }
+        } else {
+          console.error(`Analyse ${a.id}: Batch-Result ${r ? r.type : 'nicht gefunden'}`, r?.error ?? '')
+        }
+
+        // Fehlerpfad: bis zu 2× neu einreihen, danach endgültig failed
+        const tries = a.retry_count ?? 0
+        if (tries < 2) {
+          await supabase.from('analyses').update({
+            status: 'pending', batch_id: null, processing_started_at: null, retry_count: tries + 1,
+          }).eq('id', a.id)
+          console.log(`Analyse ${a.id}: neu eingereiht (Retry ${tries + 1}/2)`)
+        } else {
+          await supabase.from('analyses').update({ status: 'failed' }).eq('id', a.id)
+          console.error(`Analyse ${a.id}: endgültig failed nach ${tries} Retries`)
+        }
+      }
+    }
+
+    // ── Phase A: offene Analysen claimen und als EINEN Batch submitten ──
+    const { data: afterB } = await supabase.from('analyses').select('*').eq('order_id', order.id)
+    const pendings = ((afterB || []) as Row[]).filter((a) => a.status === 'pending')
+    if (pendings.length > 0) {
+      const requests: Array<{ custom_id: string; params: Record<string, unknown> }> = []
+      for (const a of pendings) {
+        // Atomarer Claim — parallele Polls prallen ab
+        const { data: claimed } = await supabase
+          .from('analyses')
+          .update({ status: 'processing', processing_started_at: new Date().toISOString() })
+          .eq('id', a.id)
+          .eq('status', 'pending')
+          .select('id')
+        if (!claimed?.length) continue
+
+        const hasFiles = Array.isArray(a.file_paths) && (a.file_paths as string[]).length > 0
+
+        // SSRF-Protection (nur URL-Analysen): re-validate URL before passing to Claude
+        if (!hasFiles && !isAllowedListingUrl(a.url)) {
+          console.error(`Rejected non-allowed URL for analysis ${a.id}: ${a.url}`)
+          await supabase.from('analyses').update({
+            status: 'failed',
+            result: { error: 'URL ist nicht von einem unterstützten Portal' },
+          }).eq('id', a.id)
+          continue
+        }
+
+        try {
+          const userContent = hasFiles
+            ? await buildFileUserContent(a)
+            : [{ type: 'text', text: await buildUserMessage(a), cache_control: { type: 'ephemeral' } }]
+          requests.push({ custom_id: a.id, params: buildMessageParams(systemPrompt, userContent, maxTokens, isPremium) })
+        } catch (e) {
+          console.error(`buildUserMessage fehlgeschlagen für ${a.id}:`, e)
+          // Claim lösen — nächster Poll versucht es erneut
+          await supabase.from('analyses').update({ status: 'pending', processing_started_at: null }).eq('id', a.id)
+        }
+      }
+
+      if (requests.length > 0) {
+        try {
+          const batch = await submitBatch(requests, anthropicKey)
+          for (const r of requests) {
+            await supabase.from('analyses').update({ batch_id: batch.id }).eq('id', r.custom_id)
+          }
+          console.log(`Batch ${batch.id} submitted: ${requests.length} Analyse(n), ${ANTHROPIC_MODEL}`)
+        } catch (e) {
+          console.error('Batch-Submit fehlgeschlagen:', e)
+          for (const r of requests) {
+            await supabase.from('analyses').update({ status: 'pending', processing_started_at: null }).eq('id', r.custom_id)
           }
         }
-
-        if (!retrySuccess) {
-          console.error(`All retries failed for ${analysis.url}`)
-          await supabase.from('analyses').update({ status: 'failed' }).eq('id', analysis.id)
-        }
       }
     }
 
-    // Re-fetch all analyses to check if ALL are now done
-    const { data: updatedAnalyses } = await supabase
-      .from('analyses')
-      .select('*')
-      .eq('order_id', order.id)
+    // ── Abschluss + Antwort ──
+    await finalize()
+    const { data: finalState } = await supabase.from('analyses').select('*').eq('order_id', order.id)
+    const done = ((finalState || []) as Row[]).every((a) => a.status === 'completed' || a.status === 'failed')
+    return jsonResponse({ order_status: done ? 'completed' : 'processing', analyses: finalState })
 
-    const analyses = updatedAnalyses || allAnalyses
-    const nowAllDone = analyses.every((a: { status: string }) => a.status === 'completed' || a.status === 'failed')
-
-    if (nowAllDone) {
-      await supabase.from('orders').update({ status: 'completed' }).eq('id', order.id)
-    } else {
-      // Still more analyses pending — frontend will poll again and trigger next one
-      return jsonResponse({ order_status: 'processing', analyses })
-    }
-
-    // Send email only when ALL analyses are done
-    console.log('All analyses done — sending email...')
-
-    // Get email from order or Stripe
-    let email = order.email
-    if (!email) {
-      try {
-        const stripe = new Stripe(Deno.env.get('STRIPE_SECRET_KEY')!)
-        const session = await stripe.checkout.sessions.retrieve(session_id)
-        email = session.customer_details?.email || ''
-        if (email) {
-          await supabase.from('orders').update({ email }).eq('id', order.id)
-        }
-      } catch {
-        console.error('Failed to retrieve email from Stripe')
-      }
-    }
-
-    console.log(`Email recipient: ${email || 'NONE'}`)
-
-    // Send email via Resend
-    if (email) {
-      try {
-        const { data: completedAnalyses } = await supabase
-          .from('analyses')
-          .select('*')
-          .eq('order_id', order.id)
-
-        const completed = (completedAnalyses || []).filter((a: { status: string }) => a.status === 'completed')
-        const analysisCount = completed.length
-
-        const linkRows = completed
-          .map((a: { token: string; url: string }, i: number) => {
-            const exposeNr = a.url.match(/expose\/(\d+)/)?.[1] || ''
-            const cleanUrl = a.url.split('#')[0].split('?')[0]
-            return `
-              <tr>
-                <td style="padding:14px 16px;border-bottom:1px solid #f0f0f0;">
-                  <div style="font-size:13px;color:#666;margin-bottom:6px;">Immobilie ${i + 1}${exposeNr ? ` · Exposé ${exposeNr}` : ''}</div>
-                  <div style="margin-bottom:8px;">
-                    <a href="${appUrl}?result=${a.token}" style="display:inline-block;background:#1a6b3c;color:#fff;font-weight:600;font-size:14px;text-decoration:none;padding:8px 18px;border-radius:6px;">
-                      Analyse ansehen →
-                    </a>
-                  </div>
-                  <div style="font-size:12px;">
-                    <a href="${cleanUrl}" style="color:#888;text-decoration:none;">
-                      📎 Originalinserat: ${cleanUrl}
-                    </a>
-                  </div>
-                </td>
-              </tr>`
-          }).join('')
-
-        const subject = isPremium
-          ? 'Ihr Kaufentscheidungs-Report ist fertig'
-          : analysisCount === 1
-            ? 'Ihre Immobilienanalyse ist fertig'
-            : `Ihre ${analysisCount} Immobilienanalysen sind fertig`
-
-        const greeting = isPremium ? 'Ihr umfassender Kaufentscheidungs-Report' : analysisCount === 1 ? 'Ihre Immobilienanalyse' : `Ihre ${analysisCount} Immobilienanalysen`
-
-        const emailFrom = Deno.env.get('EMAIL_FROM') || 'ImmoPrüf <info@immopruef.de>'
-        console.log(`Sending email from=${emailFrom} to=${email} subject="${subject}"`)
-
-        const emailRes = await fetch('https://api.resend.com/emails', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${Deno.env.get('RESEND_API_KEY')}`,
-          },
-          body: JSON.stringify({
-            from: emailFrom,
-            to: email,
-            subject,
-            html: `
-<!DOCTYPE html>
-<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
-<body style="margin:0;padding:0;background:#f7f5f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
-  <div style="max-width:560px;margin:0 auto;padding:32px 16px;">
-
-    <!-- Header -->
-    <div style="background:#1a3c2a;border-radius:12px 12px 0 0;padding:28px 24px;text-align:center;">
-      <h1 style="margin:0;color:#f7f5f0;font-size:22px;font-weight:600;letter-spacing:0.5px;">
-        Immo<span style="color:#c9a84c;">Prüf</span>
-      </h1>
-    </div>
-
-    <!-- Body -->
-    <div style="background:#ffffff;padding:28px 24px;border-left:1px solid #e8e4dc;border-right:1px solid #e8e4dc;">
-      <p style="margin:0 0 6px;font-size:18px;font-weight:600;color:#1a1a1a;">
-        ${greeting} ${analysisCount === 1 ? 'ist' : 'sind'} fertig ✓
-      </p>
-      <p style="margin:0 0 24px;font-size:14px;color:#666;line-height:1.5;">
-        Klicken Sie auf den Link um Ihre vollständige Analyse aufzurufen. Der Link ist 180 Tage gültig.
-      </p>
-
-      <!-- Analysis Links -->
-      <table width="100%" cellpadding="0" cellspacing="0" style="background:#f9f8f5;border-radius:8px;overflow:hidden;">
-        ${linkRows}
-      </table>
-
-      ${isPremium ? `
-      <div style="margin-top:20px;padding:14px 16px;background:#fef9ee;border:1px solid #e8d9a8;border-radius:8px;">
-        <div style="font-size:13px;color:#8a6d1b;font-weight:600;margin-bottom:4px;">★ Premium Kaufentscheidungs-Report</div>
-        <div style="font-size:12px;color:#a68b2e;line-height:1.4;">Inkl. Wertermittlung, Standort-Dossier, 30-Jahres-Vermögensvergleich und Vor-Kauf-Checkliste.</div>
-      </div>
-      ` : ''}
-    </div>
-
-    <!-- Footer -->
-    <div style="background:#f9f8f5;border-radius:0 0 12px 12px;padding:20px 24px;border:1px solid #e8e4dc;border-top:none;">
-      <p style="margin:0 0 8px;font-size:11px;color:#999;line-height:1.4;">
-        KI-Analyse auf Basis öffentlich verfügbarer Daten. Keine Gewähr für Vollständigkeit oder Richtigkeit. Ersetzt keine professionelle Beratung.
-      </p>
-      <p style="margin:0;font-size:11px;color:#bbb;">
-        <a href="${appUrl}" style="color:#1a6b3c;text-decoration:none;">immopruef.de</a> · Professionelle Immobilienanalyse
-      </p>
-    </div>
-
-  </div>
-</body></html>
-            `,
-          }),
-        })
-
-        const emailResult = await emailRes.json()
-        console.log(`Resend response: ${emailRes.status}`, JSON.stringify(emailResult))
-      } catch (err) {
-        console.error('Failed to send email:', err)
-      }
-    }
-
-    // Return results
-    const { data: finalAnalyses } = await supabase
-      .from('analyses')
-      .select('*')
-      .eq('order_id', order.id)
-
-    return jsonResponse({ order_status: 'completed', analyses: finalAnalyses })
   } catch (err) {
     console.error('Analyze error:', err)
     return jsonResponse({ error: 'Interner Fehler' }, 500)
