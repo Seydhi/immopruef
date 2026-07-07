@@ -187,22 +187,24 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
 
           <div className="bg-white border border-ink/10 rounded-xl overflow-hidden">
             <div className="bg-green/5 px-4 py-2.5 text-xs font-medium text-green tracking-wider uppercase border-b border-ink/8">Laufende monatliche Kosten</div>
-            <table className="w-full text-[13.5px]">
+            <div className="overflow-x-auto">
+            <table className="w-full text-[13.5px] min-w-[360px]">
               <tbody>
                 {(result.gesamtkosten?.laufendeKosten || []).map((lk, i) => (
                   <tr key={i} className={`border-b border-ink/8 last:border-b-0 ${i % 2 === 1 ? 'bg-cream/50' : ''}`}>
-                    <td className="px-3.5 py-2 text-ink-light text-xs font-medium tracking-wide w-[45%]">{lk.position}</td>
-                    <td className="px-3.5 py-2 text-right w-[25%]"><ValueCell>{lk.betragMonat}</ValueCell></td>
-                    <td className="px-3.5 py-2 text-right text-ink-light text-xs"><ValueCell>{lk.betragJahr}</ValueCell>/J.</td>
+                    <td className="px-3 py-2 text-ink-light text-xs font-medium tracking-wide w-[46%] [overflow-wrap:anywhere]">{lk.position}</td>
+                    <td className="px-3 py-2 text-right w-[27%] whitespace-nowrap"><ValueCell>{lk.betragMonat}</ValueCell></td>
+                    <td className="px-3 py-2 text-right text-ink-light text-xs whitespace-nowrap"><ValueCell>{lk.betragJahr}</ValueCell>/J.</td>
                   </tr>
                 ))}
                 <tr className="bg-green/5 font-medium">
-                  <td className="px-3.5 py-2.5 text-green text-xs tracking-wide">Gesamt</td>
-                  <td className="px-3.5 py-2.5 text-green text-right font-display">{result.gesamtkosten.laufendeKostenGesamt.monat}</td>
-                  <td className="px-3.5 py-2.5 text-green text-right text-xs">{result.gesamtkosten.laufendeKostenGesamt.jahr}/J.</td>
+                  <td className="px-3 py-2.5 text-green text-xs tracking-wide">Gesamt</td>
+                  <td className="px-3 py-2.5 text-green text-right font-display whitespace-nowrap">{result.gesamtkosten.laufendeKostenGesamt.monat}</td>
+                  <td className="px-3 py-2.5 text-green text-right text-xs whitespace-nowrap">{result.gesamtkosten.laufendeKostenGesamt.jahr}/J.</td>
                 </tr>
               </tbody>
             </table>
+            </div>
           </div>
         </div>
       )}
@@ -256,15 +258,15 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
         <div className="bg-white border border-ink/10 rounded-xl overflow-hidden mb-5">
           <div className="bg-green/5 px-4 py-2.5 text-xs font-medium text-green tracking-wider uppercase border-b border-ink/8">Kaufen vs. Mieten (20-Jahres-Vergleich)</div>
           <div className="p-4">
-            <div className="grid grid-cols-2 gap-4 mb-3">
-              <div className="text-center p-3 rounded-lg bg-cream">
+            <div className="grid grid-cols-2 gap-3 mb-3">
+              <div className="min-w-0 text-center p-3 rounded-lg bg-cream">
                 <div className="text-[10px] text-ink-light tracking-wider uppercase mb-1">Mieten</div>
-                <div className="font-display text-lg text-ink font-medium">{result.finanzierung?.kaufenVsMieten?.kostenMiete20Jahre}</div>
-                <div className="text-[11px] text-ink-light">{result.finanzierung?.kaufenVsMieten?.mpiMieteMonat}/Monat</div>
+                <div className="font-display text-lg text-ink font-medium [overflow-wrap:anywhere]">{result.finanzierung?.kaufenVsMieten?.kostenMiete20Jahre}</div>
+                <div className="text-[11px] text-ink-light [overflow-wrap:anywhere]">{result.finanzierung?.kaufenVsMieten?.mpiMieteMonat}/Monat</div>
               </div>
-              <div className={`text-center p-3 rounded-lg ${result.finanzierung?.kaufenVsMieten?.vorteil === 'kaufen' ? 'bg-emerald-50' : 'bg-cream'}`}>
+              <div className={`min-w-0 text-center p-3 rounded-lg ${result.finanzierung?.kaufenVsMieten?.vorteil === 'kaufen' ? 'bg-emerald-50' : 'bg-cream'}`}>
                 <div className="text-[10px] text-ink-light tracking-wider uppercase mb-1">Kaufen</div>
-                <div className="font-display text-lg text-ink font-medium">{result.finanzierung?.kaufenVsMieten?.kostenKauf20Jahre}</div>
+                <div className="font-display text-lg text-ink font-medium [overflow-wrap:anywhere]">{result.finanzierung?.kaufenVsMieten?.kostenKauf20Jahre}</div>
                 <div className="text-[11px] text-emerald-600 font-medium">{result.finanzierung?.kaufenVsMieten?.vorteil === 'kaufen' ? '✓ Empfohlen' : ''}</div>
               </div>
             </div>
@@ -312,15 +314,17 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
       {result.energieanalyse && (
         <div className="space-y-3 mb-5">
           <div className="bg-white border border-ink/10 rounded-xl p-4">
-            <div className="flex items-center gap-4 mb-3">
-              <EnergyBadge klasse={result.energieanalyse.effizienzklasse} />
-              <div>
-                <div className="text-sm font-medium">{result.energieanalyse.endenergiebedarf}</div>
-                <div className="text-xs text-ink-light">{result.energieanalyse.heizungstyp} · ~{result.energieanalyse.heizungsalter}</div>
+            <div className="mb-3">
+              <div className="flex items-start gap-3 mb-2">
+                <EnergyBadge klasse={result.energieanalyse.effizienzklasse} />
+                <div className="min-w-0 flex-1 [overflow-wrap:anywhere]">
+                  <div className="text-sm font-medium"><ValueCell>{result.energieanalyse.effizienzklasse}</ValueCell></div>
+                  <div className="text-xs text-ink-light">{result.energieanalyse.endenergiebedarf}</div>
+                </div>
               </div>
-              <div className="ml-auto text-right">
-                <div className="text-sm font-medium text-amber-600">{result.energieanalyse.heizkostenJahr}/Jahr</div>
-                <div className="text-xs text-ink-light">Geschätzte Heizkosten</div>
+              <div className="space-y-1 text-xs [overflow-wrap:anywhere]">
+                <div><span className="text-ink-light">Heizung:</span> {result.energieanalyse.heizungstyp} · {result.energieanalyse.heizungsalter}</div>
+                <div><span className="text-ink-light">Heizkosten (gesch.):</span> <span className="text-amber-600 font-medium">{result.energieanalyse.heizkostenJahr}</span></div>
               </div>
             </div>
             {result.energieanalyse.gegPflicht.besteht && (
@@ -814,9 +818,9 @@ function CoverPage({ objektdaten, ampel, ampelText, preisProQm, regionalerDurchs
 
 function HeroStat({ label, value, highlight }: { label: string; value: string; highlight?: boolean }) {
   return (
-    <div className={`bg-white border rounded-xl p-3 sm:p-3.5 ${highlight ? 'border-green/40 ring-1 ring-green/15' : 'border-ink/10'}`}>
+    <div className={`bg-white border rounded-xl p-3 sm:p-3.5 min-w-0 ${highlight ? 'border-green/40 ring-1 ring-green/15' : 'border-ink/10'}`}>
       <div className="text-[10px] text-ink-light tracking-wider uppercase font-medium mb-1">{label}</div>
-      <div className={`font-display ${highlight ? 'text-green text-base sm:text-lg' : 'text-ink text-sm sm:text-base'} font-medium leading-tight break-words`}>
+      <div className={`font-display ${highlight ? 'text-green text-base sm:text-lg' : 'text-ink text-sm sm:text-base'} font-medium leading-tight [overflow-wrap:anywhere]`}>
         <ValueCell>{value}</ValueCell>
       </div>
     </div>
@@ -925,7 +929,7 @@ function SchaetzBadge({ className = '' }: { className?: string }) {
     <span
       title={SCHAETZ_TOOLTIP}
       aria-label={SCHAETZ_TOOLTIP}
-      className={`inline-flex items-center gap-1 px-1.5 py-0.5 bg-amber-50 border border-amber-200 rounded text-[10px] text-amber-800 font-medium whitespace-nowrap ${className}`}
+      className={`inline-flex items-center gap-1 px-1.5 py-0.5 bg-amber-50 border border-amber-200 rounded text-[10px] text-amber-800 font-medium align-middle max-w-full ${className}`}
     >
       <svg aria-hidden="true" width="11" height="11" viewBox="0 0 20 20" fill="currentColor" className="shrink-0">
         <path fillRule="evenodd" d="M18 10A8 8 0 112 10a8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd"/>
@@ -956,8 +960,8 @@ function ValueCell({ children }: { children: ReactNode }) {
 function KVRow({ label, value, i, highlight }: { label: string; value: string; i: number; highlight?: boolean }) {
   return (
     <tr className={`border-b border-ink/8 last:border-b-0 ${i % 2 === 1 ? 'bg-cream/50' : ''}`}>
-      <td className="px-3.5 py-2 text-ink-light text-xs font-medium tracking-wide w-[40%]">{label}</td>
-      <td className={`px-3.5 py-2 text-[13.5px] ${highlight ? 'font-medium text-green' : ''}`}><ValueCell>{value}</ValueCell></td>
+      <td className="px-3.5 py-2 text-ink-light text-xs font-medium tracking-wide w-[38%] [overflow-wrap:anywhere]">{label}</td>
+      <td className={`px-3.5 py-2 text-[13.5px] [overflow-wrap:anywhere] ${highlight ? 'font-medium text-green' : ''}`}><ValueCell>{value}</ValueCell></td>
     </tr>
   )
 }
@@ -982,9 +986,13 @@ function EnergyBadge({ klasse }: { klasse: string }) {
     'A+': 'bg-emerald-600', A: 'bg-emerald-500', B: 'bg-lime-500', C: 'bg-yellow-400',
     D: 'bg-amber-400', E: 'bg-orange-400', F: 'bg-orange-500', G: 'bg-red-400', H: 'bg-red-600',
   }
+  // Der effizienzklasse-Wert kann ein langer Satz sein (z.B. "ca. Klasse D (150 kWh/m²a)
+  // (regionaler Schätzwert …)"). Für das feste 48px-Badge nur den Klassen-Buchstaben ziehen.
+  const m = (klasse || '').match(/(A\+|\b[A-H]\b)/)
+  const letter = m ? m[1] : (klasse || '—').trim().charAt(0).toUpperCase() || '—'
   return (
-    <div className={`${colors[klasse] || 'bg-gray-400'} text-white font-display text-2xl font-bold w-12 h-12 rounded-lg flex items-center justify-center`}>
-      {klasse}
+    <div className={`${colors[letter] || 'bg-gray-400'} text-white font-display text-2xl font-bold w-12 h-12 rounded-lg flex items-center justify-center shrink-0`}>
+      {letter}
     </div>
   )
 }

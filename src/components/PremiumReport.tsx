@@ -160,23 +160,25 @@ function MarktbandSlot({ data }: { data: NonNullable<PremiumReportType['marktban
     <PremiumSection icon="📊" title="Wo liegt der Preis im Markt?">
       <div className="bg-white border border-ink/10 rounded-lg p-4 mb-3">
         <div className="text-xs text-ink-light mb-3">Preisband Stadtteil ({data.einheit})</div>
-        <div className="relative h-10 mb-1.5 rounded-md overflow-hidden flex">
-          <div className="bg-emerald-300/70 flex-1" />
-          <div className="bg-yellow-300/70 flex-1" />
-          <div className="bg-orange-300/70 flex-1" />
-          <div className="bg-red-300/70 flex-1" />
+        <div className="relative h-10 mb-1.5">
+          <div className="absolute inset-0 rounded-md overflow-hidden flex">
+            <div className="bg-emerald-300/70 flex-1" />
+            <div className="bg-yellow-300/70 flex-1" />
+            <div className="bg-orange-300/70 flex-1" />
+            <div className="bg-red-300/70 flex-1" />
+          </div>
           <div className="absolute top-0 bottom-0 w-0.5 bg-ink" style={{ left: `${Math.min(98, Math.max(2, data.diesesObjekt.positionProzent))}%` }}>
             <div className="absolute -top-1 -left-2 w-4 h-4 bg-ink rounded-full ring-2 ring-cream" />
-            <div className="absolute -bottom-7 left-1/2 -translate-x-1/2 whitespace-nowrap bg-ink text-cream text-[10px] font-bold px-2 py-0.5 rounded">
-              {data.diesesObjekt.wert}
+            <div className="absolute -bottom-7 left-1/2 -translate-x-1/2 max-w-[45vw] truncate whitespace-nowrap bg-ink text-cream text-[10px] font-bold px-2 py-0.5 rounded">
+              {data.diesesObjekt.wert.split(' (')[0]}
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-4 text-[10px] text-ink-light text-center mt-8">
-          <div><div className="font-medium text-ink">{data.guenstig.wert}</div><div className="leading-tight mt-0.5">{data.guenstig.label}</div></div>
-          <div><div className="font-medium text-ink">{data.durchschnittLow.wert}</div><div className="leading-tight mt-0.5">{data.durchschnittLow.label}</div></div>
-          <div><div className="font-medium text-ink">{data.durchschnittHigh.wert}</div><div className="leading-tight mt-0.5">{data.durchschnittHigh.label}</div></div>
-          <div><div className="font-medium text-ink">{data.top.wert}</div><div className="leading-tight mt-0.5">{data.top.label}</div></div>
+        <div className="grid grid-cols-4 gap-1 text-[10px] text-ink-light text-center mt-8">
+          <div className="min-w-0"><div className="font-medium text-ink [overflow-wrap:anywhere]">{data.guenstig.wert}</div><div className="leading-tight mt-0.5 [overflow-wrap:anywhere]">{data.guenstig.label}</div></div>
+          <div className="min-w-0"><div className="font-medium text-ink [overflow-wrap:anywhere]">{data.durchschnittLow.wert}</div><div className="leading-tight mt-0.5 [overflow-wrap:anywhere]">{data.durchschnittLow.label}</div></div>
+          <div className="min-w-0"><div className="font-medium text-ink [overflow-wrap:anywhere]">{data.durchschnittHigh.wert}</div><div className="leading-tight mt-0.5 [overflow-wrap:anywhere]">{data.durchschnittHigh.label}</div></div>
+          <div className="min-w-0"><div className="font-medium text-ink [overflow-wrap:anywhere]">{data.top.wert}</div><div className="leading-tight mt-0.5 [overflow-wrap:anywhere]">{data.top.label}</div></div>
         </div>
       </div>
       <div className="bg-amber-50/50 border border-amber-200 rounded-lg p-3.5">
@@ -208,9 +210,9 @@ function PreistrendSlot({ data }: { data: NonNullable<PremiumReportType['preistr
             )
           })}
         </div>
-        <div className="flex items-center justify-between mt-3 pt-2 border-t border-ink/8 text-xs">
-          <div><span className="text-ink-light">Trend:</span> <TrendBadge trend={data.trend} /></div>
-          <div className="font-medium text-green">{data.veraenderungProzent}</div>
+        <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 mt-3 pt-2 border-t border-ink/8 text-xs">
+          <div className="shrink-0"><span className="text-ink-light">Trend:</span> <TrendBadge trend={data.trend} /></div>
+          <div className="font-medium text-green min-w-0 [overflow-wrap:anywhere]">{data.veraenderungProzent}</div>
         </div>
       </div>
       <div className="text-[12px] text-ink-mid leading-relaxed bg-amber-50/30 border border-amber-100 rounded-lg p-3">
@@ -462,7 +464,8 @@ function StandortDossierSlot({ data }: { data: NonNullable<PremiumReportType['st
     <PremiumSection icon="📍" title="Standort-Dossier (Premium-Tiefe)">
       <SubHeading>Entfernungen & Infrastruktur</SubHeading>
       <div className="bg-white border border-ink/10 rounded-lg overflow-hidden mb-4">
-        <table className="w-full text-[12px]">
+        <div className="overflow-x-auto">
+        <table className="w-full text-[12px] min-w-[300px]">
           <thead>
             <tr className="bg-cream text-ink-light">
               <th className="px-3 py-2 text-left font-medium tracking-wider uppercase text-[10px]">Ziel</th>
@@ -473,13 +476,14 @@ function StandortDossierSlot({ data }: { data: NonNullable<PremiumReportType['st
           <tbody>
             {data.entfernungen.map((ent, i) => (
               <tr key={i} className={`border-t border-ink/8 ${i % 2 === 1 ? 'bg-cream/30' : ''}`}>
-                <td className="px-3 py-1.5">{ent.ziel}</td>
-                <td className="px-3 py-1.5 text-right text-ink-mid">{ent.entfernung}</td>
-                <td className="px-3 py-1.5 text-right text-ink-mid">{ent.fahrzeit}</td>
+                <td className="px-3 py-1.5 [overflow-wrap:anywhere]">{ent.ziel}</td>
+                <td className="px-3 py-1.5 text-right text-ink-mid whitespace-nowrap">{ent.entfernung}</td>
+                <td className="px-3 py-1.5 text-right text-ink-mid whitespace-nowrap">{ent.fahrzeit}</td>
               </tr>
             ))}
           </tbody>
         </table>
+        </div>
         <p className="px-3 py-2 border-t border-ink/8 text-[11px] text-ink-light leading-snug">
           Entfernungen und Fahrzeiten sind Näherungswerte aus Karten- und Web-Recherche — für die konkrete Adresse per Kartendienst verifizieren.
         </p>
@@ -600,7 +604,7 @@ function BesichtigungSlot({ data }: { data: NonNullable<PremiumReportType['besic
               {th.fragen.map((f, fi) => (
                 <div key={fi} className="bg-white border border-ink/10 rounded-lg p-3">
                   <div className="flex items-start justify-between gap-2 mb-2">
-                    <div className="text-[13px] font-medium text-ink flex-1">{f.frage}</div>
+                    <div className="text-[13px] font-medium text-ink flex-1 min-w-0 [overflow-wrap:anywhere]">{f.frage}</div>
                     <PrioritaetBadge prio={f.prioritaet} />
                   </div>
                   <div className="text-xs text-ink-mid leading-relaxed mb-1">
@@ -627,8 +631,8 @@ function ChecklisteSlot({ data }: { data: NonNullable<PremiumReportType['vorKauf
             <div className="bg-white border border-ink/10 rounded-lg overflow-hidden">
               {kat.items.map((item, i) => (
                 <div key={i} className={`px-3.5 py-2 flex items-start gap-2.5 border-b border-ink/8 last:border-b-0 ${i % 2 === 1 ? 'bg-cream/30' : ''}`}>
-                  <span className="text-ink-light mt-0.5">☐</span>
-                  <span className="text-[13px] text-ink flex-1">{item.text}</span>
+                  <span className="text-ink-light mt-0.5 shrink-0">☐</span>
+                  <span className="text-[13px] text-ink flex-1 min-w-0 [overflow-wrap:anywhere]">{item.text}</span>
                   <WichtigkeitBadge wichtigkeit={item.wichtigkeit} />
                 </div>
               ))}
@@ -681,9 +685,9 @@ function SubHeading({ children }: { children: React.ReactNode }) {
 
 function PremiumRow({ label, value, i }: { label: string; value: string; i: number }) {
   return (
-    <div className={`px-3.5 py-2 flex justify-between items-start border-b border-ink/8 last:border-b-0 ${i % 2 === 1 ? 'bg-cream/30' : ''}`}>
-      <span className="text-ink-light text-xs font-medium tracking-wide w-[40%] shrink-0">{label}</span>
-      <span className="text-right text-[13px]">{value}</span>
+    <div className={`px-3.5 py-2 flex justify-between items-start gap-2 border-b border-ink/8 last:border-b-0 ${i % 2 === 1 ? 'bg-cream/30' : ''}`}>
+      <span className="text-ink-light text-xs font-medium tracking-wide w-[40%] shrink-0 [overflow-wrap:anywhere]">{label}</span>
+      <span className="text-right text-[13px] min-w-0 [overflow-wrap:anywhere]">{value}</span>
     </div>
   )
 }
