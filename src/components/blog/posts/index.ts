@@ -79,6 +79,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '9 Min',
     tags: ['Kaufratgeber'],
     image: 'https://images.pexels.com/photos/5077049/pexels-photo-5077049.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Sind kostenlose Online-Immobilienbewertungen seriös?', answer: 'Nicht per se unseriös — aber die meisten sind Lead-Generierung: Das Ergebnis gibt es meist erst gegen Name, Telefonnummer und E-Mail-Adresse, und das Geschäftsziel ist der Verkaufs-Lead. Plattformen verkaufen Kontakte an Partnermakler weiter, Maklerunternehmen wie Homeday oder McMakler nutzen sie für die eigene Akquise.' },
+      { question: 'Was passiert mit meinen Daten bei Gratis-Bewertungen?', answer: 'Sie werden als möglicher Verkäufer eingestuft. Je nach Einwilligung (Vorsicht bei vorausgewählten Häkchen) folgen Anrufe und E-Mails von Maklern oder Finanzierungsvermittlern — genau daran setzt die Kritik der Verbraucherzentralen an: Vielen Nutzern ist nicht klar, dass am Ende ein Vermittlungsgeschäft steht.' },
+      { question: 'Wie genau ist eine automatische Online-Schätzung?', answer: 'Eine grobe Orientierung, kein Gutachten: Der Algorithmus kennt nur die eingegebenen Eckdaten plus Lage-Durchschnittswerte. Sanierungsstau, hellhörige Wände, Terrassen-Ausrichtung oder ein frisch erneuerter Dachstuhl bleiben unsichtbar — zwei sehr unterschiedliche Wohnungen können dieselbe Schätzung erhalten.' },
+      { question: 'Warum taugen Verkäufer-Tools nicht für Käufer?', answer: 'Strukturell: Sie sind darauf ausgelegt, Eigentümer zum Verkauf zu bewegen — Ihre Frage als Käufer ist die umgekehrte (ist der geforderte Preis fair?). Wer als Kaufinteressent fremde Adressen eingibt, hinterlässt zudem die eigenen Kontaktdaten und wird selbst als Verkäufer-Lead geführt.' },
+      { question: 'Was unterscheidet eine käuferseitige Ersteinschätzung?', answer: 'Die Interessenlage: Ziel ist die Kaufentscheidung des Nutzers, nicht der Verkaufs-Lead — keine Weitergabe der Daten an Makler, keine Akquise-Anrufe, und geprüft wird der konkrete Angebotspreis aus Käufersicht statt einer verkaufsoptimierten Schätzung.' },
+    ],
   },
   {
     slug: 'ki-immobilienbewertung-2026-grenzen',
@@ -88,6 +95,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '9 Min',
     tags: ['Kaufratgeber'],
     image: 'https://images.pexels.com/photos/1921326/pexels-photo-1921326.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Was ist der Unterschied zwischen AVM und strukturierter Ersteinschätzung?', answer: 'Ein AVM (Automated Valuation Model) ist ein statistisches Verfahren: Es vergleicht Eckdaten mit großen Preisdatenmengen und liefert eine Zahl. Eine strukturierte Ersteinschätzung nimmt das ganze Exposé ins Visier: Preisplausibilität, Risikohinweise, fehlende Unterlagen, offene Fragen — statt einer Zahl entsteht eine geordnete Übersicht mit Fragenliste für die Besichtigung.' },
+      { question: 'Was kann eine KI-Immobilienbewertung 2026 zuverlässig?', answer: 'Vier Dinge: die Preisplausibilität grob einordnen (auffällig teuer, plausibel, verdächtig günstig), Standort und Lage anhand von Datenmustern sortieren, Risiken aus dem Exposé-Text screenen (Sanierungsstau-Hinweise, fehlende Angaben) und Kaufnebenkosten sowie Finanzierungsszenarien exakt durchrechnen — das ist Mathematik, keine Spekulation.' },
+      { question: 'Was kann eine KI-Bewertung nicht ersetzen?', answer: 'Drei Dinge: die Beurteilung der Bausubstanz vor Ort (kein Modell sieht den feuchten Keller oder den Schwammbefall hinter frischer Tapete), die rechtssichere Prüfung von Grundbuch und Kaufvertrag durch Notar oder Anwalt sowie die individuelle Steuer- und Finanzberatung für Ihre Lebenssituation.' },
+      { question: 'Ist eine KI-Bewertung ein Gutachten?', answer: 'Nein. Ein AVM ist keine Wertfeststellung und eine Ersteinschätzung kein Gutachten — wer das vermischt, hält eine Schätzung für eine Tatsache. Für einen belastbaren, gerichtsfesten Wert braucht es weiterhin einen Sachverständigen mit Vor-Ort-Begehung.' },
+      { question: 'Wofür nutze ich eine KI-Bewertung sinnvoll?', answer: 'Als schnellen, günstigen ersten Filter vor der Besichtigung: Preis grob einordnen, Warnsignale im Exposé markieren, Nebenkosten und Finanzierung durchrechnen und mit einer fundierten Fragenliste in den Termin gehen. Die finale Entscheidung validieren Menschen mit Fachverantwortung.' },
+    ],
   },
   {
     slug: 'grundsteuer-reform-2025-2026',
@@ -1067,6 +1081,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '14 Min',
     tags: ['Kaufratgeber'],
     image: 'https://images.pexels.com/photos/9052797/pexels-photo-9052797.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Warum machen private Käufer systematisch Fehler?', answer: 'Wegen des Erfahrungsgefälles: Private kaufen ein- bis zweimal im Leben, während Makler und Verkäufer den Markt täglich erleben. Dazu übernehmen Emotionen die Analyse — nicht aus Dummheit, sondern aus fehlender Routine.' },
+      { question: 'Was ist der Bestätigungsfehler beim Hauskauf?', answer: 'Sobald Sie sich emotional festgelegt haben („Das ist es!"), filtern Sie unbewusst: Positives bestätigt die Entscheidung, Negatives wird wegrationalisiert. Die Folge: Sie zahlen den Angebotspreis ohne zu verhandeln (5.000 bis 30.000 € verschenkt) und übersehen Mängel (10.000 bis 50.000 € Überraschungen).' },
+      { question: 'Wie schütze ich mich vor einem emotionalen Fehlkauf?', answer: 'Drei Regeln: Besichtigen Sie mindestens drei Objekte, bevor Sie ein Angebot abgeben. Bewerten Sie jedes mit demselben Scoring-System (Lage, Preis, Zustand, Energie, Finanzierung — je 1 bis 10). Und entscheiden Sie nie am Tag der Erstbesichtigung — eine Nacht darüber schlafen.' },
+      { question: 'Warum ist die Sonntagsbesichtigung eine Mogelpackung?', answer: 'Weil sich die wahre Lage am Montagmorgen im Berufsverkehr, am Freitagabend bei geöffneter Kneipe und nachts bei Güterzügen zeigt. Prüfen Sie zusätzlich die Bevölkerungsprognose (etwa über wegweiser-kommune.de): In schrumpfenden Regionen drohen 10 bis 20 Prozent Wertverlust in zehn Jahren.' },
+      { question: 'Welche Kosten unterschätzen private Käufer am häufigsten?', answer: 'Die Summe hinter dem Kaufpreis: 5,5 bis 12,5 Prozent Nebenkosten, 5.000 bis 20.000 € Renovierung, 2.000 bis 5.000 € Umzug, gegebenenfalls 5.000 bis 15.000 € für eine Küche. Aus 320.000 € Kaufpreis werden so realistisch 350.000 bis 400.000 € Gesamtinvestition.' },
+    ],
   },
   {
     slug: 'einfamilienhaus-kaufen-expose',
@@ -1094,6 +1115,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '13 Min',
     tags: ['Kaufratgeber'],
     image: 'https://images.pexels.com/photos/8636589/pexels-photo-8636589.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Warum versagt das Bauchgefühl bei Immobilien?', answer: 'Aus drei Gründen: fehlende Erfahrung (die meisten kaufen ein- bis zweimal im Leben — Intuition braucht aber Übung), kognitive Verzerrungen (Ankereffekt, Halo-Effekt, Bestätigungsfehler, Torschlusspanik) und Informationsasymmetrie: Verkäufer und Makler kennen Objekt und Markt, Sie haben 30 Minuten Besichtigung.' },
+      { question: 'Welche Datenpunkte sollte jeder Käufer kennen?', answer: 'Zehn selbst erhebbare, darunter: der bereinigte Quadratmeterpreis, die Gesamtinvestition (Kaufpreis plus Steuer, Notar, Makler, Renovierung), die monatliche Gesamtbelastung, Energiekennwert und Heizkosten, der abgeleitete Sanierungsbedarf und der Bodenrichtwert über das BORIS-Portal.' },
+      { question: 'Wie viel monatliche Belastung ist tragbar?', answer: 'Faustregel: Die monatliche Gesamtbelastung — Kreditrate plus Hausgeld plus Heizkosten plus Grundsteuer plus Instandhaltung — sollte maximal 35 bis 40 Prozent des Nettohaushaltseinkommens betragen. Diese Zahl bestimmt Ihr Leben für die nächsten 20 bis 30 Jahre.' },
+      { question: 'Was ist der bereinigte Quadratmeterpreis?', answer: 'Nicht einfach Kaufpreis geteilt durch Fläche, sondern: (Kaufpreis plus Nebenkosten plus geschätzte Sanierung) geteilt durch Wohnfläche. Das ist der wahre Preis pro Quadratmeter — vergleichen Sie ihn mit 3 bis 5 ähnlichen Objekten in derselben Mikrolage.' },
+      { question: 'Bedeutet datenbasiert, das Bauchgefühl zu ignorieren?', answer: 'Nein. Gefühle sagen Ihnen, ob Sie sich in der Immobilie wohlfühlen — das ist wichtig. Daten sagen Ihnen, ob der Preis stimmt, das Dach dicht ist und keine Sonderumlage droht. Gute Entscheidungen entstehen, wenn beides zusammenkommt: erst die Fakten, dann das Gefühl.' },
+    ],
   },
   {
     slug: 'immobilien-realistischer-einordnen',
@@ -1167,6 +1195,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '12 Min',
     tags: ['Checkliste', 'Kaufratgeber'],
     image: 'https://images.pexels.com/photos/6981528/pexels-photo-6981528.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Wie lange dauert ein Immobilien-Check vor dem Kauf?', answer: '30 bis 45 Minuten — mit dem Exposé, einem Internetzugang und ohne Gutachter oder Expertenwissen. Der Check umfasst sieben Prüfbereiche mit konkreten Prüfpunkten und klaren Warnsignalen, von Kaufpreis über Lage und Zustand bis zu den laufenden Kosten.' },
+      { question: 'Welche Warnsignale gibt es beim Kaufpreis?', answer: 'Drei klassische: ein Preis deutlich über vergleichbaren Objekten ohne erkennbaren Mehrwert, ein Preis deutlich unter Marktwert (mögliche versteckte Mängel oder Betrug) und ein unsanierter Altbau zum Neubaupreis — dann sind die Sanierungskosten nicht eingepreist und werden Ihr Problem.' },
+      { question: 'Mit welchen kostenlosen Tools prüfe ich die Lage?', answer: 'Google Maps für ÖPNV und Nahversorgung, die Lärmkarte der Stadt, die Hochwasserkarte des Bundeslandes, wegweiser-kommune.de für den Bevölkerungstrend, die Gemeinde-Website für den Bebauungsplan und breitbandatlas.de für die Internetversorgung.' },
+      { question: 'Ab welchem Lärmwert wird es kritisch?', answer: 'Über 55 dB(A) tagsüber an der Fassade gilt als Warnsignal — für Gesundheit, Wohnqualität und Wiederverkaufswert. Ebenfalls kritisch: eine Lage in der Hochwasserzone (HQ100 oder häufiger) und schrumpfende Bevölkerung ohne Zuzugsperspektive.' },
+      { question: 'Wie prüfe ich den Zustand ohne Gutachter?', answer: 'Vier Ansätze: Baujahr und Sanierungshistorie abfragen (was wurde wann gemacht?), Fotos analysieren (fehlen Keller oder Heizungsraum?), Formulierungen übersetzen („gepflegt" ist nicht saniert) und Bauteil-Lebensdauern abgleichen — Heizung über 20 Jahre und Fenster über 30 Jahre bedeuten absehbare Erneuerung.' },
+    ],
   },
   {
     slug: 'fehler-immobilienkauf',
@@ -1176,6 +1211,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '13 Min',
     tags: ['Kaufratgeber'],
     image: 'https://images.pexels.com/photos/7984773/pexels-photo-7984773.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Was ist der teuerste Fehler beim Immobilienkauf?', answer: 'Nur den Kaufpreis zu sehen. Beispiel: Eine Wohnung für 320.000 € kostet mit Grunderwerbsteuer (Berlin 6 Prozent: 25.600 €), Notar und Grundbuch (5.760 €), Makler (11.424 €) und 15.000 € Renovierung tatsächlich 377.784 € — also 18 Prozent mehr als der Kaufpreis.' },
+      { question: 'Wie hoch sind die Kaufnebenkosten je Bundesland?', answer: 'Zwischen 5,5 und 12,5 Prozent des Kaufpreises: bei 350.000 € also 19.250 bis 43.750 €. Am teuersten sind NRW, Brandenburg und Schleswig-Holstein mit 6,5 Prozent Grunderwerbsteuer. Planen Sie zusätzlich 5 bis 10 Prozent für Renovierung und Einrichtung ein.' },
+      { question: 'Was kostet das Ignorieren der Energieklasse?', answer: 'Doppelt: Eine 85-m²-Wohnung mit Klasse F kostet rund 1.530 € Heizkosten pro Jahr, mit Klasse B nur 510 € — über 20 Jahre 20.400 € Unterschied. Dazu sind Klasse-A-Wohnungen im Schnitt 650 €/m² mehr wert als D/E, bei 85 m² also 55.250 € Wertunterschied beim Wiederverkauf.' },
+      { question: 'Wie überprüfe ich die Lage-Aussagen des Maklers?', answer: '„Begehrte Lage" ist Marketing, keine Tatsache. Zehn Minuten eigene Recherche: Google Maps (Entfernungen zu ÖPNV, Supermarkt, Schule), Lärmkarte der Stadt, Hochwasserkarte, Bodenrichtwert über BORIS und Street View. Die Mikrolage kann im selben Stadtteil 20 bis 30 Prozent Preisunterschied bedeuten.' },
+      { question: 'Kann ich mich auf das Exposé verlassen?', answer: 'Nein — es ist ein Verkaufsdokument, kein Gutachten. „Gut erhalten" heißt nicht saniert, „ruhige Lage" kann abgelegen bedeuten. Lesen Sie wie ein Analyst: harte Zahlen (Baujahr, Energieklasse, Wohnfläche, Hausgeld) statt Adjektive — und prüfen Sie, was fehlt.' },
+    ],
   },
   {
     slug: 'hauskauf-mit-system',
@@ -1185,6 +1227,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '13 Min',
     tags: ['Checkliste', 'Kaufratgeber'],
     image: 'https://images.pexels.com/photos/6913186/pexels-photo-6913186.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Warum schlägt System das Bauchgefühl beim Immobilienkauf?', answer: 'Die Entscheidungsforschung zeigt: Bei komplexen Entscheidungen mit vielen Variablen führt strukturiertes Vorgehen zu besseren Ergebnissen. Drei Effekte sabotieren die Intuition: der Ankereffekt (Angebotspreis wird zur Referenz), der Halo-Effekt (schöne Küche überstrahlt marode Technik) und Informationslücken. System heißt nicht, das Gefühl zu ignorieren — sondern ihm eine Faktengrundlage zu geben.' },
+      { question: 'Womit beginnt ein systematischer Hauskauf?', answer: 'Mit nicht verhandelbaren Kriterien, bevor Sie das erste Exposé öffnen: maximaler Kaufpreis inklusive Nebenkosten, maximale Monatsbelastung, Mindestfläche und -zimmerzahl, maximaler Arbeitsweg, akzeptable Energieklasse, maximaler Sanierungsaufwand. Jedes Exposé, das eine Grenze verletzt, wird aussortiert — egal wie schön die Fotos sind.' },
+      { question: 'Welche fünf Fragen gehören in die Exposé-Vorprüfung?', answer: 'Stimmt der Preis (mehr als 15 Prozent über Markt braucht einen guten Grund)? Passt die Energie (Klasse E oder schlechter: 30.000 bis 80.000 € einplanen)? Was fehlt im Exposé? Stimmt die Lage (10 Minuten Online-Recherche)? Und wie hoch ist die Gesamtinvestition inklusive Nebenkosten und Sanierung?' },
+      { question: 'Wie viele Exposés überstehen eine saubere Vorprüfung?', answer: 'Typischerweise 3 bis 5 von 20. Genau das ist der Zweck: Die 15 bis 20 Minuten Vorprüfung pro Objekt ersparen Ihnen Besichtigungen, die mit 2 bis 3 Stunden Aufwand ohnehin zur Absage geführt hätten.' },
+      { question: 'Was ist der Ankereffekt — und wie entkomme ich ihm?', answer: 'Der zuerst genannte Preis prägt Ihre Wahrnehmung: Ohne eigene Analyse übernehmen Sie den Angebotspreis als Referenz, auch wenn er zu hoch ist. Das Gegenmittel ist eine eigene Preiseinordnung (Quadratmeterpreis-Vergleich, Bodenrichtwert), bevor Sie verhandeln.' },
+    ],
   },
   {
     slug: 'immobilienbewertung-kaeufer',
@@ -1194,6 +1243,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '13 Min',
     tags: ['Kaufratgeber'],
     image: 'https://images.pexels.com/photos/8293715/pexels-photo-8293715.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Was ist der Unterschied zwischen Kaufpreis und Marktwert?', answer: 'Der Kaufpreis ist, was jemand zu zahlen bereit ist; der Marktwert, was ein sachverständiger Käufer unter normalen Umständen zahlen würde. Im Verkäufermarkt liegen Kaufpreise 5 bis 15 Prozent über dem Marktwert, im Käufermarkt darunter; Zwangsverkäufe (Erbschaft, Scheidung) oft unter Wert wegen Zeitdrucks.' },
+      { question: 'Mit welchen Verfahren bewerten Profis Immobilien?', answer: 'Mit drei normierten Verfahren nach der Immobilienwertermittlungsverordnung (ImmoWertV): dem Vergleichswertverfahren (reale Kaufpreise ähnlicher Objekte — für Käufer am aussagekräftigsten), dem Sachwertverfahren (Neubaukosten minus Alterswertminderung plus Bodenwert) und dem Ertragswertverfahren (kapitalisierter Reinertrag).' },
+      { question: 'Wie stark bestimmt die Lage den Immobilienwert?', answer: 'Bis zu 60 Prozent — und sie ist der einzige Faktor, den Sie nach dem Kauf nicht ändern können. Konkret: Jede Minute Fußweg zur ÖPNV-Haltestelle kostet etwa 1 bis 3 Prozent Wert, Hauptstraße oder Bahnlinie können 10 bis 20 Prozent Wertminderung bedeuten, der Bevölkerungstrend entscheidet über die langfristige Entwicklung.' },
+      { question: 'Wann versagt das Vergleichswertverfahren?', answer: 'Bei einzigartigen Objekten ohne ausreichende Vergleichsdaten — etwa Denkmälern oder ungewöhnlichen Grundrissen. Dann greifen Sachwert- oder Ertragswertverfahren; der tatsächliche Marktwert ergibt sich aus der Gewichtung aller drei Methoden.' },
+      { question: 'Warum kann ein hoher Sachwert täuschen?', answer: 'Weil er nicht abbildet, was der Markt tatsächlich zahlt: Ein Haus in einer schrumpfenden Region kann einen hohen rechnerischen Sachwert haben — aber niemand kauft es zu diesem Preis. Der Sachwert ist objektiv rechenbar, der Markt entscheidet trotzdem anders.' },
+    ],
   },
   {
     slug: 'angebotspreis-fair',
@@ -1267,6 +1323,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '11 Min',
     tags: ['Checkliste', 'Kaufratgeber'],
     image: 'https://images.pexels.com/photos/7657877/pexels-photo-7657877.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Wie viel lässt sich vor der Besichtigung prüfen?', answer: 'Rund 80 Prozent der relevanten Informationen lassen sich bereits am Schreibtisch prüfen — bevor Sie einen Fuß in die Immobilie setzen. Das bringt drei Vorteile: Sie besichtigen nur Objekte, die Ihre Grundkriterien erfüllen, Sie stellen gezieltere Fragen und Sie verhandeln mit Fakten statt Vermutungen.' },
+      { question: 'Welche Pflichtangaben muss ein Immobilieninserat enthalten?', answer: 'Kaufpreis, Wohnfläche nach Wohnflächenverordnung, Zimmeranzahl, Baujahr, die Energieausweis-Angaben (Klasse, Kennwert, Heizungstyp, Energieträger) und die Provision mit Höhe und Aufteilung. Fehlt etwas davon, ist das ein erster Hinweis auf mangelnde Sorgfalt oder bewusstes Verschweigen.' },
+      { question: 'Welche Kennzahlen kann ich sofort aus dem Exposé berechnen?', answer: 'Drei zentrale: den Quadratmeterpreis (Kaufpreis geteilt durch Wohnfläche) zum Vergleich mit dem regionalen Durchschnitt, die Kaufnebenkosten (Kaufpreis mal 5,5 bis 12,5 Prozent je nach Bundesland) und die geschätzten Heizkosten (Fläche mal Energiekennwert mal Energiepreis).' },
+      { question: 'Wie prüfe ich die Lage vom Schreibtisch aus?', answer: 'Mit Google Maps die Fußwege messen — ÖPNV-Haltestelle idealerweise unter 8 Minuten, Supermarkt unter 10 Minuten —, dazu Lärmkarte der Stadt, Hochwasserkarte des Landes und Street View für das echte Straßenbild. Die Lage bestimmt bis zu 60 Prozent des Immobilienwerts und lässt sich komplett online bewerten.' },
+      { question: 'Warum sind fehlende Exposé-Angaben so aussagekräftig?', answer: 'Weil Verkaufsargumente immer genannt werden: Eine neue Heizung, dokumentierte Sanierungen oder ein günstiges Hausgeld stünden im Exposé. Fehlen Heizungsalter, Sanierungshistorie, Hausgeld-Aufschlüsselung oder Grundrisse, notieren Sie das als Fragen — die Lücken sind oft aufschlussreicher als der Text.' },
+    ],
   },
   {
     slug: 'immobilien-vergleichen',
@@ -1276,6 +1339,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '11 Min',
     tags: ['Kaufratgeber'],
     image: 'https://images.pexels.com/photos/6194236/pexels-photo-6194236.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Warum ist der Kaufpreis allein nicht vergleichbar?', answer: 'Weil er weder Zustand noch Folgekosten abbildet: Eine Wohnung für 280.000 € mit 45.000 € Sanierungsbedarf und schlechter Energieklasse ist nicht günstiger als eine für 340.000 € in gutem Zustand. Für echte Vergleichbarkeit brauchen Sie gleiche Bezugsgrößen, gleichen Zeithorizont und alle Kosten.' },
+      { question: 'Was ist die Gesamtinvestition pro Quadratmeter?', answer: 'Kaufpreis plus Kaufnebenkosten plus geschätzte Sanierung, geteilt durch die Wohnfläche. Im Beispiel schrumpft der scheinbare Unterschied von 60.000 € zwischen zwei Wohnungen auf real 85 €/m² (4.454 gegenüber 4.539 €/m²) — die vermeintlich günstigere ist fast gleich teuer, bei schlechterem Zustand.' },
+      { question: 'Welche Kennzahl macht Objekte im Alltag vergleichbar?', answer: 'Die monatliche Gesamtbelastung: Kreditrate plus Hausgeld beziehungsweise Nebenkosten plus Heizkosten plus Instandhaltung. Eine teurere Wohnung mit niedrigem Hausgeld und guter Energieeffizienz kann monatlich günstiger sein als eine billigere mit hohen laufenden Kosten.' },
+      { question: 'Kann ich Energiekennwerte direkt vergleichen?', answer: 'Ja — aber nur beim selben Ausweistyp (beide Verbrauchs- oder beide Bedarfsausweise). Rechnen Sie den Kennwert in Euro um: Wohnfläche mal kWh/m²a mal Energiepreis ergibt die jährlichen Heizkosten. So sehen Sie den Euro-Unterschied statt nur der Buchstabenklasse.' },
+      { question: 'Worauf muss ich bei der Wohnfläche im Vergleich achten?', answer: 'Nur Flächen nach Wohnflächenverordnung vergleichen, nicht nach DIN 277 — der Unterschied beträgt 10 bis 15 Prozent. Prüfen Sie, ob Balkone korrekt zu 25 Prozent angerechnet wurden; Kellerräume und Garagen zählen gar nicht zur Wohnfläche.' },
+    ],
   },
   {
     slug: 'sanierungsbedarf-erkennen',

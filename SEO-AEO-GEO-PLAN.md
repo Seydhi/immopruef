@@ -250,10 +250,14 @@ PerplexityBot, OAI-SearchBot, Google-Extended), FAQPage-Schema, Kaufnebenkosten-
    → **Batch 2 erledigt (10.07., Commit f773792):** Nebenkosten-/Recht-Cluster, 49 Fragen
    (fristen, unterlagen, reservierungsgebuehr, auflassungsvormerkung, grundschuld-vs-hypothek,
    vorfaelligkeitsentschaedigung, provisionsfrei, bodenrichtwert, hausgeld-ruecklagen, grundriss).
-   **Stand: 52/102 mit FAQ, 50 offen.** Batch 3 (Vorschlag): Zustand-Cluster (dach-pruefen,
-   risse-im-mauerwerk, schimmel-feuchtigkeit, asbest, elektroinstallation-altbau, zustand-
-   richtig-einschaetzen, sanierungsbedarf-erkennen, baujahr-und-modernisierung, zustand-
-   folgekosten, baujahr-einordnen).
+   → **Batch 3 erledigt (10.07., Commit b2b45fe):** Zustand-Cluster, 48 Fragen (dach, risse,
+   schimmel, asbest, elektroinstallation, zustand-richtig-einschaetzen, sanierungsbedarf,
+   baujahr-und-modernisierung, zustand-folgekosten, baujahr-einordnen).
+   **Stand: 62/102 mit FAQ, 40 offen.** Batch 4 (Vorschlag): Kauf-Basics/Vergleich-Cluster
+   (hauskauf-vorbereiten, immobilien-vergleichen, fehler-immobilienkauf, fehler-private-kaeufer,
+   immobilien-check-vor-kauf, hauskauf-mit-system, immobilienbewertung-kaeufer,
+   kostenlose-immobilienbewertung-serioes, ki-immobilienbewertung-2026-grenzen,
+   daten-statt-bauchgefuehl).
 3. **Käufer-Positionierung konsequent** — alle großen Bewertungs-Player sind verkäuferseitige
    Lead-Maschinen. „Die Bewertung, die nicht dem Verkäufer dient" kompensiert die Domain-Schwäche.
 
