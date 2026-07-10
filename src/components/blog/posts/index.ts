@@ -162,6 +162,12 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '9 Min',
     tags: ['Kaufratgeber', 'Zustand'],
     image: 'https://images.pexels.com/photos/12243093/pexels-photo-12243093.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Gehört die PV-Anlage automatisch zum Haus?', answer: 'Nicht unbedingt — das ist die wichtigste Frage vor dem Kauf. Bei Pacht- oder Mietmodellen bleibt der Anbieter Eigentümer der Technik, Sie übernehmen einen laufenden Vertrag mit fester Monatsrate über oft 15 bis 20 Jahre. Solche Verträge sind häufig über eine Dienstbarkeit in Grundbuch-Abteilung II abgesichert, die Sie mitübernehmen. Vertrag vor dem Notartermin vollständig prüfen.' },
+      { question: 'Wie lange halten Solarmodule und Wechselrichter?', answer: 'Module rund 25 bis 30 Jahre mit etwa 0,5 Prozent Leistungsverlust pro Jahr — ein 15 Jahre altes Modul liefert noch ungefähr 90 Prozent. Der Wechselrichter ist die Schwachstelle: nur etwa 10 bis 15 Jahre Lebensdauer. Bei einer 12 bis 15 Jahre alten Anlage steht der Austausch (niedriger vierstelliger Bereich) oft kurz bevor — ein realistischer Verhandlungspunkt.' },
+      { question: 'Was ist die Einspeisevergütung bei einer alten Anlage wert?', answer: 'Viel — der Satz bei Inbetriebnahme ist 20 Jahre garantiert (EEG-Bestandsschutz). Ältere Anlagen laufen oft mit Sätzen, die ein Mehrfaches der heutigen Vergütung für Neuanlagen betragen. Klären Sie: Inbetriebnahmejahr, garantierter Satz und wie viele der 20 Jahre noch übrig sind.' },
+      { question: 'Welche Unterlagen sollte ich zur PV-Anlage anfordern?', answer: 'Inbetriebnahmejahr und Nennleistung (kWp), Datenblätter, Wartungsnachweise und die jährliche Ertragshistorie — an ihr sehen Sie, ob die Anlage tatsächlich liefert. Beim Speicher zusätzlich Hersteller, Baujahr, Nennkapazität und möglichst die aktuelle Restkapazität. Bei Fremdeigentum: den vollständigen Pacht- oder Mietvertrag.' },
+    ],
   },
   {
     slug: 'risse-im-mauerwerk-beurteilen',
@@ -236,6 +242,12 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
     image: 'https://images.pexels.com/photos/4056856/pexels-photo-4056856.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Wie funktioniert ein Bausparvertrag?', answer: 'In zwei Phasen: In der Sparphase zahlen Sie ein, bis das Mindestguthaben erreicht ist — oft rund 40 bis 50 Prozent der Bausparsumme. Dann kann der Vertrag zugeteilt werden, und in der Darlehensphase erhalten Sie Guthaben plus das zinsgünstige Bauspardarlehen. Die Verwendung ist zweckgebunden: nur für Kauf, Bau oder Modernisierung von Wohnraum.' },
+      { question: 'Lohnt sich ein Bausparvertrag für den sofortigen Hauskauf?', answer: 'Meist nicht — bis zur Zuteilung vergeht wegen des Mindestguthabens viel Zeit. Seine Stärke ist die Zinssicherheit für ein Vorhaben in einigen Jahren: Der Darlehenszins wird schon bei Abschluss festgelegt. Steigen die Zinsen bis dahin, profitieren Sie; sinken sie, war der Vertrag im Nachhinein teurer.' },
+      { question: 'Welche Kosten fallen beim Bausparen an?', answer: 'Eine Abschlussgebühr von üblicherweise rund 1 Prozent der Bausparsumme (bei 50.000 € also 500 €) plus je nach Anbieter laufende Kontogebühren — bei sehr niedrigen Guthabenzinsen in der Sparphase. Der Wert des Vertrags liegt nicht in der Verzinsung, sondern in der späteren Zinssicherheit des Darlehens.' },
+      { question: 'Welche staatliche Förderung gibt es beim Bausparen?', answer: 'Drei Wege mit jeweils eigenen Bedingungen: die Wohnungsbauprämie (innerhalb bestimmter Einkommensgrenzen), die Arbeitnehmersparzulage auf vermögenswirksame Leistungen und die Wohn-Riester-Förderung mit Zulagen und möglichen Steuervorteilen für selbst genutztes Wohneigentum. Förderberechtigung hängt von Einkommen, Familienstand und Vertragsgestaltung ab (Stand 2026).' },
+    ],
   },
   {
     slug: 'bausachverstaendiger-hauskauf-kosten',
@@ -309,6 +321,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '9 Min',
     tags: ['Kaufratgeber', 'Standort'],
     image: 'https://images.pexels.com/photos/14823609/pexels-photo-14823609.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Wie prüfe ich das Hochwasserrisiko einer Adresse kostenlos?', answer: 'Über die Hochwassergefahrenkarten der Bundesländer (online, kostenlos): zur Adresse navigieren und prüfen, ob das Grundstück in einer Überschwemmungsfläche liegt. Ergänzend die Starkregen-Hinweiskarten der Kommune ansehen — sie zeigen, wo sich Wasser bei Extremregen sammelt, auch fernab von Flüssen.' },
+      { question: 'Was bedeutet HQ100?', answer: 'Ein Hochwasser, das statistisch einmal in 100 Jahren auftritt. Liegt ein Grundstück in der HQ100-Fläche, gilt ein nennenswertes Überflutungsrisiko. Wichtig: „statistisch" heißt im langjährigen Mittel — ein solches Ereignis kann auch zweimal kurz hintereinander eintreten.' },
+      { question: 'Was sind die ZÜRS-Gefährdungsklassen?', answer: 'Das System der Versicherer teilt Adressen in vier Klassen: GK1 (gering, problemlos versicherbar) bis GK4 (sehr hoch). In GK3 und GK4 ist die Elementarschadenversicherung teuer oder schwer zu bekommen. Verbraucher können nicht direkt einsehen — die Einstufung erfahren Sie über eine Versicherungsanfrage vor dem Kauf.' },
+      { question: 'Deckt die normale Gebäudeversicherung Hochwasserschäden ab?', answer: 'Nein — das ist ein verbreiteter Irrtum. Schäden durch Hochwasser, Starkregen und Rückstau deckt nur die Elementarschadenversicherung als Zusatzbaustein zur Wohngebäudeversicherung. Fehlt er, tragen Sie die oft fünfstelligen Sanierungskosten selbst. Eine gesetzliche Pflicht zur Elementarversicherung gibt es Stand 2026 nicht.' },
+      { question: 'Ist ein Haus ohne Fluss in der Nähe sicher?', answer: 'Nicht automatisch: Starkregen kann über die Kanalisation zum Rückstau führen, bei dem Wasser durch Abflüsse ins Gebäude gedrückt wird, und Senken oder Hanglagen sammeln Oberflächenwasser. Prüfen Sie Topografie, Kellerabdichtung und fragen Sie Verkäufer wie Nachbarn nach früheren Wasserschäden.' },
+    ],
   },
   {
     slug: 'neubau-bautraeger-vertrag-mabv',
@@ -612,6 +631,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
     image: 'https://images.pexels.com/photos/12029115/pexels-photo-12029115.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Wie berechne ich die Mietrendite einer Eigentumswohnung?', answer: 'Bruttomietrendite = Jahreskaltmiete geteilt durch Kaufpreis (12.000 € zu 300.000 € = 4,0 Prozent). Aussagekräftiger ist die Nettomietrendite: Nettomiete nach nicht-umlagefähigen Kosten geteilt durch Gesamtaufwand inklusive Kaufnebenkosten — im Beispiel rund 3,2 Prozent. Der Kaufpreisfaktor (Kaufpreis geteilt durch Jahreskaltmiete, hier 25) ordnet das Preisniveau ein.' },
+      { question: 'Was bedeutet negativer Cashflow bei einer vermieteten Wohnung?', answer: 'Dass Sie monatlich zuschießen — im Beispiel 320 € (1.000 € Miete minus 220 € nicht-umlagefähige Kosten minus 650 € Zins minus 450 € Tilgung). Das ist nicht automatisch schlecht: Der Zins ist echter Aufwand, die Tilgung dagegen erzwungenes Sparen. Solange die Tilgung über dem Zuschuss liegt, wächst Ihr Vermögen trotzdem.' },
+      { question: 'Welche Kosten kann ich bei Vermietung von der Steuer absetzen?', answer: 'Als Werbungskosten: Schuldzinsen, Verwaltung, Instandhaltung, Fahrtkosten. Dazu die lineare AfA auf den Gebäudeanteil (nicht Grund und Boden): typischerweise 2 Prozent pro Jahr, bei Fertigstellung ab 2023 sogar 3 Prozent. Die konkrete Wirkung hängt vom persönlichen Steuersatz ab — steuerliche Beratung gehört zu jeder seriösen Kalkulation.' },
+      { question: 'Was ist die Spekulationsfrist?', answer: 'Verkaufen Sie die vermietete Wohnung innerhalb von 10 Jahren, ist der Veräußerungsgewinn einkommensteuerpflichtig; nach Ablauf der 10 Jahre ist er steuerfrei. Langfristig geplante Kapitalanlagen umgehen das Thema meist von selbst.' },
+      { question: 'Mit welcher Miete darf ich kalkulieren?', answer: 'Mit der ortsüblichen Vergleichsmiete (Mietspiegel, real vermietete Vergleichswohnungen) — nicht mit einer Wunschmiete. In angespannten Märkten begrenzt zudem die Mietpreisbremse die Neuvermietungsmiete. Praxistest: Rechnen Sie mit 10 Prozent weniger Miete — kippt der Cashflow dann ins Minus, war die Annahme zu optimistisch. Für nicht-umlagefähige Kosten 20 bis 25 Prozent der Kaltmiete ansetzen.' },
+    ],
   },
   {
     slug: 'denkmalschutz-immobilie-kaufen',
@@ -923,6 +949,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Zustand'],
     image: 'https://images.pexels.com/photos/14943770/pexels-photo-14943770.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Wie viel teurer ist ein Neubau gegenüber dem Altbau?', answer: 'Je nach Region rund 20 bis 40 Prozent mehr pro Quadratmeter: Kostet der Bestand 3.500 €/m², liegt der Neubau bei etwa 4.200 bis 4.900 €/m² — bei 120 m² ein Unterschied von 84.000 bis 168.000 €. Aber: Der Markt preist Sanierungsstau bereits ein; ein Altbau, der 100.000 € günstiger ist, aber 90.000 € Sanierung braucht, ist kein Schnäppchen.' },
+      { question: 'Mit welchen Sanierungskosten muss ich beim Altbau rechnen?', answer: 'Typische EFH-Größenordnungen: Heizungstausch 18.000 bis 35.000 €, Fenster komplett 8.000 bis 15.000 €, Fassadendämmung 15.000 bis 30.000 €, Badsanierung 12.000 bis 20.000 €, Elektrik 5.000 bis 10.000 €. Ein unsaniertes 70er-Jahre-Haus mit allen Posten summiert sich auf 58.000 bis 110.000 € — vor Förderung.' },
+      { question: 'Welche Pflichten habe ich nach dem Kauf eines Altbaus?', answer: 'Das Gebäudeenergiegesetz verlangt bei selbstgenutzten Ein-/Zweifamilienhäusern innerhalb von zwei Jahren nach Eigentumsübergang: Dämmung der obersten Geschossdecke zum unbeheizten Dachraum, Dämmung der Heizungs- und Warmwasserrohre in unbeheizten Räumen und den Austausch von Konstanttemperaturkesseln über 30 Jahre. Das gehört von Anfang an ins Budget.' },
+      { question: 'Welche Gewährleistung habe ich bei Altbau und Neubau?', answer: 'Beim Bestandskauf praktisch keine („gekauft wie gesehen", Ausschluss üblich — Grenze: arglistig verschwiegene Mängel). Beim Bauträger-Neubau gelten 5 Jahre Gewährleistung für Baumängel. Dafür trägt der Neubau-Käufer Wartezeit und Fertigstellungsrisiko.' },
+      { question: 'Welche Förderung gibt es für Altbau und Neubau?', answer: 'Altbau: BEG-Zuschüsse für energetische Sanierung, beim Heizungstausch bis zu 70 Prozent. Neubau: zinsgünstige KfW-Kredite (etwa Programme 297/298). Bei Vermietung zusätzlich relevant: 2 Prozent lineare AfA im Bestand, 3 Prozent bei Fertigstellung ab 2023.' },
+    ],
   },
   {
     slug: 'innenausbau-bewerten',
@@ -1036,6 +1069,12 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '13 Min',
     tags: ['Standort', 'Kaufratgeber'],
     image: 'https://images.pexels.com/photos/19798157/pexels-photo-19798157.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Was bedeutet „gute Infrastruktur" im Exposé?', answer: 'Nichts Definiertes — der Begriff hat keine Norm. Prüfen Sie selbst mit Google Maps: Supermarkt idealerweise unter 5 Minuten zu Fuß, Apotheke unter 10, Bäcker unter 5. Entscheidend ist, was zu IHREM Alltag passt: Familie braucht Schule und Kinderarzt, Pendler die Bahnanbindung, Ältere kurze Wege ohne Auto.' },
+      { question: 'Wie stark beeinflusst der ÖPNV den Immobilienwert?', answer: 'Deutlich: Als Faustregel kostet jede Minute Fußweg zur U-/S-Bahn etwa 1 bis 3 Prozent Wert. Eine Bahn unter 5 Minuten bringt 5 bis 15 Prozent Aufschlag, ein Bus im 30-Minuten-Takt 5 bis 10 Prozent Abschlag. Prüfen Sie neben der Entfernung auch die Taktung.' },
+      { question: 'Was kostet fehlende Nahversorgung im Alltag?', answer: 'Autoabhängigkeit: Ein nötiger Zweitwagen kostet 200 bis 400 € pro Monat, dazu sinken Lebensqualität im Alter und der Wiederverkaufswert. Liegt der nächste Supermarkt über 10 Minuten Fußweg entfernt oder ist nur mit dem Auto erreichbar, gilt das als problematisch.' },
+      { question: 'Wie prüfe ich die Infrastruktur vor dem Kauf konkret?', answer: 'Mit Google Maps die Fußwege zu Supermarkt, Schule, Arzt und Haltestelle messen (nicht Luftlinie!), den ÖPNV-Fahrplan auf Taktung prüfen und die Angaben im Exposé („alles in der Nähe") gegen die Realität halten — in der Nähe heißt oft: mit dem Auto.' },
+    ],
   },
   {
     slug: 'nebenkosten-laufende-kosten',
@@ -1045,6 +1084,12 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '14 Min',
     tags: ['Finanzierung', 'Kaufratgeber'],
     image: 'https://images.pexels.com/photos/3806749/pexels-photo-3806749.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Was ist der Unterschied zwischen Kaufnebenkosten und laufenden Kosten?', answer: 'Kaufnebenkosten zahlen Sie einmal beim Kauf (5,5 bis 12,5 Prozent des Kaufpreises, meist aus Eigenkapital); laufende Kosten zahlen Sie jeden Monat dauerhaft — typischerweise 400 bis 1.200 € zusätzlich zur Kreditrate. Über die Tragbarkeit entscheiden oft die laufenden Kosten stärker als der Kaufpreis.' },
+      { question: 'Wie viel Kaufnebenkosten fallen bei 350.000 € an?', answer: 'Zwischen 17.500 und 42.245 €: Grunderwerbsteuer 12.250 bis 22.750 € (3,5 bis 6,5 Prozent je Bundesland), Notar 3.500 bis 5.250 €, Grundbuch rund 1.750 €, Makler 0 bis 12.495 €. Bayern mit provisionsfreiem Kauf: rund 5 Prozent; Brandenburg mit voller Provision: über 12 Prozent — 25.000 € Unterschied nur durch den Standort.' },
+      { question: 'Welche Einmalkosten kommen zum Kaufpreis noch dazu?', answer: 'Realistisch: Renovierung vor Einzug 5.000 bis 30.000 €, Umzug 1.500 bis 5.000 € (Spedition) oder 500 bis 1.500 € in Eigenregie, Gutachter 400 bis 1.500 €, Einrichtung 2.000 bis 15.000 €. Faustregel gesamt: Kaufpreis plus 15 bis 25 Prozent für Nebenkosten und Erstinvestition.' },
+      { question: 'Kann ich die Kaufnebenkosten mitfinanzieren?', answer: 'Selten — Banken finanzieren die Nebenkosten in der Regel nicht mit, sie müssen aus Eigenkapital gedeckt werden. Die laufenden Kosten wiederum müssen dauerhaft aus dem laufenden Einkommen tragbar sein — zusätzlich zur Kreditrate.' },
+    ],
   },
   {
     slug: 'bilder-im-expose-bewerten',
@@ -1166,6 +1211,12 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '14 Min',
     tags: ['Kaufratgeber'],
     image: 'https://images.pexels.com/photos/3958954/pexels-photo-3958954.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Was muss ich beim Grundstück eines Einfamilienhauses prüfen?', answer: 'Sieben Punkte: Bodenrichtwert über BORIS (passt der Preis zur Lage?), Zuschnitt und Hanglage, Ausrichtung (Südgarten = Aufschlag), Bebauungsplan der Gemeinde, Erschließungsstand (Nachforderungen bis 30.000 € möglich), Baulastenverzeichnis beim Bauamt und Altlastenkataster (Sanierungspflicht geht auf den Käufer über).' },
+      { question: 'Warum stehen Baulasten nicht im Grundbuch?', answer: 'Baulasten sind öffentlich-rechtliche Verpflichtungen und stehen nur im Baulastenverzeichnis des Bauamts — viele Käufer erfahren erst nach dem Kauf davon, wenn der geplante Anbau nicht genehmigt wird. Fordern Sie vor dem Kauf einen Auszug an.' },
+      { question: 'Wie lange hält ein Hausdach und was kostet die Sanierung?', answer: 'Steildach mit Ziegeln 40 bis 60 Jahre (Sanierung 15.000 bis 30.000 €), Schiefer 80 bis 100 Jahre (25.000 bis 50.000 €), Flachdach nur 20 bis 30 Jahre (10.000 bis 20.000 €). Bei Baujahr vor 1995 oft zusätzlich Dachdämmung nötig: 50 bis 150 €/m² — bei 120 m² Dachfläche 6.000 bis 18.000 €.' },
+      { question: 'Was unterscheidet den Hauskauf vom Wohnungskauf?', answer: 'Volle Verantwortung statt geteilter: Es gibt keine WEG, die sich um Dach, Heizung und Fassade kümmert — jede Reparatur ist Ihr Problem und Ihre Rechnung. Dafür entfallen Hausgeld und Gemeinschaftsbeschlüsse. Kalkulieren Sie eine eigene Instandhaltungsrücklage von Anfang an ein.' },
+    ],
   },
   {
     slug: 'eigentumswohnung-kaufen-expose',
@@ -1175,6 +1226,12 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '13 Min',
     tags: ['Kaufratgeber'],
     image: 'https://images.pexels.com/photos/16110999/pexels-photo-16110999.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Woraus setzt sich das Hausgeld zusammen?', answer: 'Betriebskosten 50 bis 60 Prozent (Wasser, Müll, Versicherung — bei Vermietung umlagefähig), Heizkosten-Vorauszahlung 15 bis 25 Prozent, Instandhaltungsrücklage 15 bis 25 Prozent (mindestens 1,50 €/m² beim Altbau — der wichtigste Posten) und Verwaltung 25 bis 35 € je Einheit. Fordern Sie die Abrechnung mit Aufschlüsselung und den Wirtschaftsplan an.' },
+      { question: 'Wie viel Instandhaltungsrücklage sollte die WEG haben?', answer: 'Faustregel: 50 bis 100 € pro Quadratmeter Gesamtwohnfläche — bei einem 10-Parteien-Haus mit 800 m² also 40.000 bis 80.000 €. Ein 1975er-Gebäude mit nur 30.000 € Rücklage ist unterfinanziert: Allein eine Dachsanierung kostet 80.000 bis 150.000 €. Zuführung unter 1 €/m² beim Altbau ist definitiv zu wenig.' },
+      { question: 'Übernehme ich beschlossene Sonderumlagen des Vorbesitzers?', answer: 'Ja — eine beschlossene Sonderumlage tragen Sie als neuer Eigentümer mit, egal ob sie vor oder nach Ihrem Kauf beschlossen wurde. Deshalb sind die WEG-Protokolle der letzten drei Jahre Pflichtlektüre: Dort stehen geplante Sanierungen, Beschlüsse und Streitigkeiten, die kein Exposé erwähnt.' },
+      { question: 'Ab wann ist ein steigendes Hausgeld ein Warnsignal?', answer: 'Steigt das Hausgeld jährlich um mehr als 3 Prozent, sollten Sie die Ursache klären. Auch die absolute Höhe zählt: 3,00 bis 4,50 €/m² ist normal; deutlich darunter deutet auf unterfinanzierte Rücklagen, deutlich darüber auf teure Leistungen (Aufzug, Tiefgarage, Concierge) — oder ein Kostenproblem der WEG.' },
+    ],
   },
   {
     slug: 'daten-statt-bauchgefuehl',
@@ -1200,6 +1257,11 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '12 Min',
     tags: ['Kaufratgeber'],
     image: 'https://images.pexels.com/photos/10599784/pexels-photo-10599784.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Ist ein günstiger Quadratmeterpreis ein gutes Zeichen?', answer: 'Nicht automatisch — der niedrige Preis hat einen Grund: Sanierungsstau (50.000 bis 100.000 €), schlechte Energieklasse (1.000 bis 2.000 € Mehr-Heizkosten pro Jahr), problematische Lage oder eine Fläche nach DIN 277 statt WoFlV (real 10 bis 15 Prozent kleiner). Rechenbeispiel: 2.800 €/m² werden nach Nebenkosten und 55.000 € Sanierung zu 3.740 €/m² — fast so teuer wie das sanierte Vergleichsobjekt.' },
+      { question: 'Bedeutet ein junges Baujahr keinen Sanierungsbedarf?', answer: 'Nein — auch neuere Gebäude haben Zyklen: Eine Brennwerttherme von 2005 ist nach 15 bis 25 Jahren am Ende, die erste WDVS-Generation kann Risse oder Algenbefall zeigen. Baujahr 2005 heißt: Heizungstausch könnte kurz bevorstehen. Fragen Sie immer nach Wartungshistorie und bereits erneuerten Bauteilen.' },
+      { question: 'Wie ordne ich Kennzahlen richtig ein?', answer: 'Nie isoliert — der Wert einer Immobilie entsteht aus mindestens zehn Faktoren, die sich gegenseitig beeinflussen. Eine einzelne Zahl (m²-Preis, Baujahr, Energieklasse) erzählt nur einen Teil der Geschichte. Der bereinigte Quadratmeterpreis (inklusive Nebenkosten und Sanierung) macht Objekte erst vergleichbar.' },
+    ],
   },
   {
     slug: 'expose-verstehen',

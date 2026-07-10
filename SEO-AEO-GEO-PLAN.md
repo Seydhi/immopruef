@@ -255,10 +255,17 @@ PerplexityBot, OAI-SearchBot, Google-Extended), FAQPage-Schema, Kaufnebenkosten-
    baujahr-und-modernisierung, zustand-folgekosten, baujahr-einordnen).
    → **Batch 4 erledigt (10.07., Commit 42846a6):** Kauf-Basics/Bewertung, 50 Fragen — inkl.
    der Positionierungs-FAQs (AVM vs. Ersteinschätzung, Gratis-Tools = Verkäufer-Leads).
-   **Stand: 72/102 mit FAQ, 30 offen.** Verbleibende 30 (Batch 5–7): Energie-Cluster
-   (heizungsarten, geg-pflichten, energetische-sanierung-foerderung, photovoltaik…),
-   Recht/Spezial (wohnrecht-niessbrauch, zwangsversteigerung, bieterverfahren, denkmalschutz,
-   erbpacht, neubau-bautraeger…), Rest (homeoffice, infrastruktur, immobilienkauf-mit-familie…).
+   → **Batch 5 erledigt (10.07., Commit 3e980ac):** Recht/Spezial, 49 Fragen
+   (zwangsversteigerung, bieterverfahren, denkmalschutz, wohnrecht-niessbrauch, vorkaufsrecht-
+   milieuschutz, neubau-bautraeger-mabv, grundstueck, erschliessungskosten,
+   bausachverstaendiger-kosten, uebergabeprotokoll).
+   **Stand: 82/102 mit FAQ, 20 offen (Batch 6–7):** photovoltaik-immobilie-bewerten,
+   bausparvertrag, hochwasser-risiko, wohnung-kaufen-vermieten-kapitalanlage, altbau-oder-
+   neubau, innenausbau-bewerten, fliesen, raeume-richtig-nutzen, wohnqualitaet-bewerten,
+   homeoffice, rauchen-dampfen, immobilienanfragen-bearbeiten, immobilienkauf-mit-familie,
+   infrastruktur-pruefen, nebenkosten-laufende-kosten, einfamilienhaus-kaufen-expose,
+   eigentumswohnung-kaufen-expose, immobilien-realistischer-einordnen, expose-verstehen
+   (→ ggf. erst 301-Merge klären!), provisionsfrei erledigt in B2.
 3. **Käufer-Positionierung konsequent** — alle großen Bewertungs-Player sind verkäuferseitige
    Lead-Maschinen. „Die Bewertung, die nicht dem Verkäufer dient" kompensiert die Domain-Schwäche.
 
