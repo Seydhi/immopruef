@@ -259,13 +259,15 @@ PerplexityBot, OAI-SearchBot, Google-Extended), FAQPage-Schema, Kaufnebenkosten-
    (zwangsversteigerung, bieterverfahren, denkmalschutz, wohnrecht-niessbrauch, vorkaufsrecht-
    milieuschutz, neubau-bautraeger-mabv, grundstueck, erschliessungskosten,
    bausachverstaendiger-kosten, uebergabeprotokoll).
-   **Stand: 82/102 mit FAQ, 20 offen (Batch 6–7):** photovoltaik-immobilie-bewerten,
-   bausparvertrag, hochwasser-risiko, wohnung-kaufen-vermieten-kapitalanlage, altbau-oder-
-   neubau, innenausbau-bewerten, fliesen, raeume-richtig-nutzen, wohnqualitaet-bewerten,
-   homeoffice, rauchen-dampfen, immobilienanfragen-bearbeiten, immobilienkauf-mit-familie,
-   infrastruktur-pruefen, nebenkosten-laufende-kosten, einfamilienhaus-kaufen-expose,
-   eigentumswohnung-kaufen-expose, immobilien-realistischer-einordnen, expose-verstehen
-   (→ ggf. erst 301-Merge klären!), provisionsfrei erledigt in B2.
+   → **Batch 6 erledigt (10.07., Commit a7be5c0):** Energie/Kapitalanlage/Exposé-Typen,
+   42 Fragen (photovoltaik, bausparvertrag, hochwasser-risiko, wohnung-kaufen-vermieten,
+   altbau-oder-neubau, nebenkosten-laufende-kosten, einfamilienhaus-/eigentumswohnung-
+   kaufen-expose, infrastruktur-pruefen, immobilien-realistischer-einordnen).
+   **Stand: 92/102, Batch 7 (letzter) = 9 Artikel:** innenausbau-bewerten, fliesen-
+   qualitaetsmerkmal, raeume-richtig-nutzen, wohnqualitaet-bewerten, homeoffice-
+   immobilienkauf, rauchen-dampfen-wohnqualitaet, immobilienanfragen-bearbeiten,
+   immobilienkauf-mit-familie, lagebewertung-hauskauf. expose-verstehen bekommt KEIN FAQ —
+   wird per 301 in expose-pruefen gemergt (M1-Roadmap).
 3. **Käufer-Positionierung konsequent** — alle großen Bewertungs-Player sind verkäuferseitige
    Lead-Maschinen. „Die Bewertung, die nicht dem Verkäufer dient" kompensiert die Domain-Schwäche.
 

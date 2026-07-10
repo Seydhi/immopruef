@@ -965,6 +965,11 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '14 Min',
     tags: ['Kaufratgeber', 'Zustand'],
     image: 'https://images.pexels.com/photos/36035073/pexels-photo-36035073.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Wie lange halten Bodenbeläge, Türen und Sanitär?', answer: 'Richtgrößen: Teppich 10 bis 15 Jahre, Laminat 10 bis 20, Vinyl 15 bis 25, Massivparkett 40 bis 80 (mehrfach schleifbar), Fliesen 30 bis 50, Innentüren 30 bis 50, Sanitärobjekte 20 bis 40, Heizkörper 25 bis 40 Jahre. Stehen die Hauptgewerke am Ende ihres Zyklus, gehört die Modernisierung ins Kaufbudget.' },
+      { question: 'Was kostet die Erneuerung des Innenausbaus?', answer: 'Richtwerte: Bodenbeläge 40 bis 150 €/m² je nach Material, Wandbeläge 15 bis 35 €/m², Innentüren 250 bis 800 € pro Stück inklusive Einbau, Sanitär 1.500 bis 4.000 € je Bad, Heizkörper mit Verteilung 3.000 bis 8.000 € pro Wohnung, sichtbare Elektrik 5.000 bis 15.000 € für die Komplettwohnung.' },
+      { question: 'Welchen Anteil hat der Innenausbau am Gebäudewert?', answer: 'Bei typischen Einfamilienhäusern und Eigentumswohnungen entfallen 20 bis 35 Prozent der Herstellungskosten auf den Innenausbau — alles zwischen Rohbau und Einzugsbereitschaft. Genau diese Kosten kommen auf Käufer zu, wenn einzelne Gewerke modernisiert werden müssen; sie entscheiden über die ersten zwei bis fünf Jahre nach Einzug.' },
+    ],
   },
   {
     slug: 'fliesen-qualitaetsmerkmal-immobilie',
@@ -974,6 +979,11 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '13 Min',
     tags: ['Kaufratgeber', 'Zustand'],
     image: 'https://images.pexels.com/photos/8141966/pexels-photo-8141966.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Was verraten Fliesen über eine Immobilie?', answer: 'Mehr als die meisten Bauteile: Sie zeigen die ursprüngliche Bauqualität UND den Pflegezustand — und sie sind schwer zu kaschieren. Hochwertige Fliesen halten 30 bis 50 Jahre, einfache 15 bis 25; wer früher tauschen muss, hat Material- oder Verlegefehler vor sich. Ein neu zu fliesendes Bad kostet 4.000 bis 10.000 €.' },
+      { question: 'Woran erkenne ich schlechte Fliesenverlegung?', answer: 'Fünf Warnsignale: stark schwankende Fugenbreiten (Standard 2 bis 5 mm), rissige oder poröse Fugen (Feuchtigkeit wandert dahinter), spürbarer Höhenversatz zwischen Fliesen, schadhafte Silikonfugen in Dusch-/Wannenecken (Schimmel-Vorstufe, Neu-Silikonierung 200 bis 500 €) und hohler Klang beim Klopfen — der bedeutet Ablösung vom Untergrund.' },
+      { question: 'Welches Fliesenmaterial ist hochwertig?', answer: 'Feinsteinzeug (Wasseraufnahme unter 0,5 Prozent, sehr belastbar) ist das Qualitätssignal für Böden; Steinzeug solide für Wohnbereiche; Steingut nur für Wände zulässig — auf dem Boden wäre es ein Verarbeitungsfehler. Naturstein ist hochwertig, aber pflegeintensiv (Imprägnierung, Säureempfindlichkeit bei Marmor).' },
+    ],
   },
   {
     slug: 'raeume-richtig-nutzen',
@@ -983,6 +993,11 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '13 Min',
     tags: ['Kaufratgeber', 'Grundriss'],
     image: 'https://images.pexels.com/photos/3284980/pexels-photo-3284980.png?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Warum fühlen sich gleich große Wohnungen unterschiedlich an?', answer: 'Weil Fläche nicht gleich Nutzen ist: Verkehrsflächen, ungünstige Ecken, Nischen hinter Türen und schmale Räume werden mitbezahlt, aber nicht gelebt. Drei Prinzipien entscheiden: Wegeführung (kurze Wege statt Slalom), Raumhierarchie (klarer Hauptraum) und funktionierende Schnittstellen zwischen den Bereichen.' },
+      { question: 'Was ist ein Durchgangszimmer und warum ist es problematisch?', answer: 'Ein Raum, der nur über einen anderen Wohnraum erreichbar ist oder selbst als Durchgang dient — er verliert als eigenständiger Raum fast immer an Wert, weil er halb Flur ist. Für Familien, Paare mit unterschiedlichen Rhythmen und WGs meist ungeeignet. Im Grundriss erkennbar: die täglichen Wege gedanklich nachzeichnen.' },
+      { question: 'Wie prüfe ich die Möblierbarkeit eines Raumes?', answer: 'Mit Standardmaßen inklusive Bewegungsfläche: Ein Doppelbett (180 × 200 cm) braucht mit beidseitigem Zugang etwa 240 × 270 cm, ein 6-Personen-Esstisch ringsum 80 bis 100 cm zum Herausziehen, ein Kleiderschrank 80 cm Öffnungsraum davor. Ein 12-m²-Zimmer mit ungünstigem Schnitt (2,40 m breit, Tür mittig) lässt sich trotz ausreichender Fläche kaum einrichten.' },
+    ],
   },
   {
     slug: 'wohnqualitaet-bewerten',
@@ -992,6 +1007,12 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '14 Min',
     tags: ['Kaufratgeber', 'Standort'],
     image: 'https://images.pexels.com/photos/7836571/pexels-photo-7836571.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Was macht die Wohnqualität einer Immobilie aus?', answer: 'Die Summe aus drei Gruppen: räumliche Qualität (Grundriss, Licht, Privatsphäre), Umgebungsqualität (Lage, Lärm, Nachbarschaft) und Nutzungsqualität (Flexibilität, Stauraum, Außenflächen). Exposé-Kennzahlen decken davon maximal ein Drittel ab — der Rest muss über Grundriss, Besichtigung und öffentliche Daten erschlossen werden.' },
+      { question: 'Wie viel Tageslicht braucht ein Raum?', answer: 'Als Faustregel sollte die Fensterfläche mindestens ein Achtel bis ein Zehntel der Raumgrundfläche betragen — darunter wirkt ein Raum selbst bei Sonne matt. Achten Sie auch auf Verschattung durch Nachbargebäude: Ein formal nach Süden ausgerichteter Raum kann im Winter trotzdem dunkel sein (per Street View prüfbar).' },
+      { question: 'Ab welchem Lärmpegel wird Wohnen belastend?', answer: 'Werte über 55 dB(A) tagsüber sind ein Warnsignal, über 60 dB(A) problematisch — besonders wenn Schlafräume zur Lärmseite liegen. Neben Außenlärm zählt die Gebäudeakustik: Altbauten mit Holzbalkendecken sind oft deutlich hellhöriger als Stahlbetonbauten, und daran ändern Modernisierungen wenig.' },
+      { question: 'Wie erkenne ich Lärmprobleme bei der Besichtigung?', answer: 'Fenster öffnen, in jedem Raum einen Moment still werden — und zu verschiedenen Tageszeiten besichtigen: Eine Wohnung, die nur sonntags um 10 Uhr gesehen wurde, zeigt nicht den Berufsverkehr am Dienstagmorgen. In lauter Lage ist Dreifachverglasung mit Schallschutzglas ein Muss.' },
+    ],
   },
   {
     slug: 'homeoffice-immobilienkauf',
@@ -1001,6 +1022,12 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '13 Min',
     tags: ['Kaufratgeber', 'Grundriss'],
     image: 'https://images.pexels.com/photos/1128207/pexels-photo-1128207.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Warum ist Homeoffice-Tauglichkeit ein Kaufkriterium?', answer: 'Hybride Arbeit ist normal geworden — viele arbeiten 2 bis 3 Tage zu Hause. Eine Immobilie ohne abgrenzbaren Arbeitsbereich kostet im Alltag Energie und beim Wiederverkauf Wert: Größere Flächen, getrennte Zimmer und gute Breitbandanschlüsse werden zunehmend eingepreist.' },
+      { question: 'Wie viele Zimmer brauche ich für Homeoffice?', answer: 'Ein Zimmer über dem minimalen Wohnbedarf: 3 Zimmer beim Paar, 4 bei einer Familie mit einem Kind. Arbeiten beide Vollzeit im Homeoffice, braucht es idealerweise zwei räumlich getrennte Arbeitsbereiche — sonst wird jedes Meeting zum Konflikt. Alternativ funktionieren gut zonierbare Bereiche mit Schiebetür oder tiefe Erker.' },
+      { question: 'Welche Himmelsrichtung ist fürs Arbeitszimmer ideal?', answer: 'Ost- oder Nordost-Zimmer: Morgenlicht ohne Blendung am Nachmittag. Reine Südzimmer brauchen gute Verschattung (Blendung, Sommerhitze), reine Nordzimmer sind gleichmäßig hell, aber ohne Wintersonne. Faustregel Fensterfläche: mindestens ein Achtel der Raumgrundfläche.' },
+      { question: 'Was sollte ich für Video-Calls prüfen?', answer: 'Lärm und Akustik: Lärmkarten-Werte über 55 dB(A) tagsüber sind im Homeoffice problematischer als beim reinen Wohnen (wer um 10 Uhr Kundentermine hat, hört die Straße). Dazu die Gebäude-Hellhörigkeit bei der Besichtigung testen und in lauten Lagen auf Schallschutzverglasung achten — plus natürlich die Breitbandverfügbarkeit der Adresse.' },
+    ],
   },
   {
     slug: 'rauchen-dampfen-wohnqualitaet',
@@ -1010,6 +1037,11 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '13 Min',
     tags: ['Kaufratgeber', 'Besichtigung'],
     image: 'https://images.pexels.com/photos/10254323/pexels-photo-10254323.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Was verrät der Geruch einer Wohnung bei der Besichtigung?', answer: 'Viel — die Nase ist ein belastbarer Datenpunkt: Muffig-erdig deutet auf Feuchtigkeit (kritisch, wenn er nach Querlüftung wiederkehrt), penetranter Rauchgeruch auf jahrelange Nikotinablagerungen, Lösemittelgeruch auf frische Renovierung — möglicherweise, um etwas zu überdecken. Vorsicht: Duftkerzen und Lufterfrischer können täuschen.' },
+      { question: 'Wie erkenne ich eine ehemalige Raucherwohnung?', answer: 'Am hartnäckigen Geruch in Textilien und Fugen und an gelblich-bräunlichen Verfärbungen heller Oberflächen — gut sichtbar beim Abhängen von Bildern oder Verrücken von Möbeln. Wichtig: Ein einfacher Neuanstrich reicht oft nicht; ohne Tiefensanierung (Reinigung plus Isolationsanstrich) kehren die Gerüche zurück.' },
+      { question: 'Sollte ich direkt nach einer Renovierung besichtigen?', answer: 'Ungünstig für Sie: Frische Farbe überdeckt Gerüche und Oberflächenzustand, die sich erst nach Wochen realistisch beurteilen lassen. Sinnvoll ist ein zweiter Besuch zu anderer Tageszeit oder ohne lange Vorankündigung — dann zeigt sich, ob ein auffälliger Geruch zur Immobilie gehört oder kurzfristig kaschiert wurde.' },
+    ],
   },
   {
     slug: 'fristen-immobilienkauf',
@@ -1035,6 +1067,12 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '13 Min',
     tags: ['Kaufratgeber', 'Checkliste'],
     image: 'https://images.pexels.com/photos/374074/pexels-photo-374074.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Wie viele Anfragen kommen auf ein Immobilieninserat?', answer: 'Ein durchschnittliches Exposé in einer mittelgroßen Stadt bringt 25 bis 60 Anfragen in der ersten Woche; unterpreisige oder sehr gute Objekte in Ballungsräumen 80 bis 200, mit Spitzen über 300. Privatverkäufe ohne Makler erhalten oft noch mehr, weil die Anfrageschwelle niedriger ist.' },
+      { question: 'Woran erkenne ich eine qualifizierte Kaufanfrage?', answer: 'An der Kombination aus acht Merkmalen: vollständige Kontaktdaten, konkreter Objektbezug (keine Copy-Paste-Mail), genannter Kaufhintergrund, Finanzierungsstand, realistischer Zeithorizont, regionale Nähe, sachliche Tonalität und realistisches Preisverständnis. Wer schon in der Erstanfrage 15 Prozent Rabatt fordert, hat meist kein Budget oder kein ernsthaftes Interesse.' },
+      { question: 'Wie viel Zeit kostet die Anfragenbearbeitung?', answer: 'Ohne System schnell 15 bis 25 Stunden pro Exposé — jede Anfrage braucht Sichtung, Einordnung und Antwort. Die typischen Folgen ohne Struktur: verspätete Antworten, verlorene Unterlagen, Doppelzusagen und gute Interessenten, die abspringen, weil sie sich nicht ernst genommen fühlen.' },
+      { question: 'Warum bleibt meine Anfrage als Käufer unbeantwortet?', answer: 'Weil sie mit 50 bis 200 anderen konkurriert und unsortiert im Rauschen untergeht. Erhöhen Sie Ihre Chancen mit dem Gegenteil einer Massenmail: vollständige Kontaktdaten, konkreter Bezug zum Objekt, Kaufhintergrund, Finanzierungsstand und flexible Besichtigungszeiten in der ersten Nachricht.' },
+    ],
   },
   {
     slug: 'unterlagen-vor-immobilienkauf',
@@ -1060,6 +1098,12 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '14 Min',
     tags: ['Kaufratgeber'],
     image: 'https://images.pexels.com/photos/4868600/pexels-photo-4868600.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Wie viele Zimmer braucht eine Familie?', answer: 'Mindestformel: Anzahl der Familienmitglieder plus 1. Eine vierköpfige Familie braucht also mindestens 5 Zimmer (Eltern, zwei Kinderzimmer, Wohnzimmer, Arbeits-/Gästezimmer). Achtung bei der Zählung im Exposé: Ein 7-m²-Durchgangszimmer ist kein vollwertiges Zimmer — Kinderzimmer unter 10 m² sind funktional kaum nutzbar.' },
+      { question: 'Was macht einen Grundriss familientauglich?', answer: 'Eigenständige Kinderzimmer ab 10 m² mit Fenster (keine Durchgangszimmer), Elternschlafzimmer ab 14 m² (Platz fürs Beistellbett), zwei Bäder oder Bad plus Gäste-WC (ein Bad für vier Personen bedeutet Morgenchaos), Essplatz in der Küche und Flure mit Platz für Kinderwagen und Garderobe. Tipp: Grundriss ausdrucken und den Morgenablauf einzeichnen — wo kreuzen sich die Wege?' },
+      { question: 'Wie weit darf die Schule entfernt sein?', answer: 'Der Grundschulweg sollte unter 15 Minuten liegen. Prüfen Sie neben der Entfernung auch die Kita-Wartelisten und erreichbare weiterführende Schulen — Bildungsinfrastruktur ist für Familien oft das entscheidende Kaufkriterium und beeinflusst den Wiederverkaufswert.' },
+      { question: 'Für welchen Zeitraum sollten Familien planen?', answer: 'Für 15 bis 20 Jahre — Kinder wachsen vom Baby (Zimmer nah bei den Eltern, sichere Treppen) über die Grundschule (eigenes Zimmer, Freunde in der Nähe) bis zum Teenager (Privatsphäre, eigenes Bad ideal, ÖPNV). Die Immobilie muss nicht jede Phase perfekt abdecken, darf aber keine unmöglich machen.' },
+    ],
   },
   {
     slug: 'infrastruktur-pruefen',
@@ -1502,6 +1546,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '11 Min',
     tags: ['Standort', 'Kaufratgeber'],
     image: 'https://images.pexels.com/photos/14754006/pexels-photo-14754006.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Was ist der Unterschied zwischen Makro- und Mikrolage?', answer: 'Die Makrolage ist die Region: Bevölkerungsentwicklung, Wirtschaftskraft, Infrastrukturprojekte — sie bestimmt die langfristige Wertentwicklung. Die Mikrolage ist die Straße: ÖPNV-Entfernung, Lärm, Nahversorgung, Nachbarschaft — sie bestimmt Ihren Alltag. Zwei Wohnungen im selben Stadtteil können je nach Straße 20 bis 30 Prozent Preisunterschied haben.' },
+      { question: 'Wie stark bestimmt die Lage den Immobilienwert?', answer: 'Bis zu 60 Prozent des Kaufpreises — und sie ist der einzige Faktor, der sich nach dem Kauf nicht ändern lässt. Deshalb gehört die Lageprüfung an den Anfang jeder Kaufentscheidung, nicht ans Ende.' },
+      { question: 'Wie prüfe ich die ÖPNV-Anbindung richtig?', answer: 'Nicht nur die Entfernung zählt, sondern auch die Taktung: Ideal sind maximal 5 bis 8 Minuten Fußweg, und eine S-Bahn im 10-Minuten-Takt ist deutlich mehr wert als ein Bus im Stundentakt. Faustregel: Jede Minute Fußweg zur Bahn kostet etwa 1 bis 3 Prozent Wert.' },
+      { question: 'Warum ist die Schulqualität auch für Kinderlose relevant?', answer: 'Weil sie den Wiederverkaufswert erheblich beeinflusst: Ein Stadtteil mit überforderten Schulen und Kita-Mangel ist für Familien unattraktiv — das drückt langfristig die Preise, auch wenn die Lage sonst stimmt.' },
+      { question: 'Welche Lagefaktoren erwähnt kein Exposé?', answer: 'Vor allem Lärm — er steht fast nie im Exposé und muss selbst recherchiert werden (Lärmkarten der Städte sind öffentlich). Auch Bevölkerungstrend, geplante Bauvorhaben in der Nachbarschaft und die tatsächliche ÖPNV-Taktung müssen Sie aktiv prüfen statt der Formulierung „begehrte Lage" zu vertrauen.' },
+    ],
   },
   {
     slug: 'kaufnebenkosten-immobilienkauf',
