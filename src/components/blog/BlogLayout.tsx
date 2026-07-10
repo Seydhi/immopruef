@@ -19,7 +19,7 @@ interface BlogLayoutProps {
 }
 
 // Konvertiert "11. April 2026" zu ISO 8601 für Schema.org
-function germanDateToIso(date: string): string {
+export function germanDateToIso(date: string): string {
   const months: Record<string, string> = {
     Januar: '01', Februar: '02', März: '03', April: '04', Mai: '05', Juni: '06',
     Juli: '07', August: '08', September: '09', Oktober: '10', November: '11', Dezember: '12',
@@ -35,6 +35,33 @@ function germanDateToIso(date: string): string {
   const month = months[m[2]]
   const year = m[3]
   return `${year}-${month}-${day}T08:00:00+02:00`
+}
+
+// Rechner-Empfehlungen: zentrale Zuordnung statt 102 Einzel-Edits.
+// Interne Links Blog→Rechner sind die wichtigste Autoritäts-Leitung der Seite
+// (Audit-Befund: Rechner waren aus Artikeln praktisch unverlinkt).
+const RECHNER_SUGGEST: { href: string; label: string; desc: string; match: string[] }[] = [
+  { href: '/grunderwerbsteuer-rechner', label: 'Kaufnebenkosten- & Grunderwerbsteuer-Rechner', desc: 'Grunderwerbsteuer, Notar, Grundbuch und Maklerprovision für Ihren Kaufpreis berechnen.', match: ['kaufnebenkosten', 'grunderwerbsteuer', 'notar', 'maklerprovision', 'grundbuch', 'nebenkosten', 'provision', 'kaufvertrag'] },
+  { href: '/budgetrechner', label: 'Budgetrechner', desc: 'Wie viel Immobilie Einkommen und Eigenkapital tragen — mit Nebenkosten und Puffer.', match: ['eigenkapital', 'budget', 'leisten', 'bonitaet', 'schufa', 'einkommen'] },
+  { href: '/tilgungsrechner', label: 'Tilgungsrechner', desc: 'Monatsrate, Restschuld nach Zinsbindung und Gesamtzinsen Ihres Darlehens.', match: ['tilgung', 'annuitaet', 'zinsbindung', 'darlehen', 'baufinanzierung', 'sondertilgung', 'zinsen', 'kredit', 'finanzierung'] },
+  { href: '/mieten-oder-kaufen-rechner', label: 'Mieten-oder-Kaufen-Rechner', desc: 'Vermögensvergleich zwischen Kauf und Mieten mit Break-even-Jahr.', match: ['mieten', 'kaufen-oder', 'miete'] },
+  { href: '/mietrendite-rechner', label: 'Mietrendite-Rechner', desc: 'Brutto-/Nettomietrendite und Kaufpreisfaktor eines Angebots einordnen.', match: ['mietrendite', 'kapitalanlage', 'vermietung', 'kaufpreisfaktor', 'rendite', 'vermieten'] },
+  { href: '/instandhaltungsruecklage-rechner', label: 'Instandhaltungsrücklagen-Rechner', desc: 'Angemessene Rücklage nach Baujahr, Fläche und Zustand kalkulieren.', match: ['ruecklage', 'instandhaltung', 'hausgeld', 'sanierungsstau', 'sanierung', 'modernisierung', 'sonderumlage'] },
+  { href: '/wohnflaechen-rechner', label: 'Wohnflächen-Rechner', desc: 'Wohnfläche nach WoFlV korrekt anrechnen — Balkon, Dachschräge, Keller.', match: ['wohnflaeche', 'quadratmeterpreis', 'grundriss', 'flaeche'] },
+]
+
+function normalize(s: string): string {
+  return s.toLowerCase().replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss')
+}
+
+function findMatchingRechner(meta: BlogMeta, limit = 2) {
+  const haystack = normalize(`${meta.slug} ${meta.title} ${meta.tags.join(' ')}`)
+  return RECHNER_SUGGEST
+    .map((r) => ({ r, score: r.match.filter((kw) => haystack.includes(kw)).length }))
+    .filter((x) => x.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit)
+    .map((x) => x.r)
 }
 
 // Findet 3 verwandte Posts mit größter Tag-Überlappung
@@ -109,7 +136,7 @@ export default function BlogLayout({ meta, children }: BlogLayoutProps) {
           {meta.title}
         </h1>
         <div className="flex items-center gap-3 text-xs text-ink-light">
-          <time>{meta.date}</time>
+          <time dateTime={isoDate.slice(0, 10)}>{meta.date}</time>
           <span className="text-ink/20">·</span>
           <span>{meta.readTime} Lesezeit</span>
         </div>
@@ -138,11 +165,14 @@ export default function BlogLayout({ meta, children }: BlogLayoutProps) {
         <div className="mb-8 rounded-xl overflow-hidden" style={{ aspectRatio: '16 / 9' }}>
           <img
             src={meta.image}
+            srcSet={`${meta.image.replace('h=627', 'h=356').replace('w=1200', 'w=680')} 680w, ${meta.image} 1200w`}
+            sizes="(max-width: 720px) 100vw, 680px"
             alt={meta.title}
             width={800}
             height={450}
             className="w-full h-48 sm:h-64 object-cover"
             loading="eager"
+            fetchPriority="high"
             decoding="async"
           />
         </div>
@@ -151,6 +181,25 @@ export default function BlogLayout({ meta, children }: BlogLayoutProps) {
       <div className="prose-immo">
         {children}
       </div>
+
+      {/* Passende kostenlose Rechner — interne Verlinkung Blog→Tools */}
+      {findMatchingRechner(meta).length > 0 && (
+        <aside className="mt-10 bg-green/4 border border-green/15 rounded-xl p-5">
+          <h2 className="font-display text-base font-medium text-green mb-3">
+            Passende kostenlose Rechner
+          </h2>
+          <div className="space-y-3">
+            {findMatchingRechner(meta).map((r) => (
+              <div key={r.href}>
+                <a href={r.href} className="text-sm font-medium text-green underline decoration-green/30 hover:decoration-green transition-colors">
+                  {r.label}
+                </a>
+                <p className="text-xs text-ink-mid mt-0.5">{r.desc}</p>
+              </div>
+            ))}
+          </div>
+        </aside>
+      )}
 
       {/* Häufige Fragen — FAQPage-Schema + GEO/AEO-optimiert */}
       {meta.faq && meta.faq.length > 0 && (

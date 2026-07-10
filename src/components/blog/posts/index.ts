@@ -821,7 +821,7 @@ export const BLOG_POSTS: BlogMeta[] = [
   },
   {
     slug: 'fristen-immobilienkauf',
-    title: 'Fristen beim Immobilienkauf: Kaufpreisfälligkeit, Bedenkzeit, Widerruf — alle Termine im Überblick',
+    title: 'Fristen beim Immobilienkauf: alle Termine im Überblick',
     description: 'Notartermin, 14-tägige Bedenkzeit, Kaufpreisfälligkeit (typisch 10–14 Tage nach Fälligkeitsmitteilung), Widerrufsfristen, Übergabe — die 12 wichtigsten Fristen im Kaufprozess chronologisch erklärt mit Checkliste.',
     date: '19. April 2026',
     readTime: '14 Min',
@@ -974,7 +974,7 @@ export const BLOG_POSTS: BlogMeta[] = [
   },
   {
     slug: 'expose-verstehen',
-    title: 'Immobilien-Exposé verstehen: Pflichtangaben, Wohnfläche und Quadratmeterpreise richtig lesen',
+    title: 'Exposé verstehen: Pflichtangaben & Kennzahlen lesen',
     description: 'Pflichtangaben (Energieausweis, Provision, Wohnfläche) vs. Werbe-Floskeln, typische Wohnfläche-Fallen, Quadratmeterpreis einordnen, Maklersprache übersetzt — Exposés in 5 Minuten sicher entschlüsseln.',
     date: '11. April 2026',
     readTime: '13 Min',
@@ -1001,7 +1001,7 @@ export const BLOG_POSTS: BlogMeta[] = [
   },
   {
     slug: 'baujahr-einordnen',
-    title: 'Baujahr beim Immobilienkauf einordnen: Was es über Bauweise, Energie und Sanierung verrät',
+    title: 'Baujahr einordnen: Bauweise, Energie, Sanierungsbedarf',
     description: 'Von Gründerzeit bis GEG-Neubau: Was jede Bauepoche über Bauweise, Energieeffizienz, Schadstoffe (Asbest, KMF) und typischen Sanierungsbedarf verrät — Käufer-Guide.',
     date: '11. April 2026',
     readTime: '14 Min',
@@ -1170,7 +1170,7 @@ export const BLOG_POSTS: BlogMeta[] = [
   },
   {
     slug: 'expose-pruefen',
-    title: 'Immobilien-Exposé prüfen: Warnsignale, Red Flags und versteckte Risiken vor der Besichtigung erkennen',
+    title: 'Exposé prüfen: Warnsignale & Red Flags erkennen',
     description: 'Maklersprache decoded, typische Warnsignale beim Hauskauf, Red Flags im Exposé, fehlende Kennzahlen — systematisch Exposés auswerten und gezielt nachfragen, bevor Sie Zeit verlieren.',
     date: '11. April 2026',
     readTime: '10 Min',

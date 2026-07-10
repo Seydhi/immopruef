@@ -61,7 +61,7 @@ export default function RauchenDampfenWohnqualitaet() {
         Das bedeutet aber nicht, dass Dampfen in Innenräumen spurlos bliebe: Aerosolpartikel lagern sich auf Oberflächen ab, Aromen können sich in Textilien halten, und bei intensiver, jahrelanger Nutzung in schlecht belüfteten Räumen sind klebrige Beläge auf Fenstern, Lampen oder Elektronik möglich. Der Unterschied zum klassischen Rauchen liegt eher in Intensität und Haftung als in der grundsätzlichen Frage, ob Spuren bleiben.
       </p>
       <p>
-        Wer die Unterschiede zwischen einzelnen Verdampfer-Kategorien, Liquid-Typen und Nutzungsmustern nachlesen möchte, findet auf spezialisierten Portalen wie <a href="https://topvapereviews.de" rel="noopener" target="_blank">TopVapeReviews</a> detaillierte Produktvergleiche und Hintergrund-Artikel. Für die Immobilienbewertung relevant ist aber weniger die technische Tiefe als die Grundunterscheidung: Verbrennung (starke Rückstände) versus Verdampfung (deutlich geringere, aber nicht null Rückstände).
+        Wer die Unterschiede zwischen einzelnen Verdampfer-Kategorien, Liquid-Typen und Nutzungsmustern nachlesen möchte, findet auf spezialisierten Portalen wie <a href="https://topvapereviews.de" rel="sponsored noopener" target="_blank">TopVapeReviews</a> detaillierte Produktvergleiche und Hintergrund-Artikel. Für die Immobilienbewertung relevant ist aber weniger die technische Tiefe als die Grundunterscheidung: Verbrennung (starke Rückstände) versus Verdampfung (deutlich geringere, aber nicht null Rückstände).
       </p>
 
       <h2>Wo sich Nutzungsspuren bei einer Besichtigung erkennen lassen</h2>

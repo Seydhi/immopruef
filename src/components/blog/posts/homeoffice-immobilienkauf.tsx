@@ -138,7 +138,7 @@ export default function HomeofficeImmobilienkauf() {
 
       <h2>Einrichtung und Arbeitsplatz zuhause</h2>
       <p>
-        Bauliche Eignung ist die eine Seite — die Einrichtung die andere. Selbst der beste Raum wird zur Rückenschule, wenn der Bürostuhl aus der Studentenzeit stammt und das Licht nur vom Deckenhänger kommt. Wenn Sie nach Kauf oder vor einer Entscheidung einen realistischen Blick auf Ausstattungskomponenten werfen möchten — ergonomische Möbel, Monitor-Setups, Beleuchtung, Kopfhörer mit guter Sprachqualität für Calls — lohnt ein Blick auf unabhängige Bewertungsportale wie <a href="https://luna-goods.de" target="_blank" rel="noopener noreferrer">Luna Goods</a>, die getestete Empfehlungen rund um Home-Office und Setup liefern.
+        Bauliche Eignung ist die eine Seite — die Einrichtung die andere. Selbst der beste Raum wird zur Rückenschule, wenn der Bürostuhl aus der Studentenzeit stammt und das Licht nur vom Deckenhänger kommt. Wenn Sie nach Kauf oder vor einer Entscheidung einen realistischen Blick auf Ausstattungskomponenten werfen möchten — ergonomische Möbel, Monitor-Setups, Beleuchtung, Kopfhörer mit guter Sprachqualität für Calls — lohnt ein Blick auf unabhängige Bewertungsportale wie <a href="https://luna-goods.de" target="_blank" rel="sponsored noopener noreferrer">Luna Goods</a>, die getestete Empfehlungen rund um Home-Office und Setup liefern.
       </p>
       <p>
         Im Kaufkontext gilt: Wer ein Arbeitszimmer einrichten will, sollte schon im Exposé prüfen, ob der Raum die Kernstücke überhaupt aufnehmen kann. Ein ergonomischer Schreibtisch misst ca. 160 × 80 cm, ein Bürostuhl braucht etwa 120 × 120 cm freie Rollfläche — das sind Mindestwerte, unterhalb derer Homeoffice strukturell unbequem wird.

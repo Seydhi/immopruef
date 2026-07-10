@@ -154,7 +154,7 @@ export default function FristenImmobilienkauf() {
         <li><strong>Versions- und Statusverfolgung:</strong> Für jeden Vertragsentwurf wird dokumentiert, wer wann welche Änderung vorgeschlagen und wer sie akzeptiert hat.</li>
       </ul>
       <p>
-        Plattformen wie <a href="https://deal-strategy.de" rel="noopener" target="_blank">Deal-Strategy</a> bilden genau dieses professionelle Vertragsmanagement für Unternehmen ab — mit zentraler Ablage, automatischer Fristenüberwachung und Versionsverfolgung. Für Privatkäufer ist der Einsatz solcher B2B-Lösungen in der Regel überdimensioniert, aber die zugrundeliegende Logik lässt sich auf ein einfaches Privatkauf-System übertragen: Ordnerstruktur, Fristen-Tabelle, klare Statuslabels.
+        Plattformen wie <a href="https://deal-strategy.de" rel="sponsored noopener" target="_blank">Deal-Strategy</a> bilden genau dieses professionelle Vertragsmanagement für Unternehmen ab — mit zentraler Ablage, automatischer Fristenüberwachung und Versionsverfolgung. Für Privatkäufer ist der Einsatz solcher B2B-Lösungen in der Regel überdimensioniert, aber die zugrundeliegende Logik lässt sich auf ein einfaches Privatkauf-System übertragen: Ordnerstruktur, Fristen-Tabelle, klare Statuslabels.
       </p>
 
       <h2>Ein praktikables Fristen-System für Privatkäufer</h2>

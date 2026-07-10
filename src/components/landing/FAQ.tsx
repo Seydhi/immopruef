@@ -55,11 +55,10 @@ export default function FAQ() {
                 <polyline points="6 9 12 15 18 9" />
               </svg>
             </button>
-            {open === i && (
-              <div className="px-5 pb-4 text-xs text-ink-mid leading-relaxed border-t border-ink/8 pt-3">
-                {faq.a}
-              </div>
-            )}
+            {/* Antwort immer im DOM (FAQPage-Schema-Parität für Google) — nur visuell ein-/ausklappen */}
+            <div className={`px-5 text-xs text-ink-mid leading-relaxed ${open === i ? 'pb-4 border-t border-ink/8 pt-3' : 'hidden'}`}>
+              {faq.a}
+            </div>
           </div>
         ))}
       </div>

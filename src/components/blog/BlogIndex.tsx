@@ -1,4 +1,5 @@
 import type { BlogMeta } from './BlogLayout'
+import { germanDateToIso } from './BlogLayout'
 import { BLOG_POSTS } from './posts'
 import { useSEO, breadcrumbSchema } from '../../lib/useSEO'
 
@@ -128,7 +129,8 @@ export default function BlogIndex({ onNavigate }: BlogIndexProps) {
               <div className="w-full h-full group-hover:scale-105 transition-transform duration-300">
                 {post.image ? (
                   <img
-                    src={post.image}
+                    /* Pexels-CDN skaliert serverseitig: kleine Karten-Variante statt 1200px (~73 KB → ~15 KB) */
+                    src={post.image.replace('h=627', 'h=314').replace('w=1200', 'w=600')}
                     alt={post.title}
                     width={400}
                     height={144}
@@ -163,7 +165,7 @@ export default function BlogIndex({ onNavigate }: BlogIndexProps) {
               </h2>
               <p className="text-xs text-ink-mid leading-relaxed mb-3 flex-1">{post.description}</p>
               <div className="flex items-center gap-2 text-[10px] text-ink-light mt-auto pt-2 border-t border-ink/8">
-                <time>{post.date}</time>
+                <time dateTime={germanDateToIso(post.date).slice(0, 10)}>{post.date}</time>
                 <span className="text-ink/20">·</span>
                 <span>{post.readTime}</span>
               </div>
