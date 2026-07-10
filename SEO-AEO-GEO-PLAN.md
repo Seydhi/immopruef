@@ -243,6 +243,13 @@ PerplexityBot, OAI-SearchBot, Google-Extended), FAQPage-Schema, Kaufnebenkosten-
    gleichzeitig Traffic UND Bestellungen bringt.
 2. **FAQ-Nachrüstung vor Neu-Content** — 70 von 102 Artikeln haben keinen FAQ-Block, obwohl
    das FAQPage-Schema automatisch rendert. 10/Woche nachrüsten (PAA-Fragen).
+   → **Batch 1 erledigt (10.07., Commit b8342d6):** 10 Artikel Exposé-+Preis-Cluster, 50 Fragen
+   (expose-pruefen, warnsignale-expose, was-im-expose-fehlt, expose-analyse-vor-besichtigung,
+   exposes-richtig-lesen, bilder-im-expose-bewerten, angebotspreis-fair, quadratmeterpreis-
+   bewerten, wohnflaeche-richtig-einordnen, besichtigung-vorbereitung). **Noch 60 offen.**
+   Batch 2 (Vorschlag): Nebenkosten-/Recht-Cluster (fristen-immobilienkauf, unterlagen-vor-
+   immobilienkauf, reservierungsgebuehr, auflassungsvormerkung, grundschuld-vs-hypothek,
+   vorfaelligkeitsentschaedigung, provisionsfrei, bodenrichtwert, hausgeld-ruecklagen, grundriss).
 3. **Käufer-Positionierung konsequent** — alle großen Bewertungs-Player sind verkäuferseitige
    Lead-Maschinen. „Die Bewertung, die nicht dem Verkäufer dient" kompensiert die Domain-Schwäche.
 

@@ -282,6 +282,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Standort'],
     image: 'https://images.pexels.com/photos/5802821/pexels-photo-5802821.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Was ist der Bodenrichtwert?', answer: 'Der durchschnittliche Lagewert des unbebauten Bodens je Quadratmeter innerhalb einer Bodenrichtwertzone. Er wird von den amtlichen Gutachterausschüssen aus tatsächlich beurkundeten Kaufpreisen ermittelt (§ 196 BauGB) und in der Regel zum Stichtag 1. Januar fortgeschrieben — er basiert also auf echten Verkäufen, nicht auf Angebotspreisen.' },
+      { question: 'Wo kann ich den Bodenrichtwert kostenlos abfragen?', answer: 'Über die BORIS-Portale der Bundesländer oder den bundesweiten Einstieg BORIS-D: Adresse in der Karte suchen, Bodenrichtwertzone anklicken, Wert je Quadratmeter ablesen. Notieren Sie auch Stichtag und Nutzungsart der Zone, um den Wert richtig einzuordnen.' },
+      { question: 'Wie rechne ich mit dem Bodenrichtwert?', answer: 'Bodenrichtwert mal Grundstücksfläche ergibt den rechnerischen Bodenwert: 500 m² mal 300 €/m² sind 150.000 €. Bei einem Kaufpreis von 400.000 € entfallen dann rechnerisch 250.000 € auf das Gebäude — ob dieser Anteil angemessen ist, hängt von Zustand und Ausstattung ab. Zuschnitt und Bebaubarkeit können den Wert zusätzlich verschieben.' },
+      { question: 'Ist der Bodenrichtwert der Wert der Immobilie?', answer: 'Nein — der häufigste Irrtum. Er bezieht sich ausschließlich auf Grund und Boden und sagt nichts über das Gebäude aus. Zudem ist er ein Durchschnittswert für die ganze Zone, kein individueller Wert für Ihr Grundstück. Er dient als Plausibilitätscheck, nicht als Kaufpreis.' },
+      { question: 'Wie funktioniert der Bodenrichtwert bei Eigentumswohnungen?', answer: 'Bei einer Wohnung gibt es kein eigenes Grundstück: Der Bodenwert entfällt anteilig über Ihren Miteigentumsanteil am Gemeinschaftsgrundstück, der als Bruchteil im Grundbuch steht. Der Gebäudewert wird auch hier getrennt betrachtet.' },
+    ],
   },
   {
     slug: 'notartermin-ablauf-hauskauf',
@@ -368,6 +375,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
     image: 'https://images.pexels.com/photos/7642008/pexels-photo-7642008.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Wie hoch ist eine übliche Reservierungsgebühr?', answer: 'Üblich sind etwa 5 bis 10 Prozent der Maklerprovision oder grob 0,3 Prozent des Kaufpreises — bei einem 400.000-€-Objekt meist rund 700 bis 1.400 €. Übersteigt die Gebühr etwa 0,3 Prozent des Kaufpreises, sieht die Rechtsprechung darin schnell einen faktischen Kaufzwang; dann wäre die Vereinbarung ohne notarielle Beurkundung formunwirksam (§ 311b BGB).' },
+      { question: 'Ist eine Reservierungsgebühr überhaupt zulässig?', answer: 'Der Bundesgerichtshof hat entschieden, dass Reservierungsvereinbarungen in Makler-AGB regelmäßig unwirksam sind, wenn sie den Kunden unangemessen benachteiligen — typischerweise dann, wenn keine echte Gegenleistung gegenübersteht und die Gebühr auch verfällt, wenn der Kauf ohne Verschulden des Käufers scheitert.' },
+      { question: 'Kann ich eine gezahlte Reservierungsgebühr zurückfordern?', answer: 'Häufig ja: Kam der Kauf nicht zustande und war die Vereinbarung als AGB unwirksam, lässt sich die Gebühr oft zurückfordern. Lassen Sie die konkrete Vereinbarung prüfen — die Hürden für wirksame Reservierungsklauseln sind nach der Rechtsprechung hoch.' },
+      { question: 'Wird die Reservierungsgebühr auf die Maklerprovision angerechnet?', answer: 'Nur wenn das ausdrücklich und schriftlich vereinbart ist. Steht die Anrechnung nicht im Vertrag, riskieren Sie, am Ende sowohl die Gebühr als auch die volle Provision zu zahlen. Prüfen Sie vor jeder Unterschrift: Verrechnung, Rückzahlungsklausel und Geltungsdauer.' },
+      { question: 'Was ist die bessere Alternative zur Reservierung?', answer: 'Schnelle Handlungsfähigkeit: Finanzierung vorbereiten, Finanzierungsbestätigung der Bank einholen, Unterlagen frühzeitig prüfen. Ein Käufer, der kurzfristig zum Notar gehen kann, ist für Verkäufer attraktiver als jede Reservierungsgebühr — und Sie zahlen nichts für eine Zusage mit unsicherem Wert.' },
+    ],
   },
   {
     slug: 'vorfaelligkeitsentschaedigung',
@@ -377,6 +391,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '7 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
     image: 'https://images.pexels.com/photos/10958528/pexels-photo-10958528.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Was ist eine Vorfälligkeitsentschädigung?', answer: 'Ein Schadensersatz (kein Strafzins) für die Zinsen, die der Bank entgehen, wenn Sie ein Immobiliendarlehen während der laufenden Zinsbindung vorzeitig ablösen — etwa bei Verkauf oder Umschuldung. Rechtsgrundlage sind unter anderem § 490 und § 502 BGB. Je nach Restschuld und Restlaufzeit kann sie vier- bis fünfstellig ausfallen.' },
+      { question: 'Gibt es eine gesetzliche Obergrenze von 1 Prozent?', answer: 'Nicht bei Baufinanzierungen: Die prozentuale Deckelung nach § 502 Absatz 3 BGB gilt nur für Allgemein-Verbraucherdarlehen wie Ratenkredite. Immobiliar-Verbraucherdarlehen sind ausdrücklich ausgenommen — begrenzt wird die Entschädigung allein durch den tatsächlichen, nachweisbaren Zinsschaden der Bank.' },
+      { question: 'Wann entfällt die Vorfälligkeitsentschädigung?', answer: 'In mehreren Fällen: bei Kündigung nach § 489 BGB (zehn Jahre nach vollständiger Auszahlung mit sechs Monaten Frist — auch bei längerer Zinsbindung), bei fehlerhaften Pflichtangaben zu Laufzeit, Kündigungsrecht oder VFE-Berechnung im Vertrag (§ 502 Absatz 2 BGB) sowie für im Vertrag vereinbarte Sondertilgungen.' },
+      { question: 'Muss die Bank eine vorzeitige Ablösung akzeptieren?', answer: 'Beim Verkauf der Immobilie ja: Es besteht ein berechtigtes Interesse, die Bank muss die Ablösung gegen Zahlung der Entschädigung ermöglichen. Bei einer reinen Umschuldung ohne Verkauf besteht dieser Anspruch dagegen oft nicht — die Bank muss innerhalb der Zinsbindung nicht zustimmen.' },
+      { question: 'Wie wird die Vorfälligkeitsentschädigung berechnet?', answer: 'Meist nach der Aktiv-Passiv-Methode: Die Bank vergleicht die entgehenden Vertragszinsen mit der Rendite einer Wiederanlage in sicheren Papieren, abgezinst auf heute. Entscheidend sind Restschuld, verbleibende Zinsbindung und das Zinsgefälle — je länger die Restbindung und je größer die Differenz, desto höher die Entschädigung.' },
+    ],
   },
   {
     slug: 'grundschuld-vs-hypothek',
@@ -386,6 +407,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '7 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
     image: 'https://images.pexels.com/photos/8293764/pexels-photo-8293764.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Was ist der Unterschied zwischen Grundschuld und Hypothek?', answer: 'Beide sind Grundpfandrechte in Abteilung III des Grundbuchs. Die Hypothek ist akzessorisch: fest ans Darlehen gebunden, sie sinkt mit jeder Tilgung und erlischt bei vollständiger Rückzahlung. Die Grundschuld ist abstrakt: Sie bleibt in voller eingetragener Höhe bestehen und lässt sich für Anschlussfinanzierung oder Umschuldung wiederverwenden — deshalb ist sie heute der Standard.' },
+      { question: 'Warum steht die volle Grundschuld noch im Grundbuch, obwohl ich schon getilgt habe?', answer: 'Das ist normal und kein Fehler: Die Grundschuld sinkt nicht automatisch mit der Tilgung. Ihre tatsächliche Restschuld ergibt sich aus dem Darlehensvertrag, nicht aus der im Grundbuch eingetragenen Höhe. Genau diese Eigenschaft macht die Grundschuld bei einem späteren Bankwechsel flexibel.' },
+      { question: 'Was kostet die Eintragung einer Grundschuld?', answer: 'Als Orientierung rund 0,8 bis 1 Prozent der Grundschuldsumme für Notar und Grundbuchamt — bei einer Grundschuld über 300.000 € also typischerweise etwa 2.400 bis 3.000 €. Die Kosten sind Teil der Kaufnebenkosten; die genaue Höhe hängt vom konkreten Gebührensatz ab.' },
+      { question: 'Was passiert mit der Grundschuld nach vollständiger Tilgung?', answer: 'Sie verschwindet nicht automatisch. Zwei Optionen: löschen lassen (Löschungsbewilligung der Bank, Gebühren, dafür lastenfreies Grundbuch — gut für einen Verkauf) oder als Eigentümergrundschuld stehen lassen, die sich später als Sicherheit für einen neuen Kredit wiederverwenden lässt und eine erneute Eintragung spart.' },
+      { question: 'Übernehme ich beim Kauf die Grundschuld des Verkäufers?', answer: 'Normalerweise nicht: Alte Grundschulden des Verkäufers in Abteilung III werden im Zuge des Kaufs abgelöst und gelöscht — darauf sollten Sie ausdrücklich achten. Für Ihr eigenes Darlehen lässt Ihre Bank eine neue Grundschuld eintragen.' },
+    ],
   },
   {
     slug: 'kfw-wohneigentum-familien-2026',
@@ -464,6 +492,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '7 Min',
     tags: ['Kaufratgeber', 'Checkliste'],
     image: 'https://images.pexels.com/photos/1370294/pexels-photo-1370294.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Was ist eine Auflassungsvormerkung, einfach erklärt?', answer: 'Ein Schutzeintrag nach § 883 BGB, der kurz nach der Beurkundung in Abteilung II des Grundbuchs eingetragen wird. Er sichert Ihren Anspruch auf die Eigentumsübertragung in der Wochen dauernden Phase zwischen Kaufvertrag und endgültiger Eintragung — die Immobilie ist damit faktisch für Sie reserviert.' },
+      { question: 'Wovor schützt die Auflassungsvormerkung?', answer: 'Vor drei Risiken: Ein Zweitverkauf an einen Dritten wäre Ihnen gegenüber unwirksam, der Verkäufer kann die Immobilie nicht mehr zusätzlich belasten (etwa mit einer weiteren Grundschuld), und bei einer Insolvenz des Verkäufers fällt Ihr Anspruch nicht in die Insolvenzmasse.' },
+      { question: 'Wann sollte ich den Kaufpreis überweisen?', answer: 'Grundsätzlich erst, wenn die Vormerkung eingetragen ist und die schriftliche Fälligkeitsmitteilung des Notars vorliegt — sie bestätigt auch Lastenfreistellung und Vorkaufsrechtsverzicht der Gemeinde. Wer vorher zahlt, gibt das Geld ohne Absicherung aus der Hand.' },
+      { question: 'Was kostet die Auflassungsvormerkung?', answer: 'Es fällt kein separater Zusatzbetrag an: Die Kosten sind Teil der üblichen Notar- und Grundbuchkosten von rund 1,5 bis 2 Prozent des Kaufpreises, die beim Immobilienkauf ohnehin anfallen.' },
+      { question: 'Wann werde ich wirklich Eigentümer der Immobilie?', answer: 'Erst mit der Eintragung in Abteilung I des Grundbuchs. Die Auflassung nach § 925 BGB beim Notartermin ist nur die notariell erklärte Einigung über den Eigentumsübergang — zwischen Beurkundung und Umschreibung vergehen typischerweise mehrere Wochen bis Monate.' },
+    ],
   },
   {
     slug: 'wohnung-kaufen-vermieten-kapitalanlage',
@@ -585,6 +620,12 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '7 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
     image: 'https://images.pexels.com/photos/8469940/pexels-photo-8469940.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Was bedeutet „provisionsfrei" bei Immobilien genau?', answer: 'Sie als Käufer zahlen keine Maklerprovision. Drei typische Fälle: Privatverkauf ohne Makler, Direktvertrieb vom Bauträger oder der Verkäufer trägt die Courtage komplett. Wichtig: Grunderwerbsteuer, Notar und Grundbuch fallen trotzdem an — „provisionsfrei" ist nicht „nebenkostenfrei".' },
+      { question: 'Wie viel spare ich bei einem provisionsfreien Angebot?', answer: 'Der übliche Käuferanteil liegt bei 2,98 bis 3,57 Prozent des Kaufpreises inklusive Mehrwertsteuer — bei 400.000 € also bis zu 14.280 €. Ein realer Zusatzvorteil: Die Provision wird von Banken in der Regel nicht mitfinanziert, entfällt sie, sinkt Ihr Eigenkapitalbedarf entsprechend.' },
+      { question: 'Ist eine provisionsfreie Immobilie automatisch günstiger?', answer: 'Nein. Verkäufer können die Maklerkosten in den Angebotspreis einkalkulieren. Beispiel: Ein provisionsfreies Objekt für 415.000 € kostet mehr als ein vergleichbares Maklerobjekt für 400.000 € plus 3,57 Prozent Provision (zusammen 414.280 €). Vergleichen Sie immer den Gesamtaufwand, nie das Label.' },
+      { question: 'Was besagt die 50/50-Regel bei der Maklerprovision?', answer: 'Seit dem 23. Dezember 2020 (§§ 656c und 656d BGB) darf der Verkäufer, der den Makler beauftragt, höchstens die Hälfte der Provision auf den Käufer abwälzen — bei Eigentumswohnungen und Einfamilienhäusern an Verbraucher. Für Grundstücke, Mehrfamilienhäuser und Gewerbe gilt die Regel nicht; dort ist die Verteilung frei verhandelbar.' },
+    ],
   },
   {
     slug: 'grundbuch-lesen',
@@ -827,6 +868,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '14 Min',
     tags: ['Kaufratgeber', 'Checkliste'],
     image: 'https://images.pexels.com/photos/11773871/pexels-photo-11773871.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Wie lange habe ich Zeit, den Kaufvertragsentwurf zu prüfen?', answer: 'Bei Verträgen mit Verbrauchern gilt eine gesetzliche Regelfrist von 14 Tagen: Der Notar muss den Entwurf mindestens zwei Wochen vor der Beurkundung zur Verfügung stellen. Ein Verzicht auf diese Prüffrist ist in bestimmten Konstellationen möglich, aber selten ratsam — er bedeutet fast immer, dass der Vertrag nicht gründlich gelesen wurde.' },
+      { question: 'Wann muss ich den Kaufpreis bezahlen?', answer: 'Erst nach der schriftlichen Fälligkeitsmitteilung des Notars, die bestätigt, dass alle Voraussetzungen erfüllt sind (Auflassungsvormerkung eingetragen, Lastenfreistellung gesichert). Ab Zugang läuft die vertraglich vereinbarte Zahlungsfrist, üblich sind 10 bis 20 Werktage. Bei Versäumnis fallen automatisch Verzugszinsen an, üblich 5 Prozentpunkte über dem Basiszinssatz.' },
+      { question: 'Wann ist die Grunderwerbsteuer fällig?', answer: 'Das Finanzamt verschickt den Bescheid in der Regel 4 bis 10 Wochen nach der Beurkundung; die Steuer ist innerhalb eines Monats nach Zugang fällig. Wichtig: Erst nach der Zahlung stellt das Finanzamt die Unbedenklichkeitsbescheinigung aus — ohne sie erfolgt keine Umschreibung im Grundbuch.' },
+      { question: 'Wie lange dauert es, bis ich als Eigentümer im Grundbuch stehe?', answer: 'Die Umschreibung in Abteilung I dauert typischerweise 2 bis 6 Monate nach der Beurkundung. Bis dahin sind Sie über die Auflassungsvormerkung abgesichert, rechtlich Eigentümer werden Sie aber erst mit der Eintragung. Banken und Behörden verlangen teilweise den aktualisierten Grundbuchauszug.' },
+      { question: 'Was sind Bereitstellungszinsen?', answer: 'Die Bank stellt das Darlehen nach Vertragsabschluss bereit und gewährt typischerweise 6 bis 12 Monate zinsfreie Bereitstellung. Danach werden meist 0,25 Prozent pro Monat auf den noch nicht abgerufenen Betrag fällig — bei Neubauten mit langer Bauzeit ein erheblicher Kostenfaktor.' },
+    ],
   },
   {
     slug: 'immobilienanfragen-bearbeiten',
@@ -845,6 +893,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '13 Min',
     tags: ['Checkliste', 'Kaufratgeber'],
     image: 'https://images.pexels.com/photos/7654588/pexels-photo-7654588.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Welche Unterlagen brauche ich vor der ersten Besichtigung?', answer: 'Drei Dokumente sollten Sie schon vor dem Ortstermin anfordern: den vollständigen Energieausweis (nicht nur die Pflichtangaben aus dem Inserat — er enthält Modernisierungsempfehlungen), den Grundriss mit Maßen und die Wohnflächenberechnung mit Berechnungsgrundlage. Ein seriöser Verkäufer hat alle drei parat.' },
+      { question: 'Welche Unterlagen sind beim Wohnungskauf entscheidend?', answer: 'Bei Eigentumswohnungen zusätzlich: Teilungserklärung mit Aufteilungsplan (was ist Sonder-, was Gemeinschaftseigentum), WEG-Protokolle der letzten drei Jahre, Hausgeldabrechnung mit Aufschlüsselung, Wirtschaftsplan und der Kontostand der Instandhaltungsrücklage — die wichtigste einzelne Zahl beim Wohnungskauf.' },
+      { question: 'Was ist das aufschlussreichste Dokument beim Wohnungskauf?', answer: 'Die WEG-Protokolle der letzten drei Jahre: Dort stehen geplante Sanierungen, beschlossene Sonderumlagen (die auf den neuen Eigentümer übergehen), Streitigkeiten und Zahlungsrückstände. Stellt der Verkäufer die Protokolle nicht bereit, ist das eines der stärksten Warnsignale überhaupt.' },
+      { question: 'Warum ist die Wohnflächenberechnung so wichtig?', answer: 'Weil die Wohnfläche den Quadratmeterpreis bestimmt — Ihre wichtigste Vergleichszahl. Eine Berechnung nach DIN 277 kann 10 bis 15 Prozent mehr Fläche ausweisen als nach Wohnflächenverordnung. Bei 4.000 €/m² und 10 Prozent Abweichung geht es bei einer 80-m²-Wohnung um 32.000 €.' },
+      { question: 'Was bedeutet ein fehlender Energieausweis?', answer: 'Der Energieausweis ist gesetzliche Pflicht — sein Fehlen ist eine Ordnungswidrigkeit und ein klares Warnsignal: Entweder ist der Verkäufer unseriös, oder die Werte sind so schlecht, dass er sie nicht zeigen möchte. Fordern Sie immer den vollständigen Ausweis an, nicht nur die Kurzangaben.' },
+    ],
   },
   {
     slug: 'immobilienkauf-mit-familie',
@@ -897,6 +952,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '14 Min',
     tags: ['Finanzierung', 'Kaufratgeber'],
     image: 'https://images.pexels.com/photos/29274535/pexels-photo-29274535.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Was ist ein normales Hausgeld?', answer: 'Im Durchschnitt 3,00 bis 4,50 €/m² pro Monat — bei einer 80-m²-Wohnung also 240 bis 360 €. Unter 2,50 €/m² ist verdächtig niedrig (Rücklage wahrscheinlich zu gering), über 6,00 €/m² deutet auf ein Luxusobjekt oder ein Problemgebäude hin. Entscheidend ist immer die Aufschlüsselung, nicht die Gesamtsumme.' },
+      { question: 'Woraus setzt sich das Hausgeld zusammen?', answer: 'Betriebskosten wie Wasser, Müll, Versicherung und Reinigung machen 40 bis 55 Prozent aus (bei Vermietung umlagefähig), die Heizkosten-Vorauszahlung 15 bis 25 Prozent, die Instandhaltungsrücklage 15 bis 25 Prozent und die Verwaltung etwa 25 bis 40 € je Einheit — Rücklage und Verwaltung sind nicht umlagefähig.' },
+      { question: 'Wie hoch sollte die Instandhaltungsrücklage sein?', answer: 'Als Faustregel sollten 50 bis 100 € pro Quadratmeter Gesamtwohnfläche auf dem Rücklagenkonto liegen; die monatliche Zuführung sollte mindestens 1,00 €/m² beim Neubau bis 2,50 €/m² beim Altbau betragen. Bei einem 10-Parteien-Haus ist ein Kontostand unter 20.000 € kritisch — jede größere Reparatur erfordert dann eine Sonderumlage.' },
+      { question: 'Was ist eine Sonderumlage?', answer: 'Eine Nachzahlung aller Eigentümer, wenn die Rücklage für eine Maßnahme nicht reicht — bei Dach- oder Heizungssanierungen sind 8.000 bis 20.000 € pro Einheit typisch. Wichtig vor dem Kauf: Bereits beschlossene, noch nicht gezahlte Sonderumlagen gehen auf den neuen Eigentümer über.' },
+      { question: 'Welche Unterlagen sollte ich vor dem Wohnungskauf anfordern?', answer: 'Die aktuelle Hausgeldabrechnung mit vollständiger Aufschlüsselung, den Wirtschaftsplan des laufenden Jahres, den Kontostand der Instandhaltungsrücklage und die WEG-Protokolle der letzten drei Jahre. Der Rücklagen-Kontostand steht in keinem Exposé — Sie müssen ihn aktiv anfordern.' },
+    ],
   },
   {
     slug: 'wohnflaeche-richtig-einordnen',
@@ -922,6 +984,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '13 Min',
     tags: ['Kaufratgeber'],
     image: 'https://images.pexels.com/photos/6615086/pexels-photo-6615086.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Was bedeuten die Linien und Symbole im Grundriss?', answer: 'Dicke durchgezogene Linien sind tragende Wände (nicht entfernbar — begrenzen Umbauten), dünne Linien nicht tragende Wände, ein Viertelkreis-Bogen zeigt die Türöffnungsrichtung, gestrichelte Linien markieren Dachschrägen oder Stürze mit reduzierter Raumhöhe, Rechtecke an den Wänden sind Fenster.' },
+      { question: 'Was sind Verkehrsflächen und wie viel ist normal?', answer: 'Flure, Dielen und Durchgangsbereiche — sie kosten Wohnfläche, bieten aber keinen Wohnwert. Effiziente Grundrisse kommen mit 10 bis 15 Prozent aus, schlecht geschnittene erreichen 20 bis 25 Prozent. Beispiel: 85 m² mit 20 Prozent Verkehrsfläche bedeuten nur 68 m² nutzbare Fläche — ein halbes Zimmer weniger als beim effizienten Schnitt.' },
+      { question: 'Warum sind Durchgangszimmer ein Problem?', answer: 'Ein Raum, durch den man laufen muss, um einen anderen zu erreichen, verliert seine Eigenständigkeit — er ist gleichzeitig Flur und Wohnraum. Ein Kinderzimmer, das nur über das Elternschlafzimmer erreichbar ist, ist kein echtes Kinderzimmer. Für Familien und Wohngemeinschaften sind Durchgangszimmer meist ungeeignet.' },
+      { question: 'Wie prüfe ich, ob meine Möbel in die Räume passen?', answer: 'Gleichen Sie Standardmaße mit den Wandlängen ab: Ein Doppelbett (1,80 × 2,00 m) braucht mindestens 2,80 m Wandlänge inklusive Nachttische, ein Esstisch für vier Personen etwa 2,00 m, eine Küchenzeile mindestens 2,40 m. Am sichersten: Grundriss maßstabsgerecht ausdrucken und die wichtigsten Möbel einzeichnen.' },
+      { question: 'Was bedeutet es, wenn das Exposé keinen Grundriss enthält?', answer: 'Das ist ein echtes Warnsignal: Ein fehlender Grundriss bedeutet fast immer, dass die Raumaufteilung problematisch ist — einen guten Grundriss unterschlägt kein Makler. Fordern Sie ihn vor der Besichtigung an.' },
+    ],
   },
   {
     slug: 'baujahr-und-modernisierung',
