@@ -208,6 +208,10 @@ PerplexityBot, OAI-SearchBot, Google-Extended), FAQPage-Schema, Kaufnebenkosten-
   srcset + fetchpriority=high, preconnect auf images.pexels.com
 - ✅ `<time datetime>`-Attribute, 4 schlimmste Titles (>100 Z.) auf ≤60 Zeichen gekürzt
 - ✅ www.immopruef.de dem Vercel-Projekt hinzugefügt (wartet auf DNS, siehe 5.2)
+- ✅ **LP `/expose-pruefen-lassen` live** (Prio-1-Keyword): AEO-Definitionsabsatz, Vergleichstabelle
+  (Selbst/ChatGPT/ImmoPrüf/Gutachter), Service- + FAQPage-Schema, 7 FAQ; 10 Exposé-Artikel
+  verlinken per umgeschaltetem CTA mit Keyword-Ankertext, Footer-Link sitewide, Sitemap prio 0.9.
+  → Nach Deploy: in GSC „Indexierung beantragen" für die LP!
 
 ### 5.2 Nur du kannst (Reihenfolge = Priorität)
 

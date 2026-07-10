@@ -881,6 +881,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '13 Min',
     tags: ['Kaufratgeber'],
     image: 'https://images.pexels.com/photos/34613043/pexels-photo-34613043.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Wie stark verzerren Weitwinkel-Fotos die Raumgröße?', answer: 'Weitwinkelobjektive lassen Räume 20 bis 30 Prozent größer wirken als in der Realität — ein 12-m²-Schlafzimmer sieht aus wie 16 m². Erkennbar an leicht gebogenen Tür- und Fensterrahmen am Bildrand. Verlassen Sie sich deshalb auf Grundriss und Quadratmeterangabe, nicht auf den Bildeindruck.' },
+      { question: 'Was bedeutet es, wenn Räume auf den Exposé-Fotos fehlen?', answer: 'Fehlende Fotos von Bad, Küche, Keller oder Flur haben meist einen Grund: Diese Räume sind nicht vorzeigbar. Zählen Sie, ob jeder Raum abgebildet ist, und notieren Sie fehlende Räume als Fragen für die Besichtigung. Bei ausschließlich Außenfotos sollten Sie nur mit einem Sachverständigen besichtigen.' },
+      { question: 'Welche Zustandsdetails verraten Fotos ungewollt?', answer: 'Gusseiserne Rippenheizkörper deuten auf eine mindestens 25 Jahre alte Heizung (Tausch 15.000 bis 30.000 €), Pastellfliesen auf ein Bad aus den 70er/80er Jahren (10.000 bis 25.000 €), runde Bakelit-Steckdosen auf Elektrik ohne FI-Schutz (8.000 bis 15.000 €). Frischer Anstrich überall kann normale Verkaufsvorbereitung sein — oder Risse und Feuchtigkeit überdecken.' },
+      { question: 'Was können Fotos prinzipiell nicht zeigen?', answer: 'Gerüche wie Feuchtigkeit, Schimmel oder Rauch, Lärm von Straße und Nachbarn, Raumklima wie Hitze im Dachgeschoss, Feuchtigkeit hinter Möbeln, unsichtbare Schadstoffe wie Asbest sowie die tatsächliche Verkehrsbelastung — ein Sonntagsfoto zeigt leere Straßen. Deshalb ersetzt kein noch so gutes Exposé die Besichtigung.' },
+      { question: 'Woran erkenne ich virtuelles Home Staging?', answer: 'Bei digital eingefügten Möbeln passen die Schatten oft nicht zum Lichteinfall, Möbel scheinen leicht über dem Boden zu schweben und alles wirkt steril perfekt. Auch reale Inszenierung arbeitet mit Tricks: auffallend kleine Möbel lassen Räume größer wirken. Prüfen Sie die Möbelgrößen gegen die Quadratmeterangabe im Grundriss.' },
+    ],
   },
   {
     slug: 'hausgeld-ruecklagen-sonderumlage',
@@ -899,6 +906,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '13 Min',
     tags: ['Kaufratgeber'],
     image: 'https://images.pexels.com/photos/4048078/pexels-photo-4048078.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Was ist der Unterschied zwischen WoFlV und DIN 277?', answer: 'Die Wohnflächenverordnung rechnet Balkone nur zu 25 Prozent, Dachschrägen zwischen 1 und 2 m zur Hälfte, unter 1 m gar nicht und Keller nie mit. DIN 277 zählt fast alles voll — typischer Unterschied: 10 bis 15 Prozent. Dieselbe Dachgeschosswohnung kann so „95 m²" nach DIN oder 82 m² nach WoFlV haben.' },
+      { question: 'Wie zählen Balkon und Terrasse zur Wohnfläche?', answer: 'Nach WoFlV zählen Balkon und Terrasse zu 25 Prozent, eine Loggia und ein unbeheizter Wintergarten zu 50 Prozent. Ein zu 100 Prozent angerechneter 15-m²-Balkon erzeugt 11,25 m² Phantomfläche — bei 4.000 €/m² entspricht das 45.000 €, die Sie für nicht existente Wohnfläche zahlen.' },
+      { question: 'Wie viel Fläche geht durch Dachschrägen verloren?', answer: 'Unter 1 m Raumhöhe zählt die Fläche gar nicht, zwischen 1 und 2 m nur zur Hälfte. Praktisch relevant: Unter 1,50 m passt weder Schrank noch Bett mit Kopfteil. Suchen Sie im Grundriss die 2-m-Linie und messen Sie bei der Besichtigung die Raumhöhen — ein Zollstock genügt.' },
+      { question: 'Was sind Verkehrsflächen und warum sind sie wichtig?', answer: 'Flure und Dielen zählen voll zur Wohnfläche, bieten aber keinen Wohnwert. Gut geschnittene Wohnungen kommen mit 10 bis 12 Prozent aus, schlechte mit 20 bis 25 Prozent. Zwei 80-m²-Wohnungen zum gleichen Preis können so 72 oder nur 62 m² nutzbare Fläche bedeuten — ein realer Preisunterschied von über 700 €/m².' },
+      { question: 'Ab welcher Flächenabweichung habe ich rechtliche Ansprüche?', answer: 'Als Faustlinie gilt: Weicht die tatsächliche Wohnfläche mehr als 10 Prozent von der angegebenen ab, haben Käufer rechtliche Handhabe für eine Kaufpreisminderung. Fordern Sie deshalb immer die Wohnflächenberechnung nach WoFlV an und gleichen Sie sie mit dem Grundriss ab.' },
+    ],
   },
   {
     slug: 'grundriss-richtig-lesen',
@@ -989,6 +1003,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '13 Min',
     tags: ['Checkliste', 'Kaufratgeber'],
     image: 'https://images.pexels.com/photos/19966758/pexels-photo-19966758.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Welche Fragen sollte ich bei der Besichtigung unbedingt stellen?', answer: 'Die wichtigsten: Warum wird verkauft? Wie lange steht das Objekt schon online, gab es Preissenkungen? Welche Sanierungen wurden in den letzten 15 Jahren durchgeführt — mit Belegen? Gibt es bekannte Mängel, die nicht im Exposé stehen? Wie alt ist die Heizung, wie hoch waren die tatsächlichen Heizkosten? Bei Eigentumswohnungen zusätzlich: Rücklagenstand, geplante Sonderumlagen, WEG-Protokolle.' },
+      { question: 'Was sollte ich zur Besichtigung mitnehmen?', answer: 'Zollstock oder Laser-Entfernungsmesser, das Smartphone für Fotos, Ihre vorbereitete Fragenliste — und wenn möglich eine zweite Person, denn vier Augen sehen mehr als zwei. Vorher lohnen 15 Minuten Vorbereitung: Exposé-Lücken notieren, Lärmkarte und Street View prüfen.' },
+      { question: 'Muss der Verkäufer bekannte Mängel offenlegen?', answer: 'Ja. Verkäufer sind verpflichtet, ihnen bekannte Mängel mitzuteilen; arglistig verschwiegene Mängel begründen auch nach dem Kauf Ansprüche. Stellen Sie die Frage deshalb direkt und im Beisein von Zeugen: „Gibt es bekannte Mängel, die nicht im Exposé stehen?" — die Antwort ist rechtlich relevant.' },
+      { question: 'Wie viel Instandhaltungsrücklage sollte eine WEG haben?', answer: 'Als Faustregel mindestens 50 bis 100 € pro Quadratmeter Gesamtwohnfläche des Gebäudes. Liegt deutlich weniger auf dem Konto und stehen Sanierungen an, ist eine Sonderumlage absehbar — auch wenn sie offiziell „nicht geplant" ist. Lassen Sie sich den Kontostand und die Protokolle der letzten drei Jahre zeigen.' },
+      { question: 'Was verrät der Verkaufsgrund über die Verhandlungsposition?', answer: 'Erbschaft oder Scheidung bedeuten oft Zeitdruck und damit Verhandlungsspielraum. Umzug oder Jobwechsel sind neutrale Gründe. Finanzielle Probleme können auf vernachlässigte Instandhaltung hindeuten. Eine ausweichende Antwort ist selbst ein Signal — haken Sie nach.' },
+    ],
   },
   {
     slug: 'zustand-folgekosten',
@@ -1052,6 +1073,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '12 Min',
     tags: ['Kaufratgeber'],
     image: 'https://images.pexels.com/photos/1111319/pexels-photo-1111319.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Liegt der Angebotspreis über dem tatsächlichen Kaufpreis?', answer: 'In der Regel ja: Nach den Preiskorrekturen 2022 bis 2024 und der Stabilisierung liegen Angebotspreise im Schnitt 5 bis 15 Prozent über den tatsächlichen Transaktionspreisen. Der Angebotspreis ist eine Forderung, kein Marktwert — Verhandeln ist üblich, braucht aber fundierte Argumente.' },
+      { question: 'Mit welchen Methoden prüfe ich, ob ein Angebotspreis fair ist?', answer: 'Drei Methoden ergänzen sich: der Quadratmeterpreis-Vergleich mit wirklich vergleichbaren Objekten (gleiche Lage, gleicher Zustand, gleiche Flächenberechnung), der Sachwert-Überschlag über den Bodenrichtwert aus dem BORIS-Portal plus Gebäudewert abzüglich Alterswertminderung, und das Kaufpreis-Miete-Verhältnis als Renditemaßstab.' },
+      { question: 'Welcher Kaufpreis-Miete-Faktor gilt als fair?', answer: 'Kaufpreis geteilt durch Jahreskaltmiete: unter 20 gilt als günstig, 20 bis 25 als fair und marktüblich, 25 bis 30 als teuer und nur bei starker Lage mit Wertsteigerungsperspektive sinnvoll, über 30 als sehr teuer — dort ist Mieten finanziell oft die bessere Wahl.' },
+      { question: 'Wie stark bestimmt die Lage den Immobilienpreis?', answer: 'Die Lage ist der stärkste einzelne Preisfaktor und bestimmt bis zu 60 Prozent des Werts. Zwei identische Wohnungen können je nach Stadtteil um den Faktor 3 auseinanderliegen, und selbst innerhalb eines Stadtteils sind 20 bis 30 Prozent Unterschied je nach Straße möglich.' },
+      { question: 'Wie fließt Sanierungsbedarf in den fairen Preis ein?', answer: 'Was in den nächsten 5 bis 10 Jahren saniert werden muss, gehört vom Angebotspreis abgezogen — gedanklich und in der Verhandlung. Typische Posten: Heizungstausch 15.000 bis 30.000 €, Dach 15.000 bis 30.000 €, Fenster komplett 10.000 bis 25.000 €, Bad 10.000 bis 25.000 €, Elektrik 8.000 bis 15.000 €.' },
+    ],
   },
   {
     slug: 'expose-analyse-vor-besichtigung',
@@ -1061,6 +1089,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '12 Min',
     tags: ['Checkliste', 'Kaufratgeber'],
     image: 'https://images.pexels.com/photos/8369248/pexels-photo-8369248.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Wie lange dauert eine gute Exposé-Voranalyse?', answer: 'Etwa 15 bis 20 Minuten pro Exposé, sinnvoll gegliedert in drei Stufen: ein 2-Minuten-Grundcheck der Ausschlusskriterien, eine 10-Minuten-Kennzahlenanalyse (Quadratmeterpreis, Baujahr, Energie, Hausgeld) und eine 10-Minuten-Kontextrecherche zu Lage und Risiken. Verglichen mit 2 bis 3 Stunden pro Besichtigung ist das eine kleine Investition.' },
+      { question: 'Wie viele Immobilien sollte man besichtigen, bevor man kauft?', answer: 'Käufer besichtigen im Schnitt 8 bis 12 Objekte — mindestens die Hälfte davon ließe sich durch gründliche Exposé-Analyse vorab aussortieren. Als Trichter-Faustregel: 20 bis 30 Exposés grob prüfen, die besten 8 bis 10 anhand der Kennzahlen analysieren, bei 4 bis 5 den Kontext recherchieren und nur 3 bis 4 tatsächlich besichtigen.' },
+      { question: 'Wie berechne ich die Heizkosten aus dem Energieausweis?', answer: 'Wohnfläche mal Energiekennwert (kWh/m²a) mal rund 0,10 € je kWh bei Gas. Beispiel: Eine 90-m²-Wohnung mit Klasse E (145 kWh/m²a) kostet etwa 1.305 € Heizkosten pro Jahr, mit Klasse B (60 kWh/m²a) nur rund 540 € — eine Differenz von über 15.000 € in 20 Jahren.' },
+      { question: 'Wann lohnt sich eine Besichtigung nicht?', answer: 'Typische Ausschluss-Konstellationen: Preis auf Neubauniveau bei unsaniertem Altbau, Energieklasse F bis H ohne entsprechenden Preisabschlag, ausschließlich Außenfotos, fehlender Energieausweis trotz Pflicht, Inserat seit über sechs Monaten online ohne Preisanpassung oder ein Lage-Check, der Hauptstraße, Bahnlinie oder Industrie direkt nebenan zeigt.' },
+      { question: 'Was verrät die Online-Standdauer eines Inserats?', answer: 'Unter vier Wochen ist normal. Steht ein Objekt über drei Monate online, ist es tendenziell überteuert oder hat Probleme; über sechs Monate ohne Preisanpassung ist ein deutliches Warnsignal. Preissenkungen seit Erstveröffentlichung zeigen schwache Nachfrage — und liefern Ihnen Verhandlungsargumente.' },
+    ],
   },
   {
     slug: 'was-im-expose-fehlt',
@@ -1070,6 +1105,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '12 Min',
     tags: ['Kaufratgeber'],
     image: 'https://images.pexels.com/photos/17770333/pexels-photo-17770333.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Welche Unterlagen sollte ich vor der Besichtigung anfordern?', answer: 'Die Sanierungsliste mit Jahreszahlen und Belegen, Baujahr und Wartungshistorie der Heizung, den vollständigen Energieausweis, die Wohnflächenberechnung nach WoFlV sowie die Nebenkostenabrechnungen der letzten zwei bis drei Jahre. Bei Eigentumswohnungen zusätzlich Hausgeld-Aufschlüsselung, Rücklagen-Kontostand, Wirtschaftsplan und die WEG-Protokolle der letzten drei Jahre.' },
+      { question: 'Warum sind WEG-Protokolle beim Wohnungskauf so wichtig?', answer: 'In den Protokollen der Eigentümerversammlung stehen geplante Sonderumlagen (10.000 bis 20.000 € je Einheit sind keine Seltenheit), beschlossene Sanierungen, Streitigkeiten und Hausgeld-Rückstände anderer Eigentümer. Eine beschlossene, noch nicht bezahlte Sonderumlage geht auf den neuen Eigentümer über — das steht in keinem Exposé.' },
+      { question: 'Wie prüfe ich, ob die Wohnflächenangabe stimmt?', answer: 'Fordern Sie die offizielle Wohnflächenberechnung nach Wohnflächenverordnung an. Häufige Fehler: Balkone zu 100 statt 25 Prozent angerechnet, Dachschrägen unter 2 m voll statt zur Hälfte gezählt, Keller als Wohnfläche deklariert oder Nutzfläche nach DIN 277 angegeben — das macht bis zu 15 Prozent Unterschied. Bei über 10 Prozent Abweichung haben Sie rechtliche Handhabe für eine Kaufpreisminderung.' },
+      { question: 'Welche rechtlichen Risiken stehen nicht im Exposé?', answer: 'Baulasten stehen nur im Baulastenverzeichnis des Bauamts, nicht im Grundbuch, und können Umbaupläne verhindern. Dazu kommen Wegerechte, Wohnrechte und Nießbrauch in Grundbuch-Abteilung II, Denkmalschutz-Auflagen, Milieuschutz mit gemeindlichem Vorkaufsrecht sowie unvollständige Erschließung mit möglichen Nachforderungen bis 30.000 €.' },
+      { question: 'Muss die Maklerprovision im Exposé angegeben werden?', answer: 'Ja, die Provision gehört ins Inserat. Fehlt die Angabe, fragen Sie sofort nach — bei einem Kaufpreis von 400.000 € macht der Käuferanteil bis zu 14.000 € aus. Fragen Sie bei der Gelegenheit auch nach dem Verkaufsgrund: Erbschaft oder Scheidung bedeuten oft Zeitdruck und damit Verhandlungsspielraum.' },
+    ],
   },
   {
     slug: 'exposes-richtig-lesen',
@@ -1079,6 +1121,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '12 Min',
     tags: ['Kaufratgeber'],
     image: 'https://images.pexels.com/photos/265642/pexels-photo-265642.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Welche Zahlen im Exposé sind für Einsteiger am wichtigsten?', answer: 'Fünf Kennzahlen liefern rund 80 Prozent der Entscheidungsgrundlage: der Quadratmeterpreis (Kaufpreis geteilt durch Wohnfläche), das Baujahr, die Energieeffizienzklasse, bei Eigentumswohnungen das Hausgeld und die Maklerprovision. Wer diese fünf einordnen kann, erkennt die meisten überteuerten oder problematischen Angebote schon am Schreibtisch.' },
+      { question: 'Was ist ein normaler Quadratmeterpreis in Deutschland?', answer: 'Anfang 2026 lag der Bundesdurchschnitt bei etwa 3.520 €/m² für Eigentumswohnungen und 3.009 €/m² für Einfamilienhäuser. Diese Werte streuen regional extrem — in München über 9.000 €/m², in Teilen Sachsen-Anhalts unter 1.200 €/m². Vergleichen Sie deshalb immer mit ähnlichen Angeboten in derselben Stadt, nie mit dem Bundesschnitt.' },
+      { question: 'Was sagt das Baujahr über eine Immobilie aus?', answer: 'Es verrät Baustandards und anstehende Sanierungen: vor 1960 ist massiver Sanierungsbedarf samt Schadstoffrisiko wahrscheinlich, bei 1960 bis 1979 sind Heizung und Fenster meist am Ende (Energieklasse E bis H typisch), bei 1980 bis 1999 steht der Heizungstausch in 5 bis 10 Jahren an, ab 2016 gilt aktueller Standard. Entscheidend ist immer die Sanierungshistorie.' },
+      { question: 'Wie viel Hausgeld ist bei einer Eigentumswohnung normal?', answer: 'Durchschnittlich 3,00 bis 4,50 €/m² pro Monat für Betriebskosten, Verwaltung und Instandhaltungsrücklage. Wichtig: Das Hausgeld kommt zur Kreditrate hinzu. Ein ungewöhnlich niedriges Hausgeld ist kein Vorteil, sondern oft ein Zeichen unterfinanzierter Rücklagen — dann drohen Sonderumlagen von 10.000 bis 20.000 €.' },
+      { question: 'Wie hoch ist die Maklerprovision beim Immobilienkauf?', answer: 'Seit 2020 wird die Provision zwischen Käufer und Verkäufer geteilt, maximal 50/50. Üblich sind 3,57 Prozent inklusive Mehrwertsteuer je Partei — bei 350.000 € Kaufpreis also 12.495 € für den Käufer. Provisionsfreie Angebote von Privatverkäufern oder Bauträgern sparen diesen Betrag komplett.' },
+    ],
   },
   {
     slug: 'hauskauf-vorbereiten',
@@ -1158,6 +1207,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '10 Min',
     tags: ['Kaufratgeber'],
     image: 'https://images.pexels.com/photos/4447140/pexels-photo-4447140.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Wann ist ein günstiger Immobilienpreis ein Warnsignal?', answer: 'Liegt der Kaufpreis 20 Prozent oder mehr unter vergleichbaren Angeboten derselben Lage, ist das selten ein Schnäppchen. Häufige Ursachen sind Betrugsinserate mit kopierten Fotos, verdeckte Mängel wie Altlasten oder Bauschäden oder ungeklärte Eigentumsverhältnisse. Prüfen Sie den Quadratmeterpreis immer gegen regionalen Durchschnitt und Bodenrichtwert.' },
+      { question: 'Was bedeutet ein auffällig niedriges Hausgeld?', answer: 'Das durchschnittliche Hausgeld liegt bei 3,00 bis 4,50 €/m² pro Monat. Liegt es deutlich darunter, ist oft die Instandhaltungsrücklage zu niedrig oder Reparaturen werden aufgeschoben — dann drohen Sonderumlagen, bei vernachlässigten Gebäuden nicht selten 10.000 € oder mehr je Einheit. Fragen Sie nach dem Rücklagen-Kontostand und den WEG-Protokollen der letzten drei Jahre.' },
+      { question: 'Ist ein fehlender Energieausweis im Inserat erlaubt?', answer: 'Nein. Seit dem Gebäudeenergiegesetz sind die Energieangaben im Inserat Pflicht, das Fehlen ist eine Ordnungswidrigkeit. Es kann zudem bedeuten, dass schlechte Werte bewusst verborgen werden sollen: Eine Immobilie der Klasse G oder H hat erheblichen Sanierungsbedarf, der schnell 50.000 € und mehr kosten kann.' },
+      { question: 'Woran erkenne ich Betrug bei Immobilienanzeigen?', answer: 'Typische Muster: Vorauszahlungen oder „Reservierungsgebühren" vor dem Notartermin, ein Anbieter, der angeblich im Ausland ist und nur per E-Mail kommuniziert, keine Besichtigung möglich, Zahlungen auf ausländische Konten oder in Kryptowährung. Kein seriöser Verkäufer oder Makler verlangt Geld vor der notariellen Beurkundung.' },
+      { question: 'Was heißt „teilsaniert" oder „modernisiert" konkret?', answer: 'Ohne Jahreszahl und Umfang ist die Angabe wertlos. Fragen Sie: Was genau wurde wann saniert? Liegen Handwerkerrechnungen vor? Fachbetrieb oder Eigenleistung? Ein frisch renoviertes Bad kann kosmetisch sein und grundlegende Probleme wie marode Leitungen verdecken. Eine Heizung hält 15 bis 25 Jahre — fehlt jede Angabe dazu, kalkulieren Sie den Tausch ein.' },
+    ],
   },
   {
     slug: 'quadratmeterpreis-bewerten',
@@ -1167,6 +1223,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '9 Min',
     tags: ['Kaufratgeber'],
     image: 'https://images.pexels.com/photos/19904351/pexels-photo-19904351.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Was ist ein guter Quadratmeterpreis 2026?', answer: 'Der Bundesdurchschnitt lag Anfang 2026 bei rund 3.520 €/m² für Eigentumswohnungen und 3.009 €/m² für Bestands-Einfamilienhäuser. Aussagekräftig ist aber nur der lokale Vergleich: In München werden über 9.000 €/m² aufgerufen, in Teilen Sachsen-Anhalts unter 1.200 €/m².' },
+      { question: 'Warum ist ein niedriger Quadratmeterpreis nicht automatisch günstiger?', answer: 'Weil Sanierungskosten und Heizkosten dazukommen. Beispiel: 3.733 €/m² für eine Wohnung von 1968 mit Klasse F und 45.000 € Sanierungsbedarf ergeben real 4.333 €/m² plus über 1.000 € Mehr-Heizkosten pro Jahr — über 20 Jahre ist der nominell teurere Neubau die bessere Investition.' },
+      { question: 'Wie beeinflusst die Energieklasse den Quadratmeterpreis?', answer: 'Messbar: Wohnungen der Klassen A+/A sind im Schnitt rund 650 €/m² teurer als solche der Klassen D/E, Häuser der schlechtesten Klasse H liegen etwa 14 Prozent unter dem Durchschnittswert. Rechnen Sie die Heizkosten gegen: Klasse F statt A bedeutet bei 80 m² über 1.100 € Mehrkosten pro Jahr.' },
+      { question: 'Warum haben kleine Wohnungen höhere Quadratmeterpreise?', answer: 'Das ist normal und kein Warnsignal: Küche und Bad sind die teuersten Bereiche pro Quadratmeter und existieren in jeder Wohnung unabhängig von der Größe. Eine 40-m²-Wohnung für 5.000 €/m² ist deshalb nicht zwingend schlechter bewertet als eine 120-m²-Wohnung für 3.500 €/m².' },
+      { question: 'Sollte ich den Quadratmeterpreis inklusive Nebenkosten rechnen?', answer: 'Ja, vergleichen Sie die Gesamtinvestition: Je nach Bundesland kommen 5,5 bis 12,5 Prozent Kaufnebenkosten hinzu — Grunderwerbsteuer 3,5 bis 6,5 Prozent, Notar und Grundbuch rund 2 Prozent, Maklerprovision bis 3,57 Prozent. Bei 350.000 € Kaufpreis sind das 25.000 bis 44.000 € zusätzlich.' },
+    ],
   },
   {
     slug: 'expose-pruefen',
@@ -1176,6 +1239,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '10 Min',
     tags: ['Kaufratgeber'],
     image: 'https://images.pexels.com/photos/7821675/pexels-photo-7821675.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Was sollte ein vollständiges Immobilien-Exposé enthalten?', answer: 'Mindestens: Wohnfläche nach Wohnflächenverordnung, Grundstücksgröße bei Häusern, Zimmeranzahl, Baujahr und gegebenenfalls Sanierungsjahr, Kaufpreis sowie Energieausweis mit Effizienzklasse. Fehlt der Energieausweis, ist das bereits ein Warnsignal, denn er ist im Inserat gesetzlich vorgeschrieben. Fehlende Angaben sollten Sie vor der Besichtigung aktiv einfordern.' },
+      { question: 'Wie erkenne ich, ob der Preis im Exposé fair ist?', answer: 'Teilen Sie den Kaufpreis durch die Wohnfläche und vergleichen Sie den Quadratmeterpreis mit ähnlichen Angeboten in derselben Lage und dem Bodenrichtwert. Anfang 2026 lag der Bundesdurchschnitt bei rund 3.520 €/m² für Eigentumswohnungen und 3.009 €/m² für Bestands-Einfamilienhäuser, regional mit enormer Spanne von unter 1.500 bis über 10.000 €/m².' },
+      { question: 'Was bedeutet „Liebhaberobjekt" im Exposé wirklich?', answer: 'Meist: stark sanierungsbedürftig. Maklersprache umschreibt Schwächen positiv, etwa „ruhige Lage" für abgelegen, „verkehrsgünstig" für Straßenlärm oder „gut erhalten" für nicht modernisiert. Entscheidend ist, ob das Exposé konkrete Fakten wie Jahreszahlen und Kennwerte liefert oder überwiegend mit Adjektiven arbeitet.' },
+      { question: 'Welche Warnsignale im Exposé sind besonders kritisch?', answer: 'Ein Preis deutlich unter Marktwert, keine Besichtigung möglich, geforderte Vorauszahlungen vor dem Notartermin, fehlender Energieausweis, auffällig wenige Fotos und künstlicher Zeitdruck. Seriöse Verkäufer verlangen niemals Geld vor der notariellen Beurkundung. Treten mehrere Signale zusammen auf, ist besondere Vorsicht geboten.' },
+      { question: 'Wie hoch sind die Kaufnebenkosten zusätzlich zum Kaufpreis?', answer: 'Je nach Bundesland etwa 5,5 bis 12,5 Prozent des Kaufpreises: Grunderwerbsteuer 3,5 bis 6,5 Prozent, Notar und Grundbuch zusammen rund 2 Prozent, Maklerprovision bis 3,57 Prozent. Bei 400.000 € Kaufpreis sind das 22.000 bis 50.000 € zusätzlich, die idealerweise aus Eigenkapital bezahlt werden.' },
+    ],
   },
 ]
 
