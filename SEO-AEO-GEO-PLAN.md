@@ -246,10 +246,14 @@ PerplexityBot, OAI-SearchBot, Google-Extended), FAQPage-Schema, Kaufnebenkosten-
    → **Batch 1 erledigt (10.07., Commit b8342d6):** 10 Artikel Exposé-+Preis-Cluster, 50 Fragen
    (expose-pruefen, warnsignale-expose, was-im-expose-fehlt, expose-analyse-vor-besichtigung,
    exposes-richtig-lesen, bilder-im-expose-bewerten, angebotspreis-fair, quadratmeterpreis-
-   bewerten, wohnflaeche-richtig-einordnen, besichtigung-vorbereitung). **Noch 60 offen.**
-   Batch 2 (Vorschlag): Nebenkosten-/Recht-Cluster (fristen-immobilienkauf, unterlagen-vor-
-   immobilienkauf, reservierungsgebuehr, auflassungsvormerkung, grundschuld-vs-hypothek,
+   bewerten, wohnflaeche-richtig-einordnen, besichtigung-vorbereitung).
+   → **Batch 2 erledigt (10.07., Commit f773792):** Nebenkosten-/Recht-Cluster, 49 Fragen
+   (fristen, unterlagen, reservierungsgebuehr, auflassungsvormerkung, grundschuld-vs-hypothek,
    vorfaelligkeitsentschaedigung, provisionsfrei, bodenrichtwert, hausgeld-ruecklagen, grundriss).
+   **Stand: 52/102 mit FAQ, 50 offen.** Batch 3 (Vorschlag): Zustand-Cluster (dach-pruefen,
+   risse-im-mauerwerk, schimmel-feuchtigkeit, asbest, elektroinstallation-altbau, zustand-
+   richtig-einschaetzen, sanierungsbedarf-erkennen, baujahr-und-modernisierung, zustand-
+   folgekosten, baujahr-einordnen).
 3. **Käufer-Positionierung konsequent** — alle großen Bewertungs-Player sind verkäuferseitige
    Lead-Maschinen. „Die Bewertung, die nicht dem Verkäufer dient" kompensiert die Domain-Schwäche.
 

@@ -157,6 +157,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Zustand'],
     image: 'https://images.pexels.com/photos/34763353/pexels-photo-34763353.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Welche Risse in der Wand sind harmlos?', answer: 'Die meisten sichtbaren Risse sitzen nur im Putz oder in der Tapete: feine, netzartige Schwind- und Putzrisse bis etwa 0,2 mm Breite, entstanden durch Trocknung, Temperaturwechsel oder normale Alterung. Sie sind in aller Regel ungefährlich — auch wenn sie optisch stören.' },
+      { question: 'Welche Risse muss ich prüfen lassen?', answer: 'Diagonal oder treppenförmig über Fenster- und Türöffnungen verlaufende Risse (typisch für Setzungen), Risse, die durch das Mauerwerk gehen und innen wie außen sichtbar sind, klaffende oder breiter werdende Risse — besonders in Kombination mit klemmenden Türen, Fenstern oder schiefen Böden. Dann gehört ein Bausachverständiger oder Statiker hinzu.' },
+      { question: 'Wie finde ich heraus, ob ein Riss noch arbeitet?', answer: 'Mit einer Gipsmarke (ein Gipsstreifen quer über den Riss, der bei Bewegung reißt) oder einem Rissmonitor mit Millimeterraster. Beobachten Sie über einen längeren Zeitraum — Fachleute empfehlen oft rund sechs Monate über warme und kalte Perioden — und dokumentieren Sie Datum, Breite und Fotos mit Maßstab.' },
+      { question: 'Was kostet ein Rissgutachten?', answer: 'Stundenhonorare für Statiker und Sachverständige liegen häufig bei etwa 80 bis 150 €, ein schriftliches Rissgutachten bewegt sich erfahrungsgemäß ungefähr zwischen 500 und 1.500 € (Stand 2026, regional unterschiedlich). Bei Verdacht auf statisch relevante Risse sollte die Begutachtung vor dem Notartermin stattfinden.' },
+      { question: 'Was sind typische Ursachen für Mauerwerksrisse?', answer: 'Baugrundsetzungen (die ernsteste Ursache, klassisch schräge Treppenrisse), fehlende oder zu schwache Ringanker, Erschütterungen durch Verkehr oder Bauarbeiten, eindringendes Wasser mit Frost- und Quellschäden sowie Wärmedehnung bei fehlenden Dehnungsfugen. Oft wirken mehrere Faktoren zusammen.' },
+    ],
   },
   {
     slug: 'elektroinstallation-altbau-pruefen',
@@ -166,6 +173,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Zustand'],
     image: 'https://images.pexels.com/photos/10065200/pexels-photo-10065200.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Woran erkenne ich eine veraltete Elektroinstallation?', answer: 'Ein Blick in den Sicherungskasten genügt oft: alte Porzellan-Schraubsicherungen statt moderner Kipphebel-Automaten und kein FI-Schutzschalter (erkennbar an der Prüftaste) sind deutliche Indizien. Weitere Warnzeichen: nur ein bis zwei Steckdosen pro Raum, stoffummantelte oder Aluminium-Leitungen, fehlender grün-gelber Schutzleiter, kein FI im Bad.' },
+      { question: 'Was ist ein FI-Schutzschalter und wann ist er Pflicht?', answer: 'Der FI (fachlich RCD) erkennt Fehlerströme und trennt den Stromkreis in Sekundenbruchteilen — mit 30 Milliampere Bemessungsdifferenzstrom kann er tödliche Stromschläge verhindern. Nach DIN VDE 0100-410 ist er seit 2007 für Laien-Steckdosenkreise vorgeschrieben (2018 auf Stromkreise bis 32 Ampere erweitert); für Bäder gilt die Forderung schon länger.' },
+      { question: 'Gilt für alte Elektrik Bestandsschutz?', answer: 'Ja — eine funktionierende Anlage nach damaligen Regeln dürfen Sie weiterbetreiben. Der Bestandsschutz endet aber bei Eingriffen: Wird der Sicherungskasten getauscht oder werden Stromkreise erweitert (neue Küche, Wallbox), gelten für die betroffenen Teile die heutigen Anforderungen inklusive FI-Schutz.' },
+      { question: 'Was kostet die Erneuerung der Elektrik?', answer: 'Orientierungswerte (Stand 2026): einzelner FI-Schalter inklusive Einbau etwa 80 bis 200 €, kompletter Sicherungskasten häufig 1.000 bis 2.000 €, die Komplettsanierung im Altbau-Einfamilienhaus häufig 8.000 bis 20.000 € und mehr — für ein typisches Haus oft 12.000 bis 18.000 €, grob 60 bis 130 € je Quadratmeter bei einfachem Standard.' },
+      { question: 'Was bringt ein E-Check vor dem Kauf?', answer: 'Eine Elektrofachkraft prüft die Anlage nach festen Kriterien und dokumentiert das Ergebnis — ein anerkannter Zustandsnachweis und eine belastbare Verhandlungsgrundlage. Kosten je nach Umfang typischerweise 100 bis 300 €; gesetzlich vorgeschrieben ist der E-Check in Privathäusern in der Regel nicht.' },
+    ],
   },
   {
     slug: 'haus-geerbt-verkaufen-vermieten',
@@ -228,6 +242,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Zustand'],
     image: 'https://images.pexels.com/photos/29114658/pexels-photo-29114658.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Wie lange hält ein Dach?', answer: 'Eine Ziegeleindeckung auf dem Steildach hält grob 40 bis 60 Jahre, der hölzerne Dachstuhl darunter meist deutlich länger — kritisch wird er nur bei Feuchte oder Befall. Eine Flachdach-Abdichtung ist mit rund 20 bis 30 Jahren deutlich kürzer haltbar. Fragen Sie deshalb immer nach dem Alter der Eindeckung beziehungsweise Abdichtung.' },
+      { question: 'Was kostet eine Dachsanierung?', answer: 'Die Komplettsanierung eines Steildachs beim Einfamilienhaus — neue Eindeckung samt Lattung und Dämmung — liegt häufig bei rund 20.000 bis 50.000 €. Eine Flachdachsanierung wird oft mit etwa 100 bis 250 € pro Quadratmeter angesetzt. Reine Teilreparaturen wie einzelne Ziegel sind deutlich günstiger.' },
+      { question: 'Wie prüfe ich das Dach ohne Fachmann?', answer: 'Von außen mit Abstand und Tageslicht: lose oder gebrochene Ziegel, starker Moosbewuchs, durchhängende Flächen, Zustand von Dachrinnen sowie Anschlüssen an Kaminen, Gauben und Dachfenstern — dort dringt Wasser am häufigsten ein. Von innen auf dem Dachboden mit Taschenlampe: Feuchteflecken am Holz, sichtbares Tageslicht durch Ritzen, Schädlings- oder Pilzbefall, Zustand der Dämmung.' },
+      { question: 'Welche Dach-Warnsignale sind wirklich ernst?', answer: 'Sichtbares Tageslicht durch das Dach und feuchte Stellen am Holz sind ernste Warnsignale — sie können auf Undichtigkeiten und beginnende Schäden an der Tragkonstruktion hinweisen. Auch durchhängende, wellige Dachflächen deuten auf Probleme im Unterbau. In diesen Fällen ist eine fachliche Begutachtung vor dem Kauf dringend zu empfehlen.' },
+      { question: 'Ist ein altes Dach ein Verhandlungsargument?', answer: 'Ja. Eine absehbare Komplettsanierung — etwa 35.000 € als mittlerer Wert — entspricht bei 400.000 € Kaufpreis rund 8,75 Prozent und rechtfertigt einen Preisabschlag oder eine Kostenteilung. Umgekehrt nimmt eine dokumentierte Dachsanierung mit Rechnungen Ihrer Kalkulation viel Unsicherheit.' },
+    ],
   },
   {
     slug: 'asbest-im-haus-erkennen',
@@ -237,6 +258,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '7 Min',
     tags: ['Kaufratgeber', 'Zustand'],
     image: 'https://images.pexels.com/photos/6474204/pexels-photo-6474204.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Welche Baujahre sind von Asbest betroffen?', answer: 'Die kritische Bauperiode liegt grob zwischen 1950 und 1990; verboten wurde Asbest in Deutschland 1993. Vorsicht: Auch Sanierungen aus den 1970er- und 1980er-Jahren können asbesthaltige Materialien eingebracht haben — eine pauschale Entwarnung allein über das Baujahr gibt es nicht.' },
+      { question: 'Wo steckt Asbest im Haus typischerweise?', answer: 'In Faserzement-Platten an Dach und Fassade (bekannt als Eternit), alten Bodenbelägen wie Vinyl-Asbest-Fliesen (Floor-Flex) und Cushion-Vinyl, Fliesenklebern und Spachtelmassen, Rohrisolierungen, Nachtspeicheröfen, Fensterkitt und Brandschutzplatten. Auch unter neuem Laminat kann eine alte belastete Schicht liegen.' },
+      { question: 'Wann ist Asbest wirklich gefährlich?', answer: 'Erst wenn Fasern freigesetzt werden und in die Atemluft gelangen — vor allem beim Bohren, Schleifen oder Abriss. Fest gebundener Asbest in gutem, unbeschädigtem Zustand stellt zunächst keine akute Gefahr dar. Deshalb gilt: verdächtige Materialien niemals selbst bearbeiten.' },
+      { question: 'Was kosten Asbest-Prüfung und -Sanierung?', answer: 'Die Laboranalyse einer Materialprobe liegt typischerweise bei 50 bis 100 € pro Probe, ein Schadstoffgutachten beim Kauf im niedrigen vierstelligen Bereich. Die Sanierung darf nur ein zertifizierter Fachbetrieb nach TRGS 519 durchführen; mit Entsorgung als Sondermüll wird es je nach Umfang vier- bis fünfstellig. Eigenleistung ist keine Option.' },
+      { question: 'Haftet der Verkäufer bei verschwiegenem Asbest?', answer: 'Hat der Verkäufer einen ihm bekannten Asbestbefund arglistig verschwiegen, haftet er trotz Gewährleistungsausschluss (§ 444 BGB). Zusätzlich gilt seit der Gefahrstoffverordnungs-Novelle (Dezember 2024): Auftraggeber von Bauarbeiten müssen Betriebe vorab über Baujahr und mögliche Schadstoffbelastung informieren; für Gebäude von vor dem 31. Oktober 1993 gelten erweiterte Erkundungspflichten.' },
+    ],
   },
   {
     slug: 'hochwasser-risiko-immobilie-pruefen',
@@ -349,6 +377,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Zustand'],
     image: 'https://images.pexels.com/photos/17374615/pexels-photo-17374615.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Woran erkenne ich Feuchtigkeit bei der Besichtigung?', answer: 'Muffiger, kellerartiger Geruch (oft das erste Signal), Stockflecken und dunkle Punkte in Raumecken und an Fensterlaibungen, abblätternde Farbe oder Tapete, weiße Salzausblühungen an Kellerwänden. Besonders misstrauisch sollten Sie bei einzelnen frisch überstrichenen Wänden sein — ein einfaches Feuchtemessgerät gibt erste Anhaltspunkte.' },
+      { question: 'Was kostet eine Feuchtesanierung?', answer: 'Je nach Ursache sehr unterschiedlich (Stand 2026): eine oberflächliche Behandlung bei begrenztem Befall 500 bis 2.000 €, eine nachträgliche Horizontalsperre gegen aufsteigende Feuchtigkeit 5.000 bis 15.000 €, eine Kellerabdichtung von außen gegen drückendes Wasser 10.000 bis 30.000 €.' },
+      { question: 'Woher kommt Feuchtigkeit im Haus?', answer: 'Die häufigsten Ursachen: aufsteigende Feuchtigkeit bei fehlender Horizontalsperre (vor allem Altbau), Kondenswasser an Wärmebrücken (Raumecken, Fensterlaibungen), undichte Dächer oder Fenster, schleichende Leitungslecks und drückendes Grundwasser gegen schlecht abgedichtete Kellerwände. Die Ursache bestimmt Maßnahme und Kosten.' },
+      { question: 'Haftet der Verkäufer trotz „gekauft wie gesehen"?', answer: 'Grundsätzlich schließt der übliche Gewährleistungsausschluss die Haftung aus. Wichtige Grenze: Verschweigt der Verkäufer einen ihm bekannten Schimmel- oder Feuchteschaden arglistig — etwa den bewusst überstrichenen feuchten Keller —, haftet er trotz Ausschluss (§ 444 BGB).' },
+      { question: 'Ist Schimmel ein Ausschlusskriterium beim Hauskauf?', answer: 'Nicht automatisch. Entscheidend ist die Ursache: Eine oberflächliche Ursache ist günstig zu beheben, eine bauliche (fehlende Sperre, undichter Keller) kostet fünfstellig. Rechnen Sie die Sanierung in Preisverhandlung oder Finanzierung ein — und nehmen Sie das Gesundheitsrisiko ernst, wenn die Ursache nicht dauerhaft beseitigt wird.' },
+    ],
   },
   {
     slug: 'heizungsarten-vergleich-kosten',
@@ -1000,6 +1035,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '14 Min',
     tags: ['Kaufratgeber'],
     image: 'https://images.pexels.com/photos/5798984/pexels-photo-5798984.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Warum reicht das Baujahr allein nicht zur Bewertung?', answer: 'Weil zwei Häuser gleichen Baujahrs völlig verschieden sein können: Ein 1975er ohne Sanierung hat Original-Ölheizung, undichte Fenster und Klasse F bis G mit 70.000 bis 120.000 € Bedarf — dasselbe Haus, 2020 saniert, hat Brennwerttechnik, Dreifachverglasung und Klasse B mit 0 bis 5.000 €. Die erste Frage lautet daher nicht „Wie alt?", sondern „Was wurde wann erneuert?".' },
+      { question: 'Welche Bauteile muss ich einzeln bewerten?', answer: 'Sechs Positionen mit eigener Lebensdauer: Heizung, Fenster, Dach, Fassade/Dämmung, Elektrik sowie Bäder und Leitungen. „Saniert" kann bedeuten, dass alle erneuert wurden — oder nur eines. Lassen Sie sich jede Maßnahme mit Jahreszahl und Beleg nennen.' },
+      { question: 'Wie lange halten Fenster und was kostet der Tausch?', answer: 'Fenster vor 1995 haben alte Doppelverglasung (U-Wert 2,7 bis 3,0) mit porösen Dichtungen — Tausch sinnvoll. Baujahre 1995 bis 2010 (U-Wert 1,3 bis 1,5) sind noch funktional, ab 2010 ist Dreifachverglasung Standard. Der Tausch kostet 500 bis 800 € pro Fenster, bei 15 Fenstern also 7.500 bis 12.000 €.' },
+      { question: 'Welche Heizungen müssen nach dem GEG getauscht werden?', answer: 'Öl- und Gas-Niedertemperaturkessel, die älter als 30 Jahre sind. Als Tauschkosten kalkulieren Sie grob: Gasheizung 8.000 bis 15.000 €, Ölheizung 15.000 bis 25.000 €, Wärmepumpe 15.000 bis 30.000 €, Pellet 12.000 bis 25.000 €.' },
+      { question: 'Woran erkenne ich eine alte Heizung schon im Exposé?', answer: 'Steht das Installationsjahr der Heizung nicht im Exposé, ist sie wahrscheinlich alt — eine neue Heizung ist ein Verkaufsargument und würde prominent erwähnt. Fragen Sie gezielt nach Baujahr der Anlage und letzter Wartung.' },
+    ],
   },
   {
     slug: 'zustand-richtig-einschaetzen',
@@ -1009,6 +1051,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '14 Min',
     tags: ['Kaufratgeber', 'Checkliste'],
     image: 'https://images.pexels.com/photos/30226733/pexels-photo-30226733.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Was bedeutet „gepflegt" im Exposé wirklich?', answer: 'Optisch sauber — technisch möglicherweise veraltet, erwartbarer Aufwand 20.000 bis 60.000 €. Zum Vergleich: „gut erhalten" heißt meist, dass seit Jahren nichts investiert wurde (30.000 bis 80.000 €), „sanierungsbedürftig" 50.000 bis 120.000 €, „Liebhaberobjekt" 80.000 bis 200.000 € und mehr. Ohne Jahreszahl und Maßnahmenliste ist jede Zustandsbeschreibung wertlos.' },
+      { question: 'Wie leite ich den Zustand vom Baujahr ab?', answer: 'Über die Lebensdauern der Bauteile: Heizung 15 bis 25 Jahre, Bäder 20 bis 30, Fenster 25 bis 40, Elektrik 30 bis 40, Wasserleitungen 30 bis 50, Dach 40 bis 60 Jahre. Ist keine Sanierung dokumentiert, sind bei entsprechendem Alter diese Posten fällig — das Baujahr ersetzt die Frage nach der Sanierungshistorie aber nie.' },
+      { question: 'Was verraten die Exposé-Fotos über den Zustand?', answer: 'Mehr als beabsichtigt: alte Rippenheizkörper deuten auf eine Heizung der Vor-Brennwert-Ära, Pastellfliesen auf ein Bad der 70er/80er (10.000 bis 25.000 €), fehlende Fotos von Keller oder Heizungsraum auf Feuchtigkeit beziehungsweise eine alte Anlage, frischer Anstrich überall kann Mängel überdecken.' },
+      { question: 'Was sagt die Energieklasse über den Gebäudezustand?', answer: 'Sie spiegelt Hülle und Heizung: A bis B bedeutet aktuellen Stand mit wenig Handlungsbedarf, C bis D teilweise Modernisierung oder jüngeres Baujahr, E bis F deutlichen Sanierungsbedarf an Fenstern, Dämmung oder Heizung, G bis H kaum energetische Sanierung seit dem Bau — also umfassenden Investitionsbedarf.' },
+      { question: 'Welche eine Frage entlarvt jede Zustandsbeschreibung?', answer: '„Was genau wurde wann gemacht?" — mit Maßnahmenliste, Jahreszahlen und Belegen. „Modernisiert 2019" kann ein neues Gäste-WC bedeuten oder eine Komplettsanierung. Wer keine konkrete Antwort bekommt, sollte den erwartbaren Aufwand konservativ kalkulieren.' },
+    ],
   },
   {
     slug: 'fehler-private-kaeufer',
@@ -1088,6 +1137,12 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '12 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
     image: 'https://images.pexels.com/photos/6419128/pexels-photo-6419128.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Warum kann die günstigere Immobilie am Ende teurer sein?', answer: 'Ein Rechenbeispiel: Wohnung A (220.000 €, Baujahr 1974, Klasse F) wirkt 75.000 € günstiger als Wohnung B (295.000 €, Baujahr 2018, Klasse A). Mit Sanierung (42.000 €), vierfachen Heizkosten und höherem Hausgeld liegen beide über 20 Jahre fast gleichauf (388.600 gegenüber 390.170 €) — Wohnung A aber mit schlechterem Komfort und geringerem Wiederverkaufswert.' },
+      { question: 'Wie hoch ist der Sanierungsstau eines unsanierten 70er-Jahre-Hauses?', answer: 'Nach 50 Jahren sind fast alle Bauteile am Ende: Heizung 15.000 bis 30.000 €, Fenster 10.000 bis 25.000 €, Dach 15.000 bis 30.000 €, Elektrik 8.000 bis 15.000 €, Wasserleitungen 5.000 bis 15.000 €, Bäder 10.000 bis 25.000 € je Bad, Fassade 15.000 bis 40.000 € — in Summe 78.000 bis 180.000 €. Die Kosten kommen, und sie kommen ungeplant.' },
+      { question: 'Wie berechne ich die wahren Kosten eines Angebots?', answer: 'Vergleichen Sie nie Kaufpreise, sondern Gesamtkosten: Kaufpreis plus Kaufnebenkosten (rund 9 Prozent) plus absehbare Sanierung der nächsten fünf Jahre ergibt die Gesamtinvestition; dazu kommen Heizkosten und Hausgeld über die Haltedauer. Erst diese Rechnung zeigt, welches Angebot wirklich günstiger ist.' },
+      { question: 'Wie stark wirken sich die Heizkosten aus?', answer: 'Massiv: Im Beispiel zahlt die Klasse-F-Wohnung rund 1.260 € Heizkosten pro Jahr, die Klasse-A-Wohnung 311 € — über 20 Jahre ein Unterschied von etwa 19.000 €. Die Energieklasse bestimmt Ihre laufenden Kosten über Jahrzehnte und gehört deshalb in jede Kaufkalkulation.' },
+    ],
   },
   {
     slug: 'baujahr-einordnen',
@@ -1097,6 +1152,12 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '14 Min',
     tags: ['Kaufratgeber'],
     image: 'https://images.pexels.com/photos/15524090/pexels-photo-15524090.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Was verrät das Baujahr über eine Immobilie?', answer: 'Mehr als fast jede andere Exposé-Angabe: die verwendeten Baumaterialien, den energetischen Standard der Epoche, die Grundrissphilosophie und die typischen Schwachstellen. Wer die Bauepoche kennt, erkennt wahrscheinlichen Sanierungsbedarf, bevor er das Haus betritt — die Sanierungshistorie muss aber immer mitgeprüft werden.' },
+      { question: 'Welche Schwachstellen hat ein Altbau vor 1920?', answer: 'Typisch für Gründerzeit-Häuser: aufsteigende Feuchtigkeit durch fehlende Horizontalsperre, Holzbalkendecken (Tragfähigkeit und Schwammbefall prüfen), teils Bleileitungen, nicht normgerechte Elektrik und häufig Denkmalschutz mit Auflagen. Komplettsanierung: 1.200 bis 2.000 € je m² — dafür hoher Liebhaberwert und mögliche Denkmal-AfA.' },
+      { question: 'Was ist typisch für Nachkriegsbauten (1950 bis 1965)?', answer: 'Schnell und günstig gebaut: dünne Wände (24 cm), niedrige Decken (2,40 bis 2,50 m), einfache Fenster, Energieklasse F bis H mit 200 bis 300 kWh/m²a, fehlende Kellerabdichtung (Feuchtigkeit im Untergeschoss fast garantiert) und unterdimensionierte Elektrik. Sanierungskosten: 800 bis 1.500 € je m² — ohne zwischenzeitliche Sanierung fast immer Komplettprogramm.' },
+      { question: 'Ist ein altes Baujahr ein Ausschlusskriterium?', answer: 'Nein. Ein Haus von 1975, das 2020 kernsaniert wurde, ist technisch jünger als ein ungewarteter Neubau von 2005. Entscheidend ist immer die Kombination aus Baujahr und Sanierungshistorie — das Baujahr sagt Ihnen, was original verbaut wurde, nicht, was davon noch da ist.' },
+    ],
   },
   {
     slug: 'immobilien-check-vor-kauf',
@@ -1224,6 +1285,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '12 Min',
     tags: ['Kaufratgeber'],
     image: 'https://images.pexels.com/photos/12207831/pexels-photo-12207831.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Welcher Sanierungsbedarf ist je nach Baujahr typisch?', answer: 'Ohne dokumentierte Sanierung als grobe Orientierung: vor 1960 Komplettsanierung mit 80.000 bis 150.000 € und mehr (plus mögliche Schadstoffe), 1960 bis 1979 etwa 50.000 bis 100.000 €, 1980 bis 1999 rund 30.000 bis 70.000 €, 2000 bis 2015 etwa 10.000 bis 30.000 €, ab 2016 in der Regel gering.' },
+      { question: 'Was ist der Unterschied zwischen renoviert, modernisiert und saniert?', answer: 'Renoviert heißt kosmetisch aufgefrischt (Tapeten, Anstrich, Böden) — keine technische Erneuerung. Modernisiert heißt einzelne Bauteile erneuert, möglicherweise nur eines. Saniert meint substanzielle Erneuerung von Dach, Fassade oder Haustechnik, kernsaniert den Rückbau bis zur Grundstruktur. Entscheidend ist immer: Was genau wurde wann gemacht?' },
+      { question: 'Welche Exposé-Signale deuten auf Sanierungsstau?', answer: 'Energieklasse D oder schlechter, ein Heizungstyp ohne Altersangabe (neue Heizungen wären als Verkaufsargument erwähnt), Formulierungen wie „gepflegt" oder „gut erhalten" bei Altbauten, keine einzige Sanierungsmaßnahme mit Jahreszahl — und ein komplett fehlendes Baujahr ist für sich genommen schon ein Warnsignal.' },
+      { question: 'Was kostet eine energetische Sanierung?', answer: 'Typische Posten: Fassadendämmung 100 bis 200 € je m² Fassade, Dachdämmung 50 bis 150 € je m², Fenster mit Dreifachverglasung 500 bis 800 € pro Stück, Wärmepumpe 15.000 bis 30.000 €. Der Sprung von Klasse E auf B kostet im Schnitt etwa 700 € je m² Wohnfläche — dem steht eine Wertsteigerung von rund 650 € je m² gegenüber.' },
+      { question: 'Warum ist eine Heizung ohne Altersangabe verdächtig?', answer: 'Weil neue Heizungen ein Verkaufsargument sind und im Exposé stehen würden. Nach dem Gebäudeenergiegesetz müssen Öl- und Gasheizungen über 30 Jahre getauscht werden; ab 2026 gilt in Kommunen mit Wärmeplan zudem die Pflicht zu mindestens 65 Prozent erneuerbarer Energie bei neuen Heizungen. Fragen Sie nach Baujahr, letzter Wartung und Schornsteinfegerprotokoll.' },
+    ],
   },
   {
     slug: 'lagebewertung-hauskauf',
