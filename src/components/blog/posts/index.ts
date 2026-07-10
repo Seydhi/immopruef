@@ -4,6 +4,21 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'kaufpreis-verhandeln-immobilie',
+    title: 'Kaufpreis verhandeln: Strategie, Argumente, übliche Nachlässe',
+    description: 'Angebotspreise liegen im Schnitt 5–15 % über den Transaktionspreisen. Wie Sie den Verhandlungsspielraum einschätzen, mit belegbaren Argumenten verhandeln und typische Fehler vermeiden — mit Rechenbeispiel.',
+    date: '10. Juli 2026',
+    readTime: '14 Min',
+    tags: ['Kaufratgeber', 'Checkliste'],
+    faq: [
+      { question: 'Wie viel unter dem Angebotspreis kann ich bieten?', answer: 'Als Orientierungsrahmen: In gefragten Lagen 0 bis 5 Prozent, im normalen Markt 5 bis 10 Prozent, bei langer Standdauer oder belegbarem Sanierungsstau 10 bis 15 Prozent und mehr. Ein realistisches Erstgebot liegt mit Begründung 5 bis 10 Prozent unter dem Angebotspreis — pauschale 20 Prozent ohne Argumente beenden das Gespräch meist.' },
+      { question: 'Liegt der Angebotspreis über dem echten Kaufpreis?', answer: 'In der Regel ja: Angebotspreise liegen im Schnitt 5 bis 15 Prozent über den tatsächlich beurkundeten Transaktionspreisen. Der Angebotspreis ist eine Forderung, kein Marktwert — Verhandeln ist üblich, braucht aber eine eigene Werteinschätzung und belegbare Argumente.' },
+      { question: 'Welche Argumente überzeugen in der Preisverhandlung?', answer: 'Belegbare: dokumentierter Sanierungsbedarf mit Kostenschätzung (Heizung 15.000 bis 30.000 €, Dach 15.000 bis 30.000 €), eine schlechte Energieklasse samt vorgerechneter Heizkosten, abweichende Wohnfläche nach WoFlV, fehlende Unterlagen, der Quadratmeterpreis-Vergleich mit 3 bis 5 Objekten — und die eigene Finanzierungsbestätigung als Sicherheit für den Verkäufer.' },
+      { question: 'Wann ist der beste Zeitpunkt zum Verhandeln?', answer: 'Nach der Besichtigung und nach Sichtung der wichtigsten Unterlagen — nie davor. Besonders stark ist Ihre Position bei langer Standdauer (über 3 bis 6 Monate online), dokumentierten Preissenkungen und Verkaufsgründen mit Zeitdruck wie Erbschaft oder Scheidung.' },
+      { question: 'Lohnt sich ein Gutachten für die Verhandlung?', answer: 'Oft ja: Ein Bausachverständiger kostet 300 bis 2.000 € und liefert dokumentierte Mängel samt Kostenschätzung — das stärkste Verhandlungsargument. Beispiel: Ein 1.500-€-Gutachten deckt 40.000 € Dachsanierung auf und macht 25.000 € Nachlass verhandelbar.' },
+    ],
+  },
+  {
     slug: 'hauskauf-ablauf-leitfaden',
     title: 'Hauskauf-Ablauf 2026: der komplette Leitfaden Schritt für Schritt',
     description: 'Hauskauf-Ablauf 2026 in 6 Phasen: von Vorbereitung und Besichtigung über Finanzierung und Notartermin bis zur Übergabe. Mit realistischer Dauer und Fristen.',
@@ -1631,6 +1646,7 @@ export const BLOG_POSTS: BlogMeta[] = [
 
 // Map slug → lazy component (filled as posts are written)
 export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.ComponentType>> = {
+  'kaufpreis-verhandeln-immobilie': lazy(() => import('./kaufpreis-verhandeln-immobilie')),
   'hauskauf-ablauf-leitfaden': lazy(() => import('./hauskauf-ablauf-leitfaden')),
   'baufinanzierung-leitfaden': lazy(() => import('./baufinanzierung-leitfaden')),
   'immobilie-zustand-pruefen-leitfaden': lazy(() => import('./immobilie-zustand-pruefen-leitfaden')),
