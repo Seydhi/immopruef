@@ -253,11 +253,12 @@ PerplexityBot, OAI-SearchBot, Google-Extended), FAQPage-Schema, Kaufnebenkosten-
    → **Batch 3 erledigt (10.07., Commit b2b45fe):** Zustand-Cluster, 48 Fragen (dach, risse,
    schimmel, asbest, elektroinstallation, zustand-richtig-einschaetzen, sanierungsbedarf,
    baujahr-und-modernisierung, zustand-folgekosten, baujahr-einordnen).
-   **Stand: 62/102 mit FAQ, 40 offen.** Batch 4 (Vorschlag): Kauf-Basics/Vergleich-Cluster
-   (hauskauf-vorbereiten, immobilien-vergleichen, fehler-immobilienkauf, fehler-private-kaeufer,
-   immobilien-check-vor-kauf, hauskauf-mit-system, immobilienbewertung-kaeufer,
-   kostenlose-immobilienbewertung-serioes, ki-immobilienbewertung-2026-grenzen,
-   daten-statt-bauchgefuehl).
+   → **Batch 4 erledigt (10.07., Commit 42846a6):** Kauf-Basics/Bewertung, 50 Fragen — inkl.
+   der Positionierungs-FAQs (AVM vs. Ersteinschätzung, Gratis-Tools = Verkäufer-Leads).
+   **Stand: 72/102 mit FAQ, 30 offen.** Verbleibende 30 (Batch 5–7): Energie-Cluster
+   (heizungsarten, geg-pflichten, energetische-sanierung-foerderung, photovoltaik…),
+   Recht/Spezial (wohnrecht-niessbrauch, zwangsversteigerung, bieterverfahren, denkmalschutz,
+   erbpacht, neubau-bautraeger…), Rest (homeoffice, infrastruktur, immobilienkauf-mit-familie…).
 3. **Käufer-Positionierung konsequent** — alle großen Bewertungs-Player sind verkäuferseitige
    Lead-Maschinen. „Die Bewertung, die nicht dem Verkäufer dient" kompensiert die Domain-Schwäche.
 

@@ -220,6 +220,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '9 Min',
     tags: ['Kaufratgeber', 'Checkliste'],
     image: 'https://images.pexels.com/photos/5637720/pexels-photo-5637720.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Was ist der Unterschied zwischen Wohnrecht und Nießbrauch?', answer: 'Das Wohnungsrecht (§ 1093 BGB) erlaubt der berechtigten Person nur, selbst dort zu wohnen — vermieten darf sie grundsätzlich nicht. Der Nießbrauch (§ 1030 BGB) geht viel weiter: Der Berechtigte darf die Immobilie umfassend nutzen, auch vermieten und die Mieteinnahmen behalten. Beide Rechte sind höchstpersönlich, meist lebenslang und erlöschen mit dem Tod des Berechtigten.' },
+      { question: 'Darf ich einziehen, wenn ich ein Haus mit Wohnrecht kaufe?', answer: 'In die vom Wohnrecht erfassten Räume: nein. Sie erwerben zwar das Eigentum, aber der Berechtigte nutzt die Wohnung unter Ausschluss des Eigentümers — solange er lebt und das Recht nicht aufgibt. Selbst einziehen, frei vermieten oder ungehindert verkaufen ist bis dahin meist nicht möglich.' },
+      { question: 'Wo finde ich Wohnrecht und Nießbrauch im Grundbuch?', answer: 'In Abteilung II des Grundbuchs (Lasten und Beschränkungen), zusammen mit Wegerechten und Vorkaufsrechten. Die Einträge wirken gegen jeden späteren Eigentümer und verschwinden nicht durch den Verkauf. Prüfen Sie vor jedem Angebot den aktuellen, vollständigen Grundbuchauszug Zeile für Zeile — und verlassen Sie sich nie auf mündliche Löschungszusagen.' },
+      { question: 'Wie stark mindert ein Nießbrauch den Immobilienwert?', answer: 'Erheblich — und stärker als ein reines Wohnrecht. Bewertet wird der Kapitalwert der Nutzung: Jahreswert (orientiert an der ortsüblichen Jahresnettomiete, gedeckelt nach § 16 BewG auf Immobilienwert geteilt durch 18,6) mal Vervielfältiger nach Alter und Geschlecht des Berechtigten (§ 14 BewG, jährlich vom BMF veröffentlicht). Je jünger die Person, desto höher der Abschlag. Für den Kaufpreis zählt der Verkehrswertabschlag — im Zweifel per Gutachten.' },
+      { question: 'Erlischt das Wohnrecht, wenn der Berechtigte ins Pflegeheim zieht?', answer: 'Nicht automatisch — das Wohnrecht erlischt mit dem Tod des Berechtigten oder durch Aufgabe (Löschungsbewilligung). Der Berechtigte darf üblicherweise Familienangehörige und Pflegepersonal aufnehmen. Wer eine belastete Immobilie kauft, sollte den Bestellungsvertrag prüfen: Dort steht auch, wer Instandhaltung, Grundsteuer und Reparaturen trägt.' },
+    ],
   },
   {
     slug: 'bausparvertrag-immobilienkauf',
@@ -238,6 +245,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '7 Min',
     tags: ['Kaufratgeber', 'Zustand'],
     image: 'https://images.pexels.com/photos/28101526/pexels-photo-28101526.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Was kostet ein Bausachverständiger beim Hauskauf?', answer: 'Als Orientierung (Stand 2026): Besichtigungsbegleitung oder Kurzgutachten rund 300 bis 800 €, ausführliches schriftliches Gutachten etwa 800 bis 2.000 €, Stundensatz meist 100 bis 150 €. Die Höhe hängt von Region, Objektgröße und Detailgrad ab. Für viele Käufer ist die Begleitung zur zweiten Besichtigung der beste Einstieg.' },
+      { question: 'Lohnt sich ein Baugutachten finanziell?', answer: 'Häufig ja — ein Rechenbeispiel: 1.500 € Gutachten deckt ein sanierungsbedürftiges Dach auf (rund 40.000 €); mit dem dokumentierten Befund verhandeln Sie 25.000 € Nachlass. Selbst ohne Befund gewinnen Sie Sicherheit bei der größten Investition Ihres Lebens. Besonders lohnend bei Altbauten, sichtbarem Sanierungsstau und hohen Kaufpreisen.' },
+      { question: 'Was ist der Unterschied zwischen Bausachverständigem und Wertgutachter?', answer: 'Der Bausachverständige beurteilt Zustand und Mängel (Feuchtigkeit, Risse, Dach, Heizung, Elektrik) und schätzt Sanierungskosten. Den Verkehrswert — also ob der Preis dem Marktwert entspricht — ermittelt ein Wertgutachter. Verwechseln Sie beide nicht, sonst zahlen Sie für eine Auskunft, die Sie nicht brauchen.' },
+      { question: 'Woran erkenne ich einen guten Sachverständigen?', answer: 'An Qualifikation (öffentliche Bestellung und Vereidigung oder anerkannte Zertifizierung — die Berufsbezeichnung allein ist nicht streng geschützt) und Unabhängigkeit: keine Verbindung zu Verkäufer oder Makler. Klären Sie vorab Leistungsumfang, Ergebnisform und Kosten.' },
+      { question: 'Was kann ein Gutachter bei der Begehung nicht sehen?', answer: 'Bauteile hinter geschlossenen Wänden, unter dem Estrich oder in unzugänglichen Bereichen — eine Begehung ist keine bauteilöffnende Untersuchung und garantiert nicht, dass keine Schäden auftreten. Sie verschiebt die Risiken aber deutlich zu Ihren Gunsten: aus Bauchgefühl wird eine nachvollziehbare Einschätzung mit Größenordnungen.' },
+    ],
   },
   {
     slug: 'uebergabeprotokoll-hauskauf',
@@ -247,6 +261,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Checkliste'],
     image: 'https://images.pexels.com/photos/7415097/pexels-photo-7415097.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Ist ein Übergabeprotokoll beim Hauskauf Pflicht?', answer: 'Nein, gesetzlich vorgeschrieben ist es nicht — aber dringend zu empfehlen: Es dokumentiert den Zustand bei der Schlüsselübergabe und schützt beide Seiten. Ohne Protokoll steht im Streitfall Aussage gegen Aussage, etwa bei Nebenkosten oder angeblichen Schäden nach der Übergabe.' },
+      { question: 'Wann findet die Hausübergabe statt?', answer: 'In der Regel direkt nach Eingang der vollständigen Kaufpreiszahlung — ab diesem Zeitpunkt gehen Besitz, Nutzen und Lasten auf Sie über: Sie tragen die laufenden Kosten und haften für das Gebäude. Vereinbaren Sie den Termin bei Tageslicht und planen Sie ausreichend Zeit ein.' },
+      { question: 'Was gehört in das Übergabeprotokoll?', answer: 'Fünf Kernpunkte: Datum und alle Anwesenden mit Namen, sämtliche Zählerstände (Strom, Gas, Wasser, Wärme — je mit Zählernummer), Anzahl und Art aller Schlüssel, der Zustand jedes Raumes mit festgestellten Mängeln sowie offene Punkte wie ausstehende Reparaturen oder nicht geräumte Gegenstände.' },
+      { question: 'Warum sind die Zählerstände so wichtig?', answer: 'Sie sind der häufigste Streitpunkt: Die Stände bestimmen, wer welche Verbrauchskosten trägt. Lesen Sie jeden Zähler gemeinsam mit dem Verkäufer ab, tragen Sie Nummer und Stand ins Protokoll ein und melden Sie die Werte sofort den Versorgern — sonst schätzt der Versorger den Verbrauch unter Umständen zu Ihren Lasten. Bei Ölheizung zusätzlich den Tankfüllstand notieren.' },
+      { question: 'Welche Unterlagen sollte mir der Verkäufer bei der Übergabe aushändigen?', answer: 'Mindestens den Energieausweis sowie Bedienungsanleitungen und Wartungsnachweise, insbesondere für die Heizung. Halten Sie im Protokoll fest, welche Dokumente Sie tatsächlich erhalten haben — und vermerken Sie fehlende Schlüssel; bei sicherheitsrelevanten Schlössern lohnt der Austausch.' },
+    ],
   },
   {
     slug: 'dach-pruefen-hauskauf',
@@ -297,6 +318,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Checkliste'],
     image: 'https://images.pexels.com/photos/27938318/pexels-photo-27938318.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Wie zahle ich beim Kauf vom Bauträger?', answer: 'Nicht auf einen Schlag, sondern in Raten nach Baufortschritt: Die Makler- und Bauträgerverordnung erlaubt höchstens 7 Raten (§ 3 Abs. 2 MaBV), zusammengesetzt aus einem gesetzlichen Katalog von 13 Bauabschnitten — etwa nach Erdarbeiten, Rohbau, Dach, Fenstern, Innenputz, Bezugsfertigkeit und Fertigstellung. Eine Rate wird erst fällig, wenn der Abschnitt nachweislich erreicht ist.' },
+      { question: 'Welche Sicherheiten müssen vor der ersten Rate vorliegen?', answer: 'Zwei entscheidende: die eingetragene Auflassungsvormerkung (sichert Ihren Eigentumsanspruch im Grundbuch) und die Freistellungserklärung der Bauträger-Bank (garantiert die lastenfreie Übergabe nach Zahlung, damit Sie nicht auf den Grundschulden des Bauträgers sitzen bleiben). Verlangt der Bauträger Geld ohne diese Voraussetzungen: nicht zahlen.' },
+      { question: 'Was passiert bei einer Insolvenz des Bauträgers?', answer: 'Das MaBV-System schützt Sie weitgehend: Weil Sie nur nach Baufortschritt zahlen und Ihr Anspruch über die Auflassungsvormerkung im Grundbuch gesichert ist, verlieren Sie nicht das gesamte bereits gezahlte Geld. Genau deshalb gilt: niemals Vorauszahlungen für noch nicht erbrachte Bauabschnitte leisten.' },
+      { question: 'Ist der Bauträgervertrag ein Kaufvertrag oder ein Werkvertrag?', answer: 'Beides: Für das Grundstück gilt Kaufrecht, für die Bauleistung Werkvertragsrecht — Sie erwerben Boden plus noch zu errichtendes Gebäude in einem notariell zu beurkundenden Vertrag. Diese Mischung prägt Gewährleistung und Zahlungsplan; für Baumängel gelten 5 Jahre Gewährleistung.' },
+      { question: 'Worauf sollte ich beim Zahlungsplan achten?', answer: 'Prüfen Sie, ob die Summe der Raten exakt dem Kaufpreis entspricht, ob jede Rate sinnvoll an einen nachweisbaren Baufortschritt geknüpft ist und ob die Staffelung nicht vorne überladen ist. Zahlen Sie nie im Voraus für einen Schritt, der noch nicht erbracht wurde — das ist der Kern des MaBV-Schutzes.' },
+    ],
   },
   {
     slug: 'grundstueck-kaufen-worauf-achten',
@@ -306,6 +334,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Standort'],
     image: 'https://images.pexels.com/photos/16753029/pexels-photo-16753029.png?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Wie finde ich heraus, was ich auf einem Grundstück bauen darf?', answer: 'Über den Bebauungsplan der Gemeinde (meist kostenlos oder gegen geringe Gebühr): Er regelt Grundflächenzahl (GRZ 0,3 = 30 Prozent überbaubar), Geschossflächenzahl, Baufenster und oft die Dachform. Ohne Bebauungsplan gilt im unbeplanten Innenbereich § 34 BauGB — Ihr Vorhaben muss sich in die Umgebung einfügen. Bei Unsicherheit: Bauvoranfrage stellen.' },
+      { question: 'Was bedeutet „erschlossen" beim Grundstückskauf?', answer: 'Dass Straße, Wasser, Abwasser, Strom und meist Telekommunikation anliegen und die Beiträge typischerweise gezahlt sind. „Teilerschlossen" heißt: weitere Arbeiten und Kosten stehen aus; „unerschlossen": die volle Erschließung kommt noch auf Sie zu. Entscheidend ist, was die Gemeinde tatsächlich abgerechnet hat — schriftlich bestätigen lassen.' },
+      { question: 'Was kostet ein Baugrundgutachten und wann brauche ich es?', answer: 'Typischerweise rund 1.000 bis 2.500 € (einfache Gutachten ab etwa 500 €). Es klärt Tragfähigkeit des Bodens, Grundwasserstand (entscheidet über den Keller) und mögliche Altlasten. Stellt sich erst nach dem Kauf heraus, dass eine aufwendigere Gründung nötig ist, drohen fünfstellige Mehrkosten — das Gutachten ist dagegen günstig.' },
+      { question: 'Warum sollte ich Haus- und Grundstückskauf getrennt beauftragen?', answer: 'Wegen der Grunderwerbsteuer: Bei getrennten Verträgen (Grundstück + frei gewählte Baufirma) fällt die Steuer nur auf den Grundstückspreis an. Bei einem einheitlichen Vertragswerk, das Grundstück und Hausbau rechtlich verknüpft, kann sie auf den Gesamtpreis erhoben werden — ein Unterschied von mehreren Tausend Euro. Vorher rechtlich beraten lassen.' },
+      { question: 'Welche versteckten Rechte können die Bebauung einschränken?', answer: 'In Grundbuch-Abteilung II: Wege-, Geh- und Leitungsrechte, die Flächen blockieren können. Zusätzlich das Baulastenverzeichnis beim Bauamt (außer in Bayern) — dort stehen öffentlich-rechtliche Verpflichtungen wie Abstandsflächenbaulasten, die NICHT im Grundbuch auftauchen und Ihre Baupläne durchkreuzen können.' },
+    ],
   },
   {
     slug: 'zwangsversteigerung-immobilie-kaufen',
@@ -315,6 +350,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
     image: 'https://images.pexels.com/photos/5668473/pexels-photo-5668473.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Wie viel Sicherheitsleistung brauche ich bei einer Zwangsversteigerung?', answer: '10 Prozent des gerichtlich festgesetzten Verkehrswerts — bei 400.000 € Verkehrswert also 40.000 €, vorab per Überweisung an die Gerichtskasse oder bankbestätigtem Scheck (Bargeld wird in der Regel nicht akzeptiert). Ohne nachgewiesene Sicherheit werden Ihre Gebote im Termin nicht zugelassen; bleiben Sie nicht Höchstbietender, erhalten Sie die Sicherheit zurück.' },
+      { question: 'Welche Wertgrenzen gelten im ersten Versteigerungstermin?', answer: 'Zwei gesetzliche Grenzen schützen vor Verschleuderung: Liegt das Höchstgebot unter 50 Prozent des Verkehrswerts, muss das Gericht den Zuschlag von Amts wegen versagen (§ 85a ZVG); zwischen 50 und 70 Prozent kann ein Gläubiger die Versagung beantragen (§ 74a ZVG). Wichtig: Im zweiten Termin entfallen diese Grenzen komplett.' },
+      { question: 'Welche Kosten spare ich bei der Zwangsversteigerung?', answer: 'Maklerprovision und die notarielle Beurkundung des Kaufvertrags entfallen — der Zuschlag des Gerichts macht Sie zum Eigentümer. Die Grunderwerbsteuer fällt aber trotzdem an (berechnet auf das Meistgebot), dazu kommen Gerichtskosten für den Zuschlag und die Grundbucheintragung.' },
+      { question: 'Was sind die größten Risiken beim Kauf aus der Zwangsversteigerung?', answer: 'Sie kaufen in der Regel ohne Innenbesichtigung, ohne Gewährleistung und ohne Rücktrittsrecht. Die wichtigste Informationsquelle ist das Verkehrswertgutachten, das vor dem Termin beim Gericht einsehbar ist. Chancen auf einen günstigen Preis stehen also einem deutlich höheren Informationsrisiko gegenüber.' },
+      { question: 'Wo finde ich Zwangsversteigerungstermine?', answer: 'Die Termine werden öffentlich bekannt gemacht, zentral über das gemeinsame Justizportal zvg-portal.de. Dort finden Sie Objektangaben, den festgesetzten Verkehrswert und den Termin beim zuständigen Amtsgericht. Mitbieten kann grundsätzlich jede geschäftsfähige Person mit Sicherheitsleistung.' },
+    ],
   },
   {
     slug: 'bodenrichtwert-verstehen-abfragen',
@@ -506,6 +548,12 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
     image: 'https://images.pexels.com/photos/29274530/pexels-photo-29274530.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Was ist der Erschließungsbeitrag?', answer: 'Der Anteil der Anlieger an den Kosten der öffentlichen Erschließung (Straße, Gehweg, Beleuchtung). Nach §§ 127 ff. BauGB darf die Gemeinde bis zu 90 Prozent der beitragsfähigen Kosten auf die Grundstückseigentümer umlegen; mindestens 10 Prozent trägt sie selbst. Die Höhe richtet sich u. a. nach Grundstücksgröße und zulässiger Bebauung.' },
+      { question: 'Kann ich Jahre nach dem Kauf noch einen Beitragsbescheid bekommen?', answer: 'Ja — das ist das zentrale Risiko: Der Beitrag entsteht erst mit der endgültigen Herstellung der Erschließungsanlage, und der Bescheid geht an den dann eingetragenen Eigentümer. Beispiel: Grundstück für 200.000 € gekauft, zwei Jahre später kommt der Bescheid über 18.000 €. Nachzahlungen von mehreren Tausend bis über 20.000 € sind möglich.' },
+      { question: 'Wie schütze ich mich vor offenen Erschließungsbeiträgen?', answer: 'Vor dem Kauf schriftlich bei der Gemeinde den Abrechnungsstand erfragen — verlassen Sie sich nicht auf die Formulierung „erschlossen" im Exposé. Zusätzlich sollte der Kaufvertrag klar regeln, wer offene oder künftige Erschließungsbeiträge trägt.' },
+      { question: 'Sind die Hausanschlusskosten im Erschließungsbeitrag enthalten?', answer: 'Nein — das sind zwei getrennte Bereiche: Der Erschließungsbeitrag der Gemeinde deckt nur die öffentliche Erschließung ab. Die Hausanschlüsse für Wasser, Abwasser, Strom, Gas und Telekommunikation rechnen die jeweiligen Versorger separat ab; die Höhe hängt von Entfernung zur Hauptleitung und örtlichen Tarifen ab.' },
+    ],
   },
   {
     slug: 'vorkaufsrecht-gemeinde-milieuschutz',
@@ -515,6 +563,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '8 Min',
     tags: ['Kaufratgeber'],
     image: 'https://images.pexels.com/photos/13846532/pexels-photo-13846532.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Wann hat die Gemeinde ein Vorkaufsrecht?', answer: 'Nur in eng umrissenen Gebietskulissen nach §§ 24 ff. BauGB — vor allem in förmlich festgelegten Sanierungsgebieten und in Gebieten mit Erhaltungssatzung (Milieuschutz). Außerhalb solcher Gebiete spielt das kommunale Vorkaufsrecht für den typischen Privatkauf keine Rolle. Die Ausübung ist zudem an das Wohl der Allgemeinheit gebunden.' },
+      { question: 'Wie läuft das Vorkaufsrecht nach dem Notartermin ab?', answer: 'Der Notar legt den beurkundeten Kaufvertrag der Gemeinde vor; diese prüft, ob ein Vorkaufsrecht besteht und ob sie es ausübt. Verzichtet sie, stellt sie ein Negativzeugnis aus — erst danach kann die Eigentumsumschreibung vollständig fortgesetzt werden. Kalkulieren Sie dafür mehrere Wochen Verzögerung ein.' },
+      { question: 'Wie wahrscheinlich ist es, dass die Gemeinde wirklich kauft?', answer: 'Selten — in der überwiegenden Zahl der Fälle erteilt die Gemeinde das Negativzeugnis und der Kauf läuft normal weiter. Übt sie das Recht aus, tritt sie zu den vereinbarten Bedingungen in den Vertrag ein und der Erwerb entfällt für Sie. Die Handhabung unterscheidet sich je nach Stadt und Gebiet.' },
+      { question: 'Was bedeutet Milieuschutz für Käufer konkret?', answer: 'In Erhaltungssatzungsgebieten gilt neben dem möglichen Vorkaufsrecht: Die Umwandlung von Miet- in Eigentumswohnungen ist genehmigungspflichtig, und bestimmte Modernisierungen (gehobener Standard) können beschränkt sein. Wer kaufen will, um umzuwandeln oder hochwertig zu sanieren, sollte das vorab beim Stadtplanungsamt klären.' },
+      { question: 'Wie finde ich heraus, ob ein Objekt in einem Schutzgebiet liegt?', answer: 'Nicht am Exposé — Auskunft geben das Stadtplanungsamt oder Bauamt der Gemeinde. Die Abfrage gehört in dieselbe Vorbereitungsphase wie die Grundbuchprüfung, denn Sanierungsgebiet oder Milieuschutz beeinflussen Zeitplan und spätere Nutzungsmöglichkeiten erheblich.' },
+    ],
   },
   {
     slug: 'baulasten-grunddienstbarkeiten',
@@ -566,6 +621,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Zustand'],
     image: 'https://images.pexels.com/photos/1115155/pexels-photo-1115155.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Was darf ich an einem denkmalgeschützten Haus verändern?', answer: 'Veränderungen an Substanz und Erscheinungsbild sind genehmigungspflichtig — oft nicht nur an Fassade, Fenstern und Dach, sondern auch innen (Treppenhäuser, Stuckdecken, Grundriss). Jede Maßnahme muss vorab mit der Denkmalschutzbehörde abgestimmt werden; sie gibt Materialien, Farben und Ausführung vor. Was konkret geschützt ist, steht im Denkmaleintrag.' },
+      { question: 'Wie funktioniert die Denkmal-AfA bei Vermietung?', answer: 'Nach § 7i EStG schreiben Vermieter die mit der Behörde abgestimmten Sanierungskosten über zwölf Jahre zu 100 Prozent ab: acht Jahre je 9 Prozent, dann vier Jahre je 7 Prozent. Bei 200.000 € begünstigten Kosten sind das erst 18.000 €, später 14.000 € pro Jahr — zusätzlich zur normalen Gebäudeabschreibung. Begünstigt sind nur die Sanierungskosten, nicht der Kaufpreis.' },
+      { question: 'Gibt es die Denkmal-AfA auch für Eigennutzer?', answer: 'Ja, nach § 10f EStG: Eigennutzer ziehen die begünstigten Sanierungskosten über zehn Jahre mit je 9 Prozent als Sonderausgaben ab — insgesamt 90 Prozent. Der Abzug mindert das zu versteuernde Einkommen direkt; auch hier zählen nur die mit der Behörde abgestimmten Aufwendungen.' },
+      { question: 'Was ist die wichtigste Voraussetzung für die Denkmal-AfA?', answer: 'Die Reihenfolge: Die Maßnahmen müssen VOR Baubeginn mit der Denkmalschutzbehörde abgestimmt werden, und Sie brauchen anschließend deren Bescheinigung über die begünstigten Kosten für das Finanzamt. Wer erst saniert und dann fragt, verliert den Steuervorteil in der Regel vollständig — egal wie hochwertig die Sanierung war.' },
+      { question: 'Warum ist die Sanierung eines Denkmals teurer?', answer: 'Die Behörde schreibt oft originalgetreue Materialien vor (etwa Holzfenster mit historischer Sprossenteilung statt Standardfenster), die Arbeiten erfordern spezialisiertes Fachhandwerk, und Genehmigungswege verlängern das Projekt. Dazu kommt: Dämmung und moderne Fenster sind oft nur eingeschränkt erlaubt — rechnen Sie dauerhaft höhere Heizkosten gegen die Steuervorteile.' },
+    ],
   },
   {
     slug: 'hauskauf-ohne-eigenkapital',
@@ -660,6 +722,13 @@ export const BLOG_POSTS: BlogMeta[] = [
     readTime: '7 Min',
     tags: ['Kaufratgeber'],
     image: 'https://images.pexels.com/photos/13627494/pexels-photo-13627494.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Ist mein Gebot im Bieterverfahren rechtlich bindend?', answer: 'Nein. Ein Immobilienkauf wird in Deutschland erst mit der notariellen Beurkundung wirksam (§ 311b BGB). Bis dahin können Sie Ihr Gebot grundsätzlich zurückziehen — und umgekehrt ist auch der Verkäufer frei: Er muss das höchste Gebot nicht annehmen und kann das Verfahren jederzeit abbrechen.' },
+      { question: 'Was ist der Unterschied zwischen Bieterverfahren und Versteigerung?', answer: 'Das Bieterverfahren ist keine Versteigerung im rechtlichen Sinn, sondern ein freies Verkaufsformat, dessen Regeln der Verkäufer selbst bestimmt — etwa ob es eine oder mehrere Bietrunden gibt und ob Gebote offen oder verdeckt abgegeben werden. Es gibt keine gesetzlich festgelegte Form; lesen Sie die Bedingungen vor jeder Teilnahme genau.' },
+      { question: 'Wie setze ich mein Limit im Bieterverfahren richtig?', answer: 'Denken Sie das Limit als Gesamtkosten inklusive der rund 10 bis 12 Prozent Nebenkosten: Ermöglicht Ihre Bank 450.000 € Gesamtfinanzierung, liegt Ihr maximales Gebot bei etwa 405.000 € — nicht bei 450.000 €. Schreiben Sie die Zahl vor dem Verfahren auf und verschieben Sie sie niemals mitten im Verfahren nach oben.' },
+      { question: 'Warum steigen die Kosten schneller als mein Gebot?', answer: 'Weil die prozentualen Nebenkosten mitwachsen: Ein Gebot von 400.000 € bedeutet bei 11 Prozent Nebenkosten rund 444.000 € Gesamtkosten; erhöhen Sie auf 430.000 €, landen Sie schon bei etwa 477.300 €. Jeder Schritt nach oben kostet mehr als die reine Gebotsdifferenz.' },
+      { question: 'Wie verbessere ich meine Chancen, ohne mehr zu bieten?', answer: 'Mit einer Finanzierungsbestätigung der Bank: Da der Verkäufer frei entscheidet, zählt neben der Höhe auch die Abwicklungssicherheit. Bei zwei ähnlich hohen Geboten gibt die solide vorbereitete Finanzierung oft den Ausschlag — Sie wirken ernsthaft, ohne einen Euro mehr zu zahlen.' },
+    ],
   },
   {
     slug: 'provisionsfrei-immobilie-bedeutung',
