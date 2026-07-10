@@ -241,6 +241,12 @@ PerplexityBot, OAI-SearchBot, Google-Extended), FAQPage-Schema, Kaufnebenkosten-
 1. **Landingpage „Exposé prüfen lassen" zuerst** — schwächste SERP im ganzen Set (nur lokale
    Gutachter), exakte Produktbeschreibung, direkte Kaufintention. Einziges Keyword, das
    gleichzeitig Traffic UND Bestellungen bringt.
+   → **M1-Roadmap KOMPLETT (10.07.):** LP live (5daec74) · 301-Merge expose-verstehen →
+   expose-pruefen live (2f4eb4a, 308 verifiziert) · **Pillar „Kaufpreis verhandeln" live
+   (fc170f8)** — deckt Themen #2 + #3 der 25er-Liste ab, 5 FAQs, 7 interne Links.
+   Tags→Cluster bewusst zurückgestellt (kosmetisch, berührt TAG_ART/RechnerBox/Related-Logik —
+   erst mit GSC-Daten priorisieren). Nächster Content laut M2: 8 Long-Tail-Artikel
+   (ChatGPT-Exposé-Praxistest, Verkehrswert vs. Kaufpreis, Haus überteuert erkennen, …).
 2. **FAQ-Nachrüstung vor Neu-Content** — 70 von 102 Artikeln haben keinen FAQ-Block, obwohl
    das FAQPage-Schema automatisch rendert. 10/Woche nachrüsten (PAA-Fragen).
    → **Batch 1 erledigt (10.07., Commit b8342d6):** 10 Artikel Exposé-+Preis-Cluster, 50 Fragen

@@ -4,6 +4,66 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'chatgpt-expose-pruefen',
+    title: 'ChatGPT fürs Exposé: Was der Gratis-Check kann — und wo er scheitert',
+    description: 'Exposé in ChatGPT kopieren und bewerten lassen? Was Sprachmodelle beim Immobilien-Check leisten, wo sie systematisch scheitern (erfundene Marktwerte, Rechenfehler) — mit 3 erprobten Prompt-Vorlagen.',
+    date: '10. Juli 2026',
+    readTime: '11 Min',
+    tags: ['Kaufratgeber'],
+    faq: [
+      { question: 'Kann ChatGPT ein Immobilien-Exposé bewerten?', answer: 'Teilweise: Als Textassistent ist es stark — Eckdaten extrahieren, fehlende Pflichtangaben auflisten, Maklersprache übersetzen, Besichtigungsfragen generieren. Als Bewertungsinstrument scheitert es an erfundenen Marktwerten, unzuverlässiger Finanzmathematik und daran, dass Schätzungen nicht als solche gekennzeichnet werden.' },
+      { question: 'Warum sind Marktwerte aus ChatGPT unzuverlässig?', answer: 'Sprachmodelle haben keinen verlässlichen Zugriff auf aktuelle Marktdaten — sie liefern plausibel klingende, aber häufig veraltete oder erfundene Quadratmeterpreise. Da die Vergleichszahl der Kern jeder Preisbewertung ist, ist eine darauf gestützte Einschätzung wertlos. Belastbar sind nur Werte mit nachprüfbarer Quelle.' },
+      { question: 'Welche Prompts funktionieren für den Exposé-Check?', answer: 'Drei bewährte: eine Eckdaten-Tabelle mit Liste der FEHLENDEN Angaben (mit dem Zusatz „Erfinde keine Werte"), die Trennung von überprüfbaren Fakten und Werbesprache sowie ein Fragenkatalog für die Besichtigung nach Themen. Gemeinsamer Nenner: nur mit dem eingegebenen Text arbeiten, nie nach Marktpreisen oder Raten fragen.' },
+      { question: 'Kann ich ChatGPT Finanzierungsraten ausrechnen lassen?', answer: 'Besser nicht: Sprachmodelle rechnen nicht, sie sagen Text voraus — und produzieren bei Annuitätenraten, Restschulden und Nebenkosten regelmäßig Zahlen, die plausibel aussehen und falsch sind. Jede Zahl müsste einzeln nachgerechnet werden. Nutzen Sie dafür deterministische Rechner oder eine Analyse, die die Mathematik im Code nachrechnet.' },
+      { question: 'Was unterscheidet ImmoPrüf von einem ChatGPT-Check?', answer: 'Die Architektur: Marktwerte werden per Web-Recherche erhoben und mit Quellen verlinkt, die Finanzmathematik wird deterministisch im Code nachgerechnet statt vom Modell geschätzt, und jeder Wert, der nicht aus dem Exposé stammt, trägt sichtbar das Label „regionaler Schätzwert". Ein roher Chat bietet nichts davon.' },
+    ],
+  },
+  {
+    slug: 'verkehrswert-kaufpreis-unterschied',
+    title: 'Verkehrswert vs. Kaufpreis: Der Unterschied einfach erklärt',
+    description: 'Verkehrswert, Angebotspreis, Kaufpreis, Beleihungswert — vier Begriffe, vier verschiedene Zahlen. Was sie bedeuten, wie sie zueinander stehen und was das für Kaufentscheidung und Finanzierung heißt.',
+    date: '10. Juli 2026',
+    readTime: '9 Min',
+    tags: ['Kaufratgeber', 'Finanzierung'],
+    faq: [
+      { question: 'Was ist der Unterschied zwischen Verkehrswert und Kaufpreis?', answer: 'Der Verkehrswert ist der von Sachverständigen nach § 194 BauGB ermittelte objektive Marktwert — was ein sachverständiger Käufer im gewöhnlichen Geschäftsverkehr zahlen würde. Der Kaufpreis ist das tatsächliche Verhandlungsergebnis im notariellen Vertrag; er kann je nach Marktlage über oder unter dem Verkehrswert liegen.' },
+      { question: 'Ist der Angebotspreis der Marktwert?', answer: 'Nein — der Angebotspreis ist eine strategische Forderung des Verkäufers, kein ermittelter Wert. Nach den Preiskorrekturen 2022 bis 2024 liegen Angebotspreise im Schnitt 5 bis 15 Prozent über den tatsächlich beurkundeten Kaufpreisen. Er ist der Startpunkt einer Verhandlung, nicht ihr Maßstab.' },
+      { question: 'Was ist der Beleihungswert?', answer: 'Der bewusst konservative Wert, den die Bank ihrer Finanzierung zugrunde legt — er soll auch in schlechten Marktphasen über die gesamte Kreditlaufzeit halten und liegt meist rund 10 bis 20 Prozent unter dem Verkehrswert. Wer deutlich mehr zahlt, als die Bank ansetzt, braucht mehr Eigenkapital und bekommt oft schlechtere Konditionen.' },
+      { question: 'Wer ermittelt den Verkehrswert und wie?', answer: 'Sachverständige nach den drei normierten Verfahren der Immobilienwertermittlungsverordnung (ImmoWertV): Vergleichswertverfahren (reale Kaufpreise ähnlicher Objekte), Sachwertverfahren (Neubaukosten minus Alterswertminderung plus Bodenwert) und Ertragswertverfahren (kapitalisierter Mietertrag). Der Marktwert ergibt sich aus der Gewichtung.' },
+      { question: 'Warum sind Portal-Preise als Vergleich ungeeignet?', answer: 'Weil sie Angebotspreise sind — also Forderungen, die im Schnitt 5 bis 15 Prozent über den echten Transaktionspreisen liegen. Die Kaufpreissammlungen der Gutachterausschüsse (Basis für Bodenrichtwerte und Grundstücksmarktberichte) speisen sich dagegen aus beurkundeten Kaufpreisen — sie sind der belastbare Anker.' },
+    ],
+  },
+  {
+    slug: 'haus-ueberteuert-erkennen',
+    title: 'Haus überteuert? 7 Kennzahlen, die es sofort verraten',
+    description: 'Zu teuer erkennt man nicht am Preis, sondern am Verhältnis: 7-Punkte-Checkliste mit Schwellenwerten (m²-Vergleich, Bodenrichtwert, Kaufpreisfaktor, Standdauer) plus die typischen Kaschier-Tricks.',
+    date: '10. Juli 2026',
+    readTime: '10 Min',
+    tags: ['Kaufratgeber', 'Checkliste'],
+    faq: [
+      { question: 'Woran erkenne ich, dass ein Haus überteuert ist?', answer: 'An messbaren Verhältnissen statt am Gefühl: Quadratmeterpreis mehr als 15 Prozent über vergleichbaren Objekten ohne erkennbaren Grund, Kaufpreisfaktor über 30, unsanierter Altbau nahe Neubauniveau, schlechte Energieklasse ohne Preisabschlag und eine Standdauer über 3 bis 6 Monate — treffen zwei oder mehr Signale zu, ist der Preis zu hoch.' },
+      { question: 'Welcher Kaufpreisfaktor ist zu hoch?', answer: 'Kaufpreis geteilt durch erzielbare Jahreskaltmiete: unter 20 günstig, 20 bis 25 fair, 25 bis 30 teuer, über 30 sehr teuer — dann ist Mieten finanziell meist die bessere Wahl. Rechnen Sie mit der ortsüblichen Vergleichsmiete aus dem Mietspiegel, nicht mit optimistischen Portal-Mieten.' },
+      { question: 'Wie entlarvt der Bodenrichtwert einen Fantasiepreis?', answer: 'Über den Sachwert-Überschlag: Grundstücksfläche mal Bodenrichtwert (kostenlos über die BORIS-Portale) ergibt den Bodenwert, dazu ein realistischer Gebäudewert nach Alter und Zustand. Liegt der Angebotspreis weit über dieser Summe, muss die Differenz begründbar sein — sonst ist sie reine Forderung.' },
+      { question: 'Was sagt eine lange Standdauer über den Preis?', answer: 'Der Markt hat bereits abgestimmt: Über 3 Monate online heißt, das Objekt findet zum aufgerufenen Preis keinen Käufer; über 6 Monate ist es fast sicher überteuert oder hat verdeckte Probleme. Dokumentierte Preissenkungen bestätigen die Diagnose — und sind starke Verhandlungsargumente.' },
+      { question: 'Rechtfertigt eine teure Einbauküche einen höheren Kaufpreis?', answer: 'Kaum: Eine 15.000-€-Küche hat nach zehn Jahren noch etwa 2.000 € Restwert. Ausstattung, die schnell an Wert verliert, ist ein klassischer Kaschier-Trick für überhöhte Preise — genau wie Home Staging, Weitwinkel-Fotos und künstlicher Zeitdruck.' },
+    ],
+  },
+  {
+    slug: 'hauskauf-absagen-vor-notartermin',
+    title: 'Hauskauf absagen vor dem Notartermin: Rechte & Kosten',
+    description: 'Bis zur notariellen Beurkundung sind Käufer nicht gebunden (§ 311b BGB). Welche Kosten trotzdem entstehen können, was mit der Reservierungsgebühr passiert und wie Sie sauber absagen.',
+    date: '10. Juli 2026',
+    readTime: '9 Min',
+    tags: ['Recht', 'Kaufratgeber'],
+    faq: [
+      { question: 'Kann ich den Hauskauf vor dem Notartermin noch absagen?', answer: 'Ja — ein Immobilienkauf wird erst mit der notariellen Beurkundung wirksam (§ 311b BGB). Mündliche Zusagen, E-Mails, Kaufangebote und einfache Reservierungen binden Sie nicht. Vorsicht nur bei bereits notariell beurkundeten Erklärungen, etwa einem beurkundeten Angebot mit Bindungsfrist.' },
+      { question: 'Welche Kosten entstehen bei einer Absage?', answer: 'Möglich sind: Notarkosten für einen bereits erstellten Vertragsentwurf (trägt üblicherweise, wer den Notar beauftragt hat — oft mehrere Hundert bis über tausend Euro), selbst beauftragte Prüfkosten wie Gutachter, und nur in engen Ausnahmefällen Schadensersatz, wenn ohne triftigen Grund nach langem konkretem Kaufsignal abgesprungen wird.' },
+      { question: 'Muss ich die Maklerprovision zahlen, wenn ich vor dem Notar absage?', answer: 'Grundsätzlich nein: Der Provisionsanspruch des Maklers entsteht erst mit dem Zustandekommen des Hauptvertrags — also des notariellen Kaufvertrags. Ohne Beurkundung keine Provision.' },
+      { question: 'Bekomme ich eine gezahlte Reservierungsgebühr zurück?', answer: 'Häufig ja: Der Bundesgerichtshof hält Reservierungsklauseln in Makler-AGB regelmäßig für unwirksam, wenn sie den Kunden unangemessen benachteiligen — etwa wenn die Gebühr auch ohne sein Verschulden verfällt und keine echte Gegenleistung gegenübersteht. Die konkrete Vereinbarung prüfen (lassen).' },
+      { question: 'Kann auch der Verkäufer kurz vor dem Termin abspringen?', answer: 'Ja, mit denselben Regeln — bis zur Beurkundung ist auch er frei. Deshalb gilt für Käufer: vor dem Notartermin keine größeren Ausgaben tätigen (Küche, Handwerker) und die Mietwohnung nicht kündigen.' },
+    ],
+  },
+  {
     slug: 'kaufpreis-verhandeln-immobilie',
     title: 'Kaufpreis verhandeln: Strategie, Argumente, übliche Nachlässe',
     description: 'Angebotspreise liegen im Schnitt 5–15 % über den Transaktionspreisen. Wie Sie den Verhandlungsspielraum einschätzen, mit belegbaren Argumenten verhandeln und typische Fehler vermeiden — mit Rechenbeispiel.',
@@ -1646,6 +1706,10 @@ export const BLOG_POSTS: BlogMeta[] = [
 
 // Map slug → lazy component (filled as posts are written)
 export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.ComponentType>> = {
+  'chatgpt-expose-pruefen': lazy(() => import('./chatgpt-expose-pruefen')),
+  'verkehrswert-kaufpreis-unterschied': lazy(() => import('./verkehrswert-kaufpreis-unterschied')),
+  'haus-ueberteuert-erkennen': lazy(() => import('./haus-ueberteuert-erkennen')),
+  'hauskauf-absagen-vor-notartermin': lazy(() => import('./hauskauf-absagen-vor-notartermin')),
   'kaufpreis-verhandeln-immobilie': lazy(() => import('./kaufpreis-verhandeln-immobilie')),
   'hauskauf-ablauf-leitfaden': lazy(() => import('./hauskauf-ablauf-leitfaden')),
   'baufinanzierung-leitfaden': lazy(() => import('./baufinanzierung-leitfaden')),
