@@ -263,11 +263,11 @@ PerplexityBot, OAI-SearchBot, Google-Extended), FAQPage-Schema, Kaufnebenkosten-
    42 Fragen (photovoltaik, bausparvertrag, hochwasser-risiko, wohnung-kaufen-vermieten,
    altbau-oder-neubau, nebenkosten-laufende-kosten, einfamilienhaus-/eigentumswohnung-
    kaufen-expose, infrastruktur-pruefen, immobilien-realistischer-einordnen).
-   **Stand: 92/102, Batch 7 (letzter) = 9 Artikel:** innenausbau-bewerten, fliesen-
-   qualitaetsmerkmal, raeume-richtig-nutzen, wohnqualitaet-bewerten, homeoffice-
-   immobilienkauf, rauchen-dampfen-wohnqualitaet, immobilienanfragen-bearbeiten,
-   immobilienkauf-mit-familie, lagebewertung-hauskauf. expose-verstehen bekommt KEIN FAQ —
-   wird per 301 in expose-pruefen gemergt (M1-Roadmap).
+   → **Batch 7 erledigt (10.07., Commit ce26cb9): FAQ-OFFENSIVE ABGESCHLOSSEN.**
+   **Endstand: 101/102 Artikel mit FAQPage-Schema** (~320 neue PAA-Fragen in 69 Artikeln
+   an einem Tag). expose-verstehen absichtlich ohne — wird per 301 in expose-pruefen
+   gemergt (nächster Schritt der M1-Roadmap, zusammen mit Tags→Cluster und dem
+   Pillar „Kaufpreis verhandeln").
 3. **Käufer-Positionierung konsequent** — alle großen Bewertungs-Player sind verkäuferseitige
    Lead-Maschinen. „Die Bewertung, die nicht dem Verkäufer dient" kompensiert die Domain-Schwäche.
 

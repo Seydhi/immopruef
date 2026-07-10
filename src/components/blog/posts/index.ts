@@ -1308,15 +1308,6 @@ export const BLOG_POSTS: BlogMeta[] = [
     ],
   },
   {
-    slug: 'expose-verstehen',
-    title: 'Exposé verstehen: Pflichtangaben & Kennzahlen lesen',
-    description: 'Pflichtangaben (Energieausweis, Provision, Wohnfläche) vs. Werbe-Floskeln, typische Wohnfläche-Fallen, Quadratmeterpreis einordnen, Maklersprache übersetzt — Exposés in 5 Minuten sicher entschlüsseln.',
-    date: '11. April 2026',
-    readTime: '13 Min',
-    tags: ['Kaufratgeber'],
-    image: 'https://images.pexels.com/photos/6214/hands-people-woman-girl.jpg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
-  },
-  {
     slug: 'besichtigung-vorbereitung',
     title: 'Immobilien-Besichtigung vorbereiten: 30+ Fragen für Käufer vor Ort',
     description: '30+ konkrete Fragen für die Hausbesichtigung — sortiert nach 8 Themenbereichen (Bausubstanz, Heizung, WEG, Lage, Nachbarn etc.) mit Erklärung, warum jede Frage wichtig ist.',
@@ -1718,7 +1709,6 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.Com
   'baujahr-einordnen': lazy(() => import('./baujahr-einordnen')),
   'zustand-folgekosten': lazy(() => import('./zustand-folgekosten')),
   'besichtigung-vorbereitung': lazy(() => import('./besichtigung-vorbereitung')),
-  'expose-verstehen': lazy(() => import('./expose-verstehen')),
   'immobilien-realistischer-einordnen': lazy(() => import('./immobilien-realistischer-einordnen')),
   'daten-statt-bauchgefuehl': lazy(() => import('./daten-statt-bauchgefuehl')),
   'eigentumswohnung-kaufen-expose': lazy(() => import('./eigentumswohnung-kaufen-expose')),

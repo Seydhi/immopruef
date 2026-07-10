@@ -1,6 +1,13 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/blog/expose-verstehen",
+      "destination": "/blog/expose-pruefen",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/((?!_next|api|assets|.*\\.).*)",

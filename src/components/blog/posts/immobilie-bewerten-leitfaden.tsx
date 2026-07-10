@@ -9,7 +9,7 @@ export default function ImmobilieBewertenLeitfaden() {
       
       <p>Das Exposé ist Ihre erste und oft wichtigste Informationsquelle – aber es ist auch ein Verkaufsdokument. Es soll das Objekt im besten Licht zeigen. Beim ersten Durchgang geht es darum, die harten Fakten von der Werbesprache zu trennen: Welche Flächen, welches Baujahr, welche Heizung, welche Nebenkosten werden konkret genannt? Achten Sie darauf, welche Angaben fehlen. Ein Exposé ohne Baujahr, ohne Energieausweis-Werte oder ohne klare Flächenangabe ist kein Versehen, sondern ein Hinweis.</p>
       
-      <p>Lesen Sie das Dokument systematisch: Objektdaten, Lage, Ausstattung, Energie, Kosten und Rechtliches. Notieren Sie sich offene Fragen für die Besichtigung, statt Lücken stillschweigend mit Annahmen zu füllen. Wie Sie ein Exposé Abschnitt für Abschnitt entschlüsseln und welche Begriffe was bedeuten, zeigt der Detailartikel <a href="/blog/expose-verstehen">Exposé verstehen</a> Schritt für Schritt.</p>
+      <p>Lesen Sie das Dokument systematisch: Objektdaten, Lage, Ausstattung, Energie, Kosten und Rechtliches. Notieren Sie sich offene Fragen für die Besichtigung, statt Lücken stillschweigend mit Annahmen zu füllen. Wie Sie ein Exposé Abschnitt für Abschnitt entschlüsseln und welche Begriffe was bedeuten, zeigt der Detailartikel <a href="/blog/expose-pruefen">Exposé prüfen</a> Schritt für Schritt.</p>
       
       <h2>Warnsignale im Exposé erkennen</h2>
       
