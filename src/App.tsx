@@ -24,6 +24,7 @@ import WohnflaechenRechner from './components/WohnflaechenRechner'
 import RechnerHub from './components/RechnerHub'
 import RegionalKaufnebenkosten from './components/RegionalKaufnebenkosten'
 import KaufnebenkostenIndex from './components/KaufnebenkostenIndex'
+import ExposePruefenLassen from './components/ExposePruefenLassen'
 import UeberUns from './components/UeberUns'
 import { regioForSlug } from './lib/regional'
 import { Suspense } from 'react'
@@ -48,6 +49,7 @@ type AppView =
   | { type: 'wohnflaechen' }
   | { type: 'rechner-hub' }
   | { type: 'kaufnebenkosten-index' }
+  | { type: 'expose-pruefen-lassen' }
   | { type: 'regional'; slug: string }
   | { type: 'ueber-uns' }
   | { type: 'blog' }
@@ -115,6 +117,7 @@ export default function App() {
     if (path === '/wohnflaechen-rechner') { setView({ type: 'wohnflaechen' }); return }
     if (path === '/rechner') { setView({ type: 'rechner-hub' }); return }
     if (path === '/kaufnebenkosten-index') { setView({ type: 'kaufnebenkosten-index' }); return }
+    if (path === '/expose-pruefen-lassen') { setView({ type: 'expose-pruefen-lassen' }); return }
     const regioMatch = path.match(/^\/kaufnebenkosten-([a-z-]+)$/)
     if (regioMatch && regioForSlug(regioMatch[1])) { setView({ type: 'regional', slug: regioMatch[1] }); return }
     if (path === '/ueber-uns') { setView({ type: 'ueber-uns' }); return }
@@ -230,7 +233,7 @@ export default function App() {
           </div>
         )}
 
-        {(view.type === 'rechner' || view.type === 'budgetrechner' || view.type === 'tilgungsrechner' || view.type === 'mieten-oder-kaufen' || view.type === 'mietrendite' || view.type === 'instandhaltung' || view.type === 'wohnflaechen' || view.type === 'rechner-hub' || view.type === 'kaufnebenkosten-index' || view.type === 'regional' || view.type === 'ueber-uns') && (
+        {(view.type === 'rechner' || view.type === 'budgetrechner' || view.type === 'tilgungsrechner' || view.type === 'mieten-oder-kaufen' || view.type === 'mietrendite' || view.type === 'instandhaltung' || view.type === 'wohnflaechen' || view.type === 'rechner-hub' || view.type === 'kaufnebenkosten-index' || view.type === 'expose-pruefen-lassen' || view.type === 'regional' || view.type === 'ueber-uns') && (
           <div>
             <button
               onClick={() => { window.history.pushState({}, '', '/'); setView({ type: 'landing' }) }}
@@ -247,6 +250,7 @@ export default function App() {
             {view.type === 'wohnflaechen' && <WohnflaechenRechner />}
             {view.type === 'rechner-hub' && <RechnerHub />}
             {view.type === 'kaufnebenkosten-index' && <KaufnebenkostenIndex />}
+            {view.type === 'expose-pruefen-lassen' && <ExposePruefenLassen />}
             {view.type === 'regional' && <RegionalKaufnebenkosten slug={view.slug} />}
             {view.type === 'ueber-uns' && <UeberUns />}
           </div>
@@ -287,6 +291,8 @@ export default function App() {
       <footer className="text-center text-[11px] text-ink-light py-6 border-t border-ink/10 mt-10 mx-6">
         <p className="mb-2">KI-Analyse auf Basis öffentlich verfügbarer Daten · Keine Gewähr für Vollständigkeit oder Richtigkeit</p>
         <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1.5 max-w-full">
+          <a href="/expose-pruefen-lassen" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/expose-pruefen-lassen'); setView({ type: 'expose-pruefen-lassen' }); window.scrollTo(0, 0) }} className="hover:text-green transition-colors">Exposé prüfen lassen</a>
+          <span className="text-ink/20">·</span>
           <a href="/blog" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/blog'); setView({ type: 'blog' }); window.scrollTo(0, 0) }} className="hover:text-green transition-colors">Blog</a>
           <span className="text-ink/20">·</span>
           <a href="/rechner" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/rechner'); setView({ type: 'rechner-hub' }); window.scrollTo(0, 0) }} className="hover:text-green transition-colors">Rechner</a>

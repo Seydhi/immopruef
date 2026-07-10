@@ -78,6 +78,7 @@ async function getRoutes() {
     '/instandhaltungsruecklage-rechner',
     '/wohnflaechen-rechner',
     '/kaufnebenkosten-index',
+    '/expose-pruefen-lassen',
     ...REGIO_SLUGS.map(s => `/kaufnebenkosten-${s}`),
     '/ueber-uns',
     ...blogSlugs.map(s => `/blog/${s}`),

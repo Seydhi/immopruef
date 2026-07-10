@@ -258,15 +258,19 @@ export default function BlogLayout({ meta, children }: BlogLayoutProps) {
         </section>
       )}
 
-      {/* CTA */}
+      {/* CTA — Exposé-Themen führen auf die Service-LP (Ziel-Keyword), Rest auf die Startseite */}
       <div className="mt-12 bg-green text-cream rounded-xl p-6 text-center">
         <h3 className="font-display text-xl font-medium mb-2">Immobilie gefunden?</h3>
-        <p className="text-cream/70 text-sm mb-4">Lassen Sie Ihr Wunschobjekt in 2 Minuten analysieren.</p>
+        <p className="text-cream/70 text-sm mb-4">
+          {normalize(meta.slug + meta.title).includes('expose')
+            ? 'Lassen Sie das Exposé in wenigen Minuten unabhängig prüfen — Link oder PDF genügt.'
+            : 'Lassen Sie Ihr Wunschobjekt in 2 Minuten analysieren.'}
+        </p>
         <a
-          href="/"
+          href={normalize(meta.slug + meta.title).includes('expose') ? '/expose-pruefen-lassen' : '/'}
           className="inline-block bg-cream text-green font-medium text-sm px-6 py-2.5 rounded-lg hover:bg-cream/90 transition-colors"
         >
-          Jetzt Analyse starten
+          {normalize(meta.slug + meta.title).includes('expose') ? 'Exposé prüfen lassen' : 'Jetzt Analyse starten'}
         </a>
       </div>
     </article>

@@ -38,6 +38,7 @@ const blogUrls = entries
 
 const staticUrls = [
   { loc: `${BASE}/`, lastmod: today, changefreq: 'weekly', priority: '1.0' },
+  { loc: `${BASE}/expose-pruefen-lassen`, lastmod: today, changefreq: 'monthly', priority: '0.9' },
   { loc: `${BASE}/blog`, lastmod: today, changefreq: 'weekly', priority: '0.8' },
   { loc: `${BASE}/rechner`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
   { loc: `${BASE}/grunderwerbsteuer-rechner`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
