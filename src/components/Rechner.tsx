@@ -184,9 +184,10 @@ export default function Rechner() {
           <div className="font-display text-xl font-semibold text-green tabular-nums">{eur(r.gesamt)}</div>
         </div>
         <p className="text-[11px] text-ink-light mt-3 leading-snug">
-          Richtwerte für die Notar- und Grundbuchkosten (im GNotKG geregelt); die tatsächlichen Gebühren können je nach
-          Aufwand leicht abweichen. Hinzu kommen ggf. Kosten für Finanzierung, Umzug, Sanierung und Rücklagen. Keine
-          Rechts- oder Steuerberatung.
+          Notar- und Grundbuchkosten sind hier mit {pct(NOTAR_SATZ)} bzw. {pct(GRUNDBUCH_SATZ)} pauschal geschätzt —
+          exakt nach GNotKG-Tabelle (inkl. Grundschuld) berechnet sie der{' '}
+          <a href="/notarkosten-rechner" className="text-green hover:text-green-mid underline">Notarkosten-Rechner</a>.
+          Hinzu kommen ggf. Kosten für Finanzierung, Umzug, Sanierung und Rücklagen. Keine Rechts- oder Steuerberatung.
         </p>
       </div>
 

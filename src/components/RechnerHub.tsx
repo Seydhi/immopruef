@@ -4,6 +4,7 @@ interface Tool { href: string; name: string; desc: string }
 
 const TOOLS: Tool[] = [
   { href: '/grunderwerbsteuer-rechner', name: 'Kaufnebenkosten- & Grunderwerbsteuer-Rechner', desc: 'Grunderwerbsteuer je Bundesland, Notar, Grundbuch und Maklerprovision für Ihren Kaufpreis.' },
+  { href: '/notarkosten-rechner', name: 'Notarkosten-Rechner (GNotKG)', desc: 'Notar- und Grundbuchkosten exakt nach GNotKG-Gebührentabelle — Kaufvertrag, Grundschuld und USt einzeln aufgeschlüsselt.' },
   { href: '/budgetrechner', name: 'Budgetrechner', desc: 'Wie viel Immobilie kann ich mir leisten? Aus Einkommen, Eigenkapital, Zins und Tilgung.' },
   { href: '/tilgungsrechner', name: 'Tilgungsrechner', desc: 'Monatsrate, Restschuld nach Zinsbindung, Gesamtzinsen und Tilgungsplan — inkl. Sondertilgung.' },
   { href: '/mieten-oder-kaufen-rechner', name: 'Mieten-oder-Kaufen-Rechner', desc: 'Vermögensvergleich über die Zeit mit Break-even-Jahr — kaufen oder mieten und anlegen?' },

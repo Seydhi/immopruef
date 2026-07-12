@@ -17,6 +17,7 @@ import BlogLayout from './components/blog/BlogLayout'
 import Rechner from './components/Rechner'
 import Budgetrechner from './components/Budgetrechner'
 import Tilgungsrechner from './components/Tilgungsrechner'
+import NotarkostenRechner from './components/NotarkostenRechner'
 import MietenOderKaufen from './components/MietenOderKaufen'
 import MietrenditeRechner from './components/MietrenditeRechner'
 import InstandhaltungRechner from './components/InstandhaltungRechner'
@@ -43,6 +44,7 @@ type AppView =
   | { type: 'rechner' }
   | { type: 'budgetrechner' }
   | { type: 'tilgungsrechner' }
+  | { type: 'notarkosten' }
   | { type: 'mieten-oder-kaufen' }
   | { type: 'mietrendite' }
   | { type: 'instandhaltung' }
@@ -111,6 +113,7 @@ export default function App() {
     if (path === '/grunderwerbsteuer-rechner') { setView({ type: 'rechner' }); return }
     if (path === '/budgetrechner') { setView({ type: 'budgetrechner' }); return }
     if (path === '/tilgungsrechner') { setView({ type: 'tilgungsrechner' }); return }
+    if (path === '/notarkosten-rechner') { setView({ type: 'notarkosten' }); return }
     if (path === '/mieten-oder-kaufen-rechner') { setView({ type: 'mieten-oder-kaufen' }); return }
     if (path === '/mietrendite-rechner') { setView({ type: 'mietrendite' }); return }
     if (path === '/instandhaltungsruecklage-rechner') { setView({ type: 'instandhaltung' }); return }
@@ -233,7 +236,7 @@ export default function App() {
           </div>
         )}
 
-        {(view.type === 'rechner' || view.type === 'budgetrechner' || view.type === 'tilgungsrechner' || view.type === 'mieten-oder-kaufen' || view.type === 'mietrendite' || view.type === 'instandhaltung' || view.type === 'wohnflaechen' || view.type === 'rechner-hub' || view.type === 'kaufnebenkosten-index' || view.type === 'expose-pruefen-lassen' || view.type === 'regional' || view.type === 'ueber-uns') && (
+        {(view.type === 'rechner' || view.type === 'budgetrechner' || view.type === 'tilgungsrechner' || view.type === 'notarkosten' || view.type === 'mieten-oder-kaufen' || view.type === 'mietrendite' || view.type === 'instandhaltung' || view.type === 'wohnflaechen' || view.type === 'rechner-hub' || view.type === 'kaufnebenkosten-index' || view.type === 'expose-pruefen-lassen' || view.type === 'regional' || view.type === 'ueber-uns') && (
           <div>
             <button
               onClick={() => { window.history.pushState({}, '', '/'); setView({ type: 'landing' }) }}
@@ -244,6 +247,7 @@ export default function App() {
             {view.type === 'rechner' && <Rechner />}
             {view.type === 'budgetrechner' && <Budgetrechner />}
             {view.type === 'tilgungsrechner' && <Tilgungsrechner />}
+            {view.type === 'notarkosten' && <NotarkostenRechner />}
             {view.type === 'mieten-oder-kaufen' && <MietenOderKaufen />}
             {view.type === 'mietrendite' && <MietrenditeRechner />}
             {view.type === 'instandhaltung' && <InstandhaltungRechner />}

@@ -73,6 +73,7 @@ async function getRoutes() {
     '/grunderwerbsteuer-rechner',
     '/budgetrechner',
     '/tilgungsrechner',
+    '/notarkosten-rechner',
     '/mieten-oder-kaufen-rechner',
     '/mietrendite-rechner',
     '/instandhaltungsruecklage-rechner',

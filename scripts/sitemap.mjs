@@ -44,6 +44,7 @@ const staticUrls = [
   { loc: `${BASE}/grunderwerbsteuer-rechner`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
   { loc: `${BASE}/budgetrechner`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
   { loc: `${BASE}/tilgungsrechner`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
+  { loc: `${BASE}/notarkosten-rechner`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
   { loc: `${BASE}/mieten-oder-kaufen-rechner`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
   { loc: `${BASE}/mietrendite-rechner`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
   { loc: `${BASE}/instandhaltungsruecklage-rechner`, lastmod: today, changefreq: 'monthly', priority: '0.8' },

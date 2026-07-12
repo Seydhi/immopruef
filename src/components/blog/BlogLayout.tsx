@@ -41,7 +41,8 @@ export function germanDateToIso(date: string): string {
 // Interne Links Blog→Rechner sind die wichtigste Autoritäts-Leitung der Seite
 // (Audit-Befund: Rechner waren aus Artikeln praktisch unverlinkt).
 const RECHNER_SUGGEST: { href: string; label: string; desc: string; match: string[] }[] = [
-  { href: '/grunderwerbsteuer-rechner', label: 'Kaufnebenkosten- & Grunderwerbsteuer-Rechner', desc: 'Grunderwerbsteuer, Notar, Grundbuch und Maklerprovision für Ihren Kaufpreis berechnen.', match: ['kaufnebenkosten', 'grunderwerbsteuer', 'notar', 'maklerprovision', 'grundbuch', 'nebenkosten', 'provision', 'kaufvertrag'] },
+  { href: '/grunderwerbsteuer-rechner', label: 'Kaufnebenkosten- & Grunderwerbsteuer-Rechner', desc: 'Grunderwerbsteuer, Notar, Grundbuch und Maklerprovision für Ihren Kaufpreis berechnen.', match: ['kaufnebenkosten', 'grunderwerbsteuer', 'maklerprovision', 'nebenkosten', 'provision'] },
+  { href: '/notarkosten-rechner', label: 'Notarkosten-Rechner (GNotKG)', desc: 'Notar- und Grundbuchkosten exakt nach GNotKG-Gebührentabelle — inkl. Grundschuld und Umsatzsteuer.', match: ['notarkosten', 'notartermin', 'notar', 'grundbuch', 'grundschuld', 'beurkundung', 'auflassung', 'kaufvertrag'] },
   { href: '/budgetrechner', label: 'Budgetrechner', desc: 'Wie viel Immobilie Einkommen und Eigenkapital tragen — mit Nebenkosten und Puffer.', match: ['eigenkapital', 'budget', 'leisten', 'bonitaet', 'schufa', 'einkommen'] },
   { href: '/tilgungsrechner', label: 'Tilgungsrechner', desc: 'Monatsrate, Restschuld nach Zinsbindung und Gesamtzinsen Ihres Darlehens.', match: ['tilgung', 'annuitaet', 'zinsbindung', 'darlehen', 'baufinanzierung', 'sondertilgung', 'zinsen', 'kredit', 'finanzierung'] },
   { href: '/mieten-oder-kaufen-rechner', label: 'Mieten-oder-Kaufen-Rechner', desc: 'Vermögensvergleich zwischen Kauf und Mieten mit Break-even-Jahr.', match: ['mieten', 'kaufen-oder', 'miete'] },
