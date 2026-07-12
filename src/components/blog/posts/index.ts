@@ -4,6 +4,51 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'zweite-besichtigung-checkliste',
+    title: 'Zweite Besichtigung: Die Checkliste für den zweiten Termin',
+    description: 'Die erste Besichtigung ist das Gefühl, die zweite die Inspektion. Was Sie beim zweiten Termin gezielt prüfen, welches Werkzeug Sie mitnehmen und welche Warnsignale erst jetzt auffallen — mit Prüftabelle.',
+    date: '10. Juli 2026',
+    readTime: '10 Min',
+    tags: ['Kaufratgeber', 'Besichtigung'],
+    faq: [
+      { question: 'Ist eine zweite Besichtigung vor dem Hauskauf sinnvoll?', answer: 'Ja, fast immer. Die erste Besichtigung ist emotional geprägt und dient dem Gesamteindruck; erst beim zweiten, nüchternen Termin prüfen Sie gezielt Substanz, Maße und Mängel. Der zweite Termin ist auch der richtige Moment, um einen Bausachverständigen gezielt auf vorher entdeckte Auffälligkeiten anzusetzen.' },
+      { question: 'Worauf sollte ich bei der zweiten Besichtigung achten?', answer: 'Auf die technische Substanz — Feuchtigkeit, Heizungsalter, Elektrik, Fenster, Wasserdruck und Risse —, auf die Raummaße im Abgleich mit dem Grundriss und auf die Lage zu einer anderen Tageszeit. Prüfen Sie außerdem, ob zugesagte Unterlagen jetzt vorliegen und ob offene Fragen aus dem ersten Termin beantwortet werden.' },
+      { question: 'Was sollte ich zur zweiten Besichtigung mitnehmen?', answer: 'Zollstock oder Laser-Entfernungsmesser, Taschenlampe, Smartphone für Fotos, eine Wasserwaage-App und bei Verdacht ein Feuchtemessgerät — dazu Ihre Notizen und Fotos vom ersten Termin. Ideal ist eine zweite Person; bei Auffälligkeiten sollte ein Bausachverständiger dabei sein.' },
+      { question: 'Sollte ich einen Gutachter zur zweiten Besichtigung mitnehmen?', answer: 'Bei älteren Häusern oder erkennbarem Sanierungsbedarf lohnt sich das fast immer. Ein Bausachverständiger kostet für eine Begehung mit Kurzeinschätzung meist rund 400 bis 900 Euro und entfaltet den größten Nutzen beim zweiten Termin, weil Sie ihn gezielt auf die Auffälligkeiten aus dem ersten Besuch ansetzen können.' },
+      { question: 'Zu welcher Tageszeit sollte die zweite Besichtigung stattfinden?', answer: 'Am besten zu einer anderen als beim ersten Mal, idealerweise werktags im Berufsverkehr oder abends. Erst dann zeigen sich Verkehrslärm, Parksituation und Umfeld realistisch — Faktoren, die bei einem ruhigen Sonntagvormittag verborgen bleiben.' },
+    ],
+  },
+  {
+    slug: 'preissenkung-portal-deuten',
+    title: 'Preissenkung im Immobilienportal: Was sie wirklich bedeutet',
+    description: 'Ein gesenkter Preis ist kein Kaufsignal, sondern ein Informationssignal: Der Markt hat den Erstpreis abgelehnt. Was eine oder mehrere Senkungen verraten und wie Sie sie in der Verhandlung nutzen.',
+    date: '10. Juli 2026',
+    readTime: '9 Min',
+    tags: ['Kaufratgeber'],
+    faq: [
+      { question: 'Was bedeutet eine Preissenkung bei einer Immobilie?', answer: 'Dass der ursprüngliche Preis vom Markt nicht akzeptiert wurde — bei ausreichender Nachfrage wäre das Objekt zum Erstpreis verkauft worden. Eine Senkung signalisiert also schwache oder zögerliche Nachfrage und verschiebt die Verhandlungsmacht in Richtung Käufer.' },
+      { question: 'Ist eine Immobilie mit Preissenkung ein gutes Angebot?', answer: 'Nicht automatisch. Die Senkung korrigiert oft nur einen von Anfang an zu hohen Preis, sodass auch der neue Preis noch über dem fairen Wert liegen kann. Bestimmen Sie den fairen Wert unabhängig über Quadratmeterpreis, Bodenrichtwert und Kaufpreisfaktor, statt sich am gesenkten Angebotspreis zu orientieren.' },
+      { question: 'Wie finde ich heraus, ob der Preis gesenkt wurde?', answer: 'Manche Portale kennzeichnen gesenkte Preise oder zeigen eine Preishistorie. Ansonsten hilft die direkte Frage an den Makler, seit wann das Objekt inseriert ist und ob der Preis angepasst wurde, sowie die eigene Marktbeobachtung über mehrere Wochen. Eine lange Standdauer ist ein zusätzliches Indiz.' },
+      { question: 'Wie nutze ich eine Preissenkung in der Verhandlung?', answer: 'Als sachliches Argument: Verweisen Sie auf die dokumentierte Senkung und die Standdauer als Beleg für schwache Nachfrage und eröffnen Sie mit einem begründeten Gebot unter dem gesenkten Preis. Wichtig ist, sich nicht auf den letzten Angebotspreis als Ankerpunkt einzulassen, wenn Ihre eigene Werteinschätzung darunter liegt.' },
+      { question: 'Was bedeutet es, wenn eine Immobilie mehrfach im Preis gesenkt wurde?', answer: 'Mehrere Senkungen in kurzer Folge deuten auf einen deutlich zu hoch angesetzten Erstpreis oder wachsenden Zeitdruck des Verkäufers hin — beides stärkt Ihre Position. Prüfen Sie zugleich besonders gründlich, ob verdeckte Mängel oder Lageprobleme der Grund für die schwere Verkäuflichkeit sind.' },
+    ],
+  },
+  {
+    slug: 'keine-rueckmeldung-makler',
+    title: 'Keine Rückmeldung vom Makler? Warum — und was Sie tun können',
+    description: 'Funkstille nach der Anfrage ist am überhitzten Markt die Regel, nicht die Ausnahme. Warum Makler nicht antworten, wie Sie Ihre Antwortquote deutlich erhöhen und wann Sie ein Objekt besser ziehen lassen.',
+    date: '10. Juli 2026',
+    readTime: '9 Min',
+    tags: ['Kaufratgeber', 'Besichtigung'],
+    faq: [
+      { question: 'Warum meldet sich der Makler nach der Anfrage nicht?', answer: 'Meist wegen Masse: Ein attraktives Inserat erhält in den ersten 48 Stunden oft 40 bis über 100 Anfragen, von denen nur ein Bruchteil ernsthaft bearbeitet wird. Häufig ist das Objekt auch schon reserviert, oder der Makler sortiert nach Ernsthaftigkeit vor — unverbindliche Ein-Satz-Anfragen ohne Finanzierungshinweis landen unten im Stapel.' },
+      { question: 'Was kann ich tun, wenn der Makler nicht auf meine Anfrage reagiert?', answer: 'Fassen Sie nach 3 bis 4 Werktagen einmal freundlich nach und wechseln Sie den Kanal — kam per E-Mail nichts, rufen Sie zur Bürozeit an. Wiederholen Sie dabei Ihr Kaufinteresse und Ihren Finanzierungsstand und bieten Sie konkrete Besichtigungstermine an. Bleibt es nach zwei bis drei Versuchen still, ziehen Sie weiter.' },
+      { question: 'Wie oft sollte ich beim Makler nachfassen?', answer: 'Zwei- bis dreimal über verschiedene Kanäle reicht. Tägliches Nachhaken, Vorwürfe oder Druck verschlechtern Ihre Position. Anhaltende Funkstille nach mehreren sachlichen Versuchen ist selbst eine Antwort — dann lohnt weiterer Aufwand in aller Regel nicht.' },
+      { question: 'Wie schreibe ich eine Anfrage, auf die der Makler antwortet?', answer: 'Machen Sie Ernsthaftigkeit und geklärte Finanzierung sofort erkennbar: aussagekräftiger Betreff mit Objektbezeichnung und Objekt-ID, konkretes Kaufinteresse, Hinweis auf gesicherte Finanzierung oder eine Finanzierungsbestätigung, konkrete Terminvorschläge und eine Telefonnummer mit Erreichbarkeitsfenster. Das hebt Sie aus der Masse unverbindlicher Anfragen heraus.' },
+      { question: 'Wann sollte ich ein Objekt aufgeben, wenn der Makler nicht antwortet?', answer: 'Wenn nach zwei bis drei Kontaktversuchen über verschiedene Kanäle nichts zurückkommt, das Inserat als reserviert markiert wird oder verschwindet, oder zugesagte Unterlagen nie geliefert werden. Schlechte Erreichbarkeit schon vor dem Kauf ist zudem ein Warnsignal für die spätere Zusammenarbeit.' },
+    ],
+  },
+  {
     slug: 'chatgpt-expose-pruefen',
     title: 'ChatGPT fürs Exposé: Was der Gratis-Check kann — und wo er scheitert',
     description: 'Exposé in ChatGPT kopieren und bewerten lassen? Was Sprachmodelle beim Immobilien-Check leisten, wo sie systematisch scheitern (erfundene Marktwerte, Rechenfehler) — mit 3 erprobten Prompt-Vorlagen.',
@@ -1706,6 +1751,9 @@ export const BLOG_POSTS: BlogMeta[] = [
 
 // Map slug → lazy component (filled as posts are written)
 export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.ComponentType>> = {
+  'zweite-besichtigung-checkliste': lazy(() => import('./zweite-besichtigung-checkliste')),
+  'preissenkung-portal-deuten': lazy(() => import('./preissenkung-portal-deuten')),
+  'keine-rueckmeldung-makler': lazy(() => import('./keine-rueckmeldung-makler')),
   'chatgpt-expose-pruefen': lazy(() => import('./chatgpt-expose-pruefen')),
   'verkehrswert-kaufpreis-unterschied': lazy(() => import('./verkehrswert-kaufpreis-unterschied')),
   'haus-ueberteuert-erkennen': lazy(() => import('./haus-ueberteuert-erkennen')),
