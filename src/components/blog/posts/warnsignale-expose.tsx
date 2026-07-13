@@ -62,7 +62,7 @@ export default function WarnsignaleExpose() {
         </tbody>
       </table>
       <p>
-        Nicht jede Formulierung ist automatisch negativ. Aber wenn das Exposé mehr Stimmung als Substanz vermittelt, fragen Sie gezielt nach konkreten Daten.
+        Nicht jede Formulierung ist automatisch negativ. Aber wenn das Exposé mehr Stimmung als Substanz vermittelt, fragen Sie gezielt nach konkreten Daten. Die vollständige Übersetzungshilfe mit 50 Begriffen finden Sie im <a href="/blog/maklersprache-glossar">Maklersprache-Glossar</a>.
       </p>
 
       <h3>7. Fehlende oder ungenaue Wohnflächenangabe</h3>

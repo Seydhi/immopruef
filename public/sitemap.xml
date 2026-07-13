@@ -280,7 +280,13 @@
     <priority>0.5</priority>
   </url>
 
-  <!-- Blog Posts (112) -->
+  <!-- Blog Posts (113) -->
+  <url>
+    <loc>https://immopruef.de/blog/maklersprache-glossar</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <url>
     <loc>https://immopruef.de/blog/wie-viel-haus-kann-ich-mir-leisten</loc>
     <lastmod>2026-07-13</lastmod>

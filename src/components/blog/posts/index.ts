@@ -4,6 +4,21 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'maklersprache-glossar',
+    title: 'Maklersprache übersetzt: 50 Exposé-Begriffe im Klartext',
+    description: 'Was „gepflegt", „Liebhaberobjekt", „VB" oder „lichtdurchflutet" wirklich bedeuten: 50 Exposé-Floskeln als Klartext-Glossar — sortiert nach Zustand, Lage, Grundriss, Preis und Formalien, mit der passenden Nachfrage.',
+    date: '13. Juli 2026',
+    readTime: '11 Min',
+    tags: ['Kaufratgeber', 'Checkliste'],
+    faq: [
+      { question: 'Was bedeutet „renovierungsbedürftig" wirklich?', answer: 'Meist: Oberflächen fällig — Böden, Tapeten, Malerarbeiten. Das ist die günstigste Stufe. Abzugrenzen von „modernisierungsbedürftig" (Technik wie Heizung, Fenster, Bad veraltet — schnell ein mittlerer fünfstelliger Betrag) und „sanierungsbedürftig" (Eingriff in die Substanz, Kernsanierung 800–1.500 €/m²). Fragen Sie konkret, welche Gewerke gemeint sind.' },
+      { question: 'Was heißt „gepflegt" bei einer Immobilie?', answer: 'Bewohnbar und optisch in Ordnung — aber technisch in der Regel nichts erneuert. Heizung, Elektrik und Fenster sind oft noch auf dem Stand des Baujahrs. „Gepflegt" beschreibt den Eindruck, nicht den Modernisierungsstand; fragen Sie nach der Sanierungshistorie mit Jahreszahlen.' },
+      { question: 'Was ist ein „Liebhaberobjekt"?', answer: 'Eine Immobilie, deren Preis sich über übliche Vergleichswerte nicht rechtfertigen lässt — oft stark sanierungsbedürftig, ungewöhnlich geschnitten oder eine Sonderimmobilie. Für Banken ist die Bewertung schwierig, was die Finanzierung erschwert. Der Begriff verlagert die Preisbegründung vom Markt auf Ihr Gefühl.' },
+      { question: 'Was bedeutet „VB" beim Immobilienpreis?', answer: '„Verhandlungsbasis": Der genannte Preis ist der Startpunkt des Verkäufers, kein Endpreis. Angebotspreise liegen im Schnitt 5 bis 15 Prozent über den tatsächlich beurkundeten Kaufpreisen. Bestimmen Sie den fairen Wert unabhängig und verhandeln Sie von dort — nicht vom Anker des Inserats.' },
+      { question: 'Warum steht „Angaben ohne Gewähr" in jedem Exposé?', answer: 'Als pauschaler Haftungsschutz des Maklers für Angaben, die vom Verkäufer stammen. Er entbindet aber nicht von Pflichten: Der Energieausweis mit Kennwerten ist Pflichtangabe, und nachweislich falsche Zusicherungen können trotzdem haften. Für Sie heißt es schlicht: Kernangaben vor dem Kauf belegen lassen.' },
+    ],
+  },
+  {
     slug: 'wie-viel-haus-kann-ich-mir-leisten',
     title: 'Wie viel Haus kann ich mir leisten? Tabellen nach Netto-Einkommen',
     description: 'Leistbarer Kaufpreis nach Nettoeinkommen (2.000–7.000 €) als Tabelle: max. Rate (35 %), Darlehen bei 3,8 % Zins / 2 % Tilgung und Kaufpreis mit 0 / 50.000 / 100.000 € Eigenkapital — plus die Formel zum Selbstrechnen.',
@@ -1796,6 +1811,7 @@ export const BLOG_POSTS: BlogMeta[] = [
 
 // Map slug → lazy component (filled as posts are written)
 export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.ComponentType>> = {
+  'maklersprache-glossar': lazy(() => import('./maklersprache-glossar')),
   'wie-viel-haus-kann-ich-mir-leisten': lazy(() => import('./wie-viel-haus-kann-ich-mir-leisten')),
   'sanierungskosten-tabelle-2026': lazy(() => import('./sanierungskosten-tabelle-2026')),
   'grunderwerbsteuer-sparen-inventar': lazy(() => import('./grunderwerbsteuer-sparen-inventar')),
