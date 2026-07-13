@@ -4,6 +4,21 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'immobilienbewertung-vergleich',
+    title: 'Immobilienbewertung im Vergleich: Gratis, ChatGPT, KI oder Gutachter?',
+    description: 'Gratis-Portal (0 €, Lead-Modell), ChatGPT (Textarbeit, keine Zahlen), käuferseitige KI-Analyse (ab 19 €) oder Bausachverständiger (300–2.000 €)? Der ehrliche Vergleich mit Entscheidungshilfe und Trichter-Strategie.',
+    date: '13. Juli 2026',
+    readTime: '10 Min',
+    tags: ['Kaufratgeber'],
+    faq: [
+      { question: 'Sind kostenlose Immobilienbewertungen seriös?', answer: 'Die Wertspannen selbst sind meist plausible Modellrechnungen aus Lage- und Metadaten — aber sie kennen den Objektzustand nicht, und das Geschäftsmodell ist fast immer Lead-Gewinnung: Die Bewertung ist gratis, weil die Kontaktdaten anschließend an Makler oder Finanzierungsvermittler gehen. Für ein erstes Marktgefühl brauchbar, als Kaufentscheidungs-Grundlage ungeeignet.' },
+      { question: 'Was kostet ein Gutachter beim Hauskauf?', answer: 'Eine Besichtigungsbegleitung oder ein Kurzgutachten kostet rund 300 bis 800 €, ein ausführliches schriftliches Gutachten 800 bis 2.000 €, Stundensätze liegen meist bei 100 bis 150 €. Gut investiert ist das beim Favoriten, bei Altbauten und bei sichtbarem Sanierungsstau — nicht bei jedem der fünf Kandidaten.' },
+      { question: 'Kann ChatGPT eine Immobilie bewerten?', answer: 'Als Textassistent ja — Exposé zusammenfassen, fehlende Angaben auflisten, Fragen generieren. Als Bewertungsinstrument nein: Sprachmodelle haben keinen verlässlichen Zugriff auf aktuelle Marktdaten, liefern häufig erfundene Quadratmeterpreise und machen bei Finanzmathematik regelmäßig Rechenfehler — ohne Schätzungen als solche zu kennzeichnen.' },
+      { question: 'Was unterscheidet eine bezahlte KI-Analyse von der Gratis-Bewertung?', answer: 'Drei Dinge: die Interessenlage (vom Käufer bezahlt statt über Lead-Verkauf finanziert), die Datenbasis (Exposé plus Web-Recherche mit verlinkten Quellen statt reiner Metadaten-Spanne) und die Rechenweise (Nebenkosten und Finanzierungs-Szenarien deterministisch im Code statt Modellschätzung). Grenze bleibt: keine Vor-Ort-Begehung.' },
+      { question: 'Wann brauche ich ein echtes Verkehrswertgutachten?', answer: 'Wenn die Wertfeststellung rechtssicher sein muss: bei Erbauseinandersetzung, Scheidung, Gericht oder Finanzamt. Dafür ist ein öffentlich bestellter und vereidigter Sachverständiger mit Vollgutachten nach ImmoWertV zuständig. Für die Kaufentscheidung selbst reicht meist die Kombination aus strukturierter Analyse und Bausachverständigem.' },
+    ],
+  },
+  {
     slug: 'hausgeld-pro-qm',
     title: 'Hausgeld pro m² 2026: Was ist normal? Der Benchmark',
     description: 'Hausgeld-Benchmark 2026: 3,00–4,50 €/m² sind normal, unter 2,50 €/m² verdächtig, über 6,00 €/m² erklärungsbedürftig. Mit Zusammensetzungs-Tabelle, Rücklagen-Richtwerten und Beispielrechnung für 80 m².',
@@ -1826,6 +1841,7 @@ export const BLOG_POSTS: BlogMeta[] = [
 
 // Map slug → lazy component (filled as posts are written)
 export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.ComponentType>> = {
+  'immobilienbewertung-vergleich': lazy(() => import('./immobilienbewertung-vergleich')),
   'hausgeld-pro-qm': lazy(() => import('./hausgeld-pro-qm')),
   'maklersprache-glossar': lazy(() => import('./maklersprache-glossar')),
   'wie-viel-haus-kann-ich-mir-leisten': lazy(() => import('./wie-viel-haus-kann-ich-mir-leisten')),
