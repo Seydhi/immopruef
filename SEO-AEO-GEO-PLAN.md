@@ -285,7 +285,7 @@ PerplexityBot, OAI-SearchBot, Google-Extended), FAQPage-Schema, Kaufnebenkosten-
 | 2 | ✅ **KOMPLETT 8/8 (13.07.):** „Wie viel unter Angebotspreis bieten" ✅ (im Pillar), „ChatGPT Exposé prüfen" ✅, „Verkehrswert vs. Kaufpreis" ✅, „Haus überteuert erkennen" ✅, „Hauskauf absagen vor Notartermin" ✅ (3613552), „Zweite Besichtigung Checkliste" ✅, „Preissenkung im Portal deuten" ✅, „Keine Rückmeldung vom Makler" ✅ (fb46918) | 200–350 |
 | 3 | ✅ **KOMPLETT (13.07.):** Bodenrichtwert-Serie (ef4d7dd): 16 × /bodenrichtwert-⟨land⟩ (BORIS-Portale, FAQPage, 16↔16-Mesh) · Notarkosten-Rechner (547f6a9): echte GNotKG-Tabellen-Mathe · „GrESt sparen (Inventar)" (9024548): Artikel + Inventar-Feld im Kaufnebenkosten-Rechner + **Faktenfix** im GrESt-Bestandsartikel (Rücklagen-Abzug seit BFH 2020 II R 49/17 tot — war noch als Tipp drin) | 350–550 |
 | 4 | ✅ **KOMPLETT (13.07.):** Sanierungskosten-Tabelle 2026 + „Wie viel Haus bei X € netto" (d88166b; dabei Mobile-Tabellen-Fix für alle Artikel) + Maklersprache-Glossar 50 Begriffe (d1ae709) + Hausgeld-Benchmark pro m² (bcfacda) | 550–850 |
-| 5 | Nachlass-Kompass (übliche Preisnachlässe), „Jetzt kaufen oder warten (Q-Update)", Vergleichsseite „Gratis-Bewertung vs. Gutachter vs. KI-Analyse" | 850–1.300 |
+| 5 | ✅ Vergleichsseite „Gratis vs. ChatGPT vs. KI-Analyse vs. Gutachter" (13.07., da0f1f1 — Anti-Lead-USP, Trichter-Strategie) · offen: Nachlass-Kompass (evtl. in Pillar integrieren), „Jetzt kaufen oder warten (Q-Update)" | 850–1.300 |
 | 6 | **Exposé-Transparenz-Report** (eigene aggregierte Daten: „In X % der Exposés fehlt der Energieausweis" — PR-Asset!), Quartals-Refreshes, GSC-nachsteuern | 1.300–2.000 |
 
 Frühindikator ab M2: **Impressionen** (Ziel >50.000/Monat in M4) — Klicks folgen mit 6–8 Wochen Verzug.
