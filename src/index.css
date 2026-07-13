@@ -60,6 +60,15 @@
   font-weight: 600;
   color: var(--color-ink);
 }
+/* Mobil: zu breite Artikel-Tabellen scrollen statt abgeschnitten zu werden
+   (Root hat overflow-x-hidden — ohne dies wäre der rechte Rand unerreichbar). */
+@media (max-width: 640px) {
+  .prose-immo table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
 
 @theme {
   --color-green: #2d4a3e;

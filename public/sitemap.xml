@@ -280,7 +280,19 @@
     <priority>0.5</priority>
   </url>
 
-  <!-- Blog Posts (110) -->
+  <!-- Blog Posts (112) -->
+  <url>
+    <loc>https://immopruef.de/blog/wie-viel-haus-kann-ich-mir-leisten</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://immopruef.de/blog/sanierungskosten-tabelle-2026</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <url>
     <loc>https://immopruef.de/blog/grunderwerbsteuer-sparen-inventar</loc>
     <lastmod>2026-07-13</lastmod>

@@ -4,6 +4,36 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'wie-viel-haus-kann-ich-mir-leisten',
+    title: 'Wie viel Haus kann ich mir leisten? Tabellen nach Netto-Einkommen',
+    description: 'Leistbarer Kaufpreis nach Nettoeinkommen (2.000–7.000 €) als Tabelle: max. Rate (35 %), Darlehen bei 3,8 % Zins / 2 % Tilgung und Kaufpreis mit 0 / 50.000 / 100.000 € Eigenkapital — plus die Formel zum Selbstrechnen.',
+    date: '13. Juli 2026',
+    readTime: '9 Min',
+    tags: ['Kaufratgeber', 'Finanzierung'],
+    faq: [
+      { question: 'Wie viel Haus kann ich mir bei 3.000 € netto leisten?', answer: 'Bei 35 % Rate-Anteil (1.050 €), 3,8 % Zins und 2 % Tilgung trägt das Einkommen ein Darlehen von rund 217.000 €. Ohne Eigenkapital entspricht das etwa 196.000 € Kaufpreis, mit 50.000 € Eigenkapital rund 242.000 €, mit 100.000 € rund 287.000 € — jeweils nach Abzug von 10,6 % Kaufnebenkosten.' },
+      { question: 'Wie viel Haus kann ich mir bei 4.000 € netto leisten?', answer: 'Die maximale Rate liegt bei 1.400 € (35 %), das mögliche Darlehen bei rund 290.000 € (3,8 % Zins, 2 % Tilgung). Daraus ergibt sich ein leistbarer Kaufpreis von etwa 262.000 € ohne Eigenkapital, 307.000 € mit 50.000 € und 352.000 € mit 100.000 € Eigenkapital.' },
+      { question: 'Mit welcher Formel berechne ich mein Immobilienbudget?', answer: 'Dreisatz in zwei Schritten: Maximale Rate = Nettoeinkommen × 35 %. Mögliches Darlehen = Rate × 12 ÷ (Zins + Tilgung in Prozent). Leistbarer Kaufpreis = (Darlehen + Eigenkapital) ÷ (1 + Nebenkostenquote), bei 10,6 % Nebenkosten also geteilt durch 1,106.' },
+      { question: 'Kann ich ohne Eigenkapital ein Haus kaufen?', answer: 'Nur ausnahmsweise: Eine 110-%-Finanzierung (Kaufpreis plus Nebenkosten) vergeben wenige Banken, nur bei sehr guter Bonität und mit deutlichem Zinsaufschlag. Realistisch sollten mindestens die Kaufnebenkosten von 10 bis 12 % aus eigenen Mitteln kommen, besser zusätzlich 10 bis 20 % des Kaufpreises.' },
+      { question: 'Ist die 35-Prozent-Regel wirklich sicher?', answer: 'Sie ist eine Obergrenze der Banken, kein Wohlfühlwert. Zur Kreditrate kommen Bewirtschaftungskosten von oft 400 bis 700 € monatlich (Grundsteuer, Versicherung, Energie, Rücklage) plus das Zinsänderungsrisiko nach der Zinsbindung. Wer unter 30 % Rate-Anteil bleibt, hat spürbar mehr Puffer.' },
+    ],
+  },
+  {
+    slug: 'sanierungskosten-tabelle-2026',
+    title: 'Sanierungskosten 2026: Tabelle aller Gewerke mit Preisen',
+    description: 'Sanierungskosten 2026 als Tabelle: Dach 15.000–30.000 €, Wärmepumpe 18.000–35.000 €, Bad 12.000–20.000 €, Elektrik 8.000–15.000 €, Kernsanierung 800–1.500 €/m² — alle Gewerke mit Preisspannen, nach Baujahr und mit Förder-Hinweisen.',
+    date: '13. Juli 2026',
+    readTime: '10 Min',
+    tags: ['Kaufratgeber', 'Zustand'],
+    faq: [
+      { question: 'Was kostet eine Kernsanierung pro Quadratmeter?', answer: 'Eine Kernsanierung — alles neu bis auf den Rohbau — kostet 2026 üblicherweise 800 bis 1.500 € je Quadratmeter Wohnfläche, bei einem 140-m²-Haus also 112.000 bis 210.000 €. Eine Teilmodernisierung (Heizung, Fenster, Bad, Elektrik) liegt bei 400 bis 800 €/m². Ab etwa 1.500 €/m² lohnt der Vergleich mit dem Neubau.' },
+      { question: 'Was kostet ein neues Dach beim Einfamilienhaus?', answer: 'Das reine Neueindecken kostet 100 bis 200 € je Quadratmeter Dachfläche — beim typischen Einfamilienhaus 15.000 bis 30.000 €. Mit GEG-konformer Aufsparrendämmung sind es 200 bis 350 €/m², also 25.000 bis 50.000 €. Der Zustand des Dachstuhls entscheidet über das obere oder untere Ende der Spanne.' },
+      { question: 'Was kostet eine komplette Badsanierung?', answer: 'Ein mittleres Niveau kostet 12.000 bis 20.000 € pro Bad bzw. 2.500 bis 4.000 € je Quadratmeter Badfläche. Einfache Modernisierungen beginnen bei rund 8.000 €, gehobene Ausstattung mit bodengleicher Dusche und hochwertigen Fliesen erreicht 30.000 €. Kostentreiber sind neue Leitungen und das Verlegen von Anschlüssen.' },
+      { question: 'In welcher Reihenfolge sollte man ein Haus sanieren?', answer: 'Substanz vor Optik: erst Dach dicht und Keller trocken, dann rohbaunahe Gewerke wie Elektrik und Wasserleitungen, danach Dämmung und Fenster, erst dann die Heizung dimensionieren und ganz zum Schluss Böden und Maler. Wer die Heizung vor der Dämmung tauscht, kauft sie oft überdimensioniert.' },
+      { question: 'Wie viel Puffer sollte ich bei Sanierungskosten einplanen?', answer: 'Rechnen Sie 10 bis 20 % Reserve auf die kalkulierte Summe, bei Häusern mit Baujahr vor 1950 eher 20 bis 30 % — hinter geöffneten Wänden warten regelmäßig Überraschungen. Bei größeren Vorhaben lohnt vor dem Kauf ein Bausachverständiger (400 bis 1.500 €), der die Posten belastbar beziffert.' },
+    ],
+  },
+  {
     slug: 'grunderwerbsteuer-sparen-inventar',
     title: 'Grunderwerbsteuer sparen: Inventar im Kaufvertrag ausweisen',
     description: 'Auf Einbauküche, Möbel und Sauna fällt keine Grunderwerbsteuer an — wenn ihr Wert im Kaufvertrag getrennt steht. Wie die Aufteilung funktioniert, welche Werte das Finanzamt akzeptiert und wo die Risiken liegen.',
@@ -1766,6 +1796,8 @@ export const BLOG_POSTS: BlogMeta[] = [
 
 // Map slug → lazy component (filled as posts are written)
 export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.ComponentType>> = {
+  'wie-viel-haus-kann-ich-mir-leisten': lazy(() => import('./wie-viel-haus-kann-ich-mir-leisten')),
+  'sanierungskosten-tabelle-2026': lazy(() => import('./sanierungskosten-tabelle-2026')),
   'grunderwerbsteuer-sparen-inventar': lazy(() => import('./grunderwerbsteuer-sparen-inventar')),
   'zweite-besichtigung-checkliste': lazy(() => import('./zweite-besichtigung-checkliste')),
   'preissenkung-portal-deuten': lazy(() => import('./preissenkung-portal-deuten')),
