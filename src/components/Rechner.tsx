@@ -7,22 +7,27 @@ export default function Rechner() {
   const [land, setLand] = useState('Nordrhein-Westfalen')
   const [maklerSatz, setMaklerSatz] = useState(3.57)
   const [provisionsfrei, setProvisionsfrei] = useState(false)
+  const [inventar, setInventar] = useState(0)
 
   const grestSatz = useMemo(() => GREST.find((g) => g.land === land)?.satz ?? 5.0, [land])
 
   const r = useMemo(() => {
     const p = Number.isFinite(preis) && preis > 0 ? preis : 0
-    const grest = p * (grestSatz / 100)
+    // Bewegliches Inventar (Küche, Möbel …) mindert nur die GrESt-Bemessungsgrundlage;
+    // Notar/Grundbuch (Geschäftswert = Gesamtpreis) und Makler bleiben auf dem vollen Preis.
+    const inv = Math.min(Number.isFinite(inventar) && inventar > 0 ? inventar : 0, p)
+    const grestBasis = p - inv
+    const grest = grestBasis * (grestSatz / 100)
     const notar = p * (NOTAR_SATZ / 100)
     const grundbuch = p * (GRUNDBUCH_SATZ / 100)
     const makler = provisionsfrei ? 0 : p * (maklerSatz / 100)
     const neben = grest + notar + grundbuch + makler
     return {
-      grest, notar, grundbuch, makler, neben,
+      inv, grestBasis, grest, notar, grundbuch, makler, neben,
       nebenProzent: p > 0 ? (neben / p) * 100 : 0,
       gesamt: p + neben,
     }
-  }, [preis, grestSatz, maklerSatz, provisionsfrei])
+  }, [preis, inventar, grestSatz, maklerSatz, provisionsfrei])
 
   useSEO({
     title: 'Kaufnebenkosten-Rechner 2026: Grunderwerbsteuer, Notar & Makler',
@@ -58,6 +63,11 @@ export default function Rechner() {
           question: 'Werden die Kaufnebenkosten von der Bank mitfinanziert?',
           answer:
             'In der Regel nicht. Banken finanzieren die Nebenkosten meist nicht mit, sodass Sie diese aus Eigenkapital aufbringen müssen.',
+        },
+        {
+          question: 'Kann ich die Grunderwerbsteuer legal senken?',
+          answer:
+            'Ja: Mitverkauftes bewegliches Inventar wie Einbauküche, Möbel oder Sauna unterliegt nicht der Grunderwerbsteuer, wenn sein Zeitwert im Kaufvertrag getrennt ausgewiesen ist. Als Faustregel akzeptieren Finanzämter Inventaranteile bis etwa 15 % des Kaufpreises, sofern die Werte realistisch und belegbar sind.',
         },
       ]),
       breadcrumbSchema([
@@ -127,6 +137,30 @@ export default function Rechner() {
           </div>
 
           <div>
+            <label className="block text-[13px] font-medium text-ink-mid mb-1.5">
+              davon bewegliches Inventar <span className="font-normal text-ink-light">(optional)</span>
+            </label>
+            <div className="relative">
+              <input
+                type="number"
+                inputMode="numeric"
+                min={0}
+                step={500}
+                value={Number.isFinite(inventar) ? inventar : ''}
+                onChange={(e) => setInventar(Math.max(0, Math.round(Number(e.target.value))))}
+                className="w-full border border-ink/20 rounded-lg pl-3.5 pr-9 py-2.5 text-sm bg-cream focus:outline-none focus:ring-2 focus:ring-green/30 focus:border-green transition-colors tabular-nums"
+                placeholder="0"
+              />
+              <span className="absolute right-3.5 top-1/2 -translate-y-1/2 text-ink-light text-sm">€</span>
+            </div>
+            <p className="text-[11px] text-ink-light mt-1">
+              Einbauküche, Möbel, Sauna & Co. mindern die Grunderwerbsteuer, wenn sie im Kaufvertrag getrennt
+              ausgewiesen sind (Zeitwert!) — Details im{' '}
+              <a href="/blog/grunderwerbsteuer-sparen-inventar" className="text-green hover:text-green-mid underline">Inventar-Ratgeber</a>.
+            </p>
+          </div>
+
+          <div>
             <div className="flex items-center justify-between mb-1.5">
               <label className="text-[13px] font-medium text-ink-mid">Maklerprovision (Käuferanteil)</label>
               <label className="flex items-center gap-1.5 text-[12px] text-ink-mid cursor-pointer select-none">
@@ -163,7 +197,11 @@ export default function Rechner() {
       {/* Ergebnis */}
       <div className="mt-5 bg-white border border-gold/40 rounded-xl p-5 shadow-sm">
         <div className="text-[10px] text-ink-light font-medium tracking-wider uppercase mb-1">Ihre Kaufnebenkosten</div>
-        <Row label="Grunderwerbsteuer" sub={`${pct(grestSatz)} · ${land}`} value={eur(r.grest)} />
+        <Row
+          label="Grunderwerbsteuer"
+          sub={r.inv > 0 ? `${pct(grestSatz)} · ${land} · auf ${eur(r.grestBasis)} (ohne Inventar)` : `${pct(grestSatz)} · ${land}`}
+          value={eur(r.grest)}
+        />
         <Row label="Notarkosten" sub={`ca. ${pct(NOTAR_SATZ)}`} value={eur(r.notar)} />
         <Row label="Grundbuchkosten" sub={`ca. ${pct(GRUNDBUCH_SATZ)}`} value={eur(r.grundbuch)} />
         <Row

@@ -4,6 +4,21 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'grunderwerbsteuer-sparen-inventar',
+    title: 'Grunderwerbsteuer sparen: Inventar im Kaufvertrag ausweisen',
+    description: 'Auf Einbauküche, Möbel und Sauna fällt keine Grunderwerbsteuer an — wenn ihr Wert im Kaufvertrag getrennt steht. Wie die Aufteilung funktioniert, welche Werte das Finanzamt akzeptiert und wo die Risiken liegen.',
+    date: '13. Juli 2026',
+    readTime: '9 Min',
+    tags: ['Kaufratgeber', 'Finanzierung'],
+    faq: [
+      { question: 'Wie spare ich mit Inventar Grunderwerbsteuer?', answer: 'Indem der Kaufvertrag den Gesamtpreis aufteilt: Immobilie und mitverkaufte bewegliche Sachen (Einbauküche, Möbel, Sauna, Markise) werden getrennt beziffert. Die Grunderwerbsteuer fällt nur auf den Immobilienanteil an. Bei 15.000 € Inventar spart das je nach Bundesland 525 € (3,5 %) bis 975 € (6,5 %).' },
+      { question: 'Wie viel Inventar akzeptiert das Finanzamt?', answer: 'Eine gesetzliche Grenze gibt es nicht, aber eine Praxis-Faustregel: Bis etwa 15 % des Kaufpreises bleiben Angaben meist ohne vertiefte Prüfung. Entscheidend ist der realistische Zeitwert der gebrauchten Sachen — nicht der Neupreis — und eine nachvollziehbare Inventarliste als Anlage zum Vertrag.' },
+      { question: 'Was zählt als bewegliches Inventar beim Hauskauf?', answer: 'Üblicherweise anerkannt: Einbauküche, Möbel, Lampen, frei stehende Sauna, Whirlpool, Markisen, Gartengeräte, Kaminofen, lose Teppiche. Nicht abtrennbar sind fest verbaute Bestandteile wie Heizung, Sanitärobjekte, verklebte Böden, Maß-Einbauschränke oder eine dachintegrierte Photovoltaikanlage.' },
+      { question: 'Mindert die Instandhaltungsrücklage noch die Grunderwerbsteuer?', answer: 'Nein. Der Bundesfinanzhof hat 2020 entschieden (Az. II R 49/17), dass die anteilige Rücklage Verwaltungsvermögen der WEG bleibt und die Bemessungsgrundlage nicht mindert — auch wenn sie im Kaufvertrag separat beziffert ist. Ältere Ratgeber, die diesen Abzug empfehlen, sind überholt.' },
+      { question: 'Welche Risiken hat die Aufteilung des Kaufpreises?', answer: 'Zwei: Die Bank beleiht nur den Immobilienanteil — bei sehr knapper Finanzierung kann der Inventarausweis die Konditionen verschlechtern, daher vorab abstimmen. Und bewusst überhöhte Inventarwerte sind keine Gestaltung, sondern Steuerhinterziehung; das Finanzamt prüft unrealistische Ansätze und streicht sie.' },
+    ],
+  },
+  {
     slug: 'zweite-besichtigung-checkliste',
     title: 'Zweite Besichtigung: Die Checkliste für den zweiten Termin',
     description: 'Die erste Besichtigung ist das Gefühl, die zweite die Inspektion. Was Sie beim zweiten Termin gezielt prüfen, welches Werkzeug Sie mitnehmen und welche Warnsignale erst jetzt auffallen — mit Prüftabelle.',
@@ -945,7 +960,7 @@ export const BLOG_POSTS: BlogMeta[] = [
   {
     slug: 'grunderwerbsteuer-2026-bundeslaender',
     title: 'Grunderwerbsteuer 2026: Tabelle aller Bundesländer + Spartipps',
-    description: 'Grunderwerbsteuer 2026 im Überblick: Steuersätze aller 16 Bundesländer als Tabelle, Beispielrechnung für 400.000 € Kaufpreis und 5 legale Spartipps für Käufer.',
+    description: 'Grunderwerbsteuer 2026 im Überblick: Steuersätze aller 16 Bundesländer als Tabelle, Beispielrechnung für 400.000 € Kaufpreis und 4 legale Spartipps für Käufer.',
     date: '12. Juni 2026',
     readTime: '7 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
@@ -955,7 +970,7 @@ export const BLOG_POSTS: BlogMeta[] = [
       { question: 'Welches Bundesland zaehlt fuer die Grunderwerbsteuer, mein Wohnsitz oder die Lage der Immobilie?', answer: 'Massgeblich ist immer das Bundesland, in dem die Immobilie liegt, nicht Ihr Wohnsitz. Wer etwa in Hamburg wohnt und ein Haus in Schleswig-Holstein kauft, zahlt 6,5 % statt 5,5 %. Bei 400.000 Euro Kaufpreis macht dieser Unterschied 4.000 Euro aus.' },
       { question: 'Wann wird die Grunderwerbsteuer faellig und wie viel Zeit habe ich zur Zahlung?', answer: 'Nach der notariellen Beurkundung meldet der Notar den Verkauf ans Finanzamt, das den Grunderwerbsteuerbescheid verschickt. Ab Zugang des Bescheids haben Sie einen Monat Zeit zu zahlen. Der Bescheid kommt oft schon wenige Wochen nach dem Notartermin, meist deutlich vor der Kaufpreiszahlung, daher muss das Geld frueh verfuegbar sein.' },
       { question: 'Muss ich die Grunderwerbsteuer aus Eigenkapital bezahlen?', answer: 'Ja, die Grunderwerbsteuer muessen Sie fast immer aus Eigenkapital zahlen. Banken finanzieren diese Nebenkosten in der Regel nicht mit, weil ihnen kein verwertbarer Sachwert gegenuebersteht. Bei einem Kauf fuer 400.000 Euro in Nordrhein-Westfalen brauchen Sie allein fuer die Steuer 26.000 Euro auf dem Konto, zusaetzlich zu Notar, Grundbuch und Makler.' },
-      { question: 'Wie kann ich die Grunderwerbsteuer beim Hauskauf legal senken?', answer: 'Den Steuersatz koennen Sie nicht beeinflussen, wohl aber die Bemessungsgrundlage. Weisen Sie bewegliches Inventar wie Einbaukueche oder Gartenhaus separat im Kaufvertrag aus und bei Eigentumswohnungen die anteilige Instandhaltungsruecklage. Beim Neubau senkt eine echte Trennung von Grundstueckskauf und Bauvertrag die Steuer auf den reinen Grundstueckspreis.' },
+      { question: 'Wie kann ich die Grunderwerbsteuer beim Hauskauf legal senken?', answer: 'Den Steuersatz koennen Sie nicht beeinflussen, wohl aber die Bemessungsgrundlage. Weisen Sie bewegliches Inventar wie Einbaukueche oder Gartenhaus mit realistischem Zeitwert separat im Kaufvertrag aus. Beim Neubau senkt eine echte Trennung von Grundstueckskauf und Bauvertrag die Steuer auf den reinen Grundstueckspreis. Der fruehere Abzug der Instandhaltungsruecklage bei Eigentumswohnungen ist seit dem BFH-Urteil 2020 (II R 49/17) nicht mehr moeglich.' },
       { question: 'Muss ich Grunderwerbsteuer zahlen, wenn ich das Haus von meinen Eltern kaufe?', answer: 'Nein. Nach Paragraf 3 GrEStG sind Grundstuecksverkaeufe zwischen Verwandten in gerader Linie, also zwischen Eltern und Kindern, sowie zwischen Ehegatten von der Grunderwerbsteuer befreit, unabhaengig vom Kaufpreis. Wer das Elternhaus von den Eltern kauft, zahlt keine Grunderwerbsteuer. Geschwister fallen nicht unter diese Befreiung, da sie nicht in gerader Linie verwandt sind.' },
     ],
   },
@@ -1751,6 +1766,7 @@ export const BLOG_POSTS: BlogMeta[] = [
 
 // Map slug → lazy component (filled as posts are written)
 export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.ComponentType>> = {
+  'grunderwerbsteuer-sparen-inventar': lazy(() => import('./grunderwerbsteuer-sparen-inventar')),
   'zweite-besichtigung-checkliste': lazy(() => import('./zweite-besichtigung-checkliste')),
   'preissenkung-portal-deuten': lazy(() => import('./preissenkung-portal-deuten')),
   'keine-rueckmeldung-makler': lazy(() => import('./keine-rueckmeldung-makler')),
