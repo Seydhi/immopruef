@@ -282,8 +282,8 @@ PerplexityBot, OAI-SearchBot, Google-Extended), FAQPage-Schema, Kaufnebenkosten-
 | Monat | Fokus | Klicks-Ziel |
 |---|---|---|
 | 1 | FAQ-Nachrüstung (40 Artikel), Exposé-Kannibalisierung auflösen (expose-verstehen per 301 in expose-pruefen mergen, exposes-richtig-lesen → Kennzahlen-Glossar), Tags→7 Cluster, **LP „Exposé prüfen lassen"**, Pillar „Kaufpreis verhandeln" | 80–150 |
-| 2 | 8 Long-Tail-Artikel (Niedrig-Konkurrenz): „Wie viel unter Angebotspreis bieten" ✅ (im Pillar), „ChatGPT Exposé prüfen" ✅, „Verkehrswert vs. Kaufpreis" ✅, „Haus überteuert erkennen" ✅, „Hauskauf absagen vor Notartermin" ✅ (alle 10.07., Commit 3613552) — **offen: „Zweite Besichtigung Checkliste", „Preissenkung im Portal deuten", „Keine Rückmeldung vom Makler"** | 200–350 |
-| 3 | Bodenrichtwert-Serie (16 Bundesland-Guides → BORIS-Portale), „GrESt sparen (Inventar)" + Rechner-Feature, Notarkosten-Rechner (#8) | 350–550 |
+| 2 | ✅ **KOMPLETT 8/8 (13.07.):** „Wie viel unter Angebotspreis bieten" ✅ (im Pillar), „ChatGPT Exposé prüfen" ✅, „Verkehrswert vs. Kaufpreis" ✅, „Haus überteuert erkennen" ✅, „Hauskauf absagen vor Notartermin" ✅ (3613552), „Zweite Besichtigung Checkliste" ✅, „Preissenkung im Portal deuten" ✅, „Keine Rückmeldung vom Makler" ✅ (fb46918) | 200–350 |
+| 3 | ✅ **Bodenrichtwert-Serie LIVE (13.07., ef4d7dd):** 16 × /bodenrichtwert-⟨land⟩ (BORIS-Portale, FAQPage, 16↔16-Mesh mit kaufnebenkosten-Seiten) · ✅ **Notarkosten-Rechner LIVE (547f6a9):** /notarkosten-rechner mit echter GNotKG-Tabellen-Mathe · offen: „GrESt sparen (Inventar)"-Artikel | 350–550 |
 | 4 | Datenseiten: Sanierungskosten-Tabelle 2026, Hausgeld-Benchmark, „Wie viel Haus bei X € netto"-Tabellen, Maklersprache-Glossar (50 Begriffe) | 550–850 |
 | 5 | Nachlass-Kompass (übliche Preisnachlässe), „Jetzt kaufen oder warten (Q-Update)", Vergleichsseite „Gratis-Bewertung vs. Gutachter vs. KI-Analyse" | 850–1.300 |
 | 6 | **Exposé-Transparenz-Report** (eigene aggregierte Daten: „In X % der Exposés fehlt der Energieausweis" — PR-Asset!), Quartals-Refreshes, GSC-nachsteuern | 1.300–2.000 |
