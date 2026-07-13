@@ -55,6 +55,11 @@ const staticUrls = [
     'mecklenburg-vorpommern', 'niedersachsen', 'nordrhein-westfalen', 'rheinland-pfalz', 'saarland',
     'sachsen', 'sachsen-anhalt', 'schleswig-holstein', 'thueringen',
   ].map((s) => ({ loc: `${BASE}/kaufnebenkosten-${s}`, lastmod: today, changefreq: 'monthly', priority: '0.7' })),
+  ...[
+    'baden-wuerttemberg', 'bayern', 'berlin', 'brandenburg', 'bremen', 'hamburg', 'hessen',
+    'mecklenburg-vorpommern', 'niedersachsen', 'nordrhein-westfalen', 'rheinland-pfalz', 'saarland',
+    'sachsen', 'sachsen-anhalt', 'schleswig-holstein', 'thueringen',
+  ].map((s) => ({ loc: `${BASE}/bodenrichtwert-${s}`, lastmod: today, changefreq: 'monthly', priority: '0.7' })),
   { loc: `${BASE}/ueber-uns`, lastmod: today, changefreq: 'yearly', priority: '0.5' },
 ]
 const legalUrls = [

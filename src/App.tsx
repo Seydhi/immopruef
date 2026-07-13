@@ -24,6 +24,7 @@ import InstandhaltungRechner from './components/InstandhaltungRechner'
 import WohnflaechenRechner from './components/WohnflaechenRechner'
 import RechnerHub from './components/RechnerHub'
 import RegionalKaufnebenkosten from './components/RegionalKaufnebenkosten'
+import BodenrichtwertLand from './components/BodenrichtwertLand'
 import KaufnebenkostenIndex from './components/KaufnebenkostenIndex'
 import ExposePruefenLassen from './components/ExposePruefenLassen'
 import UeberUns from './components/UeberUns'
@@ -53,6 +54,7 @@ type AppView =
   | { type: 'kaufnebenkosten-index' }
   | { type: 'expose-pruefen-lassen' }
   | { type: 'regional'; slug: string }
+  | { type: 'bodenrichtwert'; slug: string }
   | { type: 'ueber-uns' }
   | { type: 'blog' }
   | { type: 'blog-post'; slug: string }
@@ -99,7 +101,9 @@ export default function App() {
   }, [])
 
   useEffect(() => {
-    const path = window.location.pathname
+    // Trailing Slash normalisieren ("/rechner/" → "/rechner"), sonst fällt das
+    // Routing bei Directory-URLs (statisches Hosting) auf die Landing zurück.
+    const path = window.location.pathname.replace(/\/+$/, '') || '/'
     const params = new URLSearchParams(window.location.search)
     const sessionId = params.get('session_id')
     const resultToken = params.get('result')
@@ -123,6 +127,8 @@ export default function App() {
     if (path === '/expose-pruefen-lassen') { setView({ type: 'expose-pruefen-lassen' }); return }
     const regioMatch = path.match(/^\/kaufnebenkosten-([a-z-]+)$/)
     if (regioMatch && regioForSlug(regioMatch[1])) { setView({ type: 'regional', slug: regioMatch[1] }); return }
+    const bodenMatch = path.match(/^\/bodenrichtwert-([a-z-]+)$/)
+    if (bodenMatch && regioForSlug(bodenMatch[1])) { setView({ type: 'bodenrichtwert', slug: bodenMatch[1] }); return }
     if (path === '/ueber-uns') { setView({ type: 'ueber-uns' }); return }
 
     // Blog routing
@@ -236,7 +242,7 @@ export default function App() {
           </div>
         )}
 
-        {(view.type === 'rechner' || view.type === 'budgetrechner' || view.type === 'tilgungsrechner' || view.type === 'notarkosten' || view.type === 'mieten-oder-kaufen' || view.type === 'mietrendite' || view.type === 'instandhaltung' || view.type === 'wohnflaechen' || view.type === 'rechner-hub' || view.type === 'kaufnebenkosten-index' || view.type === 'expose-pruefen-lassen' || view.type === 'regional' || view.type === 'ueber-uns') && (
+        {(view.type === 'rechner' || view.type === 'budgetrechner' || view.type === 'tilgungsrechner' || view.type === 'notarkosten' || view.type === 'mieten-oder-kaufen' || view.type === 'mietrendite' || view.type === 'instandhaltung' || view.type === 'wohnflaechen' || view.type === 'rechner-hub' || view.type === 'kaufnebenkosten-index' || view.type === 'expose-pruefen-lassen' || view.type === 'regional' || view.type === 'bodenrichtwert' || view.type === 'ueber-uns') && (
           <div>
             <button
               onClick={() => { window.history.pushState({}, '', '/'); setView({ type: 'landing' }) }}
@@ -256,6 +262,7 @@ export default function App() {
             {view.type === 'kaufnebenkosten-index' && <KaufnebenkostenIndex />}
             {view.type === 'expose-pruefen-lassen' && <ExposePruefenLassen />}
             {view.type === 'regional' && <RegionalKaufnebenkosten slug={view.slug} />}
+            {view.type === 'bodenrichtwert' && <BodenrichtwertLand slug={view.slug} />}
             {view.type === 'ueber-uns' && <UeberUns />}
           </div>
         )}

@@ -143,6 +143,8 @@ export default function RegionalKaufnebenkosten({ slug }: { slug: string }) {
           <a href="/blog/grunderwerbsteuer-2026-bundeslaender" className="text-green hover:text-green-mid underline">Grunderwerbsteuer 2026 nach Bundesland</a>.
           Wie viel insgesamt zum Budget passt, berechnet der{' '}
           <a href="/budgetrechner" className="text-green hover:text-green-mid underline">Budgetrechner</a>.
+          Den amtlichen Bodenwert Ihrer Lage finden Sie über{' '}
+          <a href={`/bodenrichtwert-${slug}`} className="text-green hover:text-green-mid underline">Bodenrichtwert in {land} abfragen</a>.
         </p>
       </div>
 

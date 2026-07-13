@@ -26,7 +26,8 @@ export default function BodenrichtwertVerstehenAbfragen() {
       <li>Stichtag und Nutzungsart der Zone notieren, damit Sie wissen, worauf sich der Wert bezieht.</li>
       </ol>
       <p>Notieren Sie sich neben dem reinen Euro-Wert auch die Angaben zur Zone. Sie sind später wichtig, um den Wert richtig auf das konkrete Grundstück zu übertragen.</p>
-      
+      <p><strong>Direkt zum richtigen Portal Ihres Bundeslandes:</strong> Wir haben für jedes Land eine eigene Anleitungsseite mit dem zuständigen Portal — <a href="/bodenrichtwert-baden-wuerttemberg">Baden-Württemberg</a>, <a href="/bodenrichtwert-bayern">Bayern</a>, <a href="/bodenrichtwert-berlin">Berlin</a>, <a href="/bodenrichtwert-brandenburg">Brandenburg</a>, <a href="/bodenrichtwert-bremen">Bremen</a>, <a href="/bodenrichtwert-hamburg">Hamburg</a>, <a href="/bodenrichtwert-hessen">Hessen</a>, <a href="/bodenrichtwert-mecklenburg-vorpommern">Mecklenburg-Vorpommern</a>, <a href="/bodenrichtwert-niedersachsen">Niedersachsen</a>, <a href="/bodenrichtwert-nordrhein-westfalen">Nordrhein-Westfalen</a>, <a href="/bodenrichtwert-rheinland-pfalz">Rheinland-Pfalz</a>, <a href="/bodenrichtwert-saarland">Saarland</a>, <a href="/bodenrichtwert-sachsen">Sachsen</a>, <a href="/bodenrichtwert-sachsen-anhalt">Sachsen-Anhalt</a>, <a href="/bodenrichtwert-schleswig-holstein">Schleswig-Holstein</a> und <a href="/bodenrichtwert-thueringen">Thüringen</a>.</p>
+
       <h2>So rechnen Sie mit dem Bodenrichtwert</h2>
       <p>Bei einem Hausgrundstück ist die Grundrechnung einfach: Der Bodenwert ergibt sich aus <strong>Bodenrichtwert multipliziert mit der Grundstücksfläche</strong>. Diese erste Zahl ist allerdings nur ein Ausgangswert, der je nach Lage, Zuschnitt und zulässiger Bebauung, etwa über die Geschossflächenzahl, noch angepasst wird.</p>
       <p>Ein Beispiel: Ein Grundstück hat 500 Quadratmeter, der Bodenrichtwert der Zone liegt bei 300 € je Quadratmeter.</p>

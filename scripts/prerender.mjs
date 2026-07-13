@@ -81,6 +81,7 @@ async function getRoutes() {
     '/kaufnebenkosten-index',
     '/expose-pruefen-lassen',
     ...REGIO_SLUGS.map(s => `/kaufnebenkosten-${s}`),
+    ...REGIO_SLUGS.map(s => `/bodenrichtwert-${s}`),
     '/ueber-uns',
     ...blogSlugs.map(s => `/blog/${s}`),
   ]
