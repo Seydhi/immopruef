@@ -4,6 +4,21 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'hausgeld-pro-qm',
+    title: 'Hausgeld pro m² 2026: Was ist normal? Der Benchmark',
+    description: 'Hausgeld-Benchmark 2026: 3,00–4,50 €/m² sind normal, unter 2,50 €/m² verdächtig, über 6,00 €/m² erklärungsbedürftig. Mit Zusammensetzungs-Tabelle, Rücklagen-Richtwerten und Beispielrechnung für 80 m².',
+    date: '13. Juli 2026',
+    readTime: '9 Min',
+    tags: ['Finanzierung', 'Kaufratgeber'],
+    faq: [
+      { question: 'Wie hoch ist ein normales Hausgeld pro Quadratmeter?', answer: 'Im Durchschnitt 3,00 bis 4,50 € je Quadratmeter und Monat — bei einer 80-m²-Wohnung also 240 bis 360 €. Werte unter 2,50 €/m² sind verdächtig niedrig (meist unterfinanzierte Rücklage), Werte über 6,00 €/m² deuten auf Luxusausstattung oder ein Problemgebäude hin. Entscheidend ist immer die Aufschlüsselung, nicht die Gesamtsumme.' },
+      { question: 'Ist ein niedriges Hausgeld beim Wohnungskauf ein Vorteil?', answer: 'Meist nicht. Unter 2,50 €/m² wird in der Regel zu wenig in die Instandhaltungsrücklage eingezahlt — die Kosten kommen später als Sonderumlage zurück, bei Dach- oder Heizungssanierung typisch 8.000 bis 20.000 € je Einheit. Ein ehrlich kalkuliertes Hausgeld ist langfristig günstiger als ein künstlich niedriges.' },
+      { question: 'Woraus setzt sich das Hausgeld zusammen?', answer: 'Grob: Betriebskosten wie Wasser, Müll, Versicherung und Hausmeister machen 40 bis 55 Prozent aus, die Heizkosten-Vorauszahlung 15 bis 25 Prozent, die Instandhaltungsrücklage 15 bis 25 Prozent, dazu Verwaltung mit etwa 25 bis 40 € je Einheit. Bei Vermietung sind Rücklage und Verwaltung nicht auf den Mieter umlegbar.' },
+      { question: 'Kommt das Hausgeld zusätzlich zur Kreditrate?', answer: 'Ja, vollständig. Die echte Monatsbelastung einer Eigentumswohnung ist Kreditrate plus Hausgeld plus private Nebenkosten wie Strom und Internet. Bei 280 € Hausgeld und 1.200 € Rate sind das rund 1.500 € im Monat — das gehört so in die Budgetplanung, nicht nur die Rate.' },
+      { question: 'Wie hoch sollte die Instandhaltungsrücklage der WEG sein?', answer: 'Als Kontostand 50 bis 100 € je Quadratmeter Gesamtwohnfläche — bei 10 Parteien mit 800 m² also 40.000 bis 80.000 €. Die monatliche Zuführung sollte je nach Gebäudealter 1,00 €/m² (Neubau) bis 2,50 €/m² (Altbau) betragen. Deutlich weniger plus anstehende Sanierungen bedeutet: Die Sonderumlage ist absehbar.' },
+    ],
+  },
+  {
     slug: 'maklersprache-glossar',
     title: 'Maklersprache übersetzt: 50 Exposé-Begriffe im Klartext',
     description: 'Was „gepflegt", „Liebhaberobjekt", „VB" oder „lichtdurchflutet" wirklich bedeuten: 50 Exposé-Floskeln als Klartext-Glossar — sortiert nach Zustand, Lage, Grundriss, Preis und Formalien, mit der passenden Nachfrage.',
@@ -1811,6 +1826,7 @@ export const BLOG_POSTS: BlogMeta[] = [
 
 // Map slug → lazy component (filled as posts are written)
 export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.ComponentType>> = {
+  'hausgeld-pro-qm': lazy(() => import('./hausgeld-pro-qm')),
   'maklersprache-glossar': lazy(() => import('./maklersprache-glossar')),
   'wie-viel-haus-kann-ich-mir-leisten': lazy(() => import('./wie-viel-haus-kann-ich-mir-leisten')),
   'sanierungskosten-tabelle-2026': lazy(() => import('./sanierungskosten-tabelle-2026')),

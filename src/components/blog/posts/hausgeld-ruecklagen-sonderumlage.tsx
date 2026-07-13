@@ -34,7 +34,7 @@ export default function HausgeldRuecklagenSonderumlage() {
 
       <h3>Was ist ein normales Hausgeld?</h3>
       <p>
-        Durchschnitt: <strong>3,00–4,50 €/m² pro Monat</strong>. Bei einer 80-m²-Wohnung also 240–360 €. Aber der Durchschnitt sagt wenig — entscheidend ist die Zusammensetzung.
+        Durchschnitt: <strong>3,00–4,50 €/m² pro Monat</strong>. Bei einer 80-m²-Wohnung also 240–360 €. Aber der Durchschnitt sagt wenig — entscheidend ist die Zusammensetzung. Die vollständige Einordnungstabelle mit allen Schwellenwerten liefert der <a href="/blog/hausgeld-pro-qm">Hausgeld-Benchmark pro m²</a>.
       </p>
       <table>
         <thead>
