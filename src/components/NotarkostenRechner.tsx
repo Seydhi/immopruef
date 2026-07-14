@@ -4,8 +4,9 @@ import { eur, pct } from '../lib/kaufnebenkosten'
 import { Field, Row } from './calcUi'
 
 // ─── GNotKG-Gebührenlogik ───
-// Anlage 2 zu § 34 Abs. 3 GNotKG — einfache (1,0) Wertgebühr je Geschäftswert.
-// Über 1.000.000 €: je angefangene 50.000 € + 165 € (§ 34 Abs. 3 GNotKG).
+// Anlage 2 zu § 34 GNotKG, TABELLE B — einfache (1,0) Wertgebühr je Geschäftswert.
+// Tabelle B gilt für Notar- UND Grundbuchgebühren beim Immobilienkauf (nicht Tabelle A).
+// Über 1.000.000 €: je angefangene 50.000 € + 80 € (Tabelle B; Tabelle A wäre 210 €).
 const GEBUEHR_TABELLE: [number, number][] = [
   [500, 15], [1000, 19], [1500, 23], [2000, 27], [3000, 33], [4000, 39], [5000, 45],
   [6000, 51], [7000, 57], [8000, 63], [9000, 69], [10000, 75],
@@ -25,7 +26,7 @@ function einfacheGebuehr(wert: number): number {
     if (wert <= grenze) return gebuehr
   }
   const schritte = Math.ceil((wert - 1_000_000) / 50_000)
-  return 1735 + schritte * 165
+  return 1735 + schritte * 80
 }
 
 const USt = 0.19
@@ -66,9 +67,9 @@ export default function NotarkostenRechner() {
   }, [preis, finanziert, darlehen])
 
   useSEO({
-    title: 'Notarkosten-Rechner 2026: Notar- & Grundbuchkosten nach GNotKG',
+    title: 'Notarkosten-Rechner 2026: Notar- & Grundbuchkosten',
     description:
-      'Kostenloser Notarkosten-Rechner: berechnet Notar- und Grundbuchkosten beim Hauskauf exakt nach der GNotKG-Gebührentabelle — Kaufvertrag, Grundschuld, Umsatzsteuer und Grundbuchamt einzeln aufgeschlüsselt.',
+      'Kostenloser Notarkosten-Rechner: Notar- und Grundbuchkosten beim Hauskauf exakt nach GNotKG-Gebührentabelle — inklusive Grundschuld und Umsatzsteuer.',
     canonical: 'https://immopruef.de/notarkosten-rechner',
     type: 'website',
     jsonLd: [

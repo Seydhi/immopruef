@@ -27,7 +27,7 @@ export default function Budgetrechner() {
   useSEO({
     title: 'Budgetrechner Immobilie: Wie viel Haus kann ich mir leisten?',
     description:
-      'Kostenloser Budgetrechner: Aus Nettoeinkommen, Eigenkapital, Zins und Tilgung berechnen Sie sofort die maximale Monatsrate, Darlehenssumme und den leistbaren Kaufpreis.',
+      'Kostenloser Budgetrechner: Aus Nettoeinkommen, Eigenkapital, Zins und Tilgung sofort Monatsrate, Darlehenssumme und leistbaren Kaufpreis berechnen.',
     canonical: 'https://immopruef.de/budgetrechner',
     type: 'website',
     jsonLd: [

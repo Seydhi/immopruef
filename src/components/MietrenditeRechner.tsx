@@ -27,9 +27,9 @@ export default function MietrenditeRechner() {
   }, [kaufpreis, wohnflaeche, kaltmiete, nkProzent, bewirtProzent])
 
   useSEO({
-    title: 'Mietrendite- & Kaufpreisfaktor-Rechner: Lohnt sich die Immobilie?',
+    title: 'Mietrendite-Rechner: Rendite & Kaufpreisfaktor',
     description:
-      'Kostenloser Rechner für Mietrendite und Kaufpreisfaktor: Aus Kaufpreis, Wohnfläche und Kaltmiete sofort Bruttomietrendite, Nettomietrendite, Kaufpreisfaktor und Quadratmeterpreis berechnen — mit Einordnung von günstig bis teuer.',
+      'Kostenloser Rechner für Mietrendite und Kaufpreisfaktor: aus Kaufpreis, Wohnfläche und Kaltmiete sofort Brutto- und Nettorendite berechnen — mit Einordnung.',
     canonical: 'https://immopruef.de/mietrendite-rechner',
     type: 'website',
     jsonLd: [

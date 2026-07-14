@@ -19,8 +19,8 @@ export default function BodenrichtwertLand({ slug }: { slug: string }) {
   const andere = BODEN.filter((x) => x.slug !== slug)
 
   useSEO({
-    title: `Bodenrichtwert in ${land} abfragen 2026: kostenlos über BORIS`,
-    description: `Bodenrichtwert in ${land} kostenlos online abfragen: über ${portalName} oder das bundesweite BORIS-D. So finden Sie den Bodenwert je m² für Ihre Adresse — plus was der Wert aussagt und wo seine Grenzen liegen.`,
+    title: `Bodenrichtwert ${land} 2026 abfragen`,
+    description: `Bodenrichtwert in ${land} kostenlos online abfragen — über BORIS. So finden Sie den amtlichen Bodenwert je m² für Ihre Adresse, Schritt für Schritt.`,
     canonical: `https://immopruef.de/bodenrichtwert-${slug}`,
     type: 'website',
     jsonLd: [

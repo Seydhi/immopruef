@@ -46,13 +46,13 @@ export default function AltbauOderNeubauKaufen() {
       </thead>
       <tbody>
       <tr><td>Heizungstausch</td><td>18.000–35.000 €</td></tr>
-      <tr><td>Fenster (komplett)</td><td>8.000–15.000 €</td></tr>
+      <tr><td>Fenster (komplett)</td><td>10.000–25.000 €</td></tr>
       <tr><td>Fassadendämmung (WDVS)</td><td>15.000–30.000 €</td></tr>
       <tr><td>Badsanierung</td><td>12.000–20.000 €</td></tr>
-      <tr><td>Elektrik</td><td>5.000–10.000 €</td></tr>
+      <tr><td>Elektrik</td><td>8.000–15.000 €</td></tr>
       </tbody>
       </table>
-      <p>Ein unsaniertes Haus aus den 1970er-Jahren, bei dem Heizung, Fenster, Fassade, Bad und Elektrik anstehen, summiert sich damit schnell auf 58.000 bis 110.000 € — vor Abzug von Fördermitteln. Diese Zahl gehört in jede Kaufentscheidung: Ein Altbau, der 100.000 € unter dem Neubaupreis liegt, aber 90.000 € Sanierungsbedarf mitbringt, ist kein Schnäppchen.</p>
+      <p>Ein unsaniertes Haus aus den 1970er-Jahren, bei dem Heizung, Fenster, Fassade, Bad und Elektrik anstehen, summiert sich damit schnell auf rund 63.000 bis 125.000 € — vor Abzug von Fördermitteln. Diese Zahl gehört in jede Kaufentscheidung: Ein Altbau, der 100.000 € unter dem Neubaupreis liegt, aber 90.000 € Sanierungsbedarf mitbringt, ist kein Schnäppchen.</p>
       <p>Woran Sie Sanierungsbedarf schon bei der Besichtigung erkennen, lesen Sie im Artikel <a href="/blog/sanierungsbedarf-erkennen">Sanierungsbedarf erkennen</a>. Wie sich der Gebäudezustand in laufende Kosten übersetzt, zeigt der Beitrag <a href="/blog/zustand-folgekosten">Zustand und Folgekosten</a>.</p>
       
       <h2>GEG-Pflichten: Was nach dem Eigentümerwechsel Vorschrift ist</h2>

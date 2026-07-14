@@ -90,7 +90,7 @@ export default function FehlerImmobilienkauf() {
         <li>Bäder (Lebensdauer 20–30 Jahre): 10.000–25.000 € pro Bad</li>
       </ul>
       <p>
-        Bei Altbauten vor 1980: Lassen Sie einen Bausachverständigen mit zur Besichtigung kommen (400–1.500 €). Die Investition macht sich fast immer bezahlt.
+        Bei Altbauten vor 1980: Lassen Sie einen Bausachverständigen mit zur Besichtigung kommen (Kaufberatung 400–1.500 €). Die Investition macht sich fast immer bezahlt.
       </p>
 
       <h2>Fehler 6: WEG-Unterlagen nicht prüfen (bei ETW)</h2>

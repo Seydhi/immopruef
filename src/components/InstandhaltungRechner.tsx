@@ -33,9 +33,9 @@ export default function InstandhaltungRechner() {
   }
 
   useSEO({
-    title: 'Instandhaltungsrücklage-Rechner: Wie hoch sollte die Rücklage sein?',
+    title: 'Instandhaltungsrücklage-Rechner: Wie viel ist genug?',
     description:
-      'Kostenloser Rechner für die Instandhaltungsrücklage einer Eigentumswohnung: empfohlene Rücklage pro Monat nach Faustregel und Peterscher Formel — plus Ampel, ob die aktuelle Zuführung reicht.',
+      'Kostenloser Rechner für die Instandhaltungsrücklage: empfohlene Zuführung nach Faustregel und Peterscher Formel — mit Ampel, ob Ihre Rücklage reicht.',
     canonical: 'https://immopruef.de/instandhaltungsruecklage-rechner',
     type: 'website',
     jsonLd: [

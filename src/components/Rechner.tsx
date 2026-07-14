@@ -30,9 +30,9 @@ export default function Rechner() {
   }, [preis, inventar, grestSatz, maklerSatz, provisionsfrei])
 
   useSEO({
-    title: 'Kaufnebenkosten-Rechner 2026: Grunderwerbsteuer, Notar & Makler',
+    title: 'Kaufnebenkosten-Rechner 2026: Grunderwerbsteuer & Notar',
     description:
-      'Kostenloser Kaufnebenkosten-Rechner: Grunderwerbsteuer (3,5–6,5 % je Bundesland), Notar, Grundbuch und Maklerprovision sofort berechnen — mit Gesamtkosten auf einen Blick.',
+      'Kostenloser Kaufnebenkosten-Rechner: Grunderwerbsteuer (3,5–6,5 %), Notar, Grundbuch und Makler sofort berechnen — mit Gesamtkosten auf einen Blick.',
     canonical: 'https://immopruef.de/grunderwerbsteuer-rechner',
     type: 'website',
     jsonLd: [

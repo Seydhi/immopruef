@@ -40,8 +40,8 @@ export default function RegionalKaufnebenkosten({ slug }: { slug: string }) {
   const andere = REGIO.filter((r) => r.slug !== slug)
 
   useSEO({
-    title: `Kaufnebenkosten in ${land} 2026: Grunderwerbsteuer & Gesamtkosten`,
-    description: `Kaufnebenkosten in ${land}: Grunderwerbsteuer ${pct(satz)}, dazu Notar, Grundbuch und Makler — rund ${pct(quoteMit)} des Kaufpreises. Mit Rechenbeispielen für 300.000 bis 750.000 €.`,
+    title: `Kaufnebenkosten & Grunderwerbsteuer ${land}`,
+    description: `Kaufnebenkosten in ${land}: Grunderwerbsteuer ${pct(satz)}, dazu Notar, Grundbuch und Makler — rund ${pct(quoteMit)} des Kaufpreises. Mit Rechenbeispielen.`,
     canonical: `https://immopruef.de/kaufnebenkosten-${slug}`,
     type: 'website',
     jsonLd: [

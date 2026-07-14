@@ -18,7 +18,7 @@ export default function RechnerHub() {
   useSEO({
     title: 'Immobilien-Rechner: alle kostenlosen Tools im Überblick',
     description:
-      'Kostenlose Immobilien-Rechner von ImmoPrüf: Kaufnebenkosten, Budget, Tilgung, Mieten-oder-Kaufen, Mietrendite, Instandhaltungsrücklage und Wohnfläche — alle Tools auf einen Blick, ohne Anmeldung.',
+      'Alle kostenlosen Immobilien-Rechner: Kaufnebenkosten, Budget, Tilgung, Notarkosten, Mietrendite, Rücklage und Wohnfläche — ohne Anmeldung nutzbar.',
     canonical: 'https://immopruef.de/rechner',
     type: 'website',
     jsonLd: [

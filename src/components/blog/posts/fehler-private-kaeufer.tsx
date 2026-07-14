@@ -91,7 +91,7 @@ export default function FehlerPrivateKaeufer() {
         <strong>Die Folge:</strong> Innerhalb von 3–5 Jahren nach dem Kauf müssen Heizung (20.000 €), Fenster (12.000 €) und möglicherweise Dach (25.000 €) erneuert werden. Budget gesprengt, Lebensqualität eingeschränkt, Finanzierung gefährdet.
       </p>
       <p>
-        <strong>Gegenmaßnahme:</strong> Leiten Sie den Sanierungsbedarf systematisch aus dem Baujahr ab. Fragen Sie nach der Sanierungshistorie mit Jahreszahlen und Belegen. Bei Altbauten vor 1990: Sachverständigen zur Zweitbesichtigung mitnehmen (400–1.500 €). Diese Investition macht sich fast immer bezahlt.
+        <strong>Gegenmaßnahme:</strong> Leiten Sie den Sanierungsbedarf systematisch aus dem Baujahr ab. Fragen Sie nach der Sanierungshistorie mit Jahreszahlen und Belegen. Bei Altbauten vor 1990: Sachverständigen zur Zweitbesichtigung mitnehmen (Kaufberatung 400–1.500 €). Diese Investition macht sich fast immer bezahlt.
       </p>
 
       <h2>Fehler 6: Unvorbereitet besichtigen</h2>

@@ -20,7 +20,7 @@ export default function KaufnebenkostenIndex() {
 
   useSEO({
     title: 'Kaufnebenkosten je Bundesland 2026: Der große Vergleich',
-    description: `Kaufnebenkosten aller 16 Bundesländer im Vergleich (Stand 2026): Bei 400.000 € Kaufpreis liegen zwischen dem günstigsten (${GUENSTIGSTER.land}) und teuersten Bundesland bis zu ${eur(diffMax).replace(/\s?€/, '')} € Unterschied — allein bei der Grunderwerbsteuer.`,
+    description: `Kaufnebenkosten aller 16 Bundesländer im Vergleich 2026: Bei 400.000 € Kaufpreis trennen günstigstes und teuerstes Land bis zu ${eur(diffMax).replace(/\s?€/, '')} € Grunderwerbsteuer.`,
     canonical: 'https://immopruef.de/kaufnebenkosten-index',
     type: 'website',
     jsonLd: [

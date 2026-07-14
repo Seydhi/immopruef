@@ -23,7 +23,7 @@ const PORTAL: Record<string, { name: string; url?: string; note?: string }> = {
   'Berlin': { name: 'BORIS Berlin', url: 'https://www.berlin.de/gutachterausschuss/marktinformationen/bodenrichtwerte/', note: 'In Berlin ermittelt ein zentraler Gutachterausschuss die Bodenrichtwerte für das gesamte Stadtgebiet.' },
   'Brandenburg': { name: 'BORIS Brandenburg', url: 'https://www.boris-brandenburg.de/' },
   'Bremen': { name: 'BORIS Bremen', url: 'https://www.gutachterausschuss.bremen.de/', note: 'Für Bremen und Bremerhaven bestehen jeweils eigene Gutachterausschüsse.' },
-  'Hamburg': { name: 'BORIS-HH', url: 'https://www.hamburg.de/gutachterausschuss/', note: 'In Hamburg ist ein zentraler Gutachterausschuss für das gesamte Stadtgebiet zuständig.' },
+  'Hamburg': { name: 'BORIS-HH', url: 'https://geoportal-hamburg.de/boris/', note: 'In Hamburg ist ein zentraler Gutachterausschuss für das gesamte Stadtgebiet zuständig.' },
   'Hessen': { name: 'BORIS Hessen', url: 'https://hvbg.hessen.de/immobilienwerte/boris-hessen' },
   'Mecklenburg-Vorpommern': { name: 'das Bodenrichtwertportal Mecklenburg-Vorpommern' },
   'Niedersachsen': { name: 'BORIS.NI', url: 'https://immobilienmarkt.niedersachsen.de/bodenrichtwerte' },

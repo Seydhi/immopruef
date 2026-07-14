@@ -16,7 +16,7 @@ import BlogPreview from './landing/BlogPreview'
 export default function Landing() {
   useSEO({
     title: 'Immobilienangebote strukturiert einordnen — ImmoPrüf',
-    description: 'Strukturierte Ersteinschätzung zu Angebotspreis, Standort, möglichen Risiken und offenen Prüfpunkten vor Besichtigung und Kauf. Ab 19 € pro Analyse — Premium-Report ab 79 €.',
+    description: 'Strukturierte Ersteinschätzung zu Angebotspreis, Standort, Risiken und offenen Prüfpunkten — vor Besichtigung und Kauf. Ab 19 €, Premium-Report 79 €.',
     canonical: 'https://immopruef.de/',
     type: 'website',
     jsonLd: [

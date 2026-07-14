@@ -96,7 +96,7 @@ export default function MietenOderKaufen() {
   useSEO({
     title: 'Mieten oder Kaufen Rechner: Vermögensvergleich über die Zeit',
     description:
-      'Kostenloser Mieten-oder-Kaufen-Rechner: Vergleicht das Vermögen nach Jahren, wenn Sie kaufen (Immobilienwert minus Restschuld) oder mieten und die Differenz anlegen. Alle Annahmen frei einstellbar.',
+      'Kostenloser Mieten-oder-Kaufen-Rechner: Vermögensvergleich über die Jahre mit Break-even-Jahr — kaufen oder mieten und die Differenz anlegen?',
     canonical: 'https://immopruef.de/mieten-oder-kaufen-rechner',
     type: 'website',
     jsonLd: [

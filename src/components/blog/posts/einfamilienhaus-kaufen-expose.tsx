@@ -90,9 +90,9 @@ export default function EinfamilienhausKaufenExpose() {
         </thead>
         <tbody>
           <tr><td>Gas-Niedertemperatur</td><td>15–25 Jahre</td><td>8.000–15.000 €</td><td>Tauschpflicht nach 30 Jahren</td></tr>
-          <tr><td>Gas-Brennwert</td><td>15–25 Jahre</td><td>8.000–15.000 €</td><td>Abhängig von Alter</td></tr>
+          <tr><td>Gas-Brennwert</td><td>15–25 Jahre</td><td>8.000–12.000 €</td><td>Abhängig von Alter</td></tr>
           <tr><td>Ölheizung</td><td>15–25 Jahre</td><td>10.000–18.000 € (Öltank-Entsorgung extra)</td><td>Tauschpflicht nach 30 Jahren</td></tr>
-          <tr><td>Wärmepumpe</td><td>15–20 Jahre</td><td>15.000–30.000 €</td><td>GEG-konform</td></tr>
+          <tr><td>Wärmepumpe</td><td>15–20 Jahre</td><td>18.000–35.000 €</td><td>GEG-konform</td></tr>
           <tr><td>Pellet-/Holzheizung</td><td>15–20 Jahre</td><td>12.000–25.000 €</td><td>GEG-konform</td></tr>
         </tbody>
       </table>

@@ -26,7 +26,10 @@ const DEFAULT_IMAGE = 'https://immopruef.de/og-image.png'
  */
 export function useSEO(meta: SEOMeta): void {
   useEffect(() => {
-    const fullTitle = meta.title.includes(SITE_NAME) ? meta.title : `${meta.title} | ${SITE_NAME}`
+    // Marken-Suffix nur anhängen, wenn der Titel dadurch nicht über ~60 Zeichen
+    // rutscht — sonst schneidet Google ihn ohnehin ab und frisst dabei Keywords.
+    const withSuffix = `${meta.title} | ${SITE_NAME}`
+    const fullTitle = meta.title.includes(SITE_NAME) || withSuffix.length > 60 ? meta.title : withSuffix
     document.title = fullTitle
 
     // Standard meta description

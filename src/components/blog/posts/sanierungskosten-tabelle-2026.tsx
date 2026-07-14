@@ -15,7 +15,7 @@ export default function SanierungskostenTabelle2026() {
       <tr><td>Oberste Geschossdecke dämmen</td><td>40–80 €/m²</td><td>4.000–8.000 €</td></tr>
       <tr><td>Fassadendämmung (WDVS) inkl. Putz</td><td>100–250 €/m² Fassade</td><td>15.000–40.000 €</td></tr>
       <tr><td>Kellerdecke dämmen</td><td>30–60 €/m²</td><td>3.000–6.000 €</td></tr>
-      <tr><td>Fenster tauschen (3-fach-Verglasung)</td><td>500–800 € je Standardfenster</td><td>8.000–25.000 € (15–20 Fenster)</td></tr>
+      <tr><td>Fenster tauschen (3-fach-Verglasung)</td><td>500–800 € je Standardfenster*</td><td>10.000–25.000 € (15–20 Fenster)</td></tr>
       <tr><td>Haustür</td><td>—</td><td>2.000–5.000 €</td></tr>
       <tr><td>Gas-Brennwertheizung</td><td>—</td><td>8.000–12.000 €</td></tr>
       <tr><td>Wärmepumpe (Luft-Wasser)</td><td>—</td><td>18.000–35.000 € (vor Förderung)</td></tr>
@@ -29,6 +29,7 @@ export default function SanierungskostenTabelle2026() {
       <tr><td>Keller abdichten (außen, aufgraben)</td><td>500–1.200 € je lfm</td><td>20.000–40.000 €</td></tr>
       </tbody>
       </table>
+      <p>*Der Stückpreis von 500–800 € gilt für Standardfenster. Große Elemente, Balkon- und Terrassentüren sowie Dachfenster liegen deutlich darüber — deshalb liegt die Komplettspanne höher als die reine Multiplikation aus Stückpreis und Fensterzahl.</p>
       <p>Zur Einordnung der Heizsysteme (Verbrauch, Förderung, GEG) lohnt der <a href="/blog/heizungsarten-vergleich-kosten">Heizungsarten-Vergleich</a>; welche Pflichten nach dem Kauf ohnehin anstehen, erklärt <a href="/blog/geg-sanierungspflichten-altbau-kauf">GEG-Sanierungspflichten beim Altbau-Kauf</a>.</p>
 
       <h2>Komplettsanierung: Kosten pro Quadratmeter Wohnfläche</h2>
@@ -43,7 +44,7 @@ export default function SanierungskostenTabelle2026() {
       <tr><td>Kernsanierung (alles bis auf den Rohbau)</td><td>800–1.500 €</td><td>112.000–210.000 €</td></tr>
       </tbody>
       </table>
-      <p>Ab etwa 1.500 €/m² nähern sich die Kosten dem Neubauniveau — dann gehört der Vergleich <a href="/blog/altbau-oder-neubau-kaufen">Altbau oder Neubau?</a> auf den Tisch. Die Spannen decken sich mit der Praxis: Ein unsaniertes Haus der 1970er mit fälliger Heizung, Fenstern, Fassade, Bad und Elektrik landet typisch bei 60.000 bis 120.000 € — vor Förderung.</p>
+      <p>Ab etwa 1.500 €/m² nähern sich die Kosten dem Neubauniveau — dann gehört der Vergleich <a href="/blog/altbau-oder-neubau-kaufen">Altbau oder Neubau?</a> auf den Tisch. Die Spannen decken sich mit der Praxis: Ein unsaniertes Haus der 1970er mit fälliger Heizung, Fenstern, Fassade, Bad und Elektrik landet typisch bei 60.000 bis 125.000 € — vor Förderung.</p>
 
       <h2>Typischer Sanierungsbedarf nach Baujahr</h2>
       <table>
@@ -52,7 +53,7 @@ export default function SanierungskostenTabelle2026() {
       </thead>
       <tbody>
       <tr><td>vor 1949</td><td>Substanzabhängig: Dach, Leitungen, Elektrik, Feuchtigkeit, teils Statik — große Streuung</td><td>800–1.500 €/m², im Einzelfall mehr</td></tr>
-      <tr><td>1950–1979</td><td>Heizung, Fenster, Dach, Elektrik, Dämmung fehlen meist komplett; Asbest möglich</td><td>60.000–120.000 €</td></tr>
+      <tr><td>1950–1979</td><td>Heizung, Fenster, Dach, Elektrik, Dämmung fehlen meist komplett; Asbest möglich</td><td>60.000–125.000 €</td></tr>
       <tr><td>1980–1999</td><td>Heizung fällig, Fenster/Bäder je nach Pflege, Dämmung dünn</td><td>25.000–50.000 €</td></tr>
       <tr><td>2000–2015</td><td>Heizung am Lebensdauer-Ende, Bäder optisch, sonst meist solide</td><td>10.000–30.000 €</td></tr>
       <tr><td>ab 2016</td><td>Kein struktureller Bedarf; laufende Instandhaltungsrücklage einplanen</td><td>Rücklage statt Sanierung</td></tr>

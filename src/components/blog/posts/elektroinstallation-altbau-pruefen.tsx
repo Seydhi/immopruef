@@ -61,7 +61,7 @@ export default function ElektroinstallationAltbauPruefen() {
       </tr>
       </tbody>
       </table>
-      <p>Für ein typisches Altbau-Einfamilienhaus liegt eine vollständige Neuverkabelung damit häufig im Bereich von rund 12.000 bis 18.000 €, bei größeren Häusern oder gehobener Ausstattung auch darüber. Sehen Sie diese Zahlen als groben Rahmen für Ihre Budgetplanung, nicht als Festpreis. Ein verbindliches Angebot bekommen Sie nur über eine Begehung durch einen Elektrofachbetrieb.</p>
+      <p>Für ein Einfamilienhaus liegt eine vollständige Neuverkabelung als Richtwert bei rund 8.000 bis 15.000 €. Im <strong>Altbau</strong> rutscht sie regelmäßig ans obere Ende oder darüber — rund 12.000 bis 18.000 € —, weil Leitungen in massive Wände gestemmt, Decken geöffnet und Putz erneuert werden müssen. Bei größeren Häusern oder gehobener Ausstattung liegt sie auch darüber. Sehen Sie diese Zahlen als groben Rahmen für Ihre Budgetplanung, nicht als Festpreis. Ein verbindliches Angebot bekommen Sie nur über eine Begehung durch einen Elektrofachbetrieb.</p>
       <p>Bedenken Sie außerdem, dass die Elektrik oft nicht isoliert saniert wird. Werden Wände ohnehin geöffnet, bietet sich an, gleich weitere Modernisierungen mitzudenken. Wie Sie den allgemeinen Ausbaustandard eines Objekts bewerten, lesen Sie im Beitrag <a href="/blog/innenausbau-bewerten">Innenausbau bewerten</a>.</p>
       
       <h2>Der E-Check als Zustandsnachweis</h2>

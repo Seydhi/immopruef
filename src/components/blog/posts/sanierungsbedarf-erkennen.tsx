@@ -144,12 +144,12 @@ export default function SanierungsbedarfErkennen() {
         Als grobe Orientierung für die Gesamtsanierung einer Bestandsimmobilie:
       </p>
       <ul>
-        <li><strong>Leichte Modernisierung</strong> (Böden, Wände, Bäder): 500–800 €/m²</li>
-        <li><strong>Mittlere Sanierung</strong> (+ Fenster, Heizung, Elektrik): 800–1.200 €/m²</li>
-        <li><strong>Komplettsanierung</strong> (bis auf die Grundmauern): 1.200–2.000 €/m²</li>
+        <li><strong>Renovierung</strong> (Böden, Wände, Optik): 100–300 €/m²</li>
+        <li><strong>Teilmodernisierung</strong> (Heizung, Fenster, Bad, Elektrik teilweise): 400–800 €/m²</li>
+        <li><strong>Kernsanierung</strong> (alles bis auf den Rohbau): 800–1.500 €/m²</li>
       </ul>
       <p>
-        Bei 100 m² Wohnfläche bedeutet das: 50.000 € für eine leichte Modernisierung bis 200.000 € für eine Komplettsanierung. Diese Kosten müssen auf den Kaufpreis addiert werden, um den wahren Preis der Immobilie zu kennen.
+        Bei 100 m² Wohnfläche bedeutet das: 10.000–30.000 € für eine Renovierung bis 80.000–150.000 € für eine Kernsanierung. Diese Kosten müssen auf den Kaufpreis addiert werden, um den wahren Preis der Immobilie zu kennen. Ab etwa 1.500 €/m² nähern Sie sich dem Neubauniveau — dann lohnt der Vergleich. Alle Gewerke einzeln beziffert die <a href="/blog/sanierungskosten-tabelle-2026">Sanierungskosten-Tabelle 2026</a>.
       </p>
 
       <h2>Wann Sie einen Sachverständigen brauchen</h2>

@@ -64,20 +64,21 @@ export default function HausgeldProQm() {
       <tr><th>Posten</th><th>Monatlich</th></tr>
       </thead>
       <tbody>
-      <tr><td>Betriebskosten</td><td>ca. 130 €</td></tr>
-      <tr><td>Heizkosten-Vorauszahlung</td><td>ca. 60 €</td></tr>
-      <tr><td>Instandhaltungsrücklage</td><td>ca. 60 €</td></tr>
+      <tr><td>Betriebskosten (45 %)</td><td>ca. 145 €</td></tr>
+      <tr><td>Heizkosten-Vorauszahlung (20 %)</td><td>ca. 65 €</td></tr>
+      <tr><td>Instandhaltungsrücklage (25 %)</td><td>ca. 80 € — entspricht 1,00 €/m² Zuführung</td></tr>
       <tr><td>Verwaltung</td><td>ca. 30 €</td></tr>
-      <tr><td><strong>Hausgeld gesamt</strong></td><td><strong>ca. 280 € (3,50 €/m²)</strong></td></tr>
+      <tr><td><strong>Hausgeld gesamt</strong></td><td><strong>ca. 320 € (4,00 €/m²)</strong></td></tr>
       </tbody>
       </table>
+      <p>Die Rücklage ist hier bewusst am oberen Rand der 15–25-%-Spanne angesetzt: Erst dann erreicht sie mit 1,00 €/m² die Mindest-Zuführung. Wer bei 80 m² nur 60 € zurücklegt (0,75 €/m²), liegt unter dem Richtwert — genau so entsteht die spätere Sonderumlage.</p>
       <p>Fürs Budget heißt das: Kreditrate <strong>plus</strong> Hausgeld <strong>plus</strong> private Nebenkosten (Strom, Internet, ggf. Stellplatz) ergeben die echte Monatsbelastung. Alle laufenden Posten im Überblick: <a href="/blog/nebenkosten-laufende-kosten">Nebenkosten und laufende Kosten</a>.</p>
 
       <h2>Warnsignale im Schnellcheck</h2>
       <ul>
       <li><strong>Hausgeld unter 2,50 €/m²:</strong> fast immer unterfinanzierte Rücklage — nicht Sparsamkeit, sondern verschobene Kosten.</li>
       <li><strong>Steigerung über 3 % pro Jahr:</strong> Ursache klären (Energie? Beschlossene Maßnahmen? Ausfälle?).</li>
-      <li><strong>Rücklage unter Richtwert + sichtbarer Sanierungsbedarf:</strong> Die Sonderumlage ist absehbar — bei Dach oder Heizung typisch 8.000–20.000 € je Einheit. Bereits beschlossene Umlagen gehen auf den Käufer über.</li>
+      <li><strong>Rücklage unter Richtwert + sichtbarer Sanierungsbedarf:</strong> Die Sonderumlage ist absehbar — bei Dach oder Heizung typisch 8.000–20.000 € je Einheit. Wichtig: Maßgeblich ist die <em>Fälligkeit</em>, nicht der Beschluss. Eine vor dem Kauf beschlossene, aber erst nach dem Eigentumsübergang fällige Umlage zahlt der Käufer; eine bereits vorher fällige schuldet der Verkäufer. Regeln Sie die Aufteilung ausdrücklich im Kaufvertrag.</li>
       <li><strong>Aufschlüsselung wird nicht herausgegeben:</strong> Hausgeldabrechnung, Wirtschaftsplan und die WEG-Protokolle der letzten drei Jahre sind Standard-Unterlagen — Zurückhalten ist selbst ein Signal.</li>
       </ul>
       <p>Was genau in Teilungserklärung und WEG-Protokollen steht und wie Sie es lesen: <a href="/blog/teilungserklaerung-pruefen">Teilungserklärung prüfen</a> und <a href="/blog/eigentumswohnung-kaufen-expose">Eigentumswohnung kaufen: das Exposé richtig lesen</a>.</p>

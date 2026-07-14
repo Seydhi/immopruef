@@ -23,7 +23,7 @@ export default function WohnflaechenRechner() {
   useSEO({
     title: 'Wohnflächenrechner (WoFlV) & Quadratmeterpreis berechnen',
     description:
-      'Kostenloser Wohnflächenrechner nach Wohnflächenverordnung: anrechenbare Wohnfläche aus Voll-, Dachschrägen- und Balkonflächen berechnen, Quadratmeterpreis ermitteln und beworbene mit echter Fläche vergleichen.',
+      'Kostenloser Wohnflächenrechner nach WoFlV: anrechenbare Fläche aus Dachschrägen und Balkon berechnen und den echten Quadratmeterpreis ermitteln.',
     canonical: 'https://immopruef.de/wohnflaechen-rechner',
     type: 'website',
     jsonLd: [

@@ -125,7 +125,7 @@ export default function HausgeldRuecklagenSonderumlage() {
         </tbody>
       </table>
       <p>
-        <strong>Das Fatale:</strong> Sonderumlagen können auch beschlossen werden nachdem Sie den Kaufvertrag unterschrieben haben, aber bevor Sie im Grundbuch stehen. Und bereits beschlossene Sonderumlagen gehen auf den neuen Eigentümer über — die Zahlungspflicht wandert mit dem Eigentum.
+        <strong>Das Fatale:</strong> Sonderumlagen können auch beschlossen werden, nachdem Sie den Kaufvertrag unterschrieben haben, aber bevor Sie im Grundbuch stehen. Entscheidend ist dabei nicht der Beschluss, sondern die <strong>Fälligkeit</strong>: Wird die Umlage erst nach dem Eigentumsübergang fällig, zahlt sie der neue Eigentümer — auch wenn sie lange vorher beschlossen wurde. War sie schon vorher fällig, schuldet sie gegenüber der WEG der Verkäufer. Weil sich diese Grenze im Einzelfall verschiebt, gehört die Aufteilung ausdrücklich in den Kaufvertrag.
       </p>
 
       <h3>Wie Sie Sonderumlagen vor dem Kauf erkennen</h3>

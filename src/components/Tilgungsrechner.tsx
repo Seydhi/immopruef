@@ -119,9 +119,9 @@ export default function Tilgungsrechner() {
   const planZeilen = r.jahre.filter((z) => z.jahr <= zinsbindung).slice(0, 15)
 
   useSEO({
-    title: 'Tilgungsrechner: Monatsrate, Restschuld & Tilgungsplan berechnen',
+    title: 'Tilgungsrechner: Rate, Restschuld & Tilgungsplan',
     description:
-      'Kostenloser Tilgungsrechner für die Baufinanzierung: Berechnen Sie aus Darlehen, Sollzins und Tilgung sofort Monatsrate, Restschuld nach der Zinsbindung, Gesamtzinsen und den vollständigen Tilgungsplan — inklusive Sondertilgung.',
+      'Kostenloser Tilgungsrechner: aus Darlehen, Sollzins und Tilgung sofort Monatsrate, Restschuld nach Zinsbindung und Gesamtzinsen — inkl. Sondertilgung.',
     canonical: 'https://immopruef.de/tilgungsrechner',
     type: 'website',
     jsonLd: [

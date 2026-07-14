@@ -57,7 +57,7 @@ export default function ExposePruefenLassen() {
   useSEO({
     title: 'Exposé prüfen lassen: unabhängiger Check in Minuten',
     description:
-      'Immobilien-Exposé prüfen lassen ab 19 €: Preisplausibilität, Kaufnebenkosten, Warnsignale, Finanzierung — käuferseitig, ohne Makler-Leads. Link oder PDF hochladen, Ergebnis in Minuten.',
+      'Immobilien-Exposé prüfen lassen ab 19 €: Preis, Kaufnebenkosten, Warnsignale und Finanzierung — käuferseitig, ohne Makler-Leads. Ergebnis in Minuten.',
     canonical: 'https://immopruef.de/expose-pruefen-lassen',
     type: 'website',
     jsonLd: [
