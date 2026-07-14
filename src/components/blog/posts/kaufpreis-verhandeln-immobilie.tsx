@@ -1,3 +1,5 @@
+import NachlassKompass from '../NachlassKompass'
+
 export default function KaufpreisVerhandelnImmobilie() {
   return (
     <>
@@ -27,6 +29,8 @@ export default function KaufpreisVerhandelnImmobilie() {
       <li><strong>Marktlage vor Ort:</strong> Wie lange stehen vergleichbare Objekte online? Gibt es viele ähnliche Angebote? In einem Käufermarkt können Sie fordern, in einem Verkäufermarkt eher nicht.</li>
       <li><strong>Objektschwächen:</strong> Alles, was Geld kostet und belegbar ist — alte Heizung, schlechte Energieklasse, Sanierungsstau — ist Verhandlungsmasse. Dazu gleich mehr.</li>
       </ol>
+
+      <NachlassKompass />
 
       <h2>Die 7 Verhandlungsargumente, die wirklich funktionieren</h2>
       <p>Verhandelt wird nicht mit Meinungen, sondern mit Belegen. Diese sieben Argumente lassen sich dokumentieren — und genau deshalb wirken sie:</p>
