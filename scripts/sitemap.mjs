@@ -13,12 +13,13 @@ const today = new Date().toISOString().slice(0, 10)
 
 const src = readFileSync(POSTS_FILE, 'utf8')
 
-// Extract slug + optional date from each BlogMeta entry
-// Matches: slug: 'foo-bar', ... date: '11. April 2026'
+// Extract slug + date + optionales updated aus jedem BlogMeta-Eintrag.
+// Matches: slug: 'foo-bar', ... date: '11. April 2026', [updated: '13. Juli 2026',]
+// `updated` muss unmittelbar auf `date` folgen (siehe BlogMeta in BlogLayout.tsx).
 const entries = []
-const re = /\{\s*[\s\S]*?slug:\s*'([^']+)'[\s\S]*?date:\s*'([^']+)'[\s\S]*?\}/g
+const re = /slug:\s*'([^']+)',[\s\S]*?date:\s*'([^']+)',(?:\s*updated:\s*'([^']+)',)?/g
 for (const m of src.matchAll(re)) {
-  entries.push({ slug: m[1], date: m[2] })
+  entries.push({ slug: m[1], date: m[2], updated: m[3] })
 }
 
 function germanToIso(d) {
@@ -33,8 +34,9 @@ function germanToIso(d) {
   return `${m[3]}-${mon}-${day}`
 }
 
+// lastmod = letzte inhaltliche Aenderung (updated), sonst Erstveroeffentlichung.
 const blogUrls = entries
-  .map(e => ({ loc: `${BASE}/blog/${e.slug}`, lastmod: germanToIso(e.date), changefreq: 'monthly', priority: '0.7' }))
+  .map(e => ({ loc: `${BASE}/blog/${e.slug}`, lastmod: germanToIso(e.updated || e.date), changefreq: 'monthly', priority: '0.7' }))
 
 const staticUrls = [
   { loc: `${BASE}/`, lastmod: today, changefreq: 'weekly', priority: '1.0' },

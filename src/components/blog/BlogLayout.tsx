@@ -7,6 +7,13 @@ export interface BlogMeta {
   title: string
   description: string
   date: string
+  /**
+   * Datum der letzten INHALTLICHEN Überarbeitung (gleiches Format wie `date`).
+   * Nur setzen bei substanziellen Änderungen — korrigierte Zahlen, geänderte
+   * Rechtslage, neue Abschnitte. NICHT für Tippfehler oder Meta-Tag-Anpassungen:
+   * ein hochgesetztes dateModified ohne echte Änderung ist ein Spam-Signal.
+   */
+  updated?: string
   readTime: string
   tags: string[]
   image?: string
@@ -83,6 +90,7 @@ export default function BlogLayout({ meta, children }: BlogLayoutProps) {
   const related = findRelatedPosts(meta.slug, meta.tags)
   const url = `https://immopruef.de/blog/${meta.slug}`
   const isoDate = germanDateToIso(meta.date)
+  const isoUpdated = meta.updated ? germanDateToIso(meta.updated) : undefined
 
   // Energie-Artikel werden fachlich von Ahmad El Chouli geprüft (real, eingewilligt)
   const energyReviewer = meta.tags.includes('Energie')
@@ -101,7 +109,7 @@ export default function BlogLayout({ meta, children }: BlogLayoutProps) {
     image: meta.image,
     type: 'article',
     publishedTime: isoDate,
-    modifiedTime: isoDate,
+    modifiedTime: isoUpdated || isoDate,
     tags: meta.tags,
     jsonLd: [
       articleSchema({
@@ -110,7 +118,7 @@ export default function BlogLayout({ meta, children }: BlogLayoutProps) {
         url,
         image: meta.image,
         datePublished: isoDate,
-        dateModified: isoDate,
+        dateModified: isoUpdated || isoDate,
         tags: meta.tags,
         reviewedBy: energyReviewer,
       }),
@@ -136,8 +144,16 @@ export default function BlogLayout({ meta, children }: BlogLayoutProps) {
         <h1 className="font-display text-3xl sm:text-4xl font-semibold text-ink leading-tight mb-3">
           {meta.title}
         </h1>
-        <div className="flex items-center gap-3 text-xs text-ink-light">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-ink-light">
           <time dateTime={isoDate.slice(0, 10)}>{meta.date}</time>
+          {meta.updated && isoUpdated && (
+            <>
+              <span className="text-ink/20">·</span>
+              <span className="text-green font-medium">
+                Aktualisiert am <time dateTime={isoUpdated.slice(0, 10)}>{meta.updated}</time>
+              </span>
+            </>
+          )}
           <span className="text-ink/20">·</span>
           <span>{meta.readTime} Lesezeit</span>
         </div>
