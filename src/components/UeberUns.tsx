@@ -33,7 +33,7 @@ export default function UeberUns() {
             addressLocality: 'Osterholz-Scharmbeck',
             addressCountry: 'DE',
           },
-          email: 'info@immopruef.com',
+          email: 'info@immopruef.de',
           areaServed: 'DE',
         },
       },
@@ -151,7 +151,7 @@ export default function UeberUns() {
                 Kaufinteressenten dieselbe strukturierte, datenbasierte Einordnung an die Hand zu geben, die sonst Profis
                 vorbehalten ist.
               </p>
-              <a href="mailto:info@immopruef.com" className="text-green hover:text-green-mid underline text-[12px] inline-block mt-1.5">info@immopruef.com</a>
+              <a href="mailto:info@immopruef.de" className="text-green hover:text-green-mid underline text-[12px] inline-block mt-1.5">info@immopruef.de</a>
             </div>
           </div>
 
@@ -201,7 +201,7 @@ export default function UeberUns() {
           <h2 className="font-display text-xl font-medium text-green mb-2">Kontakt</h2>
           <p>
             Fragen, Anregungen oder ein Problem mit einer Analyse? Schreiben Sie uns an{' '}
-            <a href="mailto:info@immopruef.com" className="text-green hover:text-green-mid underline">info@immopruef.com</a>.
+            <a href="mailto:info@immopruef.de" className="text-green hover:text-green-mid underline">info@immopruef.de</a>.
           </p>
         </section>
       </div>

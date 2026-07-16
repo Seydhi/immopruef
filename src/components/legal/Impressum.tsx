@@ -32,7 +32,7 @@ export default function Impressum() {
         <section>
           <h2 className="text-base font-heading font-semibold text-ink mb-2">Kontakt</h2>
           <p>
-            E-Mail: <a href="mailto:info@immopruef.com" className="text-green hover:text-green-mid transition-colors">info@immopruef.com</a>
+            E-Mail: <a href="mailto:info@immopruef.de" className="text-green hover:text-green-mid transition-colors">info@immopruef.de</a>
           </p>
           <p className="mt-1 text-xs text-ink-light">
             Telefonische Erreichbarkeit auf Anfrage per E-Mail.

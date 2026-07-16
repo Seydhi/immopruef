@@ -317,7 +317,7 @@ serve(async (req) => {
     <div style="background:#f9f8f5;border-radius:0 0 12px 12px;padding:20px 24px;border:1px solid #e8e4dc;border-top:none;">
       <p style="margin:0 0 8px;font-size:11px;color:#999;line-height:1.4;">
         Bei Fragen antworten Sie einfach auf diese E-Mail oder kontaktieren Sie uns unter
-        <a href="mailto:info@immopruef.com" style="color:#1a6b3c;text-decoration:none;">info@immopruef.com</a>
+        <a href="mailto:info@immopruef.de" style="color:#1a6b3c;text-decoration:none;">info@immopruef.de</a>
       </p>
       <p style="margin:0;font-size:11px;color:#bbb;">
         <a href="${appUrl}" style="color:#1a6b3c;text-decoration:none;">immopruef.de</a> · Professionelle Immobilienanalyse

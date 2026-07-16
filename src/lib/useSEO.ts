@@ -193,7 +193,7 @@ export function organizationSchema(): object {
     },
     contactPoint: {
       '@type': 'ContactPoint',
-      email: 'info@immopruef.com',
+      email: 'info@immopruef.de',
       contactType: 'customer support',
       areaServed: 'DE',
       availableLanguage: ['de'],

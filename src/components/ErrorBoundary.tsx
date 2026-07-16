@@ -49,7 +49,7 @@ export default class ErrorBoundary extends Component<Props, State> {
           <p className="text-sm text-ink-mid leading-relaxed mb-4">
             Die Anzeige konnte nicht geladen werden. Ihre Analyse ist aber gespeichert —
             Sie erhalten sie per E-Mail. Bei anhaltenden Problemen kontaktieren Sie
-            bitte <a href="mailto:info@immopruef.com" className="text-green underline">info@immopruef.com</a>.
+            bitte <a href="mailto:info@immopruef.de" className="text-green underline">info@immopruef.de</a>.
           </p>
           {this.state.error?.message && (
             <details className="text-left text-xs text-ink-light bg-cream-dark rounded p-3 mt-3">

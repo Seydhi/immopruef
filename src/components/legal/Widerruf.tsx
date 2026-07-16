@@ -31,7 +31,7 @@ export default function Widerruf() {
         </p>
         <p className="mt-2">
           Um Ihr Widerrufsrecht auszuüben, müssen Sie uns (Neuralpfad UG (haftungsbeschränkt),
-          Auf dem Paß 10, 27711 Osterholz-Scharmbeck, E-Mail: info@immopruef.com) mittels einer
+          Auf dem Paß 10, 27711 Osterholz-Scharmbeck, E-Mail: info@immopruef.de) mittels einer
           eindeutigen Erklärung (z.B. per E-Mail) über Ihren Entschluss, diesen Vertrag zu
           widerrufen, informieren.
         </p>

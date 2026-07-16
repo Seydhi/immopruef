@@ -27,7 +27,7 @@ export default function Datenschutz() {
             Auf dem Paß 10<br />
             27711 Osterholz-Scharmbeck<br />
             Deutschland<br />
-            E-Mail: <a href="mailto:info@immopruef.com" className="text-green hover:text-green-mid">info@immopruef.com</a>
+            E-Mail: <a href="mailto:info@immopruef.de" className="text-green hover:text-green-mid">info@immopruef.de</a>
           </p>
           <p className="mt-3 text-xs text-ink-light">
             Ein Datenschutzbeauftragter ist nach § 38 BDSG aufgrund der Unternehmensgröße
@@ -231,7 +231,7 @@ export default function Datenschutz() {
           </ul>
           <p className="mt-2">
             Zur Ausübung Ihrer Rechte kontaktieren Sie uns unter{' '}
-            <a href="mailto:info@immopruef.com" className="text-green hover:text-green-mid">info@immopruef.com</a>.
+            <a href="mailto:info@immopruef.de" className="text-green hover:text-green-mid">info@immopruef.de</a>.
           </p>
         </section>
 
@@ -307,7 +307,7 @@ export default function Datenschutz() {
           </p>
           <p className="mt-2">
             Bei Fragen oder Anmerkungen zu Ihrer Analyse wenden Sie sich gerne an{' '}
-            <a href="mailto:info@immopruef.com" className="text-green hover:text-green-mid">info@immopruef.com</a>.
+            <a href="mailto:info@immopruef.de" className="text-green hover:text-green-mid">info@immopruef.de</a>.
           </p>
         </section>
 
