@@ -2,6 +2,7 @@ const NAV_LINKS = [
   { href: '/blog', label: 'Ratgeber' },
   { href: '/rechner', label: 'Rechner' },
   { href: '/kaufnebenkosten-index', label: 'Kaufnebenkosten' },
+  { href: '/ueber-uns', label: 'Über uns' },
 ]
 
 export default function Header() {
@@ -17,7 +18,7 @@ export default function Header() {
             key={l.href}
             href={l.href}
             className={`text-cream/90 hover:text-gold-light transition-colors text-[13px] sm:text-sm font-medium whitespace-nowrap ${
-              l.href === '/kaufnebenkosten-index' ? 'hidden md:inline' : ''
+              l.href === '/kaufnebenkosten-index' || l.href === '/ueber-uns' ? 'hidden md:inline' : ''
             }`}
           >
             {l.label}

@@ -177,7 +177,10 @@ export default function Landing() {
 
   return (
     <>
-      {/* Analyse-Formular ganz oben */}
+      {/* Hero zuerst: Erstbesucher sollen das Produkt verstehen, bevor sie die
+          Kasse sehen (Audit-Befund: Formular vor H1 wirkte wie Kasse ohne Kontext). */}
+      <HeroSection onCta={scrollToForm} />
+
       <div className="text-center mb-6 mt-2">
         <h2 className="font-display text-2xl font-medium text-green leading-tight mb-1">
           Analyse starten
@@ -285,7 +288,7 @@ export default function Landing() {
               Ich habe die{' '}
               <a href="/agb" target="_blank" rel="noopener noreferrer" className="text-green hover:text-green-mid underline">AGB</a>
               {' '}und die{' '}
-              <a href="/agb" target="_blank" rel="noopener noreferrer" className="text-green hover:text-green-mid underline">Widerrufsbelehrung</a>
+              <a href="/widerruf" target="_blank" rel="noopener noreferrer" className="text-green hover:text-green-mid underline">Widerrufsbelehrung</a>
               {' '}gelesen und akzeptiere sie.
             </span>
           </label>
@@ -332,8 +335,6 @@ export default function Landing() {
           {' '}einverstanden.
         </p>
       </div>
-
-      <HeroSection onCta={scrollToForm} />
 
       <FeatureGrid />
 

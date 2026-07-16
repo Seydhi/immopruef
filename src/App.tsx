@@ -11,9 +11,13 @@ import ErrorBoundary from './components/ErrorBoundary'
 import Impressum from './components/legal/Impressum'
 import Datenschutz from './components/legal/Datenschutz'
 import AGB from './components/legal/AGB'
+import Widerruf from './components/legal/Widerruf'
 import Barrierefreiheit from './components/legal/Barrierefreiheit'
 import BlogIndex from './components/blog/BlogIndex'
 import BlogLayout from './components/blog/BlogLayout'
+import BlogKategorie from './components/blog/BlogKategorie'
+import BeispielAnalyse from './components/BeispielAnalyse'
+import { kategorieForSlug } from './components/blog/kategorien'
 import Rechner from './components/Rechner'
 import Budgetrechner from './components/Budgetrechner'
 import Tilgungsrechner from './components/Tilgungsrechner'
@@ -41,7 +45,9 @@ type AppView =
   | { type: 'impressum' }
   | { type: 'datenschutz' }
   | { type: 'agb' }
+  | { type: 'widerruf' }
   | { type: 'barrierefreiheit' }
+  | { type: 'beispiel-analyse'; variant: 'standard' | 'premium' }
   | { type: 'rechner' }
   | { type: 'budgetrechner' }
   | { type: 'tilgungsrechner' }
@@ -57,6 +63,7 @@ type AppView =
   | { type: 'bodenrichtwert'; slug: string }
   | { type: 'ueber-uns' }
   | { type: 'blog' }
+  | { type: 'blog-kategorie'; slug: string }
   | { type: 'blog-post'; slug: string }
 
 export default function App() {
@@ -113,7 +120,10 @@ export default function App() {
     if (path === '/impressum') { setView({ type: 'impressum' }); return }
     if (path === '/datenschutz') { setView({ type: 'datenschutz' }); return }
     if (path === '/agb') { setView({ type: 'agb' }); return }
+    if (path === '/widerruf') { setView({ type: 'widerruf' }); return }
     if (path === '/barrierefreiheit') { setView({ type: 'barrierefreiheit' }); return }
+    if (path === '/beispiel-analyse') { setView({ type: 'beispiel-analyse', variant: 'standard' }); return }
+    if (path === '/beispiel-premium-report') { setView({ type: 'beispiel-analyse', variant: 'premium' }); return }
     if (path === '/grunderwerbsteuer-rechner') { setView({ type: 'rechner' }); return }
     if (path === '/budgetrechner') { setView({ type: 'budgetrechner' }); return }
     if (path === '/tilgungsrechner') { setView({ type: 'tilgungsrechner' }); return }
@@ -131,8 +141,10 @@ export default function App() {
     if (bodenMatch && regioForSlug(bodenMatch[1])) { setView({ type: 'bodenrichtwert', slug: bodenMatch[1] }); return }
     if (path === '/ueber-uns') { setView({ type: 'ueber-uns' }); return }
 
-    // Blog routing
+    // Blog routing — Kategorie-Hubs VOR dem Artikel-Catch-all matchen
     if (path === '/blog' || path === '/blog/') { setView({ type: 'blog' }); return }
+    const themaMatch = path.match(/^\/blog\/thema\/([a-z-]+)$/)
+    if (themaMatch && kategorieForSlug(themaMatch[1])) { setView({ type: 'blog-kategorie', slug: themaMatch[1] }); return }
     const blogMatch = path.match(/^\/blog\/(.+)$/)
     if (blogMatch) { setView({ type: 'blog-post', slug: blogMatch[1] }); return }
 
@@ -227,7 +239,7 @@ export default function App() {
           </div>
         )}
 
-        {(view.type === 'impressum' || view.type === 'datenschutz' || view.type === 'agb' || view.type === 'barrierefreiheit') && (
+        {(view.type === 'impressum' || view.type === 'datenschutz' || view.type === 'agb' || view.type === 'widerruf' || view.type === 'barrierefreiheit' || view.type === 'beispiel-analyse') && (
           <div>
             <button
               onClick={() => { window.history.pushState({}, '', '/'); setView({ type: 'landing' }) }}
@@ -238,7 +250,13 @@ export default function App() {
             {view.type === 'impressum' && <Impressum />}
             {view.type === 'datenschutz' && <Datenschutz />}
             {view.type === 'agb' && <AGB />}
+            {view.type === 'widerruf' && <Widerruf />}
             {view.type === 'barrierefreiheit' && <Barrierefreiheit />}
+            {view.type === 'beispiel-analyse' && (
+              <ErrorBoundary context={`beispiel:${view.variant}`}>
+                <BeispielAnalyse variant={view.variant} />
+              </ErrorBoundary>
+            )}
           </div>
         )}
 
@@ -268,6 +286,8 @@ export default function App() {
         )}
 
         {/* Blog */}
+        {view.type === 'blog-kategorie' && <BlogKategorie slug={view.slug} />}
+
         {view.type === 'blog' && (
           <BlogIndex onNavigate={(slug) => {
             window.history.pushState({}, '', `/blog/${slug}`)
@@ -317,6 +337,8 @@ export default function App() {
           <a href="/datenschutz" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/datenschutz'); setView({ type: 'datenschutz' }); window.scrollTo(0, 0) }} className="hover:text-green transition-colors">Datenschutz</a>
           <span className="text-ink/20">·</span>
           <a href="/agb" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/agb'); setView({ type: 'agb' }); window.scrollTo(0, 0) }} className="hover:text-green transition-colors">AGB</a>
+          <span className="text-ink/20">·</span>
+          <a href="/widerruf" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/widerruf'); setView({ type: 'widerruf' }); window.scrollTo(0, 0) }} className="hover:text-green transition-colors">Widerruf</a>
           <span className="text-ink/20">·</span>
           <a href="/barrierefreiheit" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/barrierefreiheit'); setView({ type: 'barrierefreiheit' }); window.scrollTo(0, 0) }} className="hover:text-green transition-colors">Barrierefreiheit</a>
         </div>

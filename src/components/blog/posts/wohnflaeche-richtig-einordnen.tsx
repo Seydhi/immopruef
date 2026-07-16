@@ -14,7 +14,7 @@ export default function WohnflaecheRichtigEinordnen() {
       </p>
       <table>
         <thead>
-          <tr><th></th><th>WoFlV (Wohnflächenverordnung)</th><th>DIN 277 (Grundfläche)</th></tr>
+          <tr><th></th><th><a href="https://www.gesetze-im-internet.de/woflv/" target="_blank" rel="noopener noreferrer">WoFlV (Wohnflächenverordnung)</a></th><th>DIN 277 (Grundfläche)</th></tr>
         </thead>
         <tbody>
           <tr><td><strong>Balkone/Terrassen</strong></td><td>25 % der Fläche</td><td>100 % der Fläche</td></tr>

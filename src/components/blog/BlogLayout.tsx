@@ -1,6 +1,17 @@
 import type { ReactNode } from 'react'
 import { BLOG_POSTS } from './posts'
+import { kategorieForTags } from './kategorien'
 import { useSEO, articleSchema, breadcrumbSchema, faqSchema } from '../../lib/useSEO'
+
+// Benannter Autor (E-E-A-T): Seydhan Cakmak ist laut /ueber-uns redaktionell
+// verantwortlich für die Inhalte; Energie-Artikel prüft zusätzlich Ahmad El Chouli.
+const AUTHOR_PERSON = {
+  '@type': 'Person',
+  name: 'Seydhan Cakmak',
+  jobTitle: 'Gründer & Geschäftsführer',
+  url: 'https://immopruef.de/ueber-uns',
+  worksFor: { '@type': 'Organization', name: 'ImmoPrüf', url: 'https://immopruef.de' },
+}
 
 export interface BlogMeta {
   slug: string
@@ -91,6 +102,7 @@ export default function BlogLayout({ meta, children }: BlogLayoutProps) {
   const url = `https://immopruef.de/blog/${meta.slug}`
   const isoDate = germanDateToIso(meta.date)
   const isoUpdated = meta.updated ? germanDateToIso(meta.updated) : undefined
+  const kategorie = kategorieForTags(meta.tags)
 
   // Energie-Artikel werden fachlich von Ahmad El Chouli geprüft (real, eingewilligt)
   const energyReviewer = meta.tags.includes('Energie')
@@ -121,10 +133,12 @@ export default function BlogLayout({ meta, children }: BlogLayoutProps) {
         dateModified: isoUpdated || isoDate,
         tags: meta.tags,
         reviewedBy: energyReviewer,
+        author: AUTHOR_PERSON,
       }),
       breadcrumbSchema([
         { name: 'Startseite', url: 'https://immopruef.de/' },
-        { name: 'Blog', url: 'https://immopruef.de/blog' },
+        { name: 'Ratgeber', url: 'https://immopruef.de/blog' },
+        ...(kategorie ? [{ name: kategorie.name, url: `https://immopruef.de/blog/thema/${kategorie.slug}` }] : []),
         { name: meta.title, url },
       ]),
       ...(meta.faq && meta.faq.length > 0 ? [faqSchema(meta.faq)] : []),
@@ -133,12 +147,20 @@ export default function BlogLayout({ meta, children }: BlogLayoutProps) {
 
   return (
     <article className="max-w-[680px] mx-auto">
-      <a
-        href="/blog"
-        className="text-green text-sm font-medium hover:text-green-mid transition-colors mb-6 inline-flex items-center gap-1"
-      >
-        ← Alle Artikel
-      </a>
+      {/* Sichtbare Breadcrumbs (Schema: BreadcrumbList oben) */}
+      <nav aria-label="Breadcrumb" className="mb-6 text-xs text-ink-light">
+        <a href="/" className="hover:text-green">Startseite</a>
+        <span className="mx-1.5 text-ink/25">/</span>
+        <a href="/blog" className="hover:text-green">Ratgeber</a>
+        {kategorie && (
+          <>
+            <span className="mx-1.5 text-ink/25">/</span>
+            <a href={`/blog/thema/${kategorie.slug}`} className="hover:text-green">{kategorie.name}</a>
+          </>
+        )}
+        <span className="mx-1.5 text-ink/25">/</span>
+        <span className="text-ink-mid" aria-current="page">{meta.title}</span>
+      </nav>
 
       <header className="mb-8">
         <h1 className="font-display text-3xl sm:text-4xl font-semibold text-ink leading-tight mb-3">
@@ -158,9 +180,9 @@ export default function BlogLayout({ meta, children }: BlogLayoutProps) {
           <span>{meta.readTime} Lesezeit</span>
         </div>
         <div className="mt-2 text-xs text-ink-light">
-          Von der{' '}
-          <a href="/ueber-uns" className="text-green hover:text-green-mid">ImmoPrüf-Redaktion</a>
-          {' '}· recherchiert &amp; faktengeprüft
+          Von{' '}
+          <a href="/ueber-uns" className="text-green hover:text-green-mid">Seydhan Cakmak</a>
+          {' '}(ImmoPrüf-Redaktion) · recherchiert &amp; faktengeprüft
           {meta.tags.includes('Energie') && (
             <>
               {' '}· fachlich geprüft von{' '}

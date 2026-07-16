@@ -132,6 +132,7 @@ export function articleSchema(opts: {
   dateModified?: string
   tags?: string[]
   reviewedBy?: object
+  author?: object
 }): object {
   return {
     '@context': 'https://schema.org',
@@ -142,7 +143,9 @@ export function articleSchema(opts: {
     url: opts.url,
     datePublished: opts.datePublished,
     dateModified: opts.dateModified || opts.datePublished,
-    author: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
+    // E-E-A-T: benannte Person als Autor (Blog übergibt Seydhan Cakmak),
+    // Organisation nur als Fallback für Seiten ohne persönlichen Autor.
+    author: opts.author || { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
     publisher: {
       '@type': 'Organization',
       name: SITE_NAME,

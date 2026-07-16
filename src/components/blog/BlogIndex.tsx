@@ -1,6 +1,7 @@
 import type { BlogMeta } from './BlogLayout'
 import { germanDateToIso } from './BlogLayout'
 import { BLOG_POSTS } from './posts'
+import { KATEGORIEN } from './kategorien'
 import { useSEO, breadcrumbSchema } from '../../lib/useSEO'
 
 interface BlogIndexProps {
@@ -82,6 +83,65 @@ function CoverArt({ post }: { post: BlogMeta }) {
   )
 }
 
+// Artikel-Karte — auch von den Kategorie-Hubs (BlogKategorie) genutzt.
+// onNavigate optional: ohne Handler navigiert der Link normal (prerenderte Seite).
+export function PostCard({ post, postIndex, onNavigate }: { post: BlogMeta; postIndex: number; onNavigate?: (slug: string) => void }) {
+  return (
+    <a
+      href={`/blog/${post.slug}`}
+      onClick={onNavigate ? (e) => { e.preventDefault(); onNavigate(post.slug) } : undefined}
+      className="text-left bg-white border border-ink/10 rounded-xl overflow-hidden hover:border-green/30 hover:shadow-md transition-all group flex flex-col no-underline"
+    >
+      {/* Kuratiertes Foto (einzigartig je Artikel); SVG-Cover als Fallback */}
+      <div className="h-36 border-b border-ink/8 overflow-hidden">
+        <div className="w-full h-full group-hover:scale-105 transition-transform duration-300">
+          {post.image ? (
+            <img
+              /* Pexels-CDN skaliert serverseitig: kleine Karten-Variante statt 1200px (~73 KB → ~15 KB) */
+              src={post.image.replace('h=627', 'h=314').replace('w=1200', 'w=600')}
+              alt={post.title}
+              width={400}
+              height={144}
+              className="w-full h-full object-cover"
+              loading={postIndex < 6 ? 'eager' : 'lazy'}
+              decoding="async"
+            />
+          ) : (
+            <CoverArt post={post} />
+          )}
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="p-4 flex flex-col flex-1">
+        <div className="flex gap-1.5 mb-2 flex-wrap">
+          {post.tags.map((tag) => {
+            const art = TAG_ART[tag] || DEFAULT_ART
+            return (
+              <span
+                key={tag}
+                className="text-[9px] font-medium px-2 py-0.5 rounded-full"
+                style={{ backgroundColor: art.pill, color: art.pillFg }}
+              >
+                {tag}
+              </span>
+            )
+          })}
+        </div>
+        <h2 className="font-display text-[15px] font-semibold text-ink group-hover:text-green transition-colors mb-2 leading-snug">
+          {post.title}
+        </h2>
+        <p className="text-xs text-ink-mid leading-relaxed mb-3 flex-1">{post.description}</p>
+        <div className="flex items-center gap-2 text-[10px] text-ink-light mt-auto pt-2 border-t border-ink/8">
+          <time dateTime={germanDateToIso(post.date).slice(0, 10)}>{post.date}</time>
+          <span className="text-ink/20">·</span>
+          <span>{post.readTime}</span>
+        </div>
+      </div>
+    </a>
+  )
+}
+
 export default function BlogIndex({ onNavigate }: BlogIndexProps) {
   const postCount = BLOG_POSTS.length
   useSEO({
@@ -108,69 +168,32 @@ export default function BlogIndex({ onNavigate }: BlogIndexProps) {
 
   return (
     <div>
-      <div className="mb-8 text-center">
+      <div className="mb-6 text-center">
         <h1 className="font-display text-3xl font-semibold text-green mb-2">Blog</h1>
         <p className="text-ink-mid text-sm">Ratgeber, Tipps und Wissen rund um den Immobilienkauf</p>
       </div>
 
+      {/* Themen-Hubs: crawlbare Kategorie-Einstiege */}
+      <nav aria-label="Themen" className="mb-8 flex flex-wrap justify-center gap-2">
+        {KATEGORIEN.map((k) => {
+          const art = TAG_ART[k.tag] || DEFAULT_ART
+          const count = BLOG_POSTS.filter((p) => p.tags.includes(k.tag)).length
+          return (
+            <a
+              key={k.slug}
+              href={`/blog/thema/${k.slug}`}
+              className="text-[12px] font-medium px-3 py-1.5 rounded-full border transition-all hover:shadow-sm"
+              style={{ backgroundColor: art.pill, color: art.pillFg, borderColor: `${art.deco}` }}
+            >
+              {k.name} <span className="opacity-60">({count})</span>
+            </a>
+          )
+        })}
+      </nav>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {BLOG_POSTS.map((post: BlogMeta, postIndex: number) => (
-          <a
-            key={post.slug}
-            href={`/blog/${post.slug}`}
-            onClick={(e) => {
-              e.preventDefault()
-              onNavigate(post.slug)
-            }}
-            className="text-left bg-white border border-ink/10 rounded-xl overflow-hidden hover:border-green/30 hover:shadow-md transition-all group flex flex-col no-underline"
-          >
-            {/* Kuratiertes Foto (einzigartig je Artikel); SVG-Cover als Fallback */}
-            <div className="h-36 border-b border-ink/8 overflow-hidden">
-              <div className="w-full h-full group-hover:scale-105 transition-transform duration-300">
-                {post.image ? (
-                  <img
-                    /* Pexels-CDN skaliert serverseitig: kleine Karten-Variante statt 1200px (~73 KB → ~15 KB) */
-                    src={post.image.replace('h=627', 'h=314').replace('w=1200', 'w=600')}
-                    alt={post.title}
-                    width={400}
-                    height={144}
-                    className="w-full h-full object-cover"
-                    loading={postIndex < 6 ? 'eager' : 'lazy'}
-                    decoding="async"
-                  />
-                ) : (
-                  <CoverArt post={post} />
-                )}
-              </div>
-            </div>
-
-            {/* Content */}
-            <div className="p-4 flex flex-col flex-1">
-              <div className="flex gap-1.5 mb-2 flex-wrap">
-                {post.tags.map((tag) => {
-                  const art = TAG_ART[tag] || DEFAULT_ART
-                  return (
-                    <span
-                      key={tag}
-                      className="text-[9px] font-medium px-2 py-0.5 rounded-full"
-                      style={{ backgroundColor: art.pill, color: art.pillFg }}
-                    >
-                      {tag}
-                    </span>
-                  )
-                })}
-              </div>
-              <h2 className="font-display text-[15px] font-semibold text-ink group-hover:text-green transition-colors mb-2 leading-snug">
-                {post.title}
-              </h2>
-              <p className="text-xs text-ink-mid leading-relaxed mb-3 flex-1">{post.description}</p>
-              <div className="flex items-center gap-2 text-[10px] text-ink-light mt-auto pt-2 border-t border-ink/8">
-                <time dateTime={germanDateToIso(post.date).slice(0, 10)}>{post.date}</time>
-                <span className="text-ink/20">·</span>
-                <span>{post.readTime}</span>
-              </div>
-            </div>
-          </a>
+          <PostCard key={post.slug} post={post} postIndex={postIndex} onNavigate={onNavigate} />
         ))}
       </div>
     </div>

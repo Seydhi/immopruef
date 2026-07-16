@@ -60,14 +60,21 @@ const REGIO_SLUGS = [
   'sachsen', 'sachsen-anhalt', 'schleswig-holstein', 'thueringen',
 ]
 
+// Muss mit KATEGORIEN in src/components/blog/kategorien.ts uebereinstimmen
+const THEMA_SLUGS = ['finanzierung', 'checklisten', 'zustand', 'standort', 'energie', 'besichtigung']
+
 async function getRoutes() {
   const blogSlugs = await getBlogSlugs()
   return [
     '/',
     '/blog',
+    ...THEMA_SLUGS.map(s => `/blog/thema/${s}`),
+    '/beispiel-analyse',
+    '/beispiel-premium-report',
     '/impressum',
     '/datenschutz',
     '/agb',
+    '/widerruf',
     '/barrierefreiheit',
     '/rechner',
     '/grunderwerbsteuer-rechner',

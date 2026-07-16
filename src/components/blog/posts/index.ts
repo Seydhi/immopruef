@@ -1451,7 +1451,7 @@ export const BLOG_POSTS: BlogMeta[] = [
   },
   {
     slug: 'fehler-private-kaeufer',
-    title: 'Fehler beim Hauskauf: 10 Irrtümer privater Käufer',
+    title: 'Hauskauf: 10 emotionale Fehler privater Käufer',
     description: 'Emotionale Bindung, unterschätzte Nebenkosten, Kauf unter Zeitdruck: 10 typische Fehler privater Käufer — mit Folgekosten und wie Sie jeden davon vermeiden.',
     date: '11. April 2026',
     updated: '13. Juli 2026',
@@ -1499,7 +1499,7 @@ export const BLOG_POSTS: BlogMeta[] = [
   },
   {
     slug: 'daten-statt-bauchgefuehl',
-    title: 'Immobilie bewerten: 10 Datenpunkte statt Bauchgefühl',
+    title: 'Daten statt Bauchgefühl: der 30-Minuten-Check',
     description: '10 Datenpunkte, die jeder Käufer prüfen sollte, ein 30-Minuten-Prozess für die Bewertung — und warum Bauchgefühl ohne Fakten beim Hauskauf teuer wird.',
     date: '11. April 2026',
     readTime: '13 Min',
@@ -1515,7 +1515,7 @@ export const BLOG_POSTS: BlogMeta[] = [
   },
   {
     slug: 'immobilien-realistischer-einordnen',
-    title: 'Immobilie bewerten: 5 Kennzahlen, die täuschen',
+    title: 'Diese 5 Immobilien-Kennzahlen täuschen Käufer',
     description: '5 Kennzahlen, die isoliert in die Irre führen, und 3 typische Denkfehler: So fügen Sie Einzelwerte zu einer belastbaren Gesamteinschätzung zusammen.',
     date: '11. April 2026',
     readTime: '12 Min',
@@ -1624,7 +1624,7 @@ export const BLOG_POSTS: BlogMeta[] = [
   },
   {
     slug: 'immobilienbewertung-kaeufer',
-    title: 'Immobilienbewertung: 10 Wertfaktoren für Käufer',
+    title: 'Was eine Immobilie wert macht: 10 Wertfaktoren',
     description: 'Lage, Zustand, Energieeffizienz, Baujahr, Grundriss, Mikrolage: die 10 Faktoren, mit denen Gutachter den Wert bestimmen — verständlich für Käufer erklärt.',
     date: '11. April 2026',
     readTime: '13 Min',

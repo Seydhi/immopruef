@@ -41,7 +41,11 @@ const blogUrls = entries
 const staticUrls = [
   { loc: `${BASE}/`, lastmod: today, changefreq: 'weekly', priority: '1.0' },
   { loc: `${BASE}/expose-pruefen-lassen`, lastmod: today, changefreq: 'monthly', priority: '0.9' },
+  { loc: `${BASE}/beispiel-analyse`, lastmod: today, changefreq: 'monthly', priority: '0.7' },
+  { loc: `${BASE}/beispiel-premium-report`, lastmod: today, changefreq: 'monthly', priority: '0.7' },
   { loc: `${BASE}/blog`, lastmod: today, changefreq: 'weekly', priority: '0.8' },
+  ...['finanzierung', 'checklisten', 'zustand', 'standort', 'energie', 'besichtigung']
+    .map((s) => ({ loc: `${BASE}/blog/thema/${s}`, lastmod: today, changefreq: 'weekly', priority: '0.8' })),
   { loc: `${BASE}/rechner`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
   { loc: `${BASE}/grunderwerbsteuer-rechner`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
   { loc: `${BASE}/budgetrechner`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
@@ -68,6 +72,7 @@ const legalUrls = [
   { loc: `${BASE}/impressum`, lastmod: today, changefreq: 'yearly', priority: '0.2' },
   { loc: `${BASE}/datenschutz`, lastmod: today, changefreq: 'yearly', priority: '0.2' },
   { loc: `${BASE}/agb`, lastmod: today, changefreq: 'yearly', priority: '0.2' },
+  { loc: `${BASE}/widerruf`, lastmod: today, changefreq: 'yearly', priority: '0.2' },
   { loc: `${BASE}/barrierefreiheit`, lastmod: today, changefreq: 'yearly', priority: '0.2' },
 ]
 

@@ -17,7 +17,7 @@ export default function BodenrichtwertVerstehenAbfragen() {
       
       <h2>Bodenrichtwert kostenlos abfragen</h2>
       <p>Die Abfrage ist kostenlos, denn die Werte sind öffentlich einsehbar. Den Zugang bieten die <strong>BORIS-Portale</strong> der Bundesländer. BORIS steht für Bodenrichtwertinformationssystem. Jedes Bundesland betreibt ein eigenes Portal, in dem Sie auf einer Karte zur gesuchten Adresse navigieren und den Richtwert der jeweiligen Zone ablesen.</p>
-      <p>Einen bundesweiten Einstieg bietet <strong>BORIS-D</strong>, über das Sie länderübergreifend auf die Bodenrichtwerte zugreifen können. So müssen Sie nicht zwingend wissen, welches Landesportal für eine Adresse zuständig ist.</p>
+      <p>Einen bundesweiten Einstieg bietet <a href="https://www.bodenrichtwerte-boris.de/" target="_blank" rel="noopener noreferrer"><strong>BORIS-D</strong></a>, über das Sie länderübergreifend auf die Bodenrichtwerte zugreifen können. So müssen Sie nicht zwingend wissen, welches Landesportal für eine Adresse zuständig ist.</p>
       <p>Für eine erste Einordnung gehen Sie in der Regel so vor:</p>
       <ol>
       <li>Portal aufrufen, also das jeweilige BORIS-Landesportal oder BORIS-D.</li>

@@ -186,7 +186,7 @@ export default function DatenStattBauchgefuehl() {
 
       <h2>Fazit: Daten geben Ihrem Bauchgefühl ein Fundament</h2>
       <p>
-        Das Ziel ist nicht, Emotionen zu unterdrücken. Das Ziel ist, dem Bauchgefühl eine Faktengrundlage zu geben. Wenn die Daten bestätigen was Sie fühlen — kaufen Sie mit Überzeugung. Wenn die Daten Ihrem Gefühl widersprechen — hören Sie auf die Daten. Denn kein Bauchgefühl sieht die marode Elektrik hinter der Wand oder die geplante Sonderumlage im WEG-Protokoll.
+        Das Ziel ist nicht, Emotionen zu unterdrücken. Das Ziel ist, dem Bauchgefühl eine Faktengrundlage zu geben. Wenn die Daten bestätigen was Sie fühlen — kaufen Sie mit Überzeugung. Wenn die Daten Ihrem Gefühl widersprechen — hören Sie auf die Daten. Denn kein Bauchgefühl sieht die marode Elektrik hinter der Wand oder die geplante Sonderumlage im WEG-Protokoll. Den vollständigen Bewertungsprozess von Preis über Lage bis Risiken führt der Leitfaden <a href="/blog/immobilie-bewerten-leitfaden">Immobilienangebot bewerten</a> zusammen.
       </p>
       <p>
         <strong>ImmoPrüf</strong> liefert Ihnen die Datengrundlage in Minuten: Exposé-Link eingeben, Analyse erhalten — Preisbewertung, Standort-Score, Energieanalyse, Sanierungsbedarf, Risikobewertung und Gesamtscore. So treffen Sie Ihre Entscheidung auf dem Fundament das sie verdient: Fakten plus Gefühl, nicht Gefühl allein.

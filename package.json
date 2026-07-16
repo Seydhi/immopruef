@@ -9,6 +9,7 @@
     "build:no-prerender": "tsc -b && npm run sitemap && vite build",
     "prerender": "node scripts/prerender.mjs",
     "sitemap": "node scripts/sitemap.mjs",
+    "indexnow": "node scripts/indexnow.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },

@@ -1,23 +1,44 @@
 # ImmoPrüf
 
-> ImmoPrüf (immopruef.de) ist ein deutsches Online-Tool für private Immobilienkäufer. Aus dem Link zu einem Exposé (ImmobilienScout24, Immowelt, Immonet, Kleinanzeigen) erstellt ImmoPrüf in Minuten eine strukturierte, KI-gestützte Ersteinschätzung: Preisplausibilität, Kaufnebenkosten, Standortanalyse, Risiken und Finanzierungs-Szenarien. ImmoPrüf arbeitet käuferseitig, verkauft keine Kontaktdaten an Makler und ist keine Lead-Generierung. Betreiber: Neuralpfad UG (haftungsbeschränkt). Eine Analyse ersetzt kein Verkehrswertgutachten und keine Rechts-, Steuer- oder Finanzberatung.
+> ImmoPrüf (immopruef.de) ist ein deutsches Online-Tool für private Immobilienkäufer. Aus dem Link zu einem Exposé (ImmobilienScout24, Immowelt, Immonet, Kleinanzeigen) oder einem PDF-/Foto-Upload erstellt ImmoPrüf in Minuten eine strukturierte, KI-gestützte Ersteinschätzung: Preisplausibilität mit verlinkten Quellen, Kaufnebenkosten, Standortanalyse, Risiken und Finanzierungs-Szenarien. Alle Finanzberechnungen laufen deterministisch im Code; Werte, die nicht aus dem Exposé stammen, sind als „regionaler Schätzwert" gekennzeichnet. ImmoPrüf arbeitet käuferseitig, verkauft keine Kontaktdaten an Makler und ist keine Lead-Generierung („Sie bezahlen uns — deshalb arbeiten wir nur für Sie"). Preise: 19 € (1 Analyse), 29 € (2), 34 € (3), 79 € (Premium-Kaufentscheidungs-Report). Betreiber: Neuralpfad UG (haftungsbeschränkt). Eine Analyse ersetzt kein Verkehrswertgutachten und keine Rechts-, Steuer- oder Finanzberatung.
+
+## Produkt
+- [Exposé prüfen lassen](https://immopruef.de/expose-pruefen-lassen): Leistungsumfang, Preise und Abgrenzung zu Gratis-Bewertung, ChatGPT und Gutachter.
+- [Beispiel-Analyse (Muster)](https://immopruef.de/beispiel-analyse): Vollständige Standard-Analyse mit fiktiven Beispieldaten.
+- [Beispiel-Premium-Report (Muster)](https://immopruef.de/beispiel-premium-report): Der 79-€-Report mit Wertermittlung nach 3 Verfahren, Marktband und Mietrendite.
+- [Immobilienbewertung im Vergleich](https://immopruef.de/blog/immobilienbewertung-vergleich): Gratis-Portal vs. ChatGPT vs. käuferseitige KI-Analyse vs. Bausachverständiger.
 
 ## Kostenlose Rechner
-- [Kaufnebenkosten-/Grunderwerbsteuer-Rechner](https://immopruef.de/grunderwerbsteuer-rechner): Berechnet Grunderwerbsteuer (je Bundesland), Notar, Grundbuch und Maklerprovision für einen Kaufpreis.
+- [Kaufnebenkosten-/Grunderwerbsteuer-Rechner](https://immopruef.de/grunderwerbsteuer-rechner): Grunderwerbsteuer (je Bundesland), Notar, Grundbuch und Maklerprovision — optional mit Inventar-Abzug.
+- [Notarkosten-Rechner](https://immopruef.de/notarkosten-rechner): Notar- und Grundbuchkosten exakt nach GNotKG-Gebührentabelle, inkl. Grundschuld und Umsatzsteuer.
 - [Budgetrechner](https://immopruef.de/budgetrechner): Ermittelt aus Nettoeinkommen, Eigenkapital, Zins und Tilgung den leistbaren Kaufpreis.
-- [Tilgungsrechner](https://immopruef.de/tilgungsrechner): Annuitätendarlehen — Monatsrate, Restschuld nach Zinsbindung, Gesamtzinsen und Tilgungsplan, optional mit Sondertilgung.
-- [Mieten-oder-Kaufen-Rechner](https://immopruef.de/mieten-oder-kaufen-rechner): Vergleicht das Vermögen nach Jahren beim Kauf gegenüber Mieten plus Anlage der Differenz, mit Break-even-Jahr.
+- [Tilgungsrechner](https://immopruef.de/tilgungsrechner): Annuitätendarlehen — Monatsrate, Restschuld nach Zinsbindung, Gesamtzinsen und Tilgungsplan.
+- [Mieten-oder-Kaufen-Rechner](https://immopruef.de/mieten-oder-kaufen-rechner): Vermögensvergleich Kauf vs. Miete mit Break-even-Jahr.
+- [Mietrendite-Rechner](https://immopruef.de/mietrendite-rechner): Brutto-/Nettomietrendite und Kaufpreisfaktor.
+- [Instandhaltungsrücklage-Rechner](https://immopruef.de/instandhaltungsruecklage-rechner): Empfohlene Rücklage nach Faustregel und Peterscher Formel.
+- [Wohnflächenrechner](https://immopruef.de/wohnflaechen-rechner): Anrechenbare Wohnfläche nach WoFlV.
+- [Kaufnebenkosten je Bundesland](https://immopruef.de/kaufnebenkosten-index): Vergleich aller 16 Bundesländer.
 
-## Wichtige Ratgeber
-- [Kaufnebenkosten beim Immobilienkauf](https://immopruef.de/blog/kaufnebenkosten-immobilienkauf): Welche Nebenkosten anfallen (rund 10–15 % des Kaufpreises) und wie sie sich zusammensetzen.
-- [Grunderwerbsteuer 2026 nach Bundesland](https://immopruef.de/blog/grunderwerbsteuer-2026-bundeslaender): Aktuelle Steuersätze von 3,5 % bis 6,5 % je Bundesland.
-- [Grundsteuer 2026 nach der Reform](https://immopruef.de/blog/grundsteuer-reform-2025-2026): Wie sich die laufende Grundsteuer nach der Reform berechnet.
-- [Energieausweis im Exposé verstehen](https://immopruef.de/blog/energieausweis-expose): Effizienzklassen, Verbrauchs- vs. Bedarfsausweis und versteckte Folgekosten.
-- [Maklerprovision beim Immobilienkauf](https://immopruef.de/blog/maklerprovision-immobilienkauf): Höhe, Teilung zwischen Käufer und Verkäufer und gesetzliche Regeln.
-- [Eigenkapital beim Immobilienkauf](https://immopruef.de/blog/eigenkapital-immobilienkauf): Wie viel Eigenkapital sinnvoll ist und was es bewirkt.
-- [Kaufen oder mieten 2026](https://immopruef.de/blog/kaufen-oder-mieten-2026): Wann sich der Kauf gegenüber dem Mieten rechnet.
-- [Hauskauf-Checkliste 2026](https://immopruef.de/blog/hauskauf-checkliste-2026): Schritt-für-Schritt-Checkliste für den Immobilienkauf.
+## Ratgeber-Themen (115+ Artikel)
+- [Alle Ratgeber](https://immopruef.de/blog)
+- [Finanzierung](https://immopruef.de/blog/thema/finanzierung): Eigenkapital, Zins & Tilgung, KfW, Kaufnebenkosten.
+- [Checklisten](https://immopruef.de/blog/thema/checklisten): Schritt-für-Schritt-Listen für jede Kaufphase.
+- [Zustand & Sanierung](https://immopruef.de/blog/thema/zustand): Substanz einschätzen, Sanierungskosten kalkulieren.
+- [Standort & Lage](https://immopruef.de/blog/thema/standort): Infrastruktur, Bodenrichtwert, Mikrolage.
+- [Energie](https://immopruef.de/blog/thema/energie): Energieausweis, Heizung, Förderung — fachlich geprüft.
+- [Besichtigung](https://immopruef.de/blog/thema/besichtigung): Vorbereitung, Fragenkataloge, zweiter Termin.
+
+## Zentrale Referenz-Artikel
+- [Sanierungskosten 2026: Tabelle aller Gewerke](https://immopruef.de/blog/sanierungskosten-tabelle-2026): Dach 15.000–30.000 €, Wärmepumpe 18.000–35.000 €, Kernsanierung 800–1.500 €/m².
+- [Wie viel Haus kann ich mir leisten?](https://immopruef.de/blog/wie-viel-haus-kann-ich-mir-leisten): Budget-Tabellen nach Nettoeinkommen.
+- [Hausgeld pro m²: Benchmark](https://immopruef.de/blog/hausgeld-pro-qm): 3,00–4,50 €/m² normal, unter 2,50 €/m² verdächtig.
+- [Maklersprache: 50 Exposé-Floskeln im Klartext](https://immopruef.de/blog/maklersprache-glossar)
+- [Kaufpreis verhandeln](https://immopruef.de/blog/kaufpreis-verhandeln-immobilie): Spielräume, Argumente, Nachlass-Kompass.
+- [Kaufnebenkosten beim Immobilienkauf](https://immopruef.de/blog/kaufnebenkosten-immobilienkauf)
+- [Grunderwerbsteuer 2026 nach Bundesland](https://immopruef.de/blog/grunderwerbsteuer-2026-bundeslaender): Sätze von 3,5 % bis 6,5 %.
+- [Bodenrichtwert verstehen und abfragen](https://immopruef.de/blog/bodenrichtwert-verstehen-abfragen): Mit Anleitungen für alle 16 Bundesländer.
+- [Hauskauf-Checkliste 2026](https://immopruef.de/blog/hauskauf-checkliste-2026)
 
 ## Über ImmoPrüf
-- [Über uns und Methodik](https://immopruef.de/ueber-uns): Wer hinter ImmoPrüf steht und wie die Analysen und Ratgeber entstehen und geprüft werden.
-- [Alle Ratgeber-Artikel](https://immopruef.de/blog): Über 90 Artikel rund um den Immobilienkauf (Finanzierung, Recht, Zustand, Standort, Energie).
+- [Über uns und Methodik](https://immopruef.de/ueber-uns): Wer hinter ImmoPrüf steht (Seydhan Cakmak, Gründer; Ahmad El Chouli, fachlicher Berater Energie) und wie Analysen und Ratgeber geprüft werden.
+- [Widerrufsbelehrung](https://immopruef.de/widerruf) · [AGB](https://immopruef.de/agb) · [Impressum](https://immopruef.de/impressum)

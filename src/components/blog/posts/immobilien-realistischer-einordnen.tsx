@@ -203,7 +203,7 @@ export default function ImmobilienRealistischerEinordnen() {
 
       <h2>Fazit: Einzelwerte sind der Anfang, nicht die Antwort</h2>
       <p>
-        Quadratmeterpreis, Baujahr, Energieklasse, Kaufpreis, Wohnfläche — jede dieser Kennzahlen erzählt einen Teil der Geschichte. Keine erzählt die ganze. Wer Immobilien realistisch einordnen will, muss alle Faktoren zusammenbringen, Widersprüche erkennen und die Gesamtbelastung berechnen. Das ist kein Hexenwerk — aber es erfordert System statt Bauchgefühl.
+        Quadratmeterpreis, Baujahr, Energieklasse, Kaufpreis, Wohnfläche — jede dieser Kennzahlen erzählt einen Teil der Geschichte. Keine erzählt die ganze. Wer Immobilien realistisch einordnen will, muss alle Faktoren zusammenbringen, Widersprüche erkennen und die Gesamtbelastung berechnen. Das ist kein Hexenwerk — aber es erfordert System statt Bauchgefühl. Wie der komplette Bewertungsprozess aussieht, zeigt der Leitfaden <a href="/blog/immobilie-bewerten-leitfaden">Immobilienangebot bewerten</a>.
       </p>
       <p>
         <strong>ImmoPrüf</strong> bringt genau dieses Zusammenspiel auf den Punkt: Jede Analyse kombiniert Preis, Lage, Energie, Zustand und Finanzierung zu einem gewichteten Gesamtscore. Sie sehen nicht nur einzelne Werte, sondern wie sie zusammenhängen — und wo die Widersprüche liegen. So ordnen Sie Immobilien realistischer ein, statt sich von Einzelzahlen täuschen zu lassen.

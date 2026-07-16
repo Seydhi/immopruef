@@ -6,7 +6,7 @@ export default function HeroSection({ onCta }: HeroSectionProps) {
   return (
     <section className="text-center py-12 sm:py-16 px-4">
       <h1 lang="de" className="font-display text-[1.625rem] sm:text-4xl md:text-5xl font-semibold text-green leading-tight mb-4 max-w-3xl mx-auto hyphens-auto break-words [word-break:break-word]">
-        Immobilien&shy;angebote besser einordnen
+        Immobilien&shy;angebote besser einordnen{' '}
         <span className="block text-xl sm:text-3xl md:text-4xl mt-1 font-medium">
           — vor Besichtigung, Verhandlung und Kauf
         </span>

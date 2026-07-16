@@ -3,7 +3,7 @@ export default function EnergetischeSanierungFoerderung2026() {
     <>
       <p>Eine energetische Sanierung kostet schnell einen fünf- bis sechsstelligen Betrag. Doch ein erheblicher Teil davon lässt sich über staatliche Programme zurückholen — beim Heizungstausch sind bis zu 70 % Zuschuss möglich. Wer das Förderpotenzial schon vor dem Kauf einplant, rechnet mit ganz anderen Zahlen als jemand, der erst nach dem Notartermin nach Zuschüssen sucht.</p>
       <p>Die Förderlandschaft ist allerdings zweigeteilt: Den Heizungstausch fördert die KfW per Zuschuss, einzelne Maßnahmen an Dach, Fassade oder Fenstern laufen über das BAFA. Dazu kommen Boni, die sich kombinieren lassen, und zinsgünstige Kredite für den Eigenanteil. Dieser Artikel ordnet die Programme für private Selbstnutzer in Deutschland und zeigt mit Beispielrechnungen, was am Ende übrig bleibt.</p>
-      <p>Ein Hinweis vorab: Alle Beträge beziehen sich auf den Stand 2026. Förderprogramme ändern sich regelmäßig, deshalb gilt für jeden konkreten Antrag — vorher die offizielle Quelle von KfW und BAFA prüfen.</p>
+      <p>Ein Hinweis vorab: Alle Beträge beziehen sich auf den Stand 2026. Förderprogramme ändern sich regelmäßig, deshalb gilt für jeden konkreten Antrag — vorher die offizielle Quelle von <a href="https://www.kfw.de/" target="_blank" rel="noopener noreferrer">KfW</a> und <a href="https://www.bafa.de/" target="_blank" rel="noopener noreferrer">BAFA</a> prüfen.</p>
       
       <h2>Zwei Töpfe: KfW für die Heizung, BAFA für die Hülle</h2>
       <p>Die Bundesförderung für effiziente Gebäude (BEG) verteilt sich auf zwei Stellen. Das ist wichtig zu verstehen, weil Sie je nach Maßnahme einen anderen Antrag stellen.</p>
