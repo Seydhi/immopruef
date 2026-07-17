@@ -183,7 +183,12 @@ export function organizationSchema(): object {
     logo: `${SITE_URL}/logo.png`,
     description: 'KI-gestützte Immobilienanalyse für Käufer in Deutschland — Preisbewertung, Standortanalyse, Finanzierungs-Check und mehr.',
     foundingDate: '2026',
-    founder: { '@type': 'Person', name: 'Seydhan Cakmak' },
+    founder: {
+      '@type': 'Person',
+      name: 'Seydhan Cakmak',
+      url: `${SITE_URL}/ueber-uns`,
+      sameAs: ['https://www.linkedin.com/in/seydhan-cakmak'],
+    },
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Auf dem Paß 10',

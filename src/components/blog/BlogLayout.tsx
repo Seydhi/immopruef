@@ -11,6 +11,7 @@ const AUTHOR_PERSON = {
   jobTitle: 'Gründer & Geschäftsführer',
   url: 'https://immopruef.de/ueber-uns',
   worksFor: { '@type': 'Organization', name: 'ImmoPrüf', url: 'https://immopruef.de' },
+  sameAs: ['https://www.linkedin.com/in/seydhan-cakmak'],
 }
 
 export interface BlogMeta {

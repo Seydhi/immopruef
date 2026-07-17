@@ -47,6 +47,7 @@ export default function UeberUns() {
         image: 'https://immopruef.de/team/seydhan-cakmak.jpg',
         description: 'Gründer von ImmoPrüf, Wirtschaftsinformatiker und Immobilien-Enthusiast.',
         knowsAbout: ['Immobilienkauf', 'Immobilienanalyse', 'Immobilienfinanzierung', 'Wirtschaftsinformatik'],
+        sameAs: ['https://www.linkedin.com/in/seydhan-cakmak'],
       },
       {
         '@context': 'https://schema.org',
@@ -151,7 +152,10 @@ export default function UeberUns() {
                 Kaufinteressenten dieselbe strukturierte, datenbasierte Einordnung an die Hand zu geben, die sonst Profis
                 vorbehalten ist.
               </p>
-              <a href="mailto:info@immopruef.de" className="text-green hover:text-green-mid underline text-[12px] inline-block mt-1.5">info@immopruef.de</a>
+              <div className="flex flex-wrap gap-x-4 gap-y-1 mt-1.5">
+                <a href="mailto:info@immopruef.de" className="text-green hover:text-green-mid underline text-[12px]">info@immopruef.de</a>
+                <a href="https://www.linkedin.com/in/seydhan-cakmak" target="_blank" rel="noopener noreferrer" className="text-green hover:text-green-mid underline text-[12px]">LinkedIn-Profil</a>
+              </div>
             </div>
           </div>
 
