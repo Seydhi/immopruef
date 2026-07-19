@@ -10,6 +10,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juli 2026',
     readTime: '10 Min',
     tags: ['Kaufratgeber'],
+    image: 'https://images.pexels.com/photos/7173015/pexels-photo-7173015.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Sind kostenlose Immobilienbewertungen seriös?', answer: 'Die Wertspannen selbst sind meist plausible Modellrechnungen aus Lage- und Metadaten — aber sie kennen den Objektzustand nicht, und das Geschäftsmodell ist fast immer Lead-Gewinnung: Die Bewertung ist gratis, weil die Kontaktdaten anschließend an Makler oder Finanzierungsvermittler gehen. Für ein erstes Marktgefühl brauchbar, als Kaufentscheidungs-Grundlage ungeeignet.' },
       { question: 'Was kostet ein Gutachter beim Hauskauf?', answer: 'Eine Besichtigungsbegleitung oder ein Kurzgutachten kostet rund 300 bis 800 €, ein ausführliches schriftliches Gutachten 800 bis 2.000 €, Stundensätze liegen meist bei 100 bis 150 €. Gut investiert ist das beim Favoriten, bei Altbauten und bei sichtbarem Sanierungsstau — nicht bei jedem der fünf Kandidaten.' },
@@ -25,6 +26,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juli 2026',
     readTime: '9 Min',
     tags: ['Finanzierung', 'Kaufratgeber'],
+    image: 'https://images.pexels.com/photos/28295552/pexels-photo-28295552.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Wie hoch ist ein normales Hausgeld pro Quadratmeter?', answer: 'Im Durchschnitt 3,00 bis 4,50 € je Quadratmeter und Monat — bei einer 80-m²-Wohnung also 240 bis 360 €. Werte unter 2,50 €/m² sind verdächtig niedrig (meist unterfinanzierte Rücklage), Werte über 6,00 €/m² deuten auf Luxusausstattung oder ein Problemgebäude hin. Entscheidend ist immer die Aufschlüsselung, nicht die Gesamtsumme.' },
       { question: 'Ist ein niedriges Hausgeld beim Wohnungskauf ein Vorteil?', answer: 'Meist nicht. Unter 2,50 €/m² wird in der Regel zu wenig in die Instandhaltungsrücklage eingezahlt — die Kosten kommen später als Sonderumlage zurück, bei Dach- oder Heizungssanierung typisch 8.000 bis 20.000 € je Einheit. Ein ehrlich kalkuliertes Hausgeld ist langfristig günstiger als ein künstlich niedriges.' },
@@ -40,6 +42,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juli 2026',
     readTime: '11 Min',
     tags: ['Kaufratgeber', 'Checkliste'],
+    image: 'https://images.pexels.com/photos/12955837/pexels-photo-12955837.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Was bedeutet „renovierungsbedürftig" wirklich?', answer: 'Meist: Oberflächen fällig — Böden, Tapeten, Malerarbeiten. Das ist die günstigste Stufe. Abzugrenzen von „modernisierungsbedürftig" (Technik wie Heizung, Fenster, Bad veraltet — schnell ein mittlerer fünfstelliger Betrag) und „sanierungsbedürftig" (Eingriff in die Substanz, Kernsanierung 800–1.500 €/m²). Fragen Sie konkret, welche Gewerke gemeint sind.' },
       { question: 'Was heißt „gepflegt" bei einer Immobilie?', answer: 'Bewohnbar und optisch in Ordnung — aber technisch in der Regel nichts erneuert. Heizung, Elektrik und Fenster sind oft noch auf dem Stand des Baujahrs. „Gepflegt" beschreibt den Eindruck, nicht den Modernisierungsstand; fragen Sie nach der Sanierungshistorie mit Jahreszahlen.' },
@@ -55,6 +58,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juli 2026',
     readTime: '9 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
+    image: 'https://images.pexels.com/photos/30139520/pexels-photo-30139520.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Wie viel Haus kann ich mir bei 3.000 € netto leisten?', answer: 'Bei 35 % Rate-Anteil (1.050 €), 3,8 % Zins und 2 % Tilgung trägt das Einkommen ein Darlehen von rund 217.000 €. Ohne Eigenkapital entspricht das etwa 196.000 € Kaufpreis, mit 50.000 € Eigenkapital rund 242.000 €, mit 100.000 € rund 287.000 € — jeweils nach Abzug von 10,6 % Kaufnebenkosten.' },
       { question: 'Wie viel Haus kann ich mir bei 4.000 € netto leisten?', answer: 'Die maximale Rate liegt bei 1.400 € (35 %), das mögliche Darlehen bei rund 290.000 € (3,8 % Zins, 2 % Tilgung). Daraus ergibt sich ein leistbarer Kaufpreis von etwa 262.000 € ohne Eigenkapital, 307.000 € mit 50.000 € und 352.000 € mit 100.000 € Eigenkapital.' },
@@ -70,6 +74,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juli 2026',
     readTime: '10 Min',
     tags: ['Kaufratgeber', 'Zustand'],
+    image: 'https://images.pexels.com/photos/4756489/pexels-photo-4756489.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Was kostet eine Kernsanierung pro Quadratmeter?', answer: 'Eine Kernsanierung — alles neu bis auf den Rohbau — kostet 2026 üblicherweise 800 bis 1.500 € je Quadratmeter Wohnfläche, bei einem 140-m²-Haus also 112.000 bis 210.000 €. Eine Teilmodernisierung (Heizung, Fenster, Bad, Elektrik) liegt bei 400 bis 800 €/m². Ab etwa 1.500 €/m² lohnt der Vergleich mit dem Neubau.' },
       { question: 'Was kostet ein neues Dach beim Einfamilienhaus?', answer: 'Das reine Neueindecken kostet 100 bis 200 € je Quadratmeter Dachfläche — beim typischen Einfamilienhaus 15.000 bis 30.000 €. Mit GEG-konformer Aufsparrendämmung sind es 200 bis 350 €/m², also 25.000 bis 50.000 €. Der Zustand des Dachstuhls entscheidet über das obere oder untere Ende der Spanne.' },
@@ -85,6 +90,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '13. Juli 2026',
     readTime: '9 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
+    image: 'https://images.pexels.com/photos/7031617/pexels-photo-7031617.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Wie spare ich mit Inventar Grunderwerbsteuer?', answer: 'Indem der Kaufvertrag den Gesamtpreis aufteilt: Immobilie und mitverkaufte bewegliche Sachen (Einbauküche, Möbel, Sauna, Markise) werden getrennt beziffert. Die Grunderwerbsteuer fällt nur auf den Immobilienanteil an. Bei 15.000 € Inventar spart das je nach Bundesland 525 € (3,5 %) bis 975 € (6,5 %).' },
       { question: 'Wie viel Inventar akzeptiert das Finanzamt?', answer: 'Eine gesetzliche Grenze gibt es nicht, aber eine Praxis-Faustregel: Bis etwa 15 % des Kaufpreises bleiben Angaben meist ohne vertiefte Prüfung. Entscheidend ist der realistische Zeitwert der gebrauchten Sachen — nicht der Neupreis — und eine nachvollziehbare Inventarliste als Anlage zum Vertrag.' },
@@ -100,6 +106,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '10. Juli 2026',
     readTime: '10 Min',
     tags: ['Kaufratgeber', 'Besichtigung'],
+    image: 'https://images.pexels.com/photos/7641860/pexels-photo-7641860.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Ist eine zweite Besichtigung vor dem Hauskauf sinnvoll?', answer: 'Ja, fast immer. Die erste Besichtigung ist emotional geprägt und dient dem Gesamteindruck; erst beim zweiten, nüchternen Termin prüfen Sie gezielt Substanz, Maße und Mängel. Der zweite Termin ist auch der richtige Moment, um einen Bausachverständigen gezielt auf vorher entdeckte Auffälligkeiten anzusetzen.' },
       { question: 'Worauf sollte ich bei der zweiten Besichtigung achten?', answer: 'Auf die technische Substanz — Feuchtigkeit, Heizungsalter, Elektrik, Fenster, Wasserdruck und Risse —, auf die Raummaße im Abgleich mit dem Grundriss und auf die Lage zu einer anderen Tageszeit. Prüfen Sie außerdem, ob zugesagte Unterlagen jetzt vorliegen und ob offene Fragen aus dem ersten Termin beantwortet werden.' },
@@ -115,6 +122,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '10. Juli 2026',
     readTime: '9 Min',
     tags: ['Kaufratgeber'],
+    image: 'https://images.pexels.com/photos/20208884/pexels-photo-20208884.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Was bedeutet eine Preissenkung bei einer Immobilie?', answer: 'Dass der ursprüngliche Preis vom Markt nicht akzeptiert wurde — bei ausreichender Nachfrage wäre das Objekt zum Erstpreis verkauft worden. Eine Senkung signalisiert also schwache oder zögerliche Nachfrage und verschiebt die Verhandlungsmacht in Richtung Käufer.' },
       { question: 'Ist eine Immobilie mit Preissenkung ein gutes Angebot?', answer: 'Nicht automatisch. Die Senkung korrigiert oft nur einen von Anfang an zu hohen Preis, sodass auch der neue Preis noch über dem fairen Wert liegen kann. Bestimmen Sie den fairen Wert unabhängig über Quadratmeterpreis, Bodenrichtwert und Kaufpreisfaktor, statt sich am gesenkten Angebotspreis zu orientieren.' },
@@ -130,6 +138,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '10. Juli 2026',
     readTime: '9 Min',
     tags: ['Kaufratgeber', 'Besichtigung'],
+    image: 'https://images.pexels.com/photos/4114774/pexels-photo-4114774.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Warum meldet sich der Makler nach der Anfrage nicht?', answer: 'Meist wegen Masse: Ein attraktives Inserat erhält in den ersten 48 Stunden oft 40 bis über 100 Anfragen, von denen nur ein Bruchteil ernsthaft bearbeitet wird. Häufig ist das Objekt auch schon reserviert, oder der Makler sortiert nach Ernsthaftigkeit vor — unverbindliche Ein-Satz-Anfragen ohne Finanzierungshinweis landen unten im Stapel.' },
       { question: 'Was kann ich tun, wenn der Makler nicht auf meine Anfrage reagiert?', answer: 'Fassen Sie nach 3 bis 4 Werktagen einmal freundlich nach und wechseln Sie den Kanal — kam per E-Mail nichts, rufen Sie zur Bürozeit an. Wiederholen Sie dabei Ihr Kaufinteresse und Ihren Finanzierungsstand und bieten Sie konkrete Besichtigungstermine an. Bleibt es nach zwei bis drei Versuchen still, ziehen Sie weiter.' },
@@ -145,6 +154,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '10. Juli 2026',
     readTime: '11 Min',
     tags: ['Kaufratgeber'],
+    image: 'https://images.pexels.com/photos/6248959/pexels-photo-6248959.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Kann ChatGPT ein Immobilien-Exposé bewerten?', answer: 'Teilweise: Als Textassistent ist es stark — Eckdaten extrahieren, fehlende Pflichtangaben auflisten, Maklersprache übersetzen, Besichtigungsfragen generieren. Als Bewertungsinstrument scheitert es an erfundenen Marktwerten, unzuverlässiger Finanzmathematik und daran, dass Schätzungen nicht als solche gekennzeichnet werden.' },
       { question: 'Warum sind Marktwerte aus ChatGPT unzuverlässig?', answer: 'Sprachmodelle haben keinen verlässlichen Zugriff auf aktuelle Marktdaten — sie liefern plausibel klingende, aber häufig veraltete oder erfundene Quadratmeterpreise. Da die Vergleichszahl der Kern jeder Preisbewertung ist, ist eine darauf gestützte Einschätzung wertlos. Belastbar sind nur Werte mit nachprüfbarer Quelle.' },
@@ -160,6 +170,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '10. Juli 2026',
     readTime: '9 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
+    image: 'https://images.pexels.com/photos/31988955/pexels-photo-31988955.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Was ist der Unterschied zwischen Verkehrswert und Kaufpreis?', answer: 'Der Verkehrswert ist der von Sachverständigen nach § 194 BauGB ermittelte objektive Marktwert — was ein sachverständiger Käufer im gewöhnlichen Geschäftsverkehr zahlen würde. Der Kaufpreis ist das tatsächliche Verhandlungsergebnis im notariellen Vertrag; er kann je nach Marktlage über oder unter dem Verkehrswert liegen.' },
       { question: 'Ist der Angebotspreis der Marktwert?', answer: 'Nein — der Angebotspreis ist eine strategische Forderung des Verkäufers, kein ermittelter Wert. Nach den Preiskorrekturen 2022 bis 2024 liegen Angebotspreise im Schnitt 5 bis 15 Prozent über den tatsächlich beurkundeten Kaufpreisen. Er ist der Startpunkt einer Verhandlung, nicht ihr Maßstab.' },
@@ -175,6 +186,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '10. Juli 2026',
     readTime: '10 Min',
     tags: ['Kaufratgeber', 'Checkliste'],
+    image: 'https://images.pexels.com/photos/6614789/pexels-photo-6614789.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Woran erkenne ich, dass ein Haus überteuert ist?', answer: 'An messbaren Verhältnissen statt am Gefühl: Quadratmeterpreis mehr als 15 Prozent über vergleichbaren Objekten ohne erkennbaren Grund, Kaufpreisfaktor über 30, unsanierter Altbau nahe Neubauniveau, schlechte Energieklasse ohne Preisabschlag und eine Standdauer über 3 bis 6 Monate — treffen zwei oder mehr Signale zu, ist der Preis zu hoch.' },
       { question: 'Welcher Kaufpreisfaktor ist zu hoch?', answer: 'Kaufpreis geteilt durch erzielbare Jahreskaltmiete: unter 20 günstig, 20 bis 25 fair, 25 bis 30 teuer, über 30 sehr teuer — dann ist Mieten finanziell meist die bessere Wahl. Rechnen Sie mit der ortsüblichen Vergleichsmiete aus dem Mietspiegel, nicht mit optimistischen Portal-Mieten.' },
@@ -190,6 +202,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     date: '10. Juli 2026',
     readTime: '9 Min',
     tags: ['Recht', 'Kaufratgeber'],
+    image: 'https://images.pexels.com/photos/261621/pexels-photo-261621.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Kann ich den Hauskauf vor dem Notartermin noch absagen?', answer: 'Ja — ein Immobilienkauf wird erst mit der notariellen Beurkundung wirksam (§ 311b BGB). Mündliche Zusagen, E-Mails, Kaufangebote und einfache Reservierungen binden Sie nicht. Vorsicht nur bei bereits notariell beurkundeten Erklärungen, etwa einem beurkundeten Angebot mit Bindungsfrist.' },
       { question: 'Welche Kosten entstehen bei einer Absage?', answer: 'Möglich sind: Notarkosten für einen bereits erstellten Vertragsentwurf (trägt üblicherweise, wer den Notar beauftragt hat — oft mehrere Hundert bis über tausend Euro), selbst beauftragte Prüfkosten wie Gutachter, und nur in engen Ausnahmefällen Schadensersatz, wenn ohne triftigen Grund nach langem konkretem Kaufsignal abgesprungen wird.' },
@@ -206,6 +219,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     updated: '13. Juli 2026',
     readTime: '14 Min',
     tags: ['Kaufratgeber', 'Checkliste'],
+    image: 'https://images.pexels.com/photos/33175650/pexels-photo-33175650.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Wie viel unter dem Angebotspreis kann ich bieten?', answer: 'Als Orientierungsrahmen: In gefragten Lagen 0 bis 5 Prozent, im normalen Markt 5 bis 10 Prozent, bei langer Standdauer oder belegbarem Sanierungsstau 10 bis 15 Prozent und mehr. Ein realistisches Erstgebot liegt mit Begründung 5 bis 10 Prozent unter dem Angebotspreis — pauschale 20 Prozent ohne Argumente beenden das Gespräch meist.' },
       { question: 'Liegt der Angebotspreis über dem echten Kaufpreis?', answer: 'In der Regel ja: Angebotspreise liegen im Schnitt 5 bis 15 Prozent über den tatsächlich beurkundeten Transaktionspreisen. Der Angebotspreis ist eine Forderung, kein Marktwert — Verhandeln ist üblich, braucht aber eine eigene Werteinschätzung und belegbare Argumente.' },
