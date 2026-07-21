@@ -4,6 +4,22 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'heizungsgesetz-reform-2026-kaeufer',
+    title: 'Heizungsgesetz-Reform 2026: Was Käufer wissen sollten',
+    description: 'Der Bundestag hat die 65-Prozent-Regel am 10. Juli 2026 gestrichen. Was das Gebäudemodernisierungsgesetz beim Kauf eines Hauses mit alter Heizung bedeutet.',
+    date: '21. Juli 2026',
+    readTime: '8 Min',
+    tags: ['Kaufratgeber', 'Energie'],
+    image: 'https://images.pexels.com/photos/7859953/pexels-photo-7859953.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Wurde das Heizungsgesetz 2026 abgeschafft?', answer: 'Der Bundestag hat am 10. Juli 2026 mit 323 zu 271 Stimmen das Gebäudemodernisierungsgesetz beschlossen und die zentrale 65-Prozent-Erneuerbare-Regel gestrichen. Das Gesetz tritt gestaffelt in Kraft; die Regeln zum Heizungstausch greifen unmittelbar mit der Verkündung im Bundesgesetzblatt.' },
+      { question: 'Muss ich nach dem Kauf eine alte Gas- oder Ölheizung austauschen?', answer: 'Nein. Eine funktionierende Bestandsheizung darf weiterlaufen und bei einem Defekt repariert werden. Eine Austauschpflicht greift erst, wenn die Anlage irreparabel ist. Zusätzlich gilt weiterhin: Sehr alte Konstanttemperaturkessel über 30 Jahre müssen nach § 72 GEG außer Betrieb genommen werden, Niedertemperatur- und Brennwertkessel sind ausgenommen.' },
+      { question: 'Darf ich nach der Reform wieder eine Gasheizung einbauen?', answer: 'Ja. Mit dem Wegfall der 65-Prozent-Regel sind neben Wärmepumpe und Fernwärme auch neue Gas- und Ölheizungen wieder zulässig. Ab 2029 müssen neue fossile Heizungen über die sogenannte Bio-Treppe aber einen steigenden Anteil biogener Brennstoffe nutzen — beginnend bei mindestens 10 Prozent im Jahr 2029.' },
+      { question: 'Was ist die Bio-Treppe?', answer: 'Die Bio-Treppe ist eine gestaffelte Beimischpflicht für neue fossile Heizungen: ab 2029 mindestens 10 Prozent, ab 2030 15 Prozent, ab 2035 30 Prozent und ab 2040 60 Prozent biogene Brennstoffe oder Wasserstoff. Sie ersetzt die frühere starre 65-Prozent-Vorgabe beim Neueinbau einer Heizung.' },
+      { question: 'Bleiben die GEG-Nachrüstpflichten beim Altbaukauf bestehen?', answer: 'Ja. Die Reform betrifft vor allem die Regeln für den Heizungseinbau. Die klassischen Nachrüstpflichten — Dämmung der obersten Geschossdecke, Dämmung zugänglicher Rohrleitungen und Außerbetriebnahme sehr alter Kessel — sind davon zu unterscheiden und bleiben für Käufer relevant, in der Regel mit einer Zwei-Jahres-Frist ab Eigentumsübergang.' },
+    ],
+  },
+  {
     slug: 'immobilienbewertung-vergleich',
     title: 'Immobilienbewertung: Gratis, KI oder Gutachter?',
     description: 'Gratis-Portal, ChatGPT oder Bausachverständiger für 300–2.000 €? Der ehrliche Vergleich inklusive käuferseitiger KI-Analyse ab 19 € und Entscheidungshilfe.',
@@ -368,6 +384,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     title: 'GEG-Sanierungspflichten beim Altbau-Kauf 2026',
     description: 'Heizkessel, Dachdämmung, Rohrleitungen: Welche GEG-Pflichten beim Altbau-Kauf 2026 greifen, welche Fristen gelten und was Käufer jetzt tun sollten.',
     date: '15. Juni 2026',
+    updated: '21. Juli 2026',
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Zustand'],
     image: 'https://images.pexels.com/photos/36054139/pexels-photo-36054139.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
@@ -376,7 +393,7 @@ export const BLOG_POSTS: BlogMeta[] = [
       { question: 'Muss ich meinen alten Gas- oder Oelkessel nach dem Hauskauf austauschen?', answer: 'Nicht zwingend. Paragraf 72 GEG verbietet nur den Weiterbetrieb von Konstanttemperatur-Kesseln, die vor dem 1. Januar 1991 eingebaut wurden oder aelter als 30 Jahre sind. Niedertemperatur- und Brennwertkessel sind ausgenommen, ebenso Anlagen unter 4 Kilowatt und ueber 400 Kilowatt. Ein moderner Brennwertkessel muss also nicht allein wegen seines Alters stillgelegt werden.' },
       { question: 'Welchen Daemmstandard muss die oberste Geschossdecke beim Altbau erreichen?', answer: 'Die oberste Geschossdecke beheizter Raeume muss laut Paragraf 47 GEG einen U-Wert von hoechstens 0,24 Watt pro Quadratmeter und Kelvin erreichen. Alternativ gilt die Pflicht als erfuellt, wenn stattdessen das darueberliegende Dach entsprechend gedaemmt ist. Bereits ausreichend gedaemmte Decken oder Daecher muessen nicht nachgeruestet werden; massgeblich ist allein, ob der Mindeststandard schon erfuellt ist.' },
       { question: 'Welche GEG-Pflicht laesst sich beim Altbau am schnellsten und guenstigsten erfuellen?', answer: 'Die Daemmung zugaenglicher Heiz- und Warmwasserleitungen nach Paragraf 69 GEG. Betroffen sind bislang ungedaemmte, zugaengliche Leitungen in unbeheizten Raeumen, typischerweise die Rohre im unbeheizten Keller. Die Massnahme laesst sich haeufig mit aufsteckbaren Daemmschlaeuchen in Eigenleistung erledigen und senkt unmittelbar die Waermeverluste. Rohre hinter zugemauerten Waenden oder im Estrich gelten nicht als zugaenglich.' },
-      { question: 'Gilt die 65-Prozent-Regel beim Heizungstausch fuer Kaeufer 2026 schon verlaesslich?', answer: 'Nein, sie ist 2026 noch keine verlaessliche Planungsgrundlage. Die 65-Prozent-Erneuerbaren-Regel aus Paragraf 71 GEG betrifft nur den Einbau einer neuen Heizung und wird derzeit ueberarbeitet. Die Bundesregierung legte Anfang 2026 Eckpunkte fuer ein neues Gebaeudemodernisierungsgesetz vor, der Kabinettsbeschluss erfolgte im Mai 2026. Da das Verfahren noch nicht abgeschlossen ist, sollte man einen Heizungstausch ohne akuten Defekt nicht ueberstuerzen.' },
+      { question: 'Gilt die 65-Prozent-Regel beim Heizungstausch 2026 noch?', answer: 'Nein. Die 65-Prozent-Erneuerbaren-Regel aus Paragraf 71 GEG wurde reformiert: Der Bundestag hat am 10. Juli 2026 das Gebaeudemodernisierungsgesetz beschlossen und die starre 65-Prozent-Pflicht beim Heizungseinbau gestrichen. Kuenftig gilt Technologieoffenheit; fuer neue fossile Heizungen greift ab 2029 aber eine steigende Bioanteil-Pflicht. Die Regeln treten gestaffelt mit der Verkuendung im Bundesgesetzblatt in Kraft.' },
       { question: 'Was passiert, wenn ich die GEG-Frist nach dem Hauskauf verstreichen lasse?', answer: 'Nicht erfuellte GEG-Pflichten koennen als Ordnungswidrigkeit geahndet werden. In der Praxis steht jedoch meist nicht das Bussgeld im Vordergrund, sondern die wirtschaftliche Folge: Eine ungedaemmte Geschossdecke und ein ineffizienter Altkessel treiben die Energiekosten dauerhaft nach oben. Der bevollmaechtigte Bezirksschornsteinfeger kontrolliert ohnehin regelmaessig und weist auf nicht erfuellte Pflichten hin.' },
     ],
   },
@@ -1038,6 +1055,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     title: 'Energetische Sanierung fördern 2026: KfW & BAFA',
     description: 'Energetische Sanierung 2026 fördern lassen: bis zu 70 % Zuschuss beim Heizungstausch, 15–20 % vom BAFA, Boni und Kredite — mit Beispielrechnungen für Käufer.',
     date: '13. Juni 2026',
+    updated: '21. Juli 2026',
     readTime: '8 Min',
     tags: ['Kaufratgeber', 'Energie'],
     image: 'https://images.pexels.com/photos/6124239/pexels-photo-6124239.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
@@ -1046,7 +1064,7 @@ export const BLOG_POSTS: BlogMeta[] = [
       { question: 'Was kostet eine neue Waermepumpe nach Abzug der Foerderung?', answer: 'Bei einer Investition von 32.000 Euro bleiben fuer Selbstnutzer mit Einkommen unter 40.000 Euro rund 11.000 Euro Eigenanteil. Die KfW foerdert die ersten 30.000 Euro mit 70 Prozent, das ergibt 21.000 Euro Zuschuss. Die darueber liegenden 2.000 Euro sind nicht foerderfaehig. Ohne Einkommensbonus sinkt der Satz auf 50 Prozent und der Zuschuss auf 15.000 Euro.' },
       { question: 'Wer foerdert was: KfW oder BAFA?', answer: 'Die Foerderung ist zweigeteilt. Die KfW ist ueber den Zuschuss 458 fuer den Heizungstausch zustaendig, etwa den Einbau einer Waermepumpe, Biomasse- oder Hybridheizung. Das BAFA foerdert Einzelmassnahmen an der Gebaeudehuelle und Anlagentechnik wie Daemmung von Dach, Fassade und Keller, neue Fenster, Lueftung oder Heizungsoptimierung. Beide Toepfe lassen sich mit getrennten Antraegen nebeneinander nutzen.' },
       { question: 'Wie viel foerdert das BAFA fuer Daemmung und neue Fenster?', answer: 'Das BAFA foerdert Massnahmen an Gebaeudehuelle und Anlagentechnik mit 15 Prozent Zuschuss, mit individuellem Sanierungsfahrplan (iSFP) sind es 20 Prozent. Bei einer Fassadendaemmung fuer 40.000 Euro bedeutet das 6.000 Euro ohne und 8.000 Euro mit Sanierungsfahrplan. Der iSFP-Bonus von 5 Prozent gilt fuer Daemmung, Fenster, Aussentueren, Lueftung und Heizungsoptimierung.' },
-      { question: 'Muss ich die alte Heizung nach dem Kauf sofort tauschen?', answer: 'Nein, eine funktionierende Bestandsheizung darf weiterlaufen. Sie muessen nicht sofort nach dem Kauf tauschen, nur weil das Geraet alt ist. Der Austauschdruck entsteht erst beim Defekt oder bei einer geplanten Modernisierung. Die 65-Prozent-Erneuerbare-Vorgabe des GEG gilt beim Einbau einer neuen Heizung, ist aber Stand Juni 2026 in Ueberarbeitung; pruefen Sie vorher den aktuellen Rechtsstand.' },
+      { question: 'Muss ich die alte Heizung nach dem Kauf sofort tauschen?', answer: 'Nein, eine funktionierende Bestandsheizung darf weiterlaufen. Sie muessen nicht sofort nach dem Kauf tauschen, nur weil das Geraet alt ist. Der Austauschdruck entsteht erst beim Defekt oder bei einer geplanten Modernisierung. Die fruehere 65-Prozent-Erneuerbare-Vorgabe des GEG wurde mit dem Gebaeudemodernisierungsgesetz vom 10. Juli 2026 gestrichen; beim Neueinbau gilt nun Technologieoffenheit, fuer neue fossile Heizungen ab 2029 aber eine steigende Bioanteil-Pflicht.' },
       { question: 'Wann muss ich die Foerderung beantragen?', answer: 'Die Foerderung muss vor der Auftragsvergabe beantragt werden. Wer zuerst den Handwerker beauftragt und danach den Zuschuss beantragt, geht in der Regel leer aus. Der Liefer- oder Leistungsvertrag darf erst nach dem Antrag geschlossen werden, oft genuegt eine aufschiebende Bedingung im Vertrag. Zudem sind ein Fachunternehmen und fuer BAFA-Massnahmen meist ein eingetragener Energie-Effizienz-Experte noetig.' },
     ],
   },
@@ -1867,6 +1885,7 @@ export const BLOG_POSTS: BlogMeta[] = [
 
 // Map slug → lazy component (filled as posts are written)
 export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.ComponentType>> = {
+  'heizungsgesetz-reform-2026-kaeufer': lazy(() => import('./heizungsgesetz-reform-2026-kaeufer')),
   'immobilienbewertung-vergleich': lazy(() => import('./immobilienbewertung-vergleich')),
   'hausgeld-pro-qm': lazy(() => import('./hausgeld-pro-qm')),
   'maklersprache-glossar': lazy(() => import('./maklersprache-glossar')),
