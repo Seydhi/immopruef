@@ -106,13 +106,13 @@ export async function pollAnalysis(sessionId: string): Promise<OrderResult> {
 
 // ─── Retry Failed Analysis ───
 // Resets a failed analysis to pending and re-triggers processing (no extra payment)
-export async function retryAnalysis(analysisId: string): Promise<Analysis | null> {
+export async function retryAnalysis(analysisId: string, token: string): Promise<Analysis | null> {
   if (USE_MOCKS) return null
 
   const res = await fetch(getSupabaseFunctionUrl('retry-analysis'), {
     method: 'POST',
     headers: getHeaders(),
-    body: JSON.stringify({ analysis_id: analysisId }),
+    body: JSON.stringify({ analysis_id: analysisId, token }),
   })
 
   if (!res.ok) return null
@@ -120,19 +120,18 @@ export async function retryAnalysis(analysisId: string): Promise<Analysis | null
 }
 
 // ─── Get Analysis by Token ───
-// Direct Supabase query for permalink access (RLS allows public read)
+// Token-scoped Edge Function; the analyses table itself is not public.
 export async function getAnalysisByToken(token: string): Promise<Analysis | null> {
   if (USE_MOCKS) return mockApi.getAnalysisByToken(token)
 
-  if (!supabase) throw new Error('Supabase not configured')
-
-  const { data, error } = await supabase
-    .from('analyses')
-    .select('*')
-    .eq('token', token)
-    .single()
-
-  if (error || !data) return null
+  const res = await fetch(getSupabaseFunctionUrl('get-analysis'), {
+    method: 'POST',
+    headers: getHeaders(),
+    body: JSON.stringify({ token }),
+  })
+  if (!res.ok) return null
+  const { analysis: data } = await res.json()
+  if (!data) return null
 
   return {
     id: data.id,

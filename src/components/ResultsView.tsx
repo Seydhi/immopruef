@@ -16,7 +16,9 @@ export default function ResultsView({ analyses, onBack, onRetryComplete }: Resul
   const handleRetry = async (analysisId: string) => {
     setRetrying(analysisId)
     try {
-      const updated = await retryAnalysis(analysisId)
+      const analysis = analyses.find((item) => item.id === analysisId)
+      if (!analysis) return
+      const updated = await retryAnalysis(analysisId, analysis.token)
       if (updated && onRetryComplete) onRetryComplete(updated)
       else window.location.reload()
     } catch {
