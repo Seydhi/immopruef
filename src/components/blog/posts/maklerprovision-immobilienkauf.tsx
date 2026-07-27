@@ -39,13 +39,14 @@ export default function MaklerprovisionImmobilienkauf() {
       <p>Beachten Sie: „Provisionsfrei" heißt nicht automatisch günstiger — Verkäufer kalkulieren ihre Maklerkosten oft in den Angebotspreis ein. Ob der Gesamtpreis fair ist, klären Sie am besten systematisch, etwa mit den Methoden aus <a href="/blog/angebotspreis-fair">Angebotspreis fair?</a>.</p>
       
       <h2>Sonderfälle: Wo die 50/50-Regel nicht gilt</h2>
-      <p>Die Teilungsregel der §§ 656c/656d BGB ist bewusst eng zugeschnitten. Sie gilt nur für Einfamilienhäuser (auch mit Einliegerwohnung) und Eigentumswohnungen — und nur, wenn der Käufer Verbraucher ist. Nicht erfasst sind:</p>
+      <p>Die Teilungsregel der §§ 656c/656d BGB ist bewusst eng zugeschnitten. Sie gilt nur für Einfamilienhäuser und Eigentumswohnungen — und nur, wenn der Käufer Verbraucher ist. Nicht erfasst sind:</p>
       <ul>
       <li>unbebaute Grundstücke,</li>
       <li>Mehrfamilienhäuser und Gewerbeimmobilien,</li>
       <li>Käufe durch Unternehmen oder Investoren.</li>
       </ul>
       <p>In diesen Fällen ist die Verteilung frei verhandelbar — theoretisch kann der Käufer die volle Provision tragen. Gerade beim Grundstückskauf lohnt deshalb ein genauer Blick in das Provisionsverlangen.</p>
+      <p>Heikel ist die Abgrenzung beim Haus mit Einliegerwohnung. Der Bundesgerichtshof hat am 16. Juli 2026 entschieden, dass es auf das Bild bei Abschluss des Maklervertrags ankommt: Erkennbar muss sein, dass der Erwerb vorrangig den Wohnzwecken eines einzelnen Haushalts dient. Ein an zwei Mietparteien vermietetes Haus erfüllt das nicht — auch dann nicht, wenn der Käufer später allein einziehen will. Was daraus für die Kalkulation folgt, erklärt der Beitrag <a href="/blog/maklerprovision-zweifamilienhaus-bgh">Maklerprovision beim Zweifamilienhaus</a>.</p>
       
       <h2>Verhandeln: realistisch, aber mit Fingerspitzengefühl</h2>
       <p>Da die Provision nicht gesetzlich festgelegt ist, können Sie verhandeln — mit dem Makler über den Satz oder mit dem Verkäufer über den Preis. Realistische Ansatzpunkte:</p>

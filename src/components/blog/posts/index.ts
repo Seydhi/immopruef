@@ -4,6 +4,22 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'maklerprovision-zweifamilienhaus-bgh',
+    title: 'Maklerprovision Zweifamilienhaus: BGH-Urteil 2026',
+    description: 'BGH-Urteil vom 16. Juli 2026: Beim Zweifamilienhaus greift die 50/50-Regel nicht. Käufer können dann statt 3,57 % die volle Provision tragen — bis zu 7,14 %.',
+    date: '27. Juli 2026',
+    readTime: '8 Min',
+    tags: ['Kaufratgeber', 'Recht'],
+    image: 'https://images.pexels.com/photos/12577414/pexels-photo-12577414.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Gilt die 50/50-Regel bei der Maklerprovision auch beim Zweifamilienhaus?', answer: 'Nein. Der Halbteilungsgrundsatz des § 656c BGB gilt nur für den Kauf einer Wohnung oder eines Einfamilienhauses durch einen Verbraucher. Der BGH hat am 16. Juli 2026 (Az. I ZR 111/25) bestätigt, dass ein an zwei Mietparteien vermietetes Haus kein Einfamilienhaus in diesem Sinne ist. Der Käufer kann dann die volle Provision schulden.' },
+      { question: 'Was hat der BGH am 16. Juli 2026 zur Maklerprovision entschieden?', answer: 'Entscheidend ist der Zeitpunkt des Maklervertrags: Für die Einordnung als Einfamilienhaus muss bei dessen Abschluss für den Makler erkennbar sein, dass der Erwerb vorrangig den Wohnzwecken eines einzelnen Haushalts dient. Eine erst danach offenbarte Selbstnutzungsabsicht genügt nicht. Die Revision des Käufers blieb ohne Erfolg.' },
+      { question: 'Wie kann ich mich als Käufer eines Zweifamilienhauses schützen?', answer: 'Erklären Sie eine geplante Selbstnutzung spätestens beim Abschluss des Maklervertrags in Textform, etwa per E-Mail. Prüfen Sie außerdem die Provisionsklausel im Exposé und verhandeln Sie den Satz, bevor der Maklervertrag zustande kommt. Danach ist der Anspruch entstanden und kaum noch beeinflussbar.' },
+      { question: 'Wie viel Maklerprovision kann beim Zweifamilienhaus anfallen?', answer: 'Die Höhe ist gesetzlich nicht gedeckelt. Übliche Gesamtprovisionen liegen bei 5,95 bis 7,14 Prozent des Kaufpreises inklusive Mehrwertsteuer. Bei 400.000 € Kaufpreis sind das rund 28.560 € statt 14.280 € bei hälftiger Teilung — ein Unterschied von etwa 14.280 €, der aus Eigenkapital gedeckt werden muss.' },
+      { question: 'Gilt die hälftige Teilung beim Kauf einer Eigentumswohnung weiterhin?', answer: 'Ja. Die §§ 656c und 656d BGB erfassen ausdrücklich den Kauf einer Wohnung, sofern der Käufer Verbraucher ist (§ 656b BGB). Das Urteil vom Juli 2026 betraf allein die Frage, wann ein Objekt als Einfamilienhaus einzuordnen ist, und ändert daran nichts.' },
+    ],
+  },
+  {
     slug: 'heizungsgesetz-reform-2026-kaeufer',
     title: 'Heizungsgesetz-Reform 2026: Was Käufer wissen sollten',
     description: 'Der Bundestag hat die 65-Prozent-Regel am 10. Juli 2026 gestrichen. Was das Gebäudemodernisierungsgesetz beim Kauf eines Hauses mit alter Heizung bedeutet.',
@@ -1125,6 +1141,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     title: 'Maklerprovision beim Immobilienkauf: Wer zahlt wie viel?',
     description: 'Maklerprovision beim Immobilienkauf: 50/50-Regel seit 2020, übliche Sätze von 2,98 bis 3,57 % für Käufer, Beispielrechnungen und was wirklich verhandelbar ist.',
     date: '12. Juni 2026',
+    updated: '27. Juli 2026',
     readTime: '7 Min',
     tags: ['Kaufratgeber', 'Finanzierung'],
     image: 'https://images.pexels.com/photos/7937330/pexels-photo-7937330.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
@@ -1885,6 +1902,7 @@ export const BLOG_POSTS: BlogMeta[] = [
 
 // Map slug → lazy component (filled as posts are written)
 export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.ComponentType>> = {
+  'maklerprovision-zweifamilienhaus-bgh': lazy(() => import('./maklerprovision-zweifamilienhaus-bgh')),
   'heizungsgesetz-reform-2026-kaeufer': lazy(() => import('./heizungsgesetz-reform-2026-kaeufer')),
   'immobilienbewertung-vergleich': lazy(() => import('./immobilienbewertung-vergleich')),
   'hausgeld-pro-qm': lazy(() => import('./hausgeld-pro-qm')),
