@@ -163,8 +163,8 @@ export default function EnergieausweisExpose() {
         Die gute Nachricht: Für energetische Sanierung gibt es umfangreiche Förderung:
       </p>
       <ul>
-        <li><strong>BAFA-Einzelmaßnahmen:</strong> 15 % Zuschuss für die Gebäudehülle (Dämmung, Fenster, Türen, Lüftung) — mit individuellem Sanierungsfahrplan (iSFP) zusätzlich +5 %, also 20 %</li>
-        <li><strong>Heizungstausch über die KfW (Zuschuss 458):</strong> 30 % Grundförderung, mit Klimageschwindigkeits- und Einkommensbonus bis zu 70 % — der Heizungstausch läuft seit 2024 nicht mehr über das BAFA</li>
+        <li><strong>BAFA-Einzelmaßnahmen:</strong> 15 % Zuschuss für die Gebäudehülle (Dämmung, Fenster, Türen, Lüftung) — der iSFP-Bonus von 5 Prozentpunkten gilt seit Juli 2026 nur noch für Ausgaben oberhalb von 30.000 €</li>
+        <li><strong>Heizungstausch über die KfW (Zuschuss 458):</strong> 30 % Grundförderung, mit Klimageschwindigkeits- und Einkommensbonus bis zu 80 % (Obergrenze 70 %, für Selbstnutzer mit niedrigem Einkommen 80 %), förderfähig bis 28.000 € — der Heizungstausch läuft seit 2024 nicht mehr über das BAFA</li>
         <li><strong>KfW-Kredit 261:</strong> Bis 150.000 € zinsgünstiger Kredit mit Tilgungszuschuss für die Sanierung zum Effizienzhaus</li>
         <li><strong>Steuerliche Förderung (§35c EStG):</strong> alternativ 20 % der Kosten über 3 Jahre absetzbar (max. 40.000 € je Objekt) — nur für selbstgenutztes Eigentum und nicht zusätzlich zu BAFA/KfW für dieselbe Maßnahme</li>
       </ul>

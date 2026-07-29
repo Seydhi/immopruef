@@ -1,9 +1,9 @@
 export default function EnergetischeSanierungFoerderung2026() {
   return (
     <>
-      <p>Eine energetische Sanierung kostet schnell einen fünf- bis sechsstelligen Betrag. Doch ein erheblicher Teil davon lässt sich über staatliche Programme zurückholen — beim Heizungstausch sind bis zu 70 % Zuschuss möglich. Wer das Förderpotenzial schon vor dem Kauf einplant, rechnet mit ganz anderen Zahlen als jemand, der erst nach dem Notartermin nach Zuschüssen sucht.</p>
+      <p>Eine energetische Sanierung kostet schnell einen fünf- bis sechsstelligen Betrag. Doch ein erheblicher Teil davon lässt sich über staatliche Programme zurückholen — beim Heizungstausch sind bis zu 80 % Zuschuss möglich. Wer das Förderpotenzial schon vor dem Kauf einplant, rechnet mit ganz anderen Zahlen als jemand, der erst nach dem Notartermin nach Zuschüssen sucht.</p>
       <p>Die Förderlandschaft ist allerdings zweigeteilt: Den Heizungstausch fördert die KfW per Zuschuss, einzelne Maßnahmen an Dach, Fassade oder Fenstern laufen über das BAFA. Dazu kommen Boni, die sich kombinieren lassen, und zinsgünstige Kredite für den Eigenanteil. Dieser Artikel ordnet die Programme für private Selbstnutzer in Deutschland und zeigt mit Beispielrechnungen, was am Ende übrig bleibt.</p>
-      <p>Ein Hinweis vorab: Alle Beträge beziehen sich auf den Stand 2026. Zum 21. Juli 2026 haben KfW und BAFA die Bedingungen der Bundesförderung für effiziente Gebäude (BEG) überarbeitet; einzelne Fördersätze und Höchstbeträge können sich dadurch verschoben haben. Förderprogramme ändern sich generell regelmäßig, deshalb gilt für jeden konkreten Antrag — vorher die offizielle Quelle von <a href="https://www.kfw.de/" target="_blank" rel="noopener noreferrer">KfW</a> und <a href="https://www.bafa.de/" target="_blank" rel="noopener noreferrer">BAFA</a> prüfen.</p>
+      <p>Ein Hinweis vorab: Alle Angaben in diesem Artikel geben den Stand vom 27. Juli 2026 wieder und beruhen auf der <a href="https://www.energiewechsel.de/KAENEF/Redaktion/DE/PDF-Anlagen/BEG/beg-richtlinien-juli-2026/20260720-beg-einzelmassnahmen.pdf" target="_blank" rel="noopener noreferrer">Förderrichtlinie BEG EM vom 17. Juli 2026</a>, die seit dem 21. Juli 2026 gilt und die Vorgängerfassung von Dezember 2023 ersetzt. Mit ihr haben sich Fördersätze, Boni und Höchstbeträge deutlich verschoben — ältere Übersichten im Netz nennen häufig noch die alten Werte. Förderprogramme ändern sich regelmäßig, deshalb gilt für jeden konkreten Antrag: vorher die offizielle Quelle von <a href="https://www.kfw.de/" target="_blank" rel="noopener noreferrer">KfW</a> und <a href="https://www.bafa.de/" target="_blank" rel="noopener noreferrer">BAFA</a> prüfen. Dieser Artikel ersetzt keine Rechts-, Steuer- oder Finanzberatung.</p>
       
       <h2>Zwei Töpfe: KfW für die Heizung, BAFA für die Hülle</h2>
       <p>Die Bundesförderung für effiziente Gebäude (BEG) verteilt sich auf zwei Stellen. Das ist wichtig zu verstehen, weil Sie je nach Maßnahme einen anderen Antrag stellen.</p>
@@ -13,48 +13,54 @@ export default function EnergetischeSanierungFoerderung2026() {
       </ul>
       <p>Beide Töpfe lassen sich nebeneinander nutzen: Wer die Heizung tauscht und gleichzeitig das Dach dämmt, stellt zwei getrennte Anträge. Wie sich der energetische Zustand eines Objekts schon aus dem Inserat ablesen lässt, erklärt unser Beitrag zum <a href="/blog/energieausweis-expose">Energieausweis im Exposé</a>.</p>
       
-      <h2>Heizungstausch: bis zu 70 % Zuschuss von der KfW</h2>
-      <p>Der Heizungstausch ist die am stärksten geförderte Einzelmaßnahme. Der KfW-Zuschuss setzt sich für Selbstnutzer aus mehreren Bausteinen zusammen, die addiert werden — aber bei maximal 70 % gedeckelt sind:</p>
+      <h2>Heizungstausch: bis zu 80 % Zuschuss von der KfW</h2>
+      <p>Der Heizungstausch ist die am stärksten geförderte Einzelmaßnahme. Der KfW-Zuschuss aus dem Programm 458 setzt sich für Selbstnutzer aus drei Bausteinen zusammen:</p>
       <ul>
-      <li><strong>Grundförderung: 30 %.</strong> Diese erhält jeder, der eine förderfähige neue Heizung einbaut.</li>
-      <li><strong>Klimageschwindigkeitsbonus: 20 %.</strong> Für Selbstnutzer, die eine alte fossile Heizung austauschen. Der Bonus beträgt 2026 noch 20 %, ab 2029 sinkt er.</li>
-      <li><strong>Einkommensbonus: 30 %.</strong> Für selbstnutzende Eigentümer mit einem zu versteuernden Haushaltseinkommen bis 40.000 € pro Jahr.</li>
+      <li><strong>Grundförderung: 30 %.</strong> Diese erhält jeder, der einen förderfähigen neuen Wärmeerzeuger einbaut.</li>
+      <li><strong>Klimageschwindigkeitsbonus: 16 %.</strong> Für selbstnutzende Eigentümer, die eine funktionstüchtige Öl-, Kohle-, Gas-Etagen- oder Nachtstromspeicherheizung austauschen — oder eine funktionstüchtige Gas- oder Biomasseheizung, deren Inbetriebnahme mindestens 20 Jahre zurückliegt. Der Bonus sinkt ab dem 1. Februar 2027 halbjährlich um 4 Prozentpunkte und entfällt ab dem 1. August 2028.</li>
+      <li><strong>Einkommensbonus: 40, 30 oder 10 %.</strong> Gestaffelt nach dem zu versteuernden Haushaltsjahreseinkommen: 40 % bis 30.000 €, 30 % bis 40.000 €, 10 % bis 50.000 €. Lebt mindestens ein minderjähriges Kind im Haushalt, wird das anzusetzende Einkommen einmalig um 10.000 € reduziert (Familienzuschlag).</li>
       </ul>
-      <p>Die Boni sind kombinierbar, der maximale Zuschuss bleibt aber bei 70 %. Förderfähig sind beim Heizungstausch Kosten bis zu 30.000 € für die erste Wohneinheit. Daraus ergibt sich der höchstmögliche Zuschuss von 21.000 € (70 % von 30.000 €).</p>
-      
+      <p>Für die Summe aus Grundförderung und Boni gilt eine Obergrenze: <strong>70 %</strong> im Regelfall und <strong>80 %</strong> für selbstnutzende Eigentümer mit einem zu versteuernden Haushaltsjahreseinkommen bis 30.000 € (bis 40.000 € inklusive Familienzuschlag). Förderfähig sind beim Heizungstausch Kosten bis <strong>28.000 €</strong> für die erste Wohneinheit, dazu jeweils 15.000 € für die zweite bis sechste. Der höchstmögliche Zuschuss für ein Einfamilienhaus liegt damit bei <strong>22.400 €</strong>.</p>
+      <p>Wichtig für die Zeitplanung: Der Höchstbetrag der förderfähigen Kosten sinkt ab dem 1. Februar 2027 alle sechs Monate um 750 € — auf 27.250 €, dann 26.500 € und so weiter bis auf 22.000 € ab August 2030. Maßgeblich ist der Zeitpunkt der Antragstellung. Ab dem ersten Quartal 2027 ändert sich zudem die Systematik bei Wärmepumpen: Der Grundfördersatz für sie sinkt auf 15 %, dafür kommt ein Wertschöpfungs-Bonus von 15 % für Geräte mit Ursprung in der Union hinzu.</p>
+
       <h2>Beispielrechnung: Was kostet die neue Wärmepumpe wirklich?</h2>
-      <p>Ein selbstnutzendes Paar tauscht seine 22 Jahre alte Gasheizung gegen eine Wärmepumpe. Die Investition beträgt 32.000 €. Das zu versteuernde Haushaltseinkommen liegt unter 40.000 € pro Jahr.</p>
+      <p>Ein selbstnutzendes Paar tauscht seine 22 Jahre alte Gasheizung gegen eine Wärmepumpe. Die Investition beträgt 32.000 €. Weil die Gasheizung funktionstüchtig ist und länger als 20 Jahre in Betrieb war, greift der Klimageschwindigkeitsbonus. Förderfähig sind allerdings höchstens 28.000 € — die restlichen 4.000 € trägt das Paar in jedem Fall selbst. Wie viel Zuschuss bleibt, hängt am Einkommen:</p>
       <table>
       <thead>
-      <tr><th>Posten</th><th>Betrag</th></tr>
+      <tr><th>Zu versteuerndes Haushaltsjahreseinkommen</th><th>Fördersatz</th><th>Zuschuss</th><th>Eigenanteil</th></tr>
       </thead>
       <tbody>
-      <tr><td>Investitionskosten gesamt</td><td>32.000 €</td></tr>
-      <tr><td>Maximal förderfähige Kosten</td><td>30.000 €</td></tr>
-      <tr><td>Fördersatz (30 % + 20 % + 30 %, gedeckelt)</td><td>70 %</td></tr>
-      <tr><td>Zuschuss der KfW</td><td>21.000 €</td></tr>
-      <tr><td>Verbleibender Eigenanteil</td><td>11.000 €</td></tr>
+      <tr><td>bis 30.000 €</td><td>80 % (Obergrenze)</td><td>22.400 €</td><td>9.600 €</td></tr>
+      <tr><td>über 30.000 bis 40.000 €</td><td>70 % (Obergrenze)</td><td>19.600 €</td><td>12.400 €</td></tr>
+      <tr><td>über 40.000 bis 50.000 €</td><td>56 %</td><td>15.680 €</td><td>16.320 €</td></tr>
+      <tr><td>über 50.000 €</td><td>46 %</td><td>12.880 €</td><td>19.120 €</td></tr>
       </tbody>
       </table>
-      <p>Von 32.000 € Investition bleiben also rund 11.000 € selbst zu tragen — die ersten 30.000 € werden mit 70 % bezuschusst, die darüber liegenden 2.000 € sind nicht förderfähig. Liegt das Einkommen über 40.000 €, entfällt der Einkommensbonus, und der Fördersatz sinkt auf 50 % (30 % plus 20 %). Der Zuschuss läge dann bei 15.000 € statt 21.000 €.</p>
+      <p>In den beiden oberen Zeilen greift die Deckelung: Rechnerisch kämen 86 beziehungsweise 76 % zusammen, ausgezahlt werden aber höchstens 80 beziehungsweise 70 %. Ab einem Einkommen über 50.000 € entfällt der Einkommensbonus vollständig — dann bleiben Grundförderung und Klimageschwindigkeitsbonus, zusammen 46 %.</p>
       
-      <h2>Gebäudehülle und Anlagentechnik: 15 bis 20 % vom BAFA</h2>
-      <p>Maßnahmen an der Gebäudehülle — Dämmung von Dach, Fassade oder Kellerdecke sowie der Austausch von Fenstern — und an der Anlagentechnik fördert das BAFA mit einem Zuschuss von <strong>15 %</strong>. Wird die Maßnahme im Rahmen eines individuellen Sanierungsfahrplans (iSFP) umgesetzt, kommen <strong>5 % iSFP-Bonus</strong> hinzu — zusammen also 20 %.</p>
-      <p>Ein Rechenbeispiel: Eine Fassadendämmung kostet 40.000 €. Ohne Sanierungsfahrplan gibt es 6.000 € Zuschuss (15 %), mit iSFP sind es 8.000 € (20 %). Der Sanierungsfahrplan lohnt sich also nicht nur als Bonus, sondern auch als Fahrplan: Er legt fest, in welcher Reihenfolge die Maßnahmen sinnvoll sind. Welche Schwachstellen ein Altbau typischerweise mitbringt, zeigt unser Leitfaden zum <a href="/blog/sanierungsbedarf-erkennen">Sanierungsbedarf erkennen</a>.</p>
+      <h2>Gebäudehülle und Anlagentechnik: 15 % vom BAFA</h2>
+      <p>Maßnahmen an der Gebäudehülle — Dämmung von Dach, Fassade oder Kellerdecke sowie der Austausch von Fenstern — und an der Anlagentechnik fördert das BAFA mit einem Zuschuss von <strong>15 %</strong>. Förderfähig sind dabei Kosten bis 30.000 € je Wohneinheit.</p>
+      <p>Der <strong>iSFP-Bonus</strong> von 5 Prozentpunkten funktioniert seit dem 21. Juli 2026 anders als früher — hier liegt die größte Änderung für Sanierer. Er wird nur noch gewährt, wenn die Maßnahme ein förderfähiges Mindestinvestitionsvolumen von 30.000 € brutto erreicht, und er gilt dann ausschließlich für den Teil der Ausgaben, der über diese 30.000 € hinausgeht. Zugleich hebt ein geförderter individueller Sanierungsfahrplan die Höchstgrenze der förderfähigen Kosten von 30.000 € auf 60.000 € je Wohneinheit an. Aus „15 % plus 5 % auf alles" ist damit eine gestufte Rechnung geworden.</p>
+      <p>Ein Rechenbeispiel: Eine Fassadendämmung kostet 40.000 €.</p>
+      <ul>
+      <li><strong>Ohne iSFP:</strong> Förderfähig sind nur 30.000 €, davon 15 % — macht <strong>4.500 €</strong> Zuschuss.</li>
+      <li><strong>Mit gefördertem iSFP:</strong> Förderfähig sind alle 40.000 €, davon 15 % (6.000 €), dazu 5 % auf die 10.000 € oberhalb der Grenze (500 €) — macht <strong>6.500 €</strong> Zuschuss.</li>
+      </ul>
+      <p>Der Sanierungsfahrplan wirkt also doppelt: Er hebt die Kostengrenze an und bringt zusätzlich einen Bonus auf den oberen Teil der Ausgaben. Vor allem aber legt er fest, in welcher Reihenfolge die Maßnahmen sinnvoll sind. Welche Schwachstellen ein Altbau typischerweise mitbringt, zeigt unser Leitfaden zum <a href="/blog/sanierungsbedarf-erkennen">Sanierungsbedarf erkennen</a>.</p>
       <table>
       <thead>
       <tr><th>Maßnahme</th><th>Zuständig</th><th>Fördersatz</th></tr>
       </thead>
       <tbody>
-      <tr><td>Heizungstausch (Wärmepumpe etc.)</td><td>KfW (Zuschuss 458)</td><td>bis 70 %</td></tr>
-      <tr><td>Dämmung Dach, Fassade, Keller</td><td>BAFA</td><td>15 %, mit iSFP 20 %</td></tr>
-      <tr><td>Fenster und Außentüren</td><td>BAFA</td><td>15 %, mit iSFP 20 %</td></tr>
-      <tr><td>Lüftung, Heizungsoptimierung</td><td>BAFA</td><td>15 %, mit iSFP 20 %</td></tr>
+      <tr><td>Heizungstausch (Wärmepumpe etc.)</td><td>KfW (Zuschuss 458)</td><td>30 % plus Boni, max. 70 bzw. 80 %</td></tr>
+      <tr><td>Dämmung Dach, Fassade, Keller</td><td>BAFA</td><td>15 %, iSFP-Bonus nur oberhalb 30.000 €</td></tr>
+      <tr><td>Fenster und Außentüren</td><td>BAFA</td><td>15 %, iSFP-Bonus nur oberhalb 30.000 €</td></tr>
+      <tr><td>Lüftung, Heizungsoptimierung</td><td>BAFA</td><td>15 %</td></tr>
       </tbody>
       </table>
       
       <h2>Der Ergänzungskredit für den Eigenanteil</h2>
-      <p>Auch nach Abzug der Zuschüsse bleibt ein Eigenanteil — im Heizungsbeispiel oben rund 11.000 €. Wer diesen Betrag nicht aus Eigenkapital stemmen will, kann über die KfW einen zinsgünstigen Ergänzungskredit aufnehmen (zum Beispiel KfW 358/359). Dieser finanziert den nicht geförderten Teil der Investition zu vergünstigten Konditionen.</p>
+      <p>Auch nach Abzug der Zuschüsse bleibt ein Eigenanteil — im Heizungsbeispiel oben zwischen 9.600 und 19.120 €, je nach Einkommen. Wer diesen Betrag nicht aus Eigenkapital stemmen will, kann über die KfW einen zinsgünstigen Ergänzungskredit aufnehmen (zum Beispiel KfW 358/359). Dieser finanziert den nicht geförderten Teil der Investition zu vergünstigten Konditionen.</p>
       <p>Der Kredit wird typischerweise über die Hausbank beantragt, die ihn an die KfW weiterleitet. Die genauen Konditionen hängen je nach Bank und Programm vom Einkommen und der Maßnahme ab. So lässt sich die Sanierung über mehrere Jahre strecken, statt die gesamte Summe sofort aufzubringen — was vor allem dann hilft, wenn der Kauf des Objekts bereits einen Großteil des Eigenkapitals gebunden hat.</p>
       
       <h2>GEG: Wann Sie überhaupt tauschen müssen</h2>
@@ -72,7 +78,7 @@ export default function EnergetischeSanierungFoerderung2026() {
       <p>Die Sanierungs- und Förderfrage gehört außerdem in die Gesamtrechnung des Kaufs. Die laufenden Energiekosten eines unsanierten Hauses können den vermeintlich günstigen Kaufpreis schnell auffressen — wie Sie diese realistisch einschätzen, zeigt unser Beitrag zu <a href="/blog/nebenkosten-laufende-kosten">Nebenkosten und laufenden Kosten</a>.</p>
       
       <h2>Fazit: Förderung vor dem Kauf einplanen</h2>
-      <p>Wer ein sanierungsbedürftiges Objekt kauft, sollte die Förderung nicht als nachträglichen Bonus betrachten, sondern fest in die Kalkulation einbauen. Beim Heizungstausch sind bis zu 21.000 € Zuschuss möglich, bei der Gebäudehülle 15 bis 20 % der Kosten, dazu zinsgünstige Kredite für den Rest. Die Frage ist nicht nur, was die Sanierung kostet, sondern was nach Abzug der Förderung übrig bleibt — und ob der Kaufpreis diesen Sanierungsstau bereits eingepreist hat.</p>
+      <p>Wer ein sanierungsbedürftiges Objekt kauft, sollte die Förderung nicht als nachträglichen Bonus betrachten, sondern fest in die Kalkulation einbauen. Beim Heizungstausch sind bis zu 22.400 € Zuschuss möglich, bei der Gebäudehülle 15 % der Kosten und oberhalb von 30.000 € zusätzlich der iSFP-Bonus, dazu zinsgünstige Kredite für den Rest. Die Frage ist nicht nur, was die Sanierung kostet, sondern was nach Abzug der Förderung übrig bleibt — und ob der Kaufpreis diesen Sanierungsstau bereits eingepreist hat. Weil Fördersätze und Höchstbeträge ab Februar 2027 halbjährlich sinken, lohnt sich bei ohnehin geplanten Maßnahmen ein früher Antrag.</p>
       <p>Bevor Sie ein Angebot ernsthaft verfolgen, lohnt sich eine strukturierte Ersteinschätzung. <strong>ImmoPrüf</strong> erstellt aus dem Link zum Exposé eine geordnete Übersicht: Preisbewertung, Kaufnebenkosten, Standort, Risiken und Finanzierungs-Szenarien — damit Sie Sanierungs- und Förderkosten von Anfang an in die Gesamtrechnung einbeziehen statt sie später nachzuschieben.</p>
     </>
   )
