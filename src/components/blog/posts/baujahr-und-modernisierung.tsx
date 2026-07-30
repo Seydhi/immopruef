@@ -41,8 +41,8 @@ export default function BaujahrUndModernisierung() {
           <tr><th>Heizungstyp</th><th>Lebensdauer</th><th>Tauschkosten</th><th>GEG-relevant</th></tr>
         </thead>
         <tbody>
-          <tr><td>Öl-Niedertemperatur</td><td>15–25 Jahre</td><td>15.000–25.000 €</td><td>Tauschpflicht über 30 J.</td></tr>
-          <tr><td>Gas-Niedertemperatur</td><td>15–25 Jahre</td><td>8.000–15.000 €</td><td>Tauschpflicht über 30 J.</td></tr>
+          <tr><td>Öl-Niedertemperatur</td><td>15–25 Jahre</td><td>15.000–25.000 €</td><td>Keine Tauschpflicht mehr</td></tr>
+          <tr><td>Gas-Niedertemperatur</td><td>15–25 Jahre</td><td>8.000–15.000 €</td><td>Keine Tauschpflicht mehr</td></tr>
           <tr><td>Gas-Brennwert</td><td>15–25 Jahre</td><td>8.000–12.000 €</td><td>Je nach Alter</td></tr>
           <tr><td>Wärmepumpe</td><td>15–20 Jahre</td><td>18.000–35.000 €</td><td>Zukunftssicher</td></tr>
           <tr><td>Pellet/Holz</td><td>15–20 Jahre</td><td>12.000–25.000 €</td><td>GEG-konform</td></tr>

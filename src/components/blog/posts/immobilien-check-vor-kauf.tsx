@@ -87,7 +87,7 @@ export default function ImmobilienCheckVorKauf() {
       <ul>
         <li>Energieeffizienzklasse und Endenergiebedarf aus dem Exposé ablesen</li>
         <li>Heizkosten berechnen: Wohnfläche × kWh/m²a × Energiepreis</li>
-        <li>Heizungstyp und -alter prüfen (GEG-Tauschpflicht bei Öl/Gas über 30 Jahre)</li>
+        <li>Heizungstyp und -alter prüfen (über 30 Jahre = technisch überfällig, seit Juli 2026 ohne GEG-Tauschpflicht)</li>
         <li>Sanierungskosten für Verbesserung einschätzen (ca. 700 €/m² von E auf B)</li>
       </ul>
       <p>
@@ -96,7 +96,7 @@ export default function ImmobilienCheckVorKauf() {
       <ul>
         <li>Energieklasse E oder schlechter bei hohem Kaufpreis</li>
         <li>Fehlender Energieausweis (gesetzliche Pflicht seit GEG)</li>
-        <li>Ölheizung über 25 Jahre — Tauschpflicht steht bevor</li>
+        <li>Ölheizung über 25 Jahre — Austausch steht absehbar an</li>
         <li>Nur Verbrauchsausweis vorhanden — Werte können geschönt sein durch sparsame Vorbewohner</li>
       </ul>
 

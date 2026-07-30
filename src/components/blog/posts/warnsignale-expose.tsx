@@ -94,7 +94,7 @@ export default function WarnsignaleExpose() {
 
       <h3>9. Keine Angabe zum Baujahr der Heizung</h3>
       <p>
-        Eine Heizung hat eine Lebensdauer von 15–25 Jahren. Fehlt im Exposé jede Angabe zum Heizsystem, ist das verdächtig. Das Gebäudeenergiegesetz schreibt vor, dass Öl- und Gasheizungen älter als 30 Jahre ausgetauscht werden müssen. Ein Heizungstausch kostet 15.000–30.000 € — das sollte in jede Kaufpreisverhandlung einfließen.
+        Eine Heizung hat eine Lebensdauer von 15–25 Jahren. Fehlt im Exposé jede Angabe zum Heizsystem, ist das verdächtig. Eine gesetzliche Austauschpflicht für Öl- und Gasheizungen über 30 Jahre gibt es seit dem 29. Juli 2026 nicht mehr, der wirtschaftliche Handlungsdruck bleibt aber. Ein Heizungstausch kostet 15.000–30.000 € — das sollte in jede Kaufpreisverhandlung einfließen.
       </p>
 
       <h3>10. Unklare Modernisierungshinweise</h3>

@@ -65,11 +65,11 @@ export default function BesichtigungVorbereitung() {
       <h3>Die Fragen:</h3>
       <ol>
         <li><strong>"Wann wurde die Heizung installiert und wann zuletzt gewartet?"</strong>
-          <br/>Heizungen über 20 Jahre = Tausch in absehbarer Zeit (15.000–30.000 €). Über 30 Jahre = GEG-Tauschpflicht bei Öl/Gas. Kein Wartungsprotokoll = vernachlässigt.</li>
+          <br/>Heizungen über 20 Jahre = Tausch in absehbarer Zeit (15.000–30.000 €). Über 30 Jahre = technisch überfällig, seit Juli 2026 aber ohne gesetzliche Tauschpflicht. Kein Wartungsprotokoll = vernachlässigt.</li>
         <li><strong>"Wie hoch waren die tatsächlichen Heizkosten im letzten Jahr?"</strong>
           <br/>Vergleichen Sie mit Ihrer eigenen Berechnung aus dem Energieausweis. Große Abweichung = Verbrauchsausweis basiert auf untypischem Heizverhalten.</li>
         <li><strong>"Welcher Energieträger wird genutzt und ist ein Wechsel geplant?"</strong>
-          <br/>Ölheizung = Tauschpflicht nach GEG steht bevor. Gas = abhängig von kommunaler Wärmeplanung. Wärmepumpe = Zukunftssicher, aber nur bei gutem Dämmstandard effizient.</li>
+          <br/>Ölheizung = hohe Betriebskosten, Austausch absehbar. Gas = Brennstoffkosten steigen mit dem CO2-Preis. Wärmepumpe = Zukunftssicher, aber nur bei gutem Dämmstandard effizient.</li>
         <li><strong>"Sind die Fenster doppelt oder dreifach verglast? Aus welchem Jahr?"</strong>
           <br/>Einfachverglasung = sofortiger Tausch nötig. Alte Doppelverglasung (vor 2000) = Dichtungen oft defekt, U-Wert schlecht.</li>
       </ol>

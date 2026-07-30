@@ -1,9 +1,9 @@
 export default function GegSanierungspflichtenAltbauKauf() {
   return (
     <>
-      <p>Wer 2026 einen Altbau kauft, übernimmt nicht nur Mauern und Dach, sondern in vielen Fällen auch eine Reihe gesetzlicher Pflichten. Das <a href="https://www.gesetze-im-internet.de/geg/" target="_blank" rel="noopener noreferrer">Gebäudeenergiegesetz (GEG)</a> sieht für bestehende Gebäude sogenannte Nachrüst- und Außerbetriebnahmepflichten vor. Solange die Vorbesitzer ihr Ein- oder Zweifamilienhaus selbst bewohnt haben, ruhten diese Pflichten oft jahrzehntelang. Mit dem Eigentümerwechsel ändert sich das: Für die neuen Eigentümer beginnt in der Regel eine Frist von zwei Jahren, in der die wichtigsten Maßnahmen umgesetzt werden müssen.</p>
+      <p>Wer 2026 einen Altbau kauft, übernimmt nicht nur Mauern und Dach, sondern in vielen Fällen auch eine Reihe gesetzlicher Pflichten. Das <a href="https://www.gesetze-im-internet.de/geg/" target="_blank" rel="noopener noreferrer">Gebäudeenergiegesetz (GEG)</a> sieht für bestehende Gebäude sogenannte Nachrüstpflichten vor. Solange die Vorbesitzer ihr Ein- oder Zweifamilienhaus selbst bewohnt haben, ruhten diese Pflichten oft jahrzehntelang. Mit dem Eigentümerwechsel ändert sich das: Für die neuen Eigentümer beginnt in der Regel eine Frist von zwei Jahren, in der die wichtigsten Maßnahmen umgesetzt werden müssen.</p>
       
-      <p>Dieser Ratgeber erklärt, welche drei Kernpflichten beim Altbaukauf am häufigsten greifen – die Außerbetriebnahme sehr alter Heizkessel (§ 72 GEG), die Dämmung der obersten Geschossdecke beziehungsweise des Dachs (§ 47 GEG) und die Dämmung zugänglicher Wärme- und Warmwasserleitungen (§ 69 GEG). Außerdem ordnen wir ein, was die im Juli 2026 beschlossene Reform der „65-Prozent-Regel“ beim Heizungstausch für Käufer bedeutet. Stand der folgenden Angaben ist Juli 2026; die Paragrafenbezüge zu den Nachrüstpflichten folgen der aktuell geltenden Fassung des GEG.</p>
+      <p><strong>Wichtige Änderung seit 29. Juli 2026:</strong> Mit dem Gebäudemodernisierungsgesetz (GModG) ist die frühere Pflicht zur Außerbetriebnahme alter Öl- und Gas-Heizkessel (§ 72 GEG) <strong>ersatzlos entfallen</strong>. Übrig bleiben zwei Nachrüstpflichten: die Dämmung der obersten Geschossdecke beziehungsweise des Dachs und die Dämmung zugänglicher Wärme- und Warmwasserleitungen. Dieser Ratgeber erklärt beide, ordnet den Wegfall des Kessel-Betriebsverbots ein und zeigt, was die gestrichene „65-Prozent-Regel“ beim Heizungstausch für Käufer bedeutet. Stand der folgenden Angaben ist der 30. Juli 2026; sie ersetzen keine Rechts-, Steuer- oder Finanzberatung.</p>
       
       <h2>Warum der Eigentümerwechsel die Pflichten „scharf schaltet“</h2>
       
@@ -13,15 +13,15 @@ export default function GegSanierungspflichtenAltbauKauf() {
       
       <p>Wichtig zur Einordnung: Bei Mehrfamilienhäusern oder Häusern, die schon vorher vermietet waren, galten die Pflichten ohnehin – hier gibt es keine geschenkte Frist durch den Kauf. Die Zwei-Jahres-Logik betrifft vor allem das klassische, lange selbst bewohnte Ein- oder Zweifamilienhaus.</p>
       
-      <h2>Pflicht 1: Alte Konstanttemperatur-Kessel außer Betrieb nehmen (§ 72 GEG)</h2>
-      
-      <p>§ 72 GEG verbietet den Weiterbetrieb bestimmter alter Heizkessel, die mit flüssigen oder gasförmigen Brennstoffen – also Öl oder Gas – beschickt werden. Betroffen sind Kessel, die vor dem 1. Januar 1991 eingebaut wurden, sowie Kessel, die ab 1991 eingebaut wurden und älter als 30 Jahre sind. Hintergrund ist, dass solche Anlagen meist als ineffiziente Konstanttemperatur-Kessel arbeiten.</p>
-      
-      <p>Entscheidend für Käufer ist die Ausnahme: <strong>Niedertemperatur-Heizkessel und Brennwertkessel sind vom Betriebsverbot ausgenommen.</strong> Wer also einen vergleichsweise modernen Brennwertkessel im Keller vorfindet, muss diesen nicht allein wegen des Alters stilllegen. Ebenfalls ausgenommen sind sehr kleine Anlagen mit weniger als 4 Kilowatt und sehr große mit mehr als 400 Kilowatt Nennleistung.</p>
-      
-      <p>Das Problem aus Käufersicht: Ob ein Kessel ein Konstanttemperatur-, Niedertemperatur- oder Brennwertgerät ist, lässt sich am Typenschild und an der Baujahr-Angabe meist erkennen – aber nicht immer eindeutig. Vor dem Kauf lohnt deshalb ein genauer Blick auf das Heizungsalter; der <a href="/blog/energieausweis-expose">Energieausweis im Exposé</a> nennt häufig das Baujahr des Wärmeerzeugers und gibt erste Hinweise. Wer die laufenden Kosten und einen möglichen Austausch durchrechnen will, findet im <a href="/blog/heizungsarten-vergleich-kosten">Vergleich der Heizungsarten und Kosten</a> eine Orientierung – die dort genannten Beträge sind Orientierungswerte und ersetzen kein konkretes Angebot.</p>
-      
-      <h2>Pflicht 2: Oberste Geschossdecke oder Dach dämmen (§ 47 GEG)</h2>
+      <h2>Weggefallen: das Betriebsverbot für alte Heizkessel (§ 72 GEG)</h2>
+
+      <p>Bis zum 28. Juli 2026 verbot § 72 GEG den Weiterbetrieb bestimmter alter Öl- und Gas-Heizkessel: betroffen waren Kessel mit Einbau vor dem 1. Januar 1991 sowie Kessel ab 1991, die älter als 30 Jahre waren. Niedertemperatur- und Brennwertkessel waren ausgenommen. Diese Vorschrift wurde durch das Gebäudemodernisierungsgesetz <strong>ersatzlos aufgehoben</strong>; die Aufhebung gilt seit dem 29. Juli 2026.</p>
+
+      <p>Für Käufer ist das eine spürbare Entlastung: Ein alter Konstanttemperatur-Kessel im Keller löst <strong>keine gesetzliche Austauschpflicht mehr aus</strong>, auch nicht innerhalb der Zwei-Jahres-Frist nach dem Eigentumsübergang. Eine funktionierende Bestandsheizung darf weiterlaufen und bei einem Defekt repariert werden. Zusammen mit dem Kessel-Betriebsverbot ist auch das frühere Verbot entfallen, Heizkessel ab 2045 noch mit fossilen Brennstoffen zu betreiben.</p>
+
+      <p>Wirtschaftlich bleibt ein alter Kessel trotzdem ein Kostenrisiko, das in die Kaufentscheidung gehört: Konstanttemperatur-Geräte arbeiten deutlich ineffizienter als Brennwerttechnik, und ein Austausch steht bei einem 30 Jahre alten Gerät ohnehin absehbar an. Prüfen Sie das Heizungsalter deshalb weiterhin vor dem Kauf; der <a href="/blog/energieausweis-expose">Energieausweis im Exposé</a> nennt häufig das Baujahr des Wärmeerzeugers. Wer die laufenden Kosten und einen möglichen Austausch durchrechnen will, findet im <a href="/blog/heizungsarten-vergleich-kosten">Vergleich der Heizungsarten und Kosten</a> eine Orientierung – die dort genannten Beträge sind Orientierungswerte und ersetzen kein konkretes Angebot.</p>
+
+      <h2>Pflicht 1: Oberste Geschossdecke oder Dach dämmen (§ 47 GEG)</h2>
       
       <p>§ 47 GEG verlangt, dass oberste Geschossdecken beheizter Räume so gedämmt sind, dass der Wärmedurchgangskoeffizient (U-Wert) 0,24 Watt pro Quadratmeter und Kelvin nicht überschreitet. Vereinfacht: Die Decke zum unbeheizten Dachboden – über die viel Wärme entweicht – muss einen Mindestdämmstandard erreichen.</p>
       
@@ -29,7 +29,7 @@ export default function GegSanierungspflichtenAltbauKauf() {
       
       <p>Für Käufer ist diese Pflicht oft die mit dem größten Spielraum: Eine begehbare oberste Geschossdecke lässt sich vergleichsweise einfach mit Dämmplatten oder Einblasdämmung ertüchtigen, während eine Dachdämmung von innen oder außen aufwändiger ist. Welche Variante in Frage kommt, hängt vom Zustand der Konstruktion ab. Wie Sie Schwachstellen am Dach schon bei der Besichtigung einordnen, beschreibt der Beitrag <a href="/blog/dach-pruefen-hauskauf">Dach prüfen beim Hauskauf</a>. Eine systematische Bestandsaufnahme weiterer energetischer Mängel hilft der Leitfaden <a href="/blog/sanierungsbedarf-erkennen">Sanierungsbedarf erkennen</a>.</p>
       
-      <h2>Pflicht 3: Zugängliche Heiz- und Warmwasserleitungen dämmen (§ 69 GEG)</h2>
+      <h2>Pflicht 2: Zugängliche Heiz- und Warmwasserleitungen dämmen (§ 69 GEG)</h2>
       
       <p>Die dritte Kernpflicht wird leicht übersehen, ist aber oft schnell und günstig zu erfüllen. § 69 GEG verlangt, dass bislang ungedämmte, zugängliche Wärmeverteilungs- und Warmwasserleitungen, die nicht in beheizten Räumen verlaufen, nachträglich gedämmt werden. Gemeint sind typischerweise die Heizungs- und Warmwasserrohre im unbeheizten Keller.</p>
       
@@ -48,12 +48,6 @@ export default function GegSanierungspflichtenAltbauKauf() {
       </thead>
       <tbody>
       <tr>
-      <td>Außerbetriebnahme alter Öl-/Gas-Heizkessel</td>
-      <td>§ 72 GEG</td>
-      <td>Konstanttemperatur-Kessel &gt; 30 Jahre bzw. Einbau vor 1991 stilllegen; Niedertemperatur- &amp; Brennwertkessel ausgenommen</td>
-      <td>i. d. R. 2 Jahre ab Eigentumsübergang</td>
-      </tr>
-      <tr>
       <td>Dämmung oberste Geschossdecke oder Dach</td>
       <td>§ 47 GEG</td>
       <td>U-Wert höchstens 0,24 W/(m²·K); Dachdämmung als Alternative zulässig</td>
@@ -68,21 +62,21 @@ export default function GegSanierungspflichtenAltbauKauf() {
       </tbody>
       </table>
       
-      <p>Die Spalte „Frist“ bezieht sich auf den Regelfall des über § 73 GEG zunächst ausgenommenen, selbst genutzten Ein- oder Zweifamilienhauses. Bei bereits zuvor vermieteten oder größeren Gebäuden bestanden die Pflichten in der Regel schon vor dem Kauf.</p>
+      <p>Die Spalte „Frist“ bezieht sich auf den Regelfall des über § 73 GEG zunächst ausgenommenen, selbst genutzten Ein- oder Zweifamilienhauses. Bei bereits zuvor vermieteten oder größeren Gebäuden bestanden die Pflichten in der Regel schon vor dem Kauf. Die früher an dieser Stelle ebenfalls genannte Außerbetriebnahme alter Öl- und Gas-Heizkessel (§ 72 GEG) ist seit dem 29. Juli 2026 entfallen und taucht in der Tabelle deshalb nicht mehr auf.</p>
       
-      <h2>Heizungstausch und die 65-Prozent-Regel: 2026 noch in Bewegung</h2>
-      
-      <p>Häufig wird die GEG-Sanierungspflicht mit der „65-Prozent-Erneuerbaren-Regel“ verwechselt. Diese steht in § 71 GEG und betrifft den <strong>Einbau einer neuen Heizung</strong>: Danach muss eine neu eingebaute Heizung grundsätzlich zu mindestens 65 Prozent mit erneuerbaren Energien betrieben werden. Sie ist damit etwas anderes als die oben beschriebenen Nachrüstpflichten – relevant wird sie erst, wenn ohnehin eine neue Anlage ansteht.</p>
-      
-      <p>Wichtig für die Planung 2026: Diese Regel wurde reformiert. Nach dem Kabinettsbeschluss vom 13. Mai 2026 hat der Bundestag am 10. Juli 2026 das Gebäudemodernisierungsgesetz (GModG) beschlossen; der Bundesrat billigte es am selben Tag. Die starre 65-Prozent-Pflicht beim Heizungseinbau wurde gestrichen — künftig gilt Technologieoffenheit, für neue fossile Heizungen aber ab 2029 eine steigende Bioanteil-Pflicht („Bio-Treppe“). Die Heizungsregeln treten gestaffelt mit der Verkündung im Bundesgesetzblatt in Kraft. Was das für Käufer konkret bedeutet, ordnet der Beitrag zur <a href="/blog/heizungsgesetz-reform-2026-kaeufer">Heizungsgesetz-Reform 2026</a> ein. Eine funktionierende Bestandsheizung dürfen Sie weiterhin betreiben; ein größerer Heizungstausch ohne akuten Defekt sollte trotzdem gut geplant und mit Blick auf Förderung und den aktuellen Rechtsstand entschieden werden.</p>
+      <h2>Heizungstausch: die 65-Prozent-Regel ist gestrichen</h2>
+
+      <p>Häufig wurde die GEG-Sanierungspflicht mit der „65-Prozent-Erneuerbaren-Regel“ verwechselt. Diese stand in § 71 GEG und betraf den <strong>Einbau einer neuen Heizung</strong>: Danach musste eine neu eingebaute Heizung grundsätzlich zu mindestens 65 Prozent mit erneuerbaren Energien betrieben werden. Sie war damit etwas anderes als die oben beschriebenen Nachrüstpflichten.</p>
+
+      <p>Diese Vorgabe gibt es nicht mehr. Der Bundestag hat am 10. Juli 2026 das Gebäudemodernisierungsgesetz (GModG) beschlossen, der Bundesrat billigte es am selben Tag. Verkündet wurde das Gesetz am 28. Juli 2026 (BGBl. 2026 I Nr. 226); die Heizungsregeln gelten seit dem 29. Juli 2026. Die starre 65-Prozent-Pflicht beim Heizungseinbau ist gestrichen — es gilt Technologieoffenheit, für neue fossile Heizungen aber ab 2029 eine steigende Beimischpflicht („Bio-Treppe“). Was das für Käufer konkret bedeutet, ordnet der Beitrag zur <a href="/blog/heizungsgesetz-reform-2026-kaeufer">Heizungsgesetz-Reform 2026</a> ein. Eine funktionierende Bestandsheizung dürfen Sie weiterhin betreiben; ein größerer Heizungstausch ohne akuten Defekt sollte trotzdem gut geplant und mit Blick auf Förderung entschieden werden.</p>
       
       <h2>Was Käufer praktisch tun sollten</h2>
       
       <ul>
       <li><strong>Vor dem Kauf:</strong> Heizungsbaujahr und Kesseltyp klären (Typenschild, Energieausweis), Dachboden und Kellerleitungen besichtigen, Dämmzustand der obersten Geschossdecke prüfen.</li>
       <li><strong>Direkt nach dem Kauf:</strong> Stichtag des Eigentumsübergangs im Grundbuch notieren – ab hier läuft in der Regel die Zwei-Jahres-Frist.</li>
-      <li><strong>Reihenfolge:</strong> Günstige Pflichten wie die Leitungsdämmung (§ 69) lassen sich schnell erledigen; größere Maßnahmen wie ein Kesseltausch oder eine Dachdämmung gehören in eine geordnete Sanierungsplanung – idealerweise mit Energieberatung und mit Blick auf mögliche Förderungen.</li>
-      <li><strong>Im Zweifel fachlich prüfen lassen:</strong> Ob ein konkreter Kessel unter das Betriebsverbot fällt oder als Niedertemperatur-/Brennwertgerät ausgenommen ist, sollte im Einzelfall ein Fachbetrieb oder Schornsteinfeger beurteilen. Der bevollmächtigte Bezirksschornsteinfeger kontrolliert ohnehin regelmäßig und weist auf nicht erfüllte Pflichten hin.</li>
+      <li><strong>Reihenfolge:</strong> Günstige Pflichten wie die Leitungsdämmung (§ 69) lassen sich schnell erledigen; größere Maßnahmen wie eine Dachdämmung oder ein freiwilliger Heizungstausch gehören in eine geordnete Sanierungsplanung – idealerweise mit Energieberatung und mit Blick auf mögliche Förderungen.</li>
+      <li><strong>Im Zweifel fachlich prüfen lassen:</strong> Ob die Dämmung der obersten Geschossdecke den geforderten Mindeststandard erreicht oder nachgerüstet werden muss, sollte im Einzelfall ein Fachbetrieb oder Energieberater beurteilen. Der bevollmächtigte Bezirksschornsteinfeger kontrolliert die Heizungsanlage ohnehin regelmäßig und weist auf offene Punkte hin.</li>
       <li><strong>Förderung mitdenken:</strong> Für viele energetische Maßnahmen – etwa Dämmung oder einen Heizungstausch – gibt es staatliche Zuschüsse oder zinsgünstige Kredite. Die genauen Konditionen ändern sich regelmäßig; prüfen Sie vor Auftragsvergabe die zum Zeitpunkt der Maßnahme gültigen Programme und stellen Sie den Antrag rechtzeitig, da er häufig vor Vorhabensbeginn gestellt werden muss.</li>
       </ul>
       

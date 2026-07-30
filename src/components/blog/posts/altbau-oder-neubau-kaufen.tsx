@@ -59,10 +59,9 @@ export default function AltbauOderNeubauKaufen() {
       <p>Viele Käufer übersehen: Mit dem Eigentumsübergang entstehen gesetzliche Pflichten nach dem Gebäudeenergiegesetz (GEG). Sie gelten für Ein- und Zweifamilienhäuser, die der Voreigentümer selbst bewohnt hat — also für den klassischen Hauskauf von privat. Innerhalb von zwei Jahren nach Einzug beziehungsweise Eigentumsübergang müssen Sie:</p>
       <ul>
       <li>die <strong>oberste Geschossdecke</strong> zum unbeheizten Dachraum dämmen,</li>
-      <li><strong>Heizungs- und Warmwasserrohre</strong> in unbeheizten Räumen dämmen,</li>
-      <li><strong>Konstanttemperaturkessel</strong>, die älter als 30 Jahre sind, austauschen.</li>
+      <li><strong>Heizungs- und Warmwasserrohre</strong> in unbeheizten Räumen dämmen.</li>
       </ul>
-      <p>Diese Maßnahmen sind keine Option, sondern Pflicht — und sie gehören deshalb von Anfang an ins Budget. Fragen Sie vor dem Kauf gezielt nach Alter und Typ des Heizkessels und werfen Sie einen Blick auf den Dachboden. So vermeiden Sie, dass aus dem vermeintlichen Einzugsjahr ein Sanierungsjahr wird.</p>
+      <p>Diese Maßnahmen sind keine Option, sondern Pflicht — und sie gehören deshalb von Anfang an ins Budget. Die früher an dieser Stelle ebenfalls geltende Pflicht, Konstanttemperaturkessel über 30 Jahre auszutauschen, ist mit dem Gebäudemodernisierungsgesetz seit dem 29. Juli 2026 entfallen. Ein alter Kessel bleibt aber ein absehbarer Kostenblock: Fragen Sie vor dem Kauf gezielt nach Alter und Typ des Heizkessels und werfen Sie einen Blick auf den Dachboden. So vermeiden Sie, dass aus dem vermeintlichen Einzugsjahr ein Sanierungsjahr wird.</p>
       
       <h2>Förderung: Zuschüsse für die Sanierung, Kredite für den Neubau</h2>
       <h3>Bestand: Zuschüsse über die BEG</h3>

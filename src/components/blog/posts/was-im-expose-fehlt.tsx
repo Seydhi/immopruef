@@ -35,7 +35,7 @@ export default function WasImExposeFehlt() {
         Was fehlt: <strong>Wie alt</strong> ist die Heizung? Wann war die <strong>letzte Wartung</strong>?
       </p>
       <p>
-        Eine Heizung hat eine Lebensdauer von 15–25 Jahren. Ist sie älter, steht ein Tausch bevor — Kosten: 15.000–30.000 €. Nach dem Gebäudeenergiegesetz müssen Öl- und Gasheizungen älter als 30 Jahre ausgetauscht werden. Ab 2026 greifen in vielen Kommunen zusätzliche Anforderungen durch die Wärmeplanung.
+        Eine Heizung hat eine Lebensdauer von 15–25 Jahren. Ist sie älter, steht ein Tausch bevor — Kosten: 15.000–30.000 €. Eine gesetzliche Austauschpflicht für Öl- und Gasheizungen über 30 Jahre gibt es seit dem 29. Juli 2026 nicht mehr; sie ist mit dem Gebäudemodernisierungsgesetz entfallen. Der Kostenblock bleibt trotzdem — und damit ein Verhandlungsargument.
       </p>
       <p>
         Fordern Sie an:

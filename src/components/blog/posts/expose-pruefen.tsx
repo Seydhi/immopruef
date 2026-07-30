@@ -48,7 +48,7 @@ export default function ExposePruefen() {
       <ul>
         <li><strong>Effizienzklasse A+ bis H</strong> — Klasse D oder schlechter bedeutet erhebliche Heizkosten</li>
         <li><strong>Endenergiebedarf</strong> in kWh/m²a — über 150 ist sanierungsbedürftig</li>
-        <li><strong>Heizungstyp und -alter</strong> — Ölheizungen über 30 Jahre müssen nach GEG getauscht werden</li>
+        <li><strong>Heizungstyp und -alter</strong> — Ölheizungen über 30 Jahre sind technisch überfällig; eine gesetzliche Tauschpflicht besteht seit Juli 2026 nicht mehr</li>
       </ul>
       <p>
         Was viele unterschätzen: Die Energieeffizienzklasse hat direkten Einfluss auf den Immobilienwert. Wohnungen der Klasse A+/A sind im Schnitt rund 650 €/m² teurer als solche der Klasse D/E. Umgekehrt sind Häuser der schlechtesten Klasse H etwa 14 % weniger wert als der Durchschnitt. Mehr dazu in <a href="/blog/energieausweis-expose">Energieausweis im Exposé: Was die Werte über eine Immobilie verraten</a>.

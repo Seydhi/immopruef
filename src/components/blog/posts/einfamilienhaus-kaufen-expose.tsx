@@ -89,15 +89,15 @@ export default function EinfamilienhausKaufenExpose() {
           <tr><th>Heizungstyp</th><th>Lebensdauer</th><th>Tauschkosten</th><th>GEG-relevant</th></tr>
         </thead>
         <tbody>
-          <tr><td>Gas-Niedertemperatur</td><td>15–25 Jahre</td><td>8.000–15.000 €</td><td>Tauschpflicht nach 30 Jahren</td></tr>
+          <tr><td>Gas-Niedertemperatur</td><td>15–25 Jahre</td><td>8.000–15.000 €</td><td>Keine Tauschpflicht mehr</td></tr>
           <tr><td>Gas-Brennwert</td><td>15–25 Jahre</td><td>8.000–12.000 €</td><td>Abhängig von Alter</td></tr>
-          <tr><td>Ölheizung</td><td>15–25 Jahre</td><td>10.000–18.000 € (Öltank-Entsorgung extra)</td><td>Tauschpflicht nach 30 Jahren</td></tr>
+          <tr><td>Ölheizung</td><td>15–25 Jahre</td><td>10.000–18.000 € (Öltank-Entsorgung extra)</td><td>Keine Tauschpflicht mehr</td></tr>
           <tr><td>Wärmepumpe</td><td>15–20 Jahre</td><td>18.000–35.000 €</td><td>GEG-konform</td></tr>
           <tr><td>Pellet-/Holzheizung</td><td>15–20 Jahre</td><td>12.000–25.000 €</td><td>GEG-konform</td></tr>
         </tbody>
       </table>
       <p>
-        <strong>GEG-Pflichten bei Eigentümerwechsel:</strong> Beim Kauf eines EFH müssen Sie innerhalb von 2 Jahren die oberste Geschossdecke dämmen (falls nicht bereits geschehen) und Heizungen über 30 Jahre tauschen. Planen Sie diese Kosten ein.
+        <strong>GEG-Pflichten bei Eigentümerwechsel:</strong> Beim Kauf eines EFH müssen Sie innerhalb von 2 Jahren die oberste Geschossdecke dämmen (falls nicht bereits geschehen) und ungedämmte Heizungs- und Warmwasserrohre in unbeheizten Räumen dämmen. Die frühere Pflicht, Heizungen über 30 Jahre zu tauschen, ist seit dem 29. Juli 2026 entfallen. Planen Sie die verbleibenden Kosten ein.
       </p>
 
       <h2>Fenster und Türen</h2>

@@ -65,7 +65,7 @@ export default function SanierungsbedarfErkennen() {
 
       <h3>2. Heizungstyp Öl oder Gas ohne Altersangabe</h3>
       <p>
-        Wenn im Exposé "Ölzentralheizung" oder "Gaszentralheizung" steht, aber kein Alter genannt wird, ist die Heizung wahrscheinlich alt. Denn neue Heizungen sind ein Verkaufsargument — sie würden erwähnt. Nach dem Gebäudeenergiegesetz müssen Öl- und Gasheizungen die älter als 30 Jahre sind getauscht werden — welche weiteren Pflichten greifen, lesen Sie unter <a href="/blog/geg-sanierungspflichten-altbau-kauf">die GEG-Sanierungspflichten beim Altbau-Kauf</a>. Ab 2026 gilt in Kommunen mit Wärmeplan die Pflicht zu mindestens 65 % erneuerbarer Energie bei neuen Heizungen.
+        Wenn im Exposé "Ölzentralheizung" oder "Gaszentralheizung" steht, aber kein Alter genannt wird, ist die Heizung wahrscheinlich alt. Denn neue Heizungen sind ein Verkaufsargument — sie würden erwähnt. Eine gesetzliche Austauschpflicht für Öl- und Gasheizungen über 30 Jahre gibt es seit dem 29. Juli 2026 nicht mehr — sie ist mit dem Gebäudemodernisierungsgesetz entfallen, ebenso die 65-Prozent-Regel für neue Heizungen. Welche Pflichten beim Altbaukauf noch greifen, lesen Sie unter <a href="/blog/geg-sanierungspflichten-altbau-kauf">die GEG-Sanierungspflichten beim Altbau-Kauf</a>. Wirtschaftlich bleibt eine 30 Jahre alte Anlage trotzdem ein Austauschkandidat.
       </p>
       <p>
         Fragen Sie konkret: Welches Baujahr hat die Heizung? Wann war die letzte Wartung? Liegt das Schornsteinfegerprotokoll vor?

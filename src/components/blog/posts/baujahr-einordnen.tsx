@@ -91,7 +91,7 @@ export default function BaujahrEinordnen() {
         <li><strong>PAK (polyzyklische aromatische Kohlenwasserstoffe):</strong> In Parkettlebern und Teerpappe</li>
         <li><strong>KMF (künstliche Mineralfasern):</strong> Alte Glaswolle-Dämmung, gesundheitsschädlich bei Sanierung</li>
         <li>Flachdächer: Lebensdauer oft überschritten</li>
-        <li>Heizungen (Öl): Am Ende der Lebensdauer, GEG-Tauschpflicht</li>
+        <li>Heizungen (Öl): Am Ende der Lebensdauer, Austausch wirtschaftlich absehbar</li>
       </ul>
       <p>
         <strong>Sanierungskosten:</strong> 700–1.200 €/m². Plus Schadstoffsanierung wenn Asbest vorhanden (kann allein 10.000–30.000 € kosten).
