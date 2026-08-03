@@ -235,6 +235,31 @@ PerplexityBot, OAI-SearchBot, Google-Extended), FAQPage-Schema, Kaufnebenkosten-
 | `updated`-Feld in BlogMeta → dateModified + sitemap lastmod bei Refreshes | Frische-Signal bei Artikel-Updates | 0,5 Tag |
 | Sichtbare Breadcrumbs auf Rechner-/Regio-Seiten (Schema existiert schon) | Schema-Parität | 0,5 Tag |
 
+### 5.3a Wochen-Audit 03.08.2026 — Top-3-Befunde (offen)
+
+Basis: Analyse aller 177 vorgerenderten Routen im `dist`-Artefakt plus Live-Abruf von
+robots.txt und llms.txt. Keine Schätzwerte, alle Zahlen ausgezählt.
+
+**Fundament ist sauber** — daher nur drei echte Befunde: 0 Orphan-Seiten, 0 doppelte Titles,
+0 fehlende Canonicals, 0 fehlende Alt-Attribute, 177/177 Seiten mit genau einem H1, alle
+Titles ≤ 60 Zeichen (Median 56), Schema auf allen Seiten außer den vier Rechtsseiten
+(dort korrekt verzichtbar), robots.txt erlaubt alle relevanten KI-Crawler, llms.txt gepflegt.
+
+| # | Befund | Evidenz | Empfehlung | Aufwand |
+|---|---|---|---|---|
+| 1 | Konversionsseiten intern fast nicht verlinkt | `/beispiel-analyse` und `/beispiel-premium-report` haben je **1** eingehenden internen Link; Blog-Artikel liegen typisch bei 5–15 | Aus den Kauf-nahen Ratgebern (`immobilienbewertung-vergleich`, `chatgpt-expose-pruefen`, `expose-pruefen`, `kostenlose-immobilienbewertung-serioes`) und der Rechner-Sektion kontextuell verlinken | 0,5 Tag |
+| 2 | Themen-Hubs zu dünn | `/blog/thema/besichtigung` 241 Wörter, `/blog/thema/energie` 275 Wörter — reine Linklisten ohne einordnenden Text | Je 250–400 Wörter Einleitung pro Hub (Was gehört zum Thema, in welcher Reihenfolge lesen); Hubs sollen selbst ranken und Link-Equity weitergeben | 1 Tag |
+| 3 | Alt-Texte aller Beitragsbilder generisch | **118 von 118** Blog-Artikeln: Hero-Bild-`alt` ist identisch mit dem H1, beschreibt also nicht das Bild | Alt-Text als eigenes Feld in `BlogMeta` (Fallback: Titel), bei neuen Artikeln direkt bildbeschreibend pflegen; Bestand schrittweise nachziehen. Bringt Google-Bilder-Sichtbarkeit und echten Screenreader-Nutzen | 0,5 Tag + laufend |
+
+Nicht als Befund gewertet (geprüft, unkritisch): 11 Meta-Descriptions < 140 Zeichen — davon 4
+Rechtsseiten (irrelevant) und 7 Regio-/Hub-Seiten bei 137–139 Zeichen, also faktisch am Ziel.
+Zwei Descriptions > 165 Zeichen (`/beispiel-premium-report`, `/blog/maklersprache-glossar`)
+sind Grenzfälle ohne Handlungsdruck. Die 4 thin Rechner-Seiten sind Tools, nicht Textseiten.
+
+Hinweis zur Messung: Ein erster Durchlauf meldete 19 zu lange Titles — das war ein Messfehler
+durch nicht dekodierte HTML-Entities (`&amp;` zählt als 5 statt 1 Zeichen). Nach Dekodierung:
+0 Verstöße. Bei künftigen Audits Titles immer HTML-dekodiert messen.
+
 ### 5.4 Content-Roadmap → 2.000 Klicks (Kern-Erkenntnisse der Gap-Analyse)
 
 **Die drei wichtigsten Entscheidungen:**
