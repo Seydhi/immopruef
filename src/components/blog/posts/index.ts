@@ -4,6 +4,22 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'jung-kauft-alt-kfw-308-2026',
+    title: 'Jung kauft Alt: KfW 308 ab August 2026 bis 180.000 €',
+    description: 'KfW 308 „Jung kauft Alt": seit 3. August 2026 bis zu 180.000 € Kredit für Familien, die einen Altbau der Klasse F, G oder H kaufen und energetisch sanieren.',
+    date: '3. August 2026',
+    readTime: '9 Min',
+    tags: ['Kaufratgeber', 'Finanzierung'],
+    image: 'https://images.pexels.com/photos/5511085/pexels-photo-5511085.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Wie viel Kredit gibt es bei „Jung kauft Alt" seit dem 3. August 2026?', answer: 'Die KfW hat die Höchstbeträge im Programm 308 deutlich angehoben: 140.000 € bei einem Kind (vorher 100.000 €), 160.000 € bei zwei Kindern (vorher 125.000 €) und 180.000 € ab drei Kindern (vorher 150.000 €). Der Kreditbetrag ist zusätzlich auf die Höhe des Kaufpreises begrenzt.' },
+      { question: 'Welche Immobilien sind bei KfW 308 förderfähig?', answer: 'Gefördert wird der Kauf einer selbst genutzten Bestandsimmobilie, die zum Zeitpunkt der Antragstellung laut gültigem Energiebedarfs- oder verbrauchsausweis in die Energieeffizienzklasse F, G oder H fällt. Förderfähig ist der Kaufpreis inklusive Grundstückskosten; die Sanierungskosten selbst sind in diesem Produkt nicht förderfähig.' },
+      { question: 'Muss ich das Haus wirklich auf Effizienzhaus 85 sanieren?', answer: 'Sie verpflichten sich, innerhalb von 54 Monaten ab der Zusage auf „Effizienzhaus 85 EE" oder „Effizienzhaus Denkmal EE" zu sanieren. Seit dem 3. August 2026 genügen alternativ kombinierte Einzelmaßnahmen nach BEG EM: Heizungstausch mit mindestens 65 Prozent erneuerbaren Energien, Fenstertausch, Fassadendämmung sowie Dämmung von Dach oder oberster Geschossdecke.' },
+      { question: 'Bis zu welchem Einkommen wird bei „Jung kauft Alt" gefördert?', answer: 'Das zu versteuernde jährliche Haushaltseinkommen darf höchstens 90.000 € bei einem Kind betragen, zuzüglich 10.000 € je weiterem Kind. Maßgeblich ist der Durchschnitt aus dem zweiten und dritten Jahr vor der Antragstellung: Bei einem Antrag im Jahr 2026 zählen die Einkommensteuerbescheide für 2024 und 2023.' },
+      { question: 'Wann muss der Antrag für KfW 308 gestellt werden?', answer: 'Der Antrag muss vor Abschluss des notariellen Kaufvertrags bei einem frei wählbaren Finanzierungspartner eingehen, nicht direkt bei der KfW. Der Vertragsabschluss gilt als Vorhabenbeginn und ist vor Antragseingang förderschädlich. Ein Kaufvertrag unter aufschiebender Bedingung in Bezug auf die Förderzusage ist dagegen unschädlich.' },
+    ],
+  },
+  {
     slug: 'maklerprovision-zweifamilienhaus-bgh',
     title: 'Maklerprovision Zweifamilienhaus: BGH-Urteil 2026',
     description: 'BGH-Urteil vom 16. Juli 2026: Beim Zweifamilienhaus greift die 50/50-Regel nicht. Käufer können dann statt 3,57 % die volle Provision tragen — bis zu 7,14 %.',
@@ -1905,6 +1921,7 @@ export const BLOG_POSTS: BlogMeta[] = [
 
 // Map slug → lazy component (filled as posts are written)
 export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.ComponentType>> = {
+  'jung-kauft-alt-kfw-308-2026': lazy(() => import('./jung-kauft-alt-kfw-308-2026')),
   'maklerprovision-zweifamilienhaus-bgh': lazy(() => import('./maklerprovision-zweifamilienhaus-bgh')),
   'heizungsgesetz-reform-2026-kaeufer': lazy(() => import('./heizungsgesetz-reform-2026-kaeufer')),
   'immobilienbewertung-vergleich': lazy(() => import('./immobilienbewertung-vergleich')),
