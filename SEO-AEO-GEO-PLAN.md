@@ -238,7 +238,10 @@ PerplexityBot, OAI-SearchBot, Google-Extended), FAQPage-Schema, Kaufnebenkosten-
 ### 5.3a Wochen-Audit 03.08.2026 — Top-3-Befunde (offen)
 
 Basis: Analyse aller 177 vorgerenderten Routen im `dist`-Artefakt plus Live-Abruf von
-robots.txt und llms.txt. Keine Schätzwerte, alle Zahlen ausgezählt.
+robots.txt und llms.txt. Keine Schätzwerte, alle Zahlen ausgezählt. Weil der lokale Build
+zum Audit-Zeitpunkt nicht committete Arbeitsstände enthielt (u. a. `Landing.tsx`,
+`BlogIndex.tsx`, `BlogLayout.tsx`), sind **alle drei Befunde zusätzlich direkt gegen die
+Live-Domain gegengeprüft** und dort bestätigt worden.
 
 **Fundament ist sauber** — daher nur drei echte Befunde: 0 Orphan-Seiten, 0 doppelte Titles,
 0 fehlende Canonicals, 0 fehlende Alt-Attribute, 177/177 Seiten mit genau einem H1, alle
@@ -248,7 +251,7 @@ Titles ≤ 60 Zeichen (Median 56), Schema auf allen Seiten außer den vier Recht
 | # | Befund | Evidenz | Empfehlung | Aufwand |
 |---|---|---|---|---|
 | 1 | Konversionsseiten intern fast nicht verlinkt | `/beispiel-analyse` und `/beispiel-premium-report` haben je **1** eingehenden internen Link; Blog-Artikel liegen typisch bei 5–15 | Aus den Kauf-nahen Ratgebern (`immobilienbewertung-vergleich`, `chatgpt-expose-pruefen`, `expose-pruefen`, `kostenlose-immobilienbewertung-serioes`) und der Rechner-Sektion kontextuell verlinken | 0,5 Tag |
-| 2 | Themen-Hubs zu dünn | `/blog/thema/besichtigung` 241 Wörter, `/blog/thema/energie` 275 Wörter — reine Linklisten ohne einordnenden Text | Je 250–400 Wörter Einleitung pro Hub (Was gehört zum Thema, in welcher Reihenfolge lesen); Hubs sollen selbst ranken und Link-Equity weitergeben | 1 Tag |
+| 2 | Zwei Themen-Hubs ohne Einleitungstext | `/blog/thema/besichtigung` 241 Wörter, `/blog/thema/energie` 275 Wörter — reine Linklisten. Zum Vergleich: `/blog/thema/finanzierung` hat **1.374** Wörter, das Template kann es also bereits | Die beiden dünnen Hubs nach dem Muster von `thema/finanzierung` nachziehen (Was gehört zum Thema, in welcher Reihenfolge lesen). Kein neues Template nötig — reine Textarbeit | 1 Tag |
 | 3 | Alt-Texte aller Beitragsbilder generisch | **118 von 118** Blog-Artikeln: Hero-Bild-`alt` ist identisch mit dem H1, beschreibt also nicht das Bild | Alt-Text als eigenes Feld in `BlogMeta` (Fallback: Titel), bei neuen Artikeln direkt bildbeschreibend pflegen; Bestand schrittweise nachziehen. Bringt Google-Bilder-Sichtbarkeit und echten Screenreader-Nutzen | 0,5 Tag + laufend |
 
 Nicht als Befund gewertet (geprüft, unkritisch): 11 Meta-Descriptions < 140 Zeichen — davon 4
