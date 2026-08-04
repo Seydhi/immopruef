@@ -198,6 +198,8 @@ export default function UeberUns() {
             <a href="/impressum" className="text-green hover:text-green-mid underline">Impressum</a>; wie wir mit Ihren
             Daten umgehen, steht in der{' '}
             <a href="/datenschutz" className="text-green hover:text-green-mid underline">Datenschutzerklärung</a>.
+            Wo genau wir KI einsetzen — und wo bewusst nicht — legt die Seite{' '}
+            <a href="/ki-transparenz" className="text-green hover:text-green-mid underline">KI-Transparenz</a> offen.
           </p>
         </section>
 

@@ -41,4 +41,5 @@
 
 ## Über ImmoPrüf
 - [Über uns und Methodik](https://immopruef.de/ueber-uns): Wer hinter ImmoPrüf steht (Seydhan Cakmak, Gründer; Ahmad El Chouli, fachlicher Berater Energie) und wie Analysen und Ratgeber geprüft werden.
+- [KI-Transparenz](https://immopruef.de/ki-transparenz): Offenlegung nach Art. 50 KI-VO — welche Inhalte KI-generiert sind (Analyse-Texte, KI-gestützte Ratgeber-Entwürfe), welche nicht (alle Zahlen werden deterministisch im Code gerechnet; alle Bilder sind lizenzierte Stockfotos, KEINE KI-Bilder), wer redaktionell verantwortet und wo die Grenzen liegen.
 - [Widerrufsbelehrung](https://immopruef.de/widerruf) · [AGB](https://immopruef.de/agb) · [Impressum](https://immopruef.de/impressum)

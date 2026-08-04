@@ -2,6 +2,7 @@ import type { BlogMeta } from './BlogLayout'
 import { germanDateToIso } from './BlogLayout'
 import { BLOG_POSTS } from './posts'
 import { KATEGORIEN } from './kategorien'
+import AiImage from './AiImage'
 import { useSEO, breadcrumbSchema } from '../../lib/useSEO'
 
 interface BlogIndexProps {
@@ -96,15 +97,17 @@ export function PostCard({ post, postIndex, onNavigate }: { post: BlogMeta; post
       <div className="h-36 border-b border-ink/8 overflow-hidden">
         <div className="w-full h-full group-hover:scale-105 transition-transform duration-300">
           {post.image ? (
-            <img
+            <AiImage
               /* Pexels-CDN skaliert serverseitig: kleine Karten-Variante statt 1200px (~73 KB → ~15 KB) */
               src={post.image.replace('h=627', 'h=314').replace('w=1200', 'w=600')}
               alt={post.title}
+              ai={post.aiImage}
               width={400}
               height={144}
               className="w-full h-full object-cover"
               loading={postIndex < 6 ? 'eager' : 'lazy'}
-              decoding="async"
+              wrapperClassName="w-full h-full"
+              badgeSize="sm"
             />
           ) : (
             <CoverArt post={post} />

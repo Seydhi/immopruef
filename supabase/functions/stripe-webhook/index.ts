@@ -319,6 +319,11 @@ serve(async (req) => {
         Bei Fragen antworten Sie einfach auf diese E-Mail oder kontaktieren Sie uns unter
         <a href="mailto:info@immopruef.de" style="color:#1a6b3c;text-decoration:none;">info@immopruef.de</a>
       </p>
+      <p style="margin:0 0 8px;font-size:11px;color:#999;line-height:1.4;">
+        Hinweis: Ihre Analyse wird von einem KI-System automatisiert erstellt. Beträge werden
+        deterministisch berechnet, Schätzwerte sind gekennzeichnet.
+        <a href="${appUrl}/ki-transparenz" style="color:#1a6b3c;text-decoration:none;">Wie wir KI einsetzen</a>
+      </p>
       <p style="margin:0;font-size:11px;color:#bbb;">
         <a href="${appUrl}" style="color:#1a6b3c;text-decoration:none;">immopruef.de</a> · Professionelle Immobilienanalyse
       </p>

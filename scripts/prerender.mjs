@@ -75,6 +75,7 @@ async function getRoutes() {
     '/datenschutz',
     '/agb',
     '/widerruf',
+    '/ki-transparenz',
     '/barrierefreiheit',
     '/rechner',
     '/grunderwerbsteuer-rechner',

@@ -652,12 +652,18 @@ function DisclaimerBanner() {
     >
       <span aria-hidden="true" className="text-lg leading-none mt-0.5 shrink-0">⚠️</span>
       <div className="text-[12.5px] leading-relaxed text-amber-900">
-        <span className="font-medium">Wichtiger Hinweis: </span>
-        Diese Analyse ist eine <strong>automatisierte KI-Auswertung</strong> öffentlich
-        verfügbarer Daten und dient als <strong>Informationsgrundlage</strong> — sie stellt
-        keine Rechts-, Steuer- oder Finanzberatung dar und ersetzt keinen Sachverständigen
-        oder Gutachter. Vor einer Kaufentscheidung bitte stets offizielle Dokumente
+        <span className="font-medium">KI-generierte Analyse — wichtiger Hinweis: </span>
+        Dieser Bericht wurde <strong>von einem KI-System automatisiert erstellt</strong> und nicht
+        einzeln von einer Person freigegeben. Er wertet öffentlich verfügbare Daten aus und dient
+        als <strong>Informationsgrundlage</strong> — er stellt keine Rechts-, Steuer- oder
+        Finanzberatung dar und ersetzt keinen Sachverständigen oder Gutachter. Alle Beträge werden
+        deterministisch im Programmcode gerechnet; Werte ohne Beleg sind als Schätzwert
+        gekennzeichnet. Vor einer Kaufentscheidung bitte stets offizielle Dokumente
         (Grundbuch, Bebauungsplan, Energieausweis) und bei Bedarf einen Fachmann hinzuziehen.{' '}
+        <a href="/ki-transparenz" target="_blank" rel="noopener noreferrer" className="underline hover:text-amber-950">
+          Wie wir KI einsetzen
+        </a>
+        {' · '}
         <a href="/agb" target="_blank" rel="noopener noreferrer" className="underline hover:text-amber-950">
           Vollständiger Haftungsausschluss
         </a>

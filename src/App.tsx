@@ -17,6 +17,7 @@ import BlogIndex from './components/blog/BlogIndex'
 import BlogLayout from './components/blog/BlogLayout'
 import BlogKategorie from './components/blog/BlogKategorie'
 import BeispielAnalyse from './components/BeispielAnalyse'
+import KiTransparenz from './components/KiTransparenz'
 import { kategorieForSlug } from './components/blog/kategorien'
 import Rechner from './components/Rechner'
 import Budgetrechner from './components/Budgetrechner'
@@ -46,6 +47,7 @@ type AppView =
   | { type: 'datenschutz' }
   | { type: 'agb' }
   | { type: 'widerruf' }
+  | { type: 'ki-transparenz' }
   | { type: 'barrierefreiheit' }
   | { type: 'beispiel-analyse'; variant: 'standard' | 'premium' }
   | { type: 'rechner' }
@@ -121,6 +123,7 @@ export default function App() {
     if (path === '/datenschutz') { setView({ type: 'datenschutz' }); return }
     if (path === '/agb') { setView({ type: 'agb' }); return }
     if (path === '/widerruf') { setView({ type: 'widerruf' }); return }
+    if (path === '/ki-transparenz') { setView({ type: 'ki-transparenz' }); return }
     if (path === '/barrierefreiheit') { setView({ type: 'barrierefreiheit' }); return }
     if (path === '/beispiel-analyse') { setView({ type: 'beispiel-analyse', variant: 'standard' }); return }
     if (path === '/beispiel-premium-report') { setView({ type: 'beispiel-analyse', variant: 'premium' }); return }
@@ -239,7 +242,7 @@ export default function App() {
           </div>
         )}
 
-        {(view.type === 'impressum' || view.type === 'datenschutz' || view.type === 'agb' || view.type === 'widerruf' || view.type === 'barrierefreiheit' || view.type === 'beispiel-analyse') && (
+        {(view.type === 'impressum' || view.type === 'datenschutz' || view.type === 'agb' || view.type === 'widerruf' || view.type === 'ki-transparenz' || view.type === 'barrierefreiheit' || view.type === 'beispiel-analyse') && (
           <div>
             <button
               onClick={() => { window.history.pushState({}, '', '/'); setView({ type: 'landing' }) }}
@@ -251,6 +254,7 @@ export default function App() {
             {view.type === 'datenschutz' && <Datenschutz />}
             {view.type === 'agb' && <AGB />}
             {view.type === 'widerruf' && <Widerruf />}
+            {view.type === 'ki-transparenz' && <KiTransparenz />}
             {view.type === 'barrierefreiheit' && <Barrierefreiheit />}
             {view.type === 'beispiel-analyse' && (
               <ErrorBoundary context={`beispiel:${view.variant}`}>
@@ -331,6 +335,8 @@ export default function App() {
           <a href="/kaufnebenkosten-index" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/kaufnebenkosten-index'); setView({ type: 'kaufnebenkosten-index' }); window.scrollTo(0, 0) }} className="hover:text-green transition-colors">Kaufnebenkosten je Bundesland</a>
           <span className="text-ink/20">·</span>
           <a href="/ueber-uns" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/ueber-uns'); setView({ type: 'ueber-uns' }); window.scrollTo(0, 0) }} className="hover:text-green transition-colors">Über uns</a>
+          <span className="text-ink/20">·</span>
+          <a href="/ki-transparenz" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/ki-transparenz'); setView({ type: 'ki-transparenz' }); window.scrollTo(0, 0) }} className="hover:text-green transition-colors">KI-Transparenz</a>
           <span className="text-ink/20">·</span>
           <a href="/impressum" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/impressum'); setView({ type: 'impressum' }); window.scrollTo(0, 0) }} className="hover:text-green transition-colors">Impressum</a>
           <span className="text-ink/20">·</span>

@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import { BLOG_POSTS } from './posts'
 import { kategorieForTags } from './kategorien'
+import AiImage from './AiImage'
 import { useSEO, articleSchema, breadcrumbSchema, faqSchema } from '../../lib/useSEO'
 
 // Benannter Autor (E-E-A-T): Seydhan Cakmak ist laut /ueber-uns redaktionell
@@ -29,6 +30,13 @@ export interface BlogMeta {
   readTime: string
   tags: string[]
   image?: string
+  /**
+   * NUR true setzen, wenn das Bild tatsächlich von einem generativen KI-Modell
+   * erzeugt wurde. Dann wird es sichtbar im Bild, im Alt-Text und maschinenlesbar
+   * gekennzeichnet (Art. 50 KI-VO). Bei lizenzierten Stockfotos bleibt es false —
+   * ein KI-Label auf einem echten Foto wäre eine Falschangabe.
+   */
+  aiImage?: boolean
   faq?: { question: string; answer: string }[]
 }
 
@@ -183,7 +191,9 @@ export default function BlogLayout({ meta, children }: BlogLayoutProps) {
         <div className="mt-2 text-xs text-ink-light">
           Von{' '}
           <a href="/ueber-uns" className="text-green hover:text-green-mid">Seydhan Cakmak</a>
-          {' '}(ImmoPrüf-Redaktion) · recherchiert &amp; faktengeprüft
+          {' '}(ImmoPrüf-Redaktion) ·{' '}
+          <a href="/ki-transparenz" className="text-green hover:text-green-mid">KI-gestützt erstellt</a>
+          , redaktionell geprüft
           {meta.tags.includes('Energie') && (
             <>
               {' '}· fachlich geprüft von{' '}
@@ -202,20 +212,20 @@ export default function BlogLayout({ meta, children }: BlogLayoutProps) {
       </header>
 
       {meta.image && (
-        <div className="mb-8 rounded-xl overflow-hidden" style={{ aspectRatio: '16 / 9' }}>
-          <img
-            src={meta.image}
-            srcSet={`${meta.image.replace('h=627', 'h=356').replace('w=1200', 'w=680')} 680w, ${meta.image} 1200w`}
-            sizes="(max-width: 720px) 100vw, 680px"
-            alt={meta.title}
-            width={800}
-            height={450}
-            className="w-full h-48 sm:h-64 object-cover"
-            loading="eager"
-            fetchPriority="high"
-            decoding="async"
-          />
-        </div>
+        <AiImage
+          src={meta.image}
+          srcSet={`${meta.image.replace('h=627', 'h=356').replace('w=1200', 'w=680')} 680w, ${meta.image} 1200w`}
+          sizes="(max-width: 720px) 100vw, 680px"
+          alt={meta.title}
+          ai={meta.aiImage}
+          width={800}
+          height={450}
+          className="w-full h-48 sm:h-64 object-cover"
+          loading="eager"
+          fetchPriority="high"
+          wrapperClassName="mb-8 rounded-xl overflow-hidden"
+          wrapperStyle={{ aspectRatio: '16 / 9' }}
+        />
       )}
 
       <div className="prose-immo">

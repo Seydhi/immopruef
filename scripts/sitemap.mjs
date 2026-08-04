@@ -67,6 +67,7 @@ const staticUrls = [
     'sachsen', 'sachsen-anhalt', 'schleswig-holstein', 'thueringen',
   ].map((s) => ({ loc: `${BASE}/bodenrichtwert-${s}`, lastmod: today, changefreq: 'monthly', priority: '0.7' })),
   { loc: `${BASE}/ueber-uns`, lastmod: today, changefreq: 'yearly', priority: '0.5' },
+  { loc: `${BASE}/ki-transparenz`, lastmod: today, changefreq: 'yearly', priority: '0.5' },
 ]
 const legalUrls = [
   { loc: `${BASE}/impressum`, lastmod: today, changefreq: 'yearly', priority: '0.2' },

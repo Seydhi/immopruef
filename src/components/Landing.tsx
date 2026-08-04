@@ -191,6 +191,14 @@ export default function Landing() {
         <p className="text-[12px] text-green/90 font-medium mt-1.5">
           Käuferseitig · keine Makler-Leads · keine Werbeanrufe
         </p>
+        {/* Art. 50 Abs. 1 u. 5 KI-VO: Hinweis auf das KI-System spätestens bei der
+            ersten Interaktion — also vor der Bestellung, nicht erst im Ergebnis. */}
+        <p className="text-[12px] text-ink-light mt-1.5">
+          Die Analyse wird von einem KI-System erstellt.{' '}
+          <a href="/ki-transparenz" className="underline hover:text-green transition-colors">
+            Wie wir KI einsetzen
+          </a>
+        </p>
       </div>
 
       <div ref={formRef} id="analyse-form" className="bg-white border border-ink/20 rounded-xl p-6 shadow-sm">

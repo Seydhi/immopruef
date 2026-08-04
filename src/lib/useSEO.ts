@@ -64,6 +64,11 @@ export function useSEO(meta: SEOMeta): void {
       }
     }
 
+    // KI-Transparenz (Art. 50 KI-VO): maschinenlesbarer Hinweis, dass Inhalte
+    // KI-gestützt entstehen. Bei Artikeln zusätzlich der redaktionelle Status.
+    setMeta('ai-generated', meta.type === 'article' ? 'ai-assisted, human-reviewed' : 'ai-assisted')
+    setMeta('ai-disclosure', `${SITE_URL}/ki-transparenz`)
+
     // Twitter Card
     setMeta('twitter:card', 'summary_large_image', 'name')
     setMeta('twitter:title', fullTitle, 'name')
