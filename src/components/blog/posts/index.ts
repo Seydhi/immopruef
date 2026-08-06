@@ -4,6 +4,22 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'ueberbau-grundstuecksgrenze-bgh-2026',
+    title: 'Überbau beim Hauskauf: Was das BGH-Urteil 2026 ändert',
+    description: 'BGH-Urteil vom 26. Juni 2026: Der Überbau über die Grundstücksgrenze ist nur ein Sachmangel — der Haftungsausschluss im Kaufvertrag greift dann voll.',
+    date: '6. August 2026',
+    readTime: '8 Min',
+    tags: ['Kaufratgeber', 'Recht'],
+    image: 'https://images.pexels.com/photos/5487403/pexels-photo-5487403.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Was ist ein entschuldigter Überbau?', answer: 'Von einem entschuldigten Überbau spricht man, wenn jemand bei der Errichtung eines Gebäudes über die Grundstücksgrenze gebaut hat, ohne dass ihm Vorsatz oder grobe Fahrlässigkeit vorzuwerfen ist (§ 912 Abs. 1 BGB). Der Nachbar muss den Überbau dann dulden, sofern er nicht vor oder sofort nach der Grenzüberschreitung widersprochen hat. Als Ausgleich erhält er eine jährlich im Voraus zu zahlende Überbaurente.' },
+      { question: 'Was hat der BGH am 26. Juni 2026 zum Überbau entschieden?', answer: 'Der Bundesgerichtshof hat entschieden, dass ein entschuldigter Überbau beim Grundstückskauf keinen Rechtsmangel begründet, sondern ausschließlich einen Sachmangel (Az. V ZR 78/25). Maßgeblich ist, dass die nachbarrechtliche Bindung an die tatsächliche Beschaffenheit des Grundstücks anknüpft. Der BGH hat die Entscheidung des Oberlandesgerichts Rostock aufgehoben und die Sache zur neuen Verhandlung dorthin zurückverwiesen.' },
+      { question: 'Warum ist die Einordnung als Sachmangel für Käufer ein Nachteil?', answer: 'In Kaufverträgen über gebrauchte Immobilien wird die Sachmängelhaftung fast immer vollständig ausgeschlossen, die Rechtsmängelhaftung dagegen nicht. Weil der Überbau nun als Sachmangel gilt, greift dieser Ausschluss. Der Käufer kommt nur weiter, wenn er nach § 444 BGB arglistiges Verschweigen nachweist — und die Verjährung beträgt bei Bauwerken fünf Jahre ab Übergabe statt bis zu 30 Jahren wie beim Rechtsmangel.' },
+      { question: 'Steht ein Überbau im Grundbuch?', answer: 'Nein. Nach § 914 Abs. 2 BGB wird das Recht auf die Überbaurente ausdrücklich nicht in das Grundbuch eingetragen. Eine Eintragung ist nur erforderlich, wenn auf das Recht verzichtet oder die Höhe der Rente vertraglich festgestellt werden soll. Ein Grundbuchauszug allein deckt einen Überbau deshalb nicht auf.' },
+      { question: 'Wie erkenne ich einen Überbau vor dem Notartermin?', answer: 'Fordern Sie die amtliche Flurkarte beim Katasteramt an: Sie zeigt Flurstücksgrenzen und Gebäudeumringe übereinander, sodass eine Grenzüberschreitung sichtbar wird. Gehen Sie bei der Besichtigung zusätzlich die Grenze ab und suchen Sie Grenzsteine, denn Zäune und Hecken entsprechen oft nicht dem Kataster. Bei Zweifeln führen die Katasterbehörde oder öffentlich bestellte Vermessungsingenieure eine Grenzermittlung durch.' },
+    ],
+  },
+  {
     slug: 'jung-kauft-alt-kfw-308-2026',
     title: 'Jung kauft Alt: KfW 308 ab August 2026 bis 180.000 €',
     description: 'KfW 308 „Jung kauft Alt": seit 3. August 2026 bis zu 180.000 € Kredit für Familien, die einen Altbau der Klasse F, G oder H kaufen und energetisch sanieren.',
@@ -1921,6 +1937,7 @@ export const BLOG_POSTS: BlogMeta[] = [
 
 // Map slug → lazy component (filled as posts are written)
 export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.ComponentType>> = {
+  'ueberbau-grundstuecksgrenze-bgh-2026': lazy(() => import('./ueberbau-grundstuecksgrenze-bgh-2026')),
   'jung-kauft-alt-kfw-308-2026': lazy(() => import('./jung-kauft-alt-kfw-308-2026')),
   'maklerprovision-zweifamilienhaus-bgh': lazy(() => import('./maklerprovision-zweifamilienhaus-bgh')),
   'heizungsgesetz-reform-2026-kaeufer': lazy(() => import('./heizungsgesetz-reform-2026-kaeufer')),
