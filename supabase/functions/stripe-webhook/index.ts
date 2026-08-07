@@ -1,8 +1,7 @@
 // Supabase Edge Function: stripe-webhook
 // Handles Stripe webhook events, marks orders as paid
 
-import { serve } from 'https://deno.land/std@0.177.0/http/server.ts'
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+import { createClient } from 'npm:@supabase/supabase-js@2'
 
 // ═══════════════════════════════════════════════════════════════
 // Manual webhook signature verification (no SDK dependency)
@@ -79,7 +78,7 @@ async function verifyWebhookSignature(
 // Main Handler
 // ═══════════════════════════════════════════════════════════════
 
-serve(async (req) => {
+Deno.serve(async (req) => {
   if (req.method !== 'POST') {
     return new Response('Method not allowed', { status: 405 })
   }
@@ -177,6 +176,28 @@ serve(async (req) => {
       // Mark event processed AFTER successful order update
       await supabase.from('processed_events').insert({ event_id: event.id }).catch(() => {})
 
+      // Serverseitig starten: Die Analyse darf nicht davon abhängen, dass der
+      // Kunde nach dem Stripe-Redirect die Ergebnisseite geöffnet lässt.
+      const supabaseUrl = Deno.env.get('SUPABASE_URL')!
+      const serviceRoleKey = Deno.env.get('SB_SERVICE_ROLE_KEY')!
+      EdgeRuntime.waitUntil(
+        fetch(`${supabaseUrl}/functions/v1/analyze`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${serviceRoleKey}`,
+            'apikey': serviceRoleKey,
+          },
+          body: JSON.stringify({ session_id: sessionId, worker_depth: 0 }),
+        }).then(async (response) => {
+          if (!response.ok) {
+            console.error(`Analyze kickoff failed: HTTP ${response.status} — ${(await response.text()).slice(0, 300)}`)
+          }
+        }).catch((error) => {
+          console.error('Analyze kickoff could not call analyze:', error)
+        })
+      )
+
       // ═══════════════════════════════════════════════════════
       // Send instant confirmation email
       // ═══════════════════════════════════════════════════════
@@ -227,7 +248,7 @@ serve(async (req) => {
                 </tr>`
             }).join('')
 
-          const estimatedMinutes = isPremium ? '3–5' : (orderAnalyses?.length || 1) > 1 ? '3–6' : '1–3'
+          const estimatedMinutes = isPremium ? '5–12' : (orderAnalyses?.length || 1) > 1 ? '4–10' : '3–8'
 
           console.log(`Sending confirmation email to ${email}`)
 

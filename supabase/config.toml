@@ -5,3 +5,11 @@ project_id = "nhziphgjgodwttypmqgy"
 # Die Sicherheit wird durch die HMAC-Signatur-Verifikation in der Function selbst gewaehrleistet.
 [functions.stripe-webhook]
 verify_jwt = false
+
+# Browser-Polling nutzt den Stripe-Session-Identifier; interne Worker-Aufrufe
+# werden zusätzlich im Handler über den Service-Key erkannt.
+[functions.analyze]
+verify_jwt = false
+
+[functions.get-analysis]
+verify_jwt = false

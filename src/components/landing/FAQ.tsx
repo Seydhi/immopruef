@@ -11,7 +11,7 @@ export const FAQS = [
   },
   {
     q: 'Wie lange dauert eine Analyse?',
-    a: 'Eine Analyse dauert ca. 2–3 Minuten. Sie erhalten das Ergebnis direkt auf der Seite und zusätzlich per E-Mail. Bei mehreren Immobilien läuft die Analyse nacheinander.',
+    a: 'Ein Quick-Check ist meist nach 3–8 Minuten fertig, mehrere Objekte und Premium-Reports brauchen je nach Inserat und Datenlage etwas länger. Sie erhalten das Ergebnis direkt auf der Seite und zusätzlich per E-Mail. Die Analyse läuft auch weiter, wenn Sie die Seite schließen.',
   },
   {
     q: 'Wie genau sind die Ergebnisse?',

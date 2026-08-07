@@ -40,7 +40,7 @@ import { BLOG_POSTS, POST_COMPONENTS } from './components/blog/posts'
 type AppView =
   | { type: 'landing' }
   | { type: 'loading'; sessionId: string }
-  | { type: 'results'; order: OrderResult }
+  | { type: 'results'; order: OrderResult; sessionId: string }
   | { type: 'permalink'; analysis: Analysis }
   | { type: 'error'; message: string }
   | { type: 'impressum' }
@@ -81,12 +81,12 @@ export default function App() {
     setTimedOut(false)
     setProgress(null)
 
-    const maxAttempts = 120 // 10 minutes (120 × 5s)
+    const maxAttempts = 186 // ca. 30 Minuten: 1 Min. schnell, danach weniger Last
     for (let attempt = 0; attempt < maxAttempts; attempt++) {
       try {
         const result = await pollAnalysis(sessionId)
         if (result.order_status === 'completed' || result.order_status === 'failed') {
-          setView({ type: 'results', order: result })
+          setView({ type: 'results', order: result, sessionId })
           return
         }
         // Track progress for multi-URL orders
@@ -95,15 +95,15 @@ export default function App() {
           setProgress({ completed: done, total: result.analyses.length })
         }
         if (result.order_status === 'pending') {
-          await new Promise((r) => setTimeout(r, 5000))
+          await new Promise((r) => setTimeout(r, attempt < 12 ? 5000 : 10000))
           continue
         }
         // processing
-        await new Promise((r) => setTimeout(r, 5000))
+        await new Promise((r) => setTimeout(r, attempt < 12 ? 5000 : 10000))
       } catch (err) {
         // Polling failed (network/server). Wait then retry — don't crash UI.
         console.warn('[startPolling] poll failed, retrying:', err)
-        await new Promise((r) => setTimeout(r, 5000))
+        await new Promise((r) => setTimeout(r, attempt < 12 ? 5000 : 10000))
       }
     }
     setTimedOut(true)
@@ -213,7 +213,11 @@ export default function App() {
 
         {view.type === 'results' && (
           <ErrorBoundary context="results-view">
-            <ResultsView analyses={view.order.analyses} onBack={handleBack} />
+            <ResultsView
+              analyses={view.order.analyses}
+              onBack={handleBack}
+              onRetryComplete={() => startPolling(view.sessionId)}
+            />
           </ErrorBoundary>
         )}
 

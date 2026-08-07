@@ -14,6 +14,7 @@ const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
   'Access-Control-Allow-Headers': 'Content-Type, Authorization, x-client-info, apikey',
+  'Access-Control-Max-Age': '86400',
 }
 
 function jsonResponse(body: unknown, status = 200) {
@@ -676,6 +677,56 @@ function logBatchMessage(id: string, msg: BatchMessage): void {
   )
 }
 
+function usageMetrics(msg: BatchMessage): Record<string, number | string> {
+  const usage = (msg.usage || {}) as Record<string, unknown>
+  const serverTools = (usage.server_tool_use || {}) as Record<string, unknown>
+  const numberOrZero = (value: unknown): number =>
+    typeof value === 'number' && Number.isFinite(value) ? value : 0
+
+  return {
+    model: ANTHROPIC_MODEL,
+    input_tokens: numberOrZero(usage.input_tokens),
+    output_tokens: numberOrZero(usage.output_tokens),
+    cache_creation_input_tokens: numberOrZero(usage.cache_creation_input_tokens),
+    cache_read_input_tokens: numberOrZero(usage.cache_read_input_tokens),
+    web_search_requests: numberOrZero(serverTools.web_search_requests),
+  }
+}
+
+const WORKER_POLL_DELAY_MS = 15_000
+const WORKER_MAX_DEPTH = 120 // höchstens 30 Minuten selbständig nachfassen
+
+function scheduleWorkerPoll(sessionId: string, depth: number): void {
+  const supabaseUrl = Deno.env.get('SUPABASE_URL')
+  const serviceRoleKey = Deno.env.get('SB_SERVICE_ROLE_KEY')
+  if (!supabaseUrl || !serviceRoleKey || depth > WORKER_MAX_DEPTH) {
+    if (depth > WORKER_MAX_DEPTH) {
+      console.error(`Worker polling stopped after ${WORKER_MAX_DEPTH} attempts for ${sessionId}`)
+    }
+    return
+  }
+
+  EdgeRuntime.waitUntil((async () => {
+    await new Promise((resolve) => setTimeout(resolve, WORKER_POLL_DELAY_MS))
+    try {
+      const response = await fetch(`${supabaseUrl}/functions/v1/analyze`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${serviceRoleKey}`,
+          'apikey': serviceRoleKey,
+        },
+        body: JSON.stringify({ session_id: sessionId, worker_depth: depth }),
+      })
+      if (!response.ok) {
+        console.error(`Worker poll ${depth} failed: HTTP ${response.status}`)
+      }
+    } catch (error) {
+      console.error(`Worker poll ${depth} could not call analyze:`, error)
+    }
+  })())
+}
+
 // ═══════════════════════════════════════════════════════════════
 // Helpers
 // ═══════════════════════════════════════════════════════════════
@@ -1031,15 +1082,27 @@ Deno.serve(async (req) => {
     return jsonResponse({ error: 'Method not allowed' }, 405)
   }
 
+  const serviceRoleKey = Deno.env.get('SB_SERVICE_ROLE_KEY')!
+  const isInternalWorker =
+    req.headers.get('apikey') === serviceRoleKey &&
+    req.headers.get('Authorization') === `Bearer ${serviceRoleKey}`
+  let internalSessionId = ''
+  let internalWorkerDepth = 0
+
   try {
-    const { session_id } = await req.json()
+    const { session_id, worker_depth = 0 } = await req.json()
     if (!session_id) {
       return jsonResponse({ error: 'session_id required' }, 400)
     }
+    internalSessionId = session_id
+    const parsedWorkerDepth = Number(worker_depth)
+    internalWorkerDepth = Number.isInteger(parsedWorkerDepth) && parsedWorkerDepth >= 0
+      ? parsedWorkerDepth
+      : 0
 
     const supabase = createClient(
       Deno.env.get('SUPABASE_URL')!,
-      Deno.env.get('SB_SERVICE_ROLE_KEY')!
+      serviceRoleKey
     )
 
     // Look up order
@@ -1358,17 +1421,25 @@ Deno.serve(async (req) => {
         const scraperUrl = Deno.env.get('SCRAPER_URL')
         const scraperKey = Deno.env.get('SCRAPER_API_KEY')
 
-        if (scraperUrl && scraperKey) {
+        if (!exposeMarkdown && scraperUrl && scraperKey) {
           try {
             console.log(`Calling scraper for ${cleanUrl}...`)
-            const scrapeRes = await fetch(`${scraperUrl}/scrape`, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-                'X-API-Key': scraperKey,
-              },
-              body: JSON.stringify({ url: analysis.url }),
-            })
+            const scraperController = new AbortController()
+            const scraperTimer = setTimeout(() => scraperController.abort(), 30_000)
+            let scrapeRes: Response
+            try {
+              scrapeRes = await fetch(`${scraperUrl}/scrape`, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'X-API-Key': scraperKey,
+                },
+                body: JSON.stringify({ url: analysis.url }),
+                signal: scraperController.signal,
+              })
+            } finally {
+              clearTimeout(scraperTimer)
+            }
             if (scrapeRes.ok) {
               scrapedData = await scrapeRes.json()
               console.log(`Scraper returned data for ${cleanUrl} — fields: ${Object.keys(scrapedData || {}).filter(k => (scrapedData as any)[k] !== null).length}`)
@@ -1551,7 +1622,13 @@ WICHTIG:
             // Inserat offline? Definitiver Zustand — ehrlich speichern, kein Retry.
             if (parsed?.error === 'listing_unavailable') {
               console.warn(`Listing offline: ${a.url} — ${parsed.hinweis ?? ''}`)
-              await supabase.from('analyses').update({ status: 'failed', result: parsed }).eq('id', a.id)
+              await supabase.from('analyses').update({
+                status: 'failed',
+                result: parsed,
+                failed_at: new Date().toISOString(),
+                last_error: 'listing_unavailable',
+                ...usageMetrics(r.message),
+              }).eq('id', a.id)
               continue
             }
 
@@ -1566,7 +1643,14 @@ WICHTIG:
               console.warn('recomputeFinances failed — keeping LLM values:', e)
             }
 
-            await supabase.from('analyses').update({ result: parsed, status: 'completed' }).eq('id', a.id)
+            await supabase.from('analyses').update({
+              result: parsed,
+              status: 'completed',
+              completed_at: new Date().toISOString(),
+              failed_at: null,
+              last_error: null,
+              ...usageMetrics(r.message),
+            }).eq('id', a.id)
             console.log(`Analyse ${a.id} completed (Batch ${bid})`)
             continue
           } catch (e) {
@@ -1580,11 +1664,19 @@ WICHTIG:
         const tries = a.retry_count ?? 0
         if (tries < 2) {
           await supabase.from('analyses').update({
-            status: 'pending', batch_id: null, processing_started_at: null, retry_count: tries + 1,
+            status: 'pending',
+            batch_id: null,
+            processing_started_at: null,
+            retry_count: tries + 1,
+            last_error: `Batch result: ${r?.type || 'missing_or_invalid'}`,
           }).eq('id', a.id)
           console.log(`Analyse ${a.id}: neu eingereiht (Retry ${tries + 1}/2)`)
         } else {
-          await supabase.from('analyses').update({ status: 'failed' }).eq('id', a.id)
+          await supabase.from('analyses').update({
+            status: 'failed',
+            failed_at: new Date().toISOString(),
+            last_error: `Batch result: ${r?.type || 'missing_or_invalid'}`,
+          }).eq('id', a.id)
           console.error(`Analyse ${a.id}: endgültig failed nach ${tries} Retries`)
         }
       }
@@ -1595,11 +1687,16 @@ WICHTIG:
     const pendings = ((afterB || []) as Row[]).filter((a) => a.status === 'pending')
     if (pendings.length > 0) {
       const requests: Array<{ custom_id: string; params: Record<string, unknown> }> = []
+      const claimedAnalyses: Row[] = []
       for (const a of pendings) {
         // Atomarer Claim — parallele Polls prallen ab
         const { data: claimed } = await supabase
           .from('analyses')
-          .update({ status: 'processing', processing_started_at: new Date().toISOString() })
+          .update({
+            status: 'processing',
+            processing_started_at: new Date().toISOString(),
+            last_error: null,
+          })
           .eq('id', a.id)
           .eq('status', 'pending')
           .select('id')
@@ -1613,34 +1710,53 @@ WICHTIG:
           await supabase.from('analyses').update({
             status: 'failed',
             result: { error: 'URL ist nicht von einem unterstützten Portal' },
+            failed_at: new Date().toISOString(),
+            last_error: 'unsupported_listing_url',
           }).eq('id', a.id)
           continue
         }
 
+        claimedAnalyses.push(a)
+      }
+
+      // Duo-/Triple-Pakete parallel vorbereiten. Zuvor wurden bis zu drei
+      // Portalabrufe seriell ausgeführt.
+      const prepared = await Promise.all(claimedAnalyses.map(async (a) => {
+        const hasFiles = Array.isArray(a.file_paths) && (a.file_paths as string[]).length > 0
         try {
           const userContent = hasFiles
             ? await buildFileUserContent(a)
             : [{ type: 'text', text: await buildUserMessage(a), cache_control: { type: 'ephemeral' } }]
-          requests.push({ custom_id: a.id, params: buildMessageParams(systemPrompt, userContent, maxTokens, isPremium) })
+          return { custom_id: a.id, params: buildMessageParams(systemPrompt, userContent, maxTokens, isPremium) }
         } catch (e) {
           console.error(`buildUserMessage fehlgeschlagen für ${a.id}:`, e)
           // Claim lösen — nächster Poll versucht es erneut
-          await supabase.from('analyses').update({ status: 'pending', processing_started_at: null }).eq('id', a.id)
+          await supabase.from('analyses').update({
+            status: 'pending',
+            processing_started_at: null,
+            last_error: e instanceof Error ? e.message.slice(0, 500) : String(e).slice(0, 500),
+          }).eq('id', a.id)
+          return null
         }
-      }
+      }))
+      requests.push(...prepared.filter((r): r is { custom_id: string; params: Record<string, unknown> } => r !== null))
 
       if (requests.length > 0) {
         try {
           const batch = await submitBatch(requests, anthropicKey)
-          for (const r of requests) {
+          await Promise.all(requests.map(async (r) => {
             await supabase.from('analyses').update({ batch_id: batch.id }).eq('id', r.custom_id)
-          }
+          }))
           console.log(`Batch ${batch.id} submitted: ${requests.length} Analyse(n), ${ANTHROPIC_MODEL}`)
         } catch (e) {
           console.error('Batch-Submit fehlgeschlagen:', e)
-          for (const r of requests) {
-            await supabase.from('analyses').update({ status: 'pending', processing_started_at: null }).eq('id', r.custom_id)
-          }
+          await Promise.all(requests.map(async (r) => {
+            await supabase.from('analyses').update({
+              status: 'pending',
+              processing_started_at: null,
+              last_error: e instanceof Error ? e.message.slice(0, 500) : String(e).slice(0, 500),
+            }).eq('id', r.custom_id)
+          }))
         }
       }
     }
@@ -1649,10 +1765,16 @@ WICHTIG:
     await finalize()
     const { data: finalState } = await supabase.from('analyses').select('*').eq('order_id', order.id)
     const done = ((finalState || []) as Row[]).every((a) => a.status === 'completed' || a.status === 'failed')
+    if (!done && isInternalWorker) {
+      scheduleWorkerPoll(session_id, internalWorkerDepth + 1)
+    }
     return jsonResponse({ order_status: done ? 'completed' : 'processing', analyses: finalState })
 
   } catch (err) {
     console.error('Analyze error:', err)
+    if (isInternalWorker && internalSessionId) {
+      scheduleWorkerPoll(internalSessionId, internalWorkerDepth + 1)
+    }
     return jsonResponse({ error: 'Interner Fehler' }, 500)
   }
 })

@@ -2,8 +2,7 @@
 // Resets a failed analysis back to pending so it gets re-processed
 // No additional payment required — uses the existing paid order
 
-import { serve } from 'https://deno.land/std@0.177.0/http/server.ts'
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+import { createClient } from 'npm:@supabase/supabase-js@2'
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
@@ -18,7 +17,7 @@ function jsonResponse(body: unknown, status = 200) {
   })
 }
 
-serve(async (req) => {
+Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response(null, { status: 204, headers: CORS_HEADERS })
   }
@@ -28,9 +27,9 @@ serve(async (req) => {
   }
 
   try {
-    const { analysis_id } = await req.json()
-    if (!analysis_id) {
-      return jsonResponse({ error: 'analysis_id required' }, 400)
+    const { analysis_id, token } = await req.json()
+    if (!analysis_id || typeof token !== 'string' || !/^[A-Za-z0-9_-]{12,64}$/.test(token)) {
+      return jsonResponse({ error: 'analysis_id and token required' }, 400)
     }
 
     const supabase = createClient(
@@ -41,8 +40,9 @@ serve(async (req) => {
     // Verify the analysis exists and is failed
     const { data: analysis, error: fetchErr } = await supabase
       .from('analyses')
-      .select('*, orders!inner(status)')
+      .select('*, orders!inner(status, stripe_session_id)')
       .eq('id', analysis_id)
+      .eq('token', token)
       .single()
 
     if (fetchErr || !analysis) {
@@ -54,10 +54,24 @@ serve(async (req) => {
     }
 
     // Reset analysis to pending
-    await supabase
+    const { data: updated, error: updateError } = await supabase
       .from('analyses')
-      .update({ status: 'pending', result: null })
+      .update({
+        status: 'pending',
+        result: null,
+        batch_id: null,
+        processing_started_at: null,
+        failed_at: null,
+        last_error: null,
+      })
       .eq('id', analysis_id)
+      .select('id, token, url, options, status, result, created_at')
+      .single()
+
+    if (updateError || !updated) {
+      console.error('Failed to reset analysis:', updateError)
+      return jsonResponse({ error: 'Could not reset analysis' }, 500)
+    }
 
     // Reset order to paid (so analyze function picks it up)
     await supabase
@@ -67,7 +81,30 @@ serve(async (req) => {
 
     console.log(`Analysis ${analysis_id} reset for retry`)
 
-    return jsonResponse({ success: true, message: 'Analysis queued for retry' })
+    const orderRelation = analysis.orders as
+      | { stripe_session_id?: string }
+      | Array<{ stripe_session_id?: string }>
+      | null
+    const sessionId = Array.isArray(orderRelation)
+      ? orderRelation[0]?.stripe_session_id
+      : orderRelation?.stripe_session_id
+    if (sessionId) {
+      const supabaseUrl = Deno.env.get('SUPABASE_URL')!
+      const serviceRoleKey = Deno.env.get('SB_SERVICE_ROLE_KEY')!
+      EdgeRuntime.waitUntil(
+        fetch(`${supabaseUrl}/functions/v1/analyze`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${serviceRoleKey}`,
+            'apikey': serviceRoleKey,
+          },
+          body: JSON.stringify({ session_id: sessionId, worker_depth: 0 }),
+        }).catch((error) => console.error('Retry kickoff failed:', error))
+      )
+    }
+
+    return jsonResponse(updated)
   } catch (err) {
     console.error('Retry error:', err)
     return jsonResponse({ error: 'Internal error' }, 500)
