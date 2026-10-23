@@ -297,7 +297,7 @@ PFLICHT-HINWEISE:
 - stresstest: IMMER 3 Szenarien (Zinserhöhung auf 5,5%, Sonderumlage 15.000€, Einkommensverlust 30%). Korrekt berechnen.
 - kaufenVsMieten: IMMER berechnen. Vergleichsmiete per Web-Suche aus dem Mietpreisspiegel der Stadt recherchieren.
 - modernisierung.items: IMMER mindestens 6 Bauteile (Heizung, Fenster, Elektrik, Bad, Dach, Fassade). Alter NUR ableiten wenn Baujahr im Exposé steht.
-- gesamtkosten: Grunderwerbsteuer KORREKT je Bundesland (Stand 2026): Bayern 3,5%, BaWü 5,0%, Niedersachsen 5,0%, RLP 5,0%, Sachsen-Anhalt 5,0%, Thüringen 5,0%, Bremen 5,5%, Hamburg 5,5%, Sachsen 5,5%, Berlin 6,0%, Hessen 6,0%, MV 6,0%, Brandenburg 6,5%, NRW 6,5%, SH 6,5%, Saarland 6,5%.
+- gesamtkosten: Grunderwerbsteuer KORREKT je Bundesland (Stand 2026): Bayern 3,5%, BaWü 5,0%, Niedersachsen 5,0%, RLP 5,0%, Sachsen-Anhalt 5,0%, Thüringen 5,0%, Bremen 5,5% (seit 01.07.2025!), Hamburg 5,5%, Sachsen 5,5%, Berlin 6,0%, Hessen 6,0%, MV 6,0%, Brandenburg 6,5%, NRW 6,5%, SH 6,5%, Saarland 6,5%. Diese Tabelle (bzw. der im Nutzer-Prompt genannte Satz) ist VERBINDLICH — Web-Suchergebnisse zur Grunderwerbsteuer sind häufig veraltet und dürfen die Tabelle NICHT übersteuern. Denselben Satz in steuerlicheAspekte und marktdaten verwenden.
 - laufendeKosten: Diese Werte stehen FAST NIE im Exposé — sie müssen IMMER berechnet/recherchiert werden:
   * Hausgeld: Aus Exposé wenn vorhanden, sonst ca. 3-4 €/m²/Monat als Durchschnitt
   * Grundsteuer: IMMER recherchieren (Hebesatz der Gemeinde × Grundsteuerwert). Wenn nicht findbar: ca. 50-120 €/Monat je nach Stadt
@@ -615,7 +615,9 @@ function buildMessageParams(
     // Adaptive Thinking: sucht zuverlässiger (Pflicht-Websearches); effort medium
     // hält Thinking-Anteil und Kosten im Rahmen.
     thinking: { type: 'adaptive' },
-    output_config: { effort: 'medium' },
+    // Audit Okt. 2026: 'medium' ließ Pflicht-Websearches und Rechenwege aus —
+    // 'high' ist bei 12–28 Suchen und 24–56k Output der angemessene Rahmen.
+    output_config: { effort: 'high' },
     // cache_control: System-Prompt wird pro Such-Iteration neu gelesen — Cache
     // macht Iteration 2..N ~90% günstiger.
     system: [{ type: 'text', text: systemPrompt, cache_control: { type: 'ephemeral' } }],
@@ -802,19 +804,42 @@ function sourceMatchesCity(src: { titel?: string; url?: string }, cityTerms: str
 
 // Filter out sources that don't match the object's city.
 // Logs the filtered count for monitoring.
-function validateSources(result: Record<string, unknown>): number {
+// Erreichbarkeits-Check einer Quelle. Nur eindeutig tote Links fliegen raus
+// (Netzfehler, 404/410, 5xx). 403/405/429 gelten als "lebt, aber Bot-Schutz" —
+// Immowelt/ImmoScout antworten Crawlern grundsätzlich mit 403.
+async function sourceIsAlive(url: string): Promise<boolean> {
+  if (!/^https?:\/\//i.test(url)) return false
+  const ctrl = new AbortController()
+  const timer = setTimeout(() => ctrl.abort(), 6000)
+  try {
+    const res = await fetch(url, { method: 'HEAD', redirect: 'follow', signal: ctrl.signal,
+      headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) ImmoPruef-SourceCheck/1.0' } })
+    if (res.status === 404 || res.status === 410 || res.status >= 500) return false
+    return true
+  } catch {
+    return false
+  } finally {
+    clearTimeout(timer)
+  }
+}
+
+async function validateSources(result: Record<string, unknown>): Promise<number> {
   const quellen = result.quellen as Array<{ titel?: string; url?: string; kategorie?: string }> | undefined
   if (!Array.isArray(quellen)) return 0
 
-  const cityTerms = extractObjektStadt(result)
-  if (cityTerms.length === 0) return 0
-
   const before = quellen.length
-  const filtered = quellen.filter(q => sourceMatchesCity(q, cityTerms))
+  const cityTerms = extractObjektStadt(result)
+  let filtered = cityTerms.length > 0 ? quellen.filter(q => sourceMatchesCity(q, cityTerms)) : quellen
+  const afterCity = filtered.length
+
+  // Audit Okt. 2026: ein Kundenreport verlinkte eine nicht erreichbare Domain.
+  const alive = await Promise.all(filtered.map(q => sourceIsAlive(String(q.url || ''))))
+  filtered = filtered.filter((_, i) => alive[i])
+
   result.quellen = filtered
   const removed = before - filtered.length
   if (removed > 0) {
-    console.warn(`validateSources: removed ${removed}/${before} sources not matching city [${cityTerms.join(', ')}]`)
+    console.warn(`validateSources: ${before} → ${afterCity} (Stadt-Match [${cityTerms.join(', ')}]) → ${filtered.length} (erreichbar)`)
   }
   return removed
 }
@@ -884,6 +909,90 @@ function formatPercent(n: number): string {
   return n.toFixed(2).replace('.', ',') + ' %'
 }
 
+// ═══════════════════════════════════════════════════════════════
+// Bundesland-Erkennung + Grunderwerbsteuer-Kanon
+// Hintergrund: In drei auditierten Reports (Okt. 2026) hat das Modell für
+// Bremen durchgehend 5,0 % statt der seit 01.07.2025 geltenden 5,5 % angesetzt
+// — trotz korrekter Tabelle im System-Prompt (Web-Suche liefert Altdaten).
+// Der Satz wird deshalb hier verbindlich aus dem Bundesland abgeleitet und
+// (a) dem Modell vorgegeben, (b) nach der Antwort erzwungen.
+// Tabelle = Kanon aus src/lib/kaufnebenkosten.ts (Frontend-Rechner).
+// ═══════════════════════════════════════════════════════════════
+const GREST_SATZ: Record<string, number> = {
+  'Baden-Württemberg': 5.0, 'Bayern': 3.5, 'Berlin': 6.0, 'Brandenburg': 6.5,
+  'Bremen': 5.5, 'Hamburg': 5.5, 'Hessen': 6.0, 'Mecklenburg-Vorpommern': 6.0,
+  'Niedersachsen': 5.0, 'Nordrhein-Westfalen': 6.5, 'Rheinland-Pfalz': 5.0,
+  'Saarland': 6.5, 'Sachsen': 5.5, 'Sachsen-Anhalt': 5.0, 'Schleswig-Holstein': 6.5,
+  'Thüringen': 5.0,
+}
+
+// PLZ-Leitregionen (erste zwei Ziffern) → Bundesland, NUR wo eindeutig.
+// Mehrdeutige Regionen (z. B. 28 = Bremen/Niedersachsen, 21/22 = Hamburg/SH/NDS,
+// 14 = Berlin/Brandenburg) sind bewusst NICHT enthalten → dort entscheidet nur
+// ein expliziter Orts-/Landesname, sonst keine Übersteuerung.
+const PLZ2_LAND: Record<string, string> = {
+  '01': 'Sachsen', '02': 'Sachsen', '04': 'Sachsen', '08': 'Sachsen', '09': 'Sachsen',
+  '03': 'Brandenburg', '15': 'Brandenburg', '16': 'Brandenburg',
+  '06': 'Sachsen-Anhalt', '39': 'Sachsen-Anhalt',
+  '07': 'Thüringen', '98': 'Thüringen', '99': 'Thüringen',
+  '10': 'Berlin', '11': 'Berlin', '12': 'Berlin', '13': 'Berlin',
+  '17': 'Mecklenburg-Vorpommern', '18': 'Mecklenburg-Vorpommern', '19': 'Mecklenburg-Vorpommern',
+  '20': 'Hamburg',
+  '23': 'Schleswig-Holstein', '24': 'Schleswig-Holstein', '25': 'Schleswig-Holstein',
+  '26': 'Niedersachsen', '29': 'Niedersachsen', '30': 'Niedersachsen', '31': 'Niedersachsen',
+  '38': 'Niedersachsen', '49': 'Niedersachsen',
+  '27': 'Niedersachsen', // Bremerhaven (275xx) wird über den Ortsnamen erkannt
+  '32': 'Nordrhein-Westfalen', '33': 'Nordrhein-Westfalen', '40': 'Nordrhein-Westfalen',
+  '41': 'Nordrhein-Westfalen', '42': 'Nordrhein-Westfalen', '44': 'Nordrhein-Westfalen',
+  '45': 'Nordrhein-Westfalen', '46': 'Nordrhein-Westfalen', '47': 'Nordrhein-Westfalen',
+  '48': 'Nordrhein-Westfalen', '50': 'Nordrhein-Westfalen', '51': 'Nordrhein-Westfalen',
+  '52': 'Nordrhein-Westfalen', '53': 'Nordrhein-Westfalen', '57': 'Nordrhein-Westfalen',
+  '58': 'Nordrhein-Westfalen', '59': 'Nordrhein-Westfalen',
+  '34': 'Hessen', '35': 'Hessen', '36': 'Hessen', '60': 'Hessen', '61': 'Hessen',
+  '63': 'Hessen', '64': 'Hessen', '65': 'Hessen',
+  '54': 'Rheinland-Pfalz', '55': 'Rheinland-Pfalz', '56': 'Rheinland-Pfalz', '67': 'Rheinland-Pfalz',
+  '66': 'Saarland',
+  '68': 'Baden-Württemberg', '69': 'Baden-Württemberg', '70': 'Baden-Württemberg',
+  '71': 'Baden-Württemberg', '72': 'Baden-Württemberg', '73': 'Baden-Württemberg',
+  '74': 'Baden-Württemberg', '75': 'Baden-Württemberg', '76': 'Baden-Württemberg',
+  '77': 'Baden-Württemberg', '78': 'Baden-Württemberg', '79': 'Baden-Württemberg',
+  '88': 'Baden-Württemberg', '89': 'Baden-Württemberg',
+  '80': 'Bayern', '81': 'Bayern', '82': 'Bayern', '83': 'Bayern', '84': 'Bayern',
+  '85': 'Bayern', '86': 'Bayern', '87': 'Bayern', '90': 'Bayern', '91': 'Bayern',
+  '92': 'Bayern', '93': 'Bayern', '94': 'Bayern', '95': 'Bayern', '96': 'Bayern', '97': 'Bayern',
+}
+
+// Erkennung aus beliebigem Text (Exposé-Markdown ODER fertiges Ergebnis).
+// Reihenfolge: explizites "Bundesland: X" → Stadtstaaten-Ortsname → PLZ-Region.
+// Kopfzeilen für die Nutzer-Nachricht: Datum (für "aktuell"/"Stand"-Angaben und
+// Bauzins-Recherche) + verbindliches Bundesland/GrESt, wenn erkennbar.
+function kontextKopf(exposeText: string | null): string {
+  const heute = new Date().toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric', timeZone: 'Europe/Berlin' })
+  const land = exposeText ? detectBundesland(exposeText) : null
+  const landZeile = land
+    ? `BUNDESLAND (aus dem Exposé ermittelt): ${land} → Grunderwerbsteuer ${GREST_SATZ[land].toFixed(1).replace('.', ',')} % — VERBINDLICH, nicht per Web-Suche "prüfen" (Suchergebnisse enthalten oft veraltete Sätze).\n`
+    : ''
+  return `HEUTIGES DATUM: ${heute} — verwende es für alle "aktuell"/"Stand"-Angaben; Bauzinsen immer für diesen Monat recherchieren.\n${landZeile}\n`
+}
+
+function detectBundesland(text: string): string | null {
+  if (!text) return null
+  const m = text.match(/Bundesland\s*:\s*([A-Za-zÄÖÜäöüß-]+(?:\s[A-Za-zÄÖÜäöüß-]+)?)/)
+  if (m) {
+    const hit = Object.keys(GREST_SATZ).find(l => m[1].toLowerCase().startsWith(l.toLowerCase().slice(0, 6)))
+    if (hit) return hit
+  }
+  // Stadtstaaten + Bremerhaven: Ortsname ist eindeutig
+  const plzOrt = text.match(/\b(\d{5})\s+(Bremen|Bremerhaven|Hamburg|Berlin)\b/)
+  if (plzOrt) return plzOrt[2] === 'Bremerhaven' ? 'Bremen' : plzOrt[2]
+  const plz = text.match(/\b(0[1-9]|[1-9]\d)\d{3}\b/)
+  if (plz) {
+    const land = PLZ2_LAND[plz[1]]
+    if (land) return land
+  }
+  return null
+}
+
 // Annuitätendarlehen mit monatlicher Verrechnung (marktüblich)
 function annuity(darlehen: number, zinsPct: number, tilgPct: number) {
   const monthlyRate = darlehen * (zinsPct + tilgPct) / 100 / 12
@@ -920,8 +1029,27 @@ function recomputeFinances(result: Record<string, unknown>): void {
   const objektdaten = result.objektdaten as Array<{ merkmal?: string; wert?: string }> | undefined
   const kaufpreis = parseGermanNumber(gk?.kaufpreis)
     ?? parseGermanNumber(objektdaten?.find(o => /kaufpreis/i.test(o.merkmal || ''))?.wert)
+  const wohnflaeche = parseGermanNumber(objektdaten?.find(o => /wohnfl/i.test(o.merkmal || ''))?.wert)
+
+  // 0) Grunderwerbsteuer verbindlich aus dem Bundesland (Adresse/PLZ im Ergebnis)
+  const adresse = objektdaten?.find(o => /adresse/i.test(o.merkmal || ''))?.wert || ''
+  const land = detectBundesland(adresse) ?? detectBundesland(JSON.stringify(objektdaten || ''))
+  if (land && gk?.kaufnebenkosten?.grunderwerbsteuer) {
+    const soll = GREST_SATZ[land]
+    const ist = parseGermanNumber(gk.kaufnebenkosten.grunderwerbsteuer.satz)
+    gk.kaufnebenkosten.grunderwerbsteuer.satz = `${soll.toFixed(1).replace('.', ',')}% (${land})`
+    if (ist !== null && Math.abs(ist - soll) > 0.01) {
+      console.warn(`GrESt korrigiert: Modell ${ist}% → Kanon ${soll}% (${land})`)
+      fixed.push(`grest(${ist}→${soll})`)
+    }
+    // Marktdaten-Kennzahl angleichen, falls vorhanden
+    for (const m of (result.marktdaten as Array<Record<string, unknown>> | undefined) || []) {
+      if (/grunderwerbsteuer/i.test(String(m.kennzahl || ''))) m.wert = `${soll.toFixed(1).replace('.', ',')}% (${land})`
+    }
+  }
 
   // 1) Kaufnebenkosten: betrag = satz × kaufpreis, gesamt = Summe
+  let nkSum: number | null = null
   if (gk?.kaufnebenkosten && kaufpreis && kaufpreis > 10_000) {
     const nk = gk.kaufnebenkosten
     let sum = 0
@@ -937,7 +1065,19 @@ function recomputeFinances(result: Record<string, unknown>): void {
     }
     if (ok) {
       nk.gesamt = formatEuro(sum)
+      nkSum = sum
       fixed.push('kaufnebenkosten')
+    }
+  }
+
+  // 1b) Gesamtbewertung = gewichtete Formel aus dem Prompt (Modell rundet/rechnet sonst frei)
+  const sc = result.scores as Record<string, unknown> | undefined
+  if (sc) {
+    const n = (k: string) => (typeof sc[k] === 'number' ? (sc[k] as number) : parseGermanNumber(sc[k]))
+    const l = n('lage'), p = n('preis_leistung'), z = n('zustand'), e = n('energie'), f = n('finanzierung')
+    if ([l, p, z, e, f].every(v => v !== null && v >= 1 && v <= 10)) {
+      sc.gesamtbewertung = Math.round((l! * 0.25 + p! * 0.25 + z! * 0.2 + e! * 0.15 + f! * 0.15) * 10) / 10
+      fixed.push('gesamtbewertung')
     }
   }
 
@@ -952,11 +1092,21 @@ function recomputeFinances(result: Record<string, unknown>): void {
   }
 
   // 3) finanzierung.szenarien: Rate, Restschuld nach 10J, Gesamtlaufzeit
+  // Darlehen = Kaufpreis + (korrigierte) Nebenkosten − Eigenkapital, damit eine
+  // GrESt-Korrektur konsistent bis in die Rate durchschlägt.
   const fin = result.finanzierung as Record<string, any> | undefined
+  let standardSz: { darlehen: number; zins: number; tilg: number; ek: number } | null = null
   if (fin && Array.isArray(fin.szenarien)) {
     for (const sz of fin.szenarien) {
+      const ek = parseGermanNumber(sz?.eigenkapital)
+      if (kaufpreis && nkSum !== null && ek !== null && ek >= 0 && ek < kaufpreis) {
+        sz.darlehenssumme = formatEuro(kaufpreis + nkSum - ek)
+      }
       const inp = parseLoanInputs(sz, 'darlehenssumme')
       if (!inp) continue
+      if (/standard/i.test(String(sz.name || '')) || /20\s*%/.test(String(sz.eigenkapital || ''))) {
+        standardSz = { ...inp, ek: ek ?? 0 }
+      }
       const a = annuity(inp.darlehen, inp.zins, inp.tilg)
       sz.monatlicheRate = formatEuro(a.monthlyRate)
       sz.restschuld10Jahre = formatEuro(a.balanceAfter(120))
@@ -972,6 +1122,10 @@ function recomputeFinances(result: Record<string, unknown>): void {
   if (fd && Array.isArray(fd.cashflow)) {
     let mittlere: { darlehen: number; zins: number; tilg: number } | null = null
     for (const cf of fd.cashflow) {
+      const ek = parseGermanNumber(cf?.eigenkapitalBetrag)
+      if (kaufpreis && nkSum !== null && ek !== null && ek >= 0 && ek < kaufpreis) {
+        cf.darlehen = formatEuro(kaufpreis + nkSum - ek)
+      }
       const inp = parseLoanInputs(cf, 'darlehen')
       if (!inp) continue
       const a = annuity(inp.darlehen, inp.zins, inp.tilg)
@@ -1011,6 +1165,73 @@ function recomputeFinances(result: Record<string, unknown>): void {
         mr.nettorendite = formatPercent(netto / kaufpreis * 100) + ' p.a. (vor Steuer)'
       }
       fixed.push('mietrendite')
+    }
+  }
+
+  // 6) Kaufen vs. Mieten + 30-Jahres-Vermögensvergleich — deterministisch.
+  // Audit Okt. 2026: Das Modell rechnete den Vergleich pro Report nach anderer
+  // Methode (mal nur Zinsen, mal volle Annuität; mal mit, mal ohne Mietsteigerung)
+  // und lieferte breakEvenJahr teils als Text. Jetzt EINE transparente Modellrechnung:
+  const KVM = { wertsteigerung: 0.02, mietsteigerung: 0.02, etfRendite: 0.06, nichtUmlagefaehigAnteil: 0.35 }
+  const kvm = fin?.kaufenVsMieten as Record<string, unknown> | undefined
+  const miete0 = kvm ? parseGermanNumber(kvm.mpiMieteMonat) : null
+  const lk = (gk?.laufendeKosten || []) as Array<Record<string, unknown>>
+  if (kaufpreis && nkSum !== null && standardSz && miete0 && wohnflaeche
+      && miete0 / wohnflaeche > 3 && miete0 / wohnflaeche < 35) {
+    // Eigentümer-spezifische (nicht umlagefähige) Kosten: Rücklage/Instandhaltung/Verwaltung.
+    // Ohne Aufschlüsselung: 35 % des Hausgelds; ganz ohne Hausgeld: 1,20 €/m² (EFH-Faustwert).
+    const row = (re: RegExp) => lk.filter(p => re.test(String(p.position || ''))).map(p => parseGermanNumber(p.betragMonat) ?? 0)
+    const explizit = row(/rücklage|instandhalt|verwaltung/i).reduce((a, b) => a + b, 0)
+    const hausgeld = row(/^hausgeld/i)[0] ?? 0
+    const eigentuemer0 = explizit > 0 ? explizit : hausgeld > 0 ? hausgeld * KVM.nichtUmlagefaehigAnteil : wohnflaeche * 1.2
+
+    const a = annuity(standardSz.darlehen, standardSz.zins, standardSz.tilg)
+    const rate = a.monthlyRate
+    const months = a.totalMonths() ?? 480
+    const ek = standardSz.ek
+    let etf = ek, buyerSide = 0, kostenKauf20 = 0, kostenMiete20 = 0
+    const kauf: number[] = [], mieteEtf: number[] = []
+    let breakEven: number | null = null
+    for (let m = 0; m <= 360; m++) {
+      const jahr = Math.floor(m / 12)
+      const wachstum = Math.pow(1 + KVM.mietsteigerung, jahr)
+      if (m % 60 === 0) {
+        const immo = kaufpreis * Math.pow(1 + KVM.wertsteigerung, m / 12)
+        const vermKauf = immo - a.balanceAfter(m) + buyerSide
+        kauf.push(vermKauf); mieteEtf.push(etf)
+      }
+      if (m > 0 && breakEven === null) {
+        const immo = kaufpreis * Math.pow(1 + KVM.wertsteigerung, m / 12)
+        if (immo - a.balanceAfter(m) + buyerSide >= etf) breakEven = Math.ceil(m / 12)
+      }
+      if (m === 360) break
+      const miete = miete0 * wachstum
+      const kaufKosten = (m < months ? rate : 0) + eigentuemer0 * wachstum
+      if (m < 240) { kostenKauf20 += kaufKosten; kostenMiete20 += miete }
+      const diff = kaufKosten - miete
+      const r = KVM.etfRendite / 12
+      etf = etf * (1 + r) + Math.max(0, diff)
+      buyerSide = buyerSide * (1 + r) + Math.max(0, -diff)
+    }
+    const v20Kauf = kauf[4], v20Miete = mieteEtf[4]
+    const vorteil = v20Kauf >= v20Miete ? 'kaufen' : 'mieten'
+    const annahmen = `Annahmen: Wertsteigerung ${KVM.wertsteigerung * 100} % p.a., Mietsteigerung ${KVM.mietsteigerung * 100} % p.a., ETF ${KVM.etfRendite * 100} % p.a. nach Kosten, Zins ${formatPercent(standardSz.zins)} über die gesamte Laufzeit (Standard-Szenario, 20 % EK); nicht umlagefähige Eigentümerkosten ${formatEuro(eigentuemer0)}/Monat. Modellrechnung, keine Prognose.`
+    if (kvm) {
+      kvm.kostenKauf20Jahre = `${formatEuro(kostenKauf20)} (Rate + Eigentümerkosten über 20 Jahre)`
+      kvm.kostenMiete20Jahre = `${formatEuro(kostenMiete20)} (Kaltmiete über 20 Jahre, ${KVM.mietsteigerung * 100} % p.a. steigend)`
+      kvm.vorteil = vorteil
+      kvm.differenz = `Vermögen nach 20 Jahren im Modell: Kauf ${formatEuro(v20Kauf)} vs. Miete + ETF ${formatEuro(v20Miete)} — rechnerisch ${formatEuro(Math.abs(v20Kauf - v20Miete))} zugunsten ${vorteil === 'kaufen' ? 'des Kaufs' : 'der Miete'}. ${annahmen}`
+      fixed.push('kaufenVsMieten')
+    }
+    if (pr) {
+      pr.vermoegensvergleich = {
+        jahre: [0, 5, 10, 15, 20, 25, 30],
+        vermoegenKauf: kauf.map(formatEuro),
+        vermoegenMieteEtf: mieteEtf.map(formatEuro),
+        breakEvenJahr: breakEven ?? null,
+        annahmen,
+      }
+      fixed.push('vermoegensvergleich')
     }
   }
 
@@ -1108,8 +1329,10 @@ Deno.serve(async (req) => {
     const systemPrompt = isPremium
       ? SYSTEM_PROMPT_STANDARD + SYSTEM_PROMPT_PREMIUM_ADDITION
       : SYSTEM_PROMPT_STANDARD
-    // Headroom für Sonnet-5-Tokenizer (~30% mehr Tokens) + Adaptive-Thinking-Anteil
-    const maxTokens = isPremium ? 56000 : 24000
+    // Headroom für Sonnet-5-Tokenizer (~30% mehr Tokens) + Adaptive-Thinking-Anteil.
+    // Thinking-Tokens zählen gegen max_tokens — mit effort 'high' braucht Premium
+    // mehr Luft, sonst wird das JSON abgeschnitten (stop_reason max_tokens).
+    const maxTokens = isPremium ? 72000 : 32000
     const anthropicKey = Deno.env.get('ANTHROPIC_API_KEY')!
     const appUrl = Deno.env.get('APP_URL') || 'https://immopruef.de'
 
@@ -1389,7 +1612,7 @@ Deno.serve(async (req) => {
 
         if (scrapedData && (scrapedData.price || scrapedData.title)) {
           // SCRAPER SUCCESS: Claude gets structured data, only needs to search market data
-          userMessage = `Analysiere diese Kaufimmobilie vollständig.
+          userMessage = `${kontextKopf(exposeMarkdown)}Analysiere diese Kaufimmobilie vollständig.
 
 URL: ${cleanUrl}
 ${exposeId ? `Exposé-Nr: ${exposeId}` : ''}
@@ -1417,7 +1640,7 @@ WICHTIG:
         } else if (exposeMarkdown) {
           // JINA SUCCESS (no Playwright scraper): use Markdown as primary source
           console.log('Using Jina Reader Markdown as expose source')
-          userMessage = `Analysiere diese Kaufimmobilie vollständig.
+          userMessage = `${kontextKopf(exposeMarkdown)}Analysiere diese Kaufimmobilie vollständig.
 
 URL: ${cleanUrl}
 ${exposeId ? `Exposé-Nr: ${exposeId}` : ''}
@@ -1441,7 +1664,7 @@ WICHTIG:
         } else {
           // NEITHER Jina NOR Scraper worked: Fallback to pure web search (old behavior)
           console.log('Neither Jina nor Scraper available — falling back to web search')
-          userMessage = `Analysiere diese Kaufimmobilie vollständig.
+          userMessage = `${kontextKopf(exposeMarkdown)}Analysiere diese Kaufimmobilie vollständig.
 
 URL: ${cleanUrl}
 ${exposeId ? `Exposé-Nr: ${exposeId}` : ''}
@@ -1497,7 +1720,7 @@ WICHTIG:
 
       blocks.push({
         type: 'text',
-        text: `Analysiere diese Kaufimmobilie vollständig. Das Exposé liegt als Dokument/Fotos bei (KEIN Portal-Link).
+        text: `${kontextKopf(null)}Analysiere diese Kaufimmobilie vollständig. Das Exposé liegt als Dokument/Fotos bei (KEIN Portal-Link).
 
 SCHRITT 1: Extrahiere AKRIBISCH alle Objektdaten aus dem beiliegenden Material — jede Seite, jede Zahl, jedes Merkmal. Werte auch die Fotos aus und kennzeichne Bild-Einschätzungen mit "(aus Fotos abgeleitet)".
 SCHRITT 2: Plausibilisiere die Kerndaten per web_search (existiert Ort/Adresse? passt der Preis zum regionalen Niveau?) und recherchiere die Marktdaten der Region: Bodenrichtwert, Vergleichspreise €/m², Mietspiegel, Grundsteuer-Hebesatz, Bauzinsen.
@@ -1543,7 +1766,11 @@ WICHTIG:
 
       for (const a of withBatch.filter((x) => x.batch_id === bid)) {
         const r = results.get(a.id)
+        // Diagnose-Info für den Fehlerpfad — landet in analyses.result, weil die
+        // Function-Logs über die Management-API nicht zuverlässig abrufbar sind.
+        let lastError: Record<string, unknown> = { stage: 'batch', type: r?.type ?? 'missing', error: r?.error ?? null }
         if (r?.type === 'succeeded' && r.message) {
+          lastError = { stage: 'parse', stop_reason: r.message.stop_reason ?? null, usage: r.message.usage ?? null }
           logBatchMessage(a.id, r.message)
           try {
             const parsed = extractClaudeJson(r.message) as Record<string, unknown>
@@ -1559,7 +1786,11 @@ WICHTIG:
             if (warnings.length > 0) {
               console.warn(`Validation warnings (${warnings.length}):`, warnings.join('; '))
             }
-            validateSources(parsed)
+            try {
+              await validateSources(parsed)
+            } catch (e) {
+              console.warn('validateSources failed — keeping sources:', e)
+            }
             try {
               recomputeFinances(parsed)
             } catch (e) {
@@ -1571,6 +1802,7 @@ WICHTIG:
             continue
           } catch (e) {
             console.error(`Analyse ${a.id}: Batch-Ergebnis unbrauchbar:`, e)
+            lastError.detail = e instanceof Error ? e.message : String(e)
           }
         } else {
           console.error(`Analyse ${a.id}: Batch-Result ${r ? r.type : 'nicht gefunden'}`, r?.error ?? '')
@@ -1581,10 +1813,11 @@ WICHTIG:
         if (tries < 2) {
           await supabase.from('analyses').update({
             status: 'pending', batch_id: null, processing_started_at: null, retry_count: tries + 1,
+            result: { _debug_last_error: lastError },
           }).eq('id', a.id)
           console.log(`Analyse ${a.id}: neu eingereiht (Retry ${tries + 1}/2)`)
         } else {
-          await supabase.from('analyses').update({ status: 'failed' }).eq('id', a.id)
+          await supabase.from('analyses').update({ status: 'failed', result: { error: 'analysis_failed', _debug_last_error: lastError } }).eq('id', a.id)
           console.error(`Analyse ${a.id}: endgültig failed nach ${tries} Retries`)
         }
       }
@@ -1638,8 +1871,22 @@ WICHTIG:
           console.log(`Batch ${batch.id} submitted: ${requests.length} Analyse(n), ${ANTHROPIC_MODEL}`)
         } catch (e) {
           console.error('Batch-Submit fehlgeschlagen:', e)
+          const detail = e instanceof Error ? e.message : String(e)
+          // Submit-Fehler zählen als Versuch — sonst dreht ein dauerhaft scheiternder
+          // Submit (z. B. API-Guthaben, ungültiger Parameter) bei jedem Poll eine Runde.
           for (const r of requests) {
-            await supabase.from('analyses').update({ status: 'pending', processing_started_at: null }).eq('id', r.custom_id)
+            const row = pendings.find((p) => p.id === r.custom_id)
+            const tries = row?.retry_count ?? 0
+            if (tries < 2) {
+              await supabase.from('analyses').update({
+                status: 'pending', processing_started_at: null, retry_count: tries + 1,
+                result: { _debug_last_error: { stage: 'submit', detail } },
+              }).eq('id', r.custom_id)
+            } else {
+              await supabase.from('analyses').update({
+                status: 'failed', result: { error: 'analysis_failed', _debug_last_error: { stage: 'submit', detail } },
+              }).eq('id', r.custom_id)
+            }
           }
         }
       }

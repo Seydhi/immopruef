@@ -339,7 +339,8 @@ function VermoegenSlot({ data }: { data: NonNullable<PremiumReportType['vermoege
   return (
     <PremiumSection icon="📈" title="Kaufen vs. Mieten über 30 Jahre — Modellrechnung">
       <p className="text-xs text-ink-mid mb-3 leading-relaxed">
-        Modellhafter Vergleich auf Basis angenommener Wertsteigerung (Kauf) und ETF-Rendite (Miete + Sparplan). Die tatsächliche Entwicklung kann erheblich abweichen — persönliche Steuersituation, Mietentwicklung und Zinsniveau sind nicht berücksichtigt.
+        Modellhafter Vergleich: Der Käufer zahlt Kreditrate und nicht umlagefähige Eigentümerkosten, der Mieter zahlt Kaltmiete und legt die Differenz (plus das Eigenkapital) in einen ETF-Sparplan an. Beide Seiten werden deterministisch im Programmcode gerechnet, nicht vom KI-Modell.
+        {data.annahmen ? ` ${data.annahmen}` : ' Die tatsächliche Entwicklung kann erheblich abweichen — persönliche Steuersituation und Zinsniveau sind nicht berücksichtigt.'}
       </p>
       {hasValues ? (
         <>
@@ -363,9 +364,13 @@ function VermoegenSlot({ data }: { data: NonNullable<PremiumReportType['vermoege
               </tbody>
             </table>
           </div>
-          {hasBreakEven && (
+          {hasBreakEven ? (
             <div className="bg-stone-50 border border-stone-200 rounded-lg px-4 py-3 text-sm text-stone-800">
               <span className="font-medium">Rechnerischer Break-Even:</span> Nach etwa {data.breakEvenJahr} Jahren Haltedauer läge das Immobilienvermögen in diesem Modell rechnerisch über dem ETF-Portfolio. Dies ist eine Modellgröße, kein prognostizierter Vorteil.
+            </div>
+          ) : (
+            <div className="bg-stone-50 border border-stone-200 rounded-lg px-4 py-3 text-sm text-stone-800">
+              <span className="font-medium">Kein rechnerischer Break-Even innerhalb von 30 Jahren:</span> Unter den genannten Annahmen bleibt das Miete-plus-ETF-Vermögen im Modell durchgehend vorn. Das ist eine Modellgröße — sie hängt stark von Wertsteigerung, ETF-Rendite und Zinsniveau ab und ist kein Urteil über den Kauf.
             </div>
           )}
         </>

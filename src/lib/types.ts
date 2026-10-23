@@ -257,7 +257,9 @@ export interface Vermoegensvergleich {
   jahre: number[]
   vermoegenKauf: string[]
   vermoegenMieteEtf: string[]
-  breakEvenJahr: number
+  breakEvenJahr: number | null
+  /** Transparente Modellannahmen (wird serverseitig deterministisch gesetzt) */
+  annahmen?: string
 }
 
 export interface VorKaufCheckliste {
