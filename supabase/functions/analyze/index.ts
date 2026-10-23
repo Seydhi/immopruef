@@ -5,6 +5,7 @@
 
 import { createClient } from 'npm:@supabase/supabase-js@2'
 import Stripe from 'npm:stripe@17'
+import { STANDARD_SCHEMA, PREMIUM_SCHEMA } from './schema.ts'
 
 // ═══════════════════════════════════════════════════════════════
 // CORS
@@ -156,6 +157,9 @@ ZWINGENDE WEB-SEARCHES (MÜSSEN VOR DER JSON-ANTWORT DURCHGEFÜHRT WERDEN):
 3. "[Stadt] Grundsteuer Hebesatz"
 4. "Bauzinsen aktuell [heutiger Monat] 2026" (interhyp, dr-klein, check24)
 5. "[Stadt] Immobilienpreise €/m² [Stadtteil]" (immowelt-Marktdaten, ImmoScout24-Atlas)
+
+WEB_FETCH — SEITEN GANZ LESEN STATT SNIPPETS RATEN:
+Dir steht neben web_search auch web_fetch zur Verfügung. Nutze es PFLICHTGEMÄSS für die wertbestimmenden Zahlen: Nach jeder Suche, die eine konkrete Datenseite liefert (Mietspiegel-Seite/PDF der Stadt, BORIS-/Gutachterausschuss-Seite mit Bodenrichtwert, Grundsteuer-Hebesatz-Seite der Gemeinde, Marktbericht mit €/m²-Tabelle, Lärm-/Hochwasser-Portal), rufe die Seite mit web_fetch auf und entnimm den Wert aus dem VOLLTEXT — nicht aus dem Such-Snippet. Zitiere in "quellen" die gefetchte URL. Fetche keine Seiten ohne erkennbaren Datenwert und nicht mehrfach dieselbe URL.
 
 QUELLEN-REGELN:
 - Jede "quellen"-URL MUSS zur Stadt/Region des Objekts passen. Eine München-Quelle bei einem Bremerhaven-Objekt ist ein KRITISCHER FEHLER.
@@ -458,7 +462,7 @@ PREMIUM-REPORT — PFLICHT! Das JSON MUSS ein "premiumReport"-Objekt enthalten. 
 
 PREMIUM-PFLICHT-DETAILS:
 - vergleichswert.vergleichsobjekte: Recherchiere per Web-Suche vergleichbare AKTUELLE ANGEBOTE in der Umgebung (immowelt-/ImmoScout24-Inserate). 🚨 WICHTIG: Echte notarielle Verkaufspreise sind in Deutschland NICHT öffentlich verfügbar (nur Gutachterausschuss / Kaufpreissammlung, §195 BauGB). Gib daher ausschließlich ANGEBOTSPREISE an; das Feld "preis" ist ein Angebotspreis, kein Kaufpreis. Verwende NIEMALS "verkauft" oder behaupte abgeschlossene Verkäufe. Ziel: 3–6 vergleichbare Angebote mit Adresse/Stadtteil, €/m², Abweichung. Wenn die Web-Suche keine belastbaren Vergleichsangebote liefert, gib lieber 2–3 echte an statt 6 — erfinde NIEMALS Adressen oder Preise.
-- sachwert: Bodenwert mit echtem Bodenrichtwert berechnen (per Web-Suche). Gebäudewert nach NHK 2010. Alterswertminderung nach Ross-Verfahren.
+- sachwert: INDIKATIV und als solcher kennzeichnen. Bodenwert = Bodenrichtwert (per Web-Suche/web_fetch, BORIS) × anteilige Grundstücksfläche (bei ETW über Miteigentumsanteil; Fläche unbekannt → "Schätzwert" schreiben). Gebäudewert = NHK 2010 (Wohngebäude je nach Standard ca. 900–1.400 €/m² BGF) × Baupreisindex 2026 (ca. 1,9–2,0 gegenüber 2010) × Fläche — den Index AUSWEISEN. Alterswertminderung nach Ross (nicht linear): Minderung = ½ × (A/N + (A/N)²) mit A = Alter, N = Gesamtnutzungsdauer (ETW/EFH 80 Jahre, Modernisierung verlängert die Restnutzungsdauer). Rechenweg in den Feldern sichtbar machen; im Feld "sachwert" den Zusatz "(indikativ — kein Gutachten)" anhängen.
 - ertragswert: Jahresrohertrag aus ortsüblicher Vergleichsmiete (per Web-Suche Mietpreisspiegel). Liegenschaftszins vom Gutachterausschuss.
 - standortDossier.entfernungen: 6–12 POIs — NUR Ziele, die im Exposé genannt werden oder per Web-Suche konkret belegbar sind (z.B. nächster Bahnhof, benannter Park, Krankenhaus, Stadtzentrum, Autobahnanschluss). 🚨 ERFINDE NIEMALS Eigennamen von Kitas, Arztpraxen oder Geschäften ("Kita Sonnenschein", "Praxis Dr. Weber") — wenn kein Beleg findbar, formuliere generisch mit Kategorie ("Nächste Grundschule (laut Stadtteil-Info)"). ALLE Entfernungen und Fahrzeiten sind Näherungswerte und MÜSSEN mit "ca." beginnen. 6 belegbare Einträge sind besser als 12 geratene — lass Kategorien ohne Beleg weg.
 - hochwasserrisiko: Per Web-Suche "[Stadt] Hochwassergefahrenkarte" recherchieren. Wenn keine amtliche Karte gefunden: Risiko aus Gewässernähe/Topografie ableiten und kennzeichnen "(abgeleitet aus Lage — Hochwassergefahrenkarte des Landes selbst prüfen)".
@@ -564,6 +568,12 @@ DAS premiumReport-Objekt MUSS im JSON enthalten sein. Es ist NICHT optional. Der
 // neuer Tokenizer (~30% mehr Tokens als Sonnet 4), deutlich besseres
 // Agentic-/Web-Search-Verhalten. Per Env-Var übersteuerbar (z.B. für Tests).
 const ANTHROPIC_MODEL = Deno.env.get('ANTHROPIC_MODEL') || 'claude-sonnet-5'
+// Premium darf ein stärkeres Modell nutzen (z. B. claude-opus-5-5) — per Env umschaltbar,
+// ohne Deploy. Fällt auf ANTHROPIC_MODEL zurück.
+const ANTHROPIC_MODEL_PREMIUM = Deno.env.get('ANTHROPIC_MODEL_PREMIUM') || ANTHROPIC_MODEL
+// Structured Outputs (JSON-Schema-Zwang) — per Env abschaltbar; bei Schema-Fehlern
+// der API fällt die betroffene Analyse automatisch auf freies JSON zurück.
+const STRUCTURED_OUTPUT = Deno.env.get('STRUCTURED_OUTPUT') !== 'false'
 
 const TEST_MODE = Deno.env.get('TEST_MODE') === 'true'
 
@@ -605,24 +615,35 @@ function buildMessageParams(
   systemPrompt: string,
   userContent: Array<Record<string, unknown>>,
   maxTokens: number,
-  isPremium: boolean
+  isPremium: boolean,
+  structured: boolean
 ): Record<string, unknown> {
   // Premium gets more web searches for deeper research
   const webSearchMaxUses = isPremium ? 28 : 12
+  const webFetchMaxUses = isPremium ? 16 : 8
   return {
-    model: ANTHROPIC_MODEL,
+    model: isPremium ? ANTHROPIC_MODEL_PREMIUM : ANTHROPIC_MODEL,
     max_tokens: maxTokens,
+    // Structured Outputs: Antwort MUSS dem Schema entsprechen → kein kaputtes JSON,
+    // Zahlen als Zahlen, keine Retries wegen Parse-Fehlern.
+    ...(structured ? { output_config: { effort: 'high', format: { type: 'json_schema', schema: isPremium ? PREMIUM_SCHEMA : STANDARD_SCHEMA } } } : {}),
     // Adaptive Thinking: sucht zuverlässiger (Pflicht-Websearches); effort medium
     // hält Thinking-Anteil und Kosten im Rahmen.
     thinking: { type: 'adaptive' },
     // Audit Okt. 2026: 'medium' ließ Pflicht-Websearches und Rechenwege aus —
     // 'high' ist bei 12–28 Suchen und 24–56k Output der angemessene Rahmen.
-    output_config: { effort: 'high' },
+    ...(structured ? {} : { output_config: { effort: 'high' } }),
     // cache_control: System-Prompt wird pro Such-Iteration neu gelesen — Cache
     // macht Iteration 2..N ~90% günstiger.
     system: [{ type: 'text', text: systemPrompt, cache_control: { type: 'ephemeral' } }],
     // web_search_20260209 = server-managed + dynamische Ergebnis-Filterung.
-    tools: [{ type: 'web_search_20260209', name: 'web_search', max_uses: webSearchMaxUses }],
+    // web_fetch_20260209 = gefundene Seiten/PDFs VOLLSTÄNDIG lesen (Mietspiegel,
+    // BORIS, Gutachterausschuss) statt aus Such-Snippets zu raten; kein Aufpreis,
+    // nur Token. max_content_tokens begrenzt lange PDFs.
+    tools: [
+      { type: 'web_search_20260209', name: 'web_search', max_uses: webSearchMaxUses },
+      { type: 'web_fetch_20260209', name: 'web_fetch', max_uses: webFetchMaxUses, max_content_tokens: 20000 },
+    ],
     // userContent: Text-Block (URL-Fall) ODER document/image-Blöcke + Instruktions-
     // Text (PDF-/Foto-Upload). cache_control sitzt auf dem LETZTEN Block und cached
     // damit den gesamten Prefix inkl. der Dokumente.
@@ -975,6 +996,22 @@ function kontextKopf(exposeText: string | null): string {
   return `HEUTIGES DATUM: ${heute} — verwende es für alle "aktuell"/"Stand"-Angaben; Bauzinsen immer für diesen Monat recherchieren.\n${landZeile}\n`
 }
 
+// Optionale Käuferangaben aus dem Bestellformular → persönliches Szenario + echter Stresstest.
+type KaeuferOpts = { eigenkapital?: number | null; haushaltsnetto?: number | null; nutzung?: string | null }
+function kaeuferBlock(opts: unknown): string {
+  const o = (opts || {}) as KaeuferOpts
+  const ek = typeof o.eigenkapital === 'number' && o.eigenkapital > 0 ? o.eigenkapital : null
+  const netto = typeof o.haushaltsnetto === 'number' && o.haushaltsnetto > 0 ? o.haushaltsnetto : null
+  const nutzung = o.nutzung === 'selbstnutzung' || o.nutzung === 'vermietung' ? o.nutzung : null
+  if (!ek && !netto && !nutzung) return ''
+  const zeilen: string[] = []
+  if (ek) zeilen.push(`- Verfügbares Eigenkapital: ${formatEuro(ek)} → Ergänze in finanzierung.szenarien als VIERTES Szenario "Ihr Szenario" (eigenkapital = ${formatEuro(ek)}, Darlehen = Kaufpreis + Nebenkosten − Eigenkapital, Zins passend zur resultierenden Beleihung) und beziehe dich in empfohleneEigenkapitalquote und Zusammenfassung darauf.`)
+  if (netto) zeilen.push(`- Haushaltsnettoeinkommen: ${formatEuro(netto)}/Monat → Stresstest-Bewertungen auf DIESER Basis (Rate/Netto: unter 35 % tragbar, 35–45 % grenzwertig, über 45 % kritisch); nenne die Belastungsquote in jedem Stresstest-Szenario. Keine "Beispiel-Haushalt"-Annahmen mehr.`)
+  if (nutzung === 'vermietung') zeilen.push('- Geplante Nutzung: VERMIETUNG → Mietrendite, Vermietbarkeit, AfA/Werbungskosten und Mietpreisbremse ausführlich; Eigennutzungs-Aspekte knapp.')
+  if (nutzung === 'selbstnutzung') zeilen.push('- Geplante Nutzung: SELBSTNUTZUNG → Wohnwert, laufende Belastung, Modernisierungsbedarf und Lage für den Alltag ausführlich; Rendite-Aspekte knapp (Hinweis genügt).')
+  return `\nKÄUFERANGABEN (vom Kunden eingegeben — verbindlich verwenden):\n${zeilen.join('\n')}\n`
+}
+
 function detectBundesland(text: string): string | null {
   if (!text) return null
   const m = text.match(/Bundesland\s*:\s*([A-Za-zÄÖÜäöüß-]+(?:\s[A-Za-zÄÖÜäöüß-]+)?)/)
@@ -1022,8 +1059,10 @@ function parseLoanInputs(row: Record<string, unknown>, darlehenKey: string): { d
   return { darlehen, zins, tilg }
 }
 
-function recomputeFinances(result: Record<string, unknown>): void {
+function recomputeFinances(result: Record<string, unknown>, opts?: unknown): void {
   const fixed: string[] = []
+  const kaeufer = (opts || {}) as KaeuferOpts
+  const nettoUser = typeof kaeufer.haushaltsnetto === 'number' && kaeufer.haushaltsnetto > 0 ? kaeufer.haushaltsnetto : null
 
   const gk = result.gesamtkosten as Record<string, any> | undefined
   const objektdaten = result.objektdaten as Array<{ merkmal?: string; wert?: string }> | undefined
@@ -1166,6 +1205,20 @@ function recomputeFinances(result: Record<string, unknown>): void {
       }
       fixed.push('mietrendite')
     }
+  }
+
+  // 5b) Stresstest: Bewertung deterministisch aus Rate/Haushaltsnetto, wenn der Kunde
+  // sein Netto angegeben hat (sonst bleibt die Modell-Einschätzung stehen).
+  if (nettoUser && fin && Array.isArray(fin.stresstest)) {
+    for (const st of fin.stresstest) {
+      const rate = parseGermanNumber(st?.monatlicheRate)
+      if (rate === null || rate <= 0) continue
+      const basis = /einkommen/i.test(String(st.szenario || '')) ? nettoUser * 0.7 : nettoUser
+      const quote = rate / basis * 100
+      st.bewertung = quote < 35 ? 'tragbar' : quote <= 45 ? 'grenzwertig' : 'kritisch'
+      st.belastungsquote = `${quote.toFixed(0)} % des Haushaltsnettos (${formatEuro(basis)})`
+    }
+    fixed.push('stresstest(netto)')
   }
 
   // 6) Kaufen vs. Mieten + 30-Jahres-Vermögensvergleich — deterministisch.
@@ -1641,7 +1694,8 @@ WICHTIG:
 - Laufende Kosten (Grundsteuer, Versicherung, Heizkosten, Rücklagen etc.) sind IMMER zu berechnen.
 - Wenn ein Wert in den Exposé-Daten null ist: Regionsdurchschnitt recherchieren und mit "(regionaler Schätzwert — nicht aus dem Angebot)" kennzeichnen.
 - NIEMALS nur "Im Exposé nicht angegeben" ohne Wert schreiben. JEDES Feld braucht eine Zahl.
-- Antworte ausschließlich mit JSON.`
+- Antworte ausschließlich mit JSON.
+${kaeuferBlock(opts)}`
         } else if (exposeMarkdown) {
           // JINA SUCCESS (no Playwright scraper): use Markdown as primary source
           console.log('Using Jina Reader Markdown as expose source')
@@ -1665,7 +1719,8 @@ WICHTIG:
 - Laufende Kosten IMMER berechnen (Grundsteuer, Versicherung, Heizkosten, Rücklagen).
 - Wenn ein Exposé-Wert im Markdown fehlt: Regionsdurchschnitt recherchieren und mit "(regionaler Schätzwert — nicht aus dem Angebot)" kennzeichnen.
 - NIEMALS "nicht verfügbar", "Nicht im Exposé angegeben", "—" alleine, "Keine Angabe" ohne konkrete Zahl schreiben. JEDES Feld braucht einen Wert.
-- Antworte ausschließlich mit JSON.`
+- Antworte ausschließlich mit JSON.
+${kaeuferBlock(opts)}`
         } else {
           // NEITHER Jina NOR Scraper worked: Fallback to pure web search (old behavior)
           console.log('Neither Jina nor Scraper available — falling back to web search')
@@ -1690,7 +1745,8 @@ WICHTIG:
 - Wenn ein Exposé-spezifischer Wert fehlt (z.B. Energieausweis, Baujahr): Regionsdurchschnitt recherchieren und mit "(regionaler Schätzwert — nicht aus dem Angebot)" kennzeichnen.
 - NIEMALS nur "Im Exposé nicht angegeben" ohne Wert schreiben. JEDES Feld braucht eine Zahl.
 - NIEMALS Zahlen erfinden — aber Durchschnittswerte recherchieren ist PFLICHT.
-- Antworte ausschließlich mit JSON.`
+- Antworte ausschließlich mit JSON.
+${kaeuferBlock(opts)}`
         }
 
       return userMessage
@@ -1740,7 +1796,8 @@ ${isPremium ? '- Premium-Report: ja (inkl. Wertermittlung, Standort-Dossier, Ver
 WICHTIG:
 - Laufende Kosten (Grundsteuer, Versicherung, Heizkosten, Rücklagen) IMMER berechnen/recherchieren.
 - Fehlende Werte: Regionsdurchschnitt recherchieren und mit "(regionaler Schätzwert — nicht aus dem Angebot)" kennzeichnen.
-- Antworte ausschließlich mit JSON.`,
+- Antworte ausschließlich mit JSON.
+${kaeuferBlock(opts)}`,
         cache_control: { type: 'ephemeral' },
       })
 
@@ -1797,7 +1854,7 @@ WICHTIG:
               console.warn('validateSources failed — keeping sources:', e)
             }
             try {
-              recomputeFinances(parsed)
+              recomputeFinances(parsed, a.options)
             } catch (e) {
               console.warn('recomputeFinances failed — keeping LLM values:', e)
             }
@@ -1811,6 +1868,9 @@ WICHTIG:
           }
         } else {
           console.error(`Analyse ${a.id}: Batch-Result ${r ? r.type : 'nicht gefunden'}`, r?.error ?? '')
+          // Lehnt die API das JSON-Schema ab (zu komplex / nicht unterstützt), läuft
+          // der Retry ohne Schema-Zwang — die Analyse geht nicht verloren.
+          if (/output_config|json_schema|schema|grammar/i.test(JSON.stringify(r?.error ?? ''))) lastError.schema_failed = true
         }
 
         // Fehlerpfad: bis zu 2× neu einreihen, danach endgültig failed
@@ -1859,7 +1919,10 @@ WICHTIG:
           const userContent = hasFiles
             ? await buildFileUserContent(a)
             : [{ type: 'text', text: await buildUserMessage(a), cache_control: { type: 'ephemeral' } }]
-          requests.push({ custom_id: a.id, params: buildMessageParams(systemPrompt, userContent, maxTokens, isPremium) })
+          // Schema-Zwang nur, wenn die API ihn für diese Analyse nicht bereits abgelehnt hat
+          const prevErr = (a as unknown as { result?: { _debug_last_error?: { schema_failed?: boolean } } }).result?._debug_last_error
+          const structured = STRUCTURED_OUTPUT && !prevErr?.schema_failed
+          requests.push({ custom_id: a.id, params: buildMessageParams(systemPrompt, userContent, maxTokens, isPremium, structured) })
         } catch (e) {
           console.error(`buildUserMessage fehlgeschlagen für ${a.id}:`, e)
           // Claim lösen — nächster Poll versucht es erneut
@@ -1885,11 +1948,11 @@ WICHTIG:
             if (tries < 2) {
               await supabase.from('analyses').update({
                 status: 'pending', processing_started_at: null, retry_count: tries + 1,
-                result: { _debug_last_error: { stage: 'submit', detail } },
+                result: { _debug_last_error: { stage: 'submit', detail, schema_failed: /output_config|json_schema|schema|grammar/i.test(detail) } },
               }).eq('id', r.custom_id)
             } else {
               await supabase.from('analyses').update({
-                status: 'failed', result: { error: 'analysis_failed', _debug_last_error: { stage: 'submit', detail } },
+                status: 'failed', result: { error: 'analysis_failed', _debug_last_error: { stage: 'submit', detail, schema_failed: /output_config|json_schema|schema|grammar/i.test(detail) } },
               }).eq('id', r.custom_id)
             }
           }

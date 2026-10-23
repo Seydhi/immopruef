@@ -423,7 +423,10 @@ function WertermittlungSlot({ data }: { data: NonNullable<PremiumReportType['wer
         <p className="mt-2 text-[11px] text-ink-light leading-snug">Hinweis: Vergleichswerte sind Schätzungen auf Basis öffentlich zugänglicher Angebotsdaten. Tatsächliche Kaufpreise vergleichbarer Objekte sind in Deutschland ausschließlich über den Gutachterausschuss (Kaufpreissammlung) erhältlich und nicht Teil dieser Ersteinschätzung.</p>
       </div>
       <div className="mb-4">
-        <SubHeading>Sachwertverfahren (§21 ImmoWertV)</SubHeading>
+        <SubHeading>Sachwertverfahren (§21 ImmoWertV) — indikativ</SubHeading>
+        <p className="text-[11px] text-ink-light mb-2 leading-snug">
+          Überschlägige Herleitung aus Bodenrichtwert und Normalherstellungskosten mit Alterswertminderung. Ohne Vor-Ort-Aufnahme und ohne die Kaufpreissammlung des Gutachterausschusses ist das eine Größenordnung, keine Wertermittlung.
+        </p>
         <div className="bg-white border border-ink/10 rounded-lg overflow-hidden text-[13px]">
           <PremiumRow label="Bodenwert" value={data.sachwert.bodenwert} i={0} />
           <PremiumRow label="Gebäudewert (NHK)" value={data.sachwert.gebaeudewert} i={1} />

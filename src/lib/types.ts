@@ -152,6 +152,8 @@ export interface Finanzierung {
     szenario: string
     monatlicheRate: string
     bewertung: 'tragbar' | 'grenzwertig' | 'kritisch'
+    /** Serverseitig gesetzt, wenn der Kunde sein Haushaltsnetto angegeben hat */
+    belastungsquote?: string
   }[]
 }
 
@@ -170,6 +172,10 @@ export interface AnalysisOptions {
   makleranschreiben: boolean
   verhandlungstipps: boolean
   risiken: boolean
+  /** Optionale Käuferangaben → persönliches Finanzierungsszenario + echter Stresstest */
+  eigenkapital?: number | null
+  haushaltsnetto?: number | null
+  nutzung?: 'selbstnutzung' | 'vermietung' | null
 }
 
 // ─── Marktdaten (legacy compat) ───

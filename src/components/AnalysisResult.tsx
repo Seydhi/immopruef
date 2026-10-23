@@ -289,7 +289,10 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
             {(result.finanzierung?.stresstest || []).map((st, i) => (
               <tr key={i} className={`border-b border-ink/8 last:border-b-0 ${i % 2 === 1 ? 'bg-cream/50' : ''}`}>
                 <td className="px-3.5 py-2 text-xs text-ink-mid w-[40%]">{st.szenario}</td>
-                <td className="px-3.5 py-2 text-xs">{st.monatlicheRate}</td>
+                <td className="px-3.5 py-2 text-xs">
+                  {st.monatlicheRate}
+                  {st.belastungsquote && <div className="text-[11px] text-ink-light mt-0.5">{st.belastungsquote}</div>}
+                </td>
                 <td className="px-3.5 py-2 text-right">
                   <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${
                     st.bewertung === 'tragbar' ? 'bg-emerald-50 text-emerald-700' :

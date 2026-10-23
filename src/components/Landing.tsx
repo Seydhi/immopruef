@@ -36,11 +36,23 @@ export default function Landing() {
   const [files, setFiles] = useState<File[]>([])
   const [fileError, setFileError] = useState('')
   const [uploading, setUploading] = useState(false)
+  // Optionale Käuferangaben → persönliches Szenario + Stresstest auf echter Basis
+  const [eigenkapital, setEigenkapital] = useState('')
+  const [haushaltsnetto, setHaushaltsnetto] = useState('')
+  const [nutzung, setNutzung] = useState<'' | 'selbstnutzung' | 'vermietung'>('')
+  const [showKaeufer, setShowKaeufer] = useState(false)
+  const parseEuro = (s: string): number | null => {
+    const n = parseFloat(s.replace(/[^\d,]/g, '').replace(',', '.'))
+    return Number.isFinite(n) && n > 0 ? Math.round(n) : null
+  }
   const options = {
     makleranschreiben: true,
     verhandlungstipps: true,
     risiken: true,
-  } as const
+    eigenkapital: parseEuro(eigenkapital),
+    haushaltsnetto: parseEuro(haushaltsnetto),
+    nutzung: nutzung || null,
+  }
   const [email, setEmail] = useState('')
   const [emailError, setEmailError] = useState('')
   const [agbAccepted, setAgbAccepted] = useState(false)
@@ -51,6 +63,7 @@ export default function Landing() {
 
   const config = PACKAGE_CONFIG[pkg]
   const urlCount = config.urls
+  const hasIs24 = inputMode === 'link' && urls.slice(0, urlCount).some((u) => /immobilienscout24\./i.test(u))
 
   const handlePackageChange = (newPkg: Package) => {
     setPkg(newPkg)
@@ -274,6 +287,62 @@ export default function Landing() {
             Risikohinweise
           </span>
           <span className="text-ink-light/70">— immer enthalten</span>
+        </div>
+
+        {hasIs24 && (
+          <div className="mt-4 bg-amber-50 border border-amber-200 rounded-lg px-4 py-3 text-[12.5px] text-amber-900 leading-relaxed">
+            <span className="font-medium">Hinweis zu ImmoScout24:</span> Das Portal blockiert automatische Abrufe häufig; die Analyse muss das Exposé dann über die Web-Suche rekonstruieren und kann lückenhafter ausfallen.
+            {urlCount === 1
+              ? <> Für das beste Ergebnis: Exposé im Browser als PDF speichern (Drucken → „Als PDF speichern") und oben über <span className="font-medium">Upload</span> einreichen.</>
+              : <> Für das beste Ergebnis bei einzelnen Objekten: Exposé als PDF speichern und als Einzel-Analyse über „Upload" einreichen.</>}
+          </div>
+        )}
+
+        {/* Optionale Käuferangaben: machen Finanzierung und Stresstest persönlich */}
+        <div className="mt-4 border border-ink/10 rounded-lg">
+          <button
+            type="button"
+            onClick={() => setShowKaeufer((v) => !v)}
+            aria-expanded={showKaeufer}
+            className="w-full flex items-center justify-between px-4 py-2.5 text-[13px] text-ink-mid hover:text-ink transition-colors"
+          >
+            <span><span className="font-medium text-ink">Optional:</span> Ihre Angaben für ein persönliches Finanzierungsszenario</span>
+            <span aria-hidden="true" className="text-ink-light">{showKaeufer ? '−' : '+'}</span>
+          </button>
+          {showKaeufer && (
+            <div className="px-4 pb-4 grid sm:grid-cols-3 gap-3">
+              <label className="block text-[12px] text-ink-mid">
+                Eigenkapital (€)
+                <input
+                  type="text" inputMode="numeric" value={eigenkapital} onChange={(e) => setEigenkapital(e.target.value)}
+                  placeholder="z. B. 60.000"
+                  className="mt-1 w-full border border-ink/20 rounded-lg px-3 py-2 text-sm text-ink focus:outline-none focus:border-green"
+                />
+              </label>
+              <label className="block text-[12px] text-ink-mid">
+                Haushaltsnetto / Monat (€)
+                <input
+                  type="text" inputMode="numeric" value={haushaltsnetto} onChange={(e) => setHaushaltsnetto(e.target.value)}
+                  placeholder="z. B. 4.200"
+                  className="mt-1 w-full border border-ink/20 rounded-lg px-3 py-2 text-sm text-ink focus:outline-none focus:border-green"
+                />
+              </label>
+              <label className="block text-[12px] text-ink-mid">
+                Geplante Nutzung
+                <select
+                  value={nutzung} onChange={(e) => setNutzung(e.target.value as '' | 'selbstnutzung' | 'vermietung')}
+                  className="mt-1 w-full border border-ink/20 rounded-lg px-3 py-2 text-sm text-ink bg-white focus:outline-none focus:border-green"
+                >
+                  <option value="">Keine Angabe</option>
+                  <option value="selbstnutzung">Selbst bewohnen</option>
+                  <option value="vermietung">Vermieten</option>
+                </select>
+              </label>
+              <p className="sm:col-span-3 text-[11px] text-ink-light leading-snug">
+                Ohne Angaben rechnet die Analyse mit Standard-Eigenkapitalquoten (10/20/30 %) und einem Beispielhaushalt. Mit Angaben erhalten Sie ein viertes Szenario „Ihr Szenario" und einen Stresstest auf Basis Ihres Einkommens. Die Werte werden nur für diese Analyse verwendet.
+              </p>
+            </div>
+          )}
         </div>
 
         {globalError && (

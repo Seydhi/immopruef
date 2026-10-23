@@ -171,7 +171,23 @@ serve(async (req) => {
       return jsonResponse({ error: limit.reason }, 429, origin)
     }
 
-    const { urls, files, options, package: pkg, email, consents } = await req.json()
+    const { urls, files, options: rawOptions, package: pkg, email, consents } = await req.json()
+
+    // Optionen bereinigen: nur bekannte Felder, Käuferangaben nur in plausiblen Grenzen.
+    // (Landet 1:1 in analyses.options und in den Stripe-Metadaten — max. 500 Zeichen.)
+    const ro = (rawOptions && typeof rawOptions === 'object' ? rawOptions : {}) as Record<string, unknown>
+    const num = (v: unknown, min: number, max: number): number | null => {
+      const n = typeof v === 'number' ? v : typeof v === 'string' ? parseFloat(v.replace(/\./g, '').replace(',', '.')) : NaN
+      return Number.isFinite(n) && n >= min && n <= max ? Math.round(n) : null
+    }
+    const options = {
+      makleranschreiben: ro.makleranschreiben !== false,
+      verhandlungstipps: ro.verhandlungstipps !== false,
+      risiken: ro.risiken !== false,
+      eigenkapital: num(ro.eigenkapital, 1000, 5_000_000),
+      haushaltsnetto: num(ro.haushaltsnetto, 500, 50_000),
+      nutzung: ro.nutzung === 'selbstnutzung' || ro.nutzung === 'vermietung' ? ro.nutzung : null,
+    }
 
     // Validate package
     const expectedCount = PACKAGE_URL_COUNT[pkg]
