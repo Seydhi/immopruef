@@ -1180,10 +1180,15 @@ function recomputeFinances(result: Record<string, unknown>): void {
       && miete0 / wohnflaeche > 3 && miete0 / wohnflaeche < 35) {
     // Eigentümer-spezifische (nicht umlagefähige) Kosten: Rücklage/Instandhaltung/Verwaltung.
     // Ohne Aufschlüsselung: 35 % des Hausgelds; ganz ohne Hausgeld: 1,20 €/m² (EFH-Faustwert).
-    const row = (re: RegExp) => lk.filter(p => re.test(String(p.position || ''))).map(p => parseGermanNumber(p.betragMonat) ?? 0)
-    const explizit = row(/rücklage|instandhalt|verwaltung/i).reduce((a, b) => a + b, 0)
+    const row = (re: RegExp, not?: RegExp) => lk
+      .filter(p => re.test(String(p.position || '')) && !(not && not.test(String(p.position || ''))))
+      .map(p => parseGermanNumber(p.betragMonat) ?? 0)
+    // "Hausgeld gesamt (inkl. Rücklage)" darf NICHT als Rücklage-Zeile zählen (Doppelzählung).
+    const explizit = row(/rücklage|instandhalt|verwaltung/i, /^hausgeld/i).reduce((a, b) => a + b, 0)
     const hausgeld = row(/^hausgeld/i)[0] ?? 0
-    const eigentuemer0 = explizit > 0 ? explizit : hausgeld > 0 ? hausgeld * KVM.nichtUmlagefaehigAnteil : wohnflaeche * 1.2
+    const eigentuemer0 = hausgeld > 0
+      ? Math.max(explizit, hausgeld * KVM.nichtUmlagefaehigAnteil)
+      : explizit > 0 ? explizit : wohnflaeche * 1.2
 
     const a = annuity(standardSz.darlehen, standardSz.zins, standardSz.tilg)
     const rate = a.monthlyRate
