@@ -25,7 +25,7 @@ export default function UrlInputGroup({ urls, onChange, errors, count }: UrlInpu
             type="url"
             value={urls[i] || ''}
             onChange={(e) => handleChange(i, e.target.value)}
-            placeholder="https://www.immobilienscout24.de/expose/..."
+            placeholder="https://www.immowelt.de/expose/..."
             maxLength={2048}
             className="w-full px-4 py-3 border border-ink/20 rounded-lg bg-cream text-ink text-sm font-body outline-none transition-colors focus:border-green focus:bg-white placeholder:text-ink-light placeholder:font-light"
           />
