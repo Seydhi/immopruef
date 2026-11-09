@@ -3,6 +3,7 @@
 
 import { serve } from 'https://deno.land/std@0.177.0/http/server.ts'
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+import { renderInvoicePdf, splitGross, toBase64, PACKAGE_NAMES } from './invoice.ts'
 
 // ═══════════════════════════════════════════════════════════════
 // Manual webhook signature verification (no SDK dependency)
@@ -229,6 +230,70 @@ serve(async (req) => {
 
           const estimatedMinutes = isPremium ? '3–5' : (orderAnalyses?.length || 1) > 1 ? '3–6' : '1–3'
 
+          // ═══ Rechnung erzeugen, archivieren, an die Bestätigung hängen ═══
+          // Scheitert das, geht die Bestätigung trotzdem raus: Die Bestellung darf
+          // nie an der Rechnung hängen. Die Rechnung lässt sich aus der Tabelle nachziehen.
+          let invoiceAttachment: { filename: string; content: string } | null = null
+          if (Deno.env.get('INVOICE_ENABLED') === 'true' && updated[0]?.id && typeof session.amount_total === 'number') {
+            try {
+              const vatRate = Number(Deno.env.get('INVOICE_VAT_RATE') ?? '19')
+              const { net, vat } = splitGross(session.amount_total, vatRate)
+              const cd = session.customer_details || {}
+              const addr = cd.address || {}
+              const addressLines = [addr.line1, addr.line2, [addr.postal_code, addr.city].filter(Boolean).join(' '), addr.country && addr.country !== 'DE' ? addr.country : null]
+                .filter(Boolean) as string[]
+              const description = PACKAGE_NAMES[pkg] || PACKAGE_NAMES.single
+
+              const { data: existing } = await supabase.from('invoices').select('*').eq('order_id', updated[0].id).maybeSingle()
+              const row = existing ?? (await supabase.from('invoices').insert({
+                order_id: updated[0].id,
+                customer_name: cd.name || null,
+                customer_email: email,
+                customer_address: addressLines.join(', ') || null,
+                description,
+                gross_cents: session.amount_total,
+                net_cents: net,
+                vat_cents: vat,
+                vat_rate: vatRate,
+                currency: session.currency || 'eur',
+              }).select('*').single()).data
+              if (!row) throw new Error('Rechnungszeile konnte nicht angelegt werden')
+
+              let letterhead: Uint8Array | null = null
+              const letterheadUrl = Deno.env.get('INVOICE_LETTERHEAD_URL')
+              if (letterheadUrl) {
+                try {
+                  const res = await fetch(letterheadUrl, { signal: AbortSignal.timeout(5000) })
+                  if (res.ok) letterhead = new Uint8Array(await res.arrayBuffer())
+                } catch (e) { console.warn('Briefpapier nicht geladen:', e) }
+              }
+
+              const pdf = await renderInvoicePdf({
+                number: row.invoice_number,
+                issuedAt: new Date(row.issued_at),
+                customerName: row.customer_name,
+                customerEmail: row.customer_email,
+                customerAddress: addressLines,
+                description: row.description,
+                grossCents: row.gross_cents,
+                netCents: row.net_cents,
+                vatCents: row.vat_cents,
+                vatRate: Number(row.vat_rate),
+                orderRef: String(updated[0].id).slice(0, 8).toUpperCase(),
+              }, letterhead)
+
+              const path = `${new Date(row.issued_at).getUTCFullYear()}/${row.invoice_number}.pdf`
+              const { error: upErr } = await supabase.storage.from('rechnungen').upload(path, pdf, { contentType: 'application/pdf', upsert: true })
+              if (upErr) console.error('Rechnung nicht archiviert:', upErr)
+              else await supabase.from('invoices').update({ storage_path: path }).eq('id', row.id)
+
+              invoiceAttachment = { filename: `Rechnung-${row.invoice_number}.pdf`, content: toBase64(pdf) }
+              console.log(`Rechnung ${row.invoice_number} erstellt`)
+            } catch (e) {
+              console.error('Rechnung fehlgeschlagen:', e)
+            }
+          }
+
           console.log(`Sending confirmation email to ${email}`)
 
           await fetch('https://api.resend.com/emails', {
@@ -241,6 +306,7 @@ serve(async (req) => {
               from: emailFrom,
               to: email,
               subject: 'Bestellung bestätigt — Ihre Analyse wird erstellt',
+              ...(invoiceAttachment ? { attachments: [invoiceAttachment] } : {}),
               html: `
 <!DOCTYPE html>
 <html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
@@ -261,7 +327,7 @@ serve(async (req) => {
       <div style="background:#e8f5e9;border:1px solid #a5d6a7;border-radius:8px;padding:16px;margin-bottom:24px;text-align:center;">
         <div style="font-size:28px;margin-bottom:6px;">✓</div>
         <div style="font-size:16px;font-weight:600;color:#2e7d32;">Zahlung erfolgreich!</div>
-        <div style="font-size:13px;color:#4a8c5c;margin-top:4px;">Ihre Bestellung wurde bestätigt.</div>
+        <div style="font-size:13px;color:#4a8c5c;margin-top:4px;">Ihre Bestellung wurde bestätigt.${invoiceAttachment ? ' Ihre Rechnung finden Sie im Anhang.' : ''}</div>
       </div>
 
       <!-- Order Details -->
