@@ -218,7 +218,8 @@ export default function Datenschutz() {
           <h2 className="text-base font-heading font-semibold text-ink mb-2">9. Speicherdauer</h2>
           <ul className="list-disc pl-5 space-y-1">
             <li><strong>Analyse-Ergebnisse:</strong> 180 Tage nach Erstellung, danach automatische Löschung</li>
-            <li><strong>E-Mail-Adressen:</strong> werden zusammen mit der Analyse gelöscht</li>
+            <li><strong>E-Mail-Adressen:</strong> werden zusammen mit der Analyse gelöscht; ausgenommen sind die Angaben auf Rechnungen</li>
+            <li><strong>Rechnungen:</strong> Name, Anschrift und E-Mail-Adresse auf der Rechnung werden für die Dauer der gesetzlichen Aufbewahrungspflicht gespeichert (§ 147 AO, § 257 HGB)</li>
             <li><strong>Zahlungsdaten:</strong> gemäß handels- und steuerrechtlicher Aufbewahrungspflichten (10 Jahre bei Stripe)</li>
             <li><strong>Server-Logs:</strong> maximal 30 Tage</li>
           </ul>
