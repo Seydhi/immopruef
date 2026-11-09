@@ -2,7 +2,7 @@
 // Inhalte stammen aus dem Ratgeber /blog/maklersprache-glossar. Bild für Bild gerendert,
 // braucht ffmpeg im PATH.
 //
-//   node scripts/make-floskel-videos.mjs --format=reel --outdir=pfad [--only=3]
+//   node scripts/make-floskel-videos.mjs --format=reel --outdir=pfad [--only=3] [--from=6]
 //   --format=reel  9:16, 1080×1920 (Reel, TikTok, Shorts) · --format=feed  4:5, 1080×1350
 import puppeteer from 'puppeteer'
 import { spawn } from 'node:child_process'
@@ -13,6 +13,7 @@ const args = Object.fromEntries(process.argv.slice(2).map((a) => a.replace(/^--/
 const FORMAT = args.format === 'feed' ? 'feed' : 'reel'
 const OUTDIR = args.outdir || '.'
 const ONLY = args.only ? Number(args.only) : null
+const FROM = args.from ? Number(args.from) : 1
 const FPS = 30
 const W = 540
 const H = FORMAT === 'feed' ? 675 : 960
@@ -27,6 +28,11 @@ export const EPISODES = [
   { nr: 3, slug: 'potenzial', quote: '„mit viel Potenzial"', meaning: 'Im jetzigen Zustand unattraktiv. Das Potenzial hebt der Käufer, mit eigenem Geld.', tip: 'Sanierungskosten vor dem Angebot durchrechnen, nicht danach.' },
   { nr: 4, slug: 'vb', quote: '„349.000 € VB"', meaning: 'Verhandlungsbasis: ein Startpunkt, kein Endpreis.', tip: 'Vergleichspreise prüfen und mit Zahlen verhandeln, nicht mit Gefühl.' },
   { nr: 5, slug: 'gemuetlich', quote: '„gemütliche Wohnung"', meaning: 'Klein.', tip: 'Quadratmeter je Raum im Grundriss nachrechnen.' },
+  { nr: 6, slug: 'liebhaberobjekt', quote: '„Liebhaberobjekt"', meaning: 'Über Vergleichspreise rechnet es sich nicht. Für die Bank schwer zu bewerten.', tip: 'Vor dem Angebot klären, welchen Wert die Bank ansetzt.' },
+  { nr: 7, slug: 'ruhige-lage', quote: '„ruhige Lage"', meaning: 'Abgelegen, mit dünner Anbindung an Bus und Bahn.', tip: 'Fahrzeiten zu Arbeit, Schule und Einkauf selbst testen.' },
+  { nr: 8, slug: 'schnellentschlossene', quote: '„für Schnellentschlossene"', meaning: 'Künstlicher Zeitdruck. Ein Klassiker der Verknappung.', tip: 'Das Tempo bestimmt der Käufer. Erst prüfen, dann zusagen.' },
+  { nr: 9, slug: 'lichtdurchflutet', quote: '„lichtdurchflutet"', meaning: 'Große Fenster. Oder ein Weitwinkelobjektiv.', tip: 'Ausrichtung erfragen und bei Tageslicht besichtigen.' },
+  { nr: 10, slug: 'hobbyraum', quote: '„mit Hobbyraum"', meaning: 'Baurechtlich kein Wohnraum. Zählt nicht zur Wohnfläche.', tip: 'Preis je Quadratmeter ohne den Hobbyraum nachrechnen.' },
 ]
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;')
@@ -111,7 +117,7 @@ const page = await browser.newPage()
 await page.setViewport({ width: W, height: H, deviceScaleFactor: 2, isMobile: true })
 
 for (const ep of EPISODES) {
-  if (ONLY && ep.nr !== ONLY) continue
+  if ((ONLY && ep.nr !== ONLY) || ep.nr < FROM) continue
   const out = `${OUTDIR}/maklersprache-${ep.nr}-${ep.slug}-${FORMAT === 'feed' ? '4x5' : '9x16'}.mp4`
   const ff = spawn('ffmpeg', [
     '-y', '-loglevel', 'error',
