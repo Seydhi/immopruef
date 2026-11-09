@@ -77,7 +77,7 @@ export default function AGB() {
           </p>
           <p className="mt-2">
             (2) Die Zahlung erfolgt über den Zahlungsdienstleister Stripe. Es stehen die
-            dort angebotenen Zahlungsmethoden zur Verfügung (z.B. Kreditkarte, Klarna, Apple Pay).
+            dort angebotenen Zahlungsmethoden zur Verfügung (z.B. Kreditkarte, PayPal, Klarna, Apple Pay).
           </p>
           <p className="mt-2">
             (3) Der Zugang zur Analyse wird nach erfolgreicher Zahlung automatisch freigeschaltet.

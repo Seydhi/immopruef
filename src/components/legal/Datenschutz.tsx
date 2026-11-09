@@ -145,6 +145,14 @@ export default function Datenschutz() {
             Zugriff auf Ihre vollständigen Zahlungsdaten.
           </p>
           <p className="mt-2">
+            Wenn Sie PayPal wählen, werden Sie zur Autorisierung an PayPal (Europe) S.à r.l. et Cie,
+            S.C.A., 22-24 Boulevard Royal, L-2449 Luxemburg, weitergeleitet. PayPal verarbeitet dabei
+            Ihre Zahlungs- und Kontodaten in eigener Verantwortung. Datenschutzerklärung:{' '}
+            <a href="https://www.paypal.com/de/legalhub/privacy-full" target="_blank" rel="noopener noreferrer" className="text-green hover:text-green-mid">
+              paypal.com/de/legalhub/privacy-full
+            </a>
+          </p>
+          <p className="mt-2">
             Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung).
             Datenschutzrichtlinie:{' '}
             <a href="https://stripe.com/de/privacy" target="_blank" rel="noopener noreferrer" className="text-green hover:text-green-mid">
