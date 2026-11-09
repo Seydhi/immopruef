@@ -9,3 +9,4 @@ dist
 supabase/.temp
 
 .invoice-admin-token
+.anthropic-key-2
