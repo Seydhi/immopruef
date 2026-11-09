@@ -32,6 +32,8 @@ export function splitGross(grossCents: number, vatRate: number): { net: number; 
 export interface InvoiceData {
   number: string
   issuedAt: Date
+  /** Nur setzen, wenn es vom Rechnungsdatum abweicht (nachträgliche Rechnung) */
+  serviceDate?: Date
   customerName?: string | null
   customerEmail?: string | null
   customerAddress?: string[] | null
@@ -125,7 +127,7 @@ export async function renderInvoicePdf(inv: InvoiceData, letterhead?: Uint8Array
   for (const [k, v] of [
     ['Rechnungsnummer', inv.number],
     ['Rechnungsdatum', deDate(inv.issuedAt)],
-    ['Leistungsdatum', deDate(inv.issuedAt)],
+    ['Leistungsdatum', deDate(inv.serviceDate ?? inv.issuedAt)],
     ['Bestellreferenz', inv.orderRef],
   ]) {
     T(k, metaX, my, { size: 8.5, color: MID })
@@ -170,7 +172,7 @@ export async function renderInvoicePdf(inv: InvoiceData, letterhead?: Uint8Array
   y -= 40
   T('Der Betrag wurde bereits online bezahlt. Es ist keine weitere Zahlung erforderlich.', L, y)
   y -= 14
-  T('Das Leistungsdatum entspricht dem Rechnungsdatum.', L, y, { color: MID, size: 9 })
+  if (!inv.serviceDate || deDate(inv.serviceDate) === deDate(inv.issuedAt)) T('Das Leistungsdatum entspricht dem Rechnungsdatum.', L, y, { color: MID, size: 9 })
 
   // Fußzeile mit Pflichtangaben (auch auf Briefpapier, weil rechtlich erforderlich)
   const fy = 74

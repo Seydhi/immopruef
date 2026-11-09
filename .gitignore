@@ -7,3 +7,5 @@ dist
 .anthropic-key
 .pexels-key
 supabase/.temp
+
+.invoice-admin-token
