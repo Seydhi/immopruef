@@ -593,6 +593,22 @@ interface AIResponse {
 // Phase A submittet, Phase B holt Ergebnisse ab (siehe Handler).
 // ═══════════════════════════════════════════════════════════════
 
+// Mehrere Schlüssel = mehrere Anthropic-Konten: ANTHROPIC_API_KEY, ANTHROPIC_API_KEY_2, …_5
+// (Reihenfolge = Priorität). Ist ein Konto leer (credit balance), gesperrt (401/403) oder
+// im Limit (429), wird der Batch mit dem nächsten Schlüssel eingereicht. Ein Batch gehört
+// dem Konto, das ihn angelegt hat — beim Abholen liefert ein fremder Schlüssel 404, also
+// werden auch dort alle Schlüssel durchprobiert. Schlüsselwerte werden nie geloggt.
+function anthropicKeys(): string[] {
+  const keys = [Deno.env.get('ANTHROPIC_API_KEY')]
+  for (let i = 2; i <= 5; i++) keys.push(Deno.env.get(`ANTHROPIC_API_KEY_${i}`))
+  return keys.filter((k): k is string => !!k && k.trim().length > 0)
+}
+
+function isKeyProblem(status: number, body: string): boolean {
+  return status === 401 || status === 403 || status === 429 ||
+    (status === 400 && /credit|billing|balance|plan/i.test(body))
+}
+
 const ANTHROPIC_HEADERS = (key: string) => ({
   'Content-Type': 'application/json',
   'x-api-key': key,
@@ -653,23 +669,46 @@ function buildMessageParams(
 
 async function submitBatch(
   requests: Array<{ custom_id: string; params: Record<string, unknown> }>,
-  key: string
-): Promise<{ id: string }> {
-  const res = await fetch('https://api.anthropic.com/v1/messages/batches', {
-    method: 'POST',
-    headers: ANTHROPIC_HEADERS(key),
-    body: JSON.stringify({ requests }),
-  })
-  if (!res.ok) throw new Error(`Batch submit: ${res.status} — ${(await res.text()).slice(0, 400)}`)
-  return await res.json()
+  keys: string[]
+): Promise<{ id: string; keyIndex: number }> {
+  if (keys.length === 0) throw new Error('Batch submit: kein ANTHROPIC_API_KEY gesetzt')
+  const errors: string[] = []
+  for (let i = 0; i < keys.length; i++) {
+    const res = await fetch('https://api.anthropic.com/v1/messages/batches', {
+      method: 'POST',
+      headers: ANTHROPIC_HEADERS(keys[i]),
+      body: JSON.stringify({ requests }),
+    })
+    if (res.ok) {
+      if (i > 0) console.warn(`Batch submit: Schlüssel 1–${i} nicht nutzbar, Fallback auf Schlüssel ${i + 1}`)
+      const json = await res.json()
+      return { id: json.id, keyIndex: i }
+    }
+    const body = (await res.text()).slice(0, 400)
+    errors.push(`Schlüssel ${i + 1}: ${res.status} — ${body}`)
+    // Nur Konto-Probleme rechtfertigen den nächsten Schlüssel; ein Parameterfehler
+    // würde mit jedem Konto gleich scheitern.
+    if (!isKeyProblem(res.status, body)) break
+  }
+  throw new Error(`Batch submit: ${errors.join(' | ')}`)
 }
 
-async function getBatch(batchId: string, key: string): Promise<{ processing_status: string; results_url?: string }> {
-  const res = await fetch(`https://api.anthropic.com/v1/messages/batches/${batchId}`, {
-    headers: ANTHROPIC_HEADERS(key),
-  })
-  if (!res.ok) throw new Error(`Batch status: ${res.status}`)
-  return await res.json()
+async function getBatch(
+  batchId: string,
+  keys: string[]
+): Promise<{ meta: { processing_status: string; results_url?: string }; key: string }> {
+  let last = 'kein Schlüssel'
+  for (const key of keys) {
+    const res = await fetch(`https://api.anthropic.com/v1/messages/batches/${batchId}`, {
+      headers: ANTHROPIC_HEADERS(key),
+    })
+    if (res.ok) return { meta: await res.json(), key }
+    last = String(res.status)
+    // 404 = Batch gehört einem anderen Konto → nächster Schlüssel; 401/403 = Konto
+    // gesperrt → ebenfalls weiter. Alles andere ist ein echter Fehler.
+    if (![401, 403, 404].includes(res.status)) break
+  }
+  throw new Error(`Batch status: ${last}`)
 }
 
 async function getBatchResults(resultsUrl: string, key: string): Promise<Map<string, BatchResultEntry>> {
@@ -1391,7 +1430,7 @@ Deno.serve(async (req) => {
     // Thinking-Tokens zählen gegen max_tokens — mit effort 'high' braucht Premium
     // mehr Luft, sonst wird das JSON abgeschnitten (stop_reason max_tokens).
     const maxTokens = isPremium ? 72000 : 32000
-    const anthropicKey = Deno.env.get('ANTHROPIC_API_KEY')!
+    const anthropicKeys_ = anthropicKeys()
     const appUrl = Deno.env.get('APP_URL') || 'https://immopruef.de'
 
       // Abschluss: Order-Status setzen + ggf. E-Mail — läuft nach JEDEM Ausgang.
@@ -1810,8 +1849,9 @@ ${kaeuferBlock(opts)}`,
     const batchIds = [...new Set(withBatch.map((a) => a.batch_id as string))]
     for (const bid of batchIds) {
       let meta: { processing_status: string; results_url?: string }
+      let batchKey: string
       try {
-        meta = await getBatch(bid, anthropicKey)
+        ;({ meta, key: batchKey } = await getBatch(bid, anthropicKeys_))
       } catch (e) {
         console.error(`Batch ${bid}: Status-Abruf fehlgeschlagen:`, e)
         continue
@@ -1820,7 +1860,7 @@ ${kaeuferBlock(opts)}`,
 
       let results: Map<string, BatchResultEntry>
       try {
-        results = await getBatchResults(meta.results_url!, anthropicKey)
+        results = await getBatchResults(meta.results_url!, batchKey)
       } catch (e) {
         console.error(`Batch ${bid}: Results-Abruf fehlgeschlagen:`, e)
         continue
@@ -1932,11 +1972,11 @@ ${kaeuferBlock(opts)}`,
 
       if (requests.length > 0) {
         try {
-          const batch = await submitBatch(requests, anthropicKey)
+          const batch = await submitBatch(requests, anthropicKeys_)
           for (const r of requests) {
             await supabase.from('analyses').update({ batch_id: batch.id }).eq('id', r.custom_id)
           }
-          console.log(`Batch ${batch.id} submitted: ${requests.length} Analyse(n), ${ANTHROPIC_MODEL}`)
+          console.log(`Batch ${batch.id} submitted: ${requests.length} Analyse(n), ${ANTHROPIC_MODEL}, Schlüssel ${batch.keyIndex + 1}`)
         } catch (e) {
           console.error('Batch-Submit fehlgeschlagen:', e)
           const detail = e instanceof Error ? e.message : String(e)
