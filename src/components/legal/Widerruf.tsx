@@ -30,7 +30,7 @@ export default function Widerruf() {
           widerrufen. Die Widerrufsfrist beträgt 14 Tage ab dem Tag des Vertragsschlusses.
         </p>
         <p className="mt-2">
-          Um Ihr Widerrufsrecht auszuüben, müssen Sie uns (Neuralpfad UG (haftungsbeschränkt),
+          Um Ihr Widerrufsrecht auszuüben, müssen Sie uns (Seydhan Cakmak, handelnd unter Cakmak Digital,
           Auf dem Paß 10, 27711 Osterholz-Scharmbeck, E-Mail: info@immopruef.de) mittels einer
           eindeutigen Erklärung (z.B. per E-Mail) über Ihren Entschluss, diesen Vertrag zu
           widerrufen, informieren.

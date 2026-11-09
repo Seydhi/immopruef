@@ -125,7 +125,7 @@ export default function KiTransparenz() {
           <p className="mb-3">
             Die redaktionelle Verantwortung trägt namentlich{' '}
             <a href="/ueber-uns" className="text-green hover:text-green-mid underline">Seydhan Cakmak</a>{' '}
-            (Neuralpfad UG). Fachlich geprüfte Energie-Themen kennzeichnen wir zusätzlich mit dem Namen
+            (Cakmak Digital). Fachlich geprüfte Energie-Themen kennzeichnen wir zusätzlich mit dem Namen
             des prüfenden Ingenieurs. Jeder Artikel trägt sichtbar den Hinweis „KI-gestützt erstellt ·
             redaktionell geprüft" sowie das Datum der letzten inhaltlichen Aktualisierung.
           </p>

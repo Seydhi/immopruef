@@ -18,8 +18,8 @@ export default function AGB() {
           <h2 className="text-base font-heading font-semibold text-ink mb-2">§ 1 Geltungsbereich</h2>
           <p>
             (1) Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge zwischen
-            der Neuralpfad UG (haftungsbeschränkt), Auf dem Paß 10, 27711 Osterholz-Scharmbeck,
-            vertreten durch den Geschäftsführer Seydhan Cakmak (nachfolgend "Anbieter"), und
+            Seydhan Cakmak, handelnd unter Cakmak Digital, Auf dem Paß 10,
+            27711 Osterholz-Scharmbeck (nachfolgend "Anbieter"), und
             dem Kunden über die Nutzung der auf immopruef.de angebotenen Dienstleistungen.
           </p>
           <p className="mt-2">
@@ -71,9 +71,8 @@ export default function AGB() {
           <h2 className="text-base font-heading font-semibold text-ink mb-2">§ 4 Preise und Zahlung</h2>
           <p>
             (1) Es gelten die zum Zeitpunkt der Bestellung angegebenen Preise.
-            Alle Preise sind Endpreise in Euro inklusive der gesetzlichen Umsatzsteuer.
-            Der Anbieter nimmt die Kleinunternehmerregelung nach § 19 UStG in Anspruch,
-            daher wird in Rechnungen keine Umsatzsteuer ausgewiesen.
+            Alle Preise sind Endpreise in Euro. Eine gegebenenfalls anfallende gesetzliche
+            Umsatzsteuer ist im angegebenen Preis enthalten.
           </p>
           <p className="mt-2">
             (2) Die Zahlung erfolgt über den Zahlungsdienstleister Stripe. Es stehen die
@@ -96,8 +95,7 @@ export default function AGB() {
               dem Tag des Vertragsschlusses.
             </p>
             <p className="mt-2">
-              Um Ihr Widerrufsrecht auszuüben, müssen Sie uns (Neuralpfad UG
-              (haftungsbeschränkt), Auf dem Paß 10, 27711 Osterholz-Scharmbeck, E-Mail:
+              Um Ihr Widerrufsrecht auszuüben, müssen Sie uns (Seydhan Cakmak, handelnd unter Cakmak Digital, Auf dem Paß 10, 27711 Osterholz-Scharmbeck, E-Mail:
               info@immopruef.de) mittels einer eindeutigen Erklärung (z.B. per E-Mail)
               über Ihren Entschluss, diesen Vertrag zu widerrufen, informieren.
             </p>

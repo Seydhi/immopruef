@@ -25,7 +25,7 @@ export default function UeberUns() {
           logo: 'https://immopruef.de/logo.png',
           foundingDate: '2026',
           founder: { '@type': 'Person', name: 'Seydhan Cakmak' },
-          legalName: 'Neuralpfad UG (haftungsbeschränkt)',
+          legalName: 'Seydhan Cakmak, handelnd unter Cakmak Digital',
           address: {
             '@type': 'PostalAddress',
             streetAddress: 'Auf dem Paß 10',
@@ -41,7 +41,7 @@ export default function UeberUns() {
         '@context': 'https://schema.org',
         '@type': 'Person',
         name: 'Seydhan Cakmak',
-        jobTitle: 'Gründer & Geschäftsführer',
+        jobTitle: 'Gründer & Inhaber',
         worksFor: { '@type': 'Organization', name: 'ImmoPrüf', url: 'https://immopruef.de' },
         url: 'https://immopruef.de/ueber-uns',
         image: 'https://immopruef.de/team/seydhan-cakmak.jpg',
@@ -145,7 +145,7 @@ export default function UeberUns() {
             </div>
             <div>
               <div className="font-semibold text-ink">Seydhan Cakmak</div>
-              <div className="text-[12px] text-ink-light mb-1.5">Gründer &amp; Geschäftsführer · verantwortlich für die Inhalte</div>
+              <div className="text-[12px] text-ink-light mb-1.5">Gründer &amp; Inhaber · verantwortlich für die Inhalte</div>
               <p className="text-[13px] text-ink-mid leading-relaxed">
                 Seydhan hat Wirtschaftsinformatik studiert und verbindet einen daten- und technikgetriebenen Blick mit
                 einer großen Leidenschaft für Immobilien. Aus dieser Kombination ist ImmoPrüf entstanden — mit dem Ziel,
@@ -188,8 +188,8 @@ export default function UeberUns() {
           </div>
 
           <p>
-            ImmoPrüf ist ein Angebot der <strong className="text-ink">Neuralpfad UG (haftungsbeschränkt)</strong> mit Sitz
-            in 27711 Osterholz-Scharmbeck, vertreten durch den Geschäftsführer Seydhan Cakmak. Wir sind ein kleines,
+            ImmoPrüf ist ein Angebot von <strong className="text-ink">Seydhan Cakmak, handelnd unter Cakmak Digital</strong>,
+            mit Sitz in 27711 Osterholz-Scharmbeck. Wir sind ein kleines,
             unabhängiges Team — wir verkaufen keine Immobilien und erhalten keine Provisionen von Maklern oder
             Verkäufern. Dadurch ist unsere Einschätzung allein dem Käufer verpflichtet.
           </p>

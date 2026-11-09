@@ -183,7 +183,7 @@ export function organizationSchema(): object {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: SITE_NAME,
-    legalName: 'Neuralpfad UG (haftungsbeschränkt)',
+    legalName: 'Seydhan Cakmak, handelnd unter Cakmak Digital',
     url: SITE_URL,
     logo: `${SITE_URL}/logo.png`,
     description: 'KI-gestützte Immobilienanalyse für Käufer in Deutschland — Preisbewertung, Standortanalyse, Finanzierungs-Check und mehr.',

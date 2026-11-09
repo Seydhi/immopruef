@@ -15,19 +15,14 @@ export default function Impressum() {
         <section>
           <h2 className="text-base font-heading font-semibold text-ink mb-2">Angaben gemäß § 5 DDG</h2>
           <p>
-            Neuralpfad UG (haftungsbeschränkt)<br />
+            Seydhan Cakmak<br />
+            Cakmak Digital · Einzelunternehmen<br />
             Auf dem Paß 10<br />
             27711 Osterholz-Scharmbeck<br />
             Deutschland
           </p>
         </section>
 
-        <section>
-          <h2 className="text-base font-heading font-semibold text-ink mb-2">Vertreten durch</h2>
-          <p>
-            Geschäftsführer: Seydhan Cakmak
-          </p>
-        </section>
 
         <section>
           <h2 className="text-base font-heading font-semibold text-ink mb-2">Kontakt</h2>
@@ -35,32 +30,16 @@ export default function Impressum() {
             E-Mail: <a href="mailto:info@immopruef.de" className="text-green hover:text-green-mid transition-colors">info@immopruef.de</a>
           </p>
           <p className="mt-1 text-xs text-ink-light">
-            Telefonische Erreichbarkeit auf Anfrage per E-Mail.
+            Telefon: <a href="tel:+491748831396" className="text-green hover:text-green-mid transition-colors">+49 174 8831396</a>
           </p>
         </section>
 
-        <section>
-          <h2 className="text-base font-heading font-semibold text-ink mb-2">Handelsregister</h2>
-          <p>
-            Eingetragen im Handelsregister.<br />
-            Registergericht: [Amtsgericht wird nachgetragen]<br />
-            Registernummer: [HRB-Nummer wird nachgetragen]
-          </p>
-          <p className="mt-1 text-xs text-ink-light">
-            <em>Hinweis: Die HRB-Nummer und das zuständige Registergericht sind zeitnah zu ergänzen,
-            sobald die Eintragung vorliegt bzw. bekannt ist.</em>
-          </p>
-        </section>
 
         <section>
           <h2 className="text-base font-heading font-semibold text-ink mb-2">Umsatzsteuer-Identifikationsnummer</h2>
           <p>
             Umsatzsteuer-Identifikationsnummer gemäß § 27 a UStG:<br />
-            [USt-IdNr. wird nachgetragen, falls erteilt]
-          </p>
-          <p className="mt-2">
-            Sofern keine USt-IdNr. vorliegt: Gemäß § 19 UStG wird keine Umsatzsteuer ausgewiesen
-            (Kleinunternehmerregelung).
+            DE462617089
           </p>
         </section>
 
@@ -142,7 +121,7 @@ export default function Impressum() {
         </section>
 
         <p className="text-xs text-ink-light pt-4 border-t border-ink/10">
-          Stand: April 2026
+          Stand: November 2026
         </p>
       </div>
     </div>

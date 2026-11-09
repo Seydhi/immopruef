@@ -9,7 +9,7 @@ import { useSEO, articleSchema, breadcrumbSchema, faqSchema } from '../../lib/us
 const AUTHOR_PERSON = {
   '@type': 'Person',
   name: 'Seydhan Cakmak',
-  jobTitle: 'Gründer & Geschäftsführer',
+  jobTitle: 'Gründer & Inhaber',
   url: 'https://immopruef.de/ueber-uns',
   worksFor: { '@type': 'Organization', name: 'ImmoPrüf', url: 'https://immopruef.de' },
   sameAs: ['https://www.linkedin.com/in/seydhan-cakmak'],

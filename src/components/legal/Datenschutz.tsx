@@ -22,8 +22,7 @@ export default function Datenschutz() {
             datenschutzrechtlicher Bestimmungen ist:
           </p>
           <p className="mt-2">
-            Neuralpfad UG (haftungsbeschränkt)<br />
-            vertreten durch den Geschäftsführer Seydhan Cakmak<br />
+            Seydhan Cakmak, handelnd unter Cakmak Digital<br />
             Auf dem Paß 10<br />
             27711 Osterholz-Scharmbeck<br />
             Deutschland<br />

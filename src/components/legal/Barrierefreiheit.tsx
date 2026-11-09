@@ -19,7 +19,7 @@ export default function Barrierefreiheit() {
             Diese Erklärung gilt für die Website{' '}
             <a href="https://immopruef.de" className="text-green hover:text-green-mid">immopruef.de</a>
             {' '}einschließlich aller Unterseiten, Analyse-Permalinks und Blog-Inhalte. Anbieter
-            ist die Neuralpfad UG (haftungsbeschränkt) — vollständige Angaben siehe{' '}
+            ist Seydhan Cakmak, handelnd unter Cakmak Digital — vollständige Angaben siehe{' '}
             <a href="/impressum" className="text-green hover:text-green-mid">Impressum</a>.
           </p>
         </section>
@@ -36,8 +36,7 @@ export default function Barrierefreiheit() {
             <strong>Kleinstunternehmen-Ausnahme:</strong> Nach § 3 Abs. 3 BFSG gelten die
             Anforderungen an Dienstleistungen nicht für Kleinstunternehmen im Sinne der
             Empfehlung 2003/361/EG der Europäischen Kommission (weniger als 10 Beschäftigte
-            und Jahresumsatz oder Jahresbilanzsumme bis 2 Mio. Euro). Die Neuralpfad UG
-            (haftungsbeschränkt) erfüllt diese Voraussetzungen und ist damit von den
+            und Jahresumsatz oder Jahresbilanzsumme bis 2 Mio. Euro). Cakmak Digital erfüllt diese Voraussetzungen und ist damit von den
             materiellen BFSG-Pflichten ausgenommen.
           </p>
         </section>
@@ -103,7 +102,7 @@ export default function Barrierefreiheit() {
           </p>
           <p className="mt-2">
             <strong>Ansprechpartner:</strong><br />
-            Neuralpfad UG (haftungsbeschränkt)<br />
+            Cakmak Digital<br />
             Seydhan Cakmak<br />
             E-Mail: <a href="mailto:info@immopruef.de?subject=Barrierefreiheit" className="text-green hover:text-green-mid transition-colors">info@immopruef.de</a>
           </p>
@@ -116,7 +115,7 @@ export default function Barrierefreiheit() {
         <section>
           <h2 className="text-base font-heading font-semibold text-ink mb-2">7. Schlichtungsverfahren</h2>
           <p>
-            Da die Neuralpfad UG (haftungsbeschränkt) als Kleinstunternehmen nicht unter die
+            Da Cakmak Digital als Kleinstunternehmen nicht unter die
             materiellen Pflichten des BFSG fällt, ist ein formelles Schlichtungsverfahren
             nach § 16 BFSG nicht vorgesehen. Wir werden Beschwerden dennoch ernst nehmen und
             prüfen. Darüber hinaus verweisen wir auf die Möglichkeit, sich bei der
