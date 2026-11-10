@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, useRef } from 'react'
 import type { OrderResult, Analysis } from './lib/types'
 import { pollAnalysis, getAnalysisByToken } from './lib/api'
 import Header from './components/Header'
@@ -40,7 +40,8 @@ import { BLOG_POSTS, POST_COMPONENTS } from './components/blog/posts'
 type AppView =
   | { type: 'landing' }
   | { type: 'loading'; sessionId: string }
-  | { type: 'results'; order: OrderResult }
+  | { type: 'results'; order: OrderResult; sessionId: string }
+  | { type: 'permalink-loading' }
   | { type: 'permalink'; analysis: Analysis }
   | { type: 'error'; message: string }
   | { type: 'impressum' }
@@ -68,25 +69,159 @@ type AppView =
   | { type: 'blog-kategorie'; slug: string }
   | { type: 'blog-post'; slug: string }
 
+// Pfad → statische Ansicht. null = kein eigener Pfad (Startseite bzw. Ansichten,
+// die über Query-Parameter gesteuert werden: ?session_id=… / ?result=…).
+function resolveRoute(rawPath: string): AppView | null {
+  // Trailing Slash normalisieren ("/rechner/" → "/rechner"), sonst fällt das
+  // Routing bei Directory-URLs (statisches Hosting) auf die Landing zurück.
+  const path = rawPath.replace(/\/+$/, '') || '/'
+
+  if (path === '/impressum') return { type: 'impressum' }
+  if (path === '/datenschutz') return { type: 'datenschutz' }
+  if (path === '/agb') return { type: 'agb' }
+  if (path === '/widerruf') return { type: 'widerruf' }
+  if (path === '/ki-transparenz') return { type: 'ki-transparenz' }
+  if (path === '/barrierefreiheit') return { type: 'barrierefreiheit' }
+  if (path === '/beispiel-analyse') return { type: 'beispiel-analyse', variant: 'standard' }
+  if (path === '/beispiel-premium-report') return { type: 'beispiel-analyse', variant: 'premium' }
+  if (path === '/grunderwerbsteuer-rechner') return { type: 'rechner' }
+  if (path === '/budgetrechner') return { type: 'budgetrechner' }
+  if (path === '/tilgungsrechner') return { type: 'tilgungsrechner' }
+  if (path === '/notarkosten-rechner') return { type: 'notarkosten' }
+  if (path === '/mieten-oder-kaufen-rechner') return { type: 'mieten-oder-kaufen' }
+  if (path === '/mietrendite-rechner') return { type: 'mietrendite' }
+  if (path === '/instandhaltungsruecklage-rechner') return { type: 'instandhaltung' }
+  if (path === '/wohnflaechen-rechner') return { type: 'wohnflaechen' }
+  if (path === '/rechner') return { type: 'rechner-hub' }
+  if (path === '/kaufnebenkosten-index') return { type: 'kaufnebenkosten-index' }
+  if (path === '/expose-pruefen-lassen') return { type: 'expose-pruefen-lassen' }
+  const regioMatch = path.match(/^\/kaufnebenkosten-([a-z-]+)$/)
+  if (regioMatch && regioForSlug(regioMatch[1])) return { type: 'regional', slug: regioMatch[1] }
+  const bodenMatch = path.match(/^\/bodenrichtwert-([a-z-]+)$/)
+  if (bodenMatch && regioForSlug(bodenMatch[1])) return { type: 'bodenrichtwert', slug: bodenMatch[1] }
+  if (path === '/ueber-uns') return { type: 'ueber-uns' }
+
+  // Blog routing — Kategorie-Hubs VOR dem Artikel-Catch-all matchen
+  if (path === '/blog') return { type: 'blog' }
+  const themaMatch = path.match(/^\/blog\/thema\/([a-z-]+)$/)
+  if (themaMatch && kategorieForSlug(themaMatch[1])) return { type: 'blog-kategorie', slug: themaMatch[1] }
+  const blogMatch = path.match(/^\/blog\/(.+)$/)
+  if (blogMatch) return { type: 'blog-post', slug: blogMatch[1] }
+
+  return null
+}
+
+// ─── Laufende Bestellung merken ───
+// Die Analyse wird serverseitig erst abgeholt (und die Ergebnis-Mail erst verschickt),
+// wenn ein Browser den Status abfragt. Schließt der Kunde den Tab oder lädt neu, darf
+// die Bestellung deshalb nicht "verloren" gehen: session_id bleibt in der URL UND wird
+// für ein paar Stunden lokal gemerkt, damit ein späterer Besuch die Abfrage fortsetzt.
+const SESSION_KEY = 'immopruef:session'
+const SESSION_MAX_AGE_MS = 6 * 60 * 60 * 1000
+const SESSION_ID_RE = /^[A-Za-z0-9_-]{8,255}$/
+
+function readSession(): { id: string; ts: number } | null {
+  try {
+    const raw = window.localStorage.getItem(SESSION_KEY)
+    if (!raw) return null
+    const v = JSON.parse(raw) as { id?: unknown; ts?: unknown }
+    if (typeof v?.id !== 'string' || !SESSION_ID_RE.test(v.id) || typeof v.ts !== 'number') return null
+    if (Date.now() - v.ts > SESSION_MAX_AGE_MS) {
+      window.localStorage.removeItem(SESSION_KEY)
+      return null
+    }
+    return { id: v.id, ts: v.ts }
+  } catch {
+    return null // privates Fenster / Storage gesperrt
+  }
+}
+
+function rememberSession(id: string) {
+  try {
+    if (readSession()?.id === id) return // Zeitstempel nicht bei jedem Besuch verlängern
+    window.localStorage.setItem(SESSION_KEY, JSON.stringify({ id, ts: Date.now() }))
+  } catch {
+    // Storage nicht verfügbar — dann bleibt nur die URL
+  }
+}
+
+function forgetSession() {
+  try {
+    window.localStorage.removeItem(SESSION_KEY)
+  } catch {
+    // Storage nicht verfügbar
+  }
+}
+
+// Abfrage-Takt: erst zügig, dann gemächlicher; insgesamt lange genug für Premium-Reports
+// und automatische Server-Retries.
+const POLL_FAST_MS = 6 * 60 * 1000
+const POLL_MAX_MS = 45 * 60 * 1000
+const POLL_FAILURES_BEFORE_ERROR = 12
+const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms))
+
+// Erste Ansicht direkt aus der URL — kein Aufblitzen der Startseite auf Unterseiten.
+function initialView(): AppView {
+  const route = resolveRoute(window.location.pathname)
+  if (route) return route
+  const params = new URLSearchParams(window.location.search)
+  const sessionId = params.get('session_id')
+  if (sessionId && SESSION_ID_RE.test(sessionId)) return { type: 'loading', sessionId }
+  if (params.get('result')) return { type: 'permalink-loading' }
+  return { type: 'landing' }
+}
+
 export default function App() {
-  const [view, setView] = useState<AppView>({ type: 'landing' })
+  const [view, setView] = useState<AppView>(initialView)
   const [toast, setToast] = useState<{ message: string; variant: 'success' | 'error' | 'neutral' } | null>(null)
   const [loadingError, setLoadingError] = useState<string | null>(null)
   const [timedOut, setTimedOut] = useState(false)
   const [progress, setProgress] = useState<{ completed: number; total: number } | null>(null)
+  // Bestellung, deren Status gerade abgefragt wird. order = fertiges Ergebnis, das noch
+  // nicht angezeigt wurde, weil der Nutzer inzwischen eine andere Seite offen hat.
+  const [job, setJob] = useState<{ sessionId: string; order: OrderResult | null } | null>(null)
 
-  const startPolling = useCallback(async (sessionId: string) => {
-    setView({ type: 'loading', sessionId })
+  const viewRef = useRef<AppView>(view)
+  useEffect(() => { viewRef.current = view }, [view])
+  const pollRun = useRef(0)
+
+  const startPolling = useCallback(async (sessionId: string, mode: 'foreground' | 'background' = 'foreground') => {
+    // Jeder Start entwertet ältere Läufe (Doppel-Start, Zurück-Button, neuer Versuch).
+    const run = ++pollRun.current
+    const alive = () => pollRun.current === run
+    // Die Ansicht wird nur umgeschaltet, solange der Nutzer wirklich auf dem Ladebildschirm
+    // DIESER Bestellung ist — wer inzwischen weitergeklickt hat, bekommt einen Hinweis-Balken.
+    const inForeground = () => {
+      const v = viewRef.current
+      return v.type === 'loading' && v.sessionId === sessionId
+    }
+
+    rememberSession(sessionId)
     setLoadingError(null)
     setTimedOut(false)
     setProgress(null)
+    setJob({ sessionId, order: null })
+    if (mode === 'foreground') {
+      const next: AppView = { type: 'loading', sessionId }
+      viewRef.current = next
+      setView(next)
+    }
 
-    const maxAttempts = 120 // 10 minutes (120 × 5s)
-    for (let attempt = 0; attempt < maxAttempts; attempt++) {
+    const startedAt = Date.now()
+    let failures = 0
+    while (Date.now() - startedAt < POLL_MAX_MS) {
       try {
         const result = await pollAnalysis(sessionId)
+        if (!alive()) return
+        failures = 0
         if (result.order_status === 'completed' || result.order_status === 'failed') {
-          setView({ type: 'results', order: result })
+          if (inForeground()) {
+            forgetSession()
+            setJob(null)
+            setView({ type: 'results', order: result, sessionId })
+          } else {
+            setJob({ sessionId, order: result })
+          }
           return
         }
         // Track progress for multi-URL orders
@@ -94,86 +229,106 @@ export default function App() {
           const done = result.analyses.filter((a: { status: string }) => a.status === 'completed' || a.status === 'failed').length
           setProgress({ completed: done, total: result.analyses.length })
         }
-        if (result.order_status === 'pending') {
-          await new Promise((r) => setTimeout(r, 5000))
-          continue
-        }
-        // processing
-        await new Promise((r) => setTimeout(r, 5000))
       } catch (err) {
-        // Polling failed (network/server). Wait then retry — don't crash UI.
+        if (!alive()) return
+        if ((err as { status?: number })?.status === 404) {
+          // Unbekannte Bestellung (falscher/abgeschnittener Link) — nicht endlos weiterfragen.
+          forgetSession()
+          setJob(null)
+          if (inForeground()) {
+            setView({ type: 'error', message: 'Zu diesem Link haben wir keine Bestellung gefunden. Bitte öffnen Sie den Link vollständig oder schreiben Sie uns an info@immopruef.de.' })
+          }
+          return
+        }
+        failures++
         console.warn('[startPolling] poll failed, retrying:', err)
-        await new Promise((r) => setTimeout(r, 5000))
+        if (failures >= POLL_FAILURES_BEFORE_ERROR) {
+          if (inForeground()) {
+            setLoadingError('Die Verbindung zum Server ist gerade gestört. Ihre Zahlung ist erfasst — bitte prüfen Sie Ihre Internetverbindung und versuchen Sie es erneut.')
+          } else {
+            setJob(null) // gemerkt bleibt die Bestellung trotzdem: der nächste Besuch fragt weiter
+          }
+          return
+        }
       }
+      await sleep(Date.now() - startedAt < POLL_FAST_MS ? 5000 : 10000)
+      if (!alive()) return
     }
-    setTimedOut(true)
+    if (inForeground()) setTimedOut(true)
+    else setJob(null)
+  }, [])
+
+  const loadPermalink = useCallback((token: string) => {
+    const next: AppView = { type: 'permalink-loading' }
+    viewRef.current = next
+    setView(next)
+    const stillWaiting = () => viewRef.current.type === 'permalink-loading'
+    getAnalysisByToken(token).then((analysis) => {
+      if (!stillWaiting()) return
+      if (analysis?.result && analysis.status === 'completed') {
+        setView({ type: 'permalink', analysis })
+      } else if (analysis) {
+        setView({ type: 'error', message: 'Diese Analyse ist (noch) nicht verfügbar. Bitte versuchen Sie es in ein paar Minuten erneut oder schreiben Sie uns an info@immopruef.de.' })
+      } else {
+        setView({ type: 'error', message: 'Analyse nicht gefunden.' })
+      }
+    }).catch(() => {
+      if (stillWaiting()) setView({ type: 'error', message: 'Verbindungsfehler.' })
+    })
   }, [])
 
   useEffect(() => {
-    // Trailing Slash normalisieren ("/rechner/" → "/rechner"), sonst fällt das
-    // Routing bei Directory-URLs (statisches Hosting) auf die Landing zurück.
-    const path = window.location.pathname.replace(/\/+$/, '') || '/'
-    const params = new URLSearchParams(window.location.search)
-    const sessionId = params.get('session_id')
-    const resultToken = params.get('result')
-    const paymentCancelled = params.get('payment')
+    // Ansicht aus der Adresszeile ableiten: beim ersten Laden und bei Zurück/Vor im Browser.
+    const sync = (initial: boolean) => {
+      const route = resolveRoute(window.location.pathname)
+      if (route) {
+        if (!initial) setView(route) // beim ersten Laden steht sie schon im Startzustand
+        return
+      }
 
-    // Legal pages routing
-    if (path === '/impressum') { setView({ type: 'impressum' }); return }
-    if (path === '/datenschutz') { setView({ type: 'datenschutz' }); return }
-    if (path === '/agb') { setView({ type: 'agb' }); return }
-    if (path === '/widerruf') { setView({ type: 'widerruf' }); return }
-    if (path === '/ki-transparenz') { setView({ type: 'ki-transparenz' }); return }
-    if (path === '/barrierefreiheit') { setView({ type: 'barrierefreiheit' }); return }
-    if (path === '/beispiel-analyse') { setView({ type: 'beispiel-analyse', variant: 'standard' }); return }
-    if (path === '/beispiel-premium-report') { setView({ type: 'beispiel-analyse', variant: 'premium' }); return }
-    if (path === '/grunderwerbsteuer-rechner') { setView({ type: 'rechner' }); return }
-    if (path === '/budgetrechner') { setView({ type: 'budgetrechner' }); return }
-    if (path === '/tilgungsrechner') { setView({ type: 'tilgungsrechner' }); return }
-    if (path === '/notarkosten-rechner') { setView({ type: 'notarkosten' }); return }
-    if (path === '/mieten-oder-kaufen-rechner') { setView({ type: 'mieten-oder-kaufen' }); return }
-    if (path === '/mietrendite-rechner') { setView({ type: 'mietrendite' }); return }
-    if (path === '/instandhaltungsruecklage-rechner') { setView({ type: 'instandhaltung' }); return }
-    if (path === '/wohnflaechen-rechner') { setView({ type: 'wohnflaechen' }); return }
-    if (path === '/rechner') { setView({ type: 'rechner-hub' }); return }
-    if (path === '/kaufnebenkosten-index') { setView({ type: 'kaufnebenkosten-index' }); return }
-    if (path === '/expose-pruefen-lassen') { setView({ type: 'expose-pruefen-lassen' }); return }
-    const regioMatch = path.match(/^\/kaufnebenkosten-([a-z-]+)$/)
-    if (regioMatch && regioForSlug(regioMatch[1])) { setView({ type: 'regional', slug: regioMatch[1] }); return }
-    const bodenMatch = path.match(/^\/bodenrichtwert-([a-z-]+)$/)
-    if (bodenMatch && regioForSlug(bodenMatch[1])) { setView({ type: 'bodenrichtwert', slug: bodenMatch[1] }); return }
-    if (path === '/ueber-uns') { setView({ type: 'ueber-uns' }); return }
+      const params = new URLSearchParams(window.location.search)
+      if (initial && params.has('payment')) {
+        if (params.get('payment') === 'cancelled') setToast({ message: 'Zahlung abgebrochen.', variant: 'neutral' })
+        // Nur diesen Parameter entfernen. session_id / result bleiben in der URL, damit
+        // Neuladen, Lesezeichen und der Link aus der Ergebnis-Mail funktionieren.
+        params.delete('payment')
+        const qs = params.toString()
+        window.history.replaceState({}, '', window.location.pathname + (qs ? `?${qs}` : ''))
+      }
 
-    // Blog routing — Kategorie-Hubs VOR dem Artikel-Catch-all matchen
-    if (path === '/blog' || path === '/blog/') { setView({ type: 'blog' }); return }
-    const themaMatch = path.match(/^\/blog\/thema\/([a-z-]+)$/)
-    if (themaMatch && kategorieForSlug(themaMatch[1])) { setView({ type: 'blog-kategorie', slug: themaMatch[1] }); return }
-    const blogMatch = path.match(/^\/blog\/(.+)$/)
-    if (blogMatch) { setView({ type: 'blog-post', slug: blogMatch[1] }); return }
-
-    // Clean URL
-    if (sessionId || resultToken || paymentCancelled) {
-      window.history.replaceState({}, '', window.location.pathname)
+      const sessionId = params.get('session_id')
+      const resultToken = params.get('result')
+      if (sessionId && SESSION_ID_RE.test(sessionId)) {
+        const v = viewRef.current
+        if (!initial && (v.type === 'loading' || v.type === 'results') && v.sessionId === sessionId) return
+        startPolling(sessionId)
+      } else if (resultToken) {
+        loadPermalink(resultToken)
+      } else {
+        if (!initial) setView({ type: 'landing' })
+        // Startseite ohne Parameter: eine noch offene Bestellung im Hintergrund weiter
+        // abfragen (holt das Ergebnis serverseitig ab und löst die Ergebnis-Mail aus).
+        const remembered = initial ? readSession() : null
+        if (remembered) startPolling(remembered.id, 'background')
+      }
     }
 
-    if (sessionId) {
-      startPolling(sessionId)
-    } else if (resultToken) {
-      getAnalysisByToken(resultToken).then((analysis) => {
-        if (analysis) {
-          setView({ type: 'permalink', analysis })
-        } else {
-          setView({ type: 'error', message: 'Analyse nicht gefunden.' })
-        }
-      }).catch(() => {
-        setView({ type: 'error', message: 'Verbindungsfehler.' })
-      })
-    } else if (paymentCancelled === 'cancelled') {
-      setToast({ message: 'Zahlung abgebrochen.', variant: 'neutral' })
+    sync(true)
+    const onPop = () => sync(false)
+    window.addEventListener('popstate', onPop)
+    const run = pollRun
+    return () => {
+      window.removeEventListener('popstate', onPop)
+      run.current++ // laufende Abfrage beenden (StrictMode-Doppelstart, Unmount)
     }
-  }, [startPolling])
+  }, [startPolling, loadPermalink])
 
   const handleBack = () => {
+    pollRun.current++
+    forgetSession()
+    setJob(null)
+    window.history.pushState({}, '', '/')
+    window.scrollTo(0, 0)
     setView({ type: 'landing' })
     setLoadingError(null)
     setTimedOut(false)
@@ -184,6 +339,23 @@ export default function App() {
       startPolling(view.sessionId)
     }
   }
+
+  // Hinweis-Balken → Status bzw. Ergebnis der gemerkten Bestellung öffnen
+  const openJob = () => {
+    if (!job) return
+    const { sessionId, order } = job
+    window.history.pushState({}, '', `/?session_id=${encodeURIComponent(sessionId)}`)
+    window.scrollTo(0, 0)
+    if (order) {
+      forgetSession()
+      setJob(null)
+      setView({ type: 'results', order, sessionId })
+    } else {
+      setView({ type: 'loading', sessionId }) // die Abfrage läuft bereits weiter
+    }
+  }
+
+  const showJobBanner = !!job && !((view.type === 'loading' || view.type === 'results') && view.sessionId === job.sessionId)
 
   return (
     <div className="min-h-screen bg-cream font-body text-ink text-[15px] leading-relaxed overflow-x-hidden">
@@ -198,6 +370,20 @@ export default function App() {
       )}
 
       <main className="max-w-[820px] mx-auto px-6 py-10">
+        {showJobBanner && job && (
+          <div role="status" className="no-print mb-6 flex flex-wrap items-center justify-between gap-3 bg-green-light border border-green/20 rounded-lg px-4 py-3 text-sm text-green">
+            <span className="font-medium">
+              {job.order ? 'Ihre Analyse ist fertig.' : 'Ihre Analyse wird gerade erstellt …'}
+            </span>
+            <button
+              onClick={openJob}
+              className="bg-green text-white text-xs font-semibold px-4 py-1.5 rounded-lg hover:bg-green-mid transition-colors"
+            >
+              {job.order ? 'Ergebnis ansehen' : 'Zum Status'}
+            </button>
+          </div>
+        )}
+
         {view.type === 'landing' && <Landing />}
 
         {view.type === 'loading' && (
@@ -213,8 +399,17 @@ export default function App() {
 
         {view.type === 'results' && (
           <ErrorBoundary context="results-view">
-            <ResultsView analyses={view.order.analyses} onBack={handleBack} />
+            <ResultsView
+              analyses={view.order.analyses}
+              sessionId={view.sessionId}
+              onBack={handleBack}
+              onRetryStarted={() => startPolling(view.sessionId)}
+            />
           </ErrorBoundary>
+        )}
+
+        {view.type === 'permalink-loading' && (
+          <div role="status" className="text-center py-16 text-ink-light text-sm">Analyse wird geladen …</div>
         )}
 
         {view.type === 'permalink' && view.analysis.result && (

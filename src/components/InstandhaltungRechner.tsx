@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react'
 import { useSEO, faqSchema, breadcrumbSchema } from '../lib/useSEO'
 import { eur } from '../lib/kaufnebenkosten'
-import { Field, Row } from './calcUi'
+import { Field, Row, FaqSection, type FaqItem } from './calcUi'
 
 export default function InstandhaltungRechner() {
   const [wohnflaeche, setWohnflaeche] = useState(75)
@@ -32,6 +32,22 @@ export default function InstandhaltungRechner() {
     niedrig: { t: 'Die Rücklage erscheint zu niedrig — Risiko einer Sonderumlage.', c: 'text-red-600' },
   }
 
+  // Eine Quelle für sichtbaren FAQ-Abschnitt und FAQPage-JSON-LD (Text = Schema).
+  const faqs: FaqItem[] = [
+    {
+      question: 'Wie hoch sollte die Instandhaltungsrücklage pro Monat sein?',
+      answer: 'Als Faustregel gelten etwa 1 €/m²/Monat bei jungen Gebäuden, 1,50 € bei mittlerem Alter und rund 2 €/m²/Monat bei Altbauten. Für eine 75-m²-Wohnung im Bestand sind das grob 110 bis 150 € pro Monat. Genauer rechnet die Petersche Formel auf Basis der Herstellungskosten.',
+    },
+    {
+      question: 'Was ist die Petersche Formel?',
+      answer: 'Die Petersche Formel geht davon aus, dass über die Lebensdauer von rund 80 Jahren etwa das 1,5-fache der Herstellungskosten für Instandhaltung anfällt. Jährliche Rücklage = Herstellungskosten je m² × 1,5 ÷ 80 × Wohnfläche. Sie liefert eine fundiertere Schätzung als die einfache Faustregel.',
+    },
+    {
+      question: 'Warum ist eine zu niedrige Rücklage beim Wohnungskauf ein Risiko?',
+      answer: 'Reicht die Instandhaltungsrücklage der Eigentümergemeinschaft nicht für anstehende Sanierungen (Dach, Fassade, Heizung, Aufzug), drohen Sonderumlagen, die schnell mehrere tausend Euro betragen können. Prüfen Sie vor dem Kauf die Höhe der Rücklage und die letzten Protokolle der Eigentümerversammlung.',
+    },
+  ]
+
   useSEO({
     title: 'Instandhaltungsrücklage-Rechner: Wie viel ist genug?',
     description:
@@ -50,20 +66,7 @@ export default function InstandhaltungRechner() {
         inLanguage: 'de-DE',
         description: 'Schätzt die empfohlene monatliche Instandhaltungsrücklage einer Eigentumswohnung nach Faustregel und Peterscher Formel und bewertet, ob die aktuelle Zuführung ausreicht.',
       },
-      faqSchema([
-        {
-          question: 'Wie hoch sollte die Instandhaltungsrücklage pro Monat sein?',
-          answer: 'Als Faustregel gelten etwa 1 €/m²/Monat bei jungen Gebäuden, 1,50 € bei mittlerem Alter und rund 2 €/m²/Monat bei Altbauten. Für eine 75-m²-Wohnung im Bestand sind das grob 110 bis 150 € pro Monat. Genauer rechnet die Petersche Formel auf Basis der Herstellungskosten.',
-        },
-        {
-          question: 'Was ist die Petersche Formel?',
-          answer: 'Die Petersche Formel geht davon aus, dass über die Lebensdauer von rund 80 Jahren etwa das 1,5-fache der Herstellungskosten für Instandhaltung anfällt. Jährliche Rücklage = Herstellungskosten je m² × 1,5 ÷ 80 × Wohnfläche. Sie liefert eine fundiertere Schätzung als die einfache Faustregel.',
-        },
-        {
-          question: 'Warum ist eine zu niedrige Rücklage beim Wohnungskauf ein Risiko?',
-          answer: 'Reicht die Instandhaltungsrücklage der Eigentümergemeinschaft nicht für anstehende Sanierungen (Dach, Fassade, Heizung, Aufzug), drohen Sonderumlagen, die schnell mehrere tausend Euro betragen können. Prüfen Sie vor dem Kauf die Höhe der Rücklage und die letzten Protokolle der Eigentümerversammlung.',
-        },
-      ]),
+      faqSchema(faqs),
       breadcrumbSchema([
         { name: 'Startseite', url: 'https://immopruef.de/' },
         { name: 'Instandhaltungsrücklage-Rechner', url: 'https://immopruef.de/instandhaltungsruecklage-rechner' },
@@ -120,6 +123,8 @@ export default function InstandhaltungRechner() {
           achten sollten, lesen Sie im jeweiligen Ratgeber.
         </p>
       </div>
+
+      <FaqSection title="Häufige Fragen zur Instandhaltungsrücklage" items={faqs} />
 
       <div className="mt-8 bg-green text-cream rounded-xl p-6 text-center">
         <h2 className="font-display text-xl font-medium mb-2">Eigentumswohnung im Blick?</h2>

@@ -1,6 +1,16 @@
 import { useState, useMemo } from 'react'
 import { useSEO, faqSchema, breadcrumbSchema } from '../lib/useSEO'
 import { GREST, NOTAR_SATZ, GRUNDBUCH_SATZ, eur, pct } from '../lib/kaufnebenkosten'
+import { REGIO, nkQuote, GUENSTIGSTER, TEUERSTER, MAKLER_DEFAULT } from '../lib/regional'
+import { FaqSection, type FaqItem } from './calcUi'
+
+// Kennzahlen für Kurzantwort, FAQ und Ländertabelle: alles aus dem Kanon
+// (kaufnebenkosten.ts / regional.ts) abgeleitet, nichts hart kodiert.
+const MODELL = 400000
+const OHNE_MIN = nkQuote(GUENSTIGSTER.satz, false)
+const OHNE_MAX = nkQuote(TEUERSTER.satz, false)
+const MIT_MIN = nkQuote(GUENSTIGSTER.satz, true)
+const MIT_MAX = nkQuote(TEUERSTER.satz, true)
 
 export default function Rechner() {
   const [preis, setPreis] = useState(400000)
@@ -29,6 +39,30 @@ export default function Rechner() {
     }
   }, [preis, inventar, grestSatz, maklerSatz, provisionsfrei])
 
+  // Eine Quelle für sichtbaren FAQ-Abschnitt und FAQPage-JSON-LD (Text = Schema).
+  const faqs: FaqItem[] = [
+    {
+      question: 'Wie hoch sind die Kaufnebenkosten beim Immobilienkauf?',
+      answer:
+        `Die Kaufnebenkosten liegen je nach Bundesland bei ${pct(OHNE_MIN)} bis ${pct(OHNE_MAX)} des Kaufpreises ohne Makler und bei ${pct(MIT_MIN)} bis ${pct(MIT_MAX)} mit Maklerprovision. Sie bestehen aus Grunderwerbsteuer (${pct(GUENSTIGSTER.satz)} bis ${pct(TEUERSTER.satz)}), Notar (rund ${pct(NOTAR_SATZ)}), Grundbuch (rund ${pct(GRUNDBUCH_SATZ)}) und gegebenenfalls dem Käuferanteil der Maklerprovision (oft ${pct(MAKLER_DEFAULT)}).`,
+    },
+    {
+      question: 'Wie viel Grunderwerbsteuer zahle ich?',
+      answer:
+        'Die Grunderwerbsteuer hängt vom Bundesland ab und reicht 2026 von 3,5 % in Bayern bis 6,5 % in Brandenburg, Nordrhein-Westfalen, dem Saarland und Schleswig-Holstein.',
+    },
+    {
+      question: 'Werden die Kaufnebenkosten von der Bank mitfinanziert?',
+      answer:
+        'In der Regel nicht. Banken finanzieren die Nebenkosten meist nicht mit, sodass Sie diese aus Eigenkapital aufbringen müssen.',
+    },
+    {
+      question: 'Kann ich die Grunderwerbsteuer legal senken?',
+      answer:
+        'Ja: Mitverkauftes bewegliches Inventar wie Einbauküche, Möbel oder Sauna unterliegt nicht der Grunderwerbsteuer, wenn sein Zeitwert im Kaufvertrag getrennt ausgewiesen ist. Als Faustregel akzeptieren Finanzämter Inventaranteile bis etwa 15 % des Kaufpreises, sofern die Werte realistisch und belegbar sind.',
+    },
+  ]
+
   useSEO({
     title: 'Kaufnebenkosten-Rechner 2026: Grunderwerbsteuer & Notar',
     description:
@@ -48,28 +82,7 @@ export default function Rechner() {
         description:
           'Berechnet Grunderwerbsteuer, Notar-, Grundbuch- und Maklerkosten sowie die Gesamtkosten beim Immobilienkauf je Bundesland.',
       },
-      faqSchema([
-        {
-          question: 'Wie hoch sind die Kaufnebenkosten beim Immobilienkauf?',
-          answer:
-            'Die Kaufnebenkosten liegen je nach Bundesland und Maklerprovision typischerweise bei 10 bis 12 % des Kaufpreises: Grunderwerbsteuer 3,5 bis 6,5 %, Notar rund 1,5 %, Grundbuch rund 0,5 % und Maklerprovision für den Käufer bis 3,57 %.',
-        },
-        {
-          question: 'Wie viel Grunderwerbsteuer zahle ich?',
-          answer:
-            'Die Grunderwerbsteuer hängt vom Bundesland ab und reicht 2026 von 3,5 % in Bayern bis 6,5 % in Brandenburg, Nordrhein-Westfalen, dem Saarland und Schleswig-Holstein.',
-        },
-        {
-          question: 'Werden die Kaufnebenkosten von der Bank mitfinanziert?',
-          answer:
-            'In der Regel nicht. Banken finanzieren die Nebenkosten meist nicht mit, sodass Sie diese aus Eigenkapital aufbringen müssen.',
-        },
-        {
-          question: 'Kann ich die Grunderwerbsteuer legal senken?',
-          answer:
-            'Ja: Mitverkauftes bewegliches Inventar wie Einbauküche, Möbel oder Sauna unterliegt nicht der Grunderwerbsteuer, wenn sein Zeitwert im Kaufvertrag getrennt ausgewiesen ist. Als Faustregel akzeptieren Finanzämter Inventaranteile bis etwa 15 % des Kaufpreises, sofern die Werte realistisch und belegbar sind.',
-        },
-      ]),
+      faqSchema(faqs),
       breadcrumbSchema([
         { name: 'Startseite', url: 'https://immopruef.de/' },
         { name: 'Kaufnebenkosten-Rechner', url: 'https://immopruef.de/grunderwerbsteuer-rechner' },
@@ -95,6 +108,14 @@ export default function Rechner() {
         <h1 className="font-display text-3xl sm:text-4xl font-semibold text-ink leading-tight mb-3">
           Kaufnebenkosten-Rechner 2026
         </h1>
+        <p className="text-ink text-[15px] leading-relaxed mb-3">
+          <strong className="font-semibold">Wie hoch sind die Kaufnebenkosten?</strong> Beim Immobilienkauf in
+          Deutschland fallen ohne Makler je nach Bundesland {pct(OHNE_MIN)} bis {pct(OHNE_MAX)} des Kaufpreises an, mit
+          Maklerprovision {pct(MIT_MIN)} bis {pct(MIT_MAX)}. Die Posten: Grunderwerbsteuer ({pct(GUENSTIGSTER.satz)} bis{' '}
+          {pct(TEUERSTER.satz)}), Notar (ca. {pct(NOTAR_SATZ)}), Grundbuch (ca. {pct(GRUNDBUCH_SATZ)}) und gegebenenfalls
+          Makler (oft {pct(MAKLER_DEFAULT)}). Bei {eur(MODELL)} Kaufpreis sind das {eur((MODELL * OHNE_MIN) / 100)} bis{' '}
+          {eur((MODELL * MIT_MAX) / 100)}.
+        </p>
         <p className="text-ink-mid text-sm leading-relaxed">
           Berechnen Sie Grunderwerbsteuer, Notar, Grundbuch und Maklerprovision für Ihr Bundesland — und sehen Sie die
           Gesamtkosten Ihres Immobilienkaufs auf einen Blick. Kostenlos, ohne Anmeldung.
@@ -229,6 +250,54 @@ export default function Rechner() {
         </p>
       </div>
 
+      {/* Ländertabelle: statisch aus dem Kanon gerendert */}
+      <section className="mt-8">
+        <h2 className="font-display text-xl font-semibold text-ink mb-2">
+          Grunderwerbsteuer 2026: Sätze aller 16 Bundesländer
+        </h2>
+        <p className="text-sm text-ink-mid leading-relaxed mb-3">
+          Die Grunderwerbsteuer ist der größte Posten der Kaufnebenkosten. Der Satz reicht von {pct(GUENSTIGSTER.satz)}{' '}
+          in {GUENSTIGSTER.land} bis {pct(TEUERSTER.satz)} in {REGIO.filter((x) => x.satz === TEUERSTER.satz).length}{' '}
+          Bundesländern. Die Tabelle zeigt Satz und Steuerbetrag für einen Kaufpreis von {eur(MODELL)} sowie die
+          Nebenkosten ohne Makler (Steuer, Notar, Grundbuch).
+        </p>
+        <div className="bg-white border border-ink/15 rounded-xl p-5 shadow-sm overflow-x-auto">
+          <table className="w-full text-sm tabular-nums">
+            <caption className="sr-only">Grunderwerbsteuersätze der 16 Bundesländer, Stand 2026</caption>
+            <thead>
+              <tr className="text-[11px] text-ink-light text-left border-b border-ink/10">
+                <th scope="col" className="font-medium py-1.5 pr-2">Bundesland</th>
+                <th scope="col" className="font-medium py-1.5 px-2 text-right">Steuersatz</th>
+                <th scope="col" className="font-medium py-1.5 px-2 text-right">Steuer bei {eur(MODELL)}</th>
+                <th scope="col" className="font-medium py-1.5 pl-2 text-right">Nebenkosten ohne Makler</th>
+              </tr>
+            </thead>
+            <tbody>
+              {REGIO.map((x) => (
+                <tr key={x.slug} className="border-b border-ink/5">
+                  <th scope="row" className="py-1.5 pr-2 text-left font-normal">
+                    <a href={`/kaufnebenkosten-${x.slug}`} className="text-green hover:text-green-mid underline">{x.land}</a>
+                  </th>
+                  <td className="py-1.5 px-2 text-right font-medium text-ink">{pct(x.satz)}</td>
+                  <td className="py-1.5 px-2 text-right text-ink-mid">{eur((MODELL * x.satz) / 100)}</td>
+                  <td className="py-1.5 pl-2 text-right text-ink-mid">{eur((MODELL * nkQuote(x.satz, false)) / 100)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="text-[12px] text-ink-light leading-relaxed mt-3">
+          Stand 2026. Rechtsgrundlagen: Der bundesgesetzliche Steuersatz beträgt 3,5 % (
+          <a href="https://www.gesetze-im-internet.de/grestg_1983/__11.html" target="_blank" rel="noopener noreferrer" className="text-green hover:text-green-mid underline">§ 11 GrEStG</a>
+          ); die Länder dürfen ihn selbst bestimmen (
+          <a href="https://www.gesetze-im-internet.de/gg/art_105.html" target="_blank" rel="noopener noreferrer" className="text-green hover:text-green-mid underline">Art. 105 Abs. 2a GG</a>
+          ). Notar- und Grundbuchgebühren richten sich bundesweit nach dem{' '}
+          <a href="https://www.gesetze-im-internet.de/gnotkg/" target="_blank" rel="noopener noreferrer" className="text-green hover:text-green-mid underline">GNotKG</a>
+          . Den Ländervergleich mit Maklerprovision finden Sie im{' '}
+          <a href="/kaufnebenkosten-index" className="text-green hover:text-green-mid underline">Kaufnebenkosten-Vergleich je Bundesland</a>.
+        </p>
+      </section>
+
       {/* Querverweise + CTA */}
       <div className="mt-6 text-sm text-ink-mid leading-relaxed">
         <p>
@@ -247,6 +316,8 @@ export default function Rechner() {
           .
         </p>
       </div>
+
+      <FaqSection title="Häufige Fragen zu den Kaufnebenkosten" items={faqs} />
 
       <div className="mt-8 bg-green text-cream rounded-xl p-6 text-center">
         <h2 className="font-display text-xl font-medium mb-2">Konkretes Objekt im Blick?</h2>

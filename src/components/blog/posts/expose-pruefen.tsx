@@ -104,12 +104,12 @@ export default function ExposePruefen() {
         Der Kaufpreis ist nur der Anfang. Je nach Bundesland kommen zwischen 5,5 % und 12,5 % Nebenkosten dazu:
       </p>
       <ul>
-        <li><strong>Grunderwerbsteuer:</strong> 3,5 % (Bayern) bis 6,5 % (NRW, Brandenburg, Schleswig-Holstein)</li>
+        <li><strong>Grunderwerbsteuer:</strong> 3,5 % (Bayern) bis 6,5 % (Brandenburg, NRW, Saarland, Schleswig-Holstein)</li>
         <li><strong>Notar und Grundbuch:</strong> ca. 2,0 %</li>
         <li><strong>Maklergebühr:</strong> bis zu 3,57 % (Käuferanteil)</li>
       </ul>
       <p>
-        Bei einem Kaufpreis von 400.000 € können die Nebenkosten also zwischen 22.000 € und 50.000 € liegen. Diesen Betrag sollten Sie im Idealfall aus Eigenkapital finanzieren. Eine vollständige Übersicht aller Posten finden Sie in <a href="/blog/kaufnebenkosten-immobilienkauf">Kaufnebenkosten beim Immobilienkauf: Was Käufer oft unterschätzen</a>.
+        Bei einem Kaufpreis von 400.000 € können die Nebenkosten also zwischen 22.000 € und rund 48.000 € liegen. Diesen Betrag sollten Sie im Idealfall aus Eigenkapital finanzieren. Eine vollständige Übersicht aller Posten finden Sie in <a href="/blog/kaufnebenkosten-immobilienkauf">Kaufnebenkosten beim Immobilienkauf: Was Käufer oft unterschätzen</a>.
       </p>
 
       <h2>8. Red Flags: Wann Sie vorsichtig sein sollten</h2>

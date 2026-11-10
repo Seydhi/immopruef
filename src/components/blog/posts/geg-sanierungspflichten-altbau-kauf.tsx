@@ -1,13 +1,13 @@
 export default function GegSanierungspflichtenAltbauKauf() {
   return (
     <>
-      <p>Wer 2026 einen Altbau kauft, übernimmt nicht nur Mauern und Dach, sondern in vielen Fällen auch eine Reihe gesetzlicher Pflichten. Das <a href="https://www.gesetze-im-internet.de/geg/" target="_blank" rel="noopener noreferrer">Gebäudeenergiegesetz (GEG)</a> sieht für bestehende Gebäude sogenannte Nachrüstpflichten vor. Solange die Vorbesitzer ihr Ein- oder Zweifamilienhaus selbst bewohnt haben, ruhten diese Pflichten oft jahrzehntelang. Mit dem Eigentümerwechsel ändert sich das: Für die neuen Eigentümer beginnt in der Regel eine Frist von zwei Jahren, in der die wichtigsten Maßnahmen umgesetzt werden müssen.</p>
+      <p>Wer 2026 einen Altbau kauft, übernimmt nicht nur Mauern und Dach, sondern in vielen Fällen auch eine Reihe gesetzlicher Pflichten. Das <a href="https://www.gesetze-im-internet.de/geg/" target="_blank" rel="noopener noreferrer">Gebäudemodernisierungsgesetz (GModG)</a> — bis Juli 2026 hieß es Gebäudeenergiegesetz (GEG) — sieht für bestehende Gebäude sogenannte Nachrüstpflichten vor. Solange die Vorbesitzer ihr Ein- oder Zweifamilienhaus selbst bewohnt haben, ruhten diese Pflichten oft jahrzehntelang. Mit dem Eigentümerwechsel ändert sich das: Für die neuen Eigentümer beginnt in der Regel eine Frist von zwei Jahren, in der die wichtigsten Maßnahmen umgesetzt werden müssen.</p>
       
       <p><strong>Wichtige Änderung seit 29. Juli 2026:</strong> Mit dem Gebäudemodernisierungsgesetz (GModG) ist die frühere Pflicht zur Außerbetriebnahme alter Öl- und Gas-Heizkessel (§ 72 GEG) <strong>ersatzlos entfallen</strong>. Übrig bleiben zwei Nachrüstpflichten: die Dämmung der obersten Geschossdecke beziehungsweise des Dachs und die Dämmung zugänglicher Wärme- und Warmwasserleitungen. Dieser Ratgeber erklärt beide, ordnet den Wegfall des Kessel-Betriebsverbots ein und zeigt, was die gestrichene „65-Prozent-Regel“ beim Heizungstausch für Käufer bedeutet. Stand der folgenden Angaben ist der 30. Juli 2026; sie ersetzen keine Rechts-, Steuer- oder Finanzberatung.</p>
       
       <h2>Warum der Eigentümerwechsel die Pflichten „scharf schaltet“</h2>
       
-      <p>Der entscheidende Mechanismus steckt in § 73 GEG. Eigentümer von Wohngebäuden mit nicht mehr als zwei Wohnungen, die mindestens eine Wohnung bereits am 1. Februar 2002 selbst bewohnt haben, sind von den genannten Nachrüstpflichten zunächst ausgenommen. Dieses Stichtagsdatum ist das Inkrafttreten der ersten Energieeinsparverordnung (EnEV) – der Vorläuferregelung des heutigen GEG.</p>
+      <p>Der entscheidende Mechanismus steckt in § 35 Abs. 3 und § 69 Abs. 3 GModG (bis Juli 2026: § 73 GEG). Eigentümer von Wohngebäuden mit nicht mehr als zwei Wohnungen, die mindestens eine Wohnung bereits am 1. Februar 2002 selbst bewohnt haben, sind von den genannten Nachrüstpflichten zunächst ausgenommen. Dieses Stichtagsdatum ist das Inkrafttreten der ersten Energieeinsparverordnung (EnEV) – der Vorläuferregelung des heutigen GModG.</p>
       
       <p>Diese persönliche Ausnahme ist jedoch nicht übertragbar. Sobald das Haus den Eigentümer wechselt – durch Kauf, aber auch durch Schenkung oder Erbschaft –, entfällt der Bestandsschutz. Für die neuen Eigentümer gilt dann: Die Frist zur Pflichterfüllung beträgt zwei Jahre ab dem ersten Eigentumsübergang nach dem 1. Februar 2002. Praktisch heißt das: Als Käufer eines bislang selbst genutzten Altbaus haben Sie nach der Eigentumsumschreibung im Grundbuch typischerweise zwei Jahre Zeit, um die offenen Punkte abzuarbeiten.</p>
       
@@ -21,19 +21,19 @@ export default function GegSanierungspflichtenAltbauKauf() {
 
       <p>Wirtschaftlich bleibt ein alter Kessel trotzdem ein Kostenrisiko, das in die Kaufentscheidung gehört: Konstanttemperatur-Geräte arbeiten deutlich ineffizienter als Brennwerttechnik, und ein Austausch steht bei einem 30 Jahre alten Gerät ohnehin absehbar an. Prüfen Sie das Heizungsalter deshalb weiterhin vor dem Kauf; der <a href="/blog/energieausweis-expose">Energieausweis im Exposé</a> nennt häufig das Baujahr des Wärmeerzeugers. Wer die laufenden Kosten und einen möglichen Austausch durchrechnen will, findet im <a href="/blog/heizungsarten-vergleich-kosten">Vergleich der Heizungsarten und Kosten</a> eine Orientierung – die dort genannten Beträge sind Orientierungswerte und ersetzen kein konkretes Angebot.</p>
 
-      <h2>Pflicht 1: Oberste Geschossdecke oder Dach dämmen (§ 47 GEG)</h2>
+      <h2>Pflicht 1: Oberste Geschossdecke oder Dach dämmen (§ 35 GModG)</h2>
       
-      <p>§ 47 GEG verlangt, dass oberste Geschossdecken beheizter Räume so gedämmt sind, dass der Wärmedurchgangskoeffizient (U-Wert) 0,24 Watt pro Quadratmeter und Kelvin nicht überschreitet. Vereinfacht: Die Decke zum unbeheizten Dachboden – über die viel Wärme entweicht – muss einen Mindestdämmstandard erreichen.</p>
+      <p>§ 35 GModG verlangt, dass oberste Geschossdecken beheizter Räume so gedämmt sind, dass der Wärmedurchgangskoeffizient (U-Wert) 0,24 Watt pro Quadratmeter und Kelvin nicht überschreitet. Vereinfacht: Die Decke zum unbeheizten Dachboden – über die viel Wärme entweicht – muss einen Mindestdämmstandard erreichen.</p>
       
       <p>Die Pflicht gilt als erfüllt, wenn statt der Geschossdecke das darüberliegende Dach entsprechend gedämmt ist. Das ist gerade bei ausgebauten oder zum Ausbau vorgesehenen Dachgeschossen der praktikablere Weg. Bereits ausreichend gedämmte Decken oder Dächer müssen selbstverständlich nicht nachgerüstet werden – maßgeblich ist, ob der Mindeststandard schon erreicht wird.</p>
       
       <p>Für Käufer ist diese Pflicht oft die mit dem größten Spielraum: Eine begehbare oberste Geschossdecke lässt sich vergleichsweise einfach mit Dämmplatten oder Einblasdämmung ertüchtigen, während eine Dachdämmung von innen oder außen aufwändiger ist. Welche Variante in Frage kommt, hängt vom Zustand der Konstruktion ab. Wie Sie Schwachstellen am Dach schon bei der Besichtigung einordnen, beschreibt der Beitrag <a href="/blog/dach-pruefen-hauskauf">Dach prüfen beim Hauskauf</a>. Eine systematische Bestandsaufnahme weiterer energetischer Mängel hilft der Leitfaden <a href="/blog/sanierungsbedarf-erkennen">Sanierungsbedarf erkennen</a>.</p>
       
-      <h2>Pflicht 2: Zugängliche Heiz- und Warmwasserleitungen dämmen (§ 69 GEG)</h2>
+      <h2>Pflicht 2: Zugängliche Heiz- und Warmwasserleitungen dämmen (§ 69 GModG)</h2>
       
-      <p>Die dritte Kernpflicht wird leicht übersehen, ist aber oft schnell und günstig zu erfüllen. § 69 GEG verlangt, dass bislang ungedämmte, zugängliche Wärmeverteilungs- und Warmwasserleitungen, die nicht in beheizten Räumen verlaufen, nachträglich gedämmt werden. Gemeint sind typischerweise die Heizungs- und Warmwasserrohre im unbeheizten Keller.</p>
+      <p>Die dritte Kernpflicht wird leicht übersehen, ist aber oft schnell und günstig zu erfüllen. § 69 Abs. 2 GModG verlangt, dass bislang ungedämmte, zugängliche Wärmeverteilungs- und Warmwasserleitungen, die nicht in beheizten Räumen verlaufen, nachträglich gedämmt werden. Gemeint sind typischerweise die Heizungs- und Warmwasserrohre im unbeheizten Keller.</p>
       
-      <p>Die geforderte Dämmdicke richtet sich nach dem Rohrdurchmesser (Anlage 8 des GEG). „Zugänglich“ bedeutet, dass die Leitung ohne nennenswerten baulichen Aufwand erreichbar ist – Rohre hinter zugemauerten Wänden oder im Estrich sind damit in der Regel nicht gemeint. Praktisch lässt sich diese Maßnahme häufig mit aufsteckbaren Dämmschläuchen in Eigenleistung erledigen; sie senkt zudem unmittelbar die Wärmeverluste.</p>
+      <p>Die geforderte Dämmdicke richtet sich nach dem Rohrdurchmesser (Anlage 8 des GModG). „Zugänglich“ bedeutet, dass die Leitung ohne nennenswerten baulichen Aufwand erreichbar ist – Rohre hinter zugemauerten Wänden oder im Estrich sind damit in der Regel nicht gemeint. Praktisch lässt sich diese Maßnahme häufig mit aufsteckbaren Dämmschläuchen in Eigenleistung erledigen; sie senkt zudem unmittelbar die Wärmeverluste.</p>
       
       <h2>Überblick: Pflichten, Paragrafen und Fristen</h2>
       
@@ -49,20 +49,20 @@ export default function GegSanierungspflichtenAltbauKauf() {
       <tbody>
       <tr>
       <td>Dämmung oberste Geschossdecke oder Dach</td>
-      <td>§ 47 GEG</td>
+      <td>§ 35 GModG</td>
       <td>U-Wert höchstens 0,24 W/(m²·K); Dachdämmung als Alternative zulässig</td>
       <td>i. d. R. 2 Jahre ab Eigentumsübergang</td>
       </tr>
       <tr>
       <td>Dämmung zugänglicher Heiz- &amp; Warmwasserleitungen</td>
-      <td>§ 69 GEG</td>
+      <td>§ 69 GModG</td>
       <td>Ungedämmte, zugängliche Leitungen in unbeheizten Räumen nachdämmen (Dicke nach Rohrdurchmesser)</td>
       <td>i. d. R. 2 Jahre ab Eigentumsübergang</td>
       </tr>
       </tbody>
       </table>
       
-      <p>Die Spalte „Frist“ bezieht sich auf den Regelfall des über § 73 GEG zunächst ausgenommenen, selbst genutzten Ein- oder Zweifamilienhauses. Bei bereits zuvor vermieteten oder größeren Gebäuden bestanden die Pflichten in der Regel schon vor dem Kauf. Die früher an dieser Stelle ebenfalls genannte Außerbetriebnahme alter Öl- und Gas-Heizkessel (§ 72 GEG) ist seit dem 29. Juli 2026 entfallen und taucht in der Tabelle deshalb nicht mehr auf.</p>
+      <p>Die Spalte „Frist“ bezieht sich auf den Regelfall des über § 35 Abs. 3 und § 69 Abs. 3 GModG zunächst ausgenommenen, selbst genutzten Ein- oder Zweifamilienhauses. Bei bereits zuvor vermieteten oder größeren Gebäuden bestanden die Pflichten in der Regel schon vor dem Kauf. Die früher an dieser Stelle ebenfalls genannte Außerbetriebnahme alter Öl- und Gas-Heizkessel (§ 72 GEG) ist seit dem 29. Juli 2026 entfallen und taucht in der Tabelle deshalb nicht mehr auf.</p>
       
       <h2>Heizungstausch: die 65-Prozent-Regel ist gestrichen</h2>
 
@@ -82,7 +82,7 @@ export default function GegSanierungspflichtenAltbauKauf() {
       
       <h3>Was passiert, wenn man die Frist verstreichen lässt?</h3>
       
-      <p>Die GEG-Pflichten sind keine reine Empfehlung: Werden sie nicht erfüllt, kann dies als Ordnungswidrigkeit geahndet werden. In der Praxis steht jedoch meist nicht das Bußgeld im Vordergrund, sondern der wirtschaftliche Eigeninteresse-Aspekt – eine ungedämmte Geschossdecke und ein ineffizienter Altkessel treiben die Energiekosten dauerhaft nach oben. Wer die Maßnahmen ohnehin sinnvoll terminiert, erfüllt die gesetzliche Pflicht in der Regel ganz nebenbei. Verkaufen Sie das Objekt später weiter, beginnt für die nächsten Eigentümer übrigens keine neue Frist mehr, wenn die Pflichten bereits erfüllt sind – ein gepflegter, GEG-konformer Zustand ist also auch beim Wiederverkauf ein Argument.</p>
+      <p>Die GEG-Pflichten sind keine reine Empfehlung: Werden sie nicht erfüllt, kann dies als Ordnungswidrigkeit geahndet werden. In der Praxis steht jedoch meist nicht das Bußgeld im Vordergrund, sondern der wirtschaftliche Eigeninteresse-Aspekt – eine ungedämmte Geschossdecke und ein ineffizienter Altkessel treiben die Energiekosten dauerhaft nach oben. Wer die Maßnahmen ohnehin sinnvoll terminiert, erfüllt die gesetzliche Pflicht in der Regel ganz nebenbei. Verkaufen Sie das Objekt später weiter, beginnt für die nächsten Eigentümer übrigens keine neue Frist mehr, wenn die Pflichten bereits erfüllt sind – ein gepflegter, gesetzeskonformer Zustand ist also auch beim Wiederverkauf ein Argument.</p>
       
       <p>Die GEG-Pflichten sind beim Altbaukauf gut beherrschbar, wenn man sie früh kennt und in die Kaufentscheidung einpreist. Wer schon vor der Besichtigung eine strukturierte Ersteinschätzung möchte, kann den Exposé-Link in ImmoPrüf einlesen lassen: Das Tool ordnet Angaben wie Heizungsart, Baujahr und energetischen Zustand übersichtlich ein und zeigt, wo sich ein genauerer Blick – etwa auf Heizkessel, Dachdämmung oder Leitungen – besonders lohnt. Eine verbindliche Rechts- oder Energieberatung ersetzt das nicht, gibt Ihnen aber eine fundierte Grundlage für die nächsten Schritte.</p>
     </>

@@ -1,6 +1,7 @@
 import { useSEO, faqSchema, breadcrumbSchema } from '../lib/useSEO'
 import { pct } from '../lib/kaufnebenkosten'
 import { BODEN, bodenForSlug, BORIS_D } from '../lib/bodenrichtwert'
+import { FaqSection, type FaqItem } from './calcUi'
 
 export default function BodenrichtwertLand({ slug }: { slug: string }) {
   const b = bodenForSlug(slug)
@@ -18,30 +19,33 @@ export default function BodenrichtwertLand({ slug }: { slug: string }) {
   const { land, satz, portalName, portalUrl, note } = b
   const andere = BODEN.filter((x) => x.slug !== slug)
 
+  // Eine Quelle für sichtbaren FAQ-Abschnitt und FAQPage-JSON-LD (Text = Schema).
+  const faqs: FaqItem[] = [
+    {
+      question: `Wie frage ich den Bodenrichtwert in ${land} ab?`,
+      answer: `Kostenlos online: In ${land} über ${portalName}${portalUrl ? '' : ' des zuständigen Gutachterausschusses'} oder über das bundesweite Portal BORIS-D. Sie geben Adresse oder Flurstück ein und lesen den Bodenrichtwert je Quadratmeter für die jeweilige Bodenrichtwertzone von der Karte ab. Eine Anmeldung ist in der Regel nicht nötig.`,
+    },
+    {
+      question: 'Was ist der Bodenrichtwert und wer legt ihn fest?',
+      answer: 'Der Bodenrichtwert ist der durchschnittliche Lagewert des Bodens je Quadratmeter innerhalb einer Bodenrichtwertzone. Ihn ermitteln die unabhängigen Gutachterausschüsse für Grundstückswerte aus der amtlichen Kaufpreissammlung — also aus tatsächlich beurkundeten Kaufpreisen (§ 196 BauGB). Fortgeschrieben wird er mindestens alle zwei Jahre, vielerorts jährlich zum Jahreswechsel.',
+    },
+    {
+      question: 'Ist der Bodenrichtwert dasselbe wie der Grundstückswert?',
+      answer: 'Nein. Der Bodenrichtwert ist ein Durchschnitts- und Orientierungswert für die Zone, nicht der Verkehrswert Ihres konkreten Grundstücks. Zuschnitt, Größe, Erschließung, Ausnutzbarkeit und Lage im Detail führen zu Zu- oder Abschlägen. Er eignet sich als Plausibilitätscheck des Bodenanteils, ersetzt aber kein Wertgutachten.',
+    },
+    {
+      question: 'Kostet die Bodenrichtwert-Abfrage etwas?',
+      answer: 'Die Online-Einsichtnahme über die BORIS-Portale ist kostenlos. Kosten fallen nur für amtliche Auskünfte oder Bescheinigungen an, etwa wenn Sie eine offizielle Bodenrichtwertauskunft für die Bank oder das Finanzamt schriftlich benötigen.',
+    },
+  ]
+
   useSEO({
     title: `Bodenrichtwert ${land} 2026 abfragen`,
     description: `Bodenrichtwert in ${land} kostenlos online abfragen — über BORIS. So finden Sie den amtlichen Bodenwert je m² für Ihre Adresse, Schritt für Schritt.`,
     canonical: `https://immopruef.de/bodenrichtwert-${slug}`,
     type: 'website',
     jsonLd: [
-      faqSchema([
-        {
-          question: `Wie frage ich den Bodenrichtwert in ${land} ab?`,
-          answer: `Kostenlos online: In ${land} über ${portalName}${portalUrl ? '' : ' des zuständigen Gutachterausschusses'} oder über das bundesweite Portal BORIS-D. Sie geben Adresse oder Flurstück ein und lesen den Bodenrichtwert je Quadratmeter für die jeweilige Bodenrichtwertzone von der Karte ab. Eine Anmeldung ist in der Regel nicht nötig.`,
-        },
-        {
-          question: 'Was ist der Bodenrichtwert und wer legt ihn fest?',
-          answer: 'Der Bodenrichtwert ist der durchschnittliche Lagewert des Bodens je Quadratmeter innerhalb einer Bodenrichtwertzone. Ihn ermitteln die unabhängigen Gutachterausschüsse für Grundstückswerte aus der amtlichen Kaufpreissammlung — also aus tatsächlich beurkundeten Kaufpreisen (§ 196 BauGB). Fortgeschrieben wird er mindestens alle zwei Jahre, vielerorts jährlich zum Jahreswechsel.',
-        },
-        {
-          question: 'Ist der Bodenrichtwert dasselbe wie der Grundstückswert?',
-          answer: 'Nein. Der Bodenrichtwert ist ein Durchschnitts- und Orientierungswert für die Zone, nicht der Verkehrswert Ihres konkreten Grundstücks. Zuschnitt, Größe, Erschließung, Ausnutzbarkeit und Lage im Detail führen zu Zu- oder Abschlägen. Er eignet sich als Plausibilitätscheck des Bodenanteils, ersetzt aber kein Wertgutachten.',
-        },
-        {
-          question: 'Kostet die Bodenrichtwert-Abfrage etwas?',
-          answer: 'Die Online-Einsichtnahme über die BORIS-Portale ist kostenlos. Kosten fallen nur für amtliche Auskünfte oder Bescheinigungen an, etwa wenn Sie eine offizielle Bodenrichtwertauskunft für die Bank oder das Finanzamt schriftlich benötigen.',
-        },
-      ]),
+      faqSchema(faqs),
       breadcrumbSchema([
         { name: 'Startseite', url: 'https://immopruef.de/' },
         { name: 'Bodenrichtwert', url: 'https://immopruef.de/blog/bodenrichtwert-verstehen-abfragen' },
@@ -141,6 +145,8 @@ export default function BodenrichtwertLand({ slug }: { slug: string }) {
           ein.
         </p>
       </div>
+
+      <FaqSection title={`Häufige Fragen zum Bodenrichtwert in ${land}`} items={faqs} />
 
       {/* CTA */}
       <div className="mt-8 bg-green text-cream rounded-xl p-6 text-center">

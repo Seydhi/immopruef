@@ -49,7 +49,7 @@ export default function HauskaufVorbereiten() {
         </thead>
         <tbody>
           <tr><td>Quadratmeterpreis</td><td>Kaufpreis ÷ Wohnfläche</td><td>Vergleich mit regionalem Durchschnitt</td></tr>
-          <tr><td>Kaufnebenkosten</td><td>Kaufpreis × 5,5–12,5 %</td><td>Je nach Bundesland und Provision</td></tr>
+          <tr><td>Kaufnebenkosten</td><td>Kaufpreis × 5,5 bis rund 12 %</td><td>Je nach Bundesland und Provision</td></tr>
           <tr><td>Geschätzte Heizkosten</td><td>Fläche × kWh/m²a × Energiepreis</td><td>Jährliche Belastung</td></tr>
         </tbody>
       </table>

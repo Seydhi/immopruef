@@ -1,6 +1,9 @@
 # ImmoPrüf
 
-> ImmoPrüf (immopruef.de) ist ein deutsches Online-Tool für private Immobilienkäufer. Aus dem Link zu einem Exposé (ImmobilienScout24, Immowelt, Immonet, Kleinanzeigen) oder einem PDF-/Foto-Upload erstellt ImmoPrüf in Minuten eine strukturierte, KI-gestützte Ersteinschätzung: Preisplausibilität mit verlinkten Quellen, Kaufnebenkosten, Standortanalyse, Risiken und Finanzierungs-Szenarien. Alle Finanzberechnungen laufen deterministisch im Code; Werte, die nicht aus dem Exposé stammen, sind als „regionaler Schätzwert" gekennzeichnet. ImmoPrüf arbeitet käuferseitig, verkauft keine Kontaktdaten an Makler und ist keine Lead-Generierung („Sie bezahlen uns — deshalb arbeiten wir nur für Sie"). Preise: 19 € (1 Analyse), 29 € (2), 34 € (3), 79 € (Premium-Kaufentscheidungs-Report). Betreiber: Seydhan Cakmak, handelnd unter Cakmak Digital. Eine Analyse ersetzt kein Verkehrswertgutachten und keine Rechts-, Steuer- oder Finanzberatung.
+> ImmoPrüf (immopruef.de) ist ein Online-Tool für private Immobilienkäufer in Deutschland, das aus einem Exposé-Link oder PDF eine strukturierte, KI-gestützte Ersteinschätzung zu Preis, Kaufnebenkosten, Standort, Risiken und Finanzierung erstellt (ab 19 €, Premium-Report 79 €), käuferseitig und ohne Weitergabe von Daten an Makler. Unterstützt werden Exposé-Links von ImmobilienScout24, Immowelt, Immonet und Kleinanzeigen sowie PDF- und Foto-Uploads; das Ergebnis liegt in Minuten vor und nennt die Quellen der Preisvergleichswerte. Alle Finanzberechnungen laufen deterministisch im Code; Werte, die nicht aus dem Exposé stammen, sind als „regionaler Schätzwert" gekennzeichnet. ImmoPrüf arbeitet käuferseitig, verkauft keine Kontaktdaten an Makler und ist keine Lead-Generierung („Sie bezahlen uns — deshalb arbeiten wir nur für Sie"). Preise: 19 € (1 Analyse), 29 € (2), 34 € (3), 79 € (Premium-Kaufentscheidungs-Report). Eine Analyse ersetzt kein Verkehrswertgutachten und keine Rechts-, Steuer- oder Finanzberatung.
+
+Betreiber: Seydhan Cakmak, handelnd unter Cakmak Digital ([Impressum](https://immopruef.de/impressum)).
+Aktualisiert: 10.11.2026
 
 ## Produkt
 - [Exposé prüfen lassen](https://immopruef.de/expose-pruefen-lassen): Leistungsumfang, Preise und Abgrenzung zu Gratis-Bewertung, ChatGPT und Gutachter.
@@ -9,7 +12,8 @@
 - [Immobilienbewertung im Vergleich](https://immopruef.de/blog/immobilienbewertung-vergleich): Gratis-Portal vs. ChatGPT vs. käuferseitige KI-Analyse vs. Bausachverständiger.
 
 ## Kostenlose Rechner
-- [Kaufnebenkosten-/Grunderwerbsteuer-Rechner](https://immopruef.de/grunderwerbsteuer-rechner): Grunderwerbsteuer (je Bundesland), Notar, Grundbuch und Maklerprovision — optional mit Inventar-Abzug.
+- [Alle Rechner im Überblick](https://immopruef.de/rechner): Einstiegsseite zu allen kostenlosen Immobilien-Rechnern.
+- [Kaufnebenkosten-/Grunderwerbsteuer-Rechner](https://immopruef.de/grunderwerbsteuer-rechner): Grunderwerbsteuer (je Bundesland), Notar, Grundbuch und Maklerprovision — optional mit Inventar-Abzug. Enthält eine Tabelle der Grunderwerbsteuersätze aller 16 Bundesländer (3,5 % bis 6,5 %).
 - [Notarkosten-Rechner](https://immopruef.de/notarkosten-rechner): Notar- und Grundbuchkosten exakt nach GNotKG-Gebührentabelle, inkl. Grundschuld und Umsatzsteuer.
 - [Budgetrechner](https://immopruef.de/budgetrechner): Ermittelt aus Nettoeinkommen, Eigenkapital, Zins und Tilgung den leistbaren Kaufpreis.
 - [Tilgungsrechner](https://immopruef.de/tilgungsrechner): Annuitätendarlehen — Monatsrate, Restschuld nach Zinsbindung, Gesamtzinsen und Tilgungsplan.
@@ -18,6 +22,11 @@
 - [Instandhaltungsrücklage-Rechner](https://immopruef.de/instandhaltungsruecklage-rechner): Empfohlene Rücklage nach Faustregel und Peterscher Formel.
 - [Wohnflächenrechner](https://immopruef.de/wohnflaechen-rechner): Anrechenbare Wohnfläche nach WoFlV.
 - [Kaufnebenkosten je Bundesland](https://immopruef.de/kaufnebenkosten-index): Vergleich aller 16 Bundesländer.
+
+## Länderseiten (je Bundesland)
+- Kaufnebenkosten: URL-Muster `https://immopruef.de/kaufnebenkosten-<bundesland>`, zum Beispiel [Bayern](https://immopruef.de/kaufnebenkosten-bayern), [Nordrhein-Westfalen](https://immopruef.de/kaufnebenkosten-nordrhein-westfalen), [Berlin](https://immopruef.de/kaufnebenkosten-berlin). Inhalt: Grunderwerbsteuersatz, Notar, Grundbuch und Makler mit Rechenbeispielen.
+- Bodenrichtwert: URL-Muster `https://immopruef.de/bodenrichtwert-<bundesland>`, zum Beispiel [Bayern](https://immopruef.de/bodenrichtwert-bayern), [Hessen](https://immopruef.de/bodenrichtwert-hessen), [Sachsen](https://immopruef.de/bodenrichtwert-sachsen). Inhalt: Bodenrichtwert kostenlos online über BORIS abfragen, Schritt für Schritt.
+- Gültige Werte für `<bundesland>`: baden-wuerttemberg, bayern, berlin, brandenburg, bremen, hamburg, hessen, mecklenburg-vorpommern, niedersachsen, nordrhein-westfalen, rheinland-pfalz, saarland, sachsen, sachsen-anhalt, schleswig-holstein, thueringen.
 
 ## Ratgeber-Themen (115+ Artikel)
 - [Alle Ratgeber](https://immopruef.de/blog)
@@ -29,6 +38,15 @@
 - [Besichtigung](https://immopruef.de/blog/thema/besichtigung): Vorbereitung, Fragenkataloge, zweiter Termin.
 
 ## Zentrale Referenz-Artikel
+- [Exposé prüfen: Warnsignale & Red Flags erkennen](https://immopruef.de/blog/expose-pruefen): Prüfreihenfolge von Eckdaten über Energieausweis bis Kaufnebenkosten.
+- [Warnsignale im Exposé: Checkliste für Käufer](https://immopruef.de/blog/warnsignale-expose)
+- [Was im Exposé fehlt: 10 Angaben aktiv einfordern](https://immopruef.de/blog/was-im-expose-fehlt)
+- [ChatGPT Exposé prüfen: Was der Gratis-Check kann](https://immopruef.de/blog/chatgpt-expose-pruefen): Stärken bei Textarbeit, Grenzen bei Marktwerten und Finanzmathematik.
+- [Haus überteuert? 7 Kennzahlen zum Preis-Check](https://immopruef.de/blog/haus-ueberteuert-erkennen)
+- [Angebotspreis prüfen: 3 Methoden zur Einordnung](https://immopruef.de/blog/angebotspreis-fair)
+- [Bausachverständiger beim Hauskauf: Kosten und Nutzen](https://immopruef.de/blog/bausachverstaendiger-hauskauf-kosten): rund 300 bis 2.000 € je nach Umfang (Stand 2026).
+- [Baufinanzierung 2026: der komplette Leitfaden für Käufer](https://immopruef.de/blog/baufinanzierung-leitfaden)
+- [Kaufen oder Mieten 2026: Rechenweg statt Bauchgefühl](https://immopruef.de/blog/kaufen-oder-mieten-2026)
 - [Sanierungskosten 2026: Tabelle aller Gewerke](https://immopruef.de/blog/sanierungskosten-tabelle-2026): Dach 15.000–30.000 €, Wärmepumpe 18.000–35.000 €, Kernsanierung 800–1.500 €/m².
 - [Wie viel Haus kann ich mir leisten?](https://immopruef.de/blog/wie-viel-haus-kann-ich-mir-leisten): Budget-Tabellen nach Nettoeinkommen.
 - [Hausgeld pro m²: Benchmark](https://immopruef.de/blog/hausgeld-pro-qm): 3,00–4,50 €/m² normal, unter 2,50 €/m² verdächtig.

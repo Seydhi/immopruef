@@ -420,6 +420,9 @@ function WertermittlungSlot({ data }: { data: NonNullable<PremiumReportType['wer
           </table>
         </div>
         <div className="mt-2 text-right text-sm font-medium text-green">Vergleichswert: {data.vergleichswert.wert}</div>
+        {data.vergleichswert.rechenweg && (
+          <p className="mt-1 text-right text-[11px] text-ink-light leading-snug">{data.vergleichswert.rechenweg}</p>
+        )}
         <p className="mt-2 text-[11px] text-ink-light leading-snug">Hinweis: Vergleichswerte sind Schätzungen auf Basis öffentlich zugänglicher Angebotsdaten. Tatsächliche Kaufpreise vergleichbarer Objekte sind in Deutschland ausschließlich über den Gutachterausschuss (Kaufpreissammlung) erhältlich und nicht Teil dieser Ersteinschätzung.</p>
       </div>
       <div className="mb-4">

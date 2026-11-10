@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react'
 import { useSEO, faqSchema, breadcrumbSchema } from '../lib/useSEO'
 import { eur } from '../lib/kaufnebenkosten'
+import { FaqSection, type FaqItem } from './calcUi'
 
 // ─── Modul-Level-Helfer (kein Remount/Fokusverlust beim Tippen) ───
 function Field({
@@ -118,6 +119,25 @@ export default function Tilgungsrechner() {
   // Tilgungsplan-Anzeige: bis Zinsbindungsende (max. 15 Zeilen) bzw. bis abbezahlt
   const planZeilen = r.jahre.filter((z) => z.jahr <= zinsbindung).slice(0, 15)
 
+  // Eine Quelle für sichtbaren FAQ-Abschnitt und FAQPage-JSON-LD (Text = Schema).
+  const faqs: FaqItem[] = [
+    {
+      question: 'Wie wird die monatliche Rate beim Annuitätendarlehen berechnet?',
+      answer:
+        'Die Monatsrate ergibt sich aus Darlehenssumme mal Summe aus Sollzins und anfänglicher Tilgung, geteilt durch zwölf. Beispiel: 350.000 € bei 3,8 % Zins und 2 % Tilgung ergeben rund 1.692 € im Monat. Die Rate bleibt während der Zinsbindung gleich; im Zeitverlauf sinkt der Zinsanteil und der Tilgungsanteil steigt.',
+    },
+    {
+      question: 'Was ist die Restschuld nach der Zinsbindung?',
+      answer:
+        'Die Restschuld ist der Darlehensbetrag, der nach Ablauf der Zinsbindung (zum Beispiel 10 oder 15 Jahre) noch offen ist und über eine Anschlussfinanzierung weiterfinanziert werden muss. Je höher die anfängliche Tilgung und je länger die Zinsbindung, desto niedriger die Restschuld.',
+    },
+    {
+      question: 'Wie viel spart eine höhere Tilgung oder eine Sondertilgung?',
+      answer:
+        'Eine höhere anfängliche Tilgung verkürzt die Laufzeit und senkt die Gesamtzinsen deutlich, erhöht aber die Monatsrate. Sondertilgungen reduzieren die Restschuld direkt und sparen die darauf entfallenden Zinsen — wie viel pro Jahr möglich ist, regelt der Darlehensvertrag (oft bis 5 % der Summe pro Jahr).',
+    },
+  ]
+
   useSEO({
     title: 'Tilgungsrechner: Rate, Restschuld & Tilgungsplan',
     description:
@@ -137,23 +157,7 @@ export default function Tilgungsrechner() {
         description:
           'Berechnet für ein Annuitätendarlehen die monatliche Rate, die Restschuld am Ende der Zinsbindung, die Gesamtzinsen, die Laufzeit bis zur vollständigen Tilgung und den jährlichen Tilgungsplan, optional mit Sondertilgung.',
       },
-      faqSchema([
-        {
-          question: 'Wie wird die monatliche Rate beim Annuitätendarlehen berechnet?',
-          answer:
-            'Die Monatsrate ergibt sich aus Darlehenssumme mal Summe aus Sollzins und anfänglicher Tilgung, geteilt durch zwölf. Beispiel: 350.000 € bei 3,8 % Zins und 2 % Tilgung ergeben rund 1.692 € im Monat. Die Rate bleibt während der Zinsbindung gleich; im Zeitverlauf sinkt der Zinsanteil und der Tilgungsanteil steigt.',
-        },
-        {
-          question: 'Was ist die Restschuld nach der Zinsbindung?',
-          answer:
-            'Die Restschuld ist der Darlehensbetrag, der nach Ablauf der Zinsbindung (zum Beispiel 10 oder 15 Jahre) noch offen ist und über eine Anschlussfinanzierung weiterfinanziert werden muss. Je höher die anfängliche Tilgung und je länger die Zinsbindung, desto niedriger die Restschuld.',
-        },
-        {
-          question: 'Wie viel spart eine höhere Tilgung oder eine Sondertilgung?',
-          answer:
-            'Eine höhere anfängliche Tilgung verkürzt die Laufzeit und senkt die Gesamtzinsen deutlich, erhöht aber die Monatsrate. Sondertilgungen reduzieren die Restschuld direkt und sparen die darauf entfallenden Zinsen — wie viel pro Jahr möglich ist, regelt der Darlehensvertrag (oft bis 5 % der Summe pro Jahr).',
-        },
-      ]),
+      faqSchema(faqs),
       breadcrumbSchema([
         { name: 'Startseite', url: 'https://immopruef.de/' },
         { name: 'Tilgungsrechner', url: 'https://immopruef.de/tilgungsrechner' },
@@ -177,7 +181,7 @@ export default function Tilgungsrechner() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Field label="Darlehenssumme" value={darlehen} onChange={setDarlehen} suffix="€" step={5000} />
           <Field label="Sollzins (p. a.)" value={zins} onChange={setZins} suffix="%" step={0.1} max={15}
-            sub="aktuell grob 3,5–4,0 % (10 J. Bindung)" />
+            sub="Stand Nov. 2026: effektiv rund 4,0–4,4 % (10 J. Bindung)" />
           <Field label="Anfängliche Tilgung (p. a.)" value={tilgung} onChange={setTilgung} suffix="%" step={0.5} max={15}
             sub="empfohlen mind. 2 %" />
           <Field label="Zinsbindung" value={zinsbindung} onChange={setZinsbindung} suffix="Jahre" step={1} min={1} max={40} />
@@ -255,6 +259,8 @@ export default function Tilgungsrechner() {
           <a href="/budgetrechner" className="text-green hover:text-green-mid underline">Budgetrechner</a>.
         </p>
       </div>
+
+      <FaqSection title="Häufige Fragen zu Rate, Tilgung und Restschuld" items={faqs} />
 
       <div className="mt-8 bg-green text-cream rounded-xl p-6 text-center">
         <h2 className="font-display text-xl font-medium mb-2">Rate steht — passt das Objekt dazu?</h2>

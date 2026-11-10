@@ -5,33 +5,68 @@ import { retryAnalysis } from '../lib/api'
 
 interface ResultsViewProps {
   analyses: Analysis[]
+  /** Stripe-Session der Bestellung — weist den Neustart einer fehlgeschlagenen Analyse aus */
+  sessionId?: string
   onBack?: () => void
-  onRetryComplete?: (updated: Analysis) => void
+  /** Neustart wurde eingereiht → der Aufrufer fragt den Status wieder ab */
+  onRetryStarted?: () => void
 }
 
-export default function ResultsView({ analyses, onBack, onRetryComplete }: ResultsViewProps) {
+const RETRY_FAILED_TEXT =
+  'Der Neustart hat gerade nicht geklappt. Bitte versuchen Sie es in ein paar Minuten erneut oder schreiben Sie uns an info@immopruef.de — wir kümmern uns darum.'
+
+// Fehlgeschlagene Analysen tragen im result-Feld statt des Reports einen Fehlergrund.
+function failureInfo(analysis: Analysis): { title: string; detail: string | null; unavailable: boolean } {
+  const r = analysis.result as unknown as { error?: unknown; hinweis?: unknown } | null
+  const error = typeof r?.error === 'string' ? r.error : ''
+  const hinweis = typeof r?.hinweis === 'string' ? r.hinweis.trim() : ''
+  if (error === 'listing_unavailable') {
+    return {
+      title: 'Das Inserat war nicht abrufbar',
+      detail: hinweis || 'Das Inserat ist vermutlich deaktiviert oder gelöscht worden.',
+      unavailable: true,
+    }
+  }
+  // Klartext-Meldungen (z. B. nicht unterstütztes Portal) anzeigen, interne Codes nicht
+  const detail = error && error !== 'analysis_failed' && /\s/.test(error) ? error : null
+  return { title: 'Analyse konnte nicht erstellt werden', detail, unavailable: false }
+}
+
+export default function ResultsView({ analyses, sessionId, onBack, onRetryStarted }: ResultsViewProps) {
   const [activeTab, setActiveTab] = useState(0)
   const [retrying, setRetrying] = useState<string | null>(null)
+  const [retryError, setRetryError] = useState<string | null>(null)
 
   const handleRetry = async (analysisId: string) => {
     setRetrying(analysisId)
+    setRetryError(null)
     try {
-      const updated = await retryAnalysis(analysisId)
-      if (updated && onRetryComplete) onRetryComplete(updated)
-      else window.location.reload()
+      const queued = sessionId ? await retryAnalysis(analysisId, sessionId) : false
+      if (queued && onRetryStarted) {
+        onRetryStarted() // zurück zum Ladebildschirm, das Ergebnis kommt über die Statusabfrage
+        return
+      }
+      setRetryError(RETRY_FAILED_TEXT)
     } catch {
-      // Reload to check if it worked
-      window.location.reload()
+      setRetryError(RETRY_FAILED_TEXT)
     } finally {
       setRetrying(null)
     }
   }
 
-  const FailedView = ({ analysis, inline }: { analysis: Analysis; inline?: boolean }) => (
+  const renderFailed = (analysis: Analysis, inline?: boolean) => {
+    const info = failureInfo(analysis)
+    return (
     <div className={`${inline ? '' : 'text-center py-16'}`}>
-      <div className="bg-red-50 border border-red-200 rounded-lg px-5 py-4 text-red-800 text-sm inline-block">
-        <p className="font-medium mb-2">Analyse konnte nicht erstellt werden</p>
-        <p className="text-xs text-red-600 mb-3">Keine Sorge — Ihre Zahlung ist erfasst. Sie können die Analyse kostenlos erneut starten.</p>
+      <div className="bg-red-50 border border-red-200 rounded-lg px-5 py-4 text-red-800 text-sm inline-block max-w-md">
+        <p className="font-medium mb-2">{info.title}</p>
+        {info.detail && <p className="text-xs text-red-700 mb-2">{info.detail}</p>}
+        <p className="text-xs text-red-600 mb-3">
+          {info.unavailable
+            ? 'Ihre Zahlung ist erfasst. Ist das Inserat wieder online, können Sie die Analyse kostenlos neu starten — oder schreiben Sie uns an info@immopruef.de, dann finden wir eine Lösung.'
+            : 'Keine Sorge — Ihre Zahlung ist erfasst. Sie können die Analyse kostenlos erneut starten.'}
+        </p>
+        {retryError && <p role="alert" className="text-xs text-red-800 font-medium mb-3">{retryError}</p>}
         <button
           onClick={() => handleRetry(analysis.id)}
           disabled={retrying === analysis.id}
@@ -48,7 +83,8 @@ export default function ResultsView({ analyses, onBack, onRetryComplete }: Resul
         </button>
       </div>
     </div>
-  )
+    )
+  }
 
   if (analyses.length === 0) {
     return (
@@ -62,7 +98,7 @@ export default function ResultsView({ analyses, onBack, onRetryComplete }: Resul
   if (analyses.length === 1) {
     const a = analyses[0]
     if (a.status === 'failed' || !a.result) {
-      return <FailedView analysis={a} />
+      return renderFailed(a)
     }
     return <AnalysisResult result={a.result} options={a.options} url={a.url} onBack={onBack} />
   }
@@ -100,7 +136,7 @@ export default function ResultsView({ analyses, onBack, onRetryComplete }: Resul
 
       {/* Tab content */}
       {current.status === 'failed' || !current.result ? (
-        <FailedView analysis={current} inline />
+        renderFailed(current, true)
       ) : (
         <AnalysisResult
           result={current.result}

@@ -199,9 +199,14 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
                 ))}
                 <tr className="bg-green/5 font-medium">
                   <td className="px-3 py-2.5 text-green text-xs tracking-wide">Gesamt</td>
-                  <td className="px-3 py-2.5 text-green text-right font-display whitespace-nowrap">{result.gesamtkosten.laufendeKostenGesamt.monat}</td>
-                  <td className="px-3 py-2.5 text-green text-right text-xs whitespace-nowrap">{result.gesamtkosten.laufendeKostenGesamt.jahr}/J.</td>
+                  <td className="px-3 py-2.5 text-green text-right font-display whitespace-nowrap">{result.gesamtkosten?.laufendeKostenGesamt?.monat || '—'}</td>
+                  <td className="px-3 py-2.5 text-green text-right text-xs whitespace-nowrap">{result.gesamtkosten?.laufendeKostenGesamt?.jahr || '—'}/J.</td>
                 </tr>
+                {result.gesamtkosten?.laufendeKostenGesamt?.hinweis && (
+                  <tr className="bg-green/5">
+                    <td colSpan={3} className="px-3 pb-2.5 text-[11px] text-ink-light leading-snug">{result.gesamtkosten.laufendeKostenGesamt.hinweis}</td>
+                  </tr>
+                )}
               </tbody>
             </table>
             </div>
@@ -292,6 +297,7 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
                 <td className="px-3.5 py-2 text-xs">
                   {st.monatlicheRate}
                   {st.belastungsquote && <div className="text-[11px] text-ink-light mt-0.5">{st.belastungsquote}</div>}
+                  {st.erlaeuterung && <div className="text-[11px] text-ink-light mt-0.5 leading-snug">{st.erlaeuterung}</div>}
                 </td>
                 <td className="px-3.5 py-2 text-right">
                   <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${
@@ -985,7 +991,10 @@ function CollapsibleCard({ title, expanded, onToggle, children }: { title: strin
         {title}
         <span className={`transform transition-transform ${expanded ? 'rotate-180' : ''}`}>▼</span>
       </button>
-      {expanded && <table className="w-full text-[13.5px]"><tbody>{children}</tbody></table>}
+      {/* Im Druck/PDF sind Buttons ausgeblendet und eingeklappte Abschnitte sollen nicht fehlen:
+          Titel als Text und Tabelle dort immer zeigen. */}
+      <div className="hidden print:block px-4 py-2 text-xs font-medium text-green tracking-wider uppercase bg-green/5">{title}</div>
+      <table className={`w-full text-[13.5px] ${expanded ? '' : 'hidden print:table'}`}><tbody>{children}</tbody></table>
     </div>
   )
 }

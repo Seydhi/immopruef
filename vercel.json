@@ -6,6 +6,11 @@
       "source": "/blog/expose-verstehen",
       "destination": "/blog/expose-pruefen",
       "permanent": true
+    },
+    {
+      "source": "/kaufnebenkosten-rechner",
+      "destination": "/grunderwerbsteuer-rechner",
+      "permanent": true
     }
   ],
   "rewrites": [

@@ -1,6 +1,7 @@
 import { useSEO, faqSchema, breadcrumbSchema } from '../lib/useSEO'
 import { eur, pct } from '../lib/kaufnebenkosten'
 import { REGIO, nkQuote, GUENSTIGSTER, TEUERSTER, NOTAR_SATZ, GRUNDBUCH_SATZ, MAKLER_DEFAULT } from '../lib/regional'
+import { FaqSection, type FaqItem } from './calcUi'
 
 const MODELL = 400000
 
@@ -17,6 +18,18 @@ export default function KaufnebenkostenIndex() {
     .sort((a, b) => a.satz - b.satz || a.land.localeCompare(b.land))
 
   const diffMax = (MODELL * (TEUERSTER.satz - GUENSTIGSTER.satz)) / 100
+
+  // Eine Quelle für sichtbaren FAQ-Abschnitt und FAQPage-JSON-LD (Text = Schema).
+  const faqs: FaqItem[] = [
+    {
+      question: 'In welchem Bundesland sind die Kaufnebenkosten am niedrigsten?',
+      answer: `Am niedrigsten sind die Kaufnebenkosten in ${GUENSTIGSTER.land}, weil dort mit ${pct(GUENSTIGSTER.satz)} der niedrigste Grunderwerbsteuersatz Deutschlands gilt. Am höchsten ist die Steuer mit ${pct(TEUERSTER.satz)} unter anderem in ${TEUERSTER.land}. Bei 400.000 € Kaufpreis macht das allein bei der Grunderwerbsteuer ${eur(diffMax)} Unterschied aus.`,
+    },
+    {
+      question: 'Wie hoch sind die Kaufnebenkosten in Deutschland insgesamt?',
+      answer: `Die Kaufnebenkosten liegen je nach Bundesland bei ${pct(nkQuote(GUENSTIGSTER.satz, false))} bis ${pct(nkQuote(TEUERSTER.satz, false))} des Kaufpreises ohne Makler und bei ${pct(nkQuote(GUENSTIGSTER.satz, true))} bis ${pct(nkQuote(TEUERSTER.satz, true))} mit Maklerprovision. Sie bestehen aus Grunderwerbsteuer (${pct(GUENSTIGSTER.satz)} bis ${pct(TEUERSTER.satz)}), Notar (ca. ${pct(NOTAR_SATZ)}), Grundbuch (ca. ${pct(GRUNDBUCH_SATZ)}) und gegebenenfalls Maklerprovision (oft ${pct(MAKLER_DEFAULT)} für den Käufer).`,
+    },
+  ]
 
   useSEO({
     title: 'Kaufnebenkosten je Bundesland 2026: Der große Vergleich',
@@ -35,16 +48,7 @@ export default function KaufnebenkostenIndex() {
         spatialCoverage: 'Deutschland',
         license: 'https://immopruef.de/impressum',
       },
-      faqSchema([
-        {
-          question: 'In welchem Bundesland sind die Kaufnebenkosten am niedrigsten?',
-          answer: `Am niedrigsten sind die Kaufnebenkosten in ${GUENSTIGSTER.land}, weil dort mit ${pct(GUENSTIGSTER.satz)} der niedrigste Grunderwerbsteuersatz Deutschlands gilt. Am höchsten ist die Steuer mit ${pct(TEUERSTER.satz)} unter anderem in ${TEUERSTER.land}. Bei 400.000 € Kaufpreis macht das allein bei der Grunderwerbsteuer ${eur(diffMax)} Unterschied aus.`,
-        },
-        {
-          question: 'Wie hoch sind die Kaufnebenkosten in Deutschland insgesamt?',
-          answer: 'Die Kaufnebenkosten liegen je nach Bundesland und Maklerbeteiligung bei rund 6 bis über 15 Prozent des Kaufpreises. Sie bestehen aus Grunderwerbsteuer (3,5 bis 6,5 Prozent), Notar (ca. 1,5 Prozent), Grundbuch (ca. 0,5 Prozent) und gegebenenfalls Maklerprovision (oft 3,57 Prozent für den Käufer).',
-        },
-      ]),
+      faqSchema(faqs),
       breadcrumbSchema([
         { name: 'Startseite', url: 'https://immopruef.de/' },
         { name: 'Kaufnebenkosten je Bundesland', url: 'https://immopruef.de/kaufnebenkosten-index' },
@@ -111,6 +115,8 @@ export default function KaufnebenkostenIndex() {
           <a href="/blog/kaufnebenkosten-immobilienkauf" className="text-green hover:text-green-mid underline">Kaufnebenkosten beim Immobilienkauf</a>.
         </p>
       </div>
+
+      <FaqSection title="Häufige Fragen zu den Kaufnebenkosten je Bundesland" items={faqs} />
 
       <div className="mt-8 bg-green text-cream rounded-xl p-6 text-center">
         <h2 className="font-display text-xl font-medium mb-2">Konkretes Objekt im Blick?</h2>

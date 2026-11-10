@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react'
 import { useSEO, faqSchema, breadcrumbSchema } from '../lib/useSEO'
 import { eur, pct } from '../lib/kaufnebenkosten'
-import { Field, Row } from './calcUi'
+import { Field, Row, FaqSection, type FaqItem } from './calcUi'
 
 export default function MietrenditeRechner() {
   const [kaufpreis, setKaufpreis] = useState(350000)
@@ -26,6 +26,22 @@ export default function MietrenditeRechner() {
     return { jahreskaltmiete, brutto, faktor, gesamtinvest, netto, qmPreis, einordnung }
   }, [kaufpreis, wohnflaeche, kaltmiete, nkProzent, bewirtProzent])
 
+  // Eine Quelle für sichtbaren FAQ-Abschnitt und FAQPage-JSON-LD (Text = Schema).
+  const faqs: FaqItem[] = [
+    {
+      question: 'Wie berechne ich die Bruttomietrendite?',
+      answer: 'Die Bruttomietrendite ergibt sich aus Jahreskaltmiete geteilt durch Kaufpreis mal 100. Beispiel: 13.200 € Jahreskaltmiete geteilt durch 350.000 € Kaufpreis ergeben rund 3,8 %. Sie eignet sich für den schnellen Vergleich, lässt aber Kaufnebenkosten und Bewirtschaftungskosten außen vor.',
+    },
+    {
+      question: 'Was sagt der Kaufpreisfaktor aus?',
+      answer: 'Der Kaufpreisfaktor ist Kaufpreis geteilt durch Jahreskaltmiete und zeigt, wie viele Jahresmieten der Kaufpreis entspricht. Als grobe Orientierung gilt: unter 20 günstig, 20 bis 25 solide, 25 bis 30 teuer, über 30 sehr teuer. In gefragten Großstädten liegt der Faktor oft bei 25 bis 35.',
+    },
+    {
+      question: 'Warum ist die Nettomietrendite niedriger als die Bruttomietrendite?',
+      answer: 'Die Nettomietrendite berücksichtigt die Kaufnebenkosten und die nicht umlagefähigen Bewirtschaftungskosten (oft 20 bis 25 % der Kaltmiete). Sie liegt dadurch typischerweise 1 bis 1,5 Prozentpunkte unter der Bruttomietrendite und ist die aussagekräftigere Kennzahl.',
+    },
+  ]
+
   useSEO({
     title: 'Mietrendite-Rechner: Rendite & Kaufpreisfaktor',
     description:
@@ -44,20 +60,7 @@ export default function MietrenditeRechner() {
         inLanguage: 'de-DE',
         description: 'Berechnet Bruttomietrendite, Nettomietrendite, Kaufpreisfaktor und Quadratmeterpreis einer Immobilie als Kapitalanlage und ordnet das Ergebnis ein.',
       },
-      faqSchema([
-        {
-          question: 'Wie berechne ich die Bruttomietrendite?',
-          answer: 'Die Bruttomietrendite ergibt sich aus Jahreskaltmiete geteilt durch Kaufpreis mal 100. Beispiel: 13.200 € Jahreskaltmiete geteilt durch 350.000 € Kaufpreis ergeben rund 3,8 %. Sie eignet sich für den schnellen Vergleich, lässt aber Kaufnebenkosten und Bewirtschaftungskosten außen vor.',
-        },
-        {
-          question: 'Was sagt der Kaufpreisfaktor aus?',
-          answer: 'Der Kaufpreisfaktor ist Kaufpreis geteilt durch Jahreskaltmiete und zeigt, wie viele Jahresmieten der Kaufpreis entspricht. Als grobe Orientierung gilt: unter 20 günstig, 20 bis 25 solide, 25 bis 30 teuer, über 30 sehr teuer. In gefragten Großstädten liegt der Faktor oft bei 25 bis 35.',
-        },
-        {
-          question: 'Warum ist die Nettomietrendite niedriger als die Bruttomietrendite?',
-          answer: 'Die Nettomietrendite berücksichtigt die Kaufnebenkosten und die nicht umlagefähigen Bewirtschaftungskosten (oft 20 bis 25 % der Kaltmiete). Sie liegt dadurch typischerweise 1 bis 1,5 Prozentpunkte unter der Bruttomietrendite und ist die aussagekräftigere Kennzahl.',
-        },
-      ]),
+      faqSchema(faqs),
       breadcrumbSchema([
         { name: 'Startseite', url: 'https://immopruef.de/' },
         { name: 'Mietrendite-Rechner', url: 'https://immopruef.de/mietrendite-rechner' },
@@ -122,6 +125,8 @@ export default function MietrenditeRechner() {
           <a href="/grunderwerbsteuer-rechner" className="text-green hover:text-green-mid underline">Kaufnebenkosten-Rechner</a>.
         </p>
       </div>
+
+      <FaqSection title="Häufige Fragen zu Mietrendite und Kaufpreisfaktor" items={faqs} />
 
       <div className="mt-8 bg-green text-cream rounded-xl p-6 text-center">
         <h2 className="font-display text-xl font-medium mb-2">Kapitalanlage im Blick?</h2>

@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import type { Package } from '../lib/types'
 import { PACKAGE_CONFIG } from '../lib/types'
-import { isValidPropertyUrl } from '../lib/validation'
+import { isValidPropertyUrl, normalizePropertyUrl } from '../lib/validation'
 import { startCheckout, uploadExposeFiles } from '../lib/api'
 import ExposeUploadInput from './ExposeUploadInput'
 import { useSEO, organizationSchema, webSiteSchema, productSchema, faqSchema } from '../lib/useSEO'
@@ -160,7 +160,7 @@ export default function Landing() {
         }
         checkoutUrl = await startCheckout([], options, pkg, email.trim(), consents, paths)
       } else {
-        checkoutUrl = await startCheckout(urls.slice(0, urlCount), options, pkg, email.trim(), consents)
+        checkoutUrl = await startCheckout(urls.slice(0, urlCount).map(normalizePropertyUrl), options, pkg, email.trim(), consents)
       }
       window.location.href = checkoutUrl
     } catch (err) {

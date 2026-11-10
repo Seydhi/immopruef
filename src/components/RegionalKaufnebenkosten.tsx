@@ -4,6 +4,7 @@ import {
   REGIO, regioForSlug, nkQuote, GUENSTIGSTER, TEUERSTER,
   NOTAR_SATZ, GRUNDBUCH_SATZ, MAKLER_DEFAULT,
 } from '../lib/regional'
+import { FaqSection, type FaqItem } from './calcUi'
 
 const PREISE = [300000, 500000, 750000]
 
@@ -39,26 +40,29 @@ export default function RegionalKaufnebenkosten({ slug }: { slug: string }) {
 
   const andere = REGIO.filter((r) => r.slug !== slug)
 
+  // Eine Quelle für sichtbaren FAQ-Abschnitt und FAQPage-JSON-LD (Text = Schema).
+  const faqs: FaqItem[] = [
+    {
+      question: `Wie hoch ist die Grunderwerbsteuer in ${land} 2026?`,
+      answer: `In ${land} beträgt die Grunderwerbsteuer ${pct(satz)} des Kaufpreises (Stand 2026). Bei einem Kaufpreis von 400.000 € sind das ${eur(grest400)}. Maßgeblich ist immer das Bundesland, in dem die Immobilie liegt, nicht der Wohnsitz des Käufers.`,
+    },
+    {
+      question: `Wie hoch sind die gesamten Kaufnebenkosten in ${land}?`,
+      answer: `Die Kaufnebenkosten in ${land} liegen bei rund ${pct(quoteOhne)} des Kaufpreises ohne Makler und ${pct(quoteMit)} mit Maklerprovision. Sie setzen sich zusammen aus Grunderwerbsteuer (${pct(satz)}), Notar (ca. ${pct(NOTAR_SATZ)}), Grundbuch (ca. ${pct(GRUNDBUCH_SATZ)}) und gegebenenfalls Maklerprovision (oft ${pct(MAKLER_DEFAULT)} für den Käufer).`,
+    },
+    {
+      question: 'Muss ich die Kaufnebenkosten aus Eigenkapital bezahlen?',
+      answer: 'Ja, in der Regel. Banken finanzieren die Kaufnebenkosten meist nicht mit, weil ihnen kein verwertbarer Sachwert gegenübersteht. Käufer sollten die Nebenkosten daher zusätzlich zum Eigenkapital für den Kaufpreis aus eigenen Mitteln aufbringen können.',
+    },
+  ]
+
   useSEO({
     title: `Kaufnebenkosten & Grunderwerbsteuer ${land}`,
     description: `Kaufnebenkosten in ${land}: Grunderwerbsteuer ${pct(satz)}, dazu Notar, Grundbuch und Makler — rund ${pct(quoteMit)} des Kaufpreises. Mit Rechenbeispielen.`,
     canonical: `https://immopruef.de/kaufnebenkosten-${slug}`,
     type: 'website',
     jsonLd: [
-      faqSchema([
-        {
-          question: `Wie hoch ist die Grunderwerbsteuer in ${land} 2026?`,
-          answer: `In ${land} beträgt die Grunderwerbsteuer ${pct(satz)} des Kaufpreises (Stand 2026). Bei einem Kaufpreis von 400.000 € sind das ${eur(grest400)}. Maßgeblich ist immer das Bundesland, in dem die Immobilie liegt, nicht der Wohnsitz des Käufers.`,
-        },
-        {
-          question: `Wie hoch sind die gesamten Kaufnebenkosten in ${land}?`,
-          answer: `Die Kaufnebenkosten in ${land} liegen bei rund ${pct(quoteOhne)} des Kaufpreises ohne Makler und ${pct(quoteMit)} mit Maklerprovision. Sie setzen sich zusammen aus Grunderwerbsteuer (${pct(satz)}), Notar (ca. ${pct(NOTAR_SATZ)}), Grundbuch (ca. ${pct(GRUNDBUCH_SATZ)}) und gegebenenfalls Maklerprovision (oft ${pct(MAKLER_DEFAULT)} für den Käufer).`,
-        },
-        {
-          question: 'Muss ich die Kaufnebenkosten aus Eigenkapital bezahlen?',
-          answer: 'Ja, in der Regel. Banken finanzieren die Kaufnebenkosten meist nicht mit, weil ihnen kein verwertbarer Sachwert gegenübersteht. Käufer sollten die Nebenkosten daher zusätzlich zum Eigenkapital für den Kaufpreis aus eigenen Mitteln aufbringen können.',
-        },
-      ]),
+      faqSchema(faqs),
       breadcrumbSchema([
         { name: 'Startseite', url: 'https://immopruef.de/' },
         { name: 'Kaufnebenkosten je Bundesland', url: 'https://immopruef.de/kaufnebenkosten-index' },
@@ -147,6 +151,8 @@ export default function RegionalKaufnebenkosten({ slug }: { slug: string }) {
           <a href={`/bodenrichtwert-${slug}`} className="text-green hover:text-green-mid underline">Bodenrichtwert in {land} abfragen</a>.
         </p>
       </div>
+
+      <FaqSection title={`Häufige Fragen zu den Kaufnebenkosten in ${land}`} items={faqs} />
 
       <div className="mt-8 bg-green text-cream rounded-xl p-6 text-center">
         <h2 className="font-display text-xl font-medium mb-2">Objekt in {land} im Blick?</h2>

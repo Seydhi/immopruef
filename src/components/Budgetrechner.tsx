@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react'
 import { useSEO, faqSchema, breadcrumbSchema } from '../lib/useSEO'
 import { GREST, grestSatzFor, NOTAR_SATZ, GRUNDBUCH_SATZ, MAKLER_DEFAULT, eur, pct } from '../lib/kaufnebenkosten'
+import { FaqSection, type FaqItem } from './calcUi'
 
 export default function Budgetrechner() {
   const [netto, setNetto] = useState(4000)
@@ -24,6 +25,25 @@ export default function Budgetrechner() {
     return { grest, nkQuote, maxRate, maxDarlehen, maxKaufpreis, nebenkosten, ekAmKaufpreis, ekQuote }
   }, [netto, eigenkapital, zins, tilgung, rateAnteil, land, mitMakler])
 
+  // Eine Quelle für sichtbaren FAQ-Abschnitt und FAQPage-JSON-LD (Text = Schema).
+  const faqs: FaqItem[] = [
+    {
+      question: 'Wie viel Haus kann ich mir bei meinem Einkommen leisten?',
+      answer:
+        'Als Faustregel sollte die monatliche Rate rund 35 % des Nettohaushaltseinkommens nicht überschreiten. Aus dieser maximalen Rate, dem Zins und der Tilgung ergibt sich die mögliche Darlehenssumme; zusammen mit dem Eigenkapital und abzüglich der Kaufnebenkosten folgt daraus der leistbare Kaufpreis.',
+    },
+    {
+      question: 'Werden die Kaufnebenkosten ins Budget eingerechnet?',
+      answer:
+        'Ja. Die Kaufnebenkosten von rund 10 bis 12 % des Kaufpreises müssen in der Regel aus Eigenkapital bezahlt werden, weil Banken sie meist nicht mitfinanzieren. Der Rechner zieht sie deshalb vom Eigenkapital ab.',
+    },
+    {
+      question: 'Wie viel Eigenkapital sollte ich einplanen?',
+      answer:
+        'Empfohlen werden mindestens 20 % des Kaufpreises plus die Kaufnebenkosten. Je mehr Eigenkapital, desto niedriger Zins und Rate. Eine Notreserve von etwa drei Nettomonatsgehältern sollten Sie nicht in die Finanzierung stecken.',
+    },
+  ]
+
   useSEO({
     title: 'Budgetrechner Immobilie: Wie viel Haus kann ich mir leisten?',
     description:
@@ -43,23 +63,7 @@ export default function Budgetrechner() {
         description:
           'Berechnet aus Nettoeinkommen, Eigenkapital, Zins und Tilgung die maximale Monatsrate, Darlehenssumme und den leistbaren Immobilien-Kaufpreis inklusive Kaufnebenkosten.',
       },
-      faqSchema([
-        {
-          question: 'Wie viel Haus kann ich mir bei meinem Einkommen leisten?',
-          answer:
-            'Als Faustregel sollte die monatliche Rate rund 35 % des Nettohaushaltseinkommens nicht überschreiten. Aus dieser maximalen Rate, dem Zins und der Tilgung ergibt sich die mögliche Darlehenssumme; zusammen mit dem Eigenkapital und abzüglich der Kaufnebenkosten folgt daraus der leistbare Kaufpreis.',
-        },
-        {
-          question: 'Werden die Kaufnebenkosten ins Budget eingerechnet?',
-          answer:
-            'Ja. Die Kaufnebenkosten von rund 10 bis 12 % des Kaufpreises müssen in der Regel aus Eigenkapital bezahlt werden, weil Banken sie meist nicht mitfinanzieren. Der Rechner zieht sie deshalb vom Eigenkapital ab.',
-        },
-        {
-          question: 'Wie viel Eigenkapital sollte ich einplanen?',
-          answer:
-            'Empfohlen werden mindestens 20 % des Kaufpreises plus die Kaufnebenkosten. Je mehr Eigenkapital, desto niedriger Zins und Rate. Eine Notreserve von etwa drei Nettomonatsgehältern sollten Sie nicht in die Finanzierung stecken.',
-        },
-      ]),
+      faqSchema(faqs),
       breadcrumbSchema([
         { name: 'Startseite', url: 'https://immopruef.de/' },
         { name: 'Budgetrechner', url: 'https://immopruef.de/budgetrechner' },
@@ -122,7 +126,7 @@ export default function Budgetrechner() {
           <Field label="Eigenkapital" value={eigenkapital} onChange={setEigenkapital} suffix="€" step={1000}
             sub="inkl. Mittel für die Kaufnebenkosten" />
           <Field label="Sollzins (p. a.)" value={zins} onChange={setZins} suffix="%" step={0.1} max={10}
-            sub="aktuell grob 3,5–4,0 % (10 J. Bindung)" />
+            sub="Stand Nov. 2026: effektiv rund 4,0–4,4 % (10 J. Bindung)" />
           <Field label="Anfängliche Tilgung (p. a.)" value={tilgung} onChange={setTilgung} suffix="%" step={0.5} max={10}
             sub="empfohlen mind. 2 %" />
           <Field label="Maximaler Anteil der Rate am Netto" value={rateAnteil} onChange={setRateAnteil} suffix="%" step={1} max={60}
@@ -186,6 +190,8 @@ export default function Budgetrechner() {
           <a href="/grunderwerbsteuer-rechner" className="text-green hover:text-green-mid underline">Kaufnebenkosten-Rechner</a>.
         </p>
       </div>
+
+      <FaqSection title="Häufige Fragen zum Immobilien-Budget" items={faqs} />
 
       <div className="mt-8 bg-green text-cream rounded-xl p-6 text-center">
         <h2 className="font-display text-xl font-medium mb-2">Passendes Objekt im Budget gefunden?</h2>

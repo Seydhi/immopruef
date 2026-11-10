@@ -15,7 +15,7 @@ export default function NebenkostenLaufendeKosten() {
         </thead>
         <tbody>
           <tr><td><strong>Wann</strong></td><td>Beim Kauf (einmalig)</td><td>Ab Einzug (monatlich, dauerhaft)</td></tr>
-          <tr><td><strong>Typische Höhe</strong></td><td>5,5–12,5 % des Kaufpreises</td><td>400–1.200 €/Monat (zusätzlich zur Kreditrate)</td></tr>
+          <tr><td><strong>Typische Höhe</strong></td><td>5,5 bis rund 12 % des Kaufpreises</td><td>400–1.200 €/Monat (zusätzlich zur Kreditrate)</td></tr>
           <tr><td><strong>Finanzierbar?</strong></td><td>Selten — meist aus Eigenkapital</td><td>Muss vom laufenden Einkommen gedeckt sein</td></tr>
           <tr><td><strong>Im Exposé?</strong></td><td>Teilweise (Provision)</td><td>Selten vollständig</td></tr>
           <tr><td><strong>Beeinflussbar?</strong></td><td>Kaum (Steuersätze fest, Notar fest)</td><td>Teilweise (Energieverbrauch, Versicherungswahl)</td></tr>

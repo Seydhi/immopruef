@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react'
 import { useSEO, faqSchema, breadcrumbSchema } from '../lib/useSEO'
 import { eur } from '../lib/kaufnebenkosten'
+import { FaqSection, type FaqItem } from './calcUi'
 
 // ─── Modul-Level-Helfer (kein Remount/Fokusverlust beim Tippen) ───
 function Field({
@@ -93,6 +94,25 @@ export default function MietenOderKaufen() {
 
   const kaufenVorn = r.vorteil >= 0
 
+  // Eine Quelle für sichtbaren FAQ-Abschnitt und FAQPage-JSON-LD (Text = Schema).
+  const faqs: FaqItem[] = [
+    {
+      question: 'Lohnt sich Kaufen oder Mieten mehr?',
+      answer:
+        'Das hängt vom Zeitraum und von Annahmen ab: Je länger die Haltedauer, je höher die unterstellte Wertsteigerung der Immobilie und je niedriger die Anlagerendite am Kapitalmarkt, desto eher lohnt sich der Kauf. Der Rechner stellt beide Vermögenspfade gegenüber und zeigt das Break-even-Jahr, ab dem Kaufen vorne liegt.',
+    },
+    {
+      question: 'Wie funktioniert der Mieten-oder-Kaufen-Vergleich?',
+      answer:
+        'Beim Kauf wächst das Vermögen über die Tilgung und die mögliche Wertsteigerung der Immobilie (abzüglich Restschuld). Beim Mieten wird das gleiche Eigenkapital am Kapitalmarkt angelegt und zusätzlich die monatliche Differenz investiert, wenn Mieten günstiger ist als die Eigentümer-Belastung. Am Ende werden beide Endvermögen verglichen.',
+    },
+    {
+      question: 'Sind die Ergebnisse eine verlässliche Prognose?',
+      answer:
+        'Nein. Wertsteigerung, Mietsteigerung und Anlagerendite sind Annahmen über die Zukunft, die niemand sicher kennt. Der Rechner ist ein Modell zum Durchspielen von Szenarien — keine Anlage- oder Finanzberatung. Verändern Sie die Annahmen, um zu sehen, wie empfindlich das Ergebnis reagiert.',
+    },
+  ]
+
   useSEO({
     title: 'Mieten oder Kaufen Rechner: Vermögensvergleich über die Zeit',
     description:
@@ -112,23 +132,7 @@ export default function MietenOderKaufen() {
         description:
           'Vergleicht über einen wählbaren Zeitraum das aufgebaute Vermögen beim Kauf (Immobilienwert abzüglich Restschuld) mit dem Mieten plus Anlage der eingesparten Differenz. Wertsteigerung, Mietsteigerung, Anlagerendite und laufende Kosten sind frei einstellbare Annahmen.',
       },
-      faqSchema([
-        {
-          question: 'Lohnt sich Kaufen oder Mieten mehr?',
-          answer:
-            'Das hängt vom Zeitraum und von Annahmen ab: Je länger die Haltedauer, je höher die unterstellte Wertsteigerung der Immobilie und je niedriger die Anlagerendite am Kapitalmarkt, desto eher lohnt sich der Kauf. Der Rechner stellt beide Vermögenspfade gegenüber und zeigt das Break-even-Jahr, ab dem Kaufen vorne liegt.',
-        },
-        {
-          question: 'Wie funktioniert der Mieten-oder-Kaufen-Vergleich?',
-          answer:
-            'Beim Kauf wächst das Vermögen über die Tilgung und die mögliche Wertsteigerung der Immobilie (abzüglich Restschuld). Beim Mieten wird das gleiche Eigenkapital am Kapitalmarkt angelegt und zusätzlich die monatliche Differenz investiert, wenn Mieten günstiger ist als die Eigentümer-Belastung. Am Ende werden beide Endvermögen verglichen.',
-        },
-        {
-          question: 'Sind die Ergebnisse eine verlässliche Prognose?',
-          answer:
-            'Nein. Wertsteigerung, Mietsteigerung und Anlagerendite sind Annahmen über die Zukunft, die niemand sicher kennt. Der Rechner ist ein Modell zum Durchspielen von Szenarien — keine Anlage- oder Finanzberatung. Verändern Sie die Annahmen, um zu sehen, wie empfindlich das Ergebnis reagiert.',
-        },
-      ]),
+      faqSchema(faqs),
       breadcrumbSchema([
         { name: 'Startseite', url: 'https://immopruef.de/' },
         { name: 'Mieten oder Kaufen Rechner', url: 'https://immopruef.de/mieten-oder-kaufen-rechner' },
@@ -241,6 +245,8 @@ export default function MietenOderKaufen() {
           <a href="/tilgungsrechner" className="text-green hover:text-green-mid underline">Tilgungsrechner</a>.
         </p>
       </div>
+
+      <FaqSection title="Häufige Fragen zu Mieten oder Kaufen" items={faqs} />
 
       <div className="mt-8 bg-green text-cream rounded-xl p-6 text-center">
         <h2 className="font-display text-xl font-medium mb-2">Kaufen kann sich lohnen — aber passt das Objekt?</h2>

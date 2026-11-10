@@ -98,25 +98,29 @@ export async function pollAnalysis(sessionId: string): Promise<OrderResult> {
   }
 
   if (!res.ok) {
-    throw new Error(`HTTP ${res.status}`)
+    // Status mitgeben: 404 (unbekannte Bestellung) ist endgültig, alles andere wird wiederholt
+    const err = new Error(`HTTP ${res.status}`) as Error & { status?: number }
+    err.status = res.status
+    throw err
   }
 
   return await res.json()
 }
 
 // ─── Retry Failed Analysis ───
-// Resets a failed analysis to pending and re-triggers processing (no extra payment)
-export async function retryAnalysis(analysisId: string): Promise<Analysis | null> {
-  if (USE_MOCKS) return null
+// Resets a failed analysis to pending (no extra payment). Die Funktion reiht nur neu ein —
+// das Ergebnis kommt anschließend über pollAnalysis(sessionId). Die session_id weist den
+// Aufrufer als Inhaber der Bestellung aus. Rückgabe: true = neu eingereiht.
+export async function retryAnalysis(analysisId: string, sessionId: string): Promise<boolean> {
+  if (USE_MOCKS) return false
 
   const res = await fetch(getSupabaseFunctionUrl('retry-analysis'), {
     method: 'POST',
     headers: getHeaders(),
-    body: JSON.stringify({ analysis_id: analysisId }),
+    body: JSON.stringify({ analysis_id: analysisId, session_id: sessionId }),
   })
 
-  if (!res.ok) return null
-  return await res.json()
+  return res.ok
 }
 
 // ─── Get Analysis by Token ───
@@ -126,11 +130,10 @@ export async function getAnalysisByToken(token: string): Promise<Analysis | null
 
   if (!supabase) throw new Error('Supabase not configured')
 
-  const { data, error } = await supabase
-    .from('analyses')
-    .select('*')
-    .eq('token', token)
-    .single()
+  // Zugriff nur über den exakten Token (security-definer-Funktion, Migration 011) —
+  // die Tabelle selbst ist für den anon-Key nicht mehr lesbar.
+  const { data: rows, error } = await supabase.rpc('get_analysis_by_token', { p_token: token })
+  const data = Array.isArray(rows) ? rows[0] : rows
 
   if (error || !data) return null
 

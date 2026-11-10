@@ -27,6 +27,11 @@ export interface BlogMeta {
    * ein hochgesetztes dateModified ohne echte Änderung ist ein Spam-Signal.
    */
   updated?: string
+  /**
+   * Optionale Kurzantwort (40–60 Wörter), sichtbar direkt über dem Artikeltext.
+   * Darf nur zusammenfassen, was der Artikel selbst sagt.
+   */
+  kurzantwort?: string
   readTime: string
   tags: string[]
   image?: string
@@ -226,6 +231,13 @@ export default function BlogLayout({ meta, children }: BlogLayoutProps) {
           wrapperClassName="mb-8 rounded-xl overflow-hidden"
           wrapperStyle={{ aspectRatio: '16 / 9' }}
         />
+      )}
+
+      {meta.kurzantwort && (
+        <section aria-label="Kurzantwort" className="mb-8 bg-green/4 border-l-4 border-green rounded-r-lg px-5 py-4">
+          <h2 className="text-[11px] font-semibold tracking-wider uppercase text-green mb-1.5">Kurzantwort</h2>
+          <p className="text-ink text-[15px] leading-relaxed">{meta.kurzantwort}</p>
+        </section>
       )}
 
       <div className="prose-immo">

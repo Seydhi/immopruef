@@ -40,3 +40,27 @@ export function Row({ label, sub, value, strong = false }: { label: string; sub?
     </div>
   )
 }
+
+export interface FaqItem { question: string; answer: string }
+
+/**
+ * Sichtbarer FAQ-Abschnitt. Bekommt dieselbe Liste wie faqSchema(), damit der
+ * gerenderte Text und das FAQPage-JSON-LD wortgleich sind. Immer ausgeklappt,
+ * damit die Antworten im prerenderten HTML stehen und ohne Klick lesbar sind.
+ */
+export function FaqSection({ items, title = 'Häufige Fragen' }: { items: FaqItem[]; title?: string }) {
+  if (items.length === 0) return null
+  return (
+    <section className="mt-8">
+      <h2 className="font-display text-xl font-semibold text-ink mb-3">{title}</h2>
+      <div className="space-y-3">
+        {items.map((item) => (
+          <div key={item.question} className="bg-white border border-ink/10 rounded-lg px-4 py-3">
+            <h3 className="text-sm font-medium text-ink leading-snug">{item.question}</h3>
+            <p className="text-[13px] text-ink-mid leading-relaxed mt-1.5">{item.answer}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}

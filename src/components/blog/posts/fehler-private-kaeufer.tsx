@@ -61,7 +61,7 @@ export default function FehlerPrivateKaeufer() {
         <strong>Was passiert:</strong> Die Wohnung kostet 320.000 €, im Budget sind 340.000 €. "Das passt."
       </p>
       <p>
-        <strong>Warum es gefährlich ist:</strong> Zum Kaufpreis kommen je nach Bundesland 5,5–12,5 % Nebenkosten. Bei 320.000 € sind das 17.600–40.000 €. Dazu Renovierung (5.000–20.000 €), Umzug (2.000–5.000 €), ggf. neue Küche (5.000–15.000 €). Realistisch liegt die Gesamtinvestition bei 350.000–400.000 €.
+        <strong>Warum es gefährlich ist:</strong> Zum Kaufpreis kommen je nach Bundesland 5,5 bis rund 12 % Nebenkosten. Bei 320.000 € sind das 17.600 bis rund 38.600 €. Dazu Renovierung (5.000–20.000 €), Umzug (2.000–5.000 €), ggf. neue Küche (5.000–15.000 €). Realistisch liegt die Gesamtinvestition bei 350.000–400.000 €.
       </p>
       <p>
         <strong>Die Folge:</strong> Das Budget reicht nicht. Entweder wird die Finanzierung überreizt (monatliche Belastung zu hoch) oder es fehlt Eigenkapital (schlechtere Zinskonditionen, höheres Risiko).

@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react'
 import { useSEO, faqSchema, breadcrumbSchema } from '../lib/useSEO'
 import { eur, pct } from '../lib/kaufnebenkosten'
-import { Field, Row } from './calcUi'
+import { Field, Row, FaqSection, type FaqItem } from './calcUi'
 
 // ─── GNotKG-Gebührenlogik ───
 // Anlage 2 zu § 34 GNotKG, TABELLE B — einfache (1,0) Wertgebühr je Geschäftswert.
@@ -66,6 +66,35 @@ export default function NotarkostenRechner() {
     }
   }, [preis, finanziert, darlehen])
 
+  // Eine Quelle für sichtbaren FAQ-Abschnitt und FAQPage-JSON-LD (Text = Schema).
+  const faqs: FaqItem[] = [
+    {
+      question: 'Wie hoch sind die Notarkosten beim Hauskauf?',
+      answer:
+        'Als grobe Faustregel liegen Notar- und Grundbuchkosten zusammen bei rund 1,5 % des Kaufpreises. Die Gebühren sind bundesweit einheitlich im GNotKG geregelt und richten sich nach dem Geschäftswert (Kaufpreis bzw. Darlehen), nicht nach dem Aufwand. Bei 400.000 € Kaufpreis mit Finanzierung sind es typischerweise rund 5.000 bis 6.000 €.',
+    },
+    {
+      question: 'Wer zahlt die Notarkosten — Käufer oder Verkäufer?',
+      answer:
+        'In der Regel trägt der Käufer die gesamten Notar- und Grundbuchkosten; so steht es üblicherweise im Kaufvertrag. Nur einzelne Posten, die allein den Verkäufer betreffen — etwa die Löschung einer alten Grundschuld —, zahlt der Verkäufer.',
+    },
+    {
+      question: 'Sind Notarkosten verhandelbar oder bei jedem Notar gleich?',
+      answer:
+        'Notargebühren sind gesetzlich im GNotKG festgelegt und bundesweit identisch — jeder Notar muss dieselben Gebühren berechnen. Einen günstigeren Notar gibt es nicht. Beeinflussbar sind nur der Geschäftswert und die Frage, ob und in welcher Höhe eine Grundschuld eingetragen wird.',
+    },
+    {
+      question: 'Warum erhöht eine Finanzierung die Notarkosten?',
+      answer:
+        'Weil für die Grundschuld zwei zusätzliche Gebühren anfallen: die notarielle Beurkundung der Grundschuldbestellung (1,0-Gebühr) und deren Eintragung ins Grundbuch (1,0-Gebühr), jeweils auf den Grundschuldbetrag. Wer weniger fremdfinanziert, spart hier spürbar.',
+    },
+    {
+      question: 'Sind die Notarkosten von der Bank mitfinanzierbar?',
+      answer:
+        'Meist nicht. Wie die übrigen Kaufnebenkosten müssen Sie die Notar- und Grundbuchkosten in der Regel aus Eigenkapital aufbringen. Planen Sie sie daher von Anfang an in Ihr Budget ein.',
+    },
+  ]
+
   useSEO({
     title: 'Notarkosten-Rechner 2026: Notar- & Grundbuchkosten',
     description:
@@ -85,33 +114,7 @@ export default function NotarkostenRechner() {
         description:
           'Berechnet Notar- und Grundbuchkosten beim Immobilienkauf nach der GNotKG-Gebührentabelle, inklusive Grundschuldbestellung und 19 % Umsatzsteuer.',
       },
-      faqSchema([
-        {
-          question: 'Wie hoch sind die Notarkosten beim Hauskauf?',
-          answer:
-            'Als grobe Faustregel liegen Notar- und Grundbuchkosten zusammen bei rund 1,5 % des Kaufpreises. Die Gebühren sind bundesweit einheitlich im GNotKG geregelt und richten sich nach dem Geschäftswert (Kaufpreis bzw. Darlehen), nicht nach dem Aufwand. Bei 400.000 € Kaufpreis mit Finanzierung sind es typischerweise rund 5.000 bis 6.000 €.',
-        },
-        {
-          question: 'Wer zahlt die Notarkosten — Käufer oder Verkäufer?',
-          answer:
-            'In der Regel trägt der Käufer die gesamten Notar- und Grundbuchkosten; so steht es üblicherweise im Kaufvertrag. Nur einzelne Posten, die allein den Verkäufer betreffen — etwa die Löschung einer alten Grundschuld —, zahlt der Verkäufer.',
-        },
-        {
-          question: 'Sind Notarkosten verhandelbar oder bei jedem Notar gleich?',
-          answer:
-            'Notargebühren sind gesetzlich im GNotKG festgelegt und bundesweit identisch — jeder Notar muss dieselben Gebühren berechnen. Einen günstigeren Notar gibt es nicht. Beeinflussbar sind nur der Geschäftswert und die Frage, ob und in welcher Höhe eine Grundschuld eingetragen wird.',
-        },
-        {
-          question: 'Warum erhöht eine Finanzierung die Notarkosten?',
-          answer:
-            'Weil für die Grundschuld zwei zusätzliche Gebühren anfallen: die notarielle Beurkundung der Grundschuldbestellung (1,0-Gebühr) und deren Eintragung ins Grundbuch (1,0-Gebühr), jeweils auf den Grundschuldbetrag. Wer weniger fremdfinanziert, spart hier spürbar.',
-        },
-        {
-          question: 'Sind die Notarkosten von der Bank mitfinanzierbar?',
-          answer:
-            'Meist nicht. Wie die übrigen Kaufnebenkosten müssen Sie die Notar- und Grundbuchkosten in der Regel aus Eigenkapital aufbringen. Planen Sie sie daher von Anfang an in Ihr Budget ein.',
-        },
-      ]),
+      faqSchema(faqs),
       breadcrumbSchema([
         { name: 'Startseite', url: 'https://immopruef.de/' },
         { name: 'Notarkosten-Rechner', url: 'https://immopruef.de/notarkosten-rechner' },
@@ -232,26 +235,7 @@ export default function NotarkostenRechner() {
         </p>
       </div>
 
-      {/* FAQ */}
-      <div className="mt-8">
-        <h2 className="font-display text-xl font-semibold text-ink mb-3">Häufige Fragen zu den Notarkosten</h2>
-        <div className="space-y-3">
-          {[
-            ['Wer zahlt die Notarkosten — Käufer oder Verkäufer?', 'In der Regel trägt der Käufer die gesamten Notar- und Grundbuchkosten; so steht es üblicherweise im Kaufvertrag. Nur einzelne Posten, die allein den Verkäufer betreffen — etwa die Löschung einer alten Grundschuld —, zahlt der Verkäufer.'],
-            ['Sind Notarkosten verhandelbar oder bei jedem Notar gleich?', 'Notargebühren sind gesetzlich im GNotKG festgelegt und bundesweit identisch — jeder Notar muss dieselben Gebühren berechnen. Einen günstigeren Notar gibt es nicht. Beeinflussbar sind nur der Geschäftswert und die Frage, ob eine Grundschuld eingetragen wird.'],
-            ['Warum erhöht eine Finanzierung die Notarkosten?', 'Weil für die Grundschuld zwei zusätzliche Gebühren anfallen: die Beurkundung der Grundschuldbestellung und deren Eintragung ins Grundbuch, jeweils als 1,0-Gebühr auf den Grundschuldbetrag. Wer weniger fremdfinanziert, spart hier spürbar.'],
-            ['Sind die Notarkosten von der Bank mitfinanzierbar?', 'Meist nicht. Wie die übrigen Kaufnebenkosten müssen Sie die Notar- und Grundbuchkosten in der Regel aus Eigenkapital aufbringen — planen Sie sie von Anfang an ein.'],
-          ].map(([q, a]) => (
-            <details key={q} className="group bg-white border border-ink/10 rounded-lg px-4 py-3">
-              <summary className="cursor-pointer list-none flex items-center justify-between gap-3 text-sm font-medium text-ink">
-                {q}
-                <span className="text-green transition-transform group-open:rotate-45 text-lg leading-none">+</span>
-              </summary>
-              <p className="text-[13px] text-ink-mid leading-relaxed mt-2">{a}</p>
-            </details>
-          ))}
-        </div>
-      </div>
+      <FaqSection title="Häufige Fragen zu den Notarkosten" items={faqs} />
 
       {/* CTA */}
       <div className="mt-8 bg-green text-cream rounded-xl p-6 text-center">

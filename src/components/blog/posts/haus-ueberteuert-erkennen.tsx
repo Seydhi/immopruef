@@ -26,7 +26,7 @@ export default function HausUeberteuertErkennen() {
       <p>Der Markt hat bereits abgestimmt: Steht ein Objekt über 3 Monate online, findet es zum aufgerufenen Preis keinen Käufer — über 6 Monate ist es fast sicher überteuert (oder hat verdeckte Probleme). Preissenkungen in der Historie bestätigen die Diagnose. Fragen Sie den Makler direkt nach Standdauer und Preisänderungen; die Antwort gehört zu Ihren stärksten Verhandlungsargumenten.</p>
 
       <h3>7. Das Bauchgefühl-Gegenmittel: die Gesamtinvestition</h3>
-      <p>Rechnen Sie zum Schluss die ehrliche Summe: Kaufpreis plus Kaufnebenkosten (5,5 bis 12,5 Prozent je Bundesland) plus absehbare Sanierung plus Renovierung vor Einzug. Vergleichen Sie DIESE Zahl — pro Quadratmeter — mit Alternativen. Manche „günstigen" Angebote sind nach dieser Rechnung die teuersten, wie <a href="/blog/zustand-folgekosten">Zustand und Folgekosten</a> an Beispielen zeigt.</p>
+      <p>Rechnen Sie zum Schluss die ehrliche Summe: Kaufpreis plus Kaufnebenkosten (5,5 bis rund 12 Prozent je Bundesland) plus absehbare Sanierung plus Renovierung vor Einzug. Vergleichen Sie DIESE Zahl — pro Quadratmeter — mit Alternativen. Manche „günstigen" Angebote sind nach dieser Rechnung die teuersten, wie <a href="/blog/zustand-folgekosten">Zustand und Folgekosten</a> an Beispielen zeigt.</p>
 
       <h2>Typische Kaschier-Tricks bei überhöhten Preisen</h2>
       <ul>

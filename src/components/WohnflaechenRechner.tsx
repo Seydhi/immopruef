@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react'
 import { useSEO, faqSchema, breadcrumbSchema } from '../lib/useSEO'
 import { eur } from '../lib/kaufnebenkosten'
-import { Field, Row } from './calcUi'
+import { Field, Row, FaqSection, type FaqItem } from './calcUi'
 
 export default function WohnflaechenRechner() {
   const [voll, setVoll] = useState(60)
@@ -19,6 +19,22 @@ export default function WohnflaechenRechner() {
     const diffFlaeche = hatBeworben ? beworben - anrechenbar : 0
     return { anrechenbar, qmPreis, hatBeworben, qmPreisBeworben, diffFlaeche }
   }, [voll, schraege, balkon, balkonFaktor, kaufpreis, beworben])
+
+  // Eine Quelle für sichtbaren FAQ-Abschnitt und FAQPage-JSON-LD (Text = Schema).
+  const faqs: FaqItem[] = [
+    {
+      question: 'Wie wird die Wohnfläche nach der Wohnflächenverordnung berechnet?',
+      answer: 'Räume ab 2 m Höhe zählen voll (100 %), Flächen zwischen 1 und 2 m Höhe (etwa unter Dachschrägen) nur zur Hälfte (50 %), unter 1 m gar nicht. Balkone, Terrassen und Loggien werden in der Regel zu 25 %, maximal 50 % angerechnet. Keller, Waschküchen und Heizungsräume zählen nicht zur Wohnfläche.',
+    },
+    {
+      question: 'Warum weicht die beworbene Wohnfläche oft von der echten ab?',
+      answer: 'Im Exposé wird die Fläche manchmal großzügig gerechnet — etwa Balkone voll statt zu 25 % oder Dachschrägen-Flächen voll statt zur Hälfte. Da der Quadratmeterpreis auf die Fläche bezogen wird, lässt eine zu hoch angesetzte Wohnfläche den Preis pro m² künstlich niedrig erscheinen.',
+    },
+    {
+      question: 'Wie wirkt sich eine falsche Wohnfläche auf den Quadratmeterpreis aus?',
+      answer: 'Der Quadratmeterpreis ist Kaufpreis geteilt durch Wohnfläche. Sind statt beworbener 80 m² real nur 72 m² anrechenbar, steigt der m²-Preis bei gleichem Kaufpreis spürbar. Rechnen Sie immer mit der anrechenbaren Fläche nach WoFlV, um Angebote fair zu vergleichen.',
+    },
+  ]
 
   useSEO({
     title: 'Wohnflächenrechner (WoFlV) & Quadratmeterpreis berechnen',
@@ -38,20 +54,7 @@ export default function WohnflaechenRechner() {
         inLanguage: 'de-DE',
         description: 'Berechnet die anrechenbare Wohnfläche nach Wohnflächenverordnung (WoFlV) und den Quadratmeterpreis und deckt Abweichungen zur im Exposé beworbenen Fläche auf.',
       },
-      faqSchema([
-        {
-          question: 'Wie wird die Wohnfläche nach der Wohnflächenverordnung berechnet?',
-          answer: 'Räume ab 2 m Höhe zählen voll (100 %), Flächen zwischen 1 und 2 m Höhe (etwa unter Dachschrägen) nur zur Hälfte (50 %), unter 1 m gar nicht. Balkone, Terrassen und Loggien werden in der Regel zu 25 %, maximal 50 % angerechnet. Keller, Waschküchen und Heizungsräume zählen nicht zur Wohnfläche.',
-        },
-        {
-          question: 'Warum weicht die beworbene Wohnfläche oft von der echten ab?',
-          answer: 'Im Exposé wird die Fläche manchmal großzügig gerechnet — etwa Balkone voll statt zu 25 % oder Dachschrägen-Flächen voll statt zur Hälfte. Da der Quadratmeterpreis auf die Fläche bezogen wird, lässt eine zu hoch angesetzte Wohnfläche den Preis pro m² künstlich niedrig erscheinen.',
-        },
-        {
-          question: 'Wie wirkt sich eine falsche Wohnfläche auf den Quadratmeterpreis aus?',
-          answer: 'Der Quadratmeterpreis ist Kaufpreis geteilt durch Wohnfläche. Sind statt beworbener 80 m² real nur 72 m² anrechenbar, steigt der m²-Preis bei gleichem Kaufpreis spürbar. Rechnen Sie immer mit der anrechenbaren Fläche nach WoFlV, um Angebote fair zu vergleichen.',
-        },
-      ]),
+      faqSchema(faqs),
       breadcrumbSchema([
         { name: 'Startseite', url: 'https://immopruef.de/' },
         { name: 'Wohnflächenrechner', url: 'https://immopruef.de/wohnflaechen-rechner' },
@@ -123,6 +126,8 @@ export default function WohnflaechenRechner() {
           wirklich aussagt, lesen Sie im jeweiligen Ratgeber.
         </p>
       </div>
+
+      <FaqSection title="Häufige Fragen zur Wohnfläche" items={faqs} />
 
       <div className="mt-8 bg-green text-cream rounded-xl p-6 text-center">
         <h2 className="font-display text-xl font-medium mb-2">Stimmen die Angaben im Exposé?</h2>

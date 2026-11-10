@@ -18,7 +18,7 @@ const PRUEF_PUNKTE = [
 const FAQ_ITEMS = [
   {
     question: 'Was kostet es, ein Exposé prüfen zu lassen?',
-    answer: 'Bei ImmoPrüf kostet die vollständige Exposé-Prüfung 19 € (Quick-Check) oder 79 € (Premium-Report mit Wertermittlung nach drei Verfahren und Standort-Dossier). Zum Vergleich: Ein Kurzgutachten vom Sachverständigen kostet üblicherweise 500–1.000 €, eine Kaufberatung mit Ortstermin oft mehr.',
+    answer: 'Bei ImmoPrüf kostet die vollständige Exposé-Prüfung 19 € (Quick-Check) oder 79 € (Premium-Report mit Wertermittlung nach drei Verfahren und Standort-Dossier). Zum Vergleich: Ein Bausachverständiger kostet für Besichtigungsbegleitung oder Kurzgutachten rund 300 bis 800 €, für ein ausführliches schriftliches Gutachten etwa 800 bis 2.000 €.',
   },
   {
     question: 'Wie schnell bekomme ich das Ergebnis?',
@@ -50,7 +50,7 @@ const VERGLEICH = [
   { methode: 'Selbst prüfen', kosten: '0 €', dauer: 'Mehrere Stunden', staerke: 'Kostenlos, Lerneffekt', grenze: 'Vergleichswerte und Vollständigkeit schwer einzuschätzen' },
   { methode: 'ChatGPT & Co.', kosten: '0–23 €/Monat', dauer: 'Minuten', staerke: 'Schnell, flexibel', grenze: 'Rechenfehler und erfundene Marktwerte möglich — jede Zahl muss selbst geprüft werden' },
   { methode: 'ImmoPrüf', kosten: '19–79 € einmalig', dauer: 'Wenige Minuten', staerke: 'Käuferseitig, nachgerechnete Finanzen, Quellenangaben, Schätzwerte markiert', grenze: 'Keine Vor-Ort-Begehung — ersetzt kein Gutachten' },
-  { methode: 'Gutachter / Kaufberatung', kosten: 'ca. 500–1.800 €', dauer: 'Tage bis Wochen', staerke: 'Vor-Ort-Prüfung, gerichtsfest (Vollgutachten)', grenze: 'Teuer und langsam — für die Vorauswahl mehrerer Objekte unpraktisch' },
+  { methode: 'Gutachter / Kaufberatung', kosten: 'ca. 300–2.000 €', dauer: 'Tage bis Wochen', staerke: 'Vor-Ort-Prüfung, gerichtsfest (Vollgutachten)', grenze: 'Teuer und langsam — für die Vorauswahl mehrerer Objekte unpraktisch' },
 ]
 
 export default function ExposePruefenLassen() {
@@ -141,6 +141,13 @@ export default function ExposePruefenLassen() {
           Alle Finanzwerte werden deterministisch nachgerechnet; Marktwerte tragen Quellenangaben; was nicht
           im Exposé steht, ist ausdrücklich als „regionaler Schätzwert" markiert.
         </p>
+        <p className="text-xs text-ink-light mt-2 leading-relaxed">
+          Rechtsgrundlagen der geprüften Angaben: Pflichtangaben zum Energieausweis in Immobilienanzeigen nach{' '}
+          <a href="https://www.gesetze-im-internet.de/geg/__87.html" className="underline decoration-ink/30 hover:decoration-ink transition-colors" target="_blank" rel="noopener noreferrer">§ 87 GModG (früher GEG)</a>,
+          Grunderwerbsteuer nach{' '}
+          <a href="https://www.gesetze-im-internet.de/grestg_1983/__11.html" className="underline decoration-ink/30 hover:decoration-ink transition-colors" target="_blank" rel="noopener noreferrer">§ 11 GrEStG</a>{' '}
+          mit den Steuersätzen der Länder.
+        </p>
       </section>
 
       {/* So funktioniert's */}
@@ -195,7 +202,9 @@ export default function ExposePruefenLassen() {
           </div>
         </div>
         <p className="text-xs text-ink-light mt-2 leading-relaxed">
-          Gutachter-Preisspanne: marktübliche Kurzgutachten und Kaufberatungen, Stand Juli 2026. Für die
+          Gutachter-Preisspanne: Besichtigungsbegleitung oder Kurzgutachten rund 300 bis 800 €, ausführliches
+          schriftliches Gutachten etwa 800 bis 2.000 € (grobe Orientierung, Stand 2026; Details im Ratgeber{' '}
+          <a href="/blog/bausachverstaendiger-hauskauf-kosten" className="underline decoration-ink/30 hover:decoration-ink transition-colors">Bausachverständiger beim Hauskauf</a>). Für die
           finale Kaufentscheidung bei Auffälligkeiten empfehlen wir ausdrücklich einen Sachverständigen
           vor Ort — der Exposé-Check klärt, ob sich dieser Schritt lohnt.
         </p>
@@ -205,7 +214,9 @@ export default function ExposePruefenLassen() {
       <section className="mb-10 bg-amber-50 border border-amber-200 rounded-xl p-5">
         <h2 className="font-display text-lg font-medium text-amber-900 mb-2">Was der Exposé-Check nicht ist</h2>
         <p className="text-[13px] text-amber-900/90 leading-relaxed">
-          Keine Vor-Ort-Begehung, kein Verkehrswertgutachten, keine Rechts- oder Steuerberatung. Die Analyse
+          Keine Vor-Ort-Begehung, kein Verkehrswertgutachten (Verkehrswert im Sinne von{' '}
+          <a href="https://www.gesetze-im-internet.de/bbaug/__194.html" className="underline" target="_blank" rel="noopener noreferrer">§ 194 BauGB</a>),
+          keine Rechts- oder Steuerberatung. Die Analyse
           beantwortet die Frage <em>davor</em>: Ist dieses Angebot eine Besichtigung wert — und mit welchen
           Fragen, Kosten und Verhandlungsargumenten gehen Sie hinein? Genau dafür ist sie in Minuten da,
           statt in Wochen.

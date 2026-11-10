@@ -37,6 +37,14 @@ export default function HeroSection({ onCta }: HeroSectionProps) {
           Kein Account nötig
         </span>
       </div>
+      {/* Definitionssatz: eine in sich geschlossene Aussage darüber, was ImmoPrüf ist
+          (für Leser und für KI-Suchsysteme zitierbar). Bewusst klein und unter dem CTA. */}
+      <p className="text-ink-light text-[13px] max-w-2xl mx-auto mt-6 leading-relaxed">
+        ImmoPrüf (immopruef.de) ist ein Online-Tool für private Immobilienkäufer in Deutschland, das aus einem
+        Exposé-Link oder PDF eine strukturierte, KI-gestützte Ersteinschätzung zu Preis, Kaufnebenkosten, Standort,
+        Risiken und Finanzierung erstellt (ab 19 €, Premium-Report 79 €), käuferseitig und ohne Weitergabe von Daten
+        an Makler.
+      </p>
     </section>
   )
 }

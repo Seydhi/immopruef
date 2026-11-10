@@ -38,7 +38,8 @@ export interface Gesamtkosten {
   geschaetzteSanierung: string
   gesamtinvestition: string
   laufendeKosten: LaufendeKosten[]
-  laufendeKostenGesamt: { monat: string; jahr: string }
+  /** hinweis: serverseitig gesetzt, wenn Aufschlüsselungs-Zeilen nicht mitsummiert wurden */
+  laufendeKostenGesamt: { monat: string; jahr: string; hinweis?: string }
 }
 
 // ─── 3. Energieanalyse ───
@@ -154,6 +155,8 @@ export interface Finanzierung {
     bewertung: 'tragbar' | 'grenzwertig' | 'kritisch'
     /** Serverseitig gesetzt, wenn der Kunde sein Haushaltsnetto angegeben hat */
     belastungsquote?: string
+    /** Serverseitig gesetzter Rechenweg der Stress-Rate */
+    erlaeuterung?: string
   }[]
 }
 
@@ -244,7 +247,7 @@ export interface AnalysisResult {
 
 // ─── Premium Report ───
 export interface Wertermittlung {
-  vergleichswert: { wert: string; methode: string; vergleichsobjekte: { adresse: string; preis: string; qm: string; abweichung: string }[] }
+  vergleichswert: { wert: string; methode: string; /** serverseitig: Herleitung der Spanne aus den Vergleichsobjekten */ rechenweg?: string; vergleichsobjekte: { adresse: string; preis: string; qm: string; abweichung: string }[] }
   sachwert: { bodenwert: string; gebaeudewert: string; alterswertminderung: string; sachwert: string }
   ertragswert: { jahresrohertrag: string; bewirtschaftungskosten: string; reinertrag: string; liegenschaftszins: string; ertragswert: string }
   fazit: { marktwertSpanne: string; empfohlenerKaufpreis: string; einschaetzung: string }
