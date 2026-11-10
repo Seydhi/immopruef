@@ -10,3 +10,6 @@ supabase/.temp
 
 .invoice-admin-token
 .anthropic-key-2
+
+api.env
+.bing-key
