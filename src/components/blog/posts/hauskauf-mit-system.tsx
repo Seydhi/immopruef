@@ -112,7 +112,7 @@ export default function HauskaufMitSystem() {
           <tr><td>Lage (ÖPNV, Infrastruktur, Lärm)</td><td>25 %</td><td></td><td></td></tr>
           <tr><td>Preis-Leistung (€/m² vs. Markt)</td><td>25 %</td><td></td><td></td></tr>
           <tr><td>Zustand (Bausubstanz, Sanierungsbedarf)</td><td>20 %</td><td></td><td></td></tr>
-          <tr><td>Energie (Klasse, Heizkosten, GEG-Pflichten)</td><td>15 %</td><td></td><td></td></tr>
+          <tr><td>Energie (Klasse, Heizkosten, Nachrüstpflichten)</td><td>15 %</td><td></td><td></td></tr>
           <tr><td>Finanzierung (Tragbarkeit, Nebenkosten)</td><td>15 %</td><td></td><td></td></tr>
           <tr><td><strong>Gesamtscore</strong></td><td><strong>100 %</strong></td><td></td><td></td></tr>
         </tbody>

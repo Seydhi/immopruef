@@ -123,7 +123,7 @@ export default function ZustandFolgekosten() {
         Günstige Immobilien mit schlechtem Zustand verlieren überproportional an Wert. Drei Faktoren beschleunigen den Wertverlust:
       </p>
       <ul>
-        <li><strong>Energieeffizienz:</strong> Klasse H verliert ca. 14 % Marktwert gegenüber dem Durchschnitt. Tendenz steigend durch GEG-Verschärfungen und steigende Energiepreise.</li>
+        <li><strong>Energieeffizienz:</strong> Klasse H verliert ca. 14 % Marktwert gegenüber dem Durchschnitt. Tendenz steigend durch höhere CO₂- und Energiepreise.</li>
         <li><strong>Sanierungspflichten:</strong> Nach einem Eigentümerwechsel müssen Käufer innerhalb von zwei Jahren unter anderem die oberste Geschossdecke dämmen, wenn sie bisher ungedämmt ist. Die frühere Austauschpflicht für alte Heizkessel ist seit dem 29. Juli 2026 entfallen. Offene Nachrüstpflichten mindern den Wiederverkaufspreis.</li>
         <li><strong>Käuferpräferenzen:</strong> Jüngere Käufer achten stärker auf Energieeffizienz und modernen Standard. Unsanierte Altbauten werden schwerer verkäuflich.</li>
       </ul>

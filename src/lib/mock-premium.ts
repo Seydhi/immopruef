@@ -262,7 +262,7 @@ export const MOCK_PREMIUM_REPORT: PremiumReport = {
       {
         thema: '🔥 Heizung & Energie (Baujahr 1965!)',
         fragen: [
-          { frage: 'Wie alt ist die aktuelle Gasheizung und wann war die letzte Wartung?', begruendung: 'Gasheizungen halten 20–25 Jahre. Bei Baujahr 1965 wurde die Heizung sehr wahrscheinlich schon mindestens 1× erneuert — aber wann? GEG-Pflicht ab 30 Jahre Alter.', prioritaet: 'kritisch', bezugZumObjekt: 'Baujahr 1965 + Gasheizung im Exposé' },
+          { frage: 'Wie alt ist die aktuelle Gasheizung und wann war die letzte Wartung?', begruendung: 'Gasheizungen halten 20–25 Jahre. Bei Baujahr 1965 wurde die Heizung sehr wahrscheinlich schon mindestens 1× erneuert — aber wann? Eine gesetzliche Tauschpflicht gibt es seit Juli 2026 nicht mehr, das Alter bestimmt aber die Restlebensdauer.', prioritaet: 'kritisch', bezugZumObjekt: 'Baujahr 1965 + Gasheizung im Exposé' },
           { frage: 'Liegt ein Bedarfsausweis (nicht nur Verbrauchsausweis) vor?', begruendung: 'Bedarfsausweis ist objektiver — der Verbrauchsausweis hängt stark vom Vorbewohner ab. Bei Effizienzklasse D im Verbrauchsausweis kann der Bedarf bis F sein.', prioritaet: 'wichtig', bezugZumObjekt: 'Klasse D im Exposé' },
           { frage: 'Wann wurde die Fassade zuletzt gedämmt?', begruendung: 'Bei Baujahr 1965 und Klasse D wurde meist nur das Dach gedämmt, die Fassade nicht. Nachrüstung kostet 18.000–35.000 €.', prioritaet: 'wichtig', bezugZumObjekt: 'Baujahr 1965' },
         ],
@@ -290,7 +290,7 @@ export const MOCK_PREMIUM_REPORT: PremiumReport = {
     staerken: [
       { punkt: 'Preis liegt 8 % unter dem Stadtteil-Median', begruendung: 'Bei stabiler Marktentwicklung in Kreuzberg ist das ein realistisch bepreister Einstieg — keine Überzahlung. Verhandlungsspielraum auf 370–380k vorhanden.', einfluss: 'hoch' },
       { punkt: 'Lage Kreuzberg-61: hohe Wertstabilität', begruendung: 'Innenstadtlage mit U6/U7, 5 Min. zum Viktoriapark, gemischtes Quartier — historisch hat Kreuzberg-61 selbst in Korrekturphasen kaum Wert verloren.', einfluss: 'hoch' },
-      { punkt: 'Energieklasse D — keine GEG-Sofortpflicht', begruendung: 'Die funktionierende Heizung darf weiterlaufen — erst beim Austausch greift die 65-%-EE-Regel des GEG. Sie haben 5–10 Jahre Zeit zur energetischen Sanierung — das ist planbar.', einfluss: 'mittel' },
+      { punkt: 'Energieklasse D — keine gesetzliche Sofortpflicht', begruendung: 'Die funktionierende Heizung darf weiterlaufen; eine gesetzliche Austauschpflicht gibt es seit Juli 2026 nicht mehr. Sie haben 5–10 Jahre Zeit zur energetischen Sanierung — das ist planbar.', einfluss: 'mittel' },
       { punkt: 'Etablierter Makler mit 18 Jahren Erfahrung', begruendung: 'Der Beispiel-Makler hat über 290 Bewertungen mit Schnitt 4,7+ — keine Hinweise auf intransparente Praktiken oder versteckte Provisionen.', einfluss: 'mittel' },
     ],
     schwaechen: [

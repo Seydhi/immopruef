@@ -11,7 +11,7 @@ export default function SanierungskostenTabelle2026() {
       </thead>
       <tbody>
       <tr><td>Dach neu eindecken (ohne Dämmung)</td><td>100–200 €/m² Dachfläche</td><td>15.000–30.000 €</td></tr>
-      <tr><td>Dach inkl. Dämmung (Aufsparren, GEG-konform)</td><td>200–350 €/m² Dachfläche</td><td>25.000–50.000 €</td></tr>
+      <tr><td>Dach inkl. Dämmung (Aufsparren, nach gesetzlichem Dämmstandard)</td><td>200–350 €/m² Dachfläche</td><td>25.000–50.000 €</td></tr>
       <tr><td>Oberste Geschossdecke dämmen</td><td>40–80 €/m²</td><td>4.000–8.000 €</td></tr>
       <tr><td>Fassadendämmung (WDVS) inkl. Putz</td><td>100–250 €/m² Fassade</td><td>15.000–40.000 €</td></tr>
       <tr><td>Kellerdecke dämmen</td><td>30–60 €/m²</td><td>3.000–6.000 €</td></tr>
@@ -30,7 +30,7 @@ export default function SanierungskostenTabelle2026() {
       </tbody>
       </table>
       <p>*Der Stückpreis von 500–800 € gilt für Standardfenster. Große Elemente, Balkon- und Terrassentüren sowie Dachfenster liegen deutlich darüber — deshalb liegt die Komplettspanne höher als die reine Multiplikation aus Stückpreis und Fensterzahl.</p>
-      <p>Zur Einordnung der Heizsysteme (Verbrauch, Förderung, GEG) lohnt der <a href="/blog/heizungsarten-vergleich-kosten">Heizungsarten-Vergleich</a>; welche Pflichten nach dem Kauf ohnehin anstehen, erklärt <a href="/blog/geg-sanierungspflichten-altbau-kauf">GEG-Sanierungspflichten beim Altbau-Kauf</a>.</p>
+      <p>Zur Einordnung der Heizsysteme (Verbrauch, Förderung, Rechtslage) lohnt der <a href="/blog/heizungsarten-vergleich-kosten">Heizungsarten-Vergleich</a>; welche Pflichten nach dem Kauf ohnehin anstehen, erklärt <a href="/blog/geg-sanierungspflichten-altbau-kauf">GEG-Sanierungspflichten beim Altbau-Kauf</a>.</p>
 
       <h2>Komplettsanierung: Kosten pro Quadratmeter Wohnfläche</h2>
       <p>Für die schnelle Überschlagsrechnung beim Kauf hat sich die Quadratmeter-Logik bewährt:</p>

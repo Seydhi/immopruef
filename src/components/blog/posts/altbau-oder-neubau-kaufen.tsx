@@ -55,8 +55,8 @@ export default function AltbauOderNeubauKaufen() {
       <p>Ein unsaniertes Haus aus den 1970er-Jahren, bei dem Heizung, Fenster, Fassade, Bad und Elektrik anstehen, summiert sich damit schnell auf rund 63.000 bis 125.000 € — vor Abzug von Fördermitteln. Diese Zahl gehört in jede Kaufentscheidung: Ein Altbau, der 100.000 € unter dem Neubaupreis liegt, aber 90.000 € Sanierungsbedarf mitbringt, ist kein Schnäppchen.</p>
       <p>Woran Sie Sanierungsbedarf schon bei der Besichtigung erkennen, lesen Sie im Artikel <a href="/blog/sanierungsbedarf-erkennen">Sanierungsbedarf erkennen</a>. Wie sich der Gebäudezustand in laufende Kosten übersetzt, zeigt der Beitrag <a href="/blog/zustand-folgekosten">Zustand und Folgekosten</a>.</p>
       
-      <h2>GEG-Pflichten: Was nach dem Eigentümerwechsel Vorschrift ist</h2>
-      <p>Viele Käufer übersehen: Mit dem Eigentumsübergang entstehen gesetzliche Pflichten nach dem Gebäudeenergiegesetz (GEG). Sie gelten für Ein- und Zweifamilienhäuser, die der Voreigentümer selbst bewohnt hat — also für den klassischen Hauskauf von privat. Innerhalb von zwei Jahren nach Einzug beziehungsweise Eigentumsübergang müssen Sie:</p>
+      <h2>Nachrüstpflichten: Was nach dem Eigentümerwechsel Vorschrift ist</h2>
+      <p>Viele Käufer übersehen: Mit dem Eigentumsübergang entstehen gesetzliche Pflichten nach dem Gebäudemodernisierungsgesetz (GModG, früher GEG). Sie gelten für Ein- und Zweifamilienhäuser, die der Voreigentümer selbst bewohnt hat — also für den klassischen Hauskauf von privat. Innerhalb von zwei Jahren nach Einzug beziehungsweise Eigentumsübergang müssen Sie:</p>
       <ul>
       <li>die <strong>oberste Geschossdecke</strong> zum unbeheizten Dachraum dämmen,</li>
       <li><strong>Heizungs- und Warmwasserrohre</strong> in unbeheizten Räumen dämmen.</li>

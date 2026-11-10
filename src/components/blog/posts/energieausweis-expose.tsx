@@ -10,7 +10,7 @@ export default function EnergieausweisExpose() {
 
       <h2>Pflichtangaben: Was im Exposé stehen muss</h2>
       <p>
-        Das Gebäudeenergiegesetz (GEG) schreibt vor, dass bei jedem Immobilieninserat folgende Energiedaten angegeben werden müssen:
+        Das Gebäudemodernisierungsgesetz (GModG, früher GEG) schreibt vor, dass bei jedem Immobilieninserat folgende Energiedaten angegeben werden müssen:
       </p>
       <ul>
         <li><strong>Art des Energieausweises</strong> (Verbrauchsausweis oder Bedarfsausweis)</li>

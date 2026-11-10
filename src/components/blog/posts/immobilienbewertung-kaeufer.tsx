@@ -100,7 +100,7 @@ export default function ImmobilienbewertungKaeufer() {
         Die Energieklasse beeinflusst den Marktwert messbar: Klasse A+/A liegt im Schnitt 650 €/m² über Klasse D/E. Klasse H bedeutet ca. 14 % Wertabschlag gegenüber dem Durchschnitt. Das spiegelt zwei Dinge wider: niedrigere Betriebskosten und geringeren Sanierungsbedarf.
       </p>
       <p>
-        Die Energieeffizienz wird in den kommenden Jahren noch wichtiger werden: Steigende CO₂-Preise, verschärfte GEG-Anforderungen und Käufer die bewusst auf Effizienz achten, drücken den Wert schlecht gedämmter Gebäude weiter nach unten.
+        Die Energieeffizienz wird in den kommenden Jahren noch wichtiger werden: Steigende CO₂-Preise und Käufer, die bewusst auf Effizienz achten, drücken den Wert schlecht gedämmter Gebäude weiter nach unten.
       </p>
 
       <h3>Faktor 5: Modernisierungen und Investitionen</h3>

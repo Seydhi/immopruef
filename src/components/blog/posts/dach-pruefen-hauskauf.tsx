@@ -97,7 +97,7 @@ export default function DachPruefenHauskauf() {
       <p>Ein praktischer Hinweis: Lassen Sie sich, wenn möglich, Rechnungen oder Belege zu früheren Dacharbeiten zeigen. Eine dokumentierte Sanierung vor wenigen Jahren ist ein gutes Zeichen und nimmt Ihrer Kalkulation viel Unsicherheit. Fehlen solche Unterlagen vollständig, sollten Sie eher vorsichtig kalkulieren.</p>
       
       <h2>Energetische Pflichten und das Dach</h2>
-      <p>Das Gebäudeenergiegesetz verlangt in vielen Fällen eine Dämmung der obersten Geschossdecke oder des Dachs. Ob und in welchem Umfang diese Pflicht für ein konkretes Haus gilt, hängt vom Einzelfall ab, etwa vom Zeitpunkt eines Eigentümerwechsels.</p>
+      <p>Das Gebäudemodernisierungsgesetz (GModG, früher GEG) verlangt in vielen Fällen eine Dämmung der obersten Geschossdecke oder des Dachs. Ob und in welchem Umfang diese Pflicht für ein konkretes Haus gilt, hängt vom Einzelfall ab, etwa vom Zeitpunkt eines Eigentümerwechsels.</p>
       <p>Wichtig für Sie: Ein altes, unsaniertes Dach ist nicht nur ein Risiko für Feuchteschäden, sondern auch ein konkreter Kostenfaktor mit Blick auf gesetzliche Anforderungen. Gleichzeitig ist genau das ein starkes Verhandlungsargument. Wer absehbar in die Dämmung investieren muss, kann das im Kaufpreis berücksichtigen.</p>
       <p>Mehr zu Pflichten und Zuschüssen lesen Sie in unserem Beitrag zur <a href="/blog/energetische-sanierung-foerderung-2026">energetischen Sanierung und Förderung 2026</a>. Wie Sie aus Baujahr und bisherigen Modernisierungen den voraussichtlichen Aufwand ableiten, erklärt der Artikel zu <a href="/blog/baujahr-und-modernisierung">Baujahr und Modernisierung</a>.</p>
       

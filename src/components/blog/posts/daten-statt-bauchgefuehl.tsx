@@ -118,7 +118,7 @@ export default function DatenStattBauchgefuehl() {
           <tr><td>Lage</td><td>25 %</td><td>ÖPNV, Lärm, Infrastruktur, Bodenrichtwert, Trend</td></tr>
           <tr><td>Preis-Leistung</td><td>25 %</td><td>Bereinigter €/m² vs. Vergleichsobjekte</td></tr>
           <tr><td>Zustand</td><td>20 %</td><td>Baujahr, Sanierung, Bauteil-Restlebensdauer</td></tr>
-          <tr><td>Energie</td><td>15 %</td><td>Klasse, Heizkosten, GEG-Pflichten</td></tr>
+          <tr><td>Energie</td><td>15 %</td><td>Klasse, Heizkosten, Nachrüstpflichten</td></tr>
           <tr><td>Finanzierung</td><td>15 %</td><td>Monatliche Belastung, Eigenkapital, Stresstest</td></tr>
         </tbody>
       </table>

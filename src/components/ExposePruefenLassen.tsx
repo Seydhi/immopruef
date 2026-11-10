@@ -10,7 +10,7 @@ const PRUEF_PUNKTE = [
   { titel: 'Kaufnebenkosten', detail: 'Grunderwerbsteuer, Notar, Grundbuch, Provision — auf den Euro gerechnet' },
   { titel: 'Warnsignale & Lücken', detail: 'Fehlende Pflichtangaben, Maklersprache-Floskeln, widersprüchliche Angaben' },
   { titel: 'Zustand & Folgekosten', detail: 'Baujahr-Risiken, Modernisierungsstau, Sanierungskosten-Schätzung' },
-  { titel: 'Energie & GEG', detail: 'Effizienzklasse, Heizung, mögliche Sanierungspflichten und Förderungen' },
+  { titel: 'Energie & Pflichten', detail: 'Effizienzklasse, Heizung, mögliche Sanierungspflichten und Förderungen' },
   { titel: 'Standort', detail: 'Lage, Infrastruktur, Demografie und Preisentwicklung des Viertels' },
   { titel: 'Finanzierung', detail: 'Drei Szenarien mit Monatsrate, Restschuld und Stresstest' },
   { titel: 'Verhandlung', detail: 'Konkrete Verhandlungsansätze + fertiges Makleranschreiben' },
@@ -27,7 +27,7 @@ const FAQ_ITEMS = [
   },
   {
     question: 'Was wird beim Exposé-Check geprüft?',
-    answer: 'Preisplausibilität mit regionalen Vergleichswerten, vollständige Kaufnebenkosten, fehlende Pflichtangaben und Warnsignale, Zustand und Folgekosten, Energie und GEG-Pflichten, Standortqualität, drei Finanzierungsszenarien mit Stresstest sowie Verhandlungsansätze mit fertigem Makleranschreiben.',
+    answer: 'Preisplausibilität mit regionalen Vergleichswerten, vollständige Kaufnebenkosten, fehlende Pflichtangaben und Warnsignale, Zustand und Folgekosten, Energie und gesetzliche Nachrüstpflichten, Standortqualität, drei Finanzierungsszenarien mit Stresstest sowie Verhandlungsansätze mit fertigem Makleranschreiben.',
   },
   {
     question: 'Geht das auch ohne Link — z. B. mit einem PDF vom Makler?',

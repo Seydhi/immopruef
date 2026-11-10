@@ -78,7 +78,7 @@ export default function EinfamilienhausKaufenExpose() {
         Achten Sie auf den Fotos im Exposé auf: Risse in der Fassade, dunkle Flecken (Feuchtigkeit), Abplatzungen, Moosbewuchs, beschädigte Regenrinnen. Fehlen Fotos der Fassade — fragen Sie warum.
       </p>
 
-      <h2>Heizung: GEG-Pflichten beachten</h2>
+      <h2>Heizung: Pflichten und Kosten beachten</h2>
       <p>
         Die Heizung ist beim EFH-Kauf besonders kritisch, weil Sie die volle Kostenlast tragen — keine Aufteilung auf eine WEG.
       </p>
@@ -86,18 +86,18 @@ export default function EinfamilienhausKaufenExpose() {
       <h3>Die Fakten</h3>
       <table>
         <thead>
-          <tr><th>Heizungstyp</th><th>Lebensdauer</th><th>Tauschkosten</th><th>GEG-relevant</th></tr>
+          <tr><th>Heizungstyp</th><th>Lebensdauer</th><th>Tauschkosten</th><th>Rechtslage</th></tr>
         </thead>
         <tbody>
           <tr><td>Gas-Niedertemperatur</td><td>15–25 Jahre</td><td>8.000–15.000 €</td><td>Keine Tauschpflicht mehr</td></tr>
-          <tr><td>Gas-Brennwert</td><td>15–25 Jahre</td><td>8.000–12.000 €</td><td>Abhängig von Alter</td></tr>
+          <tr><td>Gas-Brennwert</td><td>15–25 Jahre</td><td>8.000–12.000 €</td><td>Keine Tauschpflicht</td></tr>
           <tr><td>Ölheizung</td><td>15–25 Jahre</td><td>10.000–18.000 € (Öltank-Entsorgung extra)</td><td>Keine Tauschpflicht mehr</td></tr>
-          <tr><td>Wärmepumpe</td><td>15–20 Jahre</td><td>18.000–35.000 €</td><td>GEG-konform</td></tr>
-          <tr><td>Pellet-/Holzheizung</td><td>15–20 Jahre</td><td>12.000–25.000 €</td><td>GEG-konform</td></tr>
+          <tr><td>Wärmepumpe</td><td>15–20 Jahre</td><td>18.000–35.000 €</td><td>Erneuerbar, keine Auflagen</td></tr>
+          <tr><td>Pellet-/Holzheizung</td><td>15–20 Jahre</td><td>12.000–25.000 €</td><td>Erneuerbar, keine Auflagen</td></tr>
         </tbody>
       </table>
       <p>
-        <strong>GEG-Pflichten bei Eigentümerwechsel:</strong> Beim Kauf eines EFH müssen Sie innerhalb von 2 Jahren die oberste Geschossdecke dämmen (falls nicht bereits geschehen) und ungedämmte Heizungs- und Warmwasserrohre in unbeheizten Räumen dämmen. Die frühere Pflicht, Heizungen über 30 Jahre zu tauschen, ist seit dem 29. Juli 2026 entfallen. Planen Sie die verbleibenden Kosten ein.
+        <strong>Nachrüstpflichten bei Eigentümerwechsel:</strong> Beim Kauf eines EFH müssen Sie innerhalb von 2 Jahren die oberste Geschossdecke dämmen (falls nicht bereits geschehen) und ungedämmte Heizungs- und Warmwasserrohre in unbeheizten Räumen dämmen. Die frühere Pflicht, Heizungen über 30 Jahre zu tauschen, ist seit dem 29. Juli 2026 entfallen. Planen Sie die verbleibenden Kosten ein.
       </p>
 
       <h2>Fenster und Türen</h2>

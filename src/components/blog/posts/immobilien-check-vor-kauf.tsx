@@ -87,7 +87,7 @@ export default function ImmobilienCheckVorKauf() {
       <ul>
         <li>Energieeffizienzklasse und Endenergiebedarf aus dem Exposé ablesen</li>
         <li>Heizkosten berechnen: Wohnfläche × kWh/m²a × Energiepreis</li>
-        <li>Heizungstyp und -alter prüfen (über 30 Jahre = technisch überfällig, seit Juli 2026 ohne GEG-Tauschpflicht)</li>
+        <li>Heizungstyp und -alter prüfen (über 30 Jahre = technisch überfällig, seit Juli 2026 ohne gesetzliche Tauschpflicht)</li>
         <li>Sanierungskosten für Verbesserung einschätzen (ca. 700 €/m² von E auf B)</li>
       </ul>
       <p>

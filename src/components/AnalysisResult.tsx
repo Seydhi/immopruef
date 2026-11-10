@@ -338,7 +338,7 @@ export default function AnalysisResult({ result, options, url, showBackButton = 
             </div>
             {result.energieanalyse.gegPflicht.besteht && (
               <div className="bg-amber-50 border border-amber-200 rounded-lg px-3.5 py-2.5 text-xs text-amber-800">
-                <span className="font-medium">⚠️ GEG-Pflicht:</span> {result.energieanalyse.gegPflicht.details}
+                <span className="font-medium">⚠️ Gesetzliche Pflicht:</span> {result.energieanalyse.gegPflicht.details}
               </div>
             )}
           </div>
@@ -855,7 +855,7 @@ const SCORE_CONFIG: { key: keyof Scores; label: string; weight: string; desc: st
   { key: 'lage', label: 'Lage', weight: '25%', desc: 'ÖPNV, Schulen, Einkauf, Ärzte, Lärm, Sicherheit, Entwicklung' },
   { key: 'preis_leistung', label: 'Preis', weight: '25%', desc: 'Preis/m² vs. Region, Bodenrichtwert, Kaufpreis-Miete-Verhältnis' },
   { key: 'zustand', label: 'Zustand', weight: '20%', desc: 'Baujahr, Sanierungsstau, Modernisierungsbedarf, Bausubstanz' },
-  { key: 'energie', label: 'Energie', weight: '15%', desc: 'Effizienzklasse, Heizkosten, GEG-Pflichten, Sanierungsoptionen' },
+  { key: 'energie', label: 'Energie', weight: '15%', desc: 'Effizienzklasse, Heizkosten, Nachrüstpflichten, Sanierungsoptionen' },
   { key: 'finanzierung', label: 'Finanz.', weight: '15%', desc: 'Tragbarkeit, Eigenkapitalquote, Stresstest-Ergebnis' },
 ]
 
