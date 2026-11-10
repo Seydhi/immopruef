@@ -19,6 +19,16 @@ export default function NotarkostenGrundbuchkostenImmobilienkauf() {
       </ul>
       <p>Wichtig zur Einordnung: Notar und Grundbuch sind nur ein Teil der Nebenkosten. Hinzu kommt vor allem die Grunderwerbsteuer, die je nach Bundesland deutlich höher ausfällt. Welche Sätze aktuell gelten, lesen Sie im Beitrag zur <a href="/blog/grunderwerbsteuer-2026-bundeslaender">Grunderwerbsteuer 2026 nach Bundesländern</a>.</p>
       
+      <h2>Sind Notarkosten verhandelbar?</h2>
+      <p>Nein. Notarkosten sind in Deutschland nicht verhandelbar. Nach <a href="https://www.gesetze-im-internet.de/gnotkg/__125.html" target="_blank" rel="noopener noreferrer">§ 125 GNotKG</a> sind Vereinbarungen über die Höhe der Kosten unwirksam, und nach <a href="https://www.gesetze-im-internet.de/bnoto/__17.html" target="_blank" rel="noopener noreferrer">§ 17 Abs. 1 der Bundesnotarordnung</a> ist der Notar verpflichtet, die gesetzlich vorgeschriebenen Gebühren zu erheben. Ein Rabatt, ein Pauschalpreis oder ein Nachlass für Stammkunden ist deshalb ausgeschlossen, und ein Preisvergleich zwischen Notaren bringt nichts.</p>
+      <p>Verhandeln oder beeinflussen können Sie trotzdem drei Dinge:</p>
+      <ul>
+      <li><strong>Wer zahlt:</strong> Die Aufteilung der Kosten zwischen Käufer und Verkäufer ist Vertragssache. Üblich ist, dass der Käufer die Erwerbskosten trägt und der Verkäufer die Löschung alter Grundschulden.</li>
+      <li><strong>Den Umfang der Leistung:</strong> Jede zusätzliche Tätigkeit löst eine eigene Gebühr aus, etwa ein Notaranderkonto oder eine Grundschuld, die höher ist als das Darlehen.</li>
+      <li><strong>Den Geschäftswert:</strong> Die Gebühr richtet sich nach dem beurkundeten Wert. Mitverkauftes Inventar, das mit einem realistischen Betrag getrennt ausgewiesen wird, senkt ihn leicht.</li>
+      </ul>
+      <p>Die Einzelheiten zu diesen Stellschrauben stehen weiter unten im Abschnitt zum Sparpotenzial.</p>
+
       <h2>Welche Leistungen der Notar übernimmt</h2>
       <p>Hinter der Notarrechnung steckt deutlich mehr als der Beurkundungstermin. Der Notar begleitet den gesamten Eigentumsübergang und sichert beide Seiten rechtlich ab. Zu seinen Aufgaben gehören insbesondere:</p>
       <ul>

@@ -1430,9 +1430,12 @@ export const BLOG_POSTS: BlogMeta[] = [
     title: 'Notarkosten & Grundbuchkosten: Höhe und Beispiele',
     description: 'Notar und Grundbuch kosten beim Hauskauf 1,5 bis 2 % vom Kaufpreis. Mit Beispielrechnungen für 300.000 bis 500.000 €, Ablauf, Zuständigkeiten und Sparpotenzial.',
     date: '12. Juni 2026',
+    updated: '10. November 2026',
     kurzantwort: 'Notar- und Grundbuchkosten betragen beim Immobilienkauf zusammen etwa 1,5 bis 2,0 Prozent des Kaufpreises: ca. 1,0 bis 1,5 Prozent für den Notar und ca. 0,5 Prozent für das Grundbuchamt. Bei 400.000 Euro Kaufpreis sind das 7.000 bis 8.000 Euro. Die Gebühren sind im Gerichts- und Notarkostengesetz bundeseinheitlich geregelt, nicht verhandelbar und werden üblicherweise vom Käufer getragen.',
     quellen: [
       { label: 'Gerichts- und Notarkostengesetz (GNotKG)', url: 'https://www.gesetze-im-internet.de/gnotkg/' },
+      { label: '§ 125 GNotKG (Verbot der Gebührenvereinbarung)', url: 'https://www.gesetze-im-internet.de/gnotkg/__125.html' },
+      { label: '§ 17 BNotO (Pflicht zur Gebührenerhebung)', url: 'https://www.gesetze-im-internet.de/bnoto/__17.html' },
       { label: '§ 17 Abs. 2a BeurkG (14 Tage Prüffrist)', url: 'https://www.gesetze-im-internet.de/beurkg/__17.html' },
     ],
     readTime: '7 Min',
@@ -1440,6 +1443,7 @@ export const BLOG_POSTS: BlogMeta[] = [
     image: 'https://images.pexels.com/photos/955392/pexels-photo-955392.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
     faq: [
       { question: 'Wie hoch sind Notar- und Grundbuchkosten beim Immobilienkauf?', answer: 'Notar und Grundbuchamt kosten zusammen etwa 1,5 bis 2,0 Prozent des Kaufpreises. Davon entfallen rund 1,0 bis 1,5 Prozent auf den Notar (mit Grundschuldbestellung eher 1,5 Prozent) und etwa 0,5 Prozent auf das Grundbuchamt. Bei 400.000 Euro Kaufpreis sind das rund 7.000 bis 8.000 Euro, die zusätzlich anfallen.' },
+      { question: 'Sind Notarkosten verhandelbar?', answer: 'Nein. Nach Paragraf 125 GNotKG sind Vereinbarungen über die Höhe der Notarkosten unwirksam, und nach Paragraf 17 der Bundesnotarordnung muss der Notar die gesetzlichen Gebühren erheben. Rabatte oder Pauschalpreise sind ausgeschlossen. Verhandelbar ist nur, wer die Kosten trägt; beeinflussbar sind der Umfang der Leistungen und der Geschäftswert.' },
       { question: 'Kann ich durch die Wahl eines günstigeren Notars sparen?', answer: 'Nein. Die Gebühren von Notaren und Grundbuchämtern sind bundeseinheitlich im Gerichts- und Notarkostengesetz (GNotKG) geregelt und nicht verhandelbar. Jeder Notar in Deutschland kostet für dieselbe Leistung gleich viel. Maßgeblich für die Höhe ist im Wesentlichen der Kaufpreis als Geschäftswert. Ein Vergleich verschiedener Notare lohnt sich daher nicht.' },
       { question: 'Wer zahlt die Notar- und Grundbuchkosten beim Hauskauf?', answer: 'Üblicherweise trägt der Käufer die Notar- und Grundbuchkosten des Erwerbs. Das ist grundsätzlich Verhandlungssache, in der Praxis aber der Standard und wird so im Kaufvertrag festgehalten. Eine Ausnahme: Sind noch alte Grundschulden des Verkäufers eingetragen, zahlt der Verkäufer die Kosten für deren Löschung.' },
       { question: 'Muss ich die Notarkosten auch zahlen, wenn der Kauf platzt?', answer: 'Ja. Die Notarkosten fallen auch dann an, wenn der Kauf nach der Beurkundung noch scheitert, etwa weil die Finanzierung platzt. Wer erst unterschreibt und dann rechnet, riskiert reale Verluste. Deshalb sollten Finanzierung und Prüfung des Vertrags vor dem Beurkundungstermin abgeschlossen sein.' },

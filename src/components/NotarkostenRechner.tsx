@@ -82,7 +82,7 @@ export default function NotarkostenRechner() {
     {
       question: 'Sind Notarkosten verhandelbar oder bei jedem Notar gleich?',
       answer:
-        'Notargebühren sind gesetzlich im GNotKG festgelegt und bundesweit identisch — jeder Notar muss dieselben Gebühren berechnen. Einen günstigeren Notar gibt es nicht. Beeinflussbar sind nur der Geschäftswert und die Frage, ob und in welcher Höhe eine Grundschuld eingetragen wird.',
+        'Nein, Notarkosten sind nicht verhandelbar. Sie sind im GNotKG festgelegt und bundesweit identisch; Vereinbarungen über die Höhe sind nach § 125 GNotKG unwirksam, und jeder Notar muss dieselben Gebühren berechnen. Einen günstigeren Notar gibt es nicht. Beeinflussbar sind nur der Geschäftswert und die Frage, ob und in welcher Höhe eine Grundschuld eingetragen wird.',
     },
     {
       question: 'Warum erhöht eine Finanzierung die Notarkosten?',
