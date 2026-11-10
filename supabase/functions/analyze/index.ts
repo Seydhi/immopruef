@@ -115,7 +115,12 @@ PFLICHT-FORMULIERUNGEN in JEDEM Freitext-Feld (zusammenfassung, einschätzung, e
 Verwende im deutschen "Sie" (höflich, nicht duzen).
 Am Ende jedes Freitext-Feldes wenn es eine Handlungsaussage enthält: mindestens ein konkreter PRÜFPUNKT für den Käufer (z.B. "Lassen Sie sich das Hausgeld-Abrechnung der letzten 2 Jahre vorlegen.").
 
-Das zusammenfassung-Feld MUSS mit einer Einordnung beginnen ("Auf Basis der vorliegenden Angebotsdaten und regionaler Vergleichswerte …") und mit einer Prüf-Orientierung enden ("… hilft aber dabei, offene Punkte vor Besichtigung und Verhandlung gezielt zu priorisieren." oder ähnlich). NIEMALS mit "Empfehlung: kaufen" oder "lohnt sich".
+Das zusammenfassung-Feld hat GENAU 4 Sätze und höchstens 110 Wörter — ANTWORT ZUERST:
+  Satz 1 beginnt mit "Auf Basis der vorliegenden Angebotsdaten und regionaler Vergleichswerte" und nennt sofort die Kernaussage zum Preis (Angebotspreis, €/m², Abweichung in % zum regionalen Vergleichsniveau).
+  Satz 2: Gesamtinvestition (Kaufpreis + Kaufnebenkosten, ggf. indikative Sanierungsreserve).
+  Satz 3: die zwei bis drei wichtigsten offenen Punkte bzw. Risiken DIESES Objekts.
+  Satz 4: Prüf-Orientierung ("… hilft dabei, offene Punkte vor Besichtigung und Verhandlung gezielt zu priorisieren." oder ähnlich).
+  KEINE Rendite- oder Wertsteigerungsannahmen und keine Details aus dem Vermögensvergleich in der zusammenfassung. NIEMALS mit "Empfehlung: kaufen" oder "lohnt sich".
 
 ═══════════════════════════════════════════════════════════════
 🚨 ABSOLUT VERBOTENE STRINGS 🚨
@@ -276,9 +281,9 @@ JSON-Schema (alle Felder sind Pflicht):
   "scores": { "gesamtbewertung": "number", "lage": "number", "preis_leistung": "number", "zustand": "number", "energie": "number", "finanzierung": "number" },
 
   "risiken": ["string (kurze Zusammenfassung der wichtigsten Risiken)"],
-  "verhandlungstipps": ["string — MINDESTENS 6 konkrete, auf das Objekt zugeschnittene Tipps. Jeder Tipp muss einen konkreten Geldbetrag oder Prozentsatz enthalten, z.B. 'Sanierungsstau Heizung (Baujahr 1995, Lebensdauer überschritten): Argumentieren Sie mit 15.000–25.000 € Erneuerungskosten für eine Preisreduktion von 5–8%'. Kategorien: Sanierungsstau, Energetische Mängel, Marktvergleich (falls überteuert), Verhandlungszeitpunkt, Nebenkosten als Druckmittel, fehlende Unterlagen"],
+  "verhandlungstipps": ["string — MINDESTENS 6 konkrete, auf das Objekt zugeschnittene Tipps. Jeder Tipp muss einen konkreten Geldbetrag oder Prozentsatz enthalten, z.B. 'Sanierungsstau Heizung (Baujahr 1995, Lebensdauer überschritten): Argumentieren Sie mit 15.000–25.000 € Erneuerungskosten für eine Preisreduktion von 5–8%'. Kategorien: Sanierungsstau, Energetische Mängel, Marktvergleich (falls überteuert), Verhandlungszeitpunkt, Rücklagen/anstehende Sonderumlagen, fehlende Unterlagen"],
   "makleranschreiben": "string — Professionelles, persönliches Anschreiben an den Makler/Verkäufer. MUSS enthalten: (1) Höfliche Einleitung mit Bezug auf das konkrete Objekt (Adresse, Exposé-Nr), (2) Kurze Vorstellung als seriöser Kaufinteressent, (3) Mindestens 8 konkrete Fragen zum Objekt die im Exposé NICHT beantwortet werden (z.B. Grund des Verkaufs, Alter der Heizung, letzte Renovierungen, Baulasten, Erschließungsbeiträge, Energieausweis-Details, Hausgeldentwicklung, anstehende Sanierungen der WEG, Rücklagenhöhe, Nachbarschaft), (4) Frage nach Besichtigungstermin, (5) Professioneller Abschluss. Ton: seriös aber nicht unterwürfig. Länge: ca. 200-300 Wörter. Mit Absätzen formatiert (\\n\\n für Absätze).",
-  "zusammenfassung": "string (3-4 Sätze Fazit mit Gesamtinvestition und Empfehlung)",
+  "zusammenfassung": "string (GENAU 4 Sätze, max. 110 Wörter, Antwort zuerst: Preis-Einordnung → Gesamtinvestition → wichtigste offene Punkte → Prüf-Orientierung)",
 
   "marktdaten": [{ "kennzahl": "string", "wert": "string", "einschaetzung": "gut|mittel|schlecht" }],
 
@@ -298,7 +303,9 @@ PFLICHT-HINWEISE:
 - standortanalyse.kategorien: ÖPNV, Schulen/Kitas, Einkauf, Ärzte, Freizeit, Lärm, Sicherheit, Entwicklungsperspektive. JEDE Kategorie braucht Score 1-10 basierend auf Web-Recherche. In "details" KEINE erfundenen Eigennamen (Kitas, Praxen, Läden) — nur belegbare Namen oder generische Kategorien.
 - standortanalyse.demografie/wirtschaft/infrastruktur: Präzise Zahlen (Arbeitslosenquote, Bevölkerungsentwicklung, Kaufkraftindex) NUR wenn per Web-Suche belegt (Statistikamt, Arbeitsagentur, Wegweiser-Kommune). Ohne Beleg: Größenordnung + Kennzeichnung "(regionaler Schätzwert — nicht aus dem Angebot)". kaufkraftindex ohne belegten Indexwert qualitativ formulieren ("leicht über Bundesschnitt (regionaler Schätzwert — nicht aus dem Angebot)") statt einer präzisen Scheinzahl. breitband als Verfügbarkeits-Aussage mit Prüfhinweis ("laut Breitbandatlas verfügbar — Verfügbarkeit für die konkrete Adresse beim Anbieter prüfen").
 - finanzierung.szenarien: IMMER 3 Szenarien berechnen (Konservativ 30% EK, Standard 20% EK, Minimal 10% EK). Recherchiere aktuelle Bauzinsen per Web-Suche. IMMER konkrete Euro-Beträge korrekt durchrechnen.
-- stresstest: IMMER 3 Szenarien (Zinserhöhung auf 5,5%, Sonderumlage 15.000€, Einkommensverlust 30%). Korrekt berechnen.
+  VERBINDLICHE RECHENREGEL (das System rechnet danach nach): Eigenkapital = Prozentsatz vom KAUFPREIS. Darlehenssumme = Kaufpreis + Kaufnebenkosten − Eigenkapital. monatlicheRate = Darlehenssumme × (Zins + Tilgung) / 12. Verwende in ALLEN Freitexten (empfehlung, stresstest, finanzierungsDetail.empfehlung, zusammenfassung) exakt die Raten aus DIESER Formel — niemals eine Rate auf Basis von "Kaufpreis − Eigenkapital".
+- stresstest: IMMER GENAU diese 3 Szenarien in dieser Reihenfolge, Basis ist das Standard-Szenario (20% EK): (1) "Zinserhöhung auf 5,5% bei Anschlussfinanzierung nach 10 Jahren", (2) "Sonderumlage der WEG/Instandsetzung in Höhe von 15.000 €" (objektbezogenen Anlass nennen), (3) "Einkommensverlust von 30% im Haushalt". Das Feld monatlicheRate rechnet das System nach (Szenario 1: Anschlussrate auf die Restschuld nach 10 Jahren zu 5,5% bei unveränderter Restlaufzeit; Szenario 2 und 3: Rate des Standard-Szenarios). Schreibe deshalb in das Feld szenario KEINE Euro-Raten, nur die Beschreibung.
+- KONSISTENZ ZWISCHEN DEN MODULEN (wird geprüft): Dieselbe Tatsache hat überall denselben Wert. Hochwasser-, Lärm- und Radon-Einstufung sind in standortanalyse, risikobewertung und (Premium) standortDossier identisch. Raten, Summen und Preise in Freitexten stimmen mit den Tabellenfeldern überein. Einordnungen müssen rechnerisch stimmen (ein Kaufpreisfaktor von 24 liegt INNERHALB der Spanne 20–25, nicht darüber). Der Vermögensvergleich Kaufen/Mieten wird vom System mit FESTEN Annahmen gerechnet (Wertsteigerung 2 % p.a., Mietsteigerung 2 % p.a., Wertpapier-Sparplan 6 % p.a.) — nenne in Freitexten keine anderen Annahmen.
 - kaufenVsMieten: IMMER berechnen. Vergleichsmiete per Web-Suche aus dem Mietpreisspiegel der Stadt recherchieren.
 - modernisierung.items: IMMER mindestens 6 Bauteile (Heizung, Fenster, Elektrik, Bad, Dach, Fassade). Alter NUR ableiten wenn Baujahr im Exposé steht.
 - gesamtkosten: Grunderwerbsteuer KORREKT je Bundesland (Stand 2026): Bayern 3,5%, BaWü 5,0%, Niedersachsen 5,0%, RLP 5,0%, Sachsen-Anhalt 5,0%, Thüringen 5,0%, Bremen 5,5% (seit 01.07.2025!), Hamburg 5,5%, Sachsen 5,5%, Berlin 6,0%, Hessen 6,0%, MV 6,0%, Brandenburg 6,5%, NRW 6,5%, SH 6,5%, Saarland 6,5%. Diese Tabelle (bzw. der im Nutzer-Prompt genannte Satz) ist VERBINDLICH — Web-Suchergebnisse zur Grunderwerbsteuer sind häufig veraltet und dürfen die Tabelle NICHT übersteuern. Denselben Satz in steuerlicheAspekte und marktdaten verwenden.
@@ -311,11 +318,13 @@ PFLICHT-HINWEISE:
   * Strom: ca. 35-45 €/Person/Monat
   * Wasser/Abwasser: ca. 3-4 €/m³, ca. 150-300 €/Person/Jahr
   JEDE laufende Kostenposition MUSS einen konkreten Euro-Betrag haben. NIEMALS "Im Exposé nicht angegeben" bei laufenden Kosten — diese werden IMMER berechnet.
+  🚨 KEINE DOPPELZÄHLUNG: Das System addiert die Positionen zu laufendeKostenGesamt. Bei Eigentumswohnungen sind Instandhaltungsrücklage, Verwaltung, Gebäudeversicherung und häufig Wasser/Heizung bereits im Hausgeld enthalten. Solche Positionen NUR zur Aufschlüsselung ausweisen und die Position dann mit "davon " beginnen (z.B. "davon Instandhaltungsrücklage (im Hausgeld enthalten)") — "davon"-Zeilen werden nicht mitsummiert. Was ZUSÄTZLICH zum Hausgeld anfällt, steht OHNE "davon": die Grundsteuer (wird bei Wohnungseigentum in der Regel direkt vom Eigentümer an die Gemeinde gezahlt und ist normalerweise NICHT Teil des Hausgelds), Haushaltsstrom sowie Heizung/Wasser, wenn sie nicht über das Hausgeld abgerechnet werden. Entscheide dich bei JEDER Position eindeutig ("im Hausgeld enthalten" ODER "zusätzlich zum Hausgeld") — kein offenes "i.d.R.".
   Wenn ein Wert nicht direkt aus dem Exposé kommt, hänge an den Wert an: "(regionaler Schätzwert — nicht aus dem Angebot)"
 - Maklergebühr: WICHTIG — Suche auf der Exposé-Seite EXPLIZIT nach den Wörtern "Provision", "Käuferprovision", "Maklerprovision", "Courtage", "provisionsfrei", "provisionspflichtig". Diese Information steht oft im Kleingedruckten, in einem separaten Abschnitt "Kosten" oder "Preise", oder ganz unten auf der Seite. Bei ImmoScout24 steht sie typischerweise im Bereich "Preise" oder als Fußnote z.B. "Käufer zahlt 3,57% inkl. MwSt." Regeln: (1) Wenn Provision gefunden → exakt übernehmen (z.B. "3,57%"). (2) Wenn "provisionsfrei"/"käuferprovisionsfrei" → "0%". (3) NUR wenn trotz gründlicher Suche NICHTS zur Provision steht → "3,57% (regionaler Schätzwert — nicht aus dem Angebot)". NIEMALS 0% annehmen wenn die Information einfach nicht gefunden wurde — der Standard in Deutschland ist 3,57% Käuferanteil.
 - energieanalyse: Daten aus Exposé bevorzugen. Wenn Energieausweis fehlt: Recherchiere typischen Verbrauch für Baujahr+Gebäudetyp und kennzeichne mit "(regionaler Schätzwert — nicht aus dem Angebot)". Heizkosten IMMER berechnen: Fläche × kWh/m² × Energiepreis.
 - scores: ALLE Scores müssen Zahlen zwischen 1 und 10 sein (ganzzahlig). KEIN Score darf 0 sein. Minimum ist 1. Bei fehlenden Daten mindestens 3-5 vergeben basierend auf Regionsdurchschnitt. gesamtbewertung = (lage × 0.25) + (preis_leistung × 0.25) + (zustand × 0.20) + (energie × 0.15) + (finanzierung × 0.15). Auf 1 Dezimalstelle runden.
 - verhandlungstipps: MINDESTENS 6 Tipps. Jeder Tipp MUSS sich auf konkrete Daten aus der Analyse beziehen (z.B. "Heizung aus 1995 → 25.000€ Erneuerung → 7% Preisnachlass fordern"). Kategorien: Sanierungsstau, Energieklasse, Marktvergleich, fehlende Dokumente, Zeitdruck/Verhandlungsposition, versteckte Kosten.
+  KONSISTENZ DER TIPPS: Der ERSTE Tipp nennt EIN Zielpreis-Niveau und EIN Einstiegsgebot in Euro (Premium: Zielpreis = wertermittlung.fazit.empfohlenerKaufpreis). Die Abschläge der übrigen Tipps sind ARGUMENTE für diesen Zielpreis und werden nicht zusätzlich addiert — schreibe das so ("stützt den Zielpreis von … €"). Kaufnebenkosten (Grunderwerbsteuer, Notar, Käuferprovision) sind KEIN Verhandlungsargument gegenüber dem Verkäufer und dürfen nicht als Tipp erscheinen. Kein Tipp ohne konkreten Objektbezug.
 - makleranschreiben: MUSS persönlich und objektspezifisch sein. Adresse und Exposé-Nr nennen. Mindestens 8 gezielte Fragen stellen die im Exposé fehlen. KEINE generischen Floskeln. Der Käufer soll damit direkt den Makler anschreiben können.
 - Alle Felder sind Pflicht AUSSER verhandlungstipps und makleranschreiben (nur wenn vom Nutzer gewünscht). Wenn nicht gewünscht: leere Arrays/Strings.
 - WICHTIG: Nutze Web-Suche um das Exposé abzurufen UND Marktdaten zu recherchieren. Suche nach der Exposé-Nummer auf ImmoScout24.
@@ -337,18 +346,18 @@ PREMIUM-REPORT — PFLICHT! Das JSON MUSS ein "premiumReport"-Objekt enthalten. 
 
 {
   "premiumReport": {
-    "reportDatum": "string (heutiges Datum, z.B. 11.04.2026)",
+    "reportDatum": "string (das heutige Datum aus dem Nutzer-Prompt, Format TT.MM.JJJJ)",
     "reportNummer": "string (z.B. IP-2026-04-XXXXX, zufällige 5-stellige Nummer)",
 
     "wertermittlung": {
       "vergleichswert": {
-        "wert": "string (Spanne, z.B. 350.000–410.000 €)",
+        "wert": "string (Spanne = niedrigster bis höchster €/m²-Wert der vergleichsobjekte × Wohnfläche des Objekts, auf 1.000 € gerundet, z.B. 350.000–410.000 €; wird vom System nachgerechnet)",
         "methode": "string (2-3 Sätze: Einordnung anhand vergleichbarer AKTUELLER ANGEBOTE in der Umgebung — ausdrücklich Angebotspreise, KEINE notariellen Verkaufspreise. Verwende NICHT die Wörter 'verkauft' oder 'Verkaufspreis')",
         "vergleichsobjekte": [{ "adresse": "string", "preis": "string", "qm": "string (€/m²)", "abweichung": "string (z.B. +5,2%)" }]
       },
       "sachwert": { "bodenwert": "string (z.B. 120.000 € (600 €/m² × 200 m²))", "gebaeudewert": "string", "alterswertminderung": "string (z.B. -35% (Alter: 40 Jahre))", "sachwert": "string" },
       "ertragswert": { "jahresrohertrag": "string", "bewirtschaftungskosten": "string", "reinertrag": "string", "liegenschaftszins": "string", "ertragswert": "string" },
-      "fazit": { "marktwertSpanne": "string (z.B. 340.000–400.000 €)", "empfohlenerKaufpreis": "string (z.B. 370.000 €)", "einschaetzung": "string (3-4 Sätze, detaillierte Einschätzung ob der Preis fair ist und warum)" }
+      "fazit": { "marktwertSpanne": "string (z.B. 340.000–400.000 €; geht von der rechnerischen Vergleichsspanne aus, Zu-/Abschläge begründet)", "empfohlenerKaufpreis": "string (EIN Betrag INNERHALB der marktwertSpanne, z.B. 370.000 €)", "einschaetzung": "string (3-4 Sätze, detaillierte Einschätzung ob der Preis fair ist und warum; nennt Zu-/Abschläge gegenüber der Vergleichsspanne mit Prozentwert)" }
     },
 
     "standortDossier": {
@@ -363,7 +372,7 @@ PREMIUM-REPORT — PFLICHT! Das JSON MUSS ein "premiumReport"-Objekt enthalten. 
     "vermoegensvergleich": {
       "jahre": [0, 5, 10, 15, 20, 25, 30],
       "vermoegenKauf": ["string (7 Werte, Euro-Beträge für jedes Jahr, berechnet mit Wertsteigerung 2% p.a.)"],
-      "vermoegenMieteEtf": ["string (7 Werte, Euro-Beträge für jedes Jahr, bei Miete + ETF-Sparplan mit 7% Rendite p.a.)"],
+      "vermoegenMieteEtf": ["string (7 Werte, Euro-Beträge für jedes Jahr, bei Miete + ETF-Sparplan mit 6% Rendite p.a. — wird vom System mit festen Annahmen berechnet)"],
       "breakEvenJahr": "number (z.B. 18)"
     },
 
@@ -462,6 +471,7 @@ PREMIUM-REPORT — PFLICHT! Das JSON MUSS ein "premiumReport"-Objekt enthalten. 
 
 PREMIUM-PFLICHT-DETAILS:
 - vergleichswert.vergleichsobjekte: Recherchiere per Web-Suche vergleichbare AKTUELLE ANGEBOTE in der Umgebung (immowelt-/ImmoScout24-Inserate). 🚨 WICHTIG: Echte notarielle Verkaufspreise sind in Deutschland NICHT öffentlich verfügbar (nur Gutachterausschuss / Kaufpreissammlung, §195 BauGB). Gib daher ausschließlich ANGEBOTSPREISE an; das Feld "preis" ist ein Angebotspreis, kein Kaufpreis. Verwende NIEMALS "verkauft" oder behaupte abgeschlossene Verkäufe. Ziel: 3–6 vergleichbare Angebote mit Adresse/Stadtteil, €/m², Abweichung. Wenn die Web-Suche keine belastbaren Vergleichsangebote liefert, gib lieber 2–3 echte an statt 6 — erfinde NIEMALS Adressen oder Preise.
+- vergleichswert.wert und wertermittlung.fazit: vergleichswert.wert ist REIN RECHNERISCH (niedrigster bis höchster €/m²-Wert der Vergleichsangebote × Wohnfläche des Objekts) — rechne nach, bevor du die Spanne nennst. Zu- oder Abschläge für Ausstattung, Zustand und Lage gehören NICHT in vergleichswert.wert, sondern in fazit.marktwertSpanne und werden in fazit.einschaetzung mit Prozentwert begründet (z.B. "+5 % für Balkon und Modernisierung 2017"). fazit.marktwertSpanne darf die rechnerische Vergleichsspanne um höchstens ±10 % verschieben und darf nicht über dem Top-Wert des marktbands × Wohnfläche liegen. Sach- und Ertragswert sind nachrangige Plausibilisierung. fazit.empfohlenerKaufpreis liegt INNERHALB der marktwertSpanne; denselben Betrag als Zielpreis in den verhandlungstipps verwenden.
 - sachwert: INDIKATIV und als solcher kennzeichnen. Bodenwert = Bodenrichtwert (per Web-Suche/web_fetch, BORIS) × anteilige Grundstücksfläche (bei ETW über Miteigentumsanteil; Fläche unbekannt → "Schätzwert" schreiben). Gebäudewert = NHK 2010 (Wohngebäude je nach Standard ca. 900–1.400 €/m² BGF) × Baupreisindex 2026 (ca. 1,9–2,0 gegenüber 2010) × Fläche — den Index AUSWEISEN. Alterswertminderung nach Ross (nicht linear): Minderung = ½ × (A/N + (A/N)²) mit A = Alter, N = Gesamtnutzungsdauer (ETW/EFH 80 Jahre, Modernisierung verlängert die Restnutzungsdauer). Rechenweg in den Feldern sichtbar machen; im Feld "sachwert" den Zusatz "(indikativ — kein Gutachten)" anhängen.
 - ertragswert: Jahresrohertrag aus ortsüblicher Vergleichsmiete (per Web-Suche Mietpreisspiegel). Liegenschaftszins vom Gutachterausschuss.
 - standortDossier.entfernungen: 6–12 POIs — NUR Ziele, die im Exposé genannt werden oder per Web-Suche konkret belegbar sind (z.B. nächster Bahnhof, benannter Park, Krankenhaus, Stadtzentrum, Autobahnanschluss). 🚨 ERFINDE NIEMALS Eigennamen von Kitas, Arztpraxen oder Geschäften ("Kita Sonnenschein", "Praxis Dr. Weber") — wenn kein Beleg findbar, formuliere generisch mit Kategorie ("Nächste Grundschule (laut Stadtteil-Info)"). ALLE Entfernungen und Fahrzeiten sind Näherungswerte und MÜSSEN mit "ca." beginnen. 6 belegbare Einträge sind besser als 12 geratene — lass Kategorien ohne Beleg weg.
@@ -515,6 +525,7 @@ DATEN-FÜLLUNGS-HIERARCHIE (gilt für ALLE Markt-/Preis-/Renditedaten):
   benchmark MUSS Berater-Tonalität haben — z.B. "Für eine A-Lage in Berlin ist 3,5% Bruttorendite im erwartbaren Bereich — Innenstadtlagen werden primär aus Wertsteigerungserwartung gekauft, nicht aus Cashflow."
 
 - finanzierungsDetail: Berechne 3 EK-Quoten (10/20/30%). Recherchiere AKTUELLE Bauzinsen per Web-Suche (z.B. interhyp, dr-klein, Check24 Baufinanzierung-Vergleich). Bei höherem EK typisch 0,2-0,3% bessere Zinsen. Berechne korrekt:
+  * eigenkapitalBetrag = Quote × Kaufpreis; darlehen = Kaufpreis + Kaufnebenkosten − eigenkapitalBetrag
   * monatlicheRate = darlehen × (zinssatz + tilgung) / 12 (Annuität)
   * gesamtbelastung10Jahre = monatlicheRate × 120
   * restschuld10Jahre nach Annuitätenformel
@@ -961,12 +972,148 @@ function parseGermanNumber(s: unknown): number | null {
   return isFinite(n) ? n : null
 }
 
+function escHtml(s: string): string {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;')
+}
+
+// Inserats-URL für die Ergebnis-Mail: nur http(s), ohne Query/Fragment, normalisiert und HTML-escaped.
+function mailUrl(raw: unknown): string {
+  try {
+    const u = new URL(String(raw ?? '').split('#')[0].split('?')[0])
+    if (u.protocol !== 'http:' && u.protocol !== 'https:') return ''
+    return escHtml(u.href)
+  } catch {
+    return ''
+  }
+}
+
 function formatEuro(n: number): string {
   return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ' €'
 }
 
 function formatPercent(n: number): string {
   return n.toFixed(2).replace('.', ',') + ' %'
+}
+
+// Prozentwert: die Zahl direkt VOR dem %-Zeichen ("10 J. Zinsbindung: 3,65 %" → 3.65,
+// "3.8 %" → 3.8). parseGermanNumber nähme hier die erste Zahl bzw. läse den Punkt als Tausender.
+function parsePercentValue(s: unknown): number | null {
+  if (typeof s === 'number') return isFinite(s) ? s : null
+  if (typeof s !== 'string') return null
+  const t = s.replace(/ /g, ' ')
+  const m = t.match(/(?<![\d.,])(\d{1,2}(?:[.,]\d{1,3})?)\s*(?:%|Prozent)/)
+    ?? t.match(/^\s*(\d{1,2}[.,]\d{1,3})\s*$/)
+  if (m) {
+    const n = parseFloat(m[1].replace(',', '.'))
+    if (isFinite(n)) return n
+  }
+  return parseGermanNumber(s)
+}
+
+// Euro-Betrag: die Zahl direkt VOR dem €-Zeichen ("20 % (77.800 €)" → 77800).
+// Steht nur ein Prozentwert da ("20 %"), wird er auf die Basis (Kaufpreis) bezogen.
+function parseEuroAmount(s: unknown, basis?: number | null): number | null {
+  if (typeof s === 'number') return isFinite(s) ? s : null
+  if (typeof s !== 'string') return null
+  const t = s.replace(/ /g, ' ')
+  const m = t.match(/(\d{1,3}(?:\.\d{3})+(?:,\d{1,2})?|\d+(?:,\d{1,2})?)\s*(?:€|EUR\b|Euro\b)/)
+  if (m) {
+    const n = parseFloat(m[1].replace(/\./g, '').replace(',', '.'))
+    if (isFinite(n)) return n
+  }
+  const p = t.match(/^\s*(?:ca\.\s*)?(\d{1,2}(?:[.,]\d+)?)\s*%/)
+  if (p && basis) return basis * parseFloat(p[1].replace(',', '.')) / 100
+  return parseGermanNumber(s)
+}
+
+// "1234567" → "1.234.567" (ohne Einheit)
+function formatZahl(n: number): string {
+  return formatEuro(n).replace(' €', '')
+}
+
+// Ersetzt die erste Zahl eines Modell-Strings und behält Präfix/Zusatz ("ca. … € (inkl. …)").
+function swapFirstNumber(orig: unknown, n: number): string {
+  if (typeof orig !== 'string') return formatEuro(n)
+  const re = /\d{1,3}(?:\.\d{3})+(?:,\d+)?|\d+(?:,\d+)?/
+  return re.test(orig) ? orig.replace(re, formatZahl(n)) : formatEuro(n)
+}
+
+// "175.000–205.000 €" → [175000, 205000]
+function parseSpan(s: unknown): [number, number] | null {
+  if (typeof s !== 'string') return null
+  const m = s.match(/(\d{1,3}(?:\.\d{3})+|\d{4,})\s*(?:€|Euro|EUR)?\s*(?:–|—|-|bis)\s*(\d{1,3}(?:\.\d{3})+|\d{4,})/)
+  if (!m) return null
+  const a = parseFloat(m[1].replace(/\./g, ''))
+  const b = parseFloat(m[2].replace(/\./g, ''))
+  return isFinite(a) && isFinite(b) && a > 0 && b >= a ? [a, b] : null
+}
+
+function spanRegex(a: number, b: number): RegExp {
+  const t = (n: number) => formatZahl(n).replace(/\./g, '\\.?')
+  return new RegExp(`(?<![\\d.])${t(a)}\\s*(?:€|Euro|EUR)?\\s*(?:–|—|-|bis)\\s*${t(b)}(?![\\d.]*\\d)`, 'g')
+}
+
+// Wendet fn auf alle Strings eines Ergebnis-Teilbaums an (Schlüssel aus skip werden übersprungen).
+function mapStrings(node: unknown, skip: Set<string>, fn: (s: string) => string): number {
+  let changed = 0
+  const walk = (v: unknown): unknown => {
+    if (typeof v === 'string') {
+      const f = fn(v)
+      if (f !== v) changed++
+      return f
+    }
+    if (Array.isArray(v)) {
+      for (let i = 0; i < v.length; i++) v[i] = walk(v[i])
+      return v
+    }
+    if (v && typeof v === 'object') {
+      const o = v as Record<string, unknown>
+      for (const k of Object.keys(o)) {
+        if (skip.has(k)) continue
+        o[k] = walk(o[k])
+      }
+    }
+    return v
+  }
+  walk(node)
+  return changed
+}
+
+// Berechnete bzw. tabellarische Felder — dort werden keine Freitext-Korrekturen vorgenommen.
+const FREITEXT_SKIP = new Set([
+  'quellen', 'objektdaten', 'marktdaten', 'gesamtkosten', 'szenarien', 'cashflow',
+  'beispielTilgungsplan', 'vermoegensvergleich', 'kaufenVsMieten', 'vergleichsobjekte',
+  'monatlicheRate', 'erlaeuterung', 'belastungsquote', 'rechenweg', 'makleranschreiben',
+  'marktband', 'preistrendHistorisch',
+])
+
+// Das System rechnet Raten, Summen und Darlehen nach. Nennt das Modell in Freitexten noch
+// seinen eigenen (überholten) Wert, wird er hier nachgezogen — nur bei passendem Kontext,
+// damit eine zufällig gleich hohe Miete o. Ä. unberührt bleibt.
+type StalePair = { alt: number; neu: number; ctx: RegExp }
+const CTX_RATE = /rate|annuit|darlehen|finanzier|belastung|kredit/i
+const CTX_DARLEHEN = /darlehen|kredit|finanzier|fremdkapital/i
+const CTX_RESTSCHULD = /restschuld/i
+const CTX_LAUFEND = /laufende|nebenkosten|bewirtschaft|wohnkosten|monatlich/i
+const CTX_INVEST = /gesamtinvestition|gesamtkosten|investition|insgesamt|gesamtaufwand/i
+const CTX_NK = /nebenkosten|erwerbsnebenkosten/i
+const CTX_GREST = /grunderwerbsteuer/i
+function rewriteStale(root: unknown, pairs: StalePair[]): number {
+  const re = /(?<![\d.,])(\d{1,3}(?:\.\d{3})+|\d+)(?:,(\d{1,2}))?(\s*(?:€|Euro\b|EUR\b))/g
+  return mapStrings(root, FREITEXT_SKIP, (text) =>
+    text.replace(re, (full: string, ganz: string, dez: string | undefined, einheit: string, offset: number) => {
+      const num = parseFloat(ganz.replace(/\./g, '') + (dez ? '.' + dez : ''))
+      const vor = text.slice(Math.max(0, offset - 80), offset)
+      const nach = text.slice(offset + full.length, offset + full.length + 40)
+      const nahVor = vor.slice(-28)
+      for (const p of pairs) {
+        if (Math.abs(num - p.alt) > 1.0) continue
+        if (!p.ctx.test(vor + ' ' + nach)) continue
+        if (/miet|hausgeld|wohngeld|rücklage|umlage/i.test(nahVor) && !/rate|annuit|darlehen|restschuld/i.test(nahVor)) continue
+        return formatZahl(p.neu) + einheit
+      }
+      return full
+    }))
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -986,44 +1133,37 @@ const GREST_SATZ: Record<string, number> = {
   'Thüringen': 5.0,
 }
 
-// PLZ-Leitregionen (erste zwei Ziffern) → Bundesland, NUR wo eindeutig.
-// Mehrdeutige Regionen (z. B. 28 = Bremen/Niedersachsen, 21/22 = Hamburg/SH/NDS,
-// 14 = Berlin/Brandenburg) sind bewusst NICHT enthalten → dort entscheidet nur
-// ein expliziter Orts-/Landesname, sonst keine Übersteuerung.
+// PLZ-Leitregionen (erste zwei Ziffern) → Bundesland, NUR wo die Leitregion vollständig in
+// EINEM Land liegt. Regionen mit Grenzüberlauf fehlen bewusst (z. B. 63 = Hessen UND Bayern
+// [Aschaffenburg], 89 = BW UND Bayern [Neu-Ulm], 88 [Lindau], 97 [Wertheim], 48/49 [Nordhorn,
+// Ibbenbüren], 53/57 [Ahrweiler, Betzdorf], 66 [Zweibrücken], 68/69 [Viernheim], 76 [Landau],
+// 23 [Wismar], 96 [Sonneberg], 01 [Senftenberg], 21/22/28/14/37 …). Dort entscheidet das vom
+// Modell benannte Bundesland; ohne eindeutige Zuordnung wird nichts übersteuert.
 const PLZ2_LAND: Record<string, string> = {
-  '01': 'Sachsen', '02': 'Sachsen', '04': 'Sachsen', '08': 'Sachsen', '09': 'Sachsen',
+  '02': 'Sachsen', '08': 'Sachsen', '09': 'Sachsen',
   '03': 'Brandenburg', '15': 'Brandenburg', '16': 'Brandenburg',
-  '06': 'Sachsen-Anhalt', '39': 'Sachsen-Anhalt',
-  '07': 'Thüringen', '98': 'Thüringen', '99': 'Thüringen',
+  '39': 'Sachsen-Anhalt',
+  '98': 'Thüringen', '99': 'Thüringen',
   '10': 'Berlin', '11': 'Berlin', '12': 'Berlin', '13': 'Berlin',
-  '17': 'Mecklenburg-Vorpommern', '18': 'Mecklenburg-Vorpommern', '19': 'Mecklenburg-Vorpommern',
+  '18': 'Mecklenburg-Vorpommern',
   '20': 'Hamburg',
-  '23': 'Schleswig-Holstein', '24': 'Schleswig-Holstein', '25': 'Schleswig-Holstein',
-  '26': 'Niedersachsen', '29': 'Niedersachsen', '30': 'Niedersachsen', '31': 'Niedersachsen',
-  '38': 'Niedersachsen', '49': 'Niedersachsen',
-  '27': 'Niedersachsen', // Bremerhaven (275xx) wird über den Ortsnamen erkannt
+  '24': 'Schleswig-Holstein', '25': 'Schleswig-Holstein',
+  '26': 'Niedersachsen', '27': 'Niedersachsen', '30': 'Niedersachsen', '31': 'Niedersachsen',
   '32': 'Nordrhein-Westfalen', '33': 'Nordrhein-Westfalen', '40': 'Nordrhein-Westfalen',
   '41': 'Nordrhein-Westfalen', '42': 'Nordrhein-Westfalen', '44': 'Nordrhein-Westfalen',
   '45': 'Nordrhein-Westfalen', '46': 'Nordrhein-Westfalen', '47': 'Nordrhein-Westfalen',
-  '48': 'Nordrhein-Westfalen', '50': 'Nordrhein-Westfalen', '51': 'Nordrhein-Westfalen',
-  '52': 'Nordrhein-Westfalen', '53': 'Nordrhein-Westfalen', '57': 'Nordrhein-Westfalen',
+  '50': 'Nordrhein-Westfalen', '51': 'Nordrhein-Westfalen', '52': 'Nordrhein-Westfalen',
   '58': 'Nordrhein-Westfalen', '59': 'Nordrhein-Westfalen',
-  '34': 'Hessen', '35': 'Hessen', '36': 'Hessen', '60': 'Hessen', '61': 'Hessen',
-  '63': 'Hessen', '64': 'Hessen', '65': 'Hessen',
-  '54': 'Rheinland-Pfalz', '55': 'Rheinland-Pfalz', '56': 'Rheinland-Pfalz', '67': 'Rheinland-Pfalz',
-  '66': 'Saarland',
-  '68': 'Baden-Württemberg', '69': 'Baden-Württemberg', '70': 'Baden-Württemberg',
-  '71': 'Baden-Württemberg', '72': 'Baden-Württemberg', '73': 'Baden-Württemberg',
-  '74': 'Baden-Württemberg', '75': 'Baden-Württemberg', '76': 'Baden-Württemberg',
-  '77': 'Baden-Württemberg', '78': 'Baden-Württemberg', '79': 'Baden-Württemberg',
-  '88': 'Baden-Württemberg', '89': 'Baden-Württemberg',
+  '35': 'Hessen', '60': 'Hessen', '61': 'Hessen', '64': 'Hessen',
+  '54': 'Rheinland-Pfalz', '56': 'Rheinland-Pfalz', '67': 'Rheinland-Pfalz',
+  '70': 'Baden-Württemberg', '71': 'Baden-Württemberg', '72': 'Baden-Württemberg',
+  '73': 'Baden-Württemberg', '75': 'Baden-Württemberg', '77': 'Baden-Württemberg',
+  '78': 'Baden-Württemberg', '79': 'Baden-Württemberg',
   '80': 'Bayern', '81': 'Bayern', '82': 'Bayern', '83': 'Bayern', '84': 'Bayern',
   '85': 'Bayern', '86': 'Bayern', '87': 'Bayern', '90': 'Bayern', '91': 'Bayern',
-  '92': 'Bayern', '93': 'Bayern', '94': 'Bayern', '95': 'Bayern', '96': 'Bayern', '97': 'Bayern',
+  '92': 'Bayern', '93': 'Bayern', '94': 'Bayern', '95': 'Bayern',
 }
 
-// Erkennung aus beliebigem Text (Exposé-Markdown ODER fertiges Ergebnis).
-// Reihenfolge: explizites "Bundesland: X" → Stadtstaaten-Ortsname → PLZ-Region.
 // Kopfzeilen für die Nutzer-Nachricht: Datum (für "aktuell"/"Stand"-Angaben und
 // Bauzins-Recherche) + verbindliches Bundesland/GrESt, wenn erkennbar.
 function kontextKopf(exposeText: string | null): string {
@@ -1051,22 +1191,58 @@ function kaeuferBlock(opts: unknown): string {
   return `\nKÄUFERANGABEN (vom Kunden eingegeben — verbindlich verwenden):\n${zeilen.join('\n')}\n`
 }
 
+// Exakter Landesname im Text (längster zuerst, damit "Sachsen-Anhalt" nicht als "Sachsen"
+// und "Niedersachsen" nicht als "Sachsen" gelesen wird).
+const LAND_NAMEN = Object.keys(GREST_SATZ).sort((a, b) => b.length - a.length)
+function findLandName(text: string): string | null {
+  if (!text) return null
+  for (const l of LAND_NAMEN) {
+    if (new RegExp(`(?<![A-Za-zÄÖÜäöüß-])${l}(?![A-Za-zÄÖÜäöüß-])`, 'i').test(text)) return l
+  }
+  if (/(?<![A-Za-z])NRW(?![A-Za-z])/.test(text)) return 'Nordrhein-Westfalen'
+  return null
+}
+
+function plzLand(plz: string): string | null {
+  const n = parseInt(plz, 10)
+  if ((n >= 28195 && n <= 28779) || (n >= 27568 && n <= 27580)) return 'Bremen' // Bremen, Bremerhaven
+  if (n === 27498) return 'Schleswig-Holstein' // Helgoland
+  if (n === 12529) return 'Brandenburg' // Schönefeld
+  if (n === 51598) return 'Rheinland-Pfalz' // Friesenhagen
+  if (n === 59969) return null // Hallenberg (NRW) und Bromskirchen (Hessen)
+  return PLZ2_LAND[plz.slice(0, 2)] ?? null
+}
+
+// Alle Länder, auf die Postleitzahlen im Text hindeuten. Im Fließtext zählt nur "PLZ Ort"
+// (eine nackte fünfstellige Zahl kann ein Preis sein); in kurzen Adressfeldern auch die PLZ allein.
+function laenderAusPlz(text: string, bare: boolean): string[] {
+  const re = bare
+    ? /(?<![\d.,])(0[1-9]\d{3}|[1-9]\d{4})(?!\d|[.,]\d)(?:\s+([A-ZÄÖÜ][a-zäöüß]+))?/g
+    : /(?<![\d.,])(0[1-9]\d{3}|[1-9]\d{4})\s+(?!Euro\b|EUR\b)([A-ZÄÖÜ][a-zäöüß]+)/g
+  const out: string[] = []
+  for (const m of text.matchAll(re)) {
+    const ort = m[2] || ''
+    const land = ort === 'Hamburg' || ort === 'Berlin' ? ort
+      : ort === 'Bremen' || ort === 'Bremerhaven' ? 'Bremen'
+      : plzLand(m[1])
+    if (land) out.push(land)
+  }
+  return out
+}
+
+// Erkennung aus beliebigem Text (Exposé-Markdown ODER Adressfeld des Ergebnisses).
+// Reihenfolge: explizite "Bundesland: X"-Zeile → Postleitzahlen. Deuten die Postleitzahlen
+// auf VERSCHIEDENE Länder (z. B. Objekt in Niedersachsen, Maklerbüro in Hamburg), gibt es
+// kein Ergebnis — dann wird nichts vorgegeben und nichts übersteuert.
 function detectBundesland(text: string): string | null {
   if (!text) return null
-  const m = text.match(/Bundesland\s*:\s*([A-Za-zÄÖÜäöüß-]+(?:\s[A-Za-zÄÖÜäöüß-]+)?)/)
+  const m = text.match(/Bundesland\s*\**\s*[:|]\s*\**\s*([^\n]{3,60})/)
   if (m) {
-    const hit = Object.keys(GREST_SATZ).find(l => m[1].toLowerCase().startsWith(l.toLowerCase().slice(0, 6)))
+    const hit = findLandName(m[1])
     if (hit) return hit
   }
-  // Stadtstaaten + Bremerhaven: Ortsname ist eindeutig
-  const plzOrt = text.match(/\b(\d{5})\s+(Bremen|Bremerhaven|Hamburg|Berlin)\b/)
-  if (plzOrt) return plzOrt[2] === 'Bremerhaven' ? 'Bremen' : plzOrt[2]
-  const plz = text.match(/\b(0[1-9]|[1-9]\d)\d{3}\b/)
-  if (plz) {
-    const land = PLZ2_LAND[plz[1]]
-    if (land) return land
-  }
-  return null
+  const laender = [...new Set(laenderAusPlz(text, text.length <= 200))]
+  return laender.length === 1 ? laender[0] : null
 }
 
 // Annuitätendarlehen mit monatlicher Verrechnung (marktüblich)
@@ -1087,9 +1263,9 @@ function annuity(darlehen: number, zinsPct: number, tilgPct: number) {
 }
 
 function parseLoanInputs(row: Record<string, unknown>, darlehenKey: string): { darlehen: number; zins: number; tilg: number } | null {
-  const darlehen = parseGermanNumber(row?.[darlehenKey])
-  const zins = parseGermanNumber(row?.zinssatz)
-  const tilg = parseGermanNumber(row?.tilgung)
+  const darlehen = parseEuroAmount(row?.[darlehenKey])
+  const zins = parsePercentValue(row?.zinssatz)
+  const tilg = parsePercentValue(row?.tilgung)
   if (
     darlehen === null || darlehen < 10_000 || darlehen > 10_000_000 ||
     zins === null || zins <= 0 || zins > 12 ||
@@ -1109,12 +1285,29 @@ function recomputeFinances(result: Record<string, unknown>, opts?: unknown): voi
     ?? parseGermanNumber(objektdaten?.find(o => /kaufpreis/i.test(o.merkmal || ''))?.wert)
   const wohnflaeche = parseGermanNumber(objektdaten?.find(o => /wohnfl/i.test(o.merkmal || ''))?.wert)
 
-  // 0) Grunderwerbsteuer verbindlich aus dem Bundesland (Adresse/PLZ im Ergebnis)
-  const adresse = objektdaten?.find(o => /adresse/i.test(o.merkmal || ''))?.wert || ''
-  const land = detectBundesland(adresse) ?? detectBundesland(JSON.stringify(objektdaten || ''))
+  // Alt→Neu-Paare für die Freitext-Korrektur am Ende (siehe rewriteStale)
+  const stale: StalePair[] = []
+  const merke = (altRaw: unknown, neu: number, ctx: RegExp) => {
+    const alt = parseEuroAmount(altRaw)
+    if (alt !== null && alt >= 50 && Math.round(alt) !== Math.round(neu)) stale.push({ alt, neu, ctx })
+  }
+
+  // 0) Grunderwerbsteuer verbindlich aus dem Bundesland.
+  // Rang: PLZ im Adressfeld (nur eindeutige Regionen) → vom Modell benanntes Land
+  // (Objektdaten-Zeile "Bundesland" bzw. Klammerzusatz am Steuersatz) → Stadtstaat im
+  // Adressfeld → PLZ irgendwo in den Objektdaten. Ohne Treffer bleibt der Modellwert stehen.
+  const adresse = String(objektdaten?.find(o => /adresse|anschrift|lage/i.test(o.merkmal || '') && /\d{5}/.test(String(o.wert || '')))?.wert
+    ?? objektdaten?.find(o => /adresse/i.test(o.merkmal || ''))?.wert ?? '')
+  const landZeile = String(objektdaten?.find(o => /bundesland/i.test(o.merkmal || ''))?.wert ?? '')
+  const stadtstaat = adresse.match(/(?<![A-Za-zÄÖÜäöüß])(Bremen|Bremerhaven|Hamburg|Berlin)(?![a-zäöüß])/)?.[1]
+  const land = detectBundesland(adresse)
+    ?? findLandName(landZeile)
+    ?? findLandName(String(gk?.kaufnebenkosten?.grunderwerbsteuer?.satz ?? ''))
+    ?? (stadtstaat ? (stadtstaat === 'Bremerhaven' ? 'Bremen' : stadtstaat) : null)
+    ?? detectBundesland(JSON.stringify(objektdaten || ''))
   if (land && gk?.kaufnebenkosten?.grunderwerbsteuer) {
     const soll = GREST_SATZ[land]
-    const ist = parseGermanNumber(gk.kaufnebenkosten.grunderwerbsteuer.satz)
+    const ist = parsePercentValue(gk.kaufnebenkosten.grunderwerbsteuer.satz)
     gk.kaufnebenkosten.grunderwerbsteuer.satz = `${soll.toFixed(1).replace('.', ',')}% (${land})`
     if (ist !== null && Math.abs(ist - soll) > 0.01) {
       console.warn(`GrESt korrigiert: Modell ${ist}% → Kanon ${soll}% (${land})`)
@@ -1126,25 +1319,50 @@ function recomputeFinances(result: Record<string, unknown>, opts?: unknown): voi
     }
   }
 
-  // 1) Kaufnebenkosten: betrag = satz × kaufpreis, gesamt = Summe
+  // 1) Kaufnebenkosten: betrag = satz × kaufpreis, gesamt = Summe.
+  // Erst ALLE vier Sätze lesen, dann schreiben — sonst stünden nachgerechnete Einzelbeträge
+  // neben einer nicht nachgerechneten Summe.
   let nkSum: number | null = null
   if (gk?.kaufnebenkosten && kaufpreis && kaufpreis > 10_000) {
     const nk = gk.kaufnebenkosten
-    let sum = 0
-    let ok = true
-    for (const key of ['grunderwerbsteuer', 'notar', 'grundbuch', 'makler']) {
+    const KEYS = ['grunderwerbsteuer', 'notar', 'grundbuch', 'makler']
+    const saetze = KEYS.map((key) => {
       const eintrag = nk[key]
-      const satz = parseGermanNumber(eintrag?.satz)
-      if (eintrag && satz !== null && satz >= 0 && satz < 20) {
-        const betrag = kaufpreis * satz / 100
-        eintrag.betrag = formatEuro(betrag)
+      if (!eintrag) return null
+      const raw = String(eintrag.satz ?? '')
+      if (key === 'makler' && !/\d\s*(?:%|Prozent)/.test(raw) && /entfällt|provisionsfrei|keine|ohne\s+(?:makler|provision|käuferprovision)|^\s*[-–—]?\s*$/i.test(raw)) return 0
+      const satz = parsePercentValue(eintrag.satz)
+      return satz !== null && satz >= 0 && satz < 20 ? satz : null
+    })
+    if (saetze.every((s) => s !== null)) {
+      let sum = 0
+      KEYS.forEach((key, i) => {
+        const betrag = kaufpreis * (saetze[i] as number) / 100
+        if (key === 'grunderwerbsteuer') merke(nk[key].betrag, betrag, CTX_GREST)
+        nk[key].betrag = formatEuro(betrag)
         sum += betrag
-      } else ok = false
-    }
-    if (ok) {
+      })
+      merke(nk.gesamt, sum, CTX_NK)
       nk.gesamt = formatEuro(sum)
       nkSum = sum
       fixed.push('kaufnebenkosten')
+    }
+  }
+
+  // 1a) Gesamtinvestition = Kaufpreis + Nebenkosten (+ Sanierungsreserve, wenn das Modell sie
+  // eingerechnet hat). Die Konvention des Modells bleibt, die Summe wird nachgerechnet.
+  if (gk && kaufpreis && nkSum !== null) {
+    const modell = parseEuroAmount(gk.gesamtinvestition)
+    const sanierung = parseEuroAmount(gk.geschaetzteSanierung)
+    const ohne = kaufpreis + nkSum
+    const mit = sanierung !== null && sanierung > 0 && sanierung < kaufpreis ? ohne + sanierung : null
+    const ziel = modell !== null && mit !== null && Math.abs(modell - mit) < Math.abs(modell - ohne) ? mit : ohne
+    if (modell === null || Math.abs(modell - ziel) / ziel < 0.2) {
+      if (modell !== null) merke(gk.gesamtinvestition, ziel, CTX_INVEST)
+      gk.gesamtinvestition = swapFirstNumber(gk.gesamtinvestition, ziel)
+      fixed.push('gesamtinvestition')
+    } else {
+      console.warn(`gesamtinvestition: Modell ${modell} weicht > 20 % von ${ziel} ab — unverändert`)
     }
   }
 
@@ -1159,13 +1377,38 @@ function recomputeFinances(result: Record<string, unknown>, opts?: unknown): voi
     }
   }
 
-  // 2) laufendeKostenGesamt = Summe aller Positionen
+  // 2) laufendeKostenGesamt = Summe der Positionen OHNE Doppelzählung.
+  // Audit Nov. 2026: Das Modell wies Rücklage, Verwaltung und Versicherung als eigene Zeilen
+  // aus, obwohl sie laut eigener Beschriftung im Hausgeld enthalten sind — die Summe lag
+  // dadurch 200 €/Monat zu hoch. Aufschlüsselungs-Zeilen ("davon …", "im Hausgeld enthalten")
+  // bleiben sichtbar, zählen aber nicht mit.
   if (gk && Array.isArray(gk.laufendeKosten) && gk.laufendeKosten.length >= 4) {
-    const betraege = gk.laufendeKosten.map((p: Record<string, unknown>) => parseGermanNumber(p?.betragMonat))
-    if (betraege.every((b: number | null) => b !== null && b >= 0 && b < 20_000)) {
-      const monat = (betraege as number[]).reduce((a, b) => a + b, 0)
+    const zeilen = gk.laufendeKosten as Array<Record<string, unknown>>
+    const betraege = zeilen.map((p) => parseEuroAmount(p?.betragMonat))
+    if (betraege.every((b) => b !== null && b >= 0 && b < 20_000)) {
+      const istHausgeld = (p: Record<string, unknown>) => /^\s*(hausgeld|wohngeld)/i.test(String(p?.position || ''))
+      const hatHausgeld = zeilen.some(istHausgeld)
+      const enthalten = (p: Record<string, unknown>): boolean => {
+        const pos = String(p?.position || '')
+        if (/^\s*(davon|darin|hiervon)\b/i.test(pos)) return true
+        if (!hatHausgeld || istHausgeld(p)) return false
+        if (/nicht im (hausgeld|wohngeld)|zusätzlich zum (hausgeld|wohngeld)|nicht (über|durch) (das )?(hausgeld|wohngeld)/i.test(pos)) return false
+        return /im (hausgeld|wohngeld) (bereits )?enthalten|bereits im (hausgeld|wohngeld)|(über|durch) (das )?(hausgeld|wohngeld)[^)]{0,60}(abgedeckt|gedeckt|abgerechnet)/i.test(pos)
+      }
+      let monat = 0
+      let ausgenommen = 0
+      zeilen.forEach((p, i) => {
+        if (enthalten(p)) ausgenommen++
+        else monat += betraege[i] as number
+      })
+      const alt = gk.laufendeKostenGesamt as Record<string, unknown> | undefined
+      merke(alt?.monat, monat, CTX_LAUFEND)
+      merke(alt?.jahr, monat * 12, CTX_LAUFEND)
       gk.laufendeKostenGesamt = { monat: formatEuro(monat), jahr: formatEuro(monat * 12) }
-      fixed.push('laufendeKostenGesamt')
+      if (ausgenommen > 0) {
+        gk.laufendeKostenGesamt.hinweis = `Summe ohne ${ausgenommen} Aufschlüsselungs-Position${ausgenommen === 1 ? '' : 'en'}, die bereits im Hausgeld enthalten ${ausgenommen === 1 ? 'ist' : 'sind'} (keine Doppelzählung).`
+      }
+      fixed.push(`laufendeKostenGesamt${ausgenommen ? `(−${ausgenommen})` : ''}`)
     }
   }
 
@@ -1174,18 +1417,24 @@ function recomputeFinances(result: Record<string, unknown>, opts?: unknown): voi
   // GrESt-Korrektur konsistent bis in die Rate durchschlägt.
   const fin = result.finanzierung as Record<string, any> | undefined
   let standardSz: { darlehen: number; zins: number; tilg: number; ek: number } | null = null
+  let standardPerName = false
   if (fin && Array.isArray(fin.szenarien)) {
     for (const sz of fin.szenarien) {
-      const ek = parseGermanNumber(sz?.eigenkapital)
+      const ek = parseEuroAmount(sz?.eigenkapital, kaufpreis)
       if (kaufpreis && nkSum !== null && ek !== null && ek >= 0 && ek < kaufpreis) {
+        merke(sz.darlehenssumme, kaufpreis + nkSum - ek, CTX_DARLEHEN)
         sz.darlehenssumme = formatEuro(kaufpreis + nkSum - ek)
       }
       const inp = parseLoanInputs(sz, 'darlehenssumme')
       if (!inp) continue
-      if (/standard/i.test(String(sz.name || '')) || /20\s*%/.test(String(sz.eigenkapital || ''))) {
+      const perName = /standard/i.test(String(sz.name || ''))
+      if (perName || (!standardPerName && /20\s*%/.test(String(sz.eigenkapital || '')))) {
         standardSz = { ...inp, ek: ek ?? 0 }
+        if (perName) standardPerName = true
       }
       const a = annuity(inp.darlehen, inp.zins, inp.tilg)
+      merke(sz.monatlicheRate, a.monthlyRate, CTX_RATE)
+      merke(sz.restschuld10Jahre, a.balanceAfter(120), CTX_RESTSCHULD)
       sz.monatlicheRate = formatEuro(a.monthlyRate)
       sz.restschuld10Jahre = formatEuro(a.balanceAfter(120))
       const months = a.totalMonths()
@@ -1200,7 +1449,7 @@ function recomputeFinances(result: Record<string, unknown>, opts?: unknown): voi
   if (fd && Array.isArray(fd.cashflow)) {
     let mittlere: { darlehen: number; zins: number; tilg: number } | null = null
     for (const cf of fd.cashflow) {
-      const ek = parseGermanNumber(cf?.eigenkapitalBetrag)
+      const ek = parseEuroAmount(cf?.eigenkapitalBetrag, kaufpreis)
       if (kaufpreis && nkSum !== null && ek !== null && ek >= 0 && ek < kaufpreis) {
         cf.darlehen = formatEuro(kaufpreis + nkSum - ek)
       }
@@ -1246,18 +1495,137 @@ function recomputeFinances(result: Record<string, unknown>, opts?: unknown): voi
     }
   }
 
+  // 5a) Stresstest: Raten deterministisch aus dem Standard-Szenario.
+  // Audit Nov. 2026: Das Modell rechnete den Stresstest auf "Kaufpreis − Eigenkapital"
+  // (ohne Nebenkosten) und nannte dadurch Raten, die UNTER der Rate der Szenario-Tabelle lagen.
+  const stressRate = new Map<unknown, number>()
+  if (standardSz && fin && Array.isArray(fin.stresstest)) {
+    const a = annuity(standardSz.darlehen, standardSz.zins, standardSz.tilg)
+    const rate = a.monthlyRate
+    const gesamt = a.totalMonths()
+    for (const st of fin.stresstest) {
+      if (!st || typeof st !== 'object') continue
+      const name = String(st.szenario || '')
+      if (/einkommen/i.test(name)) {
+        const pm = name.match(/(\d{1,2})\s*(?:%|Prozent)/)
+        const p = pm ? Math.min(60, Math.max(5, parseInt(pm[1], 10))) : 30
+        st.monatlicheRate = `${formatEuro(rate)} (unverändert)`
+        st.erlaeuterung = `Die Rate bleibt gleich; bei ${p} % weniger Einkommen steigt ihr Anteil am Haushaltseinkommen um rund ${Math.round((1 / (1 - p / 100) - 1) * 100)} %.`
+        stressRate.set(st, rate)
+      } else if (/sonderumlage|umlage/i.test(name)) {
+        const betragRaw = parseEuroAmount(name)
+        const betrag = betragRaw !== null && betragRaw >= 1_000 && betragRaw <= 200_000 ? betragRaw : 15_000
+        st.monatlicheRate = `${formatEuro(rate)} laufend + einmalig ${formatEuro(betrag)}`
+        st.erlaeuterung = `Einmalbelastung in Höhe von rund ${Math.round(betrag / rate)} Monatsraten; die laufende Rate ändert sich nicht. Entscheidend ist, ob Rücklagen dafür vorhanden sind.`
+        stressRate.set(st, rate)
+      } else if (/zins/i.test(name)) {
+        const zm = name.match(/(\d{1,2}(?:[.,]\d{1,2})?)\s*(?:%|Prozent)/)
+        let zNeu = zm ? parseFloat(zm[1].replace(',', '.')) : 5.5
+        if (!(zNeu > standardSz.zins && zNeu <= 12)) zNeu = Math.max(5.5, standardSz.zins + 1.5)
+        const rest = a.balanceAfter(120)
+        const n = gesamt && gesamt > 132 ? gesamt - 120 : 240
+        const i = zNeu / 100 / 12
+        const neu = rest * i / (1 - Math.pow(1 + i, -n))
+        merke(st.monatlicheRate, neu, CTX_RATE)
+        st.monatlicheRate = `${formatEuro(neu)} (heute ${formatEuro(rate)})`
+        st.erlaeuterung = `Anschlussfinanzierung nach 10 Jahren: Restschuld ${formatEuro(rest)}, Anschlusszins ${String(zNeu).replace('.', ',')} %, Restlaufzeit unverändert rund ${Math.round(n / 12)} Jahre → ${formatEuro(neu - rate)} mehr pro Monat (+${Math.round((neu / rate - 1) * 100)} %).`
+        stressRate.set(st, neu)
+      }
+    }
+    fixed.push('stresstest(raten)')
+  }
+
   // 5b) Stresstest: Bewertung deterministisch aus Rate/Haushaltsnetto, wenn der Kunde
   // sein Netto angegeben hat (sonst bleibt die Modell-Einschätzung stehen).
   if (nettoUser && fin && Array.isArray(fin.stresstest)) {
     for (const st of fin.stresstest) {
-      const rate = parseGermanNumber(st?.monatlicheRate)
-      if (rate === null || rate <= 0) continue
+      const rate = stressRate.get(st) ?? parseEuroAmount(st?.monatlicheRate)
+      if (rate === null || rate === undefined || rate <= 0) continue
       const basis = /einkommen/i.test(String(st.szenario || '')) ? nettoUser * 0.7 : nettoUser
       const quote = rate / basis * 100
       st.bewertung = quote < 35 ? 'tragbar' : quote <= 45 ? 'grenzwertig' : 'kritisch'
       st.belastungsquote = `${quote.toFixed(0)} % des Haushaltsnettos (${formatEuro(basis)})`
     }
     fixed.push('stresstest(netto)')
+  }
+
+  // 5c) Vergleichswert (Premium): Spanne = niedrigstes bis höchstes Vergleichsangebot (€/m²)
+  // × Wohnfläche. Audit Nov. 2026: Das Modell nannte 175.000–205.000 €, obwohl die eigenen
+  // Vergleichsangebote rechnerisch 155.000–174.000 € ergaben — der Zuschlag für Ausstattung
+  // war unsichtbar eingerechnet. Jetzt: rechnerische Spanne + sichtbarer Rechenweg; die
+  // Marktwert-Spanne des Fazits darf davon je Ende höchstens 10 % abweichen.
+  const we = pr?.wertermittlung as Record<string, any> | undefined
+  const vw = we?.vergleichswert as Record<string, any> | undefined
+  if (vw && Array.isArray(vw.vergleichsobjekte) && wohnflaeche && wohnflaeche > 15) {
+    const qms: number[] = vw.vergleichsobjekte
+      .map((o: Record<string, unknown>) => (typeof o?.qm === 'string' && !/€|eur/i.test(o.qm) ? null : parseGermanNumber(o?.qm)))
+      .filter((q: number | null): q is number => q !== null && q >= 300 && q <= 30_000)
+    if (qms.length >= 2) {
+      const qLo = Math.round(Math.min(...qms)), qHi = Math.round(Math.max(...qms))
+      const r1000 = (x: number) => Math.round(x / 1000) * 1000
+      const lo = r1000(qLo * wohnflaeche), hi = r1000(qHi * wohnflaeche)
+      const spanne = (s: [number, number]) => `${formatZahl(s[0])}–${formatZahl(s[1])}`
+      vw.rechenweg = `Rechenweg: niedrigstes bis höchstes Vergleichsangebot (${formatZahl(qLo)}–${formatZahl(qHi)} €/m²) × ${String(wohnflaeche).replace('.', ',')} m² Wohnfläche = ${spanne([lo, hi])} € (auf 1.000 € gerundet, ohne Zu- oder Abschläge für Ausstattung, Zustand und Mikrolage).`
+
+      const altVw = parseSpan(vw.wert)
+      const vwNeu: [number, number] = [lo, hi]
+      const vwGeaendert = !altVw || Math.abs(altVw[0] - lo) / lo > 0.03 || Math.abs(altVw[1] - hi) / hi > 0.03
+      if (vwGeaendert) vw.wert = `${spanne(vwNeu)} €`
+      if (typeof vw.methode === 'string') {
+        vw.methode = vw.methode.replace(
+          /(\d\.\d{3}|\d{3,5})(\s*(?:€\s*\/\s*m²)?\s*(?:–|—|-|bis|und)\s*)(\d\.\d{3}|\d{3,5})(\s*€\s*\/\s*m²)/,
+          (full: string, x: string, mitte: string, y: string, einheit: string) => {
+            const nx = parseFloat(x.replace(/\./g, '')), ny = parseFloat(y.replace(/\./g, ''))
+            if (Math.abs(nx - qLo) / qLo > 0.1 || Math.abs(ny - qHi) / qHi > 0.1) return full
+            return `${formatZahl(qLo)}${mitte}${formatZahl(qHi)}${einheit}`
+          })
+      }
+
+      const fz = we?.fazit as Record<string, any> | undefined
+      const altM = parseSpan(fz?.marktwertSpanne)
+      let mNeu: [number, number] | null = null
+      if (fz && altM) {
+        const band = (x: number, mitte: number) => Math.min(Math.max(x, r1000(mitte * 0.9)), r1000(mitte * 1.1))
+        mNeu = [band(altM[0], lo), band(altM[1], hi)]
+        if (mNeu[0] !== altM[0] || mNeu[1] !== altM[1]) fz.marktwertSpanne = `${spanne(mNeu)} €`
+      }
+      const mGeaendert = !!(altM && mNeu && (mNeu[0] !== altM[0] || mNeu[1] !== altM[1]))
+
+      // Alte Spannen in den Freitexten nachziehen
+      const gleich = !!(altVw && altM && altVw[0] === altM[0] && altVw[1] === altM[1])
+      const ersetze = (wurzel: unknown, imVergleichswert: boolean, skip: Set<string>) => mapStrings(wurzel, skip, (s) => {
+        let t = s
+        if (altVw && (vwGeaendert || (gleich && mGeaendert))) {
+          t = t.replace(spanRegex(altVw[0], altVw[1]), (full: string, offset: number) => {
+            if (!gleich) return vwGeaendert ? spanne(vwNeu) : full
+            const vor = s.slice(Math.max(0, offset - 45), offset)
+            const meintVergleich = /vergleich/i.test(vor) || (imVergleichswert && !/marktwert|verkehrswert/i.test(vor))
+            if (meintVergleich) return vwGeaendert ? spanne(vwNeu) : full
+            return mNeu && mGeaendert ? spanne(mNeu) : full
+          })
+        }
+        if (!gleich && altM && mNeu && mGeaendert) t = t.replace(spanRegex(altM[0], altM[1]), spanne(mNeu))
+        return t
+      })
+      // (das Objekt vergleichswert wird über den Schlüssel ausgespart und separat behandelt)
+      let n = ersetze(vw, true, FREITEXT_SKIP)
+      n += ersetze(result, false, new Set([...FREITEXT_SKIP, 'vergleichswert']))
+
+      // Empfohlener Kaufpreis darf nicht über der Marktwert-Spanne liegen (nach unten wird nichts verschoben).
+      if (fz && mNeu) {
+        const altE = parseEuroAmount(fz.empfohlenerKaufpreis)
+        if (altE !== null && altE > 10_000 && altE > mNeu[1]) {
+          const neuE = mNeu[1]
+          fz.empfohlenerKaufpreis = swapFirstNumber(fz.empfohlenerKaufpreis, neuE)
+          const vergleichsPreise = vw.vergleichsobjekte.map((o: Record<string, unknown>) => parseEuroAmount(o?.preis))
+          if (altE !== kaufpreis && !vergleichsPreise.includes(altE)) {
+            const re = new RegExp(`(?<![\\d.])${formatZahl(altE).replace(/\./g, '\\.')}(?![\\d.]*\\d)(?=\\s*(?:€|Euro|EUR))`, 'g')
+            n += mapStrings(result, FREITEXT_SKIP, (s) => s.replace(re, formatZahl(neuE)))
+          }
+        }
+      }
+      fixed.push(`vergleichswert(${vwGeaendert ? 'neu' : 'ok'}${n ? `, ${n} Texte` : ''})`)
+    }
   }
 
   // 6) Kaufen vs. Mieten + 30-Jahres-Vermögensvergleich — deterministisch.
@@ -1330,6 +1698,17 @@ function recomputeFinances(result: Record<string, unknown>, opts?: unknown): voi
       }
       fixed.push('vermoegensvergleich')
     }
+  }
+
+  // 7) Report-Datum = Tag der Fertigstellung (nicht vom Modell)
+  if (pr) {
+    pr.reportDatum = new Date().toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric', timeZone: 'Europe/Berlin' })
+  }
+
+  // 8) Überholte Beträge in Freitexten nachziehen (Raten, Darlehen, Summen)
+  if (stale.length) {
+    const n = rewriteStale(result, stale)
+    if (n) fixed.push(`freitext(${n})`)
   }
 
   if (fixed.length) console.log(`recomputeFinances: ${fixed.join(', ')}`)
@@ -1482,7 +1861,7 @@ Deno.serve(async (req) => {
           const linkRows = completed
             .map((a: { token: string; url: string }, i: number) => {
               const exposeNr = a.url.match(/expose\/(\d+)/)?.[1] || ''
-              const cleanUrl = a.url.split('#')[0].split('?')[0]
+              const cleanUrl = mailUrl(a.url)
               return `
               <tr>
                 <td style="padding:14px 16px;border-bottom:1px solid #f0f0f0;">
@@ -1882,6 +2261,13 @@ ${kaeuferBlock(opts)}`,
               console.warn(`Listing offline: ${a.url} — ${parsed.hinweis ?? ''}`)
               await supabase.from('analyses').update({ status: 'failed', result: parsed }).eq('id', a.id)
               continue
+            }
+
+            // Abgeschnittene oder leere Antworten nicht als "fertig" speichern → Retry-Pfad.
+            const fehlend = ['objektdaten', 'gesamtkosten', 'finanzierung', 'scores']
+              .filter((k) => parsed?.[k] === undefined || parsed?.[k] === null)
+            if (fehlend.length) {
+              throw new Error(`Ergebnis unvollständig (stop_reason=${r.message.stop_reason ?? '?'}): ${fehlend.join(', ')} fehlt`)
             }
 
             const warnings = validateResult(parsed)

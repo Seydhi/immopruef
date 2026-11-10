@@ -124,18 +124,29 @@ serve(async (req) => {
         return new Response('OK', { status: 200 })
       }
 
-      // Email format validation — defense in depth
-      const email = (session.customer_details?.email || '').trim()
+      // Email format validation — defense in depth. Eine fehlende/ungewöhnliche Adresse darf
+      // die Freischaltung NICHT blockieren (der Kunde hat bezahlt): dann entfällt nur die Mail.
+      const rawEmail = (session.customer_details?.email || '').trim()
       const EMAIL_RE = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
-      if (!email || !EMAIL_RE.test(email) || email.length > 254) {
-        console.error('Invalid email in webhook:', email)
-        return new Response('Invalid email', { status: 400 })
-      }
+      const emailOk = !!rawEmail && EMAIL_RE.test(rawEmail) && rawEmail.length <= 254
+      const email = emailOk ? rawEmail : ''
+      if (!emailOk) console.error('Webhook: E-Mail fehlt oder ungültig — Bestellung wird freigeschaltet, Bestätigungsmail entfällt')
 
       const supabase = createClient(
         Deno.env.get('SUPABASE_URL')!,
         Deno.env.get('SB_SERVICE_ROLE_KEY')!
       )
+
+      // Der Query-Builder von supabase-js ist nur "thenable" (kein .catch) — Fehler deshalb
+      // über das error-Feld bzw. try/catch abfangen; ein Duplikat (23505) ist hier normal.
+      const markProcessed = async () => {
+        try {
+          const { error } = await supabase.from('processed_events').insert({ event_id: event.id })
+          if (error && error.code !== '23505') console.warn('processed_events:', error.message)
+        } catch (e) {
+          console.warn('processed_events:', e)
+        }
+      }
 
       // Idempotency check — only skip on true duplicates (same event fully processed)
       // Partial-failure recovery: if we haven't marked order paid yet, allow retry
@@ -149,7 +160,7 @@ serve(async (req) => {
 
       if (existingOrder?.status === 'paid' || existingOrder?.status === 'processing' || existingOrder?.status === 'completed') {
         // Already processed this session — record event for deduplication then skip
-        await supabase.from('processed_events').insert({ event_id: event.id }).catch(() => {})
+        await markProcessed()
         console.log(`Order already ${existingOrder.status}, skipping:`, sessionId)
         return new Response('OK', { status: 200 })
       }
@@ -160,7 +171,7 @@ serve(async (req) => {
 
       const { data: updated, error: updateErr } = await supabase
         .from('orders')
-        .update({ status: 'paid', email })
+        .update(emailOk ? { status: 'paid', email } : { status: 'paid' })
         .eq('stripe_session_id', sessionId)
         .eq('status', 'pending')
         .select('id')
@@ -176,7 +187,7 @@ serve(async (req) => {
       console.log(`Order updated:`, updated)
 
       // Mark event processed AFTER successful order update
-      await supabase.from('processed_events').insert({ event_id: event.id }).catch(() => {})
+      await markProcessed()
 
       // ═══════════════════════════════════════════════════════
       // Send instant confirmation email
