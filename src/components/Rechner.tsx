@@ -1,3 +1,4 @@
+import { STAND_ISO } from '../lib/quellen'
 import { useState, useMemo } from 'react'
 import { useSEO, faqSchema, breadcrumbSchema } from '../lib/useSEO'
 import { GREST, NOTAR_SATZ, GRUNDBUCH_SATZ, eur, pct } from '../lib/kaufnebenkosten'
@@ -69,6 +70,8 @@ export default function Rechner() {
       'Kostenloser Kaufnebenkosten-Rechner: Grunderwerbsteuer (3,5–6,5 %), Notar, Grundbuch und Makler sofort berechnen — mit Gesamtkosten auf einen Blick.',
     canonical: 'https://immopruef.de/grunderwerbsteuer-rechner',
     type: 'website',
+    modifiedTime: STAND_ISO,
+    author: true,
     jsonLd: [
       {
         '@context': 'https://schema.org',

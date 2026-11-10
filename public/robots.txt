@@ -3,35 +3,26 @@ Allow: /
 Disallow: /*?session_id=
 Disallow: /*?result=
 
-# KI-/Answer-Engine-Crawler ausdrücklich erlaubt (GEO/AEO)
+# KI-/Answer-Engine-Crawler ausdrücklich erlaubt (GEO/AEO).
+# Suche und nutzerausgelöste Abrufe: OpenAI, Anthropic, Perplexity, Google, Apple, Microsoft, Mistral, DuckDuckGo.
 User-agent: GPTBot
-Allow: /
-
 User-agent: OAI-SearchBot
-Allow: /
-
 User-agent: ChatGPT-User
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: Perplexity-User
-Allow: /
-
 User-agent: ClaudeBot
-Allow: /
-
+User-agent: Claude-SearchBot
+User-agent: Claude-User
 User-agent: Claude-Web
-Allow: /
-
+User-agent: PerplexityBot
+User-agent: Perplexity-User
 User-agent: Google-Extended
-Allow: /
-
+User-agent: Applebot
 User-agent: Applebot-Extended
-Allow: /
-
 User-agent: Bingbot
+User-agent: MistralAI-User
+User-agent: DuckAssistBot
+User-agent: meta-externalagent
 Allow: /
+Disallow: /*?session_id=
+Disallow: /*?result=
 
 Sitemap: https://immopruef.de/sitemap.xml

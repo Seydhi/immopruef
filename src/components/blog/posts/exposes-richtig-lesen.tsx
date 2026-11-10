@@ -172,7 +172,7 @@ export default function ExposesRichtigLesen() {
           <tr><td><strong>Sonderumlage</strong></td><td>Einmalzahlung wenn die Rücklage nicht reicht (z.B. für neues Dach).</td></tr>
           <tr><td><strong>Teilungserklärung</strong></td><td>Dokument das festlegt, was Ihnen gehört und was der Gemeinschaft.</td></tr>
           <tr><td><strong>Bodenrichtwert</strong></td><td>Offizieller Grundstückswert pro m² — Basis für Wertermittlung.</td></tr>
-          <tr><td><strong>GEG</strong></td><td>Gebäudeenergiegesetz — regelt Energieausweis und Heizungstauschpflicht.</td></tr>
+          <tr><td><strong>GEG</strong></td><td>Gebäudeenergiegesetz, seit 29. Juli 2026 abgelöst durch das Gebäudemodernisierungsgesetz (GModG). Regelt Energieausweis und energetische Nachrüstpflichten.</td></tr>
           <tr><td><strong>KfW/BAFA</strong></td><td>Staatliche Förderung für energetische Sanierung (Kredite und Zuschüsse).</td></tr>
           <tr><td><strong>Grunderwerbsteuer</strong></td><td>Steuer beim Immobilienkauf, 3,5–6,5 % je Bundesland.</td></tr>
         </tbody>

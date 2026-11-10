@@ -2,12 +2,13 @@ import type { ReactNode } from 'react'
 import { BLOG_POSTS } from './posts'
 import { kategorieForTags } from './kategorien'
 import AiImage from './AiImage'
-import { useSEO, articleSchema, breadcrumbSchema, faqSchema } from '../../lib/useSEO'
+import { useSEO, articleSchema, breadcrumbSchema, faqSchema, FOUNDER_ID } from '../../lib/useSEO'
 
 // Benannter Autor (E-E-A-T): Seydhan Cakmak ist laut /ueber-uns redaktionell
 // verantwortlich für die Inhalte; Energie-Artikel prüft zusätzlich Ahmad El Chouli.
 const AUTHOR_PERSON = {
   '@type': 'Person',
+  '@id': FOUNDER_ID,
   name: 'Seydhan Cakmak',
   jobTitle: 'Gründer & Inhaber',
   url: 'https://immopruef.de/ueber-uns',
@@ -32,6 +33,12 @@ export interface BlogMeta {
    * Darf nur zusammenfassen, was der Artikel selbst sagt.
    */
   kurzantwort?: string
+  /**
+   * Primärquellen (Gesetze, Behörden, Statistik), auf die sich der Artikel stützt.
+   * Nur geprüfte, erreichbare URLs — erscheinen sichtbar unter dem Text und als
+   * `citation` im BlogPosting-Schema.
+   */
+  quellen?: { label: string; url: string }[]
   readTime: string
   tags: string[]
   image?: string
@@ -148,6 +155,7 @@ export default function BlogLayout({ meta, children }: BlogLayoutProps) {
         tags: meta.tags,
         reviewedBy: energyReviewer,
         author: AUTHOR_PERSON,
+        quellen: meta.quellen,
       }),
       breadcrumbSchema([
         { name: 'Startseite', url: 'https://immopruef.de/' },
@@ -243,6 +251,21 @@ export default function BlogLayout({ meta, children }: BlogLayoutProps) {
       <div className="prose-immo">
         {children}
       </div>
+
+      {meta.quellen && meta.quellen.length > 0 && (
+        <section aria-label="Quellen und Rechtsgrundlagen" className="mt-10 border-t border-ink/10 pt-5">
+          <h2 className="font-display text-base font-medium text-green mb-2">Quellen und Rechtsgrundlagen</h2>
+          <ul className="space-y-1.5 text-sm text-ink-mid list-disc pl-5">
+            {meta.quellen.map((s) => (
+              <li key={s.url}>
+                <a href={s.url} target="_blank" rel="noopener noreferrer" className="underline decoration-green/30 hover:decoration-green transition-colors">
+                  {s.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       {/* Passende kostenlose Rechner — interne Verlinkung Blog→Tools */}
       {findMatchingRechner(meta).length > 0 && (

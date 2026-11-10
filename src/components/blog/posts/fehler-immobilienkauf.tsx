@@ -13,7 +13,7 @@ export default function FehlerImmobilienkauf() {
         <strong>Der Irrtum:</strong> "Die Wohnung kostet 320.000 €, das passt ins Budget."
       </p>
       <p>
-        <strong>Die Realität:</strong> Die Wohnung kostet 320.000 € plus 25.600 € Grunderwerbsteuer (Berlin, 6 %), plus 5.760 € Notar und Grundbuch, plus 11.424 € Makler. Das sind 362.784 €. Dazu kommen 15.000 € für neue Böden und Bad-Renovierung. Tatsächliche Investition: 377.784 €. Das sind 18 % mehr als der Kaufpreis.
+        <strong>Die Realität:</strong> Die Wohnung kostet 320.000 € plus 19.200 € Grunderwerbsteuer (Berlin, 6 %), plus 5.760 € Notar und Grundbuch, plus 11.424 € Makler. Das sind 356.384 €. Dazu kommen 15.000 € für neue Böden und Bad-Renovierung. Tatsächliche Investition: 371.384 €. Das sind 16 % mehr als der Kaufpreis.
       </p>
       <p>
         <strong>So vermeiden Sie es:</strong> Rechnen Sie bei jedem Exposé sofort die Kaufnebenkosten drauf. In den teuersten Bundesländern (Brandenburg, NRW, Saarland, Schleswig-Holstein) kommen allein durch Grunderwerbsteuer, Notar und Makler bis zu rund 12 % hinzu. Planen Sie zusätzlich 5–10 % für Renovierung und Einrichtung ein.

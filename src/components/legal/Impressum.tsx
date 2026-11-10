@@ -3,7 +3,7 @@ import { useSEO } from '../../lib/useSEO'
 export default function Impressum() {
   useSEO({
     title: 'Impressum',
-    description: 'Impressum von ImmoPrüf — Anbieter, Kontaktdaten und rechtliche Angaben gemäß § 5 DDG.',
+    description: 'Impressum von ImmoPrüf: Anbieter Seydhan Cakmak (Cakmak Digital), Anschrift in Osterholz-Scharmbeck, Kontakt und rechtliche Angaben gemäß § 5 DDG.',
     canonical: 'https://immopruef.de/impressum',
     type: 'website',
   })

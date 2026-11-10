@@ -1,3 +1,4 @@
+import { STAND_ISO, QUELLEN } from '../lib/quellen'
 import { useState, useMemo } from 'react'
 import { useSEO, faqSchema, breadcrumbSchema } from '../lib/useSEO'
 import { eur, pct } from '../lib/kaufnebenkosten'
@@ -101,6 +102,8 @@ export default function NotarkostenRechner() {
       'Kostenloser Notarkosten-Rechner: Notar- und Grundbuchkosten beim Hauskauf exakt nach GNotKG-Gebührentabelle — inklusive Grundschuld und Umsatzsteuer.',
     canonical: 'https://immopruef.de/notarkosten-rechner',
     type: 'website',
+    modifiedTime: STAND_ISO,
+    author: true,
     jsonLd: [
       {
         '@context': 'https://schema.org',
@@ -235,7 +238,7 @@ export default function NotarkostenRechner() {
         </p>
       </div>
 
-      <FaqSection title="Häufige Fragen zu den Notarkosten" items={faqs} />
+      <FaqSection quellen={QUELLEN.notar} title="Häufige Fragen zu den Notarkosten" items={faqs} />
 
       {/* CTA */}
       <div className="mt-8 bg-green text-cream rounded-xl p-6 text-center">

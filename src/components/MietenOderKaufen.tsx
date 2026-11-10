@@ -1,3 +1,4 @@
+import { STAND_ISO, QUELLEN } from '../lib/quellen'
 import { useState, useMemo } from 'react'
 import { useSEO, faqSchema, breadcrumbSchema } from '../lib/useSEO'
 import { eur } from '../lib/kaufnebenkosten'
@@ -119,6 +120,8 @@ export default function MietenOderKaufen() {
       'Kostenloser Mieten-oder-Kaufen-Rechner: Vermögensvergleich über die Jahre mit Break-even-Jahr — kaufen oder mieten und die Differenz anlegen?',
     canonical: 'https://immopruef.de/mieten-oder-kaufen-rechner',
     type: 'website',
+    modifiedTime: STAND_ISO,
+    author: true,
     jsonLd: [
       {
         '@context': 'https://schema.org',
@@ -246,7 +249,7 @@ export default function MietenOderKaufen() {
         </p>
       </div>
 
-      <FaqSection title="Häufige Fragen zu Mieten oder Kaufen" items={faqs} />
+      <FaqSection quellen={QUELLEN.finanzierung} title="Häufige Fragen zu Mieten oder Kaufen" items={faqs} />
 
       <div className="mt-8 bg-green text-cream rounded-xl p-6 text-center">
         <h2 className="font-display text-xl font-medium mb-2">Kaufen kann sich lohnen — aber passt das Objekt?</h2>

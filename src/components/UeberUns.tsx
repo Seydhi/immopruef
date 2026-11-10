@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useSEO, breadcrumbSchema } from '../lib/useSEO'
+import { useSEO, breadcrumbSchema, FOUNDER_ID, ORG_ID } from '../lib/useSEO'
 
 export default function UeberUns() {
   const [photoOk, setPhotoOk] = useState(true)
@@ -20,11 +20,12 @@ export default function UeberUns() {
         inLanguage: 'de-DE',
         mainEntity: {
           '@type': 'Organization',
+          '@id': ORG_ID,
           name: 'ImmoPrüf',
           url: 'https://immopruef.de',
           logo: 'https://immopruef.de/logo.png',
           foundingDate: '2026',
-          founder: { '@type': 'Person', name: 'Seydhan Cakmak' },
+          founder: { '@id': FOUNDER_ID },
           legalName: 'Seydhan Cakmak, handelnd unter Cakmak Digital',
           address: {
             '@type': 'PostalAddress',
@@ -40,9 +41,10 @@ export default function UeberUns() {
       {
         '@context': 'https://schema.org',
         '@type': 'Person',
+        '@id': FOUNDER_ID,
         name: 'Seydhan Cakmak',
         jobTitle: 'Gründer & Inhaber',
-        worksFor: { '@type': 'Organization', name: 'ImmoPrüf', url: 'https://immopruef.de' },
+        worksFor: { '@id': ORG_ID },
         url: 'https://immopruef.de/ueber-uns',
         image: 'https://immopruef.de/team/seydhan-cakmak.jpg',
         description: 'Gründer von ImmoPrüf, Wirtschaftsinformatiker und Immobilien-Enthusiast.',

@@ -72,7 +72,7 @@ export default function QuadratmeterpreisBewerten() {
 
       <h3>7. Kaufnebenkosten und Gesamtinvestition</h3>
       <p>
-        Der Quadratmeterpreis bezieht sich auf den Kaufpreis. Vergessen Sie nicht die Kaufnebenkosten, die je nach Bundesland zwischen 5,5 % und 12,5 % betragen:
+        Der Quadratmeterpreis bezieht sich auf den Kaufpreis. Vergessen Sie nicht die Kaufnebenkosten, die je nach Bundesland zwischen 5,5 % und rund 12 % betragen:
       </p>
       <table>
         <thead>

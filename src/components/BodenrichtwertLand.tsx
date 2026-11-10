@@ -1,3 +1,4 @@
+import { STAND_ISO, QUELLEN } from '../lib/quellen'
 import { useSEO, faqSchema, breadcrumbSchema } from '../lib/useSEO'
 import { pct } from '../lib/kaufnebenkosten'
 import { BODEN, bodenForSlug, BORIS_D } from '../lib/bodenrichtwert'
@@ -44,6 +45,8 @@ export default function BodenrichtwertLand({ slug }: { slug: string }) {
     description: `Bodenrichtwert in ${land} kostenlos online abfragen — über BORIS. So finden Sie den amtlichen Bodenwert je m² für Ihre Adresse, Schritt für Schritt.`,
     canonical: `https://immopruef.de/bodenrichtwert-${slug}`,
     type: 'website',
+    modifiedTime: STAND_ISO,
+    author: true,
     jsonLd: [
       faqSchema(faqs),
       breadcrumbSchema([
@@ -146,7 +149,7 @@ export default function BodenrichtwertLand({ slug }: { slug: string }) {
         </p>
       </div>
 
-      <FaqSection title={`Häufige Fragen zum Bodenrichtwert in ${land}`} items={faqs} />
+      <FaqSection quellen={QUELLEN.bodenrichtwert} title={`Häufige Fragen zum Bodenrichtwert in ${land}`} items={faqs} />
 
       {/* CTA */}
       <div className="mt-8 bg-green text-cream rounded-xl p-6 text-center">

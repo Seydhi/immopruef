@@ -1,3 +1,4 @@
+import { STAND_ISO, QUELLEN } from '../lib/quellen'
 import { useSEO, faqSchema, breadcrumbSchema } from '../lib/useSEO'
 import { eur, pct } from '../lib/kaufnebenkosten'
 import { REGIO, nkQuote, GUENSTIGSTER, TEUERSTER, NOTAR_SATZ, GRUNDBUCH_SATZ, MAKLER_DEFAULT } from '../lib/regional'
@@ -36,6 +37,8 @@ export default function KaufnebenkostenIndex() {
     description: `Kaufnebenkosten aller 16 Bundesländer im Vergleich 2026: Bei 400.000 € Kaufpreis trennen günstigstes und teuerstes Land bis zu ${eur(diffMax).replace(/\s?€/, '')} € Grunderwerbsteuer.`,
     canonical: 'https://immopruef.de/kaufnebenkosten-index',
     type: 'website',
+    modifiedTime: STAND_ISO,
+    author: true,
     jsonLd: [
       {
         '@context': 'https://schema.org',
@@ -116,7 +119,7 @@ export default function KaufnebenkostenIndex() {
         </p>
       </div>
 
-      <FaqSection title="Häufige Fragen zu den Kaufnebenkosten je Bundesland" items={faqs} />
+      <FaqSection quellen={QUELLEN.kaufnebenkosten} title="Häufige Fragen zu den Kaufnebenkosten je Bundesland" items={faqs} />
 
       <div className="mt-8 bg-green text-cream rounded-xl p-6 text-center">
         <h2 className="font-display text-xl font-medium mb-2">Konkretes Objekt im Blick?</h2>

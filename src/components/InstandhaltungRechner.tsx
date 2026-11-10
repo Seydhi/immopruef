@@ -1,3 +1,4 @@
+import { STAND_ISO, QUELLEN } from '../lib/quellen'
 import { useState, useMemo } from 'react'
 import { useSEO, faqSchema, breadcrumbSchema } from '../lib/useSEO'
 import { eur } from '../lib/kaufnebenkosten'
@@ -54,6 +55,8 @@ export default function InstandhaltungRechner() {
       'Kostenloser Rechner für die Instandhaltungsrücklage: empfohlene Zuführung nach Faustregel und Peterscher Formel — mit Ampel, ob Ihre Rücklage reicht.',
     canonical: 'https://immopruef.de/instandhaltungsruecklage-rechner',
     type: 'website',
+    modifiedTime: STAND_ISO,
+    author: true,
     jsonLd: [
       {
         '@context': 'https://schema.org',
@@ -124,7 +127,7 @@ export default function InstandhaltungRechner() {
         </p>
       </div>
 
-      <FaqSection title="Häufige Fragen zur Instandhaltungsrücklage" items={faqs} />
+      <FaqSection quellen={QUELLEN.instandhaltung} title="Häufige Fragen zur Instandhaltungsrücklage" items={faqs} />
 
       <div className="mt-8 bg-green text-cream rounded-xl p-6 text-center">
         <h2 className="font-display text-xl font-medium mb-2">Eigentumswohnung im Blick?</h2>

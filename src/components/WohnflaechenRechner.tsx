@@ -1,3 +1,4 @@
+import { STAND_ISO, QUELLEN } from '../lib/quellen'
 import { useState, useMemo } from 'react'
 import { useSEO, faqSchema, breadcrumbSchema } from '../lib/useSEO'
 import { eur } from '../lib/kaufnebenkosten'
@@ -42,6 +43,8 @@ export default function WohnflaechenRechner() {
       'Kostenloser Wohnflächenrechner nach WoFlV: anrechenbare Fläche aus Dachschrägen und Balkon berechnen und den echten Quadratmeterpreis ermitteln.',
     canonical: 'https://immopruef.de/wohnflaechen-rechner',
     type: 'website',
+    modifiedTime: STAND_ISO,
+    author: true,
     jsonLd: [
       {
         '@context': 'https://schema.org',
@@ -127,7 +130,7 @@ export default function WohnflaechenRechner() {
         </p>
       </div>
 
-      <FaqSection title="Häufige Fragen zur Wohnfläche" items={faqs} />
+      <FaqSection quellen={QUELLEN.wohnflaeche} title="Häufige Fragen zur Wohnfläche" items={faqs} />
 
       <div className="mt-8 bg-green text-cream rounded-xl p-6 text-center">
         <h2 className="font-display text-xl font-medium mb-2">Stimmen die Angaben im Exposé?</h2>

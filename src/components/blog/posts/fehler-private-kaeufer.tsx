@@ -71,9 +71,9 @@ export default function FehlerPrivateKaeufer() {
           <tr><th>Kaufpreis</th><th>Nebenkosten (Minimum)</th><th>Nebenkosten (Maximum)</th></tr>
         </thead>
         <tbody>
-          <tr><td>250.000 €</td><td>+13.750 € (5,5 %)</td><td>+31.250 € (12,5 %)</td></tr>
-          <tr><td>350.000 €</td><td>+19.250 €</td><td>+43.750 €</td></tr>
-          <tr><td>450.000 €</td><td>+24.750 €</td><td>+56.250 €</td></tr>
+          <tr><td>250.000 €</td><td>+13.750 € (5,5 %)</td><td>+30.175 € (12,07 %)</td></tr>
+          <tr><td>350.000 €</td><td>+19.250 €</td><td>+42.245 €</td></tr>
+          <tr><td>450.000 €</td><td>+24.750 €</td><td>+54.315 €</td></tr>
         </tbody>
       </table>
       <p>

@@ -1,3 +1,4 @@
+import { STAND_ISO, QUELLEN } from '../lib/quellen'
 import { useSEO, faqSchema, breadcrumbSchema } from '../lib/useSEO'
 import { eur, pct } from '../lib/kaufnebenkosten'
 import {
@@ -61,6 +62,8 @@ export default function RegionalKaufnebenkosten({ slug }: { slug: string }) {
     description: `Kaufnebenkosten in ${land}: Grunderwerbsteuer ${pct(satz)}, dazu Notar, Grundbuch und Makler — rund ${pct(quoteMit)} des Kaufpreises. Mit Rechenbeispielen.`,
     canonical: `https://immopruef.de/kaufnebenkosten-${slug}`,
     type: 'website',
+    modifiedTime: STAND_ISO,
+    author: true,
     jsonLd: [
       faqSchema(faqs),
       breadcrumbSchema([
@@ -152,7 +155,7 @@ export default function RegionalKaufnebenkosten({ slug }: { slug: string }) {
         </p>
       </div>
 
-      <FaqSection title={`Häufige Fragen zu den Kaufnebenkosten in ${land}`} items={faqs} />
+      <FaqSection quellen={QUELLEN.kaufnebenkosten} title={`Häufige Fragen zu den Kaufnebenkosten in ${land}`} items={faqs} />
 
       <div className="mt-8 bg-green text-cream rounded-xl p-6 text-center">
         <h2 className="font-display text-xl font-medium mb-2">Objekt in {land} im Blick?</h2>

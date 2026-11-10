@@ -87,7 +87,7 @@ export default function BaulastenGrunddienstbarkeiten() {
       
       <p>Eine Besonderheit, die viele Käufer nicht kennen: In Bayern gibt es als einzigem Bundesland kein Baulastenverzeichnis. Vergleichbare Sicherungen werden dort über das Grundbuch (Grunddienstbarkeiten) oder über den Bebauungsplan geregelt. Brandenburg führte bis 2016 ebenfalls keines, hat aber seit dem 1. Juli 2016 wieder ein Baulastenverzeichnis (Paragraf 84 BbgBO).</p>
       
-      <p>Für die Prüfung bedeutet das nicht, dass es dort keine entsprechenden Lasten gäbe, sondern dass sie an anderer Stelle dokumentiert sind. In diesen beiden Ländern verlagert sich die Prüfung stärker auf das Grundbuch und auf den Bebauungsplan der Gemeinde. Welches Verzeichnis konkret zuständig ist, klären Sie am besten direkt beim Bauordnungsamt vor Ort, weil die Regelungen je nach Bundesland unterschiedlich sind. Prüfen Sie hier den aktuellen Stand, statt sich auf eine pauschale Auskunft zu verlassen.</p>
+      <p>Für die Prüfung bedeutet das nicht, dass es dort keine entsprechenden Lasten gäbe, sondern dass sie an anderer Stelle dokumentiert sind. In Bayern verlagert sich die Prüfung stärker auf das Grundbuch und auf den Bebauungsplan der Gemeinde. Welches Verzeichnis konkret zuständig ist, klären Sie am besten direkt beim Bauordnungsamt vor Ort, weil die Regelungen je nach Bundesland unterschiedlich sind. Prüfen Sie hier den aktuellen Stand, statt sich auf eine pauschale Auskunft zu verlassen.</p>
       
       <h2>Wie sich Lasten auf den Wert auswirken: ein Beispiel</h2>
       

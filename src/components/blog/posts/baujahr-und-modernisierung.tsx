@@ -133,7 +133,7 @@ export default function BaujahrUndModernisierung() {
         <strong>Beispiel:</strong> Baujahr 1978, neue Heizung 2019 und neue Fenster 2020. Dach, Elektrik und Fassade original.
       </p>
       <p>
-        <strong>Bewertung:</strong> Die teuersten laufenden Kosten (Heizung, Fenster) sind erledigt. Aber Dach (46 Jahre alt) und Elektrik (46 Jahre alt) stehen als nächstes an. Geschätzter Restbedarf: 25.000–45.000 €. Preis sollte entsprechend unter Vollanierung liegen.
+        <strong>Bewertung:</strong> Die teuersten laufenden Kosten (Heizung, Fenster) sind erledigt. Aber Dach (48 Jahre alt) und Elektrik (48 Jahre alt) stehen als nächstes an. Geschätzter Restbedarf: 25.000–45.000 €. Preis sollte entsprechend unter Vollanierung liegen.
       </p>
 
       <h3>Kombination 3: Altes Baujahr + keine Sanierung</h3>

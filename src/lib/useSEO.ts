@@ -10,11 +10,22 @@ export interface SEOMeta {
   modifiedTime?: string               // ISO 8601 für Article
   tags?: string[]                     // Article tags
   jsonLd?: object | object[]          // Schema.org JSON-LD
+  author?: boolean                    // WebPage-Knoten bekommt den Betreiber als Autor (fachliche Seiten)
 }
 
 const SITE_NAME = 'ImmoPrüf'
 const SITE_URL = 'https://immopruef.de'
 const DEFAULT_IMAGE = 'https://immopruef.de/og-image.png'
+// Feste @id-Anker: jede Seite verweist auf dieselbe Organisation/Website,
+// damit Suchmaschinen und KI-Systeme alle Seiten einer Entität zuordnen.
+export const ORG_ID = `${SITE_URL}/#organization`
+export const WEBSITE_ID = `${SITE_URL}/#website`
+export const FOUNDER_ID = `${SITE_URL}/ueber-uns#seydhan-cakmak`
+
+const typesOf = (o: object): string[] => {
+  const t = (o as { '@type'?: string | string[] })['@type']
+  return Array.isArray(t) ? t : t ? [t] : []
+}
 
 /**
  * useSEO — setzt <title>, <meta>, <link rel="canonical"> und JSON-LD
@@ -64,6 +75,11 @@ export function useSEO(meta: SEOMeta): void {
       }
     }
 
+    // Aktualisierungsdatum auch für Nicht-Artikel-Seiten (Rechner, Länderseiten)
+    const ogUpd = document.querySelector('meta[property="og:updated_time"]')
+    if (meta.modifiedTime) setMetaProp('og:updated_time', meta.modifiedTime)
+    else if (ogUpd) ogUpd.remove()
+
     // KI-Transparenz (Art. 50 KI-VO): maschinenlesbarer Hinweis, dass Inhalte
     // KI-gestützt entstehen. Bei Artikeln zusätzlich der redaktionelle Status.
     setMeta('ai-generated', meta.type === 'article' ? 'ai-assisted, human-reviewed' : 'ai-assisted')
@@ -78,8 +94,29 @@ export function useSEO(meta: SEOMeta): void {
     // JSON-LD Strukturierte Daten
     // Erst ALLE bestehenden useSEO-managed Scripts löschen (von vorheriger Seite)
     document.querySelectorAll('script[data-useseo="1"]').forEach(el => el.remove())
-    if (meta.jsonLd) {
-      const items = Array.isArray(meta.jsonLd) ? meta.jsonLd : [meta.jsonLd]
+    {
+      const items: object[] = meta.jsonLd ? (Array.isArray(meta.jsonLd) ? [...meta.jsonLd] : [meta.jsonLd]) : []
+      const present = new Set(items.flatMap(typesOf))
+      // Seitenknoten: verbindet jede URL mit Website + Organisation und trägt das Änderungsdatum.
+      const hasPage = ['WebPage', 'AboutPage', 'CollectionPage', 'ContactPage', 'BlogPosting', 'Article'].some((t) => present.has(t))
+      if (!hasPage) {
+        items.push({
+          '@context': 'https://schema.org',
+          '@type': 'WebPage',
+          '@id': `${canonical}#webpage`,
+          url: canonical,
+          name: fullTitle,
+          description: meta.description,
+          inLanguage: 'de-DE',
+          isPartOf: { '@id': WEBSITE_ID },
+          publisher: { '@id': ORG_ID },
+          author: meta.author ? { '@id': FOUNDER_ID } : undefined,
+          datePublished: meta.publishedTime,
+          dateModified: meta.modifiedTime,
+        })
+      }
+      if (!present.has('Organization')) items.push(organizationSchema())
+      if (!present.has('WebSite')) items.push(webSiteSchema())
       items.forEach((data) => {
         const script = document.createElement('script')
         script.type = 'application/ld+json'
@@ -97,7 +134,7 @@ export function useSEO(meta: SEOMeta): void {
         document.querySelectorAll('meta[property="article:tag"]').forEach(el => el.remove())
       }
     }
-  }, [meta.title, meta.description, meta.canonical, meta.image, meta.type, meta.publishedTime, meta.modifiedTime, meta.tags, meta.jsonLd])
+  }, [meta.title, meta.description, meta.canonical, meta.image, meta.type, meta.publishedTime, meta.modifiedTime, meta.tags, meta.jsonLd, meta.author])
 }
 
 // ─── Helpers ───
@@ -138,10 +175,14 @@ export function articleSchema(opts: {
   tags?: string[]
   reviewedBy?: object
   author?: object
+  quellen?: { label: string; url: string }[]
 }): object {
   return {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
+    ...(opts.quellen?.length
+      ? { citation: opts.quellen.map((q) => ({ '@type': 'CreativeWork', name: q.label, url: q.url })) }
+      : {}),
     headline: opts.title,
     description: opts.description,
     image: opts.image || DEFAULT_IMAGE,
@@ -153,9 +194,12 @@ export function articleSchema(opts: {
     author: opts.author || { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
     publisher: {
       '@type': 'Organization',
+      '@id': ORG_ID,
       name: SITE_NAME,
+      url: SITE_URL,
       logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo.png` },
     },
+    isPartOf: { '@id': WEBSITE_ID },
     mainEntityOfPage: { '@type': 'WebPage', '@id': opts.url },
     // Schema.org accepts both array and CSV — array is preferred per spec
     keywords: opts.tags && opts.tags.length > 0 ? opts.tags : undefined,
@@ -182,14 +226,19 @@ export function organizationSchema(): object {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
+    '@id': ORG_ID,
     name: SITE_NAME,
+    alternateName: ['ImmoPruef', 'immopruef.de'],
     legalName: 'Seydhan Cakmak, handelnd unter Cakmak Digital',
     url: SITE_URL,
     logo: `${SITE_URL}/logo.png`,
-    description: 'KI-gestützte Immobilienanalyse für Käufer in Deutschland — Preisbewertung, Standortanalyse, Finanzierungs-Check und mehr.',
+    description: 'ImmoPrüf ist ein Online-Tool für private Immobilienkäufer in Deutschland: Aus einem Exposé-Link oder PDF entsteht eine KI-gestützte Ersteinschätzung zu Preis, Kaufnebenkosten, Standort, Risiken und Finanzierung. Dazu kostenlose Immobilien-Rechner und Ratgeber.',
     foundingDate: '2026',
+    areaServed: { '@type': 'Country', name: 'Deutschland' },
+    knowsAbout: ['Immobilienkauf', 'Exposé-Prüfung', 'Kaufnebenkosten', 'Grunderwerbsteuer', 'Baufinanzierung', 'Bodenrichtwert'],
     founder: {
       '@type': 'Person',
+      '@id': FOUNDER_ID,
       name: 'Seydhan Cakmak',
       url: `${SITE_URL}/ueber-uns`,
       sameAs: ['https://www.linkedin.com/in/seydhan-cakmak'],
@@ -215,10 +264,12 @@ export function webSiteSchema(): object {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
+    '@id': WEBSITE_ID,
     name: SITE_NAME,
+    alternateName: 'immopruef.de',
     url: SITE_URL,
     inLanguage: 'de-DE',
-    publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
+    publisher: { '@id': ORG_ID },
   }
 }
 

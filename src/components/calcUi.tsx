@@ -41,6 +41,8 @@ export function Row({ label, sub, value, strong = false }: { label: string; sub?
   )
 }
 
+import { STAND_ISO, STAND_TEXT, type Quelle } from '../lib/quellen'
+
 export interface FaqItem { question: string; answer: string }
 
 /**
@@ -48,9 +50,10 @@ export interface FaqItem { question: string; answer: string }
  * gerenderte Text und das FAQPage-JSON-LD wortgleich sind. Immer ausgeklappt,
  * damit die Antworten im prerenderten HTML stehen und ohne Klick lesbar sind.
  */
-export function FaqSection({ items, title = 'Häufige Fragen' }: { items: FaqItem[]; title?: string }) {
+export function FaqSection({ items, title = 'Häufige Fragen', quellen }: { items: FaqItem[]; title?: string; quellen?: Quelle[] }) {
   if (items.length === 0) return null
   return (
+    <>
     <section className="mt-8">
       <h2 className="font-display text-xl font-semibold text-ink mb-3">{title}</h2>
       <div className="space-y-3">
@@ -62,5 +65,34 @@ export function FaqSection({ items, title = 'Häufige Fragen' }: { items: FaqIte
         ))}
       </div>
     </section>
+    <StandQuellen quellen={quellen} />
+    </>
+  )
+}
+
+/**
+ * Sichtbare Stand-, Verantwortlichen- und Quellenzeile. Datum, Autor und
+ * Primärquellen sind die Signale, an denen Suchmaschinen und KI-Assistenten
+ * die Zitierfähigkeit einer Seite festmachen.
+ */
+export function StandQuellen({ quellen }: { quellen?: Quelle[] }) {
+  return (
+    <aside aria-label="Stand und Quellen" className="mt-6 border-t border-ink/10 pt-4 text-[12px] text-ink-mid leading-relaxed">
+      <p>
+        Zuletzt geprüft: <time dateTime={STAND_ISO}>{STAND_TEXT}</time> · Verantwortlich:{' '}
+        <a href="/ueber-uns" className="text-green hover:text-green-mid underline">Seydhan Cakmak</a>, ImmoPrüf
+      </p>
+      {quellen && quellen.length > 0 && (
+        <p className="mt-1.5">
+          Quellen und Rechtsgrundlagen:{' '}
+          {quellen.map((q, i) => (
+            <span key={q.url}>
+              {i > 0 && ' · '}
+              <a href={q.url} target="_blank" rel="noopener noreferrer" className="text-green hover:text-green-mid underline">{q.label}</a>
+            </span>
+          ))}
+        </p>
+      )}
+    </aside>
   )
 }

@@ -34,10 +34,10 @@ export default function NebenkostenLaufendeKosten() {
         </thead>
         <tbody>
           <tr><td><strong>Grunderwerbsteuer</strong></td><td>3,5–6,5 % (je Bundesland)</td><td>12.250–22.750 €</td></tr>
-          <tr><td><strong>Notar</strong></td><td>ca. 1,0–1,5 %</td><td>3.500–5.250 €</td></tr>
+          <tr><td><strong>Notar</strong></td><td>ca. 1,5 %</td><td>5.250 €</td></tr>
           <tr><td><strong>Grundbuch</strong></td><td>ca. 0,5 %</td><td>1.750 €</td></tr>
           <tr><td><strong>Makler (Käuferanteil)</strong></td><td>0–3,57 %</td><td>0–12.495 €</td></tr>
-          <tr><td><strong>Gesamt</strong></td><td><strong>5,0–12,07 %</strong></td><td><strong>17.500–42.245 €</strong></td></tr>
+          <tr><td><strong>Gesamt</strong></td><td><strong>5,5–12,07 %</strong></td><td><strong>19.250–42.245 €</strong></td></tr>
         </tbody>
       </table>
       <p>

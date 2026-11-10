@@ -1,3 +1,4 @@
+import { STAND_ISO, QUELLEN } from '../lib/quellen'
 import { useState, useMemo } from 'react'
 import { useSEO, faqSchema, breadcrumbSchema } from '../lib/useSEO'
 import { GREST, grestSatzFor, NOTAR_SATZ, GRUNDBUCH_SATZ, MAKLER_DEFAULT, eur, pct } from '../lib/kaufnebenkosten'
@@ -50,6 +51,8 @@ export default function Budgetrechner() {
       'Kostenloser Budgetrechner: Aus Nettoeinkommen, Eigenkapital, Zins und Tilgung sofort Monatsrate, Darlehenssumme und leistbaren Kaufpreis berechnen.',
     canonical: 'https://immopruef.de/budgetrechner',
     type: 'website',
+    modifiedTime: STAND_ISO,
+    author: true,
     jsonLd: [
       {
         '@context': 'https://schema.org',
@@ -191,7 +194,7 @@ export default function Budgetrechner() {
         </p>
       </div>
 
-      <FaqSection title="Häufige Fragen zum Immobilien-Budget" items={faqs} />
+      <FaqSection quellen={QUELLEN.finanzierung} title="Häufige Fragen zum Immobilien-Budget" items={faqs} />
 
       <div className="mt-8 bg-green text-cream rounded-xl p-6 text-center">
         <h2 className="font-display text-xl font-medium mb-2">Passendes Objekt im Budget gefunden?</h2>

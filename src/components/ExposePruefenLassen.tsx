@@ -1,3 +1,4 @@
+import { STAND_ISO } from '../lib/quellen'
 import { useSEO, breadcrumbSchema, faqSchema } from '../lib/useSEO'
 
 // Landingpage für das Ziel-Keyword „Exposé prüfen lassen" (transaktionale Suchintention).
@@ -60,6 +61,8 @@ export default function ExposePruefenLassen() {
       'Immobilien-Exposé prüfen lassen ab 19 €: Preis, Kaufnebenkosten, Warnsignale und Finanzierung — käuferseitig, ohne Makler-Leads. Ergebnis in Minuten.',
     canonical: 'https://immopruef.de/expose-pruefen-lassen',
     type: 'website',
+    modifiedTime: STAND_ISO,
+    author: true,
     jsonLd: [
       {
         '@context': 'https://schema.org',

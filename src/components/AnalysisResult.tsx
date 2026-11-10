@@ -821,6 +821,10 @@ function CoverPage({ objektdaten, ampel, ampelText, preisProQm, regionalerDurchs
           <svg aria-hidden="true" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
           Original-Exposé öffnen
         </a>
+      ) : cleanUrl === 'muster' ? (
+        <span className="inline-flex items-center gap-1.5 text-xs text-ink-light">
+          Musterobjekt mit fiktiven Beispieldaten, kein echtes Inserat
+        </span>
       ) : (
         <span className="inline-flex items-center gap-1.5 text-xs text-ink-light">
           <svg aria-hidden="true" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>

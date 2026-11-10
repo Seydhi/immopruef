@@ -21,7 +21,7 @@ const PORTAL: Record<string, { name: string; url?: string; note?: string }> = {
   'Baden-Württemberg': { name: 'BORIS-BW', url: 'https://www.gutachterausschuesse-bw.de/' },
   'Bayern': { name: 'BORIS-Bayern', url: 'https://www.boris-bayern.de/', note: 'Bayern stellt die Bodenrichtwerte aller Gutachterausschüsse zentral über BORIS-Bayern bereit.' },
   'Berlin': { name: 'BORIS Berlin', url: 'https://www.berlin.de/gutachterausschuss/marktinformationen/bodenrichtwerte/', note: 'In Berlin ermittelt ein zentraler Gutachterausschuss die Bodenrichtwerte für das gesamte Stadtgebiet.' },
-  'Brandenburg': { name: 'BORIS Brandenburg', url: 'https://www.boris-brandenburg.de/' },
+  'Brandenburg': { name: 'BORIS Brandenburg', url: 'https://boris.brandenburg.de/' },
   'Bremen': { name: 'BORIS Bremen', url: 'https://www.gutachterausschuss.bremen.de/', note: 'Für Bremen und Bremerhaven bestehen jeweils eigene Gutachterausschüsse.' },
   'Hamburg': { name: 'BORIS-HH', url: 'https://geoportal-hamburg.de/boris/', note: 'In Hamburg ist ein zentraler Gutachterausschuss für das gesamte Stadtgebiet zuständig.' },
   'Hessen': { name: 'BORIS Hessen', url: 'https://hvbg.hessen.de/immobilienwerte/boris-hessen' },
@@ -32,7 +32,7 @@ const PORTAL: Record<string, { name: string; url?: string; note?: string }> = {
   'Saarland': { name: 'das Bodenrichtwertportal des Saarlandes' },
   'Sachsen': { name: 'BORIS.Sachsen', url: 'https://www.boris.sachsen.de/' },
   'Sachsen-Anhalt': { name: 'das Bodenrichtwertportal Sachsen-Anhalt' },
-  'Schleswig-Holstein': { name: 'BORIS-SH', url: 'https://www.schleswig-holstein.de/DE/GAA/Bodenrichtwerte/bodenrichtwerte_node.html' },
+  'Schleswig-Holstein': { name: 'BORIS-SH', url: 'https://www.schleswig-holstein.de/gaa/DE/Bodenrichtwerte/bodenrichtwerte_node.html' },
   'Thüringen': { name: 'BORIS-TH', url: 'https://tlbg.thueringen.de/' },
 }
 

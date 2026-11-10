@@ -1,3 +1,4 @@
+import { STAND_ISO } from '../lib/quellen'
 import { useState, useMemo } from 'react'
 import { useSEO, faqSchema, breadcrumbSchema } from '../lib/useSEO'
 import { eur, pct } from '../lib/kaufnebenkosten'
@@ -48,6 +49,8 @@ export default function MietrenditeRechner() {
       'Kostenloser Rechner für Mietrendite und Kaufpreisfaktor: aus Kaufpreis, Wohnfläche und Kaltmiete sofort Brutto- und Nettorendite berechnen — mit Einordnung.',
     canonical: 'https://immopruef.de/mietrendite-rechner',
     type: 'website',
+    modifiedTime: STAND_ISO,
+    author: true,
     jsonLd: [
       {
         '@context': 'https://schema.org',

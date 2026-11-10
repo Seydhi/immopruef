@@ -19,6 +19,7 @@ export default function Landing() {
     description: 'Strukturierte Ersteinschätzung zu Angebotspreis, Standort, Risiken und offenen Prüfpunkten — vor Besichtigung und Kauf. Ab 19 €, Premium-Report 79 €.',
     canonical: 'https://immopruef.de/',
     type: 'website',
+    modifiedTime: '2026-11-10',
     jsonLd: [
       organizationSchema(),
       webSiteSchema(),

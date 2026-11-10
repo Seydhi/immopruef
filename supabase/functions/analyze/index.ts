@@ -643,7 +643,10 @@ function buildMessageParams(
   userContent: Array<Record<string, unknown>>,
   maxTokens: number,
   isPremium: boolean,
-  structured: boolean
+  structured: boolean,
+  // Fortsetzung nach stop_reason "pause_turn": der pausierte Assistant-Inhalt wird
+  // unverändert angehängt — die API setzt die Server-Tool-Schleife dann fort.
+  resumeContent?: unknown[]
 ): Record<string, unknown> {
   // Premium gets more web searches for deeper research
   const webSearchMaxUses = isPremium ? 28 : 12
@@ -669,13 +672,34 @@ function buildMessageParams(
     // nur Token. max_content_tokens begrenzt lange PDFs.
     tools: [
       { type: 'web_search_20260209', name: 'web_search', max_uses: webSearchMaxUses },
-      { type: 'web_fetch_20260209', name: 'web_fetch', max_uses: webFetchMaxUses, max_content_tokens: 20000 },
+      { type: 'web_fetch_20260209', name: 'web_fetch', max_uses: webFetchMaxUses, max_content_tokens: 10000 },
     ],
     // userContent: Text-Block (URL-Fall) ODER document/image-Blöcke + Instruktions-
     // Text (PDF-/Foto-Upload). cache_control sitzt auf dem LETZTEN Block und cached
     // damit den gesamten Prefix inkl. der Dokumente.
-    messages: [{ role: 'user', content: userContent }],
+    messages: resumeContent?.length
+      ? [{ role: 'user', content: userContent }, { role: 'assistant', content: resumeContent }]
+      : [{ role: 'user', content: userContent }],
   }
+}
+
+// Max. Fortsetzungen eines pausierten Turns, bevor der normale Retry-Pfad greift.
+const MAX_CONTINUATIONS = 4
+
+type ContinueState = { n: number; content: unknown[] }
+const continueOf = (row: unknown): ContinueState | null => {
+  const c = (row as { result?: { _continue?: ContinueState } } | null)?.result?._continue
+  return c && Array.isArray(c.content) && c.content.length > 0 ? c : null
+}
+
+/** Interne Felder (pausierter Turn, Diagnose) gehören nicht in die Client-Antwort. */
+function publicRows<T extends { result?: unknown }>(rows: T[] | null | undefined): T[] {
+  return (rows || []).map((row) => {
+    const res = row.result as Record<string, unknown> | null | undefined
+    if (!res || typeof res !== 'object' || !('_continue' in res || '_debug_last_error' in res)) return row
+    const { _continue: _c, _debug_last_error: _d, ...rest } = res
+    return { ...row, result: Object.keys(rest).length ? rest : null }
+  })
 }
 
 async function submitBatch(
@@ -779,7 +803,33 @@ function extractClaudeJson(data: { content: Array<{ type: string; text?: string 
       lastError = e
     }
   }
+
+  // Mit Websuche/Web-Fetch zerlegt die API zitierten Text in VIELE Text-Blöcke
+  // (ein Block je Zitat-Spanne) — das JSON steckt dann in keinem Einzelblock.
+  // Daher: zusammenhängende Text-Blöcke nach dem letzten Tool-Block verbinden,
+  // danach alle Text-Blöcke.
+  let lastTool = -1
+  data.content.forEach((b, i) => { if (b.type !== 'text' && b.type !== 'thinking' && b.type !== 'redacted_thinking') lastTool = i })
+  const joinText = (blocks: Array<{ type: string; text?: string }>) =>
+    blocks.filter((b) => b.type === 'text').map((b) => b.text ?? '').join('')
+  for (const joined of [joinText(data.content.slice(lastTool + 1)), joinText(data.content)]) {
+    if (!joined.includes('{')) continue
+    try {
+      const parsed = parseJson(joined)
+      if (parsed && typeof parsed === 'object') return parsed
+    } catch (e) {
+      lastError = e
+    }
+  }
   throw lastError instanceof Error ? lastError : new Error('Could not parse JSON from Claude response')
+}
+
+/** Kompakte Diagnose einer unbrauchbaren Antwort (Block-Typen, Text-Anfang/-Ende). */
+function describeMessage(msg: BatchMessage): Record<string, unknown> {
+  const types: Record<string, number> = {}
+  for (const b of msg.content || []) types[b.type] = (types[b.type] || 0) + 1
+  const text = (msg.content || []).filter((b) => b.type === 'text').map((b) => b.text ?? '').join('')
+  return { types, text_chars: text.length, text_start: text.slice(0, 300), text_end: text.slice(-300), last_block: msg.content?.at(-1)?.type ?? null }
 }
 
 function parseJson(text: string): unknown {
@@ -1797,7 +1847,7 @@ Deno.serve(async (req) => {
     const allDone = allAnalyses.every((a: { status: string }) => a.status === 'completed' || a.status === 'failed')
     if (allDone) {
       await supabase.from('orders').update({ status: 'completed' }).eq('id', order.id)
-      return jsonResponse({ order_status: 'completed', analyses: allAnalyses })
+      return jsonResponse({ order_status: 'completed', analyses: publicRows(allAnalyses) })
     }
 
     // ═══ Batch-Verarbeitung: Phase B (Ergebnisse abholen) → Phase A (submitten) ═══
@@ -2253,6 +2303,27 @@ ${kaeuferBlock(opts)}`,
         if (r?.type === 'succeeded' && r.message) {
           lastError = { stage: 'parse', stop_reason: r.message.stop_reason ?? null, usage: r.message.usage ?? null }
           logBatchMessage(a.id, r.message)
+
+          // pause_turn: Die serverseitige Tool-Schleife (Websuche/Web-Fetch) hat ihr
+          // Iterationslimit erreicht — KEIN Fehler und keine fertige Antwort. Inhalt
+          // sichern und denselben Turn fortsetzen, ohne einen Retry zu verbrauchen.
+          if (r.message.stop_reason === 'pause_turn') {
+            const prev = continueOf(a)
+            const n = (prev?.n ?? 0) + 1
+            if (n <= MAX_CONTINUATIONS) {
+              const prevErr = (a as unknown as { result?: { _debug_last_error?: unknown } }).result?._debug_last_error
+              await supabase.from('analyses').update({
+                status: 'pending', batch_id: null, processing_started_at: null,
+                result: {
+                  _continue: { n, content: [...(prev?.content ?? []), ...r.message.content] },
+                  ...(prevErr ? { _debug_last_error: prevErr } : {}),
+                },
+              }).eq('id', a.id)
+              console.log(`Analyse ${a.id}: pause_turn → Fortsetzung ${n}/${MAX_CONTINUATIONS}`)
+              continue
+            }
+            lastError.detail = `pause_turn nach ${MAX_CONTINUATIONS} Fortsetzungen`
+          } else
           try {
             const parsed = extractClaudeJson(r.message) as Record<string, unknown>
 
@@ -2291,6 +2362,7 @@ ${kaeuferBlock(opts)}`,
           } catch (e) {
             console.error(`Analyse ${a.id}: Batch-Ergebnis unbrauchbar:`, e)
             lastError.detail = e instanceof Error ? e.message : String(e)
+            lastError.message = describeMessage(r.message)
           }
         } else {
           console.error(`Analyse ${a.id}: Batch-Result ${r ? r.type : 'nicht gefunden'}`, r?.error ?? '')
@@ -2348,7 +2420,8 @@ ${kaeuferBlock(opts)}`,
           // Schema-Zwang nur, wenn die API ihn für diese Analyse nicht bereits abgelehnt hat
           const prevErr = (a as unknown as { result?: { _debug_last_error?: { schema_failed?: boolean } } }).result?._debug_last_error
           const structured = STRUCTURED_OUTPUT && !prevErr?.schema_failed
-          requests.push({ custom_id: a.id, params: buildMessageParams(systemPrompt, userContent, maxTokens, isPremium, structured) })
+          const resume = continueOf(a)
+          requests.push({ custom_id: a.id, params: buildMessageParams(systemPrompt, userContent, maxTokens, isPremium, structured, resume?.content) })
         } catch (e) {
           console.error(`buildUserMessage fehlgeschlagen für ${a.id}:`, e)
           // Claim lösen — nächster Poll versucht es erneut
@@ -2390,7 +2463,7 @@ ${kaeuferBlock(opts)}`,
     await finalize()
     const { data: finalState } = await supabase.from('analyses').select('*').eq('order_id', order.id)
     const done = ((finalState || []) as Row[]).every((a) => a.status === 'completed' || a.status === 'failed')
-    return jsonResponse({ order_status: done ? 'completed' : 'processing', analyses: finalState })
+    return jsonResponse({ order_status: done ? 'completed' : 'processing', analyses: publicRows(finalState) })
 
   } catch (err) {
     console.error('Analyze error:', err)

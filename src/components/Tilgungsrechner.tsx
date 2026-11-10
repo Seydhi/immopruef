@@ -1,3 +1,4 @@
+import { STAND_ISO, QUELLEN } from '../lib/quellen'
 import { useState, useMemo } from 'react'
 import { useSEO, faqSchema, breadcrumbSchema } from '../lib/useSEO'
 import { eur } from '../lib/kaufnebenkosten'
@@ -144,6 +145,8 @@ export default function Tilgungsrechner() {
       'Kostenloser Tilgungsrechner: aus Darlehen, Sollzins und Tilgung sofort Monatsrate, Restschuld nach Zinsbindung und Gesamtzinsen — inkl. Sondertilgung.',
     canonical: 'https://immopruef.de/tilgungsrechner',
     type: 'website',
+    modifiedTime: STAND_ISO,
+    author: true,
     jsonLd: [
       {
         '@context': 'https://schema.org',
@@ -260,7 +263,7 @@ export default function Tilgungsrechner() {
         </p>
       </div>
 
-      <FaqSection title="Häufige Fragen zu Rate, Tilgung und Restschuld" items={faqs} />
+      <FaqSection quellen={QUELLEN.finanzierung} title="Häufige Fragen zu Rate, Tilgung und Restschuld" items={faqs} />
 
       <div className="mt-8 bg-green text-cream rounded-xl p-6 text-center">
         <h2 className="font-display text-xl font-medium mb-2">Rate steht — passt das Objekt dazu?</h2>

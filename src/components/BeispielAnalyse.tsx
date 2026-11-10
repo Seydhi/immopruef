@@ -22,7 +22,7 @@ export default function BeispielAnalyse({ variant }: { variant: 'standard' | 'pr
       ? 'Beispiel: Premium-Kaufentscheidungs-Report (Muster)'
       : 'Beispiel: Immobilien-Analyse ansehen (Muster)',
     description: isPremium
-      ? 'Vollständiger Premium-Report als Muster: Wertermittlung nach 3 Verfahren, Marktband, Mietrendite, Maklerprofil und Stärken-Schwächen-Analyse — so sieht das 79-€-Ergebnis aus.'
+      ? 'Premium-Report als Muster: Wertermittlung nach 3 Verfahren, Marktband, Mietrendite, Maklerprofil und Stärken-Schwächen-Analyse. So sieht das 79-€-Ergebnis aus.'
       : 'Vollständige Beispiel-Analyse als Muster: Preisbewertung, Kaufnebenkosten, Standort-Score, Risiken und 3 Finanzierungs-Szenarien — so sieht das Ergebnis ab 19 € aus.',
     canonical: url,
     type: 'website',
@@ -65,7 +65,7 @@ export default function BeispielAnalyse({ variant }: { variant: 'standard' | 'pr
       <AnalysisResult
         result={result}
         options={{ makleranschreiben: true, verhandlungstipps: true, risiken: true }}
-        url="https://www.immobilienscout24.de/expose/example-mock-id"
+        url="muster"
         showBackButton={false}
       />
 

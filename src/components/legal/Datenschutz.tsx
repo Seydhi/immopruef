@@ -3,7 +3,7 @@ import { useSEO } from '../../lib/useSEO'
 export default function Datenschutz() {
   useSEO({
     title: 'Datenschutzerklärung',
-    description: 'Datenschutzerklärung von ImmoPrüf — wie wir Ihre Daten verarbeiten, gemäß DSGVO und BDSG.',
+    description: 'Datenschutzerklärung von ImmoPrüf: welche Daten bei Website-Besuch, Analyse und Zahlung verarbeitet werden, Rechtsgrundlagen nach DSGVO und BDSG sowie Ihre Rechte.',
     canonical: 'https://immopruef.de/datenschutz',
     type: 'website',
   })
@@ -112,8 +112,8 @@ export default function Datenschutz() {
           </p>
           <p className="mt-1">
             Datenschutzrichtlinie:{' '}
-            <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-green hover:text-green-mid">
-              vercel.com/legal/privacy-policy
+            <a href="https://vercel.com/legal/privacy-notice" target="_blank" rel="noopener noreferrer" className="text-green hover:text-green-mid">
+              vercel.com/legal/privacy-notice
             </a>
           </p>
 
@@ -178,7 +178,7 @@ export default function Datenschutz() {
             (vgl. Abschnitt 12).
           </p>
           <p className="mt-2">
-            Anthropic: <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener noreferrer" className="text-green hover:text-green-mid">anthropic.com/privacy</a><br />
+            Anthropic: <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener noreferrer" className="text-green hover:text-green-mid">anthropic.com/legal/privacy</a><br />
             OpenAI: <a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-green hover:text-green-mid">openai.com/policies/privacy-policy</a>
           </p>
         </section>
