@@ -576,13 +576,13 @@ DAS premiumReport-Objekt MUSS im JSON enthalten sein. Es ist NICHT optional. Der
 // AI Provider Switch
 // ═══════════════════════════════════════════════════════════════
 
-// Sonnet 5: Intro-Pricing 2$/10$ pro MTok bis 31.08.2026 (danach 3$/15$),
-// neuer Tokenizer (~30% mehr Tokens als Sonnet 4), deutlich besseres
-// Agentic-/Web-Search-Verhalten. Per Env-Var übersteuerbar (z.B. für Tests).
-const ANTHROPIC_MODEL = Deno.env.get('ANTHROPIC_MODEL') || 'claude-sonnet-5'
-// Premium darf ein stärkeres Modell nutzen (z. B. claude-opus-5-5) — per Env umschaltbar,
-// ohne Deploy. Fällt auf ANTHROPIC_MODEL zurück.
-const ANTHROPIC_MODEL_PREMIUM = Deno.env.get('ANTHROPIC_MODEL_PREMIUM') || ANTHROPIC_MODEL
+// Seit 11.11.2026: Standard = Claude Sonnet 5.5 (2$/10$ pro MTok, Cache-Lesen 0,10$),
+// Premium = Claude Opus 5.5 (4$/20$ pro MTok). Beide: Thinking nicht abschaltbar
+// (adaptive), kein erzwungenes tool_choice, Effort explizit setzen (Opus-5.5-Default
+// ist medium). Per Env-Var ohne Deploy übersteuerbar (ANTHROPIC_MODEL /
+// ANTHROPIC_MODEL_PREMIUM), z. B. für einen schnellen Rückweg.
+const ANTHROPIC_MODEL = Deno.env.get('ANTHROPIC_MODEL') || 'claude-sonnet-5-5'
+const ANTHROPIC_MODEL_PREMIUM = Deno.env.get('ANTHROPIC_MODEL_PREMIUM') || 'claude-opus-5-5'
 // Structured Outputs (JSON-Schema-Zwang) — per Env abschaltbar; bei Schema-Fehlern
 // der API fällt die betroffene Analyse automatisch auf freies JSON zurück.
 const STRUCTURED_OUTPUT = Deno.env.get('STRUCTURED_OUTPUT') !== 'false'
@@ -2436,7 +2436,7 @@ ${kaeuferBlock(opts)}`,
           for (const r of requests) {
             await supabase.from('analyses').update({ batch_id: batch.id }).eq('id', r.custom_id)
           }
-          console.log(`Batch ${batch.id} submitted: ${requests.length} Analyse(n), ${ANTHROPIC_MODEL}, Schlüssel ${batch.keyIndex + 1}`)
+          console.log(`Batch ${batch.id} submitted: ${requests.length} Analyse(n), ${ANTHROPIC_MODEL}/${ANTHROPIC_MODEL_PREMIUM}, Schlüssel ${batch.keyIndex + 1}`)
         } catch (e) {
           console.error('Batch-Submit fehlgeschlagen:', e)
           const detail = e instanceof Error ? e.message : String(e)
