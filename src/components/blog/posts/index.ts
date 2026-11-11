@@ -4,6 +4,29 @@ import type { BlogMeta } from '../BlogLayout'
 // Blog posts registry — newest first
 export const BLOG_POSTS: BlogMeta[] = [
   {
+    slug: 'energieausweis-2027-was-sich-aendert',
+    title: 'Energieausweis 2027: Was sich für Käufer ändert',
+    description: 'Ab 1. Januar 2027 gelten neue Regeln für den Energieausweis, ab 1. Februar 2027 sinkt die Heizungsförderung. Was Käufer im Exposé jetzt anders lesen müssen.',
+    date: '11. November 2026',
+    kurzantwort: 'Ab dem 1. Januar 2027 wird der Energieausweis digital ausgestellt, und Immobilienanzeigen nennen statt des Endenergiewerts den Primärenergiebedarf und das Ausstellungsdatum. Für reine Wohngebäude ist auch bei Altbauten ein Verbrauchsausweis aus zwei Jahren zulässig. Bestehende Ausweise bleiben zehn Jahre gültig. Zum 1. Februar 2027 sinkt der Klimageschwindigkeitsbonus der KfW von 16 auf 12 Prozent.',
+    quellen: [
+      { label: 'Gebäudemodernisierungsgesetz (GModG, früher GEG)', url: 'https://www.gesetze-im-internet.de/geg/' },
+      { label: 'Gesetzesbeschluss des Bundestages, Bundesrat-Drucksache 409/26 (Artikel 2 und Artikel 9 Abs. 2)', url: 'https://dserver.bundestag.de/brd/2026/0409-26.pdf' },
+      { label: 'KfW: Heizungsförderung für Privatpersonen (458)', url: 'https://www.kfw.de/inlandsfoerderung/Privatpersonen/Bestehende-Immobilie/F%C3%B6rderprodukte/Heizungsf%C3%B6rderung-f%C3%BCr-Privatpersonen-Wohngeb%C3%A4ude-(458)/' },
+    ],
+    readTime: '7 Min',
+    tags: ['Kaufratgeber', 'Recht'],
+    image: 'https://images.pexels.com/photos/4819052/pexels-photo-4819052.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+    faq: [
+      { question: 'Ab wann gelten die neuen Regeln für den Energieausweis?', answer: 'Ab dem 1. Januar 2027. Die Änderungen stehen in Artikel 2 des Gebäudemodernisierungsgesetzes, das am 28. Juli 2026 verkündet wurde (BGBl. 2026 I Nr. 226). Artikel 2 tritt nach Artikel 9 Absatz 2 am ersten Tag des sechsten Kalendermonats nach der Verkündung in Kraft.' },
+      { question: 'Muss ein alter Energieausweis 2027 ersetzt werden?', answer: 'Nein. Ein Energieausweis wird für zehn Jahre ausgestellt und bleibt bis zum Ablauf gültig. Für Anzeigen mit einem Ausweis, der vor dem 1. Januar 2027 ausgestellt wurde, gelten weiter die bisherigen Pflichtangaben mit dem Endenergiewert.' },
+      { question: 'Welche Energieangaben stehen ab 2027 im Exposé?', answer: 'Bei einem Ausweis nach neuem Recht muss die Anzeige angeben, ob es sich um einen Bedarfs- oder Verbrauchsausweis handelt, dazu Ausstellungsdatum, Jahres-Primärenergiebedarf in Kilowattstunden pro Quadratmeter und Jahr, Energieeffizienzklasse, Baujahr und den wesentlichen Energieträger der Heizung (Paragraf 87 GModG).' },
+      { question: 'Kann ich Energiewerte aus alten und neuen Anzeigen vergleichen?', answer: 'Nicht direkt. Alte Anzeigen nennen den Endenergiewert, neue den Primärenergiebedarf, der zusätzlich Gewinnung und Transport des Energieträgers einrechnet. Vergleichen Sie Endenergie mit Endenergie; beide Werte stehen im Energieausweis selbst.' },
+      { question: 'Gilt für alte Häuser vor 1977 weiter die Pflicht zum Bedarfsausweis?', answer: 'Nein. Die Sonderregel für Wohnhäuser mit weniger als fünf Wohnungen und Bauantrag vor dem 1. November 1977 steht in der ab 2027 geltenden Fassung von Paragraf 80 nicht mehr. Für Gebäude, die ausschließlich Wohnzwecken dienen, ist dann auch ein Verbrauchsausweis zulässig.' },
+      { question: 'Wie stark sinkt die Heizungsförderung ab Februar 2027?', answer: 'Laut KfW sinkt der Klimageschwindigkeitsbonus von 16 Prozent erstmals zum 1. Februar 2027 um 4 Prozentpunkte und danach halbjährlich weiter, ab dem 1. August 2028 entfällt er. Auch die förderfähigen Höchstkosten von 28.000 Euro für die erste Wohneinheit sinken halbjährlich um 750 Euro. Im Beispiel eines Einfamilienhauses sinkt der maximale Zuschuss ohne Einkommensbonus von 12.880 auf 11.445 Euro.' },
+    ],
+  },
+  {
     slug: 'ueberbau-grundstuecksgrenze-bgh-2026',
     title: 'Überbau beim Hauskauf: Was das BGH-Urteil 2026 ändert',
     description: 'BGH-Urteil vom 26. Juni 2026: Der Überbau über die Grundstücksgrenze ist nur ein Sachmangel — der Haftungsausschluss im Kaufvertrag greift dann voll.',
@@ -2299,6 +2322,7 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<React.Com
   'ueberbau-grundstuecksgrenze-bgh-2026': lazy(() => import('./ueberbau-grundstuecksgrenze-bgh-2026')),
   'jung-kauft-alt-kfw-308-2026': lazy(() => import('./jung-kauft-alt-kfw-308-2026')),
   'maklerprovision-zweifamilienhaus-bgh': lazy(() => import('./maklerprovision-zweifamilienhaus-bgh')),
+  'energieausweis-2027-was-sich-aendert': lazy(() => import('./energieausweis-2027-was-sich-aendert')),
   'heizungsgesetz-reform-2026-kaeufer': lazy(() => import('./heizungsgesetz-reform-2026-kaeufer')),
   'immobilienbewertung-vergleich': lazy(() => import('./immobilienbewertung-vergleich')),
   'hausgeld-pro-qm': lazy(() => import('./hausgeld-pro-qm')),
