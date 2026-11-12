@@ -31,7 +31,7 @@ const Later: React.FC<{ from: number; to: number }> = ({ from, to }) => {
   const o = interpolate(frame, [from, from + 8, to - 8, to], [0, 1, 1, 0])
   return (
     <AbsoluteFill style={{ background: C.green, opacity: o, alignItems: 'center', justifyContent: 'center' }}>
-      <div style={{ fontFamily: display, fontSize: 90, color: '#fff', fontWeight: 600 }}>Wenige Minuten später …</div>
+      <div style={{ fontFamily: display, fontSize: 84, color: '#fff', fontWeight: 600, textAlign: 'center', lineHeight: 1.15, padding: '0 90px' }}>Wenige Minuten später …</div>
     </AbsoluteFill>
   )
 }
