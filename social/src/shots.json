@@ -1,0 +1,224 @@
+{
+ "expose": {
+  "width": 430,
+  "height": 1922,
+  "dpr": 3,
+  "marks": {
+   "preis": {
+    "x": 30,
+    "y": 502.59375,
+    "w": 370,
+    "h": 34
+   },
+   "preisqm": {
+    "x": 220,
+    "y": 676.59375,
+    "w": 180,
+    "h": 60
+   },
+   "baujahr": {
+    "x": 215,
+    "y": 840.59375,
+    "w": 185,
+    "h": 17
+   },
+   "heizung": {
+    "x": 215,
+    "y": 892.59375,
+    "w": 185,
+    "h": 17
+   },
+   "energie": {
+    "x": 215,
+    "y": 918.59375,
+    "w": 185,
+    "h": 17
+   },
+   "beschreibung": {
+    "x": 30,
+    "y": 1091.59375,
+    "w": 370,
+    "h": 89.5625
+   },
+   "bad": {
+    "x": 30,
+    "y": 1482.328125,
+    "w": 182,
+    "h": 130
+   },
+   "lage": {
+    "x": 30,
+    "y": 1690.328125,
+    "w": 370,
+    "h": 67.171875
+   }
+  },
+  "tiles": [
+   {
+    "file": "shots/expose-0.png",
+    "y": 0,
+    "h": 1922
+   }
+  ]
+ },
+ "home": {
+  "width": 430,
+  "height": 2600,
+  "dpr": 3,
+  "marks": {
+   "Immobilien": {
+    "x": 40,
+    "y": 162,
+    "w": 350,
+    "h": 125
+   },
+   "Analyse starten": {
+    "x": 24,
+    "y": 859.125,
+    "w": 382,
+    "h": 30
+   },
+   "Was Sie bekommen": {
+    "x": 24,
+    "y": 2107.25,
+    "w": 382,
+    "h": 32
+   },
+   "input:input[type=url]": {
+    "x": 49,
+    "y": 1523.5,
+    "w": 332,
+    "h": 46
+   },
+   "input:input[type=email]": {
+    "x": 49,
+    "y": 1376.5,
+    "w": 332,
+    "h": 42
+   },
+   "btn:Angebotslink einfügen": {
+    "x": 99.359375,
+    "y": 523.25,
+    "w": 231.28125,
+    "h": 52
+   },
+   "btn:Link zum Inserat": {
+    "x": 54,
+    "y": 1439.5,
+    "w": 159,
+    "h": 39.125
+   },
+   "btn:PDF / Fotos hochladen": {
+    "x": 217,
+    "y": 1439.5,
+    "w": 159,
+    "h": 39.125
+   }
+  },
+  "tiles": [
+   {
+    "file": "shots/home-0.png",
+    "y": 0,
+    "h": 2000
+   },
+   {
+    "file": "shots/home-1.png",
+    "y": 2000,
+    "h": 600
+   }
+  ]
+ },
+ "analyse": {
+  "width": 430,
+  "height": 11705,
+  "dpr": 3,
+  "marks": {
+   "Wo liegt der Preis?": {
+    "x": 68.953125,
+    "y": 1830.34375,
+    "w": 201.234375,
+    "h": 32
+   },
+   "Was kostet es insgesamt?": {
+    "x": 68.953125,
+    "y": 2451.1875,
+    "w": 271.03125,
+    "h": 32
+   },
+   "Zustand & Energie": {
+    "x": 68.953125,
+    "y": 4518.3125,
+    "w": 204.96875,
+    "h": 32
+   },
+   "Risiken & Fallstricke": {
+    "x": 68.953125,
+    "y": 6886.9375,
+    "w": 226.6875,
+    "h": 32
+   },
+   "Was jetzt tun?": {
+    "x": 68.953125,
+    "y": 7936.6875,
+    "w": 150.125,
+    "h": 32
+   },
+   "Vorlage: Makleranschreiben": {
+    "x": 68.953125,
+    "y": 8656.3125,
+    "w": 303.21875,
+    "h": 32
+   }
+  },
+  "tiles": [
+   {
+    "file": "shots/analyse-0.png",
+    "y": 0,
+    "h": 2000
+   },
+   {
+    "file": "shots/analyse-1.png",
+    "y": 2000,
+    "h": 2000
+   },
+   {
+    "file": "shots/analyse-2.png",
+    "y": 4000,
+    "h": 2000
+   },
+   {
+    "file": "shots/analyse-3.png",
+    "y": 6000,
+    "h": 2000
+   },
+   {
+    "file": "shots/analyse-4.png",
+    "y": 8000,
+    "h": 2000
+   },
+   {
+    "file": "shots/analyse-5.png",
+    "y": 10000,
+    "h": 1705
+   }
+  ]
+ },
+ "index": {
+  "width": 430,
+  "height": 2846,
+  "dpr": 3,
+  "marks": {},
+  "tiles": [
+   {
+    "file": "shots/index-0.png",
+    "y": 0,
+    "h": 2000
+   },
+   {
+    "file": "shots/index-1.png",
+    "y": 2000,
+    "h": 846
+   }
+  ]
+ }
+}

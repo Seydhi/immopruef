@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Beispiel-Exposé: Altbau-Reihenhaus</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Inter, system-ui, sans-serif; background: #f4f5f7; color: #1d2433; }
+  .demo { background: #1d2433; color: #fff; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; text-align: center; padding: 8px; font-weight: 600; }
+  .bar { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: #fff; border-bottom: 1px solid #e5e7eb; }
+  .brand { font-weight: 700; font-size: 18px; color: #0f6e5a; }
+  .brand span { color: #1d2433; font-weight: 500; }
+  .id { font-size: 12px; color: #6b7280; }
+  .hero { position: relative; }
+  .hero img { width: 100%; height: 300px; object-fit: cover; display: block; }
+  .count { position: absolute; right: 12px; bottom: 12px; background: rgba(0,0,0,.6); color: #fff; font-size: 12px; padding: 4px 10px; border-radius: 99px; }
+  .card { background: #fff; margin: 12px; border-radius: 14px; padding: 18px; box-shadow: 0 1px 2px rgba(0,0,0,.05); }
+  h1 { font-size: 21px; line-height: 1.3; margin-bottom: 6px; }
+  .addr { color: #6b7280; font-size: 14px; margin-bottom: 14px; }
+  .price { font-size: 28px; font-weight: 700; }
+  .sub { font-size: 13px; color: #6b7280; margin-top: 2px; }
+  .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 4px; }
+  .fact { background: #f4f5f7; border-radius: 10px; padding: 10px 12px; }
+  .fact b { display: block; font-size: 16px; }
+  .fact small { font-size: 12px; color: #6b7280; }
+  h2 { font-size: 16px; margin-bottom: 10px; }
+  dl { display: grid; grid-template-columns: 1fr 1fr; row-gap: 9px; font-size: 14px; }
+  dt { color: #6b7280; }
+  dd { font-weight: 500; }
+  p { font-size: 14px; line-height: 1.6; color: #374151; margin-bottom: 10px; }
+  .photos { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .photos img { width: 100%; height: 130px; object-fit: cover; border-radius: 8px; display: block; }
+  .cta { display: block; text-align: center; background: #0f6e5a; color: #fff; font-weight: 600; padding: 14px; border-radius: 10px; margin-top: 6px; }
+  .foot { text-align: center; font-size: 11px; color: #9ca3af; padding: 18px 12px 30px; }
+</style>
+</head>
+<body>
+  <div class="demo">Beispiel-Exposé · alle Angaben fiktiv</div>
+  <div class="bar"><div class="brand">Muster<span>Immobilien</span></div><div class="id">Objekt-Nr. B-2711</div></div>
+  <div class="hero"><img src="img/aussen.jpg" alt=""><div class="count">1 / 14</div></div>
+
+  <div class="card">
+    <h1>Charmantes Altbau-Reihenhaus mit Garten – ideal für Familien</h1>
+    <div class="addr">Lindenweg, 34117 Beispielstadt</div>
+    <div class="price" data-mark="preis">489.000 €</div>
+    <div class="sub">Kaufpreis · zzgl. 3,57 % Käuferprovision</div>
+  </div>
+
+  <div class="card">
+    <div class="facts">
+      <div class="fact"><b>128 m²</b><small>Wohnfläche</small></div>
+      <div class="fact"><b>5</b><small>Zimmer</small></div>
+      <div class="fact"><b>210 m²</b><small>Grundstück</small></div>
+      <div class="fact" data-mark="preisqm"><b>3.820 €/m²</b><small>Preis pro m²</small></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Objektdaten</h2>
+    <dl>
+      <dt>Objekttyp</dt><dd>Reihenmittelhaus</dd>
+      <dt>Baujahr</dt><dd data-mark="baujahr">k. A.</dd>
+      <dt>Zustand</dt><dd>gepflegt</dd>
+      <dt>Heizung</dt><dd data-mark="heizung">Gas-Zentralheizung</dd>
+      <dt>Energieausweis</dt><dd data-mark="energie">in Erstellung</dd>
+      <dt>Keller</dt><dd>ja</dd>
+      <dt>Stellplatz</dt><dd>–</dd>
+      <dt>Bezugsfrei ab</dt><dd>nach Vereinbarung</dd>
+    </dl>
+  </div>
+
+  <div class="card">
+    <h2>Objektbeschreibung</h2>
+    <p data-mark="beschreibung">Dieses <strong>liebevoll gepflegte</strong> Reihenhaus bietet viel <strong>Potenzial</strong> für Ihre eigenen Ideen. Die großzügigen Räume sind lichtdurchflutet, das Bad versprüht den <strong>Charme vergangener Jahrzehnte</strong>.</p>
+    <p>Ein kleiner, pflegeleichter Garten rundet das Angebot ab. Ideal für Familien und <strong>Handwerker</strong>, die ihr Zuhause nach eigenen Vorstellungen gestalten möchten.</p>
+  </div>
+
+  <div class="card">
+    <h2>Bilder</h2>
+    <div class="photos">
+      <img src="img/wohnen.jpg" alt="">
+      <img src="img/kueche.jpg" alt="">
+      <img src="img/bad.jpg" alt="" data-mark="bad">
+      <img src="img/aussen.jpg" alt="" style="object-position: right">
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Lage</h2>
+    <p data-mark="lage">Ruhige und dennoch <strong>verkehrsgünstige Lage</strong>. Schulen, Kitas und Einkaufsmöglichkeiten sind in wenigen Minuten erreichbar.</p>
+    <span class="cta">Besichtigung anfragen</span>
+  </div>
+
+  <div class="foot">Beispiel-Exposé von ImmoPrüf zu Demonstrationszwecken. Adresse, Anbieter und Angaben sind frei erfunden. Fotos: Pexels.</div>
+</body>
+</html>
