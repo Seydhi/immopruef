@@ -1,7 +1,7 @@
 export default function SchimmelFeuchtigkeitHauskauf() {
   return (
     <>
-      <p>Schimmel und Feuchtigkeit gehören zu den unangenehmsten Überraschungen beim Hauskauf, weil sie oft erst sichtbar werden, wenn der Kaufvertrag längst unterschrieben ist. Eine frisch gestrichene Wand sieht makellos aus, und doch kann sich dahinter eine durchfeuchtete Außenwand verbergen, deren Sanierung mehrere tausend Euro kostet. Für Sie als privaten Käufer entscheidet der geschulte Blick bei der Besichtigung oft darüber, ob ein Angebot fair bepreist ist oder zur Kostenfalle wird.</p>
+      <p>Schimmel und Feuchtigkeit gehören zu den unangenehmsten Überraschungen beim Hauskauf, weil sie oft erst sichtbar werden, wenn der Kaufvertrag längst unterschrieben ist. Eine frisch gestrichene Wand sieht makellos aus, und doch kann sich dahinter eine durchfeuchtete Außenwand verbergen, deren Sanierung mehrere tausend Euro kostet. Für Sie als Käufer entscheidet der geschulte Blick bei der Besichtigung oft darüber, ob ein Angebot fair bepreist ist oder zur Kostenfalle wird.</p>
       
       <p>Das Tückische an Feuchteschäden ist, dass sie sich gut kaschieren lassen und ihre eigentliche Ursache selten dort liegt, wo der Fleck auftaucht. Wer nur den sichtbaren Fleck behandelt, ohne die Ursache zu beheben, hat das Problem in einigen Monaten wieder. Genau deshalb lohnt es sich, die typischen Ursachen, die Warnzeichen und die Größenordnung möglicher Sanierungskosten zu kennen, bevor Sie ein Angebot ernsthaft verfolgen.</p>
       

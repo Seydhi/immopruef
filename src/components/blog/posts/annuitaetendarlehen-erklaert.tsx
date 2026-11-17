@@ -7,7 +7,7 @@ export default function AnnuitaetendarlehenErklaert() {
       
       <h2>Was ist ein Annuitätendarlehen?</h2>
       <p>Beim Annuitätendarlehen zahlen Sie über die gesamte Zinsbindung hinweg eine konstante monatliche Rate, die sogenannte Annuität. Diese Rate setzt sich aus zwei Bestandteilen zusammen: dem Zins, den die Bank für das geliehene Geld berechnet, und der Tilgung, mit der Sie die eigentliche Schuld zurückzahlen.</p>
-      <p>Solange die Zinsbindung läuft, bleibt die Summe aus Zins und Tilgung also gleich. Das macht die Finanzierung gut planbar, weil Sie über viele Jahre mit demselben Betrag rechnen können. Genau diese Planbarkeit ist der Hauptgrund, warum sich diese Darlehensform für private Käufer durchgesetzt hat.</p>
+      <p>Solange die Zinsbindung läuft, bleibt die Summe aus Zins und Tilgung also gleich. Das macht die Finanzierung gut planbar, weil Sie über viele Jahre mit demselben Betrag rechnen können. Genau diese Planbarkeit ist der Hauptgrund, warum sich diese Darlehensform für Käufer durchgesetzt hat.</p>
       <p>Das Wort Annuität stammt vom lateinischen Begriff für Jahr und meint ursprünglich die jährliche Zahlung. In der Praxis zahlen Sie heute monatlich, doch das Prinzip bleibt gleich: Über die Zinsbindung hinweg leisten Sie immer denselben Betrag. Damit unterscheidet sich das Annuitätendarlehen vom Tilgungsdarlehen, bei dem die Tilgung konstant ist und die Rate deshalb von Monat zu Monat sinkt. Beim Annuitätendarlehen ist es genau umgekehrt: Die Rate ist fix, das Verhältnis von Zins zu Tilgung verschiebt sich.</p>
       
       <h2>Zins und Tilgung: Wie sich die Rate verschiebt</h2>
@@ -72,7 +72,7 @@ export default function AnnuitaetendarlehenErklaert() {
       <li>Eine sehr niedrige Tilgung kann die Laufzeit so stark verlängern, dass am Ende der Zinsbindung noch ein großer Teil der Schuld offen ist.</li>
       <li>Wer die Rate zu knapp kalkuliert, hat wenig Spielraum, falls sich die persönliche Situation ändert. Ein Puffer im Budget ist deshalb wichtig.</li>
       </ul>
-      <p>Für die meisten privaten Käufer überwiegen die Vorteile, gerade weil die Kombination aus fester Rate und planbarem Schuldenabbau gut zu einer langfristigen Finanzierung passt.</p>
+      <p>Für die meisten Käufer überwiegen die Vorteile, gerade weil die Kombination aus fester Rate und planbarem Schuldenabbau gut zu einer langfristigen Finanzierung passt.</p>
       
       <h2>Restschuld und Anschlussfinanzierung</h2>
       <p>Ein wichtiger Punkt, den viele Käufer unterschätzen: Mit dem Ende der Zinsbindung ist das Darlehen in der Regel noch nicht abbezahlt. Bei den heute üblichen Tilgungssätzen bleibt nach 10 oder 15 Jahren meist eine spürbare Restschuld übrig.</p>

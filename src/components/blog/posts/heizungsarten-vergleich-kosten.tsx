@@ -1,7 +1,7 @@
 export default function HeizungsartenVergleichKosten() {
   return (
     <>
-      <p>Die Heizung ist eines der teuersten und langlebigsten Bauteile eines Hauses. Welches System verbaut ist, entscheidet über Ihre laufenden Kosten in den nächsten zwei Jahrzehnten und darüber, ob in absehbarer Zeit eine teure Erneuerung ansteht. Für private Käufer ist die Heizungsanlage deshalb kein technisches Detail am Rande, sondern ein zentraler Punkt bei der Bewertung eines Angebots.</p>
+      <p>Die Heizung ist eines der teuersten und langlebigsten Bauteile eines Hauses. Welches System verbaut ist, entscheidet über Ihre laufenden Kosten in den nächsten zwei Jahrzehnten und darüber, ob in absehbarer Zeit eine teure Erneuerung ansteht. Für Käufer ist die Heizungsanlage deshalb kein technisches Detail am Rande, sondern ein zentraler Punkt bei der Bewertung eines Angebots.</p>
       <p>Gleichzeitig ist der Markt in Bewegung. Steigende CO2-Preise, gesetzliche Vorgaben und hohe Förderungen verschieben die Wirtschaftlichkeit der einzelnen Systeme spürbar. Eine Heizung, die heute günstig erscheint, kann über ihre Lebensdauer die teurere Wahl sein.</p>
       <p>Dieser Artikel vergleicht die wichtigsten Heizungsarten nach Anschaffung, Betriebskosten, Eignung und Zukunftssicherheit. Er zeigt, worauf Sie beim Hauskauf konkret achten sollten und warum das Alter der vorhandenen Anlage ein handfestes Verhandlungsargument sein kann.</p>
       

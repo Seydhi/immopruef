@@ -1,7 +1,7 @@
 export default function ElektroinstallationAltbauPruefen() {
   return (
     <>
-      <p>Ein verlockend günstiger Altbau hat oft einen Haken, den man bei der Besichtigung leicht übersieht: die Elektroinstallation. Sie steckt unsichtbar in den Wänden, läuft jahrzehntelang unauffällig mit und wird erst dann zum Thema, wenn etwas flackert, ein Stecker warm wird oder die erste größere Renovierung ansteht. Für Sie als privaten Käufer ist genau das ein Problem, denn eine veraltete Elektrik gehört zu den Kostenpositionen, die im Exposé nie auftauchen und im Kaufpreis selten eingepreist sind.</p>
+      <p>Ein verlockend günstiger Altbau hat oft einen Haken, den man bei der Besichtigung leicht übersieht: die Elektroinstallation. Sie steckt unsichtbar in den Wänden, läuft jahrzehntelang unauffällig mit und wird erst dann zum Thema, wenn etwas flackert, ein Stecker warm wird oder die erste größere Renovierung ansteht. Für Sie als Käufer ist genau das ein Problem, denn eine veraltete Elektrik gehört zu den Kostenpositionen, die im Exposé nie auftauchen und im Kaufpreis selten eingepreist sind.</p>
       <p>Die gute Nachricht: Die wichtigsten Warnzeichen lassen sich schon bei einer aufmerksamen Besichtigung erkennen, ganz ohne Werkzeug. Dieser Beitrag zeigt Ihnen, woran Sie eine in die Jahre gekommene Anlage erkennen, was es mit FI-Schaltern und dem Sicherungskasten auf sich hat, welche Pflichten bei einer Sanierung gelten und mit welchen Kosten Sie realistisch rechnen sollten. Vorab ein wichtiger Hinweis: Dieser Artikel ersetzt keine Prüfung durch eine Elektrofachkraft. Er hilft Ihnen, die richtigen Fragen zu stellen, bevor Sie unterschreiben.</p>
       
       <h2>Warnzeichen einer veralteten Elektroinstallation</h2>

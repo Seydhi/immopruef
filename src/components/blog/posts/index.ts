@@ -663,7 +663,7 @@ export const BLOG_POSTS: BlogMeta[] = [
   {
     slug: 'bausachverstaendiger-hauskauf-kosten',
     title: 'Bausachverständiger beim Hauskauf: Kosten und Nutzen',
-    description: 'Bausachverständiger beim Hauskauf: Was ein Baugutachter kostet (rund 300 bis 2.000 €), was er leistet und wann sich das Gutachten für private Käufer lohnt.',
+    description: 'Bausachverständiger beim Hauskauf: Was ein Baugutachter kostet (rund 300 bis 2.000 €), was er leistet und wann sich das Gutachten für Käufer lohnt.',
     date: '13. Juni 2026',
     kurzantwort: 'Ein Bausachverständiger kostet beim Hauskauf je nach Umfang rund 300 bis 2.000 € (Stand 2026): Begleitung zur Besichtigung oder Kurzgutachten rund 300 bis 800 €, ein ausführliches schriftliches Gutachten etwa 800 bis 2.000 €, Stundensätze meist 100 bis 150 €. Er lohnt sich besonders bei Altbauten, sichtbarem Sanierungsstau, hohem Kaufpreis oder eigener Unsicherheit.',
     readTime: '7 Min',
@@ -1178,7 +1178,7 @@ export const BLOG_POSTS: BlogMeta[] = [
   {
     slug: 'annuitaetendarlehen-erklaert',
     title: 'Annuitätendarlehen erklärt: Zins, Tilgung und Rate',
-    description: 'Annuitätendarlehen einfach erklärt: Wie sich Zins, Tilgung und die monatliche Rate zusammensetzen, plus Faustformel und Beispielrechnung für private Käufer.',
+    description: 'Annuitätendarlehen einfach erklärt: Wie sich Zins, Tilgung und die monatliche Rate zusammensetzen, plus Faustformel und Beispielrechnung für Käufer.',
     date: '13. Juni 2026',
     updated: '10. November 2026',
     kurzantwort: 'Beim Annuitätendarlehen zahlen Sie über die gesamte Zinsbindung eine konstante monatliche Rate aus Zins und Tilgung, wobei der Zinsanteil sinkt und der Tilgungsanteil steigt. Als Faustformel gilt: Darlehen mal (Sollzins plus anfänglicher Tilgungssatz), geteilt durch 12. Bei 320.000 €, 3,6 % Sollzins und 2,0 % Tilgung ergeben sich rund 1.493 € pro Monat.',

@@ -3,7 +3,7 @@ import NachlassKompass from '../NachlassKompass'
 export default function KaufpreisVerhandelnImmobilie() {
   return (
     <>
-      <p>Der Angebotspreis einer Immobilie ist eine Forderung — kein Festpreis. Nach den Preiskorrekturen der Jahre 2022 bis 2024 liegen Angebotspreise im Schnitt 5 bis 15 Prozent über den tatsächlich beurkundeten Transaktionspreisen. Verhandeln ist beim Immobilienkauf also nicht unverschämt, sondern üblich. Trotzdem zahlen viele private Käufer den vollen Preis — nicht, weil kein Spielraum da wäre, sondern weil ihnen Argumente, Zahlen und eine Strategie fehlen.</p>
+      <p>Der Angebotspreis einer Immobilie ist eine Forderung — kein Festpreis. Nach den Preiskorrekturen der Jahre 2022 bis 2024 liegen Angebotspreise im Schnitt 5 bis 15 Prozent über den tatsächlich beurkundeten Transaktionspreisen. Verhandeln ist beim Immobilienkauf also nicht unverschämt, sondern üblich. Trotzdem zahlen viele Käufer den vollen Preis — nicht, weil kein Spielraum da wäre, sondern weil ihnen Argumente, Zahlen und eine Strategie fehlen.</p>
       <p>Dieser Leitfaden zeigt, wie Sie den Verhandlungsspielraum eines Angebots realistisch einschätzen, mit welchen belegbaren Argumenten Sie einen Nachlass begründen und welche Taktik in Gesprächen mit Makler oder Verkäufer funktioniert. Die Grundlage jeder Verhandlung — die nüchterne Einordnung des Angebotspreises — liefert <a href="/blog/angebotspreis-fair">Ist der Angebotspreis fair?</a>; die wichtigste Vergleichszahl erklärt <a href="/blog/quadratmeterpreis-bewerten">Quadratmeterpreis bewerten</a>.</p>
 
       <h2>Wie viel Nachlass ist beim Immobilienkauf üblich?</h2>

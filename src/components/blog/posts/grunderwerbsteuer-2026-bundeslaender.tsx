@@ -1,7 +1,7 @@
 export default function Grunderwerbsteuer2026Bundeslaender() {
   return (
     <>
-      <p>Die Grunderwerbsteuer ist für die meisten privaten Käufer der größte einzelne Posten der Kaufnebenkosten. Je nach Bundesland verlangt der Fiskus zwischen 3,5 % und 6,5 % des Kaufpreises — bei einer Immobilie für 400.000 € sind das zwischen 14.000 € und 26.000 €. Allein die Lage der Immobilie entscheidet also über bis zu 12.000 € Unterschied.</p>
+      <p>Die Grunderwerbsteuer ist für die meisten Käufer der größte einzelne Posten der Kaufnebenkosten. Je nach Bundesland verlangt der Fiskus zwischen 3,5 % und 6,5 % des Kaufpreises — bei einer Immobilie für 400.000 € sind das zwischen 14.000 € und 26.000 €. Allein die Lage der Immobilie entscheidet also über bis zu 12.000 € Unterschied.</p>
       <p>Dieser Artikel zeigt die aktuellen Steuersätze aller 16 Bundesländer (Stand 2026) in einer Tabelle, erklärt, wann die Steuer fällig wird, und stellt vier legale Möglichkeiten vor, die Bemessungsgrundlage zu senken — und warnt vor einem überholten Spartipp. Außerdem erfahren Sie, warum Sie die Grunderwerbsteuer in aller Regel aus Eigenkapital bezahlen müssen — und was das für Ihre Finanzierungsplanung bedeutet.</p>
       
       <h2>Grunderwerbsteuer 2026: Tabelle aller 16 Bundesländer</h2>

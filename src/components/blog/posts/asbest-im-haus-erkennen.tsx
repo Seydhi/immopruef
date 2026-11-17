@@ -2,7 +2,7 @@ export default function AsbestImHausErkennen() {
   return (
     <>
       <p>Wer ein Haus aus den Jahrzehnten zwischen 1950 und 1990 kauft, sollte ein Thema von Anfang an mitdenken: Asbest. Der Baustoff war jahrzehntelang beliebt, weil er günstig, hitzebeständig und stabil ist. Heute wissen wir, dass freigesetzte Asbestfasern die Gesundheit ernsthaft gefährden. Bis zum Verbot 1993 wurde Asbest in Deutschland in unzähligen Bauteilen verarbeitet.</p>
-      <p>Die gute Nachricht: Asbest im Haus ist kein automatisches Ausschlusskriterium. Entscheidend ist, wo das Material verbaut ist, in welchem Zustand es sich befindet und ob bei einer Sanierung Fasern freigesetzt werden könnten. Dieser Artikel zeigt Ihnen als privatem Käufer, wie Sie das Risiko bei einem Bestandsgebäude erkennen, welche Kosten realistisch sind und wie Sie im Verdachtsfall richtig vorgehen.</p>
+      <p>Die gute Nachricht: Asbest im Haus ist kein automatisches Ausschlusskriterium. Entscheidend ist, wo das Material verbaut ist, in welchem Zustand es sich befindet und ob bei einer Sanierung Fasern freigesetzt werden könnten. Dieser Artikel zeigt Ihnen als Käufer, wie Sie das Risiko bei einem Bestandsgebäude erkennen, welche Kosten realistisch sind und wie Sie im Verdachtsfall richtig vorgehen.</p>
       <p>Wichtig vorab: Dieser Beitrag ersetzt weder ein Schadstoffgutachten noch eine rechtliche Beratung. Er hilft Ihnen, die richtigen Fragen zu stellen, bevor Sie eine Kaufentscheidung treffen.</p>
       
       <h2>Warum gerade Häuser von 1950 bis 1990 betroffen sind</h2>

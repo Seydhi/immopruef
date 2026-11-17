@@ -232,7 +232,7 @@ export function organizationSchema(): object {
     legalName: 'Seydhan Cakmak, handelnd unter Cakmak Digital',
     url: SITE_URL,
     logo: `${SITE_URL}/logo.png`,
-    description: 'ImmoPrüf ist ein Online-Tool für private Immobilienkäufer in Deutschland: Aus einem Exposé-Link oder PDF entsteht eine KI-gestützte Ersteinschätzung zu Preis, Kaufnebenkosten, Standort, Risiken und Finanzierung. Dazu kostenlose Immobilien-Rechner und Ratgeber.',
+    description: 'ImmoPrüf ist ein Online-Tool für Immobilienkäufer und Kapitalanleger in Deutschland: Aus einem Exposé-Link oder PDF entsteht eine KI-gestützte Ersteinschätzung zu Preis, Kaufnebenkosten, Standort, Risiken und Finanzierung. Dazu kostenlose Immobilien-Rechner und Ratgeber.',
     foundingDate: '2026',
     areaServed: { '@type': 'Country', name: 'Deutschland' },
     knowsAbout: ['Immobilienkauf', 'Exposé-Prüfung', 'Kaufnebenkosten', 'Grunderwerbsteuer', 'Baufinanzierung', 'Bodenrichtwert'],

@@ -2,7 +2,7 @@ export default function GrundstueckKaufenWoraufAchten() {
   return (
     <>
       <p>Ein eigenes Grundstück ist für viele der erste Schritt zum eigenen Haus. Doch anders als beim Kauf einer fertigen Immobilie entscheidet sich hier vieles, bevor der erste Spatenstich gesetzt ist. Ob auf dem Grundstück überhaupt das gebaut werden darf, was Sie sich vorstellen, hängt von rechtlichen, technischen und steuerlichen Faktoren ab, die im Exposé oft nur am Rand erwähnt werden.</p>
-      <p>Dieser Beitrag zeigt Ihnen Schritt für Schritt, worauf private Käufer vor dem Bau achten sollten: von der Bebaubarkeit über die Erschließung und den Baugrund bis zu Grundbuch, Baulasten und Grunderwerbsteuer. So erkennen Sie früh, ob ein Angebot wirklich zu Ihrem Vorhaben passt oder ob teure Überraschungen drohen.</p>
+      <p>Dieser Beitrag zeigt Ihnen Schritt für Schritt, worauf Käufer vor dem Bau achten sollten: von der Bebaubarkeit über die Erschließung und den Baugrund bis zu Grundbuch, Baulasten und Grunderwerbsteuer. So erkennen Sie früh, ob ein Angebot wirklich zu Ihrem Vorhaben passt oder ob teure Überraschungen drohen.</p>
       <h2>Bebaubarkeit: Das Wichtigste zuerst</h2>
       <p>Die zentrale Frage bei jedem Grundstück lautet: Was und wie hoch darf ich hier bauen? Die Antwort hängt davon ab, ob das Grundstück im Geltungsbereich eines Bebauungsplans liegt.</p>
       <p>Liegt ein Bebauungsplan vor, regelt dieser verbindlich, wie das Grundstück bebaut werden darf. Wichtige Kennzahlen sind dabei:</p>

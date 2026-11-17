@@ -2,7 +2,7 @@ export default function ErbbaurechtErbpachtKaufen() {
   return (
     <>
       <p>Ein Haus zu kaufen, ohne das teure Grundstück mitzubezahlen: Genau das verspricht das Erbbaurecht, umgangssprachlich oft "Erbpacht" genannt. Sie erwerben das Gebäude, der Boden darunter bleibt einem anderen Eigentümer, etwa einer Kirche oder Kommune. Für die Nutzung des Grundstücks zahlen Sie dauerhaft einen jährlichen Betrag. Das senkt den Kapitalbedarf beim Einstieg spürbar, bringt aber langfristige Pflichten und Einschränkungen mit sich.</p>
-      <p>Für private Käufer ist das Modell deshalb weder pauschal gut noch schlecht. Es kann den Einstieg in die eigenen vier Wände ermöglichen, wenn der Kaufpreis sonst zu hoch wäre. Gleichzeitig stecken die entscheidenden Risiken im Kleingedruckten des Vertrags: in der Restlaufzeit, der Zinsanpassung und der Regel für das Vertragsende.</p>
+      <p>Für Käufer ist das Modell deshalb weder pauschal gut noch schlecht. Es kann den Einstieg in die eigenen vier Wände ermöglichen, wenn der Kaufpreis sonst zu hoch wäre. Gleichzeitig stecken die entscheidenden Risiken im Kleingedruckten des Vertrags: in der Restlaufzeit, der Zinsanpassung und der Regel für das Vertragsende.</p>
       <p>Dieser Artikel erklärt, wie das Erbbaurecht funktioniert, was es Sie über die Jahre kostet, welche Vor- und Nachteile es hat und worauf Sie vor dem Kauf besonders achten sollten.</p>
       
       <h2>Was bedeutet Erbbaurecht (Erbpacht)?</h2>

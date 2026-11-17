@@ -3,7 +3,7 @@ export default function AnschlussfinanzierungForwardDarlehen() {
     <>
       <p>Die meisten Baufinanzierungen sind nicht mit der letzten Rate der Zinsbindung abbezahlt. Nach 10 oder 15 Jahren bleibt fast immer eine Restschuld übrig, die zu den dann gültigen Konditionen neu finanziert werden muss. Genau dieser zweite Finanzierungsabschnitt heißt Anschlussfinanzierung – und er entscheidet oft darüber, ob aus einer soliden Finanzierung am Ende eine teure wird.</p>
       
-      <p>Viele private Käufer beschäftigen sich erst kurz vor Ablauf der Zinsbindung damit. Das ist ein Fehler, denn wer früh plant, kann zwischen mehreren Wegen wählen: bei der eigenen Bank bleiben, zu einer günstigeren Bank wechseln oder sich mit einem Forward-Darlehen schon Jahre im Voraus einen Zinssatz sichern.</p>
+      <p>Viele Käufer beschäftigen sich erst kurz vor Ablauf der Zinsbindung damit. Das ist ein Fehler, denn wer früh plant, kann zwischen mehreren Wegen wählen: bei der eigenen Bank bleiben, zu einer günstigeren Bank wechseln oder sich mit einem Forward-Darlehen schon Jahre im Voraus einen Zinssatz sichern.</p>
       
       <p>Dieser Artikel erklärt die wichtigsten Begriffe in einfacher Sprache, rechnet ein konkretes Beispiel an einer Restschuld von 200.000 € durch und zeigt, welcher Zeitpunkt für die Entscheidung der richtige ist.</p>
       

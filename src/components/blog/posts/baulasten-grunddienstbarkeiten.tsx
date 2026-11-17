@@ -5,7 +5,7 @@ export default function BaulastenGrunddienstbarkeiten() {
       
       <p>Das Tückische daran: Diese Lasten verstecken sich in zwei verschiedenen Registern. Grunddienstbarkeiten stehen im Grundbuch, Baulasten dagegen in einem ganz anderen Verzeichnis bei der Gemeinde. Wer nur eines von beiden prüft, übersieht möglicherweise die entscheidende Beschränkung.</p>
       
-      <p>Dieser Artikel erklärt den Unterschied zwischen beiden, zeigt typische Beispiele und ihre Auswirkungen und beschreibt, wie Sie als privater Käufer beide Register vor dem Kauf systematisch prüfen.</p>
+      <p>Dieser Artikel erklärt den Unterschied zwischen beiden, zeigt typische Beispiele und ihre Auswirkungen und beschreibt, wie Sie als Käufer beide Register vor dem Kauf systematisch prüfen.</p>
       
       <h2>Grunddienstbarkeit und Baulast: der entscheidende Unterschied</h2>
       

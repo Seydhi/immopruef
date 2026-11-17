@@ -1,7 +1,7 @@
 export default function KaufpreisfaktorMietrendite() {
   return (
     <>
-      <p>Ob der Preis eines Immobilienangebots fair ist, lässt sich nicht am Bauchgefühl festmachen. Zwei Kennzahlen geben privaten Käufern in wenigen Minuten eine erste, belastbare Orientierung: der Kaufpreisfaktor und die Mietrendite. Beide setzen den Kaufpreis ins Verhältnis zur Jahreskaltmiete und machen Angebote damit über Städte, Baujahre und Wohnungsgrößen hinweg vergleichbar.</p>
+      <p>Ob der Preis eines Immobilienangebots fair ist, lässt sich nicht am Bauchgefühl festmachen. Zwei Kennzahlen geben Käufern und Anlegern in wenigen Minuten eine erste, belastbare Orientierung: der Kaufpreisfaktor und die Mietrendite. Beide setzen den Kaufpreis ins Verhältnis zur Jahreskaltmiete und machen Angebote damit über Städte, Baujahre und Wohnungsgrößen hinweg vergleichbar.</p>
       
       <p>Das Prinzip dahinter ist einfach: Die Miete ist der Ertrag, den eine Immobilie erwirtschaften kann. Steht der Kaufpreis in einem ungesunden Verhältnis zu diesem Ertrag, sollte das jeden Käufer aufhorchen lassen – auch Eigennutzer, die nie vermieten wollen. Denn ein überhöhter Einstiegspreis lässt sich später weder durch Mieteinnahmen noch durch Wertsteigerung verlässlich aufholen.</p>
       

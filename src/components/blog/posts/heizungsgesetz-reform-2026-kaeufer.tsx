@@ -1,7 +1,7 @@
 export default function HeizungsgesetzReform2026Kaeufer() {
   return (
     <>
-      <p>Kaum ein Gesetz hat private Käufer in den vergangenen Jahren so verunsichert wie das „Heizungsgesetz". Wer ein Haus mit alter Gas- oder Ölheizung ins Auge fasste, rechnete schnell mit einem teuren Pflichttausch kurz nach dem Kauf. Am 10. Juli 2026 hat der Bundestag dieses Gesetz grundlegend reformiert — mit spürbaren Folgen für die Kaufentscheidung.</p>
+      <p>Kaum ein Gesetz hat Immobilienkäufer in den vergangenen Jahren so verunsichert wie das „Heizungsgesetz". Wer ein Haus mit alter Gas- oder Ölheizung ins Auge fasste, rechnete schnell mit einem teuren Pflichttausch kurz nach dem Kauf. Am 10. Juli 2026 hat der Bundestag dieses Gesetz grundlegend reformiert — mit spürbaren Folgen für die Kaufentscheidung.</p>
       <p>Dieser Ratgeber ordnet die Reform aus Käufersicht ein: Was der Bundestag beschlossen hat, was Sie mit einer bestehenden Heizung im gekauften Haus dürfen, was beim Neueinbau gilt — und was sich trotz aller Schlagzeilen <strong>nicht</strong> ändert. Alle Angaben geben den Stand vom 30. Juli 2026 wieder und ersetzen keine Rechts-, Steuer- oder Finanzberatung.</p>
 
       <h2>Was der Bundestag am 10. Juli 2026 beschlossen hat</h2>

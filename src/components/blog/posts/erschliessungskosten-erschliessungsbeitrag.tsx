@@ -2,7 +2,7 @@ export default function ErschliessungskostenErschliessungsbeitrag() {
   return (
     <>
       <p>Wer ein Grundstück kauft, achtet meist zuerst auf den Kaufpreis. Doch ob ein Grundstück bebaubar ist, hängt nicht nur am Preis, sondern auch daran, ob es an die öffentliche Infrastruktur angeschlossen ist. Genau das meint der Begriff Erschließung: das Grundstück mit Straße, Gehweg, Beleuchtung sowie mit Kanal, Wasser, Strom, Gas und Telekommunikation zu verbinden.</p>
-      <p>Für private Käufer ist das ein heikler Punkt, weil hier Kosten entstehen können, die im Exposé nicht stehen. Ist die Erschließung noch nicht vollständig abgerechnet, drohen Nachzahlungen, die schnell mehrere Tausend bis über 20.000 € erreichen. Wer nicht genau prüft, übernimmt diese Beträge unbemerkt mit dem Grundstück.</p>
+      <p>Für Käufer ist das ein heikler Punkt, weil hier Kosten entstehen können, die im Exposé nicht stehen. Ist die Erschließung noch nicht vollständig abgerechnet, drohen Nachzahlungen, die schnell mehrere Tausend bis über 20.000 € erreichen. Wer nicht genau prüft, übernimmt diese Beträge unbemerkt mit dem Grundstück.</p>
       <p>Dieser Artikel erklärt, wer welche Kosten trägt, worin sich der öffentliche Erschließungsbeitrag von den privaten Hausanschlusskosten unterscheidet und welche Fragen Sie vor dem Kauf klären sollten.</p>
       <h2>Was Erschließung konkret bedeutet</h2>
       <p>Erschließung bezeichnet alle Maßnahmen, die ein Grundstück nutzbar und bebaubar machen, indem sie es an die vorhandene Infrastruktur anschließen. Dabei unterscheidet man zwei Bereiche, die getrennt voneinander abgerechnet werden und unterschiedliche Kostenträger haben.</p>

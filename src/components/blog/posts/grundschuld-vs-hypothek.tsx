@@ -2,7 +2,7 @@ export default function GrundschuldVsHypothek() {
   return (
     <>
       <p>Wer eine Immobilie über einen Kredit finanziert, stößt früher oder später auf zwei Begriffe, die oft synonym verwendet werden, rechtlich aber nicht dasselbe sind: Grundschuld und Hypothek. Beide sind sogenannte Grundpfandrechte und dienen der Bank als Sicherheit für Ihr Darlehen. Doch in der Praxis arbeitet heute fast jede Finanzierung mit der Grundschuld, während die Hypothek selten geworden ist.</p>
-      <p>Für private Käufer ist der Unterschied keine reine Theorie. Er entscheidet darüber, was nach der vollständigen Rückzahlung mit dem Eintrag im Grundbuch passiert, wie flexibel Sie bei einer späteren Umschuldung sind und welche Kosten anfallen können. Wer das Prinzip versteht, kann die Unterlagen seiner Bank besser einordnen und spätere Entscheidungen vorbereiten.</p>
+      <p>Für Käufer ist der Unterschied keine reine Theorie. Er entscheidet darüber, was nach der vollständigen Rückzahlung mit dem Eintrag im Grundbuch passiert, wie flexibel Sie bei einer späteren Umschuldung sind und welche Kosten anfallen können. Wer das Prinzip versteht, kann die Unterlagen seiner Bank besser einordnen und spätere Entscheidungen vorbereiten.</p>
       <p>Dieser Artikel erklärt in einfachen Worten, was Grundschuld und Hypothek unterscheidet, warum die Grundschuld heute Standard ist und worauf Sie als Käufer achten sollten. Den größeren Zusammenhang zeigt <a href="/blog/baufinanzierung-leitfaden">den großen Baufinanzierungs-Leitfaden</a>.</p>
       
       <h2>Grundpfandrechte: Was Grundschuld und Hypothek gemeinsam haben</h2>
@@ -69,7 +69,7 @@ export default function GrundschuldVsHypothek() {
       </ul>
       <p>Welche Variante sinnvoller ist, hängt von Ihren Plänen ab. Rechnen Sie damit, in absehbarer Zeit wieder Kapital zu benötigen, kann das Stehenlassen Gebühren für eine spätere Neueintragung sparen. Wollen Sie ein vollständig lastenfreies Objekt, etwa für den Verkauf, ist die Löschung der saubere Weg.</p>
       
-      <h2>Worauf private Käufer achten sollten</h2>
+      <h2>Worauf Käufer achten sollten</h2>
       <p>Für Sie als Käufer ergeben sich aus dem Unterschied einige praktische Punkte. Erstens: Erwarten Sie nicht, dass die Grundschuld im Grundbuch mit Ihrer Tilgung kleiner wird. Sie bleibt auf dem eingetragenen Betrag stehen, das ist normal und kein Fehler. Die tatsächliche Restschuld ergibt sich aus Ihrem Darlehensvertrag, nicht aus der Höhe der Grundschuld.</p>
       <p>Zweitens: Achten Sie beim Kauf darauf, dass alte Grundschulden des Verkäufers in Abteilung III im Zuge des Kaufs abgelöst und gelöscht werden. Sie übernehmen die Finanzierung des Vorbesitzers normalerweise nicht. Für Ihr eigenes Darlehen lässt Ihre Bank dann eine neue Grundschuld eintragen.</p>
       <p>Drittens: Behalten Sie die Grundschuld im Blick, wenn Ihre Zinsbindung endet. Eine bestehende, abstrakte Grundschuld kann den Wechsel zu einer günstigeren Bank erleichtern, weil sie übertragen statt neu eingetragen werden kann. Das ist einer der Gründe, warum die Grundschuld bei der laufenden Finanzierung so praktisch ist. Wie die monatliche Rate aus Zins und Tilgung entsteht und wie schnell die Restschuld sinkt, erklärt der Beitrag zum <a href="/blog/annuitaetendarlehen-erklaert">Annuitätendarlehen</a>.</p>

@@ -5,7 +5,7 @@ export default function FristenImmobilienkauf() {
         Beim Immobilienkauf scheitern mehr Käufe an verpassten Fristen als an unerwarteten Mängeln. Eine zu spät eingereichte Finanzierungsunterlage, ein nicht rechtzeitig angeforderter Grundbuchauszug, eine übersehene Zahlungsfrist nach Notartermin — und aus einem strukturierten Kauf wird plötzlich eine Kette aus Mahnungen, Nachträgen und Mehrkosten. Gleichzeitig sind die meisten Fristen beim Immobilienkauf vorhersehbar, sobald man weiß, wann welches Dokument fällig ist und welches Zeitfenster dahinter steht.
       </p>
       <p>
-        Dieser Ratgeber zeigt die wichtigsten Fristen und Unterlagen im Kaufprozess in chronologischer Reihenfolge, erklärt die typischen Fallen und gibt ein praktikables System an die Hand, mit dem auch private Käufer den Überblick behalten. Welche Dokumente inhaltlich zu prüfen sind, behandelt ergänzend <a href="/blog/unterlagen-vor-immobilienkauf">Vor dem Immobilienkauf Unterlagen prüfen</a>; den übergeordneten Ablauf strukturiert <a href="/blog/hauskauf-mit-system">Hauskauf mit System</a>.
+        Dieser Ratgeber zeigt die wichtigsten Fristen und Unterlagen im Kaufprozess in chronologischer Reihenfolge, erklärt die typischen Fallen und gibt ein praktikables System an die Hand, mit dem auch Erstkäufer den Überblick behalten. Welche Dokumente inhaltlich zu prüfen sind, behandelt ergänzend <a href="/blog/unterlagen-vor-immobilienkauf">Vor dem Immobilienkauf Unterlagen prüfen</a>; den übergeordneten Ablauf strukturiert <a href="/blog/hauskauf-mit-system">Hauskauf mit System</a>.
       </p>
 
       <h2>Warum Fristen beim Immobilienkauf den größten Unterschied machen</h2>

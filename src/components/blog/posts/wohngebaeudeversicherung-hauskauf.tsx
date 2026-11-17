@@ -1,7 +1,7 @@
 export default function WohngebaeudeversicherungHauskauf() {
   return (
     <>
-      <p>Wer ein Haus kauft, denkt zuerst an Kaufpreis, Notar und Finanzierung – die Wohngebäudeversicherung taucht oft erst kurz vor dem Notartermin auf, wenn die Bank danach fragt. Dabei entscheidet dieser Vertrag im Schadensfall darüber, ob ein Leitungswasserschaden oder ein Dachschaden nach dem nächsten Sturm zur Existenzfrage wird oder nur ein ärgerlicher Verwaltungsvorgang bleibt. Für private Käufer ist es deshalb wichtig zu verstehen, was gesetzlich gilt, was die Bank verlangt und welche Gefahren überhaupt abgedeckt sind.</p>
+      <p>Wer ein Haus kauft, denkt zuerst an Kaufpreis, Notar und Finanzierung – die Wohngebäudeversicherung taucht oft erst kurz vor dem Notartermin auf, wenn die Bank danach fragt. Dabei entscheidet dieser Vertrag im Schadensfall darüber, ob ein Leitungswasserschaden oder ein Dachschaden nach dem nächsten Sturm zur Existenzfrage wird oder nur ein ärgerlicher Verwaltungsvorgang bleibt. Für Käufer ist es deshalb wichtig zu verstehen, was gesetzlich gilt, was die Bank verlangt und welche Gefahren überhaupt abgedeckt sind.</p>
       <p>Dieser Ratgeber (Stand 2026, Deutschland) erklärt, warum es streng genommen keine gesetzliche Versicherungspflicht gibt, die Wohngebäudeversicherung beim Hauskauf aber trotzdem faktisch unverzichtbar ist. Sie erfahren, wie Sie nach &sect; 95 VVG automatisch in den bestehenden Vertrag des Verkäufers eintreten, welches Sonderkündigungsrecht Sie haben, welche Gefahren Standard sind – und warum der Elementarschutz 2026 zum zentralen Thema geworden ist.</p>
       
       <h2>Gibt es eine gesetzliche Pflicht zur Wohngebäudeversicherung?</h2>

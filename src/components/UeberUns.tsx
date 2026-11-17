@@ -8,7 +8,7 @@ export default function UeberUns() {
   useSEO({
     title: 'Über ImmoPrüf: Wer wir sind und wie wir arbeiten',
     description:
-      'ImmoPrüf hilft privaten Käufern, Immobilienangebote vor dem Kauf strukturiert einzuordnen. Wie unsere Analysen entstehen und wie wir Ratgeber prüfen.',
+      'ImmoPrüf hilft Immobilienkäufern und Anlegern, Immobilienangebote vor dem Kauf strukturiert einzuordnen. Wie unsere Analysen entstehen und wie wir Ratgeber prüfen.',
     canonical: 'https://immopruef.de/ueber-uns',
     type: 'website',
     jsonLd: [
@@ -77,7 +77,7 @@ export default function UeberUns() {
           Über ImmoPrüf
         </h1>
         <p className="text-ink-mid text-base leading-relaxed">
-          Wir helfen privaten Käuferinnen und Käufern, ein Immobilienangebot vor Besichtigung und Kauf strukturiert
+          Wir helfen Käuferinnen, Käufern und Kapitalanlegern, ein Immobilienangebot vor Besichtigung und Kauf strukturiert
           einzuordnen — sachlich, nachvollziehbar und ohne Verkaufsprosa.
         </p>
       </header>

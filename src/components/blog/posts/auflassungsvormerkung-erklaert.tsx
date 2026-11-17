@@ -2,7 +2,7 @@ export default function AuflassungsvormerkungErklaert() {
   return (
     <>
       <p>Zwischen der Unterschrift unter dem Kaufvertrag und der Eintragung als Eigentümer im Grundbuch vergehen beim Immobilienkauf oft mehrere Wochen. In dieser Phase haben Sie den Kaufvertrag bereits geschlossen, sind aber rechtlich noch nicht Eigentümer. Genau hier setzt die Auflassungsvormerkung an: Sie sichert Ihren Anspruch auf die Immobilie ab, bis die Übertragung endgültig vollzogen ist.</p>
-      <p>Für private Käufer ist das eine der wichtigsten Schutzvorkehrungen im gesamten Kaufprozess. Ohne sie wären Sie dem Risiko ausgesetzt, dass der Verkäufer dieselbe Immobilie ein zweites Mal verkauft, sie zusätzlich belastet oder in eine Insolvenz gerät, bevor Sie eingetragen sind.</p>
+      <p>Für Käufer ist das eine der wichtigsten Schutzvorkehrungen im gesamten Kaufprozess. Ohne sie wären Sie dem Risiko ausgesetzt, dass der Verkäufer dieselbe Immobilie ein zweites Mal verkauft, sie zusätzlich belastet oder in eine Insolvenz gerät, bevor Sie eingetragen sind.</p>
       <p>Dieser Artikel erklärt, was die Auflassung und die Auflassungsvormerkung genau sind, wie sie zusammenhängen, an welcher Stelle im Ablauf sie greifen und worauf Sie als Käufer achten sollten, damit Sie Ihr Geld erst dann zahlen, wenn Sie wirklich abgesichert sind.</p>
       
       <h2>Auflassung und Eintragung: zwei getrennte Schritte</h2>

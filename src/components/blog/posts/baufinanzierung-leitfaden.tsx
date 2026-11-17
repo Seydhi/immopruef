@@ -1,7 +1,7 @@
 export default function BaufinanzierungLeitfaden() {
   return (
     <>
-      <p>Eine Immobilie zu kaufen ist für die meisten Menschen die größte finanzielle Entscheidung ihres Lebens – und die Finanzierung entscheidet darüber, ob das Vorhaben langfristig tragbar bleibt. Wer die Bausteine versteht, verhandelt souveräner mit der Bank, vermeidet teure Fehler und kann verschiedene Angebote überhaupt erst sinnvoll vergleichen. Dieser Leitfaden gibt Ihnen den vollständigen Überblick über die Baufinanzierung für private Käufer im Jahr 2026.</p>
+      <p>Eine Immobilie zu kaufen ist für die meisten Menschen die größte finanzielle Entscheidung ihres Lebens – und die Finanzierung entscheidet darüber, ob das Vorhaben langfristig tragbar bleibt. Wer die Bausteine versteht, verhandelt souveräner mit der Bank, vermeidet teure Fehler und kann verschiedene Angebote überhaupt erst sinnvoll vergleichen. Dieser Leitfaden gibt Ihnen den vollständigen Überblick über die Baufinanzierung für Käufer im Jahr 2026.</p>
       
       <p>Stand November 2026 liegen die Bauzinsen für zehnjährige Zinsbindungen bei rund 4,0 bis 4,4 Prozent effektivem Jahreszins, je nach Beleihungsauslauf (Quellen: <a href="https://www.interhyp.de/zinsen/" target="_blank" rel="noopener noreferrer">Interhyp-Zinstabelle</a>, Konditionen vom 2. bis 8. November 2026, und <a href="https://www.drklein.de/aktuelle-bauzinsen.html" target="_blank" rel="noopener noreferrer">Dr. Klein</a>, Stand 9. November 2026). Das ist ein Orientierungswert, keine Garantie. Ihr konkreter Zins hängt von Eigenkapital, Bonität, Objekt und Bank ab. Jeder Abschnitt hier gibt Ihnen das Wesentliche an die Hand und verweist für die Details auf den jeweiligen Fachartikel. So nutzen Sie diese Seite als Ausgangspunkt und springen gezielt in die Themen, die für Ihre Situation zählen.</p>
       
@@ -91,7 +91,7 @@ export default function BaufinanzierungLeitfaden() {
       
       <h2>Häufige Fehler, die Sie vermeiden sollten</h2>
       
-      <p>Manche Stolperfallen tauchen bei privaten Käufern immer wieder auf. Wer sie kennt, plant von Beginn an robuster:</p>
+      <p>Manche Stolperfallen tauchen bei Käufern immer wieder auf. Wer sie kennt, plant von Beginn an robuster:</p>
       
       <ul>
       <li><strong>Nebenkosten unterschätzen:</strong> Wer nur den Kaufpreis im Blick hat, übersieht schnell zehn Prozent oder mehr an Erwerbsnebenkosten, die aus Eigenkapital kommen müssen.</li>

@@ -2,7 +2,7 @@ export default function KaufvertragImmobiliePruefen() {
   return (
     <>
       <p>Der notarielle Kaufvertrag ist das wichtigste Dokument beim Immobilienkauf. Mit Ihrer Unterschrift verpflichten Sie sich in der Regel unwiderruflich, oft zu einem Betrag von mehreren hunderttausend Euro. Umso wichtiger ist es, den Entwurf vor dem Notartermin gründlich zu prüfen, statt sich beim Termin selbst von der Menge an Formulierungen überraschen zu lassen.</p>
-      <p>Viele private Käufer sehen den Vertrag zum ersten Mal beim Notar und unterschreiben im Vertrauen darauf, dass schon alles seine Richtigkeit haben wird. Tatsächlich ist der Notar zur Neutralität verpflichtet und prüft nicht, ob der Kaufpreis angemessen ist oder ob die Konditionen für Sie günstig sind. Diese inhaltliche Bewertung müssen Sie selbst leisten.</p>
+      <p>Viele Käufer sehen den Vertrag zum ersten Mal beim Notar und unterschreiben im Vertrauen darauf, dass schon alles seine Richtigkeit haben wird. Tatsächlich ist der Notar zur Neutralität verpflichtet und prüft nicht, ob der Kaufpreis angemessen ist oder ob die Konditionen für Sie günstig sind. Diese inhaltliche Bewertung müssen Sie selbst leisten.</p>
       <p>Dieser Artikel zeigt, welche Bestandteile in jeden Immobilien-Kaufvertrag gehören, welche Klauseln für Sie als Käufer besonders wichtig sind und worauf Sie beim Lesen des Entwurfs achten sollten, bevor Sie zum Notar gehen. Den größeren Zusammenhang zeigt <a href="/blog/hauskauf-ablauf-leitfaden">der komplette Hauskauf-Ablauf von der Suche bis zur Übergabe</a>.</p>
       
       <h2>Die Pflichtbestandteile jedes Kaufvertrags</h2>

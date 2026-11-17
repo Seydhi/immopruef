@@ -1,7 +1,7 @@
 export default function BodenrichtwertVerstehenAbfragen() {
   return (
     <>
-      <p>Wenn Sie ein Hausangebot oder eine Eigentumswohnung prüfen, taucht früher oder später der Begriff Bodenrichtwert auf. Er ist eine der wenigen amtlichen Kennzahlen, die Sie als privater Käufer kostenlos und unabhängig vom Verkäufer abfragen können. Genau das macht ihn so nützlich für eine sachliche Einordnung.</p>
+      <p>Wenn Sie ein Hausangebot oder eine Eigentumswohnung prüfen, taucht früher oder später der Begriff Bodenrichtwert auf. Er ist eine der wenigen amtlichen Kennzahlen, die Sie als Käufer kostenlos und unabhängig vom Verkäufer abfragen können. Genau das macht ihn so nützlich für eine sachliche Einordnung.</p>
       <p>Der Bodenrichtwert sagt Ihnen, was der Boden an einer bestimmten Lage je Quadratmeter durchschnittlich wert ist. Er ist damit keine Bewertung der gesamten Immobilie, sondern ein Baustein, mit dem Sie den im Kaufpreis steckenden Grundstücksanteil plausibilisieren können.</p>
       <p>Dieser Artikel erklärt, was der Bodenrichtwert genau ist, wie Sie ihn kostenlos abfragen, wie Sie damit rechnen und welche Grenzen Sie kennen sollten, damit Sie die Zahl nicht überinterpretieren.</p>
       

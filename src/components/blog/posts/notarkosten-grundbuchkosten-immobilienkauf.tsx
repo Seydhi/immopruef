@@ -1,7 +1,7 @@
 export default function NotarkostenGrundbuchkostenImmobilienkauf() {
   return (
     <>
-      <p>Beim Immobilienkauf in Deutschland führt kein Weg am Notar vorbei: Ohne notarielle Beurkundung ist der Kaufvertrag nicht wirksam, und ohne Eintragung im Grundbuch wechselt das Eigentum nicht den Besitzer. Beide Schritte kosten Geld, und zwar mehr, als viele private Käufer zunächst einplanen: Zusammen schlagen Notar und Grundbuchamt mit etwa 1,5 bis 2,0 Prozent des Kaufpreises zu Buche.</p>
+      <p>Beim Immobilienkauf in Deutschland führt kein Weg am Notar vorbei: Ohne notarielle Beurkundung ist der Kaufvertrag nicht wirksam, und ohne Eintragung im Grundbuch wechselt das Eigentum nicht den Besitzer. Beide Schritte kosten Geld, und zwar mehr, als viele Käufer zunächst einplanen: Zusammen schlagen Notar und Grundbuchamt mit etwa 1,5 bis 2,0 Prozent des Kaufpreises zu Buche.</p>
       <p>Bei einem Kaufpreis von 400.000 Euro sind das schnell 7.000 bis 8.000 Euro, die zusätzlich zum Kaufpreis fällig werden und in der Regel aus dem Eigenkapital bezahlt werden müssen. Wer diesen Posten unterschätzt, gerät bei der Finanzierung unter Druck.</p>
       <p>Dieser Artikel erklärt, wie hoch Notar- und Grundbuchkosten ausfallen, welche Leistungen dahinterstecken, wie der Ablauf aussieht, wer welche Kosten trägt und wo es begrenztes Sparpotenzial gibt. Beispielrechnungen zeigen, mit welchen Beträgen Sie konkret kalkulieren sollten.</p>
       

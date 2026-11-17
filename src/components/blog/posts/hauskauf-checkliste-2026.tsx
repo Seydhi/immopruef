@@ -2,7 +2,7 @@ export default function HauskaufCheckliste2026() {
   return (
     <>
       <p>Der Kauf eines Hauses ist für die meisten Menschen die größte finanzielle Entscheidung ihres Lebens – und ein Prozess mit vielen Beteiligten: Verkäufer, Makler, Bank, Notar, Grundbuchamt und Finanzamt. Wer die richtige Reihenfolge der Schritte kennt, vermeidet teure Fehler, verliert in begehrten Lagen keine Zeit und behält die Kosten von Anfang an im Griff.</p>
-      <p>Realistisch dauert der Weg von der ersten Suche bis zur Schlüsselübergabe 3 bis 9 Monate. Allein zwischen Notartermin und Übergabe vergehen meist 4 bis 8 Wochen. Diese Checkliste führt Sie durch alle 12 Schritte des Hauskaufs 2026 – mit den wichtigsten Fristen, Unterlagen und Faustregeln für private Käufer. Den größeren Zusammenhang zeigt <a href="/blog/hauskauf-ablauf-leitfaden">der komplette Hauskauf-Ablauf von der Suche bis zur Übergabe</a>.</p>
+      <p>Realistisch dauert der Weg von der ersten Suche bis zur Schlüsselübergabe 3 bis 9 Monate. Allein zwischen Notartermin und Übergabe vergehen meist 4 bis 8 Wochen. Diese Checkliste führt Sie durch alle 12 Schritte des Hauskaufs 2026 – mit den wichtigsten Fristen, Unterlagen und Faustregeln für Käufer. Den größeren Zusammenhang zeigt <a href="/blog/hauskauf-ablauf-leitfaden">der komplette Hauskauf-Ablauf von der Suche bis zur Übergabe</a>.</p>
       <p>Die 12 Schritte gliedern sich in vier Phasen: Vorbereitung (Schritte 1 bis 3), Prüfung und Besichtigung (Schritte 4 bis 7), Finanzierung und Kaufvertrag (Schritte 8 bis 10) sowie Abwicklung und Übergabe (Schritte 11 und 12).</p>
       
       <h2>Phase 1: Vorbereitung (Schritte 1 bis 3)</h2>
@@ -69,7 +69,7 @@ export default function HauskaufCheckliste2026() {
       <p>In Summe ergeben sich die genannten 3 bis 9 Monate von der Suche bis zur Übergabe. Die größte Stellschraube ist die Suchphase: Wer Budget und Finanzierungszertifikat bereits geklärt hat, kann bei einem passenden Objekt sofort zugreifen und verkürzt den Gesamtprozess deutlich.</p>
       
       <h2>Fazit: Struktur schlägt Bauchgefühl</h2>
-      <p>Ein Hauskauf lässt sich nicht in eine Woche pressen, aber er lässt sich planen. Die drei häufigsten Fehler privater Käufer sind vermeidbar: ein Budget ohne Kaufnebenkosten, Besichtigungen ohne angeforderte Unterlagen und ein Notartermin ohne verbindliche Finanzierungszusage. Wer die 12 Schritte in der richtigen Reihenfolge abarbeitet, kauft nicht schneller um jeden Preis – sondern sicherer zum richtigen Preis.</p>
+      <p>Ein Hauskauf lässt sich nicht in eine Woche pressen, aber er lässt sich planen. Die drei häufigsten Fehler beim Kauf sind vermeidbar: ein Budget ohne Kaufnebenkosten, Besichtigungen ohne angeforderte Unterlagen und ein Notartermin ohne verbindliche Finanzierungszusage. Wer die 12 Schritte in der richtigen Reihenfolge abarbeitet, kauft nicht schneller um jeden Preis – sondern sicherer zum richtigen Preis.</p>
       <p>Den größten Hebel haben Sie ganz am Anfang: bei der Entscheidung, in welche Objekte Sie überhaupt Zeit investieren. Genau dort setzt <strong>ImmoPrüf</strong> an: Fügen Sie einfach den Link zum Exposé ein und erhalten Sie noch vor der Besichtigung eine strukturierte Ersteinschätzung – mit Preisbewertung, Kaufnebenkosten, Standortanalyse, Risikohinweisen und einer ersten Finanzierungsrechnung. So besichtigen Sie nur noch Angebote, die eine Besichtigung wirklich wert sind.</p>
     </>
   )

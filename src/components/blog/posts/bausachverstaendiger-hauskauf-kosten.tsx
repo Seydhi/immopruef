@@ -2,7 +2,7 @@ export default function BausachverstaendigerHauskaufKosten() {
   return (
     <>
       <p>Ein Haus sieht bei der Besichtigung oft besser aus, als es ist. Frische Farbe, gepflegte Räume und ein freundlicher Verkäufer überdecken leicht, was hinter Wänden, unter dem Putz oder auf dem Dach tatsächlich vor sich geht. Genau hier setzt ein Bausachverständiger an: Er beurteilt den baulichen Zustand mit fachlichem Blick und deckt Mängel auf, die Laien typischerweise übersehen.</p>
-      <p>Für private Käufer geht es dabei um viel Geld. Ein übersehener Feuchteschaden, eine veraltete Heizung oder ein sanierungsbedürftiges Dach können nach dem Kauf fünfstellige Beträge kosten. Die Frage ist deshalb nicht, ob ein Gutachten teuer ist, sondern ob es im Verhältnis zum Risiko günstig ist. In diesem Beitrag erfahren Sie, was ein Bausachverständiger leistet, was er kostet und wann sich die Investition besonders lohnt. Den größeren Zusammenhang zeigt der Leitfaden dazu, <a href="/blog/immobilie-zustand-pruefen-leitfaden">wie Sie Bausubstanz &amp; Zustand vor dem Kauf prüfen</a>.</p>
+      <p>Für Käufer geht es dabei um viel Geld. Ein übersehener Feuchteschaden, eine veraltete Heizung oder ein sanierungsbedürftiges Dach können nach dem Kauf fünfstellige Beträge kosten. Die Frage ist deshalb nicht, ob ein Gutachten teuer ist, sondern ob es im Verhältnis zum Risiko günstig ist. In diesem Beitrag erfahren Sie, was ein Bausachverständiger leistet, was er kostet und wann sich die Investition besonders lohnt. Den größeren Zusammenhang zeigt der Leitfaden dazu, <a href="/blog/immobilie-zustand-pruefen-leitfaden">wie Sie Bausubstanz &amp; Zustand vor dem Kauf prüfen</a>.</p>
       
       <h2>Was ein Bausachverständiger beim Hauskauf leistet</h2>
       <p>Ein Bausachverständiger, auch Baugutachter genannt, beurteilt vor dem Kauf den baulichen Zustand einer Immobilie. Er prüft das Gebäude systematisch und deckt versteckte Mängel auf, die bei einer normalen Besichtigung leicht unentdeckt bleiben. Dazu zählen typischerweise:</p>
@@ -28,7 +28,7 @@ export default function BausachverstaendigerHauskaufKosten() {
       <tr><td>Stundensatz</td><td>meist um 100 bis 150 €</td><td>einzelne Fragen oder zeitlich begrenzte Einsätze</td></tr>
       </tbody>
       </table>
-      <p>Die genaue Höhe richtet sich je nach Region, Größe und Alter des Objekts sowie nach dem gewünschten Detailgrad. Für viele private Käufer ist die Begleitung zur Besichtigung ein guter Einstieg: Sie ist vergleichsweise günstig und liefert bereits eine fundierte erste Einschätzung. Ein ausführliches schriftliches Gutachten lohnt sich vor allem dann, wenn Sie eine belastbare Dokumentation für die Verhandlung oder eine größere Sanierungsentscheidung benötigen.</p>
+      <p>Die genaue Höhe richtet sich je nach Region, Größe und Alter des Objekts sowie nach dem gewünschten Detailgrad. Für viele Käufer ist die Begleitung zur Besichtigung ein guter Einstieg: Sie ist vergleichsweise günstig und liefert bereits eine fundierte erste Einschätzung. Ein ausführliches schriftliches Gutachten lohnt sich vor allem dann, wenn Sie eine belastbare Dokumentation für die Verhandlung oder eine größere Sanierungsentscheidung benötigen.</p>
       
       <h2>Beispielrechnung: Kosten gegen Nutzen</h2>
       <p>Stellen Sie die Kosten des Gutachtens dem möglichen Schaden gegenüber, wird das Verhältnis schnell deutlich. Ein Beispiel: Sie interessieren sich für ein Haus zum Kaufpreis von 400.000 €. Für ein ausführliches Gutachten zahlen Sie 1.500 €.</p>

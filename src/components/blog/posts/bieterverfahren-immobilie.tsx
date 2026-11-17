@@ -1,7 +1,7 @@
 export default function BieterverfahrenImmobilie() {
   return (
     <>
-      <p>Beim Bieterverfahren nennt der Verkäufer keinen festen Kaufpreis. Stattdessen geben mehrere Interessenten innerhalb einer Frist ihre Gebote ab, und der Verkäufer entscheidet anschließend, mit wem er den Kauf weiterverfolgt. Für private Käufer ist das ungewohnt: Wer zu hoch bietet, zahlt unnötig viel; wer zu vorsichtig ist, geht leer aus.</p>
+      <p>Beim Bieterverfahren nennt der Verkäufer keinen festen Kaufpreis. Stattdessen geben mehrere Interessenten innerhalb einer Frist ihre Gebote ab, und der Verkäufer entscheidet anschließend, mit wem er den Kauf weiterverfolgt. Für viele Käufer ist das ungewohnt: Wer zu hoch bietet, zahlt unnötig viel; wer zu vorsichtig ist, geht leer aus.</p>
       <p>Wichtig vorweg: Ein Bieterverfahren ist keine Versteigerung im rechtlichen Sinn. Es handelt sich nicht um eine Zwangsversteigerung, sondern um ein freies Verkaufsformat, das der Verkäufer selbst gestaltet. Daraus ergeben sich Spielräume, aber auch Risiken, die Sie kennen sollten, bevor Sie ein Gebot abgeben.</p>
       <p>Dieser Artikel erklärt die Regeln, die rechtliche Verbindlichkeit Ihres Gebots und eine nüchterne Strategie, mit der Sie nicht in eine emotionale Preisspirale geraten.</p>
       <h2>Was ein Bieterverfahren ist und wie es abläuft</h2>

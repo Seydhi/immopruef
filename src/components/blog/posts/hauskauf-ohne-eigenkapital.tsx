@@ -1,7 +1,7 @@
 export default function HauskaufOhneEigenkapital() {
   return (
     <>
-      <p>Steigende Immobilienpreise und gleichzeitig dünne Sparbücher führen bei vielen privaten Käufern zur gleichen Frage: Lässt sich ein Haus auch ganz ohne Eigenkapital finanzieren? Die kurze Antwort lautet: Ja, technisch ist das möglich – aber nur unter bestimmten Voraussetzungen, und es ist deutlich teurer als eine Finanzierung mit eigenem Geld.</p>
+      <p>Steigende Immobilienpreise und gleichzeitig dünne Sparbücher führen bei vielen Käufern zur gleichen Frage: Lässt sich ein Haus auch ganz ohne Eigenkapital finanzieren? Die kurze Antwort lautet: Ja, technisch ist das möglich – aber nur unter bestimmten Voraussetzungen, und es ist deutlich teurer als eine Finanzierung mit eigenem Geld.</p>
       
       <p>Dieser Artikel erklärt, was sich hinter einer 100- und einer 110-Prozent-Finanzierung verbirgt, für wen Banken so etwas überhaupt vergeben und mit welchem Zinsaufschlag Sie rechnen müssen. Eine Beispielrechnung an einem Objekt für 400.000 € zeigt, wie stark die Monatsrate steigt – und an welchen Stellen das Risiko konkret wird. Den größeren Zusammenhang von Zins, Tilgung und Beleihung zeigt <a href="/blog/baufinanzierung-leitfaden">den großen Baufinanzierungs-Leitfaden</a>.</p>
       

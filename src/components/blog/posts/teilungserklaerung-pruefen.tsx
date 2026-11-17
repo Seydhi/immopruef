@@ -5,7 +5,7 @@ export default function TeilungserklaerungPruefen() {
       
       <p>Trotzdem überfliegen viele Käufer dieses Dokument nur. Das ist riskant, denn die Teilungserklärung entscheidet darüber, ob der im Exposé versprochene Stellplatz wirklich Ihnen zusteht, ob Sie die Wohnung vermieten dürfen und wer für die Sanierung des Balkons zahlt. Fehleinschätzungen lassen sich später kaum korrigieren, weil eine Änderung in der Regel die Zustimmung aller Eigentümer voraussetzt.</p>
       
-      <p>Dieser Artikel erklärt, was in der Teilungserklärung steht, worauf Sie als privater Käufer konkret achten sollten und welche typischen Fallstricke teuer werden können. Wir zeigen außerdem, mit welchen weiteren Unterlagen Sie die Erklärung abgleichen sollten.</p>
+      <p>Dieser Artikel erklärt, was in der Teilungserklärung steht, worauf Sie als Käufer konkret achten sollten und welche typischen Fallstricke teuer werden können. Wir zeigen außerdem, mit welchen weiteren Unterlagen Sie die Erklärung abgleichen sollten.</p>
       
       <h2>Was ist die Teilungserklärung und warum ist sie so wichtig?</h2>
       
