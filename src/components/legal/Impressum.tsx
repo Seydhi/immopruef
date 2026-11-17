@@ -85,8 +85,13 @@ export default function Impressum() {
             Zustimmung des jeweiligen Autors bzw. Erstellers.
           </p>
           <p className="mt-2">
-            Downloads und Kopien der von uns erstellten Analyse-Reports sind nur für den
-            privaten, nicht kommerziellen Gebrauch des zahlenden Kunden gestattet.
+            Der zahlende Kunde darf die für ihn erstellten Analyse-Reports herunterladen,
+            speichern, ausdrucken und für eigene Zwecke nutzen, insbesondere für die eigene
+            Kauf-, Finanzierungs- oder Investitionsentscheidung. Dazu gehört auch die Weitergabe
+            an Personen, die ihn bei dieser Entscheidung beraten oder begleiten, etwa
+            Mitkäufer, Finanzierungspartner oder Steuerberater. Eine darüber hinausgehende
+            Vervielfältigung, Veröffentlichung, Weitergabe an Dritte oder ein Weiterverkauf der
+            Reports ist ohne unsere vorherige schriftliche Zustimmung nicht gestattet.
           </p>
         </section>
 
